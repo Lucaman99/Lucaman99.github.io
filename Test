@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <button>Animate</button>
+    <br><br>
+    <div class= "all">
+      <div class= "center1">
+        
+      </div>
+      <div class= "center2">
+        
+      </div>
+      <div class= "nucleus">
+        
+      </div>
+      <div class= "centriole1">
+        
+      </div>
+      <div class= "centriole2">
+        
+      </div>
+      <div class="strand1">
+        
+      </div>
+      <div class="strand2">
+        
+      </div>
+      <div class="strand3">
+        
+      </div>
+      <div class="strands1">
+        
+      </div>
+      <div class="strands2">
+        
+      </div>
+      <div class="strands3">
+        
+      </div>
+      <div class="strands4">
+        
+      </div>
+      <div class="strands5">
+        
+      </div>
+      <div class="strands6">
+        
+      </div>
+      <div class= "nuc1">
+        
+      </div>
+      <div class= "nuc2">
+        
+      </div>
+    <div class= "chrom1">
+      <div class= "chroma1">
+        
+      </div>
+      <div class= "chroma2">
+        
+      </div>
+    </div>
+    <div class= "chrom3">
+      <div class= "chroma5">
+        
+      </div>
+      <div class= "chroma6">
+        
+      </div>
+    </div>
+    <div class= "chrom4">
+      <div class= "chroma7">
+        
+      </div>
+      <div class= "chroma8">
+        
+      </div>
+    </div>
+    <div class= "s1">
+      
+    </div>
+    <div class= "s2">
+      
+    </div>
+    <div class= "s3">
+      
+    </div>
+    <div class= "s4">
+      
+    </div>
+    <div class= "s5">
+      
+    </div>
+    <div class= "s6">
+      
+    </div>
+    <div class="cytoplasm1">
+        
+      </div>
+      <div class= "triangle1">
+        
+      </div>
+      <div class="cytoplasm2">
+      </div>
+      <div class= "triangle2">
+        
+      </div>
+      </div>
+    <style>
+      .cytoplasm1 {
+        height:500px;
+        width:400px;
+        border-radius:500px 0 0 500px;
+        background-color:#A7DD7F;
+        position:relative;
+        margin-bottom:100px;
+        margin-left:50px;
+        border-left:double #4F931D;
+        border-top:double #4F931D;
+        border-bottom:double #4F931D;
+        border-width:10px;
+        float:left;
+        z-index:-1;
+      }
+      .cytoplasm2 {
+        height:500px;
+        width:400px;
+        border-radius:500px 0 0 500px;
+        background-color:#A7DD7F;
+        position:relative;
+        margin-bottom:100px;
+        margin-left:50px;
+        border-left:double #4F931D;
+        border-top:double #4F931D;
+        border-bottom:double #4F931D;
+        border-width:10px;
+        -webkit-transform:rotate(180deg);
+        margin-left:460px;
+        z-index:-1;
+      }
+      .chrom1 {
+        height:50px;
+        width:50px;
+        margin-top:300px;
+        margin-left:500px;
+        position:absolute;
+        -webkit-transform:rotate(90deg);
+        z-index:1;
+      }
+      .chroma1, .chroma5, .chroma7 {
+        background-color:#224215;
+        height:50px;
+        width:25px;
+        -webkit-transform:rotate(30deg);
+        z-index:1;
+      }
+      .s1, .s3, .s5 {
+        background-color:#224215;
+        height:50px;
+        width:25px;
+        -webkit-transform:rotate(30deg);
+        z-index:1;
+        position:absolute;
+        display:none;
+      }
+      .s2, .s4, .s6 {
+        background-color:#224215;
+        height:50px;
+        width:25px;
+        -webkit-transform:rotate(-30deg);
+        z-index:1;
+        position:absolute;
+        display:none;
+      }
+      .s2 {
+        margin-left:450px;
+        margin-top:50px;
+      }
+      .s4 {
+        margin-top:220px;
+        margin-left:473px;
+      }
+      .s6 {
+        margin-top:410px;
+        margin-left:440px;
+      }
+      .s1 {
+        margin-top:375px;
+        margin-left:400px;
+      }
+      .s3 {
+        margin-top:220px;
+        margin-left:430px;
+      }
+      .s5 {
+        margin-top:70px;
+        margin-left:400px;
+      }
+      .chroma2, .chroma6, .chroma8 {
+        background-color:#224215;
+        height:50px;
+        width:25px;
+        -webkit-transform:rotate(-30deg);
+        margin-left:30px;
+        margin-top:-50px;
+        z-index:1;
+        
+      }
+      .chrom3 {
+        height:50px;
+        width:50px;
+        margin-left:400px;
+        margin-top:350px;
+        position:absolute;
+        -webkit-transform:rotate(180deg);
+        z-index:1;
+      }
+      .chrom4 {
+        height:50px;
+        width:50px;
+        margin-left:450px;
+        margin-top:200px;
+        position:absolute;
+        z-index:1;
+      }
+      .all {
+        position:relative;
+        margin-left:350px;
+      }
+      .nucleus {
+        height:250px;
+        width:250px;
+        border-radius:250px;
+        background-color:#A77C2B;
+        opacity:0.3;
+        position:absolute;
+        margin-top:180px;
+        margin-left:320px;
+        border:solid;
+        z-index:1;
+      }
+      .nuc1 {
+        height:150px;
+        width:150px;
+        border-radius:150px;
+        margin-left:50px;
+        background-color:#A77C2B;
+        opacity:0.3;
+        position:absolute;
+        border:solid;
+        margin-top:200px;
+        z-index:1;
+        display:none;
+      }
+      .nuc2 {
+        height:180px;
+        width:180px;
+        border-radius:180px;
+        margin-left:650px;
+        background-color:#A77C2B;
+        opacity:0.3;
+        position:absolute;
+        border:solid;
+        margin-top:150px;
+        z-index:1;
+        display:none;
+      }
+      .triangle1 {
+        width:0;
+        height:0;
+        border-bottom:250px solid transparent;
+        border-left:300px solid #A7DD7F;
+        border-top:250px solid transparent;
+        margin-left:460px;
+        margin-top:-610px;
+        float:left;
+        position:relative;
+      }
+      .triangle2 {
+        width:0;
+        height:0;
+        border-bottom:250px solid transparent;
+        border-left:300px solid #A7DD7F;
+        border-top:250px solid transparent;
+        margin-left:160px;
+        margin-top:-610px;
+        -webkit-transform:rotate(180deg);
+        position:relative;
+
+      }
+      .centriole1 {
+        height:50px;
+        width:50px;
+        border-radius:50px;
+        background-color:#794C30;
+        padding-left:20px;
+        position:absolute;
+        margin-top:80px;
+        margin-left:200px;
+        z-index:2;
+      }
+      .centriole2 {
+        height:50px;
+        width:50px;
+        border-radius:50px;
+        background-color:#794C30;
+        padding-left:20px;
+        position:absolute;
+        margin-top:80px;
+        margin-left:500px;
+        z-index:2;
+      }
+      .strand1 {
+        height:0.01px;
+        border-top:solid;
+        width:230px;
+        margin-top:105px;
+        margin-left:270px;
+        position:absolute;
+        z-index:1;
+        display:none;
+      }
+      .strand2 {
+        height:0.01px;
+        border-top:solid;
+        width:243px;
+        margin-top:88px;
+        margin-left:263px;
+        position:absolute;
+        z-index:1;
+        display:none;
+      }
+      .strand3 {
+        height:0.01px;
+        border-top:solid;
+        width:248px;
+        margin-top:122px;
+        margin-left:261px;
+        position:absolute;
+        z-index:1;
+        display:none;
+      }
+      .strands1 {
+        height:0.01px;
+        border-top:solid;
+        width:220px;
+        margin-top:257px;
+        margin-left:220px;
+        position:absolute;
+        z-index:1;
+        display:none;
+      }
+      .strands2 {
+        height:0.01px;
+        border-top:solid;
+        width:260px;
+        margin-top:335px;
+        margin-left:180px;
+        position:absolute;
+        z-index:1;
+        -webkit-transform:rotate(32deg);
+        display:none;
+      }
+      .strands3 {
+        height:0.01px;
+        border-top:solid;
+        width:260px;
+        margin-top:170px;
+        margin-left:180px;
+        position:absolute;
+        z-index:1;
+        -webkit-transform:rotate(-35deg);
+        display:none;
+      }
+      .strands4 {
+        height:0.01px;
+        border-top:solid;
+        width:285px;
+        margin-top:257px;
+        margin-left:480px;
+        position:absolute;
+        z-index:1;
+        display:none;
+        -webkit-transform:rotate(180deg);
+      }
+      .strands5 {
+        height:0.01px;
+        border-top:solid;
+        width:345px;
+        margin-top:350px;
+        margin-left:420px;
+        position:absolute;
+        z-index:1;
+        -webkit-transform:rotate(-35deg);
+        display:none;
+      }
+      .strands6 {
+        height:0.01px;
+        border-top:solid;
+        width:330px;
+        margin-top:150px;
+        margin-left:420px;
+        position:absolute;
+        z-index:1;
+        -webkit-transform:rotate(34deg);
+        display:none;
+      }
+    </style>
+    <script>
+      $(document).ready(function(){
+        function stage1() {
+          $(".strand2").animate({width: "show"}, 1000);
+            $(".strand1").animate({width: "show"}, 1000);
+            $(".strand3").animate({width: "show"}, 1000);
+        }
+        function stage2() {
+          $(".strand1").fadeOut();
+          $(".strand2").fadeOut();
+          $(".strand3").fadeOut();
+          $(".centriole1").animate({top: "150px", left: "-50px"}, 1000);
+          $(".centriole2").animate({top: "150px", left: "200px"}, 1000);
+        }
+        function stage() {
+          $(".strands1").fadeIn();
+          $(".strands2").fadeIn();
+          $(".strands3").fadeIn();
+          $(".strands4").fadeIn();
+          $(".strands5").fadeIn();
+          $(".strands6").fadeIn();
+        }
+        function stage3() {
+          $(".nucleus").delay("fast").fadeOut()
+            $(".chrom1").animate({left: "-80px", top:"100px"}, 3000)
+            $(".chrom3").animate({top: "-=300px"}, 3000)
+            $(".chrom4").animate({left: "-20px", top: "20"}, 3000)
+        }
+        function stage4() {
+          $(".strands1").fadeOut();
+          $(".strands2").fadeOut();
+          $(".strands3").fadeOut();
+          $(".strands4").fadeOut();
+          $(".strands5").fadeOut();
+          $(".strands6").fadeOut();
+          $(".s1").fadeIn();
+          $(".s2").fadeIn();
+          $(".s3").fadeIn();
+          $(".s4").fadeIn();
+          $(".s5").fadeIn();
+          $(".s6").fadeIn();
+          $(".chrom1").fadeOut();
+          $(".chrom3").fadeOut();
+          $(".chrom4").fadeOut();
+        }
+        function stage5() {
+          $(".cytoplasm1").animate({left: "-200px"}, 5000)
+          $(".triangle1").animate({left: "-200px"}, 5000)
+          $(".cytoplasm2").animate({left: "200px"}, 5000)
+          $(".triangle2").animate({left: "200px"}, 5000)
+          $(".s1").animate({left:"-250px", top:"-100px"}, 2000)
+          $(".s3").animate({left:"-340px"}, 2000)
+          $(".s5").animate({left:"-280px", top:"150px"}, 2000)
+          $(".s2").animate({left:"250px", top:"130px"}, 2000)
+          $(".s4").animate({left:"300px"}, 2000)
+          $(".s6").animate({left:"280px", top:"-150px"}, 2000)
+          
+          $(".centriole2").animate({left:"400px"}, 4000)
+          $(".centriole1").animate({left:"-300px"}, 4000)
+        }
+        function stage6() {
+          $(".cytoplasm1").animate({left: "-300px"}, 5000);
+          $(".triangle1").animate({left: "-300px"}, 5000);
+          $(".cytoplasm2").animate({left: "300px"}, 5000);
+          $(".triangle2").animate({left: "300px"}, 5000);
+          $(".nuc1").fadeIn();
+          $(".nuc2").fadeIn();
+          $(".nuc1").animate({left: "-100px"}, 5000);
+          $(".nuc2").animate({left: "150px"}, 5000);
+          $(".centriole2").animate({left: "550px"}, 5000);
+          $(".centriole1").animate({left: "-400px"}, 5000);
+            $(".s1").animate({left:"-400px"}, 5000)
+          $(".s3").animate({left:"-400px"}, 5000)
+          $(".s5").animate({left:"-400px"}, 5000)
+          $(".s2").animate({left:"450px"}, 5000)
+          $(".s4").animate({left:"450px"}, 5000)
+          $(".s6").animate({left:"450px"}, 5000)
+        }
+        function stage7() {
+            $(".triangle1").hide();
+            $(".cytoplasm1").css("border-radius", "500px")
+            $(".triangle2").hide();
+            $(".cytoplasm2").css("border-radius", "500px")
+            $(".cytoplasm1").css("border", "double #4F931D")
+            $(".cytoplasm1").css("border-width", "10px")
+            $(".cytoplasm2").css("border", "double #4F931D")
+            $(".cytoplasm2").css("border-width", "10px")
+            
+        }
+        $("button").click(function(){
+         stage1()
+         window.setTimeout(stage2, 2000)
+         window.setTimeout(stage3, 5000)
+          window.setTimeout(stage, 9000)
+          window.setTimeout(stage, 10000)
+          window.setTimeout(stage4, 10000)
+          window.setTimeout(stage5, 12000)
+          window.setTimeout(stage6, 17000)
+          window.setTimeout(stage7, 20000)
+        });
+      });
+    </script>
+  </body>
+</html>
