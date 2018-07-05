@@ -1,9 +1,229 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Test</title>
-</head>
-<body>
-<h1>Test</h1>
-</body>
+	<head>
+		<title>Website</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class="nav" id="na">
+			<ul class="nav">
+				<li class= "nav-item">
+					<a class="nav-link" href="#n">Home</a>
+				</li>
+				<li class= "nav-item">
+					<a class="nav-link" href="#o">About Me</a>
+				</li>
+				<li class= "nav-item">
+					<a class="nav-link" href="#pr">My Projects</a>
+				</li>
+			</ul>
+		</div>
+		<div class= "jumbotron" id="n">
+		<div class= "container">
+			<button type="button" class="btn btn-dark">Jack Ceroni</button>
+			<a href="https://github.com/Lucaman99"><i class="fa fa-github" id="on" style="font-size:50px"></i></a>
+			<a href="https://www.linkedin.com/in/jack-ceroni-687ab5154/"><i class="fa fa-linkedin-square" id="tw" style="font-size:50px"></i></a>
+			<a href="mailto:jackceroni@gmail.com" target="_top"><i class="fa fa-envelope" id="tr" style="font-size:50px"></i></a>
+		</div>
+		</div>
+		<h1 id="o"></h1>
+		<div class= "info" id="in">
+		<div class= "container">
+			<div class= "row">
+			<div class= "col">
+				<h1 id="ho">About Me</h1>
+				<br>
+				<p>I am a passionate and curious student who is always looking for opportunities in technical and scientific fields. I love to learn, and I want to become an innovator, to truly make an impact on the world around me. I think that technology is one of the best ways for me to help humanity, and I intend on using topics in engineering and emerging technology to continue to innovate and create.</p>
+				<p>I am interested in many different areas of science and technology, including robotics, computer science, physics, mathematics, and other emerging technologies. I am motivated to look at these topics in depth, as they are the future, and will lead to a better, more sustainable world.</p>
+				<p>I am very eager to take on new projects, so if you would like to connect, please do not hesitate to contact me.</p>
+			</div>
+			<div class= "col">
+				<img src="build.jpg" id="bu">
+			</div>
+		</div>
+		<div class= "bars">
+			<br><br><br>
+			<center><h4>My Skills</h4></center>
+			<br>
+			<h6>Front-End Development:</h6>
+			<br>
+			<div class= "progress" style="height:30px">
+				<div class= "progress-bar bg-info progress-bar-striped" style="width:80%;height:30px">80%</div>
+			</div>
+			<br><br>
+			<h6>Back-End Development:</h6>
+			<br>
+			<div class= "progress" style="height:30px">
+				<div class= "progress-bar bg-info progress-bar-striped" style="width:85%;height:30px">85%</div>
+			</div>
+			<br><br>
+			<h6>SQL and Database Development:</h6>
+			<br>
+			<div class= "progress" style="height:30px">
+				<div class= "progress-bar bg-info progress-bar-striped" style="width:70%;height:30px">70%</div>
+			</div>
+			<br><br>
+			<h6>Python Development:</h6>
+			<br>
+			<div class= "progress" style="height:30px">
+				<div class= "progress-bar bg-info progress-bar-striped" style="width:90%;height:30px">90%</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<br><br><br><br><br><br>
+	<div class= "total">
+	<div class= "project" id="pr">
+		<div class= "container">
+			<br><br>
+			<center><h1>My Projects</h1></center>
+			<br><br>
+			<div class= "row">
+				<div class= "col">
+					<div class= "card">
+						<img class= "card-img-top" src="fire.jpg" height="250px" id="io">
+						<div class= "card-body">
+							<h4 class= "card-title">Forest Fire Predicting</h4>
+							<p class= "card-text">
+								The goal of this project was to predict how forest fires spread out from speicified coordinates, with a cellular automata computer simulation, and an autonomous robot. In addition, this robot could detect small forest fires before they expanded.
+							</p>
+							<button type="button" class=" btn btn-outline-primary" onclick="window.location.href='https://github.com/Lucaman99/Forest_Fire_Engine'">View Project</button>
+						</div>
+					</div>
+				</div>
+				<div class= "col">
+					<div class= "card">
+						<img class= "card-img-top" src="download.jpg" height="250px" id="io">
+						<div class= "card-body">
+							<h4 class= "card-title">Re:Live Health</h4>
+							<p class= "card-text">
+								Re:Live was a project that I created at a hackathon. Its purpose was to provide a simple web-based application for people to track their personal health, and share fitness benchmarks and advice with other people using the website.
+							</p>
+							<button type="button" class=" btn btn-outline-primary" onclick="window.location.href='https://github.com/Lucaman99/Starterhacks-2018'">View Project</button>
+						</div>
+					</div>
+				</div>
+				<div class= "col">
+					<div class= "card">
+						<img class= "card-img-top" src="download-1.jpg" height="250px" id="io">
+						<div class= "card-body">
+							<h4 class= "card-title">Apogee Messaging</h4>
+							<p class= "card-text">
+								Apogee Messaging is an instant messaging service coded with Node.js and Python, with the goal of providing businesses and teams with the best communication tools for their projects, as well as the ability to create lightweight, effective chatbots.
+							</p>
+							<button type="button" class=" btn btn-outline-primary" onclick="window.location.href='https://github.com/Lucaman99/Coding-Project'">View Project</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div class= "contact">
+		<div class= "container">
+			<center>
+				<p>Phone: (905)-220-2032 &nbsp;&nbsp;&nbsp;&nbsp; Email: jackceroni@gmail.com</p>
+			</center>
+		</div>
+	</div>
+	</body>
+	<style>
+	.progress {
+		font-size:15px;
+	}
+	.jumbotron {
+		background-image: url("bg.jpg");
+		height:100vh;
+		cursor:default;
+	}
+	.jumbotron button {
+		margin-left:42%;
+		font-size:30px;
+		margin-top:30px;
+		cursor:default;
+	}
+	#on {
+		color:black;
+		position:absolute;
+		margin-top:110px;
+		margin-left:-180px;
+	}
+	#tw {
+		color:black;
+		position:absolute;
+		margin-top:110px;
+		margin-left:-120px;
+	}
+	#tr {
+		color:black;
+		position:absolute;
+		margin-top:110px;
+		margin-left:-60px;
+	}
+	.info .col h1{
+		text-align:center;
+	}
+	#ho {
+		
+	}
+	.info .col img {
+		height:32vw;
+		width:35vw;
+		float:right;
+	}
+	.nav {
+		background-color:#343a40;
+		position:fixed;
+		width:100vw;
+		z-index:2;
+	}
+	.info {
+		padding-top:100px;
+	}
+	.nav a {
+		color:white;
+	}
+	.total { 
+		background-image: url("bg.jpg")
+	}
+	.project .row {
+		padding-bottom:40px;
+	}
+	.project .card {
+		border:solid 1px;
+		margin-top:40px;
+	}
+	#io {
+		background-color:lightgray;
+	}
+	.col {
+		padding-left:30px;
+		padding-right:30px;
+	}
+	* {
+		font-family:Verdana, sans-serif;
+	}
+	p {
+		font-size:14px;
+	}
+	.contact {
+		background-color:#343a40;
+		height:50px;
+		color:white;
+	}
+	.contact p {
+		color:white;
+		padding-top:15px;
+
+	}
+	i {
+		cursor:pointer;
+		color:#343a40;
+	}
+	</style>
 </html>
