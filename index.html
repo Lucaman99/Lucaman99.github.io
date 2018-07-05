@@ -7,7 +7,7 @@
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<div class="nav" id="na">
@@ -25,25 +25,36 @@
 		</div>
 		<div class= "jumbotron" id="n">
 		<div class= "container">
+			<center>
 			<button type="button" class="btn btn-dark">Jack Ceroni</button>
 			<a href="https://github.com/Lucaman99"><i class="fa fa-github" id="on" style="font-size:50px"></i></a>
 			<a href="https://www.linkedin.com/in/jack-ceroni-687ab5154/"><i class="fa fa-linkedin-square" id="tw" style="font-size:50px"></i></a>
 			<a href="mailto:jackceroni@gmail.com" target="_top"><i class="fa fa-envelope" id="tr" style="font-size:50px"></i></a>
+		</center>
 		</div>
 		</div>
 		<h1 id="o"></h1>
 		<div class= "info" id="in">
 		<div class= "container">
 			<div class= "row">
-			<div class= "col">
+
+			<div class= "col" id="ot">
+				<div class= "one">
+					<center>
 				<h1 id="ho">About Me</h1>
 				<br>
-				<p>I am a passionate and curious student who is always looking for opportunities in technical and scientific fields. I love to learn, and I want to become an innovator, to truly make an impact on the world around me. I think that technology is one of the best ways for me to help humanity, and I intend on using topics in engineering and emerging technology to continue to innovate and create.</p>
+				<p id="oy">I am a passionate and curious student who is always looking for opportunities in technical and scientific fields. I love to learn, and I want to become an innovator, to truly make an impact on the world around me. I think that technology is one of the best ways for me to help humanity, and I intend on using topics in engineering and emerging technology to continue to innovate and create.</p>
 				<p>I am interested in many different areas of science and technology, including robotics, computer science, physics, mathematics, and other emerging technologies. I am motivated to look at these topics in depth, as they are the future, and will lead to a better, more sustainable world.</p>
 				<p>I am very eager to take on new projects, so if you would like to connect, please do not hesitate to contact me.</p>
+			</center>
 			</div>
-			<div class= "col">
+			</div>
+			<div class= "col" id="oo">
+				<div class= "one">
+				<center>
 				<img src="build.jpg" id="bu">
+				</center>
+			</div>
 			</div>
 		</div>
 		<div class= "bars">
@@ -53,7 +64,7 @@
 			<h6>Front-End Development:</h6>
 			<br>
 			<div class= "progress" style="height:30px">
-				<div class= "progress-bar bg-info progress-bar-striped" style="width:80%;height:30px">80%</div>
+				<div class= "progress-bar bg-info progress-bar-striped" style="width:85%;height:30px">85%</div>
 			</div>
 			<br><br>
 			<h6>Back-End Development:</h6>
@@ -65,7 +76,7 @@
 			<h6>SQL and Database Development:</h6>
 			<br>
 			<div class= "progress" style="height:30px">
-				<div class= "progress-bar bg-info progress-bar-striped" style="width:70%;height:30px">70%</div>
+				<div class= "progress-bar bg-info progress-bar-striped" style="width:75%;height:30px">75%</div>
 			</div>
 			<br><br>
 			<h6>Python Development:</h6>
@@ -85,6 +96,7 @@
 			<br><br>
 			<div class= "row">
 				<div class= "col">
+					<center>
 					<div class= "card">
 						<img class= "card-img-top" src="fire.jpg" height="250px" id="io">
 						<div class= "card-body">
@@ -95,8 +107,10 @@
 							<button type="button" class=" btn btn-outline-primary" onclick="window.location.href='https://github.com/Lucaman99/Forest_Fire_Engine'">View Project</button>
 						</div>
 					</div>
+				</center>
 				</div>
 				<div class= "col">
+					<center>
 					<div class= "card">
 						<img class= "card-img-top" src="download.jpg" height="250px" id="io">
 						<div class= "card-body">
@@ -107,8 +121,10 @@
 							<button type="button" class=" btn btn-outline-primary" onclick="window.location.href='https://github.com/Lucaman99/Starterhacks-2018'">View Project</button>
 						</div>
 					</div>
+				</center>
 				</div>
 				<div class= "col">
+					<center>
 					<div class= "card">
 						<img class= "card-img-top" src="download-1.jpg" height="250px" id="io">
 						<div class= "card-body">
@@ -119,6 +135,7 @@
 							<button type="button" class=" btn btn-outline-primary" onclick="window.location.href='https://github.com/Lucaman99/Coding-Project'">View Project</button>
 						</div>
 					</div>
+				</center>
 				</div>
 			</div>
 		</div>
@@ -128,7 +145,8 @@
 	<div class= "contact">
 		<div class= "container">
 			<center>
-				<p>Phone: (905)-220-2032 &nbsp;&nbsp;&nbsp;&nbsp; Email: jackceroni@gmail.com</p>
+				<p>Phone: (905)-220-2032</p>
+				<p> Email: jackceroni@gmail.com</p>
 			</center>
 		</div>
 	</div>
@@ -144,7 +162,6 @@
 		cursor:default;
 	}
 	.jumbotron button {
-		margin-left:42%;
 		font-size:30px;
 		margin-top:30px;
 		cursor:default;
@@ -174,9 +191,9 @@
 		
 	}
 	.info .col img {
-		height:32vw;
-		width:35vw;
-		float:right;
+		height:2;
+		width:2;
+		padding-top:10px;
 	}
 	.nav {
 		background-color:#343a40;
@@ -199,13 +216,14 @@
 	.project .card {
 		border:solid 1px;
 		margin-top:40px;
+		width:313px;
 	}
 	#io {
 		background-color:lightgray;
 	}
 	.col {
-		padding-left:30px;
-		padding-right:30px;
+		padding-left:20px;
+		padding-right:20px;
 	}
 	* {
 		font-family:Verdana, sans-serif;
@@ -215,17 +233,27 @@
 	}
 	.contact {
 		background-color:#343a40;
-		height:50px;
+		height:100px;
 		color:white;
 	}
 	.contact p {
 		color:white;
-		padding-top:15px;
+		padding-top:10px;
 
 	}
 	i {
 		cursor:pointer;
 		color:#343a40;
+	}
+	#bu {
+		height:400px;
+		width:400px;
+	}
+	.one {
+		width:523px;
+	}
+	#oy {
+		float:right;
 	}
 	</style>
 </html>
