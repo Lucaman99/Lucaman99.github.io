@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<!--background-image: url("bg.jpg")-->
+
 <html>
 	<head>
 		<title>Website</title>
@@ -159,7 +162,6 @@
 		font-size:15px;
 	}
 	.jumbotron {
-		background-image: url("bg.jpg");
 		background-repeat:no-repeat;
 		height:100vh;
 		cursor:default;
@@ -207,9 +209,26 @@
 	.nav a {
 		color:white;
 	}
-	.total {
-		background-image: url("bg.jpg")
-	}
+
+  @keyframes back {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+  }
+  .jumbotron {
+    z-index:5;
+    width: 100wh;
+    height: 100vh;
+    background: linear-gradient(-45deg, yellow, green, blue);
+    background-size: 400% 400%;
+    animation-name:back;
+    animation-duration:7s;
+    animation-iteration-count:infinite;
+    animation-timing-function:ease;
+  }
+  .total {
+    background-image: url("bg.jpg")
+  }
 	.project .row {
 		padding-bottom:40px;
 	}
@@ -250,6 +269,7 @@
 		 max-width:500px;
 		 width:50vw;
 		 padding-top:20px;
+     box-shadow: 0px 0px 15px 5px rgba(30, 31, 33, 0.15);
 	}
 	.col {
 		width:523px;
