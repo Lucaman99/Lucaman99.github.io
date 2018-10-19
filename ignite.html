@@ -11,39 +11,56 @@
 </head>
 <body>
   <div class= "jumbotro">
-  <div class= "nav" id="nu">
-    <ul class= "nav">
-      <li class= "nav-item" id="pl">
-        <h1 id="oi">IGNITE LABS 🔥</h1>
-      </li>
-      <!--
-      &nbsp;&nbsp;&nbsp;
-      <li class= "nav-item">
-        <a class= "nav-link" href="#">Home</a>
-      </li>
-      <li class= "nav-item">
-        <a class= "nav-link" href="#">About</a>
-      </li>
-      <li class= "nav-item">
-        <a class= "nav-link" href="#">Contact Us</a>
-      </li>
-    -->
-    </ul>
-  </div>
-    <div class= "container">
+      <div class= "jumbotron" style="background-image:url('matt.jpg');background-size:cover;height:100vh;">
+        <div class= "container">
+          <div class= "nav" id="nu">
+            <ul class= "nav">
+              <li class= "nav-item" id="pl">
+                <h1 id="oi"><span style="color:orange">IGNITE</span> LABS</h1>
+              </li>
+              <!--
+              &nbsp;&nbsp;&nbsp;
+              <li class= "nav-item">
+                <a class= "nav-link" href="#">Home</a>
+              </li>
+              <li class= "nav-item">
+                <a class= "nav-link" href="#">About</a>
+              </li>
+              <li class= "nav-item">
+                <a class= "nav-link" href="#">Contact Us</a>
+              </li>
+            -->
+            </ul>
+          </div>
       <p></p>
     </div>
     <center id="op">
       <h1>Engineering nature.</h1>
       <p>We create new technology with the goal of combating one of the most dangerous natural occurences in the world today: forest fires.</p>
-      <img src="https://s1.twnmm.com/thumb?src=//s1.twnmm.com/images/en_ca/12/Fire-Forest-32452.jpg&w=690&h=388&scale=1&crop=1" id="ou">
     </center>
   </div>
-  <br><br><br><br><br><br><br><br>
-  <div class= "jumbotron">
+  </div>
+  <div class= "jumbotron" id="ph">
     <center>
     <h1>About Us</h1>
   </center>
+  <br><br><br><br>
+  <div class= "row">
+    <div class= "col">
+      <center>
+      <img src="jack.jpg" style="height:300px;width:420px;">
+      <br><br>
+      <b style="letter-spacing:1px;">Jack Ceroni: Co-Founder and Head of Engineering</b>
+    </center>
+    </div>
+    <div class= "col">
+      <center>
+      <img src="0.jpg" style="height:300px;width:420px;">
+      <br><br>
+      <b style="letter-spacing:1px;">Abdullah Hadi: Co-Founder and Head of Development</b>
+    </center>
+    </div>
+  </div>
   </div>
 </body>
 <style>
@@ -60,6 +77,11 @@
     font-family:Arial;
     width:100vw;
     padding-bottom:5px;
+    top:5px;
+    left:5px;
+    color:gray;
+    position:fixed;
+
   }
   #oi {
     font-size:20px;
@@ -80,7 +102,9 @@
     letter-spacing:2px;
     font-size:100px;
     font-family:Arial;
-    margin-top:25vh;
+    margin-top:30vh;
+    color:white;
+    margin-left:-30px;
   }
   #op p {
     font-size:14px;
@@ -95,7 +119,10 @@
     margin-top:20px;
   }
   .jumbotron {
-    height:500px;
+    border-radius:0px;
+  }
+  #ph {
+    margin-top:-32px;
   }
 </style>
 </html>
