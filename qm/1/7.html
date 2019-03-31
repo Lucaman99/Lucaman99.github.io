@@ -34,23 +34,23 @@ $$\frac{\hbar}{i} \ \displaystyle\int_{-\infty}^{\infty} \ \frac{\partial}{\part
 We are allowed to switch the order of the partial derivatives because in the case of partial derivatives, the order of application doesn't matter. We can now use the
 Schrödinger equation to expand out integral even further:
 <br><br>
-$$\frac{\partial \Psi}{\partial t} \ = \ \frac{i\hbar}{2m} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{i}{h}V\Psi \ \Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \
-\frac{\partial \Psi}{\partial x}\Big( -\frac{i\hbar}{2m} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ \frac{i}{h}V\Psi^{*} \Big)
- \ + \ \Psi^{*} \ \frac{\partial}{\partial x}\Big( \frac{i\hbar}{2m} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{i}{h}V\Psi \Big) \ \text{dx}$$
+$$\frac{\partial \Psi}{\partial t} \ = \ \frac{i\hbar}{2m} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{i}{\hbar}V\Psi \ \Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \
+\frac{\partial \Psi}{\partial x}\Big( -\frac{i\hbar}{2m} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ \frac{i}{\hbar}V\Psi^{*} \Big)
+ \ + \ \Psi^{*} \ \frac{\partial}{\partial x}\Big( \frac{i\hbar}{2m} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{i}{\hbar}V\Psi \Big) \ \text{dx}$$
  <br>
- $$ \Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Big( -\frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ \frac{\partial \Psi}{\partial x} \ \frac{i}{h}V\Psi^{*} \Big)
-  \ + \ \Psi^{*} \ \Big( \frac{i\hbar}{2m} \ \frac{\partial}{\partial x} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{\partial}{\partial x} \ \frac{i}{h}V\Psi \Big) \ \text{dx}$$
+ $$ \Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Big( -\frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ \frac{\partial \Psi}{\partial x} \ \frac{i}{\hbar}V\Psi^{*} \Big)
+  \ + \ \Psi^{*} \ \Big( \frac{i\hbar}{2m} \ \frac{\partial}{\partial x} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{\partial}{\partial x} \ \frac{i}{\hbar}V\Psi \Big) \ \text{dx}$$
   <br>
-  $$\Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Big( -\frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ \frac{\partial \Psi}{\partial x} \ \frac{i}{h}V\Psi^{*} \Big)
-   \ + \ \Psi^{*} \ \frac{i\hbar}{2m} \ \frac{\partial}{\partial x} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{i}{h} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi - \ \frac{i}{h} \ \Psi^{*} \ V \frac{\partial \Psi}{\partial x} \ \text{dx}$$
+  $$\Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Big( -\frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ \frac{\partial \Psi}{\partial x} \ \frac{i}{\hbar}V\Psi^{*} \Big)
+   \ + \ \Psi^{*} \ \frac{i\hbar}{2m} \ \frac{\partial}{\partial x} \ \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{i}{\hbar} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi - \ \frac{i}{\hbar} \ \Psi^{*} \ V \frac{\partial \Psi}{\partial x} \ \text{dx}$$
 <br>
 Now we can finally begin to simplify:
 <br><br>
 $$\Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Big( -\frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \Big)
- \ + \ \Psi^{*} \ \frac{i\hbar}{2m} \ \ \frac{\partial^3 \Psi}{\partial x^3} \ - \ \frac{i}{h} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx}$$
+ \ + \ \Psi^{*} \ \frac{i\hbar}{2m} \ \ \frac{\partial^3 \Psi}{\partial x^3} \ - \ \frac{i}{\hbar} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx}$$
  <br>
  $$\Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Psi^{*} \ \frac{i\hbar}{2m} \ \ \frac{\partial^3 \Psi}{\partial x^3} \ - \ \frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2
-   \Psi^{*}}{\partial x^2} \text{dx} \ - \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \frac{i}{h} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx}$$
+   \Psi^{*}}{\partial x^2} \text{dx} \ - \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \frac{i}{\hbar} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx}$$
   <br><br>
   For the integral on the left, I had to do a bit of investigation, as I wasn't sure if I could simply integrate by parts twice, throwing out the boundary condition on the
     derivative of the wavefunction until the expression disappeared, as I wasn't sure if the $n$-th derivative of the wavefunction went to $0$ at positive and negative infinity. As it turns out,
@@ -59,13 +59,13 @@ $$\Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \Big( -\fr
     throwing out the boundary and tacking on a negative sign when we switch the derivative from the wavefunction to its conjugate (or vice versa), and we end up getting:
   <br><br>
   $$\Rightarrow \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \ \frac{\partial^2 \Psi^{*}}{\partial x^2} \ \frac{i\hbar}{2m} \ \ \frac{\partial \Psi}{\partial x} \ - \ \frac{i\hbar}{2m} \ \frac{\partial \Psi}{\partial x} \ \frac{\partial^2
-    \Psi^{*}}{\partial x^2} \text{dx} \ - \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \frac{i}{h} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx}$$
+    \Psi^{*}}{\partial x^2} \text{dx} \ - \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \frac{i}{\hbar} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx}$$
     <br>
     As can be seen, the derivative was moved twice, so the sign changes cancel out, and we are now left with the difference between two indentical expression, therefore the left integral evaluates to $0$.
     <br><br>
     As for the integral of the right, we have $-\partial V/\partial x$ sandwiched between the wavefunction and its conjugate, which is the exact form of an expectation value, giving us:
     <br>
-    $$ - \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \frac{i}{h} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx} \ = \ \Big\langle -\frac{\partial V}{\partial x} \Big\rangle$$
+    $$ - \ \frac{\hbar}{i}\displaystyle\int_{-\infty}^{\infty} \frac{i}{\hbar} \ \Psi^{*} \ \frac{\partial V}{\partial x} \ \Psi \ \text{dx} \ = \ \Big\langle -\frac{\partial V}{\partial x} \Big\rangle$$
     <br>
     And so we are done, we have proved Ehrenfest's theorem. If we consider this theorem conceptually, it makes sense, as we would expect the momentum of some classical objects change as it passes through a potential field,
     as a change in velocity would yield a change in momentum. Intuitively and logically, we can apply this same logic to this quantum realm of inquiry, and mathematically, we have shown that our logic holds true.
