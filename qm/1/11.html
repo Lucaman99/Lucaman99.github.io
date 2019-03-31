@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 1.11</h2>
+This is a fairly straightforward problem. Since we are concerned with a needle rotating from an angle of $0$ to $\pi$, our probability density function
+will only have a non-zero value between these two values (anywhere else and it will be $0$). Because the needle has an <b>equal</b> probability of being found at any
+angle from $0$ to $\pi$, our probability density function will be a constant function, $\rho(\theta) \ = \ C$. Since all of our probabilities of finding the needle have to
+sum to $1$ (the needle has to be somewhere), we can find $C$ through normalization:
+<br><br>
+$$\displaystyle\int_{0}^{\pi} \ C \ \text{d}\theta \ = \ 1 \ \Rightarrow \ C\theta \ \biggr\rvert_{0}^{\pi} \ = \ 1 \ = \ C \ = \ \frac{1}{\pi}$$
+<br>
+Next, we are tasked with finding $\langle \theta \rangle$, $\langle \theta^2 \rangle$, and $\sigma$, for the distribution of $\theta$. This is fairly straightforward integration.
+Like past expectation values, we simply multiply all values of $\theta$ by their respective probability density, $\rho(\theta)$, and then sum over all of these values by integrating.
+Starting with $\langle \theta \rangle$, we have:
+<br><br>
+$$\displaystyle\int_{0}^{\pi} \ \frac{1}{\pi} \ \theta \ \text{d}\theta \ \Rightarrow \ \frac{\theta^2}{2 \pi} \ \biggr\rvert_{0}^{\pi} \ = \ \frac{\pi}{2}$$
+<br>
+For $\langle \theta^2 \rangle$, we have:
+<br><br>
+$$\displaystyle\int_{0}^{\pi} \ \frac{1}{\pi} \ \theta^2 \ \text{d}\theta \ \Rightarrow \ \frac{\theta^3}{3 \pi} \ \biggr\rvert_{0}^{\pi} \ = \ \frac{\pi^2}{3}$$
+<br>
+And finally, remembering that $\sigma^2 \ = \ \langle \theta^2 \rangle \ - \ \langle \theta \rangle^2$, we get:
+<br><br>
+$$\sigma^2 \ = \ \frac{\pi^2}{3} \ - \ \frac{\pi^2}{4} \ = \ \frac{\pi^2}{12} \ \Rightarrow \ \sigma \ = \ \frac{\pi \sqrt{12}}{12}$$
+<br>
+We must now find $\langle \sin \theta \rangle$, $\langle \cos \theta \rangle$, and $\langle \cos^2 \theta \rangle$. Again that is fairly straightforward integration:
+<br><br>
+$$\langle \sin \theta \rangle \ = \ \displaystyle\int_{0}^{\pi} \ \frac{1}{\pi} \ \sin \theta \ \text{d}\theta \ = \ -\frac{\cos \theta}{\pi} \ \biggr\rvert_{0}^{\pi} \ = \ \frac{2}{\pi}$$
+$$\langle \cos \theta \rangle \ = \ \displaystyle\int_{0}^{\pi} \ \frac{1}{\pi} \ \cos \theta \ \text{d}\theta \ = \ \frac{\sin \theta}{\pi} \ \biggr\rvert_{0}^{\pi} \ = \ 0$$
+$$\cos^2 \theta \ = \ \frac{\cos 2\theta \ + \ 1}{2} \ \Rightarrow \ \langle \cos^2 \theta \rangle \ = \ \displaystyle\int_{0}^{\pi} \ \frac{\cos 2\theta}{2} \
+\text{d}\theta \ + \ \displaystyle\int_{0}^{\pi} \ \frac{1}{2} \ \text{d}\theta \ = \ \frac{1}{2} \sin 2x \ \biggr\rvert_{0}^{\pi} \ + \ \frac{1}{2} x \ \biggr\rvert_{0}^{\pi} \ = \ \frac{\pi}{2}$$
+<br><br><br>
+</div>
+</center>
+</body>
+</html>
