@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 1.14</h2>
+This is a fairly straightforward problem, using concepts that we have already seen multiple times. The probability $P_{ab}(t)$ of finding a particle at some position $x$ with
+$a \ < \ x \ < \ b$ at some time $t$ is simply equal to the integration over the probability density between $a$ and $b$:
+<br><br>
+$$P_{ab}(t) \ = \ \displaystyle\int_{a}^{b} \ |\Psi(x, \ t)|^2 \ \text{dx}$$
+<br>
+Now that we have this, we need to show that:
+<br><br>
+$$\frac{\text{d}P}{\text{d}t} \ = \ J(a, \ t) \ - \ J(b, \ t) \ \Rightarrow \ J(x, \ t) \ = \
+\frac{i\hbar}{2m}\Big( \Psi\frac{\partial \Psi^{*}}{\partial x} \ - \ \Psi^{*}\frac{\partial \Psi}{\partial x} \Big)$$
+<br>
+This problem simply comes down to expanding and simplifying the time derivative of the integral that we just found as being equal to $P_{ab}(t)$. Let us start by expanding:
+<br><br>
+$$\frac{\text{d}P}{\text{d}t} \ = \ \frac{\text{d}}{\text{d}t} \ \displaystyle\int_{a}^{b} \ |\Psi(x, \ t)|^2 \ \text{dx} \ = \ \displaystyle\int_{a}^{b}
+ \ \frac{\partial}{\partial t} \ \big( \Psi^{*}\Psi \big) \text{dx} \ = \ \displaystyle\int_{a}^{b} \ \frac{\partial \Psi^{*}}{\partial t}\Psi \ + \ \frac{\partial \Psi}{\partial t}\Psi^{*} \ \text{dx}$$
+ <br>
+ Now, remembering the definition of the Schrödinger equation, we can rewrite this integral:
+ <br><br>
+ $$\Rightarrow \ \frac{\partial \Psi}{\partial t} \ = \ \frac{i\hbar}{2m} \ \frac{\partial^2 \Psi}{\partial t} \ - \ \frac{i}{\hbar}V\Psi$$
+ $$\Rightarrow \ \displaystyle\int_{a}^{b} \ \Psi\Big( -\frac{i\hbar}{2m} \ \frac{\partial^2 \Psi^{*}}{\partial t} \ + \ \frac{i}{\hbar}V\Psi^{*} \Big)
+  \ + \ \Psi^{*}\Big( \frac{i\hbar}{2m} \ \frac{\partial^2 \Psi}{\partial t} \ - \ \frac{i}{\hbar}V\Psi \Big) \ \text{dx} \ \Rightarrow \ \frac{i\hbar}{2m}\displaystyle\int_{a}^{b} \ \Psi^{*}
+  \frac{\partial^2 \Psi}{\partial t} \ - \ \Psi\frac{\partial^2 \Psi^{*}}{\partial t} \ \text{dx}$$
+$$\Rightarrow \ \frac{i\hbar}{2m}\displaystyle\int_{a}^{b} \ \Psi^{*}\frac{\partial^2 \Psi}{\partial t} \ - \ \Psi\frac{\partial^2 \Psi^{*}}{\partial t} \ \text{dx} \ = \
+-\frac{i\hbar}{2m}\displaystyle\int_{b}^{a} \ \Psi^{*}\frac{\partial^2 \Psi}{\partial t} \ - \ \Psi\frac{\partial^2 \Psi^{*}}{\partial t} \ \text{dx} \ = \ \frac{i\hbar}{2m}\displaystyle\int_{b}^{a} \
+\frac{\partial}{\partial x} \Big(\Psi\frac{\partial \Psi^{*}}{\partial t} \ - \ \Psi^{*}\frac{\partial \Psi}{\partial t} \Big) \ \text{dx}$$
+$$\Rightarrow \ \frac{i\hbar}{2m}\displaystyle\int_{b}^{a} \ \frac{\partial}{\partial x} \Big(\Psi\frac{\partial \Psi^{*}}{\partial t} \ - \ \Psi^{*}\frac{\partial \Psi}{\partial t} \Big) \ \text{dx}
+\ = \ \frac{i\hbar}{2m} \Big( \Psi\frac{\partial \Psi^{*}}{\partial t} \ - \ \Psi^{*}\frac{\partial \Psi}{\partial t} \Big) \biggr\rvert_{b}^{a} \ = \ J(a, \ t) \ - \ J(b, \ t)$$
+<br>
+Now that we have proven the posed problem in part $(a)$ to be true, we can apply it to the wavefunction in Problem 1.9. This wavefunction is defined as follows:
+<br><br>
+$$\Psi(x, \ t) \ = \ Ae^{-a[(mx^2/\hbar) \ + \ it]}$$
+<br>
+We can now calculate the value of the probability current, $J(x, \ t)$. So for the posed wavefunction, we have:
+<br><br>
+$$J(x, \ t) \ = \ \frac{i\hbar}{2m}\Big( Ae^{-a[(mx^2/\hbar) \ + \ it]}\frac{\partial}{\partial x} \Big( Ae^{-a[(mx^2/\hbar) \ - \ it]} \Big) \ - \ Ae^{-a[(mx^2/\hbar) \ - \ it]}
+\frac{\partial}{\partial x} \Big( Ae^{-a[(mx^2/\hbar) \ + \ it]} \Big) \Big)$$
+$$\Rightarrow \ \frac{i\hbar}{2m}\Big( Ae^{-a[(mx^2/\hbar) \ + \ it]} e^{ait}\frac{\partial}{\partial x} \Big( Ae^{-a[(mx^2/\hbar)]} \Big) \ - \ Ae^{-a[(mx^2/\hbar) \ - \ it]}
+e^{-ait}\frac{\partial}{\partial x} \Big( Ae^{-a[(mx^2/\hbar)]} \Big) \Big)$$
+
+$$\Rightarrow \ \frac{i\hbar}{2m}\Big( A^2e^{-a[(mx^2/\hbar) \ + \ it]} e^{ait} \Big( e^{-a[(mx^2/\hbar)]} \Big ( -\frac{2amx}{\hbar} \Big) \Big) \ - \ A^2e^{-a[(mx^2/\hbar) \ - \ it]}
+e^{-ait} \Big( e^{-a[(mx^2/\hbar)]} \Big( -\frac{2amx}{\hbar} \Big) \Big) \Big)$$
+$$\Rightarrow \ \frac{i\hbar}{2m} A^2\Big(  e^{-a[(mx^2/\hbar)]} \Big( e^{-a[(mx^2/\hbar)]} \Big ( -\frac{2amx}{\hbar} \Big) \Big) \ - \ e^{-a[(mx^2/\hbar)]} \Big( e^{-a[(mx^2/\hbar)]} \Big( -\frac{2amx}{\hbar} \Big) \Big) \Big) \ = \ 0$$
+<br>
+And so we have found that the probability current of this particular wavefunction is equal to 0.
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
