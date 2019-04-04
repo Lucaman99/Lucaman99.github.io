@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 1.15</h2>
+This is a pretty fun problem. It asks us to consider an unstable probability, that will spontaneously decay at some given time, and as such, the probability of
+finding the particle <b>anywhere</b> will decrease with time. We can define the probability of finding this particle anywhere at time $t$ as:
+<br><br>
+$$P(t) \ = \ \displaystyle\int_{-\infty}^{\infty} \ |\Psi(x, \ t)|^2 \ \text{dx} \ = \ e^{-t/T}$$
+<br>
+Where $T$ is defined as the lifetime of the particle (how long it takes the probability of the particle being found somewhere to decay). Evidently, if $T$ is very large, the
+particle's probability will decay at a slower rate, suggesting a more stable particle, while if $T$ is small, the particle will have a high probability of decaying much faster.
+Now, the problem asks us to consider the case where $V$ is not real. Up until now, when we have taken the complex conjugate of the Schrödinger equation, we have placed our
+signs under the assumption that $V$ is real. Now, we assign $V$ an imaginary part:
+<br><br>
+$$V \ = \ V_0 \ - \ i\Gamma$$
+<br>
+Where $V_0$ is the actual potential energy function, and $-i\Gamma$ is the imaginary component, with $\Gamma$ being some real constant. We now must show that with this new
+definition of $V$, that:
+<br><br>
+$$\frac{\text{d}P}{\text{dt}} \ = \ -\frac{2\Gamma}{\hbar} P$$
+<br>
+This proof is fairly straightforward. Let us start with the definition of $P$, then take the time derivative and expand:
+<br><br>
+$$P(t) \ = \ \displaystyle\int_{-\infty}^{\infty} \ |\Psi(x, \ t)|^2 \ \text{dx} \ \Rightarrow \ \frac{\text{d}P}{\text{dt}} \ = \
+\frac{\text{d}}{\text{dt}} \ \displaystyle\int_{-\infty}^{\infty} \ |\Psi(x, \ t)|^2 \ \text{dx} \ = \ \displaystyle\int_{-\infty}^{\infty} \frac{\partial}{\partial t} \ |\Psi(x, \ t)|^2 \ \text{dx}$$
+$$\Rightarrow \ \displaystyle\int_{-\infty}^{\infty} \frac{\partial}{\partial t} \ |\Psi(x, \ t)|^2 \ \text{dx} \ = \ \displaystyle\int_{-\infty}^{\infty} \Psi^{*}\frac{\partial \Psi}{\partial t} \ + \ \Psi\frac{\partial \Psi^{*}}{\partial t} \text{dx}$$
+$$\Rightarrow \ \displaystyle\int_{-\infty}^{\infty} \Psi^{*}\Big( \frac{i\hbar}{2m} \frac{\partial^2 \Psi}{\partial x^2} \ - \ (\frac{i}{\hbar}V_0 \ + \ \frac{\Gamma}{\hbar})\Psi \Big) \ + \ \Psi\Big( -\frac{i\hbar}{2m} \frac{\partial^2 \Psi^{*}}{\partial x^2} \ + \ (\frac{i}{\hbar}V_0 \ - \ \frac{\Gamma}{\hbar})\Psi^{*} \Big) \text{dx}$$
+$$\Rightarrow \ \displaystyle\int_{-\infty}^{\infty} \Psi^{*}\Big( \frac{i\hbar}{2m} \frac{\partial^2 \Psi}{\partial x^2} \ - \ \frac{\Gamma}{\hbar}\Psi \Big) \ + \ \Psi\Big( -\frac{i\hbar}{2m} \frac{\partial^2 \Psi^{*}}{\partial x^2} \ - \ \frac{\Gamma}{\hbar}\Psi^{*} \Big) \text{dx}$$
+$$\Rightarrow \ \frac{i\hbar}{2m} \ \displaystyle\int_{-\infty}^{\infty} \ \Psi^{*}\frac{\partial^2 \Psi}{\partial x^2} \ - \ \Psi\frac{\partial^2 \Psi^{*}}{\partial x^2} \text{dx} \ -\frac{2\Gamma}{\hbar} \ \displaystyle\int_{-\infty}^{\infty} \ \Psi^{*} \ \Psi \text{dx} \ = \
+\frac{i\hbar}{2m} \ \displaystyle\int_{-\infty}^{\infty} \ \frac{\partial}{\partial x} \Big( \Psi^{*}\frac{\partial \Psi}{\partial x} \ - \ \Psi\frac{\partial \Psi^{*}}{\partial x} \Big) \text{dx} \ -\frac{2\Gamma}{\hbar} \ P$$
+$$\Rightarrow \ \frac{i\hbar}{2m} \ \Big( \Psi^{*}\frac{\partial \Psi}{\partial x} \ - \ \Psi\frac{\partial \Psi^{*}}{\partial x} \Big)\biggr\rvert_{-\infty}^{\infty} \ - \ \frac{2\Gamma}{\hbar} \ P \ = \ - \frac{2\Gamma}{\hbar} \ P$$
+<br><br>
+Ok, so we have proved the first statement. Now comes the task of finding the lifetime of the given particle in terms of $\Gamma$. We can set up this equation:
+<br>
+$$\frac{\text{d}}{\text{d}t} e^{-t/T} \ = \ -\frac{2\Gamma}{\hbar} e^{-t/T}$$
+<br><br>
+Now, this is a fairly simple differential equation that can be solved, however, I solved this equation by simply by making the observation that after differentiating, $e^{-t/T}$ cancels out, leaving us to solve only for $T$:
+<br>
+$$\frac{\text{d}}{\text{d}t} e^{-t/T} \ = \ -\frac{1}{T} e^{-t/T} \ \Rightarrow \ -\frac{2\Gamma}{\hbar} e^{-t/T} \ = \ -\frac{1}{T} e^{-t/T} \ \Rightarrow \ -\frac{2\Gamma}{\hbar} \ = \ -\frac{1}{T} \ \Rightarrow \ T \ = \ \frac{\hbar}{2\Gamma}$$
+<br><br><br>
+</div>
+</center>
+</body>
+</html>
