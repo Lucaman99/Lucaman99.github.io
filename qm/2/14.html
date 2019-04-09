@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 2.14</h2>
+We have a system where we know the potential is given as the harmonic osccilator potential. We are starting off with some particle in the ground
+state of the harmonic oscillator, and then suddenly, the spring constant quadruples (without affecting the initial state, only affecting the state's evolution after this happens).
+We are tasked with finding the probability that this system has total energy measuring $\hbar\omega/2$. Backing up a little bit, we know that in order to calculate the probability
+of a particle being in a certain state (therefore having a certain energy), we must simply calculate the value of the expansion coefficient of the time-independent portion of that state.
+More formally, we can recall the method that Griffiths has called <b>Fourier's trick</b>:
+<br><br>
+$$\displaystyle\int_{-\infty}^{\infty} \ \psi^{*}_m \ \Psi(x, \ 0) \ \text{dx} \ = \ \displaystyle\int_{-\infty}^{\infty} \ \psi^{*}_m \ \displaystyle\sum_{n \ = \ 0}^{\infty} c_n
+{dx} \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} c_n \ \displaystyle\int_{-\infty}^{\infty} \ \psi^{*}_m \ \psi_{n} \ \text{dx}$$
+<br>
+We know that for the quantum harmonic oscillator, orthonormality of solutions holds, so:
+<br><br>
+$$\displaystyle\sum_{n \ = \ 0}^{\infty} c_n \ \displaystyle\int_{-\infty}^{\infty} \ \psi^{*}_m \ \psi_{n} \ \text{dx} \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} c_n \ \delta_{mn} \ = \ c_m$$
+<br>
+Ok, so now that we know how to calculate the $n$-th expansion coefficient, we simply have to enter in our values. We know that the ground state of the quantum harmonic oscillator is given as:
+<br><br>
+$$\psi_{0}(x) \ = \ \Big( \frac{m\omega}{\pi\hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{2\hbar} x^2}$$
+<br>
+Since $t \ = \ 0$ and we know that the particle starts off in this state, we get that $\Psi(x, \ 0) \ = \ \psi_0(x)$. We are attemtping to find the probability of the particle having energy equal to $\hbar\omega/2$.
+ This is the energy of the ground state itself, so we know that we are trying to find $c_0$. Now, we know that as this state evolves, it will do so with the new
+spring constant. Given that $\omega \ = \ \sqrt{k/m}$, if we quadruple $k$, we double $\omega$. So our new wavefunction representing the $\psi^{*}_m$ in the expansion coefficient equation
+is:
+<br>
+$$\psi^{*}_m \ = \ \psi_{0}(x)^{'} \ = \ \Big( \frac{2m\omega}{\pi\hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{\hbar} x^2}$$
+<br><br>
+Let us now set up our equation:
+<br>
+$$c_0 \ = \ \displaystyle\int_{-\infty}^{\infty} \ \Big( \frac{2m\omega}{\pi\hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{\hbar} x^2} \ \Big( \frac{m\omega}{\pi\hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{2\hbar} x^2} \ \text{dx}
+ \ = \ 2^{1/4} \ \sqrt{\frac{m\omega}{\pi\hbar}} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-\frac{3m\omega}{2\hbar} x^2} \ \text{dx}$$
+<br><br>
+This looks like it is going to work out nicely! The integral is evidently a <b>Gaussian integral</b>, meaning that it is an integral of the form:
+<br>
+$$\displaystyle\int_{-\infty}^{\infty} \ e^{-ax^{2}} \ \text{dx} \ = \ \sqrt{\frac{\pi}{a}}$$
+<br><br>
+This means that we get:
+<br>
+$$2^{1/4} \ \sqrt{\frac{m\omega}{\pi\hbar}} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-\frac{3m\omega}{2\hbar} x^2} \ \text{dx} \ = \ 2^{1/4} \ \sqrt{\frac{m\omega}{\pi\hbar}} \ \sqrt{\frac{2\hbar\pi}{3m\omega}} \ = \
+(2^{1/4}) \ \sqrt{\frac{2}{3}} \ \approx \ 0.97098$$
+<br>
+Finally, in order to calculate the probability of the particle being in the ground state (and having energy $\hbar\omega/2$), we have to find $|c_0|^2$, which is simply $(0.97098)^2 \ \approx \ 0.943 \ = \ 94.3\%$.
+Therefore, we have found that the probability of a particle in this system having energy $\hbar\omega/2$ is roughly $94.3\%$.
+<br><br>
+The textbook also asks us to comment on the probability of the particle having energy $\hbar\omega$. Seeing as the possibly energy states of the quantum harmonic oscillator are given by:
+<br><br>
+$$E \ = \ \Big( n \ + \ \frac{1}{2} \Big)\hbar\omega$$
+<br>
+Where $n$ is $0$ or a positive integer. From this, obviously we cannot get a physically realizable state in the quantum harmonic oscciallator that has energy $\hbar\omega$, so the probability is $0\%$.
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
