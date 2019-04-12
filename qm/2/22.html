@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 2.22</h2>
+This is a very gnarly integration question. While doing Part B, I spent probably around 30 minutes just tracking down a missing negative sign because there are so many terms to keep track of.
+However, this is still an important question, and helps us to further understand how to work with quantum systems whose stationary states are not normalizable, thus forcing
+us to take a continuous integral over the stationary states rather than a discrete sum. We can start with Part A, which in my opinion is an easy warm-up for Part B. We are given:
+<br><br>
+$$\Psi(x, \ 0) \ = \ Ae^{-ax^2}$$
+<br>
+We can normalize it easily:
+<br><br>
+$$\Psi(x, \ 0) \ = \ Ae^{-ax^2} \ \Rightarrow \ |A|^2 \displaystyle\int_{-\infty}^{\infty} \ e^{-2ax^2} \ \text{dx} \ = \ 1 \ \Rightarrow \ |A|^2 \ \sqrt{\frac{\pi}{2a}} \ = \ 1
+ \ \Rightarrow \ A \ = \ \Big( \frac{2a}{\pi} \Big)^{1/4}$$
+<br>
+Next comes the messy task of dealing with the time-dependent wavefunction. Luckily, Griffiths is very nice to us, and not only tells us what the final answer <b>should be</b>
+right in the problem set, he also gives us a hint as to how to deal with some of the integrals that will come up during our calculations. Specifically, he says that if we have
+an integral of the form:
+<br>
+$$\displaystyle\int_{-\infty}^{\infty} e^{-(ax^2 \ + \ bx)} \ \text{dx}$$
+<br><br>
+Then a strategy for attacking it is to recognize that we can "factor" the exponent of $e$ by setting $y \ = \ \sqrt{a}[x \ + \ (b/2a)]$, and then recognizing that $(ax^2 \ + \ bx)
+ \ = \ y^2 \ - \ (b^2/4a)$. This piece of knowledge is very valuable, and I promise that we will make very good use of it. Let us start by writing out exactly the form of our
+ wavefunction. As you may recall from the previous chapter on the free particle potential:
+ <br>
+ $$\Psi(x, \ t) \ = \ \frac{1}{\sqrt{2\pi}} \ \displaystyle\int_{-\infty}^{\infty} \ \phi(k) \ e^{i(kx \ - \ \frac{\hbar k^2}{2m}t)} \ \text{dk}$$
+ <br><br>
+ Ok, now by setting $t \ = \ 0$ and taking the inverse Fourier transform, we can find the "continuous expansion coefficients":
+ <br>
+ $$\phi(k) \ = \ \frac{1}{\sqrt{2\pi}} \displaystyle\int_{-\infty}^{\infty} \ \Psi(x, \ 0) e^{-ikx} \ \text{dx}$$
+ <br><br>
+ We are given $\Psi(x, \ 0)$, and we have already normalized it, so this should be fairly straightforward:
+ <br>
+ $$\phi(k) \ = \ \frac{1}{\sqrt{2\pi}} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \displaystyle\int_{-\infty}^{\infty} \ e^{-(ax^2 \ + \ ikx)} \ \text{dx}$$
+ <br><br>
+ This is great! We now have an integral in the exact form of the one in the massive hint that Griffiths gives us! We calculate the following expression:
+ <br>
+ $$y \ = \ \sqrt{a}[x \ + \ (b/2a)] \ = \ \sqrt{a}[x \ + \ (ik/2a)] $$
+ $$\Rightarrow \ (ax^2 \ + \ bx) \ = \ y^2 \ - \ (b^2/4a) \ \Rightarrow \ (ax^2 \ + \ ikx) \ = \ a[x \ + \ (ik/2a)]^2 \ - \
+ ((ik)^2/4a)$$
+ <br><br>
+ Ok, now we can plug this back into the integral:
+ <br>
+ $$\frac{1}{\sqrt{2\pi}} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \displaystyle\int_{-\infty}^{\infty} \ e^{-(ax^2 \ + \ ikx)} \ \text{dx} \ = \ \frac{1}{\sqrt{2\pi}}
+  \ \Big( \frac{2a}{\pi} \Big)^{1/4} \displaystyle\int_{-\infty}^{\infty} \ e^{-a[x \ + \ ik/2a]^2} \ e^{-k^2/4a} \ \text{dx}$$
+  <br><br>
+  Now, $e^{-k^2/4a}$ is just a constant, since we are integrating with respect to $x$, so we can remove it:
+  <br>
+  $$\frac{1}{\sqrt{2\pi}} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ e^{-k^2/4a} \displaystyle\int_{-\infty}^{\infty} \ e^{-a[x \ + \ ik/2a]^2} \ \text{dx} \
+  \Rightarrow \ \frac{1}{\sqrt{2\pi}} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ e^{-k^2/4a} \sqrt{\frac{\pi}{a}}$$
+  <br><br>
+  We did it! Now, all we have to do is compute the original integral:
+  <br>
+  $$\frac{1}{2\pi} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{\pi}{a}} \displaystyle\int_{-\infty}^{\infty} \ e^{-k^2/4a} \ e^{i(kx \ - \
+    \frac{\hbar k^2}{2m}t)} \ \text{dk}$$
+    <br><br>
+  Let's start by rearranging the terms in a more suggestive way in the exponent within the integral:
+  <br><br>
+  $$\Rightarrow \ \frac{1}{2\pi} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{\pi}{a}} \displaystyle\int_{-\infty}^{\infty} \
+  e^{-\big(\big(\frac{i\hbar t}{2m} \ + \ \frac{1}{4a}\big)k^2 \ - \ ixk\big)} \ \text{dk}$$
+  <br>
+  Ok, we can use Griffiths' trick <b>again</b>! Let us define $\Omega$ as the following:
+  <br><br>
+  $$\Omega \ = \ \frac{i\hbar t}{2m} \ + \ \frac{1}{4a} \ = \ \frac{2ai\hbar t \ + \ m}{4ma}$$
+  <br>
+  We can now rephrase the exponent in the integral with $y$:
+  <br><br>
+  $$y \ = \ \sqrt{\Omega}[k \ + \ (-ix/2\Omega)] \ \Rightarrow \ \Omega k^2 \ - \ ixk \ = \ \Omega[k \ + \ (-ix/2\Omega)]^2 \ - \ (-ix)^2/4\Omega \ = \
+  \Omega[k \ + \ (-ix/2\Omega)]^2 \ + \ x^2/4\Omega$$
+  $$\Rightarrow \ \frac{1}{2\pi} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{\pi}{a}} \displaystyle\int_{-\infty}^{\infty} \ e^{-\Omega[k \ + \ (-ix/2\Omega)]^2} \ e^{-x^2/4\Omega} \ \text{dk} \ =
+  \ \frac{1}{2\pi} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{\pi}{\Omega}} \ \sqrt{\frac{\pi}{a}} \ e^{-x^2/4\Omega}$$
+  <br>
+  Now, we just have to do a bit of rearranging to get the final answer:
+  <br><br>
+  $$\frac{1}{2\pi} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{\pi}{\Omega}} \ \sqrt{\frac{\pi}{a}} \ e^{-x^2/4\Omega} \ = \ \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{4ma}{2ai\hbar t \ + \ m}}
+   \ \sqrt{\frac{1}{a}} \ \frac{1}{2} \ e^{-\big( \frac{max^2}{2ai\hbar t \ + \ m} \big)} \ = \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \frac{ e^{-\big( \frac{ax^2}{2ai\hbar t/m \ + \ 1} \big)} }{\sqrt{2ai\hbar t/m \ + \ 1}}$$
+   <br><br>
+   There, we have completed part $b$ of the problem. <b>The rest of the problem is currently unfinished, will be up ASAP</b>.
+   <br><br><br><br>
+</div>
+</center>
+</body>
+</html>
