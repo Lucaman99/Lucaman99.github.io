@@ -87,7 +87,19 @@ Then a strategy for attacking it is to recognize that we can "factor" the expone
   $$\frac{1}{2\pi} \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{\pi}{\Omega}} \ \sqrt{\frac{\pi}{a}} \ e^{-x^2/4\Omega} \ = \ \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \sqrt{\frac{4ma}{2ai\hbar t \ + \ m}}
    \ \sqrt{\frac{1}{a}} \ \frac{1}{2} \ e^{-\big( \frac{max^2}{2ai\hbar t \ + \ m} \big)} \ = \ \Big( \frac{2a}{\pi} \Big)^{1/4} \ \frac{ e^{-\big( \frac{ax^2}{2ai\hbar t/m \ + \ 1} \big)} }{\sqrt{2ai\hbar t/m \ + \ 1}}$$
    <br><br>
-   There, we have completed part $b$ of the problem. <b>The rest of the problem is currently unfinished, will be up ASAP</b>.
+   So we have completed part $b$ of the problem. Now, we are tasked with finding the probability density corresponding to this wavefunction, $|\Psi(x, \ t)|^2$. Griffiths has asked us to express our answer
+   in terms of the constant:
+   <br><br>
+   $$w \ = \ \sqrt{\frac{a}{1 \ + \ (2\hbar a t/m)^2}}$$
+   <br>
+   This problem is simply asking us to expand the following:
+   <br>
+   $$\Rightarrow \ \sqrt{ \frac{2a}{\pi} } \ \frac{ e^{-\big( \frac{ax^2}{2ai\hbar t/m \ + \ 1} \big)} }{\sqrt{2ai\hbar t/m \ + \ 1}} \ \frac{ e^{-\big( \frac{ax^2}{1 \ - \ 2ai\hbar t/m} \big)} }{\sqrt{1 \ - \ 2ai\hbar t/m}}
+    \ = \ \sqrt{ \frac{2a}{\pi} } \ \frac{ e^{-\frac{ax^2}{1 \ - \ 2ai\hbar t/m} \ - \ \frac{ax^2}{1 \ + \ 2ai\hbar t/m} } }{\sqrt{(2ai\hbar t/m \ + \ 1)(1 \ - \ 2ai\hbar t/m)}}$$
+    $$\Rightarrow \ \sqrt{ \frac{2a}{\pi} } \ \frac{ e^{-\frac{ax^2}{1 \ - \ 2ai\hbar t/m} \ - \ \frac{ax^2}{1 \ + \ 2ai\hbar t/m} } }{\sqrt{(2ai\hbar t/m \ + \ 1)(1 \ - \ 2ai\hbar t/m)}} \ = \
+    w \ \sqrt{ \frac{2}{\pi} } \ e^{-\frac{2ax^2}{1 \ + \ (2\hbar a t/m)^2}} \ = \ w \ \sqrt{ \frac{2}{\pi} } \ e^{-2ax^2w^2}$$
+    <br><br>
+    
    <br><br><br><br>
 </div>
 </center>
