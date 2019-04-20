@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Notes from Prof. Vutha Meeting</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+</script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+    <h2>Background Notes on Tensors</h2>
+    A one-form is defined as linear scalar function of a vector. A one-form acting on a vector is denoted by $\tilde{P}(\vec{V})$, and is called the scalar product, which is also denoted as: $\langle \tilde{P}, \ \vec{V} \rangle$.
+    <br><br>
+    It is also important to note that one-forms are linear functions.
+    The vector space of one-forms is called the dual vector space, distinguishing it from the linear space of vectors.
+    <br><br>
+    We can now define a tensor as a scalar function of $m$ one-forms and $n$ tensors that is linear in all of its arguments (this is only one of the many definitions for a tensor, (some define them as “higher dimensional arrays of numbers”) but with some of these definitions, the idea of a tensor starts to lose some of its nuance).
+    Scalars, for instance, are rank $(0, \ 0)$ tensors, vectors are tensors of rank $(1, \ 0)$ and one-forms are tensors of rank $(0, \ 1)$. This is because tensors act as the \textbf{map itself} from vectors and one-forms to scalars. If we are tasked with finding a mathematical object that maps some other object to a scalar, we can find this object by simply remembering that vectors act as “maps” on one-forms and vice versa. For instance, for a tensor of rank $(0, \ 0)$, we are looking for an object that maps zero vectors and 0 one-forms to a scalar. Well, this mapping is just the scalar itself, as no arguments are being mapped. For a $(1, \ 0)$ tensor, we are looking for some mapping that takes a one-form, and maps it to a scalar. Well, as previously defined, this will just be a vector. In general, a tensor is some $T_i$, where $T_i \ : \ \vec{V}_1 \ … \ \times \ … \ \vec{V}_n, \ \tilde{P}_1 \ … \ \times \ … \ \tilde{P_m} \ \rightarrow \ S$, where $S$ is some real-valued scalar. Tensor fields can be defined by assigning a tensor to each point is space-time (from a physical standpoint).
+    <br><br>
+    The scalar product is a tensor of rank $(1, \ 1)$, denoted by $I$, and is called the \textbf{identity tensor}. The identity tensor can be first thought of as a mapping from one one-form and one vector to a scalar, but with a more nuanced view, we can see that it can equal be thought of as, for instance, a map from a one-form to the same one-form: $I(\tilde{P}, \ \cdot) \ = \ \tilde{P}$, where the dot simply says that a vector argument must be passed into the tensor as well in order to obtain a scalar. The same logic applies with a vector mapping to itself, rather than a one-form.
+    The rank of a tensor can be changed. The first way this can be done is through the tensor product, which combines the argument lists of two tensor of rank $(m_1, \ n_1$ and $(m_2, \ n_2)$ to give a tensor of rank $(m_1 \ + \ m_2. \ n_1 \ + \ n_2)$. For instance, for two vectors, which are tensors of rank $(1, \ 0)$, the tensor product gives a new tensor of rank $(2, \ 0)$.
+    <br><br>
+    The tensor product distributes in a specific way over its arguments, where each of the previous tensors pairs up with its corresponding number of arguments, in the order that they are passed as arguments into the tensor, and then the product of all the remaining scalars is taken.
+    <br><br>
+    We can now define the metric tensor as a tensor of rank $(0, \ 2)$, which will combine two vectors to return a scalar. We will define $g_X$ as the tensor field of metric tensors, where a metric tensor is defined at each point in space-time. Similarly, we can define another tensor of rank $(2, \ 0)$ called the inverse metric tensor, which maps two one forms to scalar. The tensor field of the inverse metric tensor will be denoted as $g_X^{-1}$.
+    <br><br>
+    Given two vector arguments, $g$, returns a scalar quantity, called the dot product of the two vectors:$g(\vec{V}, \ \vec{W}) \ = \ \vec{V} \ \cdot \ \vec{W} \ = \ \vec{W} \ \cdot \ \vec{V} \ = \ g(\vec{W}, \ \vec{V}$. $g^{-1}$ does the same thing, but with one-forms instead of vectors (the scalar returned is called the dot product of one-forms).
+    <br><br>
+    Like the identity tensor, if we do not include one of the arguments needed to return a. Scalar within the metric or inverse metric tensors, we can create objects that function similarly to one-forms and vectors respectively: $\tilde{V}(\cdot) \ = \ g(\vec{V}, \ \cdot) \ = \ g(\cdot, \ \vec{V})$. Because of this, we can say that the metric tensor can act as a mapping from the space of vectors to the space of one-forms: $g:\vec{V} \ \rightarrow \ \tilde{V}$, and the inverse metric can act as a mapping from the space of one-forms to the space of vectors: $g^{-1}:\tilde{V} \ \rightarrow \ V$.
+    <br><br>
+    This means that we can relate the identity tensor to the metric tensor, as the scalar product of a vector and a one-form, will be equal to the dot product of the vector and the vector associated to the one-form, or the one-form and the one-form associated to the vector.
+    <br><br>
+    It is useful to now define a set of basis vectors and one-forms that span the vector and dual vector spaces that we have previously defined. Since we are working in space-time, we will say that there are four linearly independent basis vectors and one forms. We can start by expanding any vector field as a linear combination of these basis vectors (which are denoted by the set $\{\vec{e}_{\mu X}\}$: $\vec{A}_{X} \ = \ A^{\mu}_{X} \ \vec{e}_{\mu X}$.
+    <br><br>
+    <h2>Fluid Mechanics</h2>
+    The Navier-Stokes equation is a partial differential equation that can be solved to find the flow velocity of a fluid under the influence of other variables (like density, pressure, etc.). There are many assumptions that go into the construction of the Navier-Stokes equation (or at least the one that we were discussing, there are many forms of the equation), such as the fluid in question must be isotropic (the "same" in every direction, uniform in any orientation), the fluid must be incompressible (therefore, it has a constant volume, therefore a constant density, $\rho$). We can write this assumption mathematically by stating that the divergence of the flow velocity must be zero: $\vec{\nabla} \ \cdot \ \vec{u} \ = \ 0$.
+    <br><br>
+    The form of the Navier-Stokes equation that was analyzed during this meeting was written as:
+    <br><br>
+    $$\rho \frac{D\vec{u}}{Dt} \ = \ -\vec{\nabla}p \ + \ \mu\nabla^2 \vec{u}$$
+    <br><br>
+    Now, we can analyze the equation make sure that everything makes sense. Let us start on the left-hand side. First, we have $\rho$, which is some constant representing density. This isn't particularly important. The derivative of the left side is called the material derivative, and it is defined as:
+    <br><br>
+    $$\frac{D}{Dt} \ = \ \frac{\partial}{\partial t} \ + \ \vec{u} \ \cdot \ \vec{\nabla}$$
+    <br><br>
+    This can effectively be thought of as how some quantity (like flow velocity) changes with respect to time, as well as the directional derivative of how the flow velocity changes with respect to space, along the flow velocity vector.
+    <br><br>
+    Expanding this, for instance, for the $x$ component of the flow velocity, we get:
+    <br><br>
+    $$\frac{D u_x}{D t} \ = \ \frac{\partial u_x}{\partial t} \ + \ \vec{u} \ \cdot \ \vec{\nabla} u_x \ = \ \frac{\partial u_x}{\partial t} \ + \ \Big( u_x \frac{\partial u_x}{\partial x} \ + \ u_y \frac{\partial u_x}{\partial y} \ + \ u_z \frac{\partial u_z}{\partial x}\Big)$$
+    <br><br>
+    Now that we have gone through the left side of the equation, let us turn our attention to the right. We start by examining the first term, which is the negative gradient of the pressure (which is defined as some scalar field). Conceptually, the idea of the gradient of pressure being negative makes sense, as the vector field defined by the gradient points in the direction of positive change on the scalar field, and pressure "flows" from regions of high pressure to regions of low pressure, therefore it would make sense to reverse these gradient vectors by adding a negative sign to the pressure term. This pressure term is fairly easy to unpack. For instance, the $x$ component of this vector will simply be:
+    <br><br>
+    $$\frac{\partial p}{\partial x}$$
+    <br><br>
+    Now let us understand really why this makes sense, and why this is how we define pressure. For now, we are just going to examine the \textbf{x-component of pressure}, the same logic applies to all other components. Let us say that we have some infinitesimally small volume within our fluid, called $\text{d}V$. Now, since we are only interested in the $x$-component, pressure can only act in two directions: to the left or to the right on this small volume. Call these two pressures $P_R$ and $P_L$. Now, the force acting on this small unit of volume will be the pressure, multiplied by the area of the face of the small cube of volume that we have defined, with $P_R$ pushing on the right face, and $P_L$ pushing on the left face. The net force of the $x$ component of pressure across the two sides of the volume (over a small distance, which we shall call $\text{dx}$) is equal to $-(P_R \ - \ P_L)\text{dy} \ \text{dz}$, where $\text{dy} \ \text{dz}$ is simply the area of one of the faces of the cube of volume, $\text{d}V$. If we multiply this expression up an down by our small change in distance, $\text{dx}$, we get:
+    <br><br>
+    $$F_{net}^{x} \ = \ -\frac{(P_R \ - \ P_L) \ \text{d}V}{\text{dx}} \ \Rightarrow \ \text{d}V \ = \ \text{dx} \ \text{dy} \ \text{dz}$$
+    <br><br>
+    Now, since this is the change in pressure over an infinitesimally small distance, if we take limit as the distance between the two pressures acting on the sides of the cube approaches zero (which is in effect, what we are doing when we introduce the variable $\text{dx}$), we get that:
+    <br><br>
+    $$F_{net}^{x} \ = \ -\frac{(P_R \ - \ P_L) \ \text{d}V}{\text{dx}} \ = \ -\frac{\partial p}{\partial x} \ \text{d}V \ \Rightarrow \ \frac{F_{net}^{x}}{\text{d}V} \ = \ -\frac{\partial p}{\partial x}$$
+    <br><br>
+    So we get the net force arising from pressure within a small volume is equal to the negative derivative of the pressure field. This is exactly what the Navier-Stokes equation predicts.
+    <br><br>
+    There is actually another method that we can use to find this exact same relationship. Since the potential energy of some system is equal to the work that is done to bring the object from some point $x_0$ to another point $x_r$, and the amount of work that has to be done on an ideal fluid to compress it is equal to $P\Delta V$, we can define the $x$ component of the net force being done on some small volume to be $F_{net}^x \ = \ -\frac{\partial}{\partial x} \ P \text{d}V$. The volume of the fluid does not change with $x$, therefore we get:
+    <br><br>
+    $$F_{net}^x \ = \ -\frac{\partial}{\partial x} \ (P \text{d}V) \ = \ -\frac{\partial P}{\partial x} \text{d}V \ \Rightarrow \ \frac{F_{net}^x}{\text{d}V} \ = \ -\frac{\partial P}{\partial x}$$
+    <br><br>
+    This is exactly the same resuklt that we previously arrived at. notice that this method was much easier, as we were only working with scalar quantities.
+    <br><br>
+    Next, let us look to the final term on the right-hand side of the equation. This is straightforward. For pour purposes, $\mu$ is a constant, so, for the $x$ component of $\vec{u}$, we get:
+    <br><br>
+    $$\mu\nabla^2 \vec{u} \ = \ \mu \Big(\frac{\partial^2 u_x}{\partial x^2} \ + \ \frac{\partial^2 u_x}{\partial y^2} \ + \ \frac{\partial^2 u_x}{\partial z^2} \Big)$$
+    <br><br>
+    This just represents total change in each component of the flow velocity, with respect to spatial position.
+    <br><br>
+    <h2>Introduction to Tensors and Their Applications <br> (UNDER CONSTRUCTION)</h2>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
