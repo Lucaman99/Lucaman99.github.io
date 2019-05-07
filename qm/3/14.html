@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.13</h2>
+Moving right along, let us do another short question (I'm hanging out right now, waiting to go to a presentation at UofT, so I'm trying totype up a bunch of short solutions while
+I have the spare time). Anyways, onto the solution. We are asked to prove an uncertainty principle. Griffiths says to name it after yourself, so we are proving the Ceroni Uncertainty Principle
+(this will likely be the only physics concept ever named after me). Specicially, the Ceroni Uncertainty Principle states that:
+<br><br>
+$$\sigma_x \sigma_H \ \geq \ \frac{\hbar}{2m} \ |\langle p \rangle|$$
+<br>
+This is pretty much just taking our general uncertainty principle and plugging in our values:
+<br><br>
+$$\Rightarrow \ \sigma_A^2 \sigma_B^2 \ \geq \ \Big( \frac{1}{2i} \ \langle [A, \ B] \rangle \Big)^2$$
+$$\Rightarrow \ \sigma_x^2 \sigma_H^2 \ = \ \Big( \frac{1}{2i} \ \langle [x, \ H] \rangle \Big)^2$$
+<br>
+Now, evaluating the commutator for position and the Hamiltonian (energy):
+<br><br>
+$$\hat{x} \ = \ x \ \text{and} \ \hat{H} \ = \ -\frac{\hbar^2}{2m} \ \frac{\partial^2}{\partial x^2} \ + \ V$$
+$$[x, \ H]f \ = \ x \Big( -\frac{\hbar^2}{2m}\frac{\partial^2 f}{\partial x^2} \ + \ Vf \Big) \ - \ \Big( -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} \ + \ V \Big)xf \ = \ \frac{\hbar^2}{2m}\Big( \frac{\partial^2}{\partial x^2} (xf) \ - \ x\frac{\partial^2 f}{\partial x^2} \Big)$$
+<br>
+Let us consider the product rule for the second derivative of the product of two general functions:
+<br><br>
+$$\frac{\partial^2}{\partial x^2} (gf) \ = \ \frac{\partial}{\partial x} \ \Big( f\frac{\partial g}{\partial x} \ + \ g\frac{\partial f}{\partial x} \Big) \ = \ f\frac{\partial^2 g}{\partial x^2} \ + \ 2 \frac{\partial f}{\partial x}\frac{\partial g}{\partial x} \ + \ g\frac{\partial^2 f}{\partial x^2}$$
+<br>
+So now we have:
+<br><br>
+$$\frac{\hbar^2}{2m}\Big( \frac{\partial^2}{\partial x^2} (xf) \ - \ x\frac{\partial^2 f}{\partial x^2} \Big) \ = \ \frac{\hbar^2}{2m} \Big( 2\frac{\partial f}{\partial x} \Big)$$
+<br>
+Now, we can substitute this into the original equation:
+<br><br>
+$$\sigma_x^2 \sigma_H^2 \ = \ \Big( \frac{1}{2i} \ \langle [x, \ H] \rangle \Big)^2 \ = \ \Big( \frac{1}{2i} \ \langle \frac{\hbar^2}{m} \frac{\partial }{\partial x} \rangle \Big)^2 \ = \ \Big( \frac{\hbar}{2m} \langle \frac{\hbar}{i} \frac{\partial }{\partial x} \rangle \Big)^2 \ = \ \Big( \frac{\hbar}{2m} \langle p \rangle \Big)^2 \ \Rightarrow \ \sigma_x\sigma_H \ \geq \ \frac{\hbar}{2m} \ |\langle p \rangle | $$
+<br>
+Now, the reason why this statement is not very useful for stationary states is because, by definition, stationary states have $\langle p \rangle \ = \ 0$, so for stationary states, we get:
+<br><br>
+$$\sigma_x\sigma_H \ \geq \ 0$$
+<br>
+Which we already know has to be true (Negative standard deviation!? That can't happen).
+<br><br><br>
+
+
+
+
+</div>
+</center>
+</body>
+</html>
