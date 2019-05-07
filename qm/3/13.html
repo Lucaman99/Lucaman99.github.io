@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.13</h2>
+
+A lot of the problems in Chapter 3 are fairly short, so a lot of these solutions will be quite compact. I promise I'm not getting lazy and writing less (I mean, I like to think this is true but
+I guess you guys are the judges of that). Ok, anyways, moving onto the problem. For Part A, we simply have to prove a basic commutator identity. This bascially follows (most easily) from expanding
+the right-hand side of the equation. We are trying to prove that:
+<br><br>
+$$[AB, \ C] \ = \ A[B, \ C] \ + \ [A, \ C]B$$
+<br>
+We then  have:
+<br><br>
+$$A[B, \ C] \ + \ [A, \ C]B \ = \ A(BC \ - \ CB) \ + \ (AC \ - \ CA)B \ = \ ABC \ - \ ACB \ + \ ACB \ - \ CAB \ = \ ABC \ - \ CAB \ = \ [AB, \ C]$$
+<br>
+Ok, easy enough. Moving on, we see that in Part B, we have to prove the following statement:
+<br><br>
+$$[x^n, \ p] \ = \ i\hbar nx^{n \ - \ 1}$$
+<br>
+This is pretty easy, it's essentially just an extnesion upon the commutator that was calculated earlier in the textbook: $[x, \ p] \ = \ i\hbar$. All we have to
+do in this case is add our "test function" to the commutator and expand:
+<br><br>
+$$[x^n, \ p]f \ = \ x^n \ \frac{\hbar}{i} \ \frac{\partial f}{\partial x} \ - \ \frac{\hbar}{i} \ \frac{\partial}{\partial x} (x^n f)$$
+$$\Rightarrow \ \frac{\partial}{\partial x} (x^n f) \ = \ f \ \frac{\partial}{\partial x} x^n \ + \ x^n \ \frac{\partial f}{\partial x}$$
+$$\Rightarrow \ x^n \ \frac{\hbar}{i} \ \frac{\partial f}{\partial x} \ - \ \frac{\hbar}{i} \ \Big ( f \ \frac{\partial}{\partial x} x^n \ + \ x^n \ \frac{\partial f}{\partial x}  \Big)
+ \ = \ -\frac{\hbar}{i} \ f \ \frac{\partial}{\partial x} x^n \ = \ i\hbar fnx^{n \ - \ 1}$$
+ <br>
+ But we are allowed to now drop the test function (it has served its purpose), so we get:
+ <br><br>
+ $$\Rightarrow \ i\hbar nx^{n \ - \ 1}$$
+ <br>
+ And so we have proved the statement. Finally, we have to demonstrate that a more general statement holds true:
+ <br><br>
+ $$[f(x), \ p] \ = \ i\hbar \frac{\partial f}{\partial x}$$
+ <br>
+ This follows from pretty much the exact same argument as before. We have:
+ <br><br>
+ $$[f(x), \ p]g \ = \ f \ \frac{\hbar}{i} \ \frac{\partial g}{\partial x} \ - \ \frac{\hbar}{i} \ \frac{\partial}{\partial x} (fg)$$
+ $$\Rightarrow \ \frac{\partial}{\partial x} (fg) \ = \ f \ \frac{\partial g}{\partial x} \ + \ g \ \frac{\partial f}{\partial x}$$
+ $$\Rightarrow \ f \ \frac{\hbar}{i} \ \frac{\partial g}{\partial x} \ - \ \frac{\hbar}{i} \ \Big ( g \ \frac{\partial f}{\partial x} \ + \ f \ \frac{\partial g}{\partial x}  \Big)
+  \ = \ -\frac{\hbar}{i} \ g \ \frac{\partial f}{\partial x} \ = \ i\hbar g \frac{\partial f}{\partial x} \ \Rightarrow \ i\hbar \frac{\partial f}{\partial x}$$
+  <br>
+  And we're done!
+  <br><br><br>
+
+
+</div>
+</center>
+</body>
+</html>
