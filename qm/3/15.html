@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.13</h2>
+This will be a pretty short proof. We must demonstrate that two noncommuting operators cannot share a complete set of common eigenfunctions. Basically, this means that we
+have to prove that for any two operators, $\hat{P}$ and $\hat{Q}$ that share all of their eigenfunctions, then we must have $[\hat{P}, \ \hat{Q}]f \ = \ 0$. Despite seeming
+semi-intimidating, this is actually a pretty easy proof. For any $f$, we can say that it is an eigenfunction of both $\hat{P}$ and $\hat{Q}$. This means that we have:
+<br><br>
+$$\hat{Q}f \ = \ qf \ \text{and} \ \hat{P}f \ = \ pf$$
+<br>
+Where $p$ and $q$ are eigenvalues of the operators. We can then say that:
+<br><br>
+$$[\hat{P}, \ \hat{Q}]f \ = \ \hat{P}\hat{Q}f \ - \ \hat{Q}\hat{P}f \ = \ \hat{P}qf \ - \ \hat{Q}pf \ = \ q\hat{P}f \ - \ p\hat{Q}f \ = \ qp \ - \ pq \ = \ 0$$
+<br>
+And that's all there is to it (I think).
+
+
+
+
+</div>
+</center>
+</body>
+</html>
