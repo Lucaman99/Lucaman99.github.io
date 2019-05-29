@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.11</h2>
+<p>Ok, so, I did this problem, but I then realized that I actually made a small mistake in one of my steps,
+  leading to a flaw in my final answer. It was only when I looked at the Physics Pages posts
+  to check my final answer when I saw this mistake (so THANK YOU PHYSICS PAGES!). When I get to this point in the solution, I'll let you guys know the mistake
+   I made and how it was fixed.
+  Moving onto the solution, we are tasked with finding the momentum space wavefunction of the ground state of the quantum harmonic oscillator. We know that for the quantum harmonic oscillator, the time-independent solution for the ground state, is as follows:
+  <br><br>
+  $$\psi_{\text{ground}}(x) \ = \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{2\hbar} x^2}$$
+  <br>
+  Next, let us recall how the momentum space wavefunction can be written in terms of the position space wavefunction (it is merely the Fourier transform!):
+  <br>
+  $$\Phi(p, \ t) \ = \ \frac{1}{\sqrt{2\pi \hbar}} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-ipx/ \hbar} \ \Psi(x, \ t) \ \text{dx}$$
+  <br><br>
+  And we then get a nice, messy integral:
+  <br>
+  $$\Phi(p, \ t) \ = \ \frac{1}{\sqrt{2\pi \hbar}} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-ipx/ \hbar} \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{2\hbar} x^2} \ e^{-iEt/ \hbar} \ \text{dx}$$
+  <br><br>
+  Notice how I added in the time-dependent component to the harmonic oscillator ground state by tacking $e^{iEt/ \hbar}$ onto the integral. Ok, now, let's simplify this integral a bit:
+  <br><br>
+  $$\frac{1}{\sqrt{2\pi \hbar}} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-ipx/ \hbar} \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ e^{-\frac{m\omega}{2\hbar} x^2} \ e^{-iEt/ \hbar} \ \text{dx} \ = \
+  \frac{1}{\sqrt{2\pi \hbar}} \ e^{-iEt/ \hbar} \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-(\frac{m\omega}{2\hbar} x^2 \ + \ \frac{ip}{\hbar}x)} \ \text{dx}$$
+  <br>
+  This integral looks now looks fairly Gaussian, however, we need to use another trick in order to solve it. If you remember, Griffiths gave us a nifty way to solve integrals of this form back in Chapter 2. We will be using it once again!
+  Griffiths' trick went as follows: given an integral of the form:
+  <br><br>
+  $$\displaystyle\int_{-\infty}^{\infty} \ e^{-(ax^2 \ + \ bx)} \ \text{dx}$$
+  <br>
+  We can set $y \ = \ \sqrt{a}[x \ + \ b/2a]$, then, we can say that $ax^2 \ + \ bx \ = \ y^2 \ - \ (b^2/4a)$. For this problem, we have:
+  <br><br>
+  $$y \ = \ \sqrt{\frac{m\omega}{2\hbar}}[x \ - \ b/2a] \ \Rightarrow \ \frac{m\omega}{2\hbar} x^2 \ + \ \frac{ip}{\hbar}x \ = \ \frac{m\omega}{2\hbar}[x \ - \ b/2a]^2 \ + \ \frac{1}{2m\omega\hbar} p^2$$
+  <br>
+  We do not evaluate the $b/2a$ because I am lazy (yes, I am that lazy!), and because more importantly, it does not affect the final integral in any way (as the integral is just Gaussian after making these changes). We can plug this back into the original integral:
+  <br><br>
+  $$\Rightarrow \ \frac{1}{\sqrt{2\pi \hbar}} \ e^{-iEt/ \hbar} \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-(\frac{m\omega}{2\hbar}[x \ - \ b/2a]^2 \ + \ \frac{1}{2m\omega\hbar} p^2)} \ \text{dx} \ = \
+  \frac{1}{\sqrt{2\pi \hbar}} \ e^{-iEt/ \hbar} \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ e^{-\frac{1}{2m\omega\hbar} p^2} \ \displaystyle\int_{-\infty}^{\infty} \ e^{-\frac{m\omega}{2\hbar}[x \ - \ b/2a]^2} \ \text{dx}$$
+  $$\Rightarrow \ \Phi(p, \ t) \ = \ \frac{1}{\sqrt{2\pi \hbar}} \ e^{-iEt/ \hbar} \ \Big( \frac{m\omega}{\pi \hbar} \Big)^{1/4} \ e^{-\frac{1}{2m\omega\hbar} p^2} \ \sqrt{\frac{2\hbar \pi}{m \omega}}$$
+  <br>
+  Since we are trying to find the probability of certain momentums, we are interested in the quantity $|\Phi(p, \ t)|^2$, so we get:
+  <br><br>
+  $$|\Phi(p, \ t)|^2 \ = \ \frac{1}{2\pi \hbar} \ \sqrt{\frac{m\omega}{\pi \hbar}} \ \frac{2\hbar \pi}{m \omega} \ e^{-\frac{1}{m\omega\hbar} p^2} \ = \ \ \sqrt{\frac{1}{\pi \hbar m \omega}} \ \ e^{-\frac{1}{m\omega\hbar} p^2}$$
+  <br>
+  Now, we must figure out when momentum lies outside of our classical range. Well, for the ground state of the harmonic oscillator, we know that:
+  <br><br>
+  $$E_{\text{ground}} \ = \ \frac{1}{2}\hbar\omega$$
+  <br>
+  So our classical kinetic energy cannot exceed this total amount of energy that is present within the ground state of the harmonic oscillator. We can then say that to find momenta outside the classical range:
+  <br><br>
+  $$E_{\text{K}} \ = \ \frac{p^2}{2m} \ \Rightarrow \ \frac{p^2}{2m} \ > \ \frac{1}{2}\hbar\omega \ \Rightarrow \ p \ > \ \sqrt{m\hbar\omega}$$
+  <br>
+  This is where I made my BIG MISTAKE. I forgot to consider the fact that taking the square root could yield negative values that the momentum cannot become less than (thanks again Physics Pages!). A better way to write the result that we just found is:
+  <br><br>
+  $$\text{For momentum to be in the classical range} \ \Rightarrow \ -\sqrt{m\hbar\omega} \ < \ p \ < \ \sqrt{m\hbar\omega}$$
+  <br>
+  We are interested in the probability of measuring some $p$ <b>outside</b> the classical range, so we can simply integrate our momentum space probability density from $-\sqrt{m\hbar\omega}$ to $\sqrt{m\hbar\omega}$ and subtract it from $1$! Now, Griffiths has given
+  us a helpful hint. He told us to look up something called the "Error Function", as it might be useful to us. Well, trust me, it will be! The error function is defined as:
+  <br><br>
+  $$\text{erf}(x) \ = \ \frac{1}{\sqrt{\pi}} \ \displaystyle\int_{-x}^{x} \ e^{-t^2} \ \text{dt}$$
+  $$\Rightarrow \ \frac{1}{\sqrt{\pi}} \ \displaystyle\int_{-x}^{x} \ e^{-at^2} \ \text{dt} \ = \ \frac{\text{erf}(\sqrt{a}x)}{\sqrt{a}}$$
+  <br>
+  Well, as it turns out, this is pretty much the exact form of the integral that we must evaluate!
+  <br><br>
+  $$\text{Pr}(p \text{ outside classical range}) \ = \ 1 \ - \ \displaystyle\int_{-\sqrt{m\hbar\omega}}^{\sqrt{m\hbar\omega}} \ |\Phi(p, \ t)|^2 \ \text{dp} \ = \ 1 \ - \ \sqrt{\frac{1}{\pi \hbar m \omega}} \displaystyle\int_{-\sqrt{m\hbar\omega}}^{\sqrt{m\hbar\omega}} \ \ e^{-\frac{1}{m\omega\hbar} p^2} \ \text{dp}$$
+  $$\Rightarrow \ \ 1 \ - \ \sqrt{\frac{1}{\pi \hbar m \omega}} \ \frac{\sqrt{\pi}\text{erf}\Big( \frac{1}{\sqrt{m\omega\hbar}} \ \sqrt{m\omega\hbar} \Big)}{\frac{1}{\sqrt{m\omega\hbar}}} $$
+  $$\Rightarrow \ \text{Pr}(p \text{ outside classical range}) \ = \ 1 \ - \ \text{erf}(1) \ \approx \ 0.157 \ = \ 15.7\%$$
+  <br>
+  And we're done!
+  <br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
