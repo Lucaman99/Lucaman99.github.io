@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.16</h2>
+<p>And a nice light one to end off the day (maybe, I'm tempted to do more solutions later tonight)! We are simply asked to solve a fairly simple differential equation, specifically this one, representing
+  the wavefunction that has minimum position-momentum uncertainty. After coming to a few realizations about how this minimal uncertainty case must occur when the Cauchy-Schwarz inequality becomes an equility, we come
+  to the following differential equation:
+  <br><br>
+  $$\Big( \frac{\hbar}{i}\frac{\text{d}}{\text{dx}} \ - \ \langle p \rangle \Big)\Psi \ = \ ia(x \ - \ \langle x \rangle)\Psi$$
+  <br>
+  We are asked to solve this equation, distributing out the $\Psi$ on the left side of the equation, we get:
+  <br><br>
+  $$\Big( \frac{\hbar}{i}\frac{\text{d}}{\text{dx}} \ - \ \langle p \rangle \Big)\Psi \ = \ ia(x \ - \ \langle x \rangle)\Psi \ \Rightarrow \ \frac{\hbar}{i}\frac{\text{d}\Psi}{\text{dx}} \ - \ \langle p \rangle\Psi \ = \ ia(x \ - \ \langle x \rangle)\Psi$$
+  $$\Rightarrow \ \frac{1}{\Psi} \ \frac{\hbar}{i} \ \frac{\text{d}\Psi}{\text{dx}} \ - \ \langle p \rangle \ = \ ia(x \ - \ \langle x \rangle) \ \Rightarrow \ \frac{1}{\Psi} \ \frac{\text{d}\Psi}{\text{dx}} \ = \ -\frac{a(x \ - \ \langle x \rangle)}{\hbar} \ + \ \frac{i\langle p \rangle}{\hbar}$$
+  $$\Rightarrow \ \frac{1}{\Psi} \ \text{d}\Psi \ = \ \Big( -\frac{a(x \ - \ \langle x \rangle)}{\hbar} \ + \ \frac{i\langle p \rangle}{\hbar} \Big) \ \text{dx} \ \Rightarrow \ \displaystyle\int \ \frac{1}{\Psi} \ \text{d}\Psi \ = \ \displaystyle\int \ \Big( -\frac{a(x \ - \ \langle x \rangle)}{\hbar} \ + \ \frac{i\langle p \rangle}{\hbar} \Big) \ \text{dx}$$
+  $$\Rightarrow \ \ln \ \Psi \ = \ \Big( -\frac{a(x \ - \ \langle x \rangle)^2}{2\hbar} \ + \ \frac{i\langle p \rangle x}{\hbar} \Big) \ \Rightarrow \ \Psi \ = \ e^{-\frac{a(x \ - \ \langle x \rangle)^2}{2\hbar} \ + \ \frac{i\langle p \rangle x}{\hbar}}$$
+  <br>
+  That's it! Like I said, fairly straight-forward!
+  <br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
