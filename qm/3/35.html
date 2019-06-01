@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.16 (A REALLY FUN ONE!)</h2>
+<p>
+  This is likely one of the most fun problems I have encoutered so far in Griffiths'! We are essentially walked through a multi-step question on coherent states, where we have to
+  prove a bunch of stuff. Moving on to the problem, we start off with finding $\langle x \rangle$, $\langle x^2 \rangle$, $\langle p \rangle$ and $\langle p^2 \rangle$ for the coherent states
+  of the quantum harmonic oscillator, which are said to be linear combinations of the stationary states, and also be eigenfunctions of the lowering operator. This means they are given
+  by the equations:
+  <br><br>
+  $$a_{-}|\alpha\rangle \ = \ \beta|\alpha\rangle$$
+  <br>
+  I know they call the eigenvalue of the coherent states $\alpha$ in the book, but I'm going to call it $\beta$, so we can avoid confusion regarding the eigenfunctions and the eigenvalues.
+  Let us start off by finding $\langle x \rangle$ (Heads up, instead of writing $|\alpha\rangle$ while I'm solving the following integrals, I'll use $\alpha$).
+  Before we start, it is important to note that Griffiths makes a great reccomendation. He tells us to use an elegant method to solve these integrals by expression $x$ in terms of $a_{-}$ and $a_{+}$. We know that:
+  <br>
+  $$a_{\pm} \ = \ \frac{1}{\sqrt{2m\omega\hbar}}(\mp ip \ + \ m\omega x)$$
+  <br><br>
+  So we get:
+  <br>
+  $$(a_{-} \ + \ a_{+}) \ = \ \frac{2}{\sqrt{2m\omega\hbar}}(m\omega x) \ \Rightarrow \ (a_{-} \ + \ a_{+}) \ = \ \sqrt{\frac{2m\omega}{h}} \ x \ \Rightarrow \ x \ = \ \sqrt{\frac{h}{2m\omega}} \ (a_{-} \ + \ a_{+})$$
+  <br><br>
+  We can do the same thing for momentum!
+  <br>
+  $$(a_{+} \ - \ a_{-}) \ = \ -\frac{2ip}{\sqrt{2m\omega\hbar}} \ \Rightarrow \ p \ = \ i\sqrt{\frac{\hbar m \omega}{2}} (a_{+} \ - \ a_{-})$$
+  <br><br>
+  Now, let us do some calculations. We know that:
+  <br><br>
+  $$\langle x \rangle \ = \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} x \alpha \ \text{dx} \ = \ \sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} (a_{-} \ + \ a_{+}) \alpha \ \text{dx}
+   \ = \ \sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} a_{-} \alpha \ + \ \alpha^{*} a_{+} \alpha \ \text{dx}$$
+  <br>
+  It is important to now remember that $a_{-}|\alpha\rangle \ = \ \beta|\alpha\rangle$, so we get:
+  <br><br>
+  $$\sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} a_{-} \alpha \ + \ \alpha^{*} a_{+} \alpha \ \text{dx} \ = \ \sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta \alpha \ + \ \alpha^{*} a_{+} \alpha \ \text{dx}$$
+  <br>
+  Ok, but what do we do about $a_{+}$? Well, luckily, we can take advantage of a very useful construction:
+  <br><br>
+  $$\displaystyle\int \ f^{*}a_{\pm}g \ \text{dx} \ = \ \displaystyle\int \ (a_{\mp}f)^{*}g \ \text{dx}$$
+  <br>
+  See the textbook for the formal proof. Using this, we say that:
+  <br><br>
+  $$\sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta \alpha \ + \ \alpha^{*} a_{+} \alpha \ \text{dx} \ = \ \sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta \alpha \ + \ (a_{-}\alpha)^{*} \alpha \ \text{dx}
+   \ = \ \sqrt{\frac{h}{2m\omega}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta \alpha \ + \ \beta^{*}\alpha^{*} \alpha \ \text{dx} \ = \ \sqrt{\frac{h}{2m\omega}} \ (\beta^{*} \ + \ \beta) \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \alpha \ \text{dx}$$
+  <br>
+  We assume that $\alpha$ is normalized, so:
+  <br><br>
+  $$\langle x \rangle \ = \ \sqrt{\frac{h}{2m\omega}} \ (\beta^{*} \ + \ \beta)$$
+  <br>
+  We repeat this same procedure for the rest of the expectation values:
+  <br><br>
+  $$\langle x^2 \rangle \ = \ \frac{\hbar}{2m\omega} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} (a_{+}^2 \ + \ a_{+}a_{-} \ + \ a_{-}a_{+} \ + \ a_{-}^2) \alpha \ \text{dx} \ = \
+  \frac{\hbar}{2m\omega} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} a_{+}^2 \alpha \ + \ \alpha^{*} a_{+}a_{-} \alpha \ + \ \alpha^{*} a_{-}a_{+} \alpha \ + \ \alpha^{*} a_{-}^2 \alpha \ \text{dx}$$
+  $$\Rightarrow \ \frac{\hbar}{2m\omega} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} a_{+}^2 \alpha \ + \ \alpha^{*} a_{+}a_{-} \alpha \ + \ \alpha^{*} a_{-}a_{+} \alpha \ + \ \alpha^{*} a_{-}^2 \alpha \ \text{dx} \ = \
+  \frac{\hbar}{2m\omega} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta^2 \alpha \ + \ \alpha^{*} \beta^{*}\beta \alpha \ + \ \alpha^{*} a_{-}a_{+} \alpha \ + \ \alpha^{*} (\beta^{*})^2 \alpha \ \text{dx}$$
+  <br>
+  Recall that:
+  <br><br>
+   $$[a_{-}, \ a_{+}] \ = \ a_{-}a_{+} \ - \ a_{+}a_{-} \ = \ 1 \ \Rightarrow \ a_{-}a_{+} \ = \ 1 \ + \ a_{+}a_{-}$$
+   <br>
+   So we can rewrite the integral to get:
+   <br><br>
+   $$\frac{\hbar}{2m\omega} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta^2 \alpha \ + \ \alpha^{*} \beta^{*}\beta \alpha \ + \ \alpha^{*} a_{-}a_{+} \alpha \ + \ \alpha^{*} (\beta^{*})^2 \alpha \ \text{dx} \ = \
+   \frac{\hbar}{2m\omega} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} \beta^2 \alpha \ + \ \alpha^{*} \beta^{*}\beta \alpha \ + \ \alpha^{*} (1 \ + \ \beta^{*}\beta) \alpha \ + \ \alpha^{*} (\beta^{*})^2 \alpha \ \text{dx}$$
+   $$\Rightarrow \ \langle x^2 \rangle \ = \ \frac{\hbar}{2m\omega} (\beta^2 \ + \ 2\beta^{*}\beta \ + \ (\beta^{*})^2 \ + \ 1)$$
+   <br>
+   The momentum ones are basically the same thing:
+   <br><br>
+   $$\langle p \rangle \ = \ i\sqrt{\frac{\hbar m \omega}{2}} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} (a_{+} \ - \ a_{-}) \alpha \ \text{dx} \ = \ i\sqrt{\frac{\hbar m \omega}{2}}(\beta^{*} \ - \ \beta)$$
+   $$\langle p^2 \rangle \ = \ -\frac{\hbar m \omega}{2} \ \displaystyle\int_{-\infty}^{\infty} \ \alpha^{*} (a_{+}^2 \ - \ a_{+}a_{-} \ - \ a_{+}a_{-} \ + \ a_{-}^2) \alpha \ \text{dx} \ = \
+   -\frac{\hbar m \omega}{2} \ (\beta^2 \ + \ (\beta^{*})^2 \ + \ 2\beta^{*}\beta \ - \ 1)$$
+   <br>
+   Now, we verify that the coherent states have minimized position-momentum uncertainty (you guys can do the expansion and substraction):
+   <br>
+   $$\sigma_x^2 \ = \ \langle x^2 \rangle \ - \ \langle x \rangle^2 \ = \ \frac{h}{2m\omega}$$
+   $$\sigma_p^2 \ = \ \langle p^2 \rangle \ - \ \langle p \rangle^2 \ = \ \frac{\hbar m \omega}{2}$$
+   $$\Rightarrow \ \sigma_x^2\sigma_p^2 \ = \ \Big( \frac{h}{2m\omega} \Big)\Big( \frac{\hbar m \omega}{2} \Big) \ = \ \frac{\hbar^2}{4} \ \Rightarrow \ \sigma_x\sigma_p \ = \ \frac{\hbar}{2}$$
+   <br>
+   And so we have verified that uncertainty is minimzed. Now, we are given that:
+   <br><br>
+   $$|\alpha\rangle \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ c_n|n\rangle$$
+   <br>
+   And we need to show that:
+   <br><br>
+   $$c_n \ = \ \frac{\beta^n}{\sqrt{n!}} c_0$$
+   <br>
+   Ok, now things are getting fun. We know by Fourier's trick, that:
+   <br><br>
+   $$c_n \ = \ \langle n | \alpha \rangle$$
+   <br>
+   And if you recall from the section on the quantum harmonic oscillator, we know that:
+   <br><br>
+   $$|n\rangle \ = \ \frac{1}{\sqrt{n!}} \ (a_{+})^n \ |0\rangle$$
+   <br>
+   So we get that:
+   <br><br>
+   $$c_n \ = \ \displaystyle\int_{-\infty}^{\infty} \ \Big( \frac{1}{\sqrt{n!}} \ (a_{+})^n \ |0\rangle \Big)^{*} \ \alpha \text{dx} \ = \ \displaystyle\int_{-\infty}^{\infty} \ \Big( \frac{1}{\sqrt{n!}} \ |0\rangle \Big)^{*} \ a_{-}^n \alpha \text{dx}
+    \ = \ \displaystyle\int_{-\infty}^{\infty} \ \Big( \frac{1}{\sqrt{n!}} \ |0\rangle \Big)^{*} \ \beta^n \alpha \text{dx} \ = \ \frac{\beta^n}{\sqrt{n!}} \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*} \ \alpha \text{dx}$$
+   <br>
+   Notice how I used the same rule about moving around the raising/lowering operator under the integral sign as I did earlier in the question. We must now recall the original definition of $\alpha$, and remember that since we are taking the complex
+   conjugate of $|0\rangle$, the componenets of $\alpha$ will be orthonormal (yielding the Kronecker delta upon multiplication). Therefore, we get:
+   <br><br>
+   $$\frac{\beta^n}{\sqrt{n!}} \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*} \ \alpha \text{dx} \ = \ \frac{\beta^n}{\sqrt{n!}} \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*} \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ c_n|n\rangle \text{dx} \ = \
+   \frac{\beta^n}{\sqrt{n!}} \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*} \ (c_0|0\rangle \ + \ c_1|1\rangle \ + \ c_2|2\rangle \ + \ ...) \ \text{dx}$$
+   $$\Rightarrow \ \frac{\beta^n}{\sqrt{n!}} \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*} \ (c_0|0\rangle \ + \ c_1|1\rangle \ + \ c_2|2\rangle \ + \ ...) \ \text{dx} \ = \
+   \frac{\beta^n}{\sqrt{n!}} \Big( \ c_0 \ \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*}|0\rangle \text{dx} \ + \ c_1 \ \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*}|1\rangle \ \text{dx} \ + \ c_2 \ \displaystyle\int_{-\infty}^{\infty} \ |0\rangle^{*}|2\rangle \ \text{dx} \ + \ ... \Big)$$
+   $$\Rightarrow \ \frac{\beta^n}{\sqrt{n!}} \ (c_0 \ (1) \ + \ c_1 \ (0) \ + \ c_2 \ (0)) \ + \ ... \ \Rightarrow \ c_n \ = \ \frac{\beta^n}{\sqrt{n!}} \ c_0$$
+   <br>
+   Moving along, we must normalize $|\alpha\rangle$, to show that $c_0 \ = \ \text{exp}(-|\beta|^2/2)$. Since we have a discrete sum, the best way to go about normalizing $|\alpha\rangle$ is by remembering that the modulus squared of all the expansion coefficients of a wavefunction add up to $1$:
+   <br><br>
+   $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ |c_n|^2 \ = \ 1$$
+   <br>
+   This means that we have:
+   <br><br>
+   $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{|\beta|^{2n}}{n!} \ c_0^2 \ = \ 1$$
+   <br>
+   The key insight here is remembering the Taylor series of the form:
+   <br><br>
+   $$e^x \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{x^n}{n!}$$
+   <br>
+   This leads us to rewrite our equation as:
+   <br><br>
+   $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{|\beta|^{2n}}{n!} \ c_0^2 \ = \ 1 \ \Rightarrow \ e^{|\beta|^2} c_0^2 \ = \ 1 \ \Rightarrow \ c_0 \ = \ e^{-|\beta|^2/2}$$
+   <br>
+   THE LAST PART OF THE QUESTION IS STILL UNDER CONSTRUCTION!!!!!!! (Sorry)
+  <br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
