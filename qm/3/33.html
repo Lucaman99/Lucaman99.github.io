@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 3.33</h2>
+<p>
+  This is literally the mandatory big matrix problem. We must first find the general expressions for the matrix elements of both the position and the momentum operators for the
+  harmonic oscillator. Now, from previous problems, we know that we can expression the position and momentum operators in terms of the raising and lowering operators:
+  <br><br>
+  $$x \ = \ \sqrt{\frac{\hbar}{2m\omega}} \ (a_{+} \ + \ a_{-}) \ \ \ \text{and} \ \ \ p \ = \ i\sqrt{\frac{\hbar m \omega}{2}} \ (a_{+} \ - \ a_{-})$$
+  <br>
+  To calculate the matrix elements, we calculate the quantities $\langle n | x | n' \rangle$ and $\langle n | p | n' \rangle$. Let us start with the position operator. We have:
+  <br><br>
+  $$\langle n | x | n' \rangle \ = \ \sqrt{\frac{\hbar}{2m\omega}} \ \langle n | (a_{+} \ + \ a_{-}) | n' \rangle \ = \ \sqrt{\frac{\hbar}{2m\omega}} \ (\langle n | a_{+} | n' \rangle \ + \ \langle n | a_{-} | n' \rangle)$$
+  <br>
+  Also recall from previous questions that:
+  <br><br>
+  $$\displaystyle\int f^{*} a_{\pm} g \ \text{dx} \ = \ \displaystyle\int (a_{\mp}f)^{*} g \ \text{dx}$$
+  <br>
+  This means that we have:
+  <br><br>
+  $$\sqrt{\frac{\hbar}{2m\omega}} \ (\langle n | a_{+} | n' \rangle \ + \ \langle n | a_{-} | n' \rangle) \ = \ \sqrt{\frac{\hbar}{2m\omega}} \ (a_{-}\langle n | n' \rangle \ + \ \langle n | a_{-} | n' \rangle) \ = \
+  \sqrt{\frac{\hbar}{2m\omega}} \ (\sqrt{n}\langle n \ - \ 1 | n' \rangle \ + \ \sqrt{n'}\langle n | n' \ - \ 1 \rangle)$$
+  $$\Rightarrow \ \sqrt{\frac{\hbar}{2m\omega}} \ (\sqrt{n}\langle n \ - \ 1 | n' \rangle \ + \ \sqrt{n'}\langle n | n' \ - \ 1 \rangle) \ = \
+  \sqrt{\frac{\hbar}{2m\omega}} \ (\sqrt{n}\delta_{n \ - \ 1, \ n'} \ + \ \sqrt{n'}\delta_{n, \ n' \ - \ 1})$$
+  <br>
+  We follow a similar procedure to get the matrix elements of the momentum operator:
+  <br><br>
+  $$\langle n | p | n' \rangle \ = \ i\sqrt{\frac{\hbar m \omega}{2}} \ \langle n | (a_{+} \ - \ a_{-}) | n' \rangle \ = \ i\sqrt{\frac{\hbar m \omega}{2}} \ (\langle n | a_{+} | n' \rangle \ - \ \langle n | a_{-} | n' \rangle)
+   \ = \ i\sqrt{\frac{\hbar m \omega}{2}} \ (\sqrt{n}\delta_{n \ - \ 1, \ n'} \ - \ \sqrt{n'}\delta_{n, \ n' \ - \ 1})$$
+   <br>
+   Now, I'm not sure if this next part constitutes a "completely formal proof", but I think it should be Ok for the purposes of this question. From the matrix elements, we can see that
+   the non-zero values of both matrices will be directly "off" the main diagonal. We must calculate the Hamiltonian, which is given by:
+   <br><br>
+   $$H \ = \ \frac{1}{2m} P^2 \ + \ \frac{m\omega^2}{2} X^2$$
+   <br>
+   For the matrix $X$, from the general formula for matrix elements, we have:
+   <br><br>
+   $$X \ = \ \sqrt{\frac{\hbar}{2m\omega}} \ \begin{pmatrix}
+    0 & \sqrt{1} & 0 & 0 & \dots \\
+    \sqrt{1} & 0 & \sqrt{2} & 0 & \dots \\
+    0 & \sqrt{2} & 0 & \sqrt{3} & \dots \\
+    0 & 0 & \sqrt{3} & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots \\
+    \end{pmatrix}$$
+    $$X^2 \ = \ \frac{\hbar}{2m\omega} \ \begin{pmatrix}
+     0 & \sqrt{1} & 0 & 0 & \dots \\
+     \sqrt{1} & 0 & \sqrt{2} & 0 & \dots \\
+     0 & \sqrt{2} & 0 & \sqrt{3} & \dots \\
+     0 & 0 & \sqrt{3} & 0 \\
+     \vdots & \vdots & \vdots & \vdots & \ddots \\
+     \end{pmatrix} \begin{pmatrix}
+      0 & \sqrt{1} & 0 & 0 & \dots \\
+      \sqrt{1} & 0 & \sqrt{2} & 0 & \dots \\
+      0 & \sqrt{2} & 0 & \sqrt{3} & \dots \\
+      0 & 0 & \sqrt{3} & 0 \\
+      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      \end{pmatrix} \ = \
+      \frac{\hbar}{2m\omega}\begin{pmatrix}
+       1 & 0 & \sqrt{2} & 0 & \dots \\
+       0 & 3 & 0 & \sqrt{6} & \dots \\
+       \sqrt{2} & 0 & 5 & 0 & \dots \\
+       0 & \sqrt{6} & 0 & 7 \\
+       \vdots & \vdots & \vdots & \vdots & \ddots \\
+       \end{pmatrix}$$
+   <br>
+   Notice that for each sum on the diagonal, we are summing two consecutive numbers. Since this matrix is infinite in size, this sum of the two consecutive numbers
+   will continue on indefinitely. For the matrix $P$, also using the general matrix elements, we have:
+   <br><br>
+   $$P \ = \ i\sqrt{\frac{\hbar m \omega}{2}} \begin{pmatrix}
+    0 & -\sqrt{1} & 0 & 0 & \dots \\
+    \sqrt{1} & 0 & -\sqrt{2} & 0 & \dots \\
+    0 & \sqrt{2} & 0 & -\sqrt{3} & \dots \\
+    0 & 0 & \sqrt{3} & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots \\
+    \end{pmatrix}$$
+    $$P^2 \ = \ -\frac{\hbar m \omega}{2} \begin{pmatrix}
+     0 & -\sqrt{1} & 0 & 0 & \dots \\
+     \sqrt{1} & 0 & -\sqrt{2} & 0 & \dots \\
+     0 & \sqrt{2} & 0 & -\sqrt{3} & \dots \\
+     0 & 0 & \sqrt{3} & 0 \\
+     \vdots & \vdots & \vdots & \vdots & \ddots \\
+     \end{pmatrix}\begin{pmatrix}
+      0 & -\sqrt{1} & 0 & 0 & \dots \\
+      \sqrt{1} & 0 & -\sqrt{2} & 0 & \dots \\
+      0 & \sqrt{2} & 0 & -\sqrt{3} & \dots \\
+      0 & 0 & \sqrt{3} & 0 \\
+      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      \end{pmatrix} \ = \ \frac{\hbar m \omega}{2} \begin{pmatrix}
+       1 & 0 & -\sqrt{2} & 0 & \dots \\
+       0 & 3 & 0 & -\sqrt{6} & \dots \\
+       -\sqrt{2} & 0 & 5 & 0 & \dots \\
+       0 & -\sqrt{6} & 0 & 7 \\
+       \vdots & \vdots & \vdots & \vdots & \ddots \\
+       \end{pmatrix}$$
+   <br>
+   Now we have:
+   <br><br>
+   $$H \ = \ \frac{1}{2m} \Big( \frac{\hbar m \omega}{2} \Big) \ \begin{pmatrix}
+    1 & 0 & -\sqrt{2} & 0 & \dots \\
+    0 & 3 & 0 & -\sqrt{6} & \dots \\
+    -\sqrt{2} & 0 & 5 & 0 & \dots \\
+    0 & -\sqrt{6} & 0 & 7 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots \\
+    \end{pmatrix} \ + \ \frac{m\omega^2}{2} \Big( \frac{\hbar}{2m\omega} \Big) \ \begin{pmatrix}
+     1 & 0 & \sqrt{2} & 0 & \dots \\
+     0 & 3 & 0 & \sqrt{6} & \dots \\
+     \sqrt{2} & 0 & 5 & 0 & \dots \\
+     0 & \sqrt{6} & 0 & 7 \\
+     \vdots & \vdots & \vdots & \vdots & \ddots \\
+     \end{pmatrix} \ = \ \frac{\hbar \omega}{4} \ \begin{pmatrix}
+      2 & 0 & 0 & 0 & \dots \\
+      0 & 6 & 0 & 0 & \dots \\
+      0 & 0 & 10 & 0 & \dots \\
+      0 & 0 & 0 & 14 \\
+      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      \end{pmatrix}$$
+      $$\Rightarrow \ H \ = \ \begin{pmatrix}
+       \frac{\hbar \omega}{2} & 0 & 0 & 0 & \dots \\
+       0 & \frac{3\hbar \omega}{2} & 0 & 0 & \dots \\
+       0 & 0 & \frac{5\hbar \omega}{2} & 0 & \dots \\
+       0 & 0 & 0 & \frac{7\hbar \omega}{2} \\
+       \vdots & \vdots & \vdots & \vdots & \ddots \\
+       \end{pmatrix}$$
+       <br>
+       And so the general element of the diagonal of the Hamiltonian matrix will be:
+       <br><br>
+       $$H_{n} \ = \ \Big(n \ + \ \frac{1}{2} \Big) \hbar \omega$$
+       <br>
+       Which is exactly what is expected for the Hamiltonian for the quantum harmonic oscillator (since the diagonal is composed of the allowed energies), and each of the
+       different $n$-energy level states of the harmonic oscillator are orthogonal state vectors.
+  <br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
