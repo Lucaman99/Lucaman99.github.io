@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 4.1</h2>
+<p>
+We're breaking new ground! Chapter 4! Let's get to the solution. First of all, we have to work out the
+canonical commutation relations. First of all, let us find $[r_i, \ r_j]$, where $r_x$, $r_y$, and $r_z$ correspond
+to $x$, $y$, and $z$. Now we have:
+<br><br>
+$$[r_i, \ r_j] \ = \ r_i r_j \ - \ r_j r_i \ = \ 0$$
+<br>
+And for the components of momentum, we have:
+<br><br>
+$$[p_i, \ p_j] \ = \ p_i p_j \ - \ p_j p_i \ = \ 0$$
+<br>
+Now, for finding the commutator of position and momentum components. We have:
+<br><br>
+$$[r_i, \ p_j] \ = \ \frac{\hbar}{i} \ r_i \ \frac{\partial f}{\partial r_j} \ - \ \frac{\hbar}{i} \ \frac{\partial}{\partial r_j} \ (r_i f)
+ \ = \ \frac{\hbar}{i} \ r_i \ \frac{\partial f}{\partial r_j} \ - \ \frac{\hbar}{i} \ r_i \ \frac{\partial f}{\partial r_j} \ - \ \frac{\hbar}{i} \ f \ \frac{\partial r_i}{\partial r_j}
+  \ = \ - \ \frac{\hbar}{i} \ f \ \frac{\partial r_i}{\partial r_j} \ = \ i\hbar \ \frac{\partial r_i}{\partial r_j}$$
+<br>
+Ok, now, the derivative of some position componenet with respect to itself will be $1$, while the derivative of some position component with respect to another, different position component, will be $0$.
+This means that we have:
+<br><br>
+$$[r_i, \ p_j] \ = \ i\hbar \delta_{ij}$$
+<br>
+Now, when the we reverse the commutator, we will have $-i\hbar \delta_{ij}$ (this can be <b>very easily</b> checked, but I'm not going to go through the motions in this solution).
+The next part of this problem requires us to confirm Ehrenfest's Theorem for three-dimensions. We can do this fairly easily
+if we confirm the equation:
+<br><br>
+$$\frac{\text{d}}{\text{dt}} \ \langle \hat{Q} \rangle \ = \ \frac{i}{\hbar} \ \langle [\hat{H}, \ \hat{Q}] \rangle \ + \ \Big\langle \frac{\partial \hat{Q}}{\partial t} \Big\rangle$$
+<br>
+For three dimensions. This can easily be seen, as the above equation only depends on time and the expectation of operators that can easily be rewritten in three-dimensions. The
+expectation value of the derivative of the operator with respect to time is usually $0$, so in three-dimensions, nothing really changes:
+<br><br>
+$$\frac{\text{d}}{\text{dt}} \ \langle \hat{Q} \rangle \ = \ \frac{i}{\hbar} \ \langle [\hat{H}, \ \hat{Q}] \rangle$$
+<br>
+So we also have:
+<br><br>
+$$\frac{\text{d}}{\text{dt}} \ \langle \textbf{r} \rangle \ = \ \frac{i}{\hbar} \ \langle [\hat{H}, \ \textbf{r}] \rangle \ = \ \frac{i}{\hbar} \ \Big\langle \Big(\frac{-\hbar^2}{2m} \nabla^2 \ + \ V\Big)\textbf{r}f \ - \ \textbf{r}\Big(\frac{-\hbar^2}{2m} \nabla^2 \ + \ V\Big)f \Big\rangle
+ \ = \ \frac{i}{\hbar} \ \Big\langle \frac{-\hbar^2}{2m} \nabla\Big( \textbf{r}\nabla f \ + \ f\nabla\textbf{r} \Big) \ + \ V\textbf{r}f \ - \ \textbf{r}\frac{-\hbar^2}{2m} \nabla^2 f \ + \ \textbf{r}Vf \Big\rangle$$
+ $$\Rightarrow \ \frac{i}{\hbar} \ \Big\langle \frac{-\hbar^2}{2m} \Big( 2\nabla\textbf{r}\nabla f \ + \ f\nabla^2 \textbf{r} \ + \ \textbf{r}\nabla^2 f \Big) \ + \ V\textbf{r}f \ - \ \textbf{r}\frac{-\hbar^2}{2m} \nabla^2 f \ + \ \textbf{r}Vf \Big\rangle \ = \
+ \frac{i}{\hbar} \ \Big\langle \frac{-\hbar^2}{m} \nabla\textbf{r}\nabla f \Big\rangle \ = \ \frac{i}{\hbar} \ \Big\langle \frac{-\hbar^2}{m} \nabla \Big\rangle \ = \ \frac{1}{m} \langle \hat{p} \rangle$$
+ <br>
+ And for momentum, we have:
+ <br><br>
+ $$\frac{\text{d}}{\text{dt}} \ \langle \hat{p} \rangle \ = \ \frac{i}{\hbar} \ \langle [\hat{H}, \ \hat{p}] \rangle \ \Rightarrow \ [\hat{H}, \ \hat{p}] \ = \ \frac{\hbar}{i}\Big(-\frac{\hbar^2}{2m} \nabla^3 f \ + \ V \nabla f \Big) \ - \ \frac{\hbar}{i}\Big(-\frac{\hbar^2}{2m} \nabla^3 f \ + \ V \nabla f \ + \ f \nabla V \Big) \
+ \Rightarrow \ \frac{i}{\hbar} \ \langle [\hat{H}, \ \hat{p}]  \rangle \ = \ \langle -\nabla V \rangle$$
+<br>
+Finally, we are asked to check the uncertainty principle for three-dimensions. The general uncertainty principle tells us that:
+<br><br>
+$$\sigma_A^2 \sigma_B^2 \ \geq \ \Big(\frac{1}{2i} \ \langle [\hat{A}, \ \hat{B}] \rangle \Big)^2$$
+<br>
+From the previously proved canonical commutation relations, we have:
+<br><br>
+$$\sigma_{r_i}^2 \sigma_{p_j}^2 \ \geq \ \Big(\frac{1}{2i} \ \langle [r_i, \ p_j] \rangle \Big)^2 \ = \ \Big(\frac{1}{2i} \ \langle i\hbar \delta_{ij} \rangle \Big)^2 \ = \
+\frac{\hbar^2}{4}\delta_{ij}^2 \ \Rightarrow \ \sigma_{r_i} \sigma_{p_j} \ \geq \ \frac{\hbar}{2}\delta_{ij}$$
+  <br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
