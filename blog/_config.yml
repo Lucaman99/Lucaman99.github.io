@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   This blog will be dedicated to a lot of academic writing relating to topics such as mathematics,
   physics, coding, robotics, quantum computing, and more, along with some of my thoughts on life, philosophy, and
   any other cool experiences I have.
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "/test" # the subpath of your site, e.g. /blog
 url: "https://lucaman99.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jack_ceroni
 github_username: Lucaman99
