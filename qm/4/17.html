@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 4.17</h2>
+<p>
+This problem was super fun, I am now convinced that we should describe cosmological phenomenon using quantum mechanics (Griffiths, you have created a monster).
+This problem asks us to consider an earth-sun system as analogous to the previous problem of a hydrogen atom with an electron orbiting a proton. It first asks us what
+our new potential energy function should be. That's an easy one, it will just be the gravitational potential between two bodies:
+<br><br>
+$$U(r) \ = \ -\frac{GMm}{r}$$
+<br>
+If you want a derivation of this, just look it up, I won't be doing it in this solution because it is beside the point of the problem at hand. Moving right along, we are asked to
+find the "Bohr radius" of this earth-sun system. This is a bit more interesting. In the hydrogen atom example, it is demonstrated that the Bohr radius, $a$, is given by:
+<br><br>
+$$a \ = \ \frac{1}{kn} \ \Rightarrow \ \rho_0 \ = \ 2n \ = \ \frac{me^2}{2\pi\epsilon_0\hbar^2 k} \ \Rightarrow \ \frac{1}{kn} \ = \ \frac{1}{k\frac{me^2}{4\pi\epsilon_0\hbar^2 k}}$$
+<br>
+But remember that for the hydrogen atom:
+<br><br>
+$$V(r) \ = \ -\frac{e^2}{4\pi\epsilon_0 r}$$
+<br>
+So this means that:
+<br><br>
+$$\frac{1}{kn} \ = \ \frac{1}{k\frac{me^2}{4\pi\epsilon_0\hbar^2 k}} \ = \ -\frac{1}{\frac{m}{\hbar^2} \ V(r) r} \ = \ -\frac{\hbar^2}{m \ V(r) r}$$
+<br>
+We can then substitute in our gavitational potential and get:
+<br><br>
+$$a \ = \ \frac{\hbar^2}{GMm^2}$$
+<br>
+Cool, now we can move on to the "gravitational Bohr formula", where we attempt to find an expression for the quantum number $n$ of our system. We must do this by setting the classical
+energy of the system equal to the $E_n$ energy given in the hydrogen atom derivation. Classically, for our system, we will have:
+<br><br>
+$$E_{Tot} \ = \ K \ + \ V$$
+<br>
+Let's start with the kinetic energy. For a planet in orbit, the centripetal foce acting on the planet must be equal to the gravity (in order for the planet to remain in orbit). This means
+that we have:
+<br><br>
+$$\frac{mv^2}{r} \ = \ \frac{GMm}{r^2} \ \Rightarrow \ v \ = \ \sqrt{\frac{GM}{r}}$$
+<br>
+We already have our potential energy, so the total energy of this system will be:
+<br><br>
+$$E_{Tot} \ = \ K \ + \ V \ = \ \frac{1}{2}m \sqrt{\frac{GM}{r}}^2 \ - \ \frac{GMm}{r} \ = \ -\frac{GMm}{2r}$$
+<br>
+And for the hydrogen atom system we have:
+<br><br>
+$$E_n \ = \ -\Big[ \frac{m}{2\hbar^2} \ \Big( \frac{e^2}{4\pi\epsilon} \Big)^2 \Big] \frac{1}{n^2} \ = \ -\Big[ \frac{m}{2\hbar^2} \ \Big( -V(r) r \Big)^2 \Big] \frac{1}{n^2} \ \Rightarrow \
+-\Big[ \frac{m}{2\hbar^2} \ \Big( GMm \Big)^2 \Big] \frac{1}{n^2} \ = \ -\frac{G^2 M^2 m^3}{2\hbar^2 n^2}$$
+<br>
+Setting the two equal:
+<br><br>
+$$-\frac{G^2 M^2 m^3}{2\hbar^2 n^2} \ = \ -\frac{GMm}{2r} \ \Rightarrow \ \frac{1}{r} \ = \ \frac{G M m^2}{\hbar^2 n^2} \ = \ \frac{1}{an^2} \ \Rightarrow \ n \ = \ \sqrt{\frac{r}{a}}$$
+<br>
+Great, now all that's left is to find the enrgy released during a transition of the earth from its current energy level $n$ to $n \ - \ 1$. We know that:
+<br><br>
+$$E_{\gamma} \ = \ \Delta E \ = \ E_{i} \ - \ E_{f} \ = \ E_{1}\Big( \frac{1}{n_{i}^2} \ - \ \frac{1}{n_{f}^2} \Big)$$
+<br>
+For our system:
+<br><br>
+$$E_n \ = \ -\frac{G^2 M^2 m^3}{2\hbar^2 n^2} \ \Rightarrow \ E_1 \ = \ -\frac{G^2 M^2 m^3}{2\hbar^2} \ \Rightarrow \ E_{\gamma} \ = \ -\frac{G^2 M^2 m^3}{2\hbar^2} \Big( \frac{1}{n^2} \ - \ \frac{1}{(n \ - \ 1)^2} \Big)$$
+$$\Rightarrow \ -\frac{G^2 M^2 m^3}{2\hbar^2} \Big( \frac{(n \ - \ 1)^2 \ - \ n^2}{n^2(n \ - \ 1)^2} \Big) \ = \ -\frac{G^2 M^2 m^3}{2\hbar^2} \Big( \frac{n^2 \ - \ 2n \ + \ 1 \ - \ n^2}{n^2(n \ - \ 1)^2} \Big) \ \approx \
+-\frac{G^2 M^2 m^3}{2\hbar^2} \Big( -\frac{2n}{n^4} \Big) \ = \ -\frac{G^2 M^2 m^3}{2\hbar^2} \Big( -\frac{2}{n^3} \Big)$$
+$$\Rightarrow \ E_{\gamma} \ = \ \frac{G^2 M^2 m^3}{\hbar^2 n^3}$$
+<br>
+But we also know that:
+<br><br>
+$$n \ = \ \sqrt{\frac{r}{a}} \ \ \ \ \ \ \text{and} \ \ \ \ \ \ a \ = \ \frac{\hbar^2}{GMm^2}$$
+<br>
+So this means that:
+<br><br>
+$$E_{\gamma} \ = \ \frac{G^2 M^2 m^3}{\hbar^2 n^3} \ = \ \frac{G^2 M^2 m^3 a^{3/2}}{\hbar^2 r^{3/2}} \ = \ \frac{G^2 M^2 m^3 \big( \frac{\hbar^2}{GMm^2} \big)^{3/2}}{\hbar^2 r^{3/2}} \ = \ \frac{\hbar \sqrt{GM}}{r^{3/2}}$$
+<br>
+And for the wavelength of the photon (graviton, in this case) emitted, we have:
+<br><br>
+$$\frac{1}{\lambda} \ = \ R\Big( \frac{1}{n_{f}^2} \ - \ \frac{1}{n_{i}^2} \Big)$$
+$$R \ = \ \frac{m}{4\pi c \hbar^3} \ \Big( \frac{e^2}{4\pi\epsilon_0} \Big)^2 \ = \ \frac{m}{4\pi c \hbar^3} \ \Big( -V(r) r \Big)^2 \ = \ \frac{G^2M^2m^3}{4\pi c \hbar^3}$$
+<br>
+Just like before (except without the negative sign), we get:
+<br><br>
+$$\Big( \frac{1}{n_{f}^2} \ - \ \frac{1}{n_{i}^2} \Big) \ \approx \ \frac{2}{n^3}$$
+<br>
+And so:
+<br><br>
+$$\frac{1}{\lambda} \ = \ \frac{G^2M^2m^3}{2\pi c \hbar^3 n^3} \ \Rightarrow \ \lambda \ = \ \frac{2\pi c \hbar^3 n^3}{G^2M^2m^3}$$
+<br>
+And since (like before), we have:
+<br><br>
+$$n \ = \ \sqrt{\frac{rGMm^2}{\hbar^2}}$$
+<br>
+So we end up getting:
+<br><br>
+$$\lambda \ = \ \frac{2\pi c \hbar^3 n^3}{G^2M^2m^3} \ = \ \frac{2\pi c \hbar^3 \Big( \sqrt{\frac{rGMm^2}{\hbar^2}} \Big)^3}{G^2M^2m^3} \ = \ \frac{2\pi c \Big( \sqrt{rGM} \Big)^3}{G^2M^2} \ = \ \frac{2\pi c r^{3/2}}{\sqrt{GM}}$$
+<br>
+And since we asked to get the answer in light years, we can divide our wavelength by $60 \ \times \ 60 \ \times 24 \ \times \ 365 \ \times \ c \ = \ 31356000c$:
+<br><br>
+$$\lambda (\text{lightyears}) \ = \ \frac{\pi r^{3/2}}{15768000\sqrt{GM}}$$
+<br>
+Now, I seriously don't know what is wrong with me, but every time I plugged the values in this expression into a calculator, I got a different answer. I think I'm just super tired and I need to sleep.
+Anyways, I eventually checked PhysicsPages to make sure I wasn't losing my mind, and it turns out that this is the right expression, and it evaluates to $1$ lightyear. I was getting like 590 lightyears, and I don't know how or why.
+I guess my "entering values into calculator" skills could use some improvement....
+<br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
