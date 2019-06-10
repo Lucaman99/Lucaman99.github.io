@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 4.14</h2>
+<p>
+This problem was really fun (at this point, basically every problem is fun)! We are asked to find
+the most probable value of $r$ for the ground state of the hydrogen atom! Well, we know that the
+wavefunction for the ground state of the hydrogen atom is given as:
+<br><br>
+$$\psi_{100}(r, \ \theta, \ \phi) \ = \ \frac{1}{\sqrt{\pi a^3}}e^{-r/a} \ = \ R_{10}(r)Y^{0}_{0}(\theta, \ \phi) \ = \
+\frac{2}{\sqrt{a^3}} e^{-r/a} Y^{0}_{0}(\theta, \ \phi)$$
+<br>
+Now, it is evident that if we allow the values of $\theta$ and $\phi$ to be arbitrary, then we can say that $Y \ = \ 1$, and therefore say
+that the probability of finding the particle between $r$ and $r \ + \ \text{dr}$ is given as:
+<br><br>
+$$|R_{10}|^2 \ r^2 \ \text{dr} \ = \ \frac{4r^2}{a^3} e^{-2r/a} \ \text{dr}$$
+<br>
+Now, we are asked to find the <b>maximum</b> of this function (I started calculating the expectation value, and then I realized that I was being stupid).
+In order to find the most likely state, this function must be maximized. Well this is easy! All we have to do is take the derivative, and find when this function
+is equal to $0$ (this will correspond to either minima or maxima), however, in the case of this function, which clearly has an exponential decay factor that
+dominates the function much more than the $r^2$ factor, this point will correspond to a maxima. Anyways, let's take the derivative:
+<br><br>
+$$\frac{\text{d}|R|^2}{\text{dr}} \ = \ \frac{4}{a^3} \ \frac{\text{d}}{\text{dr}} \ r^2 e^{-2r/a} \ = \ 2r e^{-2r/a} \ - \ \frac{2r^2}{a} e^{-2r/a}$$
+<br>
+And let's set this to $0$ (remember that exponentials can never be $0$):
+<br><br>
+$$2r e^{-2r/a} \ - \ \frac{2r^2}{a} e^{-2r/a} \ = \ 0 \ \Rightarrow \ 2r \ - \ \frac{2r^2}{a} \ = \ 0 \ \Rightarrow \ 2r\Big(1 \ - \ \frac{r}{a} \Big) \ = \ 0$$
+<br>
+This means that either $r \ = \ 0$, which can't be the case (as Griffiths says in the textbook), and it doesn't make sense. This leaves the case of $r \ = \ a$,
+which does make A LOT of sense! Griffiths defined $a$ as the Bohr radius, which is the "radius" at which electrons in the ground state "orbit" around the nucleus.
+Of course it would make sense that the most probable $r$ of the electron is here!
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
