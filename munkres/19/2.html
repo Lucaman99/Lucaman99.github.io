@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 19 Problem 2</h2>
+<p>
+Now, we must prove that for a collection $A_{\alpha}$ of subsets of $X_{\alpha}$, where each $A_{\alpha}$ is a subspace of $X_{\alpha}$. We need to prove that
+$\prod_{\alpha \ \in \ J} \ A_{\alpha}$ is a subspace of $\prod_{\alpha \ \in \ J} \ X_{\alpha}$. Let us first define the subspace topology on each of the sets $A_{\alpha}$.
+We have:
+<br><br>
+$$T_{A_{\alpha}} \ = \ \{ A_{\alpha} \ \cap \ U_{\alpha} \ | \ U_{\alpha} \ \in \ T_{\alpha}\}$$
+<br>
+Where $T_{\alpha}$ is the topology on $X_{\alpha}$. This means that all sets of the form $A_{\alpha} \ \cap \ U_{\alpha}$ will be open in each $A_{\alpha}$. Ok, now we need to
+remember this in  the next part of the proof. For the box topology, we know that a basis element is of the form:
+<br><br>
+$$B \ = \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}$$
+<br>
+Where each $U_{\alpha}$ is open in each of their respective topological spaces, $X_{\alpha}$, and $B$ is a basis element for $\prod_{\alpha \ \in \ J} \ X_{\alpha}$.
+Now, if we want to form a basis for the topology on the set $\prod_{\alpha \ \in \ J} \ A_{\alpha}$ (the set we are trying to show has the subspace topology), then the basis elements will
+be of the form that we saw above, but will be products of $V_{\alpha}$, with each $V_{\alpha}$ open in $A_{\alpha}$. We hav elaready shown that in general:
+<br><br>
+$$V_{\alpha} \ = \ A_{\alpha} \ \cap \ U_{\alpha}$$
+<br>
+With $U_{\alpha}$ open in $X_{\alpha}$. We then have as a basis element for $\prod_{\alpha \ \in \ J} \ A_{\alpha}$:
+<br><br>
+$$B \ = \ \displaystyle\prod_{\alpha \ \in \ J} \ V_{\alpha} \ = \ B \ = \ \displaystyle\prod_{\alpha \ \in \ J} \ (A_{\alpha} \ \cap \ U_{\alpha}) \ = \
+\displaystyle\prod_{\alpha \ \in \ J} \ A_{\alpha} \ \cap \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}$$
+<br>
+And a union of basis elements is the general form of an open set:
+<br><br>
+$$U \ = \ \displaystyle\bigcup_{i} \ B^{i} \ = \ \displaystyle\bigcup_{i} \displaystyle\prod_{\alpha \ \in \ J} \ A_{\alpha} \ \cap \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}^{i} \ = \
+\displaystyle\prod_{\alpha \ \in \ J} \ A_{\alpha} \ \cap \ \displaystyle\bigcup_{i} \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}^{i}$$
+<br>
+But this is the general form of an open set within the subspace topology for $\prod_{\alpha \ \in \ J} \ A_{\alpha}$ in $\prod_{\alpha \ \in \ J} \ X_{\alpha}$, and we have just proved that all
+sets of this form are open in $\prod_{\alpha \ \in \ J} \ A_{\alpha}$, provided each $A_{\alpha}$ is a subspace of $X_{\alpha}$.
+<br><br>
+A similar argument applies for the product topology. We simply must consider the fact that a basis element in $\prod_{\alpha \ \in \ J} \ X_{\alpha}$ is given as:
+<br><br>
+$$B \ = \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}$$
+<br>
+Where, except for a finite number of indices, $U_{\alpha} \ = \ X_{\alpha}$. All we have to do is remember that if $A_{\alpha}$ has the subspace topology, then $A_{\alpha} \ \cap \ X_{\alpha}$
+is open in $A_{\alpha}$, as $X_{\alpha}$ is open in $X_{\alpha}$. This means, that if we stipulate that when we have surpassed our finite indices, we have $V_{\alpha} \ = \ A_{\alpha} \ \cap \ X_{\alpha} \ = \ A_{\alpha}$,
+then once we arrive at $U \ = \ \prod_{\alpha \ \in \ J} \ A_{\alpha} \ \cap \ \bigcup_{i} \ \prod_{\alpha \ \in \ J} \ U_{\alpha}^{i}$, each element of the form $\prod_{\alpha \ \in \ J} \ U_{\alpha}^{i}$ will be part of
+the basis for $\prod_{\alpha \ \in \ J} \ X_{\alpha}$ in the product topology.
+
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
