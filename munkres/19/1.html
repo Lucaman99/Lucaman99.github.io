@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 19 Problem 1</h2>
+<p>
+Ok, so we have to prove Theorem 19.2, which asks us to consider a collection of topological spaces indexed by $\alpha$, called $X_{\alpha}$. Now, each topological space
+has a basis given by $\beta_{\alpha}$. We need to show that the collection of all sets of the form:
+<br><br>
+$$\displaystyle\prod_{\alpha \ \in \ J} \ B_{\alpha}$$
+<br>
+Forms a basis for the box topology on $\prod_{a \ \in \ J} \ X_{\alpha}$, where $B_{\alpha} \ \in \ \beta_{\alpha}$. In addition, the collection of the same form
+for $B_{\alpha} \ \in \ \beta_{\alpha}$ for a finite number of $\alpha$, and $B_{\alpha} \ = \ X_{\alpha}$ will serve as a basis for the product topology on $\prod_{\alpha \ \in \
+ J} \ X_{\alpha}$. Let's start with the box topology. Let us pick some point $x_{\alpha}$, such that $x_{\alpha} \ \in \ B_{\alpha} \ \subset \ U_{\alpha}$. This means that some
+ element $\textbf{x} \ = \ (x_{\alpha})$, we will have:
+ <br><br>
+ $$(x_{\alpha}) \ \in \ \displaystyle\prod_{\alpha \ \in \ J} \ B_{\alpha} \ \subset \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}$$
+ <br>
+ Since each "factor" of the tuple $(x_{\alpha})$ is contained within its respective basis, which is contained within its respective open set. A similar argument applies for the
+ product topology. For each of our finite basis elements, we again have:
+ <br><br>
+  $$(x_{\alpha}) \ \in \ \displaystyle\prod_{\alpha \ \in \ J} \ B_{\alpha} \ \subset \ \displaystyle\prod_{\alpha \ \in \ J} \ U_{\alpha}$$
+ <br>
+ But this time, for non-finite indices, we have $B_{\alpha} \ = \ X_{\alpha}$ and $U_{\alpha} \ = \ X_{\alpha}$. It makes sense that $\beta_{\alpha}$ is a basis,
+ as for indices, except for the finite ones, we have $x_{\gamma} \ \in \ X_{\gamma} \ \subset \ X_{\gamma}$, which is the definition of a basis element $B_{\gamma} \ = \ X_{\gamma}$.
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
