@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 18 Problem 11</h2>
+<p>
+Ok, for this problem we have to prove that if a function is continuous, it is <b>continuous in each variable separately</b>.
+What this means is that for some continuous function defined as:
+<br><br>
+$$f: \ X \ \times \ Y \ \rightarrow \ Z$$
+<br>
+This function is continuous in each variable if for each $y_0 \ \in \ Y$, we have $h: X \ \rightarrow \ Z$ defined as
+$h(x) \ = \ F(x \ \times \ y_0)$ that is continuous. In addition, for each $x_0 \ \in \ X$, we have a function $k: Y \ \rightarrow \ Z$, defined as
+$k(y) \ = \ F(x_0 \ \times \ y)$.
+<br><br>
+Let's look at the function $h$ first. Two things are happening here. First, we take some general element of $X$, call it $x$. Our function $h$ is first mapping $x$ to
+$x \ \times \ y_0$, and then this is getting mapped to some element of $Z$. We can write this as two separate functions, called $h_1$ and $h_2$. We have:
+<br><br>
+$$h_1 : X \ \rightarrow \ X \ \times \ y_0$$
+$$h_2: X \ \times \ y_0 \ \rightarrow \ Z$$
+<br>
+Where $h_2$ is the same as $F$. For the first function, this is the conventional map to products. As you may recall, we proved in a previous theorem that for some function of the form $f : A \ \rightarrow \ X \ \times \ Y$,
+then the two "components" of $f$ must be continuous, meaning $f_1 : A \ \rightarrow \ X$ is continuous and $f_2 : A \ \rightarrow \ Y$ is continuous. For this function, we have:
+<br><br>
+$$h_{11} : X \ \rightarrow \ X$$
+$$h_{12} : X \ \rightarrow \ y_0$$
+<br>
+Both of these function are continuous, the first is the inclusion function from $X$ to itself. The second one is the constant function from $X$ to $y_0$. Both functions of
+this form are always continuous. Let's look at $h_2$ now. $X \ \times \ y_0$ is simply a domain restriction of the original domain of $F$, which is $X \ \times \ Y$.
+<br><br>
+Now, we assert that a domain restriction of a continuous function will still yield a continuous function. Let us have some general continuous function:
+<br><br>
+$$g : A \ \rightarrow \ B$$
+<br>
+We then restrict the
+domain to some subset of $A$, called $S$. Our function is now $g : S \ \rightarrow \ B$. We can map the subset $S$ to $A$, as this is just the inclusion mapping, which is known
+to be continuous. Our function with the domain restriction can then be written as:
+<br><br>
+$$i : S \ \rightarrow \ A \ \Rightarrow \ g : A \ \rightarrow \ B$$
+<br>
+This is the same thing as $(g \ \circ \ i)$.
+We know that both $i$ and $g$ are continuous, so then their composition is as well, making our domain-restircted function also continuous. We know that $F$ is continuous, so from this, we know that
+$h_2$ is also continuous. We now can say that our original function $h$ can be constructed in terms of continuous function $h_1$ and $h_2$ as:
+<br><br>
+$$h \ = \ (h_2 \ \circ \ h_1)$$
+<br>
+Which is a composition of continuous functions, therefore $h$ is continuous, and the function is continuous in each variable separately. The exact same process applies for proving
+this in the case of $k$.
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
