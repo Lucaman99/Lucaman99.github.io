@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 20 Problem 9</h2>
+<p>
+For this problem, we are asked to consider the Euclidean metric on $\mathbb{R}^n$. We start by demonstrating that for
+$\textbf{x}, \ \textbf{y}, \ \textbf{z} \ \in \ \mathbb{R}^n$, that:
+<br><br>
+$$\textbf{x} \ \cdot \ (\textbf{y} \ + \ \textbf{z}) \ = \ (\textbf{x} \ \cdot \ \textbf{y}) \ + \ (\textbf{x} \ \cdot \ \textbf{z})$$
+<br>
+This basically follows from writing out this relationship in a more suggestive way:
+<br><br>
+$$\textbf{x} \ \cdot \ (\textbf{y} \ + \ \textbf{z}) \ = \ \displaystyle\prod_{i} \ x_i \ \cdot \Big( \displaystyle\prod_{i} \ y_i \ + \ \displaystyle\prod_{i} \ z_i \Big)
+ \ = \ \displaystyle\prod_{i} \ x_i \ \cdot \Big( \displaystyle\prod_{i} \ (y_i \ + \ z_i) \Big)$$
+ <br>
+ By definition of the addition of $n$-tuples. Now, by definition of the dot product (outlined in the textbook), we have:
+ <br><br>
+ $$\displaystyle\prod_{i} \ x_i \ \cdot \Big( \displaystyle\prod_{i} \ (y_i \ + \ z_i) \Big) \ = \ \displaystyle\prod_{i} \ x_i \ (y_i \ + \ z_i) \ = \ \displaystyle\prod_{i} \ (x_i \ y_i \ + \ x_i \ z_i)
+  \ = \ \displaystyle\prod_{i} \ x_i \ y_i \ + \ \displaystyle\prod_{i} \ x_i \ z_i \ = \ (\textbf{x} \ \cdot \ \textbf{y}) \ + \ (\textbf{x} \ \cdot \ \textbf{z})$$
+ <br>
+ Next, we are tasked with demonstrating that $|\textbf{x} \ \cdot \ \textbf{y}| \ \leq \ ||\textbf{x}|| ||\textbf{y}||$. Where $||\textbf{x}|| \ = \ \sqrt{\big(\sum_i x_i^2\big)}$. Munkres actually gives us a hint!
+ He instructs us that for non-zero tuples, we let $a \ = \ 1/||\textbf{x}||$ and $b \ = \ 1/||\textbf{y}||$, then use the fact that $||a\textbf{x} \ \pm \ b\textbf{y}|| \ \geq \ 0$. This is obviously true, as the norm
+ (length) of a vector cannot be negative. The sum or difference of two tuples in $\mathbb{R}^n$ is still a tuple in $\mathbb{R}^n$, therefore its norm will be positive as well. We have:
+ <br><br>
+ $$||a\textbf{x} \ \pm \ b\textbf{y}|| \ \geq \ 0 \ \Rightarrow \ ||a\textbf{x} \ \pm \ b\textbf{y}|| \ = \ \biggr\lvert\biggr\lvert \ \frac{\textbf{x}}{||\textbf{x}||} \ \pm \ \frac{\textbf{y}}{||\textbf{y}||} \ \biggr\rvert\biggr\rvert \ \geq \ 0$$
+ <br>
+ Now, it was stipulated in the definition that:
+ <br><br>
+ $$c\textbf{x} \ = \ (cx_1, \ cx_2, \ ..., \ cx_n)$$
+ <br>
+ So that means that we have:
+ <br><br>
+ $$\frac{\textbf{x}}{||\textbf{x}||} \ = \ \Big(\frac{x_1}{||\textbf{x}||}, \ ..., \ \frac{x_n}{||\textbf{x}||}\Big)$$
+ $$\frac{\textbf{y}}{||\textbf{y}||} \ = \ \Big(\frac{y_1}{||\textbf{y}||}, \ ..., \ \frac{y_n}{||\textbf{y}||}\Big)$$
+ $$\frac{\textbf{x}}{||\textbf{x}||} \ \pm \ \frac{\textbf{y}}{||\textbf{y}||} \ = \ \Big(\frac{y_1}{||\textbf{y}||} \ \pm \ \frac{x_1}{||\textbf{x}||}, \ ..., \ \frac{y_n}{||\textbf{y}||} \ \pm \ \frac{x_n}{||\textbf{x}||}\Big)$$
+ <br>
+ So we can rewrite our previous statement:
+ <br><br>
+ $$\biggr\lvert\biggr\lvert \ \frac{\textbf{x}}{||\textbf{x}||} \ \pm \ \frac{\textbf{y}}{||\textbf{y}||} \ \biggr\rvert\biggr\rvert \ = \ \biggr\lvert\biggr\lvert \ \displaystyle\prod_{i} \ \Big( \frac{y_i}{||\textbf{y}||} \ \pm \ \frac{x_i}{||\textbf{x}||} \Big) \ \biggr\rvert\biggr\rvert$$
+ <br>
+ Recalling the definition of the norm:
+ <br><br>
+ $$\biggr\lvert\biggr\lvert \ \displaystyle\prod_{i} \ \Big( \frac{y_i}{||\textbf{y}||} \ \pm \ \frac{x_i}{||\textbf{x}||} \Big) \ \biggr\rvert\biggr\rvert \ = \ \sqrt{\displaystyle\sum_{i} \ \Big( \frac{y_i}{||\textbf{y}||} \ \pm \ \frac{x_i}{||\textbf{x}||} \Big)^2}$$
+ $$\Rightarrow \ \sqrt{\displaystyle\sum_{i} \ \Big( \frac{y_i}{||\textbf{y}||} \ \pm \ \frac{x_i}{||\textbf{x}||} \Big)^2} \ \geq \ 0 \ \Rightarrow \ \displaystyle\sum_{i} \ \Big( \frac{y_i}{||\textbf{y}||} \ \pm \ \frac{x_i}{||\textbf{x}||} \Big)^2 \ \geq \ 0$$
+ <br>
+ We then demonstrate that:
+ <br><br>
+ $$\Big( \frac{y_i}{||\textbf{y}||} \ \pm \ \frac{x_i}{||\textbf{x}||} \Big)^2 \ = \ \frac{y_i^2}{||\textbf{y}||^2} \ \pm \ \frac{2x_i y_i}{||x|| ||y||} \ + \ \frac{x_i^2}{||\textbf{x}||^2} \ = \ \frac{y_i^2}{\sum_i y_i^2} \ \pm \ \frac{2x_i y_i}{||x|| ||y||} \ + \ \frac{x_i^2}{\sum_{i} x_i^2}$$
+ $$\Rightarrow \displaystyle\sum_{i} \ \Big( \frac{y_i^2}{\sum_i y_i^2} \ \pm \ \frac{2x_i y_i}{||x|| ||y||} \ + \ \frac{x_i^2}{\sum_{i} x_i^2} \Big) \ = \ \frac{\sum_i y_i^2}{\sum_i y_i^2} \ \pm \ \displaystyle\sum_{i} \frac{2x_i y_i}{||x|| ||y||} \ + \ \frac{\sum_i x_i^2}{\sum_{i} x_i^2} \ = \ 2 \ \pm \ \displaystyle\sum_{i} \frac{2x_i y_i}{||x|| ||y||} \ \geq \ 0$$
+ $$\Rightarrow \ \mp \ \displaystyle\sum_{i} \frac{x_i y_i}{||x|| ||y||} \ \leq \ 1 \ \Rightarrow \ \mp \ \displaystyle\sum_{i} x_i y_i \ \leq \ ||x|| ||y|| \ = \ \mp \ (\textbf{x} \ \cdot \ \textbf{y}) \ \leq \ ||x|| ||y||$$
+ <br>
+ Notice that because we divided by a negative number, the inequuality sign was flipped. Now, $(\textbf{x} \ \cdot \ \textbf{y})$ can either be negative of positive, but since it is multiplied by $\mp 1$, this equation states that the number that is yielded from $(\textbf{x} \ \cdot \ \textbf{y})$ and its negative will be less than or equal to $||x|| ||y||$. It is necessarily true
+ that if the number that is positive (or zero, but this case is trivial, as ||x|| ||y|| is never negative), either $(\textbf{x} \ \cdot \ \textbf{y})$ or $-(\textbf{x} \ \cdot \ \textbf{y})$ is less than or equal to $||x|| ||y||$, then it is true that the negative number, again either $-(\textbf{x} \ \cdot \ \textbf{y})$ or $(\textbf{x} \ \cdot \ \textbf{y})$ will definitely be less than $||x|| ||y||$.
+ We can cover both cases by simply tacking absolute value signs on $(\textbf{x} \ \cdot \ \textbf{y})$, to ensure we are just dealing with positive numbers. Therefore, we have:
+ <br><br>
+ $$|\textbf{x} \ \cdot \ \textbf{y}| \ \leq \ ||x|| ||y||$$
+ <br>
+ Now, we have to show that:
+ <br><br>
+ $$||\textbf{x} \ + \ \textbf{y}|| \ \leq \ ||x|| \ + \ ||y||$$
+ <br>
+ Munkres gives us another hint, he tells us to compute $(\textbf{x} \ + \ \textbf{y}) \ \cdot \ (\textbf{x} \ + \ \textbf{y})$ and apply the relationship we just proved.
+ By the distributive relationship we proved in the first part of this question, we have:
+ <br><br>
+ $$(\textbf{x} \ + \ \textbf{y}) \ \cdot \ (\textbf{x} \ + \ \textbf{y}) \ = \ (\textbf{x} \ \cdot \ \textbf{x}) \ + \ 2(\textbf{x} \ \cdot \ \textbf{y}) \ + \ (\textbf{y} \ \cdot \ \textbf{y}) \ = \ ||\textbf{x}||^2 \ + \ 2(\textbf{x} \ \cdot \ \textbf{y}) \ + \ ||\textbf{y}||^2$$
+ <br>
+ It is also crucial to note that:
+ <br><br>
+ $$||\textbf{x} \ + \ \textbf{y}||^2 \ = \ \displaystyle\sum_{i} \ (x_i \ + \ y_i)^2 \ = \ \displaystyle\sum_{i} \ x_i^2 \ + \ \displaystyle\sum_{i} \ 2x_i y_i \ + \ \displaystyle\sum_{i} \ y_i^2 \ = \ ||\textbf{x}||^2 \ + \ 2(\textbf{x} \ \cdot \ \textbf{y}) \ + \ ||\textbf{y}||^2 \ = \ (\textbf{x} \ + \ \textbf{y}) \ \cdot \ (\textbf{x} \ + \ \textbf{y}) $$
+ <br>
+ Now, by the last relationship we proved, we can assert that if:
+ <br><br>
+  $$|\textbf{x} \ \cdot \ \textbf{y}| \ \leq \ ||x|| ||y||$$
+ <br>
+ Then:
+ <br><br>
+ $$||x||^2 \ + \ 2|\textbf{x} \ \cdot \ \textbf{y}| \ + \ ||y||^2 \ \leq \ ||x||^2 \ + \ 2||x|| ||y|| \ + \ ||y||^2$$
+ <br>
+ And this means that:
+ <br><br>
+ $$||\textbf{x}||^2 \ + \ 2(\textbf{x} \ \cdot \ \textbf{y}) \ + \ ||\textbf{y}||^2 \ \leq \ ||x||^2 \ + \ 2||x|| ||y|| \ + \ ||y||^2$$
+ <br>
+ As $|\textbf{x} \ \cdot \ \textbf{y}| \ \leq \ ||x|| ||y||$ is a stronger condition than $(\textbf{x} \ \cdot \ \textbf{y}) \ \leq \ ||x|| ||y||$. Now, from observation, we have:
+ <br><br>
+ $$|x||^2 \ + \ 2||x|| ||y|| \ + \ ||y||^2 \ = \ (||x|| \ + \ ||y||)^2$$
+ $$\Rightarrow \ ||\textbf{x}||^2 \ + \ 2(\textbf{x} \ \cdot \ \textbf{y}) \ + \ ||\textbf{y}||^2 \ = \ ||x \ + \ y||^2 \ \leq \ (||x|| \ + \ ||y||)^2$$
+ $$\Rightarrow \ ||x \ + \ y|| \ \leq \ ||x|| \ + \ ||y||$$
+ <br>
+ The final thing we must do in this question is prove that the mapping defined by $d(\textbf{x}, \ \textbf{y}) \ = \ ||\textbf{x} \ - \ \textbf{y}||$ is a metric. Obviously, $d(\textbf{x}, \ \textbf{y}) \ \geq \ 0$ with equality only occuring when $x \ = \ y$, from the definition of the norm (we square each of the numbers of the tuple and take the square root, which always yields a positive number, except when $x_i \ - \ y_i \ = \ 0$, for all $i$, which only occurs when $x_i \ = \ y_i$ for all $i$, implying that $\textbf{x} \ = \ \textbf{y}$). The second condition of the metric is also trivial, as switching $\textbf{x}$ and $\textbf{y}$ only serves to multiply $x_i \ - \ y_i$ by a factor of $-1$, but we then squae each of these expression, negating the negative sign. The final condition is the only non-trivial one. We must prove that:
+ <br><br>
+ $$d(\textbf{x}, \ \textbf{y}) \ + \ d(\textbf{y} , \ \textbf{z}) \ \geq \ d(\textbf{x}, \ \textbf{z}) \ \Rightarrow \ ||\textbf{x} \ - \ \textbf{y}|| \ + \ ||\textbf{y} \ - \ \textbf{z}|| \ \geq \ ||\textbf{x} \ - \ \textbf{z}||$$
+ <br>
+ I take it back, this proof is <b>almost</b> trivial. First, it is fairly evident that if $\textbf{x}, \ \textbf{y}, \ textbf{z}$ are tuples in $\mathbb{R}^n$, then sums and differences of these tuples will also be tuples in $\mathbb{R}^n$. This means that by the previous proof, we consider:
+ <br><br>
+ $$||(\textbf{x} \ - \ \textbf{y})|| \ + \ ||(\textbf{y} \ - \ \textbf{z})|| \ \geq \ ||(\textbf{x} \ - \ \textbf{y}) \ + \ (\textbf{y} \ - \ \textbf{z})|| \ = \ ||\textbf{x} \ - \ \textbf{z}||$$
+ <br>
+ There, we have proved that $d$ is a valid metric for $\mathbb{R}^n$!
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
