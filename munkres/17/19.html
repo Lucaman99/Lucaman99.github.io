@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw   ;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 17 Problem 19</h2>
+<p>
+We first define the boundary of some set $A$ contained in $X$ as:
+<br><br>
+$$\text{Bd} \ A \ = \ \bar{A} \ \cap \ \overline{X \ - \ A}$$
+<br>
+We need to show that $\text{Int} \ A \ \cap \ \text{Bd} \ A \ = \ \emptyset$. Let's expand this:
+<br><br>
+$$(\bar{A} \ \cap \ \overline{X \ - \ A}) \ \cap \ \text{Int} \ A \ = \ (\text{Int} \ A \ \cap \ \bar{A}) \ \cap \ (\text{Int} \ A \ \cap \ \overline{X \ - \ A}) \ = \ \text{Int} \ A \ \cap \  (\text{Int} \ A \ \cap \ \overline{X \ - \ A})$$
+<br>
+Now, a point $x$ will only be in $\overline{X \ - \ A}$ if each neighbourhood around $x$ intersects $X \ - \ A$. This means that no point $x$ in a neighbourhood that is completely contained in $A$ (does not intersect $X \ - \ A$) is contained in $\overline{X \ - \ A}$. But $\text{Int} \ A$ is defined
+to be the union of all open sets contained completely within $A$. As we have just shown, none of these open sets intersect $X \ - \ A$, therefore no point lying in one of these open sets (and therefore $\text{Int} \ A$) will be in $\overline{X \ - \ A}$, so the two sets are disjoint and we get:
+<br><br>
+$$\text{Int} \ A \ \cap \  (\text{Int} \ A \ \cap \ \overline{X \ - \ A}) \ = \ \text{Int} \ A \ \cap \ \emptyset \ = \ \emptyset$$
+<br>
+We now have to show that $\bar{A} \ = \ \text{Int} \ A \ \cup \ \text{Bd} \ A$. We have:
+<br><br>
+$$\text{Int} \ A \ \cup \ \text{Bd} \ A \ = \ \text{Int} \ A \ \cup \ (\bar{A} \ \cap \ \overline{X \ - \ A}) \ = \ (\text{Int} \ A \ \cup \ \bar{A}) \ \cap \ (\text{Int} \ A \ \cup \ \overline{X \ - \ A}) \ = \ \bar{A} \ \cap \ (\text{Int} \ A \ \cup \ \overline{X \ - \ A})$$
+<br>
+Now pick some $x \ \in \ \bar{A}$. We know that every neighbourhood of $x$ will intersect $A$. This means that a neighbourhood of $x$ will either be completely contained within $A$, which means this neighbourhood is in $\text{Int} \ A$, or the neighbourhood intersects $A$, but is not completely contained within it.
+This means that this neighbourhood of $x$ will also intersect $X \ - \ A$, therefore $x$ is in $\overline{X \ - \ A}$. We then have $\bar{A} \ = \ \text{Int} \ A \ \cup \ \overline{X \ - \ A}$. This means that:
+<br><br>
+$$\text{Int} \ A \ \cup \ \text{Bd} \ A \ = \ \bar{A} \ \cap \ (\text{Int} \ A \ \cup \ \overline{X \ - \ A}) \ = \ \bar{A} \ \cap \ \bar{A} \ = \ \bar{A}$$
+<br>
+Next, we are asked to show that $\text{Bd} \ A \ = \ \emptyset$ if and only if $A$ is both open and closed. Let $\text{Bd} \ A \ = \ \emptyset$. We then have:
+<br><br>
+$$\bar{A} \ \cap \ \overline{X \ - \ A} \ = \ \emptyset$$
+<br>
+This means that the two set are disjoint. But we know that $A \ \subset \ \bar{A}$ and $X \ - \ A \ \subset \ \overline{X \ - \ A}$. This means that if either of these sets were to contain any more elements
+than simply $\bar{A} \ = \ A$ and $X \ - \ A \ = \ \overline{X \ - \ A}$, the sets will intersect at some point. Now, for any set $B$, we have $B \ = \ \bar{B}$ if and only if $B$ is closed, therefore we have
+$A$ is closed, and $X \ - \ A$ is closed. If $X \ - \ A$ is closed, then $A$ is open, therefore $A$ is both open and closed.
+<br><br>
+Now let $A$ be open and closed. This means $X \ - \ A$ is closed. This then means that the closures of both $A$ and $X \ - \ A$ is simply equal to itself. We then have:
+<br><br>
+$$\text{Bd} \ A \ = \ A \ \cap \ (X \ - \ A) \ = \ \emptyset$$
+<br>
+Now, we need to show that $U$ is open if and only if $\text{Bd} \ = \ \bar{U} \ - \ U$. Let $U$ be open. We have:
+<br><br>
+$$\text{Bd} \ U \ = \ \bar{U} \ \cap \ \overline{X \ - \ U}$$
+<br>
+But $X \ - \ U$ is closed, so $\overline{X \ - \ U} \ = \ X \ - \ U$, and we have:
+<br><br>
+$$\text{Bd} \ U \ = \ \bar{U} \ \cap \ (X \ - \ U) \ = \ (\bar{U} \ \cap \ X) \ - \ (\bar{U} \ \cap \ U) \ = \ \bar{U} \ - \ U$$
+<br>
+Now let $\text{Bd} \ = \ \bar{U} \ - \ U$. We know that $\bar{A} \ = \ \text{Int} \ A \ \cup \ \text{Bd} \ A$. Since $\text{Int} \ A \ \cap \ \text{Bd} \ A \ = \ \emptyset$, we can say that:
+<br><br>
+$$\bar{A} \ = \ \text{Int} \ A \ \cup \ \text{Bd} \ A \ \Rightarrow \ \text{Bd} \ A \ = \ \bar{A} \ - \ \text{Int} \ A \ \Rightarrow \ \bar{U} \ - \ \text{Int} \ U \ = \ \bar{U} \ - \ U$$
+<br>
+Now, we know that $\text{Int} \ U \ \subset \ \bar{U}$ and we also know that $U \ \subset \ \bar{U}$. This means that:
+<br><br>
+$$\bar{U} \ - \ \text{Int} \ U \ = \ \bar{U} \ - \ U \ \Rightarrow \ \text{Int} \ U \ = \ U$$
+<br>
+This is only true when $U$ is open, therefore we have completed the proof.
+<br><br>
+We are finally asked to consider, when $U$ is open, if the relationship holds: $U \ = \ \text{Int}(\bar{U}). This is not necessarily true, as there could be some open set that lies $\bar{U}$ that does not
+lie in $U$. I can't think of an example of this right now, but I'll update this solution once I do.
+</p>
+</div>
+</center>
+</body>
+</html>
