@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw   ;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 17 Problem 13</h2>
+<p>
+This solution will be pretty short, and I'm not sure if I proved the converse correctly (let me know if I didn't!). We are asked to show that some topological space $X$ is Hausdorff if and only if its diagonal, defined by $\Delta \ = \ \{x \ \times \ x \ | \ x \ \in \ X\}$ is closed in $X \ \times \ X$.
+<br><br>
+Let's start by letting $X$ be Hausdorff. This means that for arbitrary $x, \ y \ \in \ X$, where $x \ \neq \ y$, there are $U, \ V$, with $x \ \in \ U$ and $y \ \in \ V$ such that $U \ \cap \ V \ = \ \emptyset$.
+This means that we can construct open set in the product topology in the form $U \ \times \ V$, containing each pair of points $x \ \times \ y$ such that $x \ \neq \ y$. We will then set:
+<br><br>
+$$A \ = \ \bigcup_{i} \ (U \ \times \ V)_{i}$$
+<br>
+As the union of all open sets containing pairs of points that are not equal to each other. We are guaranteed this consturction exists, as we know that disjoint neighbourhoods of $x$ and $y$ exist. We can then assert that $A$ is open
+in $X \ \times \ X$ (which it is, by the definition of a topology). We then take $(X \ \times \ X) \ - \ A \ = \ \Delta$, therefore $\Delta$ is the complement of an open set, and thus is closed.
+<br><br>
+To prove the converse, let us assert that $\Delta \ = \ \{x \ \times \ x \ | \ x \ \in \ X\}$ is closed. This means that $X \ \times \ X \ - \ \Delta$ is open, and is a set $A$ of the form:
+<br><br>
+$$A \ = \ \{x \ \times \ y \ | \ x, \ y \ \in \ X, \ x\ \neq \ y\}$$
+<br>
+We can then pick some $x \ \times \ y \ \in \ A$. There will be some basis element around $x \ \times \ y$, such that $x \ \times \ y \ \in \ U \ \times \ V \ \subset \ A$. Since
+the basis element is in $A$, it is composed soleley of $x, \ y$ pairs such that $x \ \neq \ y$. This means that $U$ and $V$ must be disjoint, with $x \ \in \ U$ and $y \ \in \ V$, therefore the space is Hausdorff.
+</p>
+</div>
+</center>
+</body>
+</html>
