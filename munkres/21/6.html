@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw   ;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 21 Problem 6</h2>
+<p>
+This is one of the cases where I'm not entirely sure if my solution is correct. I'm going to post it anyways, and if anyone reading this notices a mistake, please feel free to
+send me an email informing me of my stupidity (tell me something I don't know!). We are asked to consider the collection of functions $f_{n} : [0, \ 1] \ \rightarrow \ \mathbb{R}$.
+defined by the equation $f_n(x) \ = \ x^n$. We first must show that the sequence $(f_n(x))$ converges for each $x \ \in \ [0, \ 1]$.
+<br><br>
+Let's start off with the easy cases, where $x \ = \ 0$ and $x \ = \ 1$. Evidently, these sequences will just converge to themselves. In fact, when proving convergence formally, we can take
+$N$ to be anything we want, and each $x_n$ for $n \ > \ N$ will lie in all neighbourhoods of either $1$ or $0$. Now, let us prove the more difficult cases, which are when $x \ \in (0, \ 1)$.
+<br><br>
+In order to prove that the sequence $x^n$ converges to some value $a$ for any $x$ in this interval, we need to pick an $N$ such that for $n \ > \ N$, all $x_n$ are in all neighbourhoods around $a$.
+I'm going to take a guess and venture to say that each $x$ in this interval will converge to $0$. I mean, it seems kind of evident, as each number is between $0$ and $1$, so with each exponenet increase,
+the number will get smaller and smaller, approaching $0$. But we still need to prove this! Let $a \ = \ 0$. Since we get the topology on $[0, \ 1]$ by considering it as a subspace of $\mathbb{R}$, open
+sets of $[0, \ 1]$ will be of the form:
+<br><br>
+$$U_{S} \ = \ [0, \ 1] \ \cap \ U_{\mathbb{R}}$$
+<br>
+This means that an open set surrounding $0$ will be of the form:
+<br><br>
+$$U_{S} \ = \ (-\epsilon_{1}, \ \epsilon_{2}) \ \cap \ [0, \ 1] \ = \ [0, \ \epsilon)$$
+<br>
+So we have to choose our $N$ such that:
+<br><br>
+ $$x^{N} \ < \ \epsilon \ \Rightarrow \ N \log x \ < \ \log \epsilon$$
+<br>
+And since $\log x < 0$, as $x \ \in \ (0, \ 1)$, we have:
+<br><br>
+$$N \ > \ \frac{\log \epsilon}{\log x}$$
+<br>
+Great, this means that $N$ isn't bounded above, so all $n \ > \ N$ will be in our open set, for any value of $x$ in our interval! If we try to prove that these sequences converge to a value other than $0$, we find that
+the conditions for $N$ are bounded below and above, meaning that the value of $n$ is snadwiched between two values, and all $n \ > \ N$ are not necessarily contained within the open set.
+<br><br>
+We are now asked to show that $(f_n)$ does not converge uniformly. I'm not done this part of the proof yet (will be up when complete). Really sorry about that!
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
