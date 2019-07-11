@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 4.33</h2>
+<p>
+We are first asked to construct the Hamiltonian matrix for the system in question. This is straightforward, as Griffiths tells us that for an electron at (transational) rest in a magentic field,
+the Hamiltonian is of the form:
+<br><br>
+$$H \ = \ -\gamma \textbf{B} \ \cdot \ \textbf{S}$$
+<br>
+This means that for $\textbf{B} \ = \ B_0 \cos(\omega t)\hat{k}$, we have:
+<br><br>
+$$H \ = \ -\gamma B_0 \cos(\omega t)\hat{k} \ \cdot \ \textbf{S} \ = \ -\gamma B_0 \cos(\omega t) \textbf{S}_z \ = \ -\frac{\gamma B_0 \cos(\omega t) \hbar}{2} \ \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+<br>
+Next, we are asked to find the state of the particle, $\chi(t)$ if we are given that $\chi(0) \ = \ \chi^{(x)}_{+}$, where $\chi^{(x)}_{+}$ is the spin-up basis spinor when spin is measured with respect to the
+$x$-axis. In order to find $\chi(t)$, let us recall that the Schrödinger equation tells us:
+<br><br>
+$$i\hbar \frac{\partial \chi}{\partial t} \ = \ \hat{H} \chi$$
+<br>
+We can express $\chi$ in terms of basis spinors:
+<br><br>
+$$\chi \ = \ a\chi_{+} \ + \ b\chi_{-}$$
+<br>
+Thus, we have:
+<br><br>
+$$i\hbar \frac{\partial}{\partial t} \ (a\chi_{+} \ + \ b\chi_{-}) \ = \ i\hbar \Big(\frac{\partial}{\partial t} \ a\chi_{+} \ + \ \frac{\partial}{\partial t} \ b\chi_{-} \Big) \ = \
+\hat{H} (a\chi_{+} \ + \ b\chi_{-}) \ = \ \hat{H} a\chi_{+} \ + \ \hat{H} b\chi_{-}$$
+$$\Rightarrow \ \hat{H} a\chi_{+} \ + \ \hat{H} b\chi_{-} \ = \ -\frac{\gamma B_0 \cos(\omega t) \hbar}{2} \Big( a\chi_{+} \ - \ b\chi_{-} \Big)$$
+$$\Rightarrow \ i\hbar \begin{pmatrix} \frac{\partial a}{\partial t} \\ \frac{\partial b}{\partial t} \end{pmatrix} \ = \ -\frac{\gamma B_0 \cos(\omega t) \hbar}{2} \begin{pmatrix} a \\ -b \end{pmatrix}$$
+<br>
+So this means that we have two differential equations (as the basis spinors are linearly independent):
+<br><br>
+$$\Rightarrow \ i\hbar \frac{\partial a}{\partial t} \ = \ -\frac{\gamma B_0 \cos(\omega t) \hbar}{2} a \ \Rightarrow \ \displaystyle\int \ \frac{1}{a} \ \text{d}a \ = \ \displaystyle\int \ \frac{i\gamma B_0}{2} \ \cos(\omega t) \text{d}t \ \Rightarrow \ \ln(a) \ + \ A \ = \ \frac{i\gamma B_0}{2\omega} \sin(\omega t) \ + \ C \ \Rightarrow \ a(t) \ = \ Ee^{\frac{i\gamma B_0}{2\omega} \sin(\omega t)}$$
+$$\Rightarrow \ i\hbar \frac{\partial b}{\partial t} \ = \ \frac{\gamma B_0 \cos(\omega t) \hbar}{2} b \ \Rightarrow \ \displaystyle\int \ \frac{1}{b} \ \text{d}b \ = \ \displaystyle\int \ -\frac{i\gamma B_0}{2} \ \cos(\omega t) \text{d}t \ \Rightarrow \ \ln(b) \ + \ A \ = \ -\frac{i\gamma B_0}{2\omega} \sin(\omega t) \ + \ C \ \Rightarrow \ b(t) \ = \ Fe^{-\frac{i\gamma B_0}{2\omega} \sin(\omega t)}$$
+<br>
+So this means that we have:
+<br><br>
+$$\chi(t) \ = \ \begin{pmatrix} Ee^{\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \\ Fe^{-\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \end{pmatrix}$$
+<br>
+We determine the coefficients $E$ and $F$ by the initial condition that:
+<br><br>
+$$\chi(0) \ = \ \chi_{+}^{(x)} \ = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \ = \ \begin{pmatrix} Ee^{\frac{i\gamma B_0}{2\omega} \sin(\omega (0))} \\ Fe^{-\frac{i\gamma B_0}{2\omega} \sin(\omega (0))} \end{pmatrix} \ = \ \begin{pmatrix} E \\ F \end{pmatrix}$$
+<br>
+So $E \ = \ \frac{1}{\sqrt{2}}$ and $F \ = \ \frac{1}{\sqrt{2}}$, and we have:
+<br><br>
+$$\chi(t) \ = \ \begin{pmatrix} \frac{1}{\sqrt{2}}e^{\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \\ \frac{1}{\sqrt{2}}e^{-\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \end{pmatrix}$$
+<br>
+To find the probability of getting $\hbar/2$ when measuring $\textbf{S}_x$, we simply have to find the number when we take the inner product of $\chi(t)$ with $\chi^{(x)}_{-}$, which has eigenvalue $\hbar/2$ (sort of like a scalar projection onto the basis vector that corresponds to the eigenvalue which we want to find the probability of measuring):
+<br><br>
+$$P \ = \ \langle \chi^{(x)}_{-} | \chi(t) \rangle \ = \ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{pmatrix} \ \cdot \ \begin{pmatrix} \frac{1}{\sqrt{2}}e^{\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \\ \frac{1}{\sqrt{2}}e^{-\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \end{pmatrix} \ = \ \frac{1}{2} \ \Big( e^{\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \ + \ e^{-\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \Big)$$
+<br>
+Using Euler's formula, and the fact that $\cos(\theta) \ = \ -\cos(\theta)$ and $\sin(-\theta) \ = \ -\sin(\theta)$:
+<br><br>
+$$\frac{1}{2} \ \Big( e^{\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \ + \ e^{-\frac{i\gamma B_0}{2\omega} \sin(\omega t)} \Big) \ = \ i \sin \Big( \frac{\gamma B_0}{2 \omega} \ \sin(\omega t) \Big)$$
+<br>
+So, to find the probability, we simple find the value of $|P|^2$, which gives us:
+<br><br>
+$$|P|^2 \ = \ \sin^{2} \Big( \frac{\gamma B_0}{2 \omega} \ \sin(\omega t) \Big)$$
+<br>
+Finally, we are asked the minimum field $B_0$ required to completely flip our particle from its initial state of $\chi^{(x)}_{+}$ to $\chi^{(x)}_{-}$. Well, in order for this to happen with completely, the probability of the particle being in state $\chi^{(x)}_{-}$ has to be equal to $1$ at some time $t$ (the particle won't remain in this state as the magnetic field is oscillating and the probability evolves with time).
+This means that:
+<br><br>
+$$\sin^{2} \Big( \frac{\gamma B_0}{2 \omega} \ \sin(\omega t) \Big) \ = \ 1 \ \Rightarrow \ \sin \Big( \frac{\gamma B_0}{2 \omega} \ \sin(\omega t) \Big) \ = \ \pm 1$$
+<br>
+Well, the lowest value of $\frac{\gamma B_0}{2 \omega} \ \sin(\omega t)$ where this would occur would be when $\frac{\gamma B_0}{2 \omega} \ \sin(\omega t) \ = \ \frac{\pi}{2}$. Now, $\sin(\omega t)$ will constantly be oscillating back and forth between $-1$ and $1$, so it would make sense for us to choose the highest possible value of $\sin (\omega t)$, therefore getting the lowest possible value of $\frac{\gamma B_0}{2 \omega}$ and therefore $B_0$ (we're going to discard negative numbers, as when we are talking about the strength of a field, denoted as $B_0$, we think about it as some positive magnitude). This means that we set $\sin(\omega t) \ = \ 1$, meaning that:
+<br><br>
+$$\frac{\gamma B_0}{2 \omega} \ = \ \frac{\pi}{2} \ \Rightarrow \ B_0 (\text{minimal}) \ = \ \frac{\pi \omega}{\gamma}$$
+<br>
+  <br><br><br><br>
+</p>
+
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
