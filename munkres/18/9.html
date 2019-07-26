@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw   ;text-align:left">
+    <br><br>
+<h2>Munkres Introduction to Topology: Section 21 Problem 6</h2>
+<p>
+  Starting with part A, we start by defining some family of closed sets $\{A_\alpha\}$, along with:
+  <br><br>
+  $$X \ = \ \bigcup_{\alpha} \ A_{\alpha}$$
+  <br>
+  As well as some function $f : X \ \rightarrow \ Y$, where $Y$ is an
+  arbitrary topological space. We have to prove that if the function restrcited to the domain of each $A_{\alpha}$, denoted as $f|A_{\alpha}$ is continuous, then the general function $f$ will also be
+  continuous if the family of sets is of finite order. We can see this fairly easily. Let $V$ be closed in $Y$. We show that $f^{-1}(V)$ is closed in $X$:
+  <br><br>
+  $$f^{-1}(V) \ = \ f^{-1}(V) \ \cap \ X \ = \ f^{-1}(V) \ \cap \ \bigcup_{\alpha} \ A_{\alpha} \ = \ \bigcup_{\alpha} \ f^{-1}(V) \ \cap \ A_{\alpha} \ = \ \bigcup_{\alpha} \ f|A_{\alpha}^{-1}(V)$$
+  <br>
+  But we already know that $f|A_{\alpha}^{-1}(V)$ is closed in $A_{\alpha}$, and therefore $X$, and so if the family is finite, then we have $f^{-1}(V)$ equal to a finite union of closed sets in $X$, which is also closed. Next, we have to give an
+  example of a family of sets $\{A_{\alpha}\}$ that is countable, but $f$ is not necessarily continuous. Let us define our closed sets with the standard topology on $\mathbb{R}$. The general element of $\{A_{\alpha}\}$ will be defined as:
+  <br><br>
+  $$A_0 \ = \ \{1\}$$
+  $$A_{\alpha} \ = \ [-1, \ 1 \ - \ \frac{1}{\alpha}] \ \Rightarrow \ \alpha \ \in \ \mathbb{Z}^{+}$$
+  <br>
+  When we take the union of all of these closed sets, we get $[-1, \ 1]$. Now, let $f^{-1}(W) \ = \ [0, \ 1)$ for closed $W$ in $Y$. This set is not closed
+  in the subspace topology on $[-1, \ 1]$. We will now show that even though this is the case, $(f|A_{\alpha})^{-1}(W)$ is closed in the union of all $A_{\alpha}$ (which we will call $X$):
+  <br><br>
+  $$A_{0} \ \cap \ f^{-1}(W) \ = \ \{1\} \ \cap \ [0, \ 1) \ = \ \emptyset$$
+  $$A_{\alpha} \ \cap \ f^{-1}(W) \ = \ [-1, \ 1 \ - \ \frac{1}{\alpha}] \ \cap \ [0, \ 1) \ = \ [0, \ 1 \ - \ \frac{1}{\alpha}]$$
+  <br>
+  All of these sets are closed in $[-1, \ 1]$. Finally, we have to demonstrate that if the family of sets $\{A_{\alpha}\}$ is locally finite, then $f$ is continuous. Since we know that
+  each $(f|A_{\alpha})$ is continuous, then $(f|(A_{\alpha} \ \cap \ U_{x}))$ is also continuous (we proved earlier that domain restrictions of continuous functions are also continuous) where $U_x$ is a neighbourhood around some point $x$ that intersects finite $A_{\alpha}$ (locally finite).
+  We then know that for $W$ closed in $Y$:
+  <br><br>
+  $$(f|(A_{\alpha} \ \cap \ U_{x}))^{-1}(W) \ = \ f^{-1}(W) \ \cap \ A_{\alpha} \ \cap \ U_{x} \ = \ (f|U_x)^{-1}(W) \ \cap \ A_{\alpha}$$
+  <br>
+  But since $U_x$ only intersects finite $A_{\alpha}$, if we take the union of all sets of this form across $\alpha$, we get:
+  <br><br>
+  $$\bigcup_{\alpha} \ \Big( (f|U_x)^{-1}(W) \ \cap \ A_{\alpha} \Big) \ = \ (f|U_x)^{-1}(W) \ \cap \ \bigcup_{\alpha_1}^{\alpha_n} \ A_{\alpha} \ = \ (f|U_x)^{-1}(W) \ = \ \bigcup_{\alpha_1}^{\alpha_n} \ (f|(A_{\alpha} \ \cap \ U_{x}))^{-1}(W)$$
+  <br>
+  And since each $(f|(A_{\alpha} \ \cap \ U_{x}))^{-1}(W)$ is closed in $A_{\alpha} \ \cap \ U_{x}$ and therefore in $U_x$ (definition of the subspace topology), we have $(f|U_x)^{-1}(W)$ equal to a finite union of closed sets, which is closed in $U_x$. This means
+  that $f|U_x$ is continuous. Now, let us choose some open set $V$ in $Y$. Since we have an open set $U_x$ associated with each point in $X$, we can say:
+  <br><br>
+  $$f^{-1}(V) \ = \ f^{-1}(V) \ \cap \ X \ = \ f^{-1}(V) \ \cap \ \bigcup_{x} \ U_x \ = \ \bigcup_{x} \ (f|U_x)^{-1}(V)$$
+  <br>
+  And so we have $f^{-1}(V)$ equal to a union of open sets of $U_x$, which are by extension open in $X$, therefore $f$ is in fact continuous.
+
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
