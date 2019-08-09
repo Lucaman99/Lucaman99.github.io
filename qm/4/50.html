@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 4.50</h2>
+<p>
+<i>I am literally going to write a blog post on how notation in this entire section of the textbook (especially with regard to this problem and problem 4.30) could be DRASTICALLY improved.
+  In my opinion, Griffiths uses super sloppy notation here, and muddles ideas by trying to over-simplify concepts (for instance, using the "dot product" of spin matrices rather than introducing the tensor product).
+  This solution will assume the reader is familiar with tensor products, and will attack the problem in a more formal manner. Stay tuned for the blog post!</i>
+  <br><br>
+This problem is a fairly natural extension of the stuff that we already found in 4.30. We are asked to prove that:
+<br><br>
+$$\langle \ S^{(1)}_{a} \ S^{(2)}_{b} \ \rangle \ = \ -\frac{\hbar^2}{4} \ \cos \theta$$
+<br>
+Where we know that our system is in the singlet configuration, $S^{(1)}_{a}$ is the componenet of the first particle's spin along the direction $\hat{a}$, and $S^{(2)}_{b}$ is the componenet of
+the second particle's spin along the direction $\hat{b}$. Let's start by recalling the definition of the singlet configuration for two spin-$1/2$ particles (this occurs when net spin of the two particle system
+is equal to $0$):
+<br><br>
+$$|00\rangle \ = \ \frac{|\uparrow \downarrow\rangle \ - \ |\downarrow \uparrow \rangle}{\sqrt{2}}$$
+<br>
+The two zeros in $|00\rangle$ represent $s \ = \ 0$, and therefore $m \ = \ 0$ as well. This means that we have:
+<br><br>
+$$\langle \ S^{(1)}_{a} \ S^{(2)}_{b} \ \rangle \ = \ \langle 00 | \ S^{(1)}_{a} \ S^{(2)}_{b} \ | 00 \rangle \ = \ \frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \
+S^{(1)}_{a} \ S^{(2)}_{b} \ (| \uparrow \downarrow \rangle \ - \ | \downarrow \uparrow \rangle)$$
+<br>
+Now, in order to measure the observable scalar value of $S^{(1)}_{a} \ S^{(2)}_{b}$, we need to use the operator $\textbf{S}_{a} \  \ \textbf{S}_{b}$, as if we have some state vector representing two particle, therefore
+of the form $|\psi \phi \rangle \ = \ |\psi\rangle \ \otimes \ |\phi\rangle$, then we have:
+<br><br>
+$$\langle \ \textbf{S}_{a} \ \otimes \ \textbf{S}_{b} \ \rangle \ = \ \langle \psi \phi | \ \textbf{S}_{a} \ \otimes \ \textbf{S}_{b} \ | \psi \phi \rangle
+ \ = \ (\langle \psi | \ \otimes \ \langle \phi |) \ \textbf{S}_{a} \ \otimes \ \textbf{S}_{b} \ (| \psi \rangle \ \otimes \ | \phi \rangle) \ = \
+ \langle \psi | \ \textbf{S}_{a} \ | \psi \rangle \ \otimes \ \langle \phi | \ \textbf{S}_{b} \ | \phi \rangle$$
+ $$\Rightarrow \ \langle \psi | \ \textbf{S}_{a} \ | \psi \rangle \ \otimes \ \langle \phi | \ \textbf{S}_{b} \ | \phi \rangle \ = \ \langle \textbf{S}_{a} \rangle \langle \textbf{S}_{b} \rangle \ = \ \langle \ S^{(1)}_{a} \ S^{(2)}_{b} \ \rangle$$
+<br>
+Now, recall the method we used in 4.30 to define $\textbf{S}_r$. We basically have to do the same thing for $\textbf{S}_{a}$ and $\textbf{S}_{b}$, except this time, to make things easier, we will be
+using the language of vectors rather tha polar coordinates. It makes sense that a spin operator along an arbitrary direction $\hat{r}$ can be decomposed into a linear combination of "spin matrix basis element"
+(these aren't vectors, this is not a real basis, but it kind of helps to think about it this way). These basis elements are simply $\textbf{S}_x$, $\textbf{S}_y$, and $\textbf{S}_z$, analogous to the vector basis
+that spans $\mathbb{R}^3$.
+<br><br>
+It also makes sense to think, analogous to a vector being expanded in terms of some complete basis, that the amount of each of the "basis spin matrices" contained in the "linear combination" making up $\textbf{S}_r$ will be equal to the
+ "amount of the corresponding basis vector ($|x\rangle$, $|y\rangle$, or $|z\rangle$) that is contained in $|r\rangle$", which is just given by the inner product of the two vectors. This means that we have:
+ <br><br>
+ $$\textbf{S}_{a} \ = \ \langle x | a \rangle \textbf{S}_x \ + \ \langle y | a \rangle \textbf{S}_y \ + \ \langle z | a \rangle \textbf{S}_z$$
+ $$\textbf{S}_{b} \ = \ \langle x | b \rangle \textbf{S}_x \ + \ \langle y | b \rangle \textbf{S}_y \ + \ \langle z | b \rangle \textbf{S}_z$$
+ <br>
+ I really want the reader to remember that this construction is <b>completely equivalent</b> to the way that we constructed $\textbf{S}_r$ in 4.30, we are only using this langauge because it
+ will prove to be more convenient for the purposes of this problem.
+ <br><br>
+ Moving right along, we can now expand our expression:
+ <br><br>
+$$\frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ S^{(1)}_{a} \ S^{(2)}_{b} \ (| \uparrow \downarrow \rangle \ - \ | \downarrow \uparrow \rangle) \ \Rightarrow \
+\frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ \textbf{S}_{a} \ \otimes \ \textbf{S}_{b} \ (| \uparrow \downarrow \rangle \ - \ | \downarrow \uparrow \rangle)$$
+$$\Rightarrow \ \frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ \textbf{S}_{a} \ \otimes \ \textbf{S}_{b} \ (| \uparrow \downarrow \rangle \ - \ | \downarrow \uparrow \rangle)
+ \ = \ \frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ (\textbf{S}_a |\uparrow\rangle \ \otimes \ \textbf{S}_b |\downarrow\rangle \ - \ \textbf{S}_a |\downarrow\rangle \ \otimes \ \textbf{S}_b |\uparrow\rangle)$$
+ <br>
+ Expanding this in one expression would be a really bad idea (it's tooooo longggggg) so I'm going to break it down piece by piece:
+ <br><br>
+ $$\textbf{S}_{a} \ |\uparrow\rangle \ = \ (\langle x | a \rangle \textbf{S}_x \ + \ \langle y | a \rangle \textbf{S}_y \ + \ \langle z | a \rangle \textbf{S}_z) |\uparrow\rangle
+  \ = \ \langle x | a \rangle \textbf{S}_x |\uparrow\rangle \ + \ \langle y | a \rangle \textbf{S}_y |\uparrow\rangle \ + \ \langle z | a \rangle \textbf{S}_z |\uparrow\rangle$$
+  $$\Rightarrow \ \langle x | a \rangle \textbf{S}_x |\uparrow\rangle \ + \ \langle y | a \rangle \textbf{S}_y |\uparrow\rangle \ + \ \langle z | a \rangle \textbf{S}_z |\uparrow\rangle \ = \
+  \langle x | a \rangle \frac{\hbar}{2} \ \sigma_x |\uparrow\rangle \ + \ \langle y | a \rangle \frac{\hbar}{2} \ \sigma_y |\uparrow\rangle \ + \ \langle z | a \rangle \frac{\hbar}{2} \ \sigma_z |\uparrow\rangle$$
+  $$\Rightarrow \ \langle x | a \rangle \frac{\hbar}{2} \ |\downarrow\rangle \ + \ \langle y | a \rangle \frac{\hbar}{2} \ i |\uparrow\rangle \ + \ \langle z | a \rangle \frac{\hbar}{2} \ |\uparrow\rangle$$
+  <br>
+  And so it follows as well that:
+  <br><br>
+  $$\textbf{S}_b |\uparrow\rangle \ = \ \langle x | b \rangle \frac{\hbar}{2} \ |\downarrow\rangle \ + \ \langle y | b \rangle \frac{\hbar}{2} \ i |\uparrow\rangle \ + \ \langle z | b \rangle \frac{\hbar}{2} \ |\uparrow\rangle$$
+  <br>
+  We also can compute:
+  <br><br>
+  $$\textbf{S}_{a} \ |\downarrow\rangle \ = \ (\langle x | a \rangle \textbf{S}_x \ + \ \langle y | a \rangle \textbf{S}_y \ + \ \langle z | a \rangle \textbf{S}_z) |\downarrow\rangle
+   \ = \ \langle x | a \rangle \textbf{S}_x |\downarrow\rangle \ + \ \langle y | a \rangle \textbf{S}_y |\downarrow\rangle \ + \ \langle z | a \rangle \textbf{S}_z |\downarrow\rangle$$
+   $$\Rightarrow \ \langle x | a \rangle \textbf{S}_x |\downarrow\rangle \ + \ \langle y | a \rangle \textbf{S}_y |\downarrow\rangle \ + \ \langle z | a \rangle \textbf{S}_z |\downarrow\rangle \ = \
+   \langle x | a \rangle \frac{\hbar}{2} \ \sigma_x |\downarrow\rangle \ + \ \langle y | a \rangle \frac{\hbar}{2} \ \sigma_y |\downarrow\rangle \ + \ \langle z | a \rangle \frac{\hbar}{2} \ \sigma_z |\downarrow\rangle$$
+   $$\Rightarrow \ \langle x | a \rangle \frac{\hbar}{2} \ |\uparrow\rangle \ - \ \langle y | a \rangle \frac{\hbar}{2} \ i |\downarrow\rangle \ - \ \langle z | a \rangle \frac{\hbar}{2} \ |\downarrow\rangle$$
+  <br>
+  And so we know that:
+  <br><br>
+  $$\textbf{S}_b \ |\downarrow\rangle \ = \ \langle x | b \rangle \frac{\hbar}{2} \ |\uparrow\rangle \ - \ \langle y | b \rangle \frac{\hbar}{2} \ i |\downarrow\rangle \ - \ \langle z | b \rangle \frac{\hbar}{2} \ |\downarrow\rangle$$
+  <br>
+  So this means that we have:
+  <br><br>
+  $$\textbf{S}_{a} |\uparrow\rangle \ \otimes \ \textbf{S}_{b} |\downarrow\rangle \ = \ (\langle x | a \rangle \frac{\hbar}{2} \ |\downarrow\rangle \ + \ \langle y | a \rangle \frac{\hbar}{2} \ i |\downarrow\rangle \ + \ \langle z | a \rangle \frac{\hbar}{2} \ |\uparrow\rangle) \ \otimes
+  \ (\langle x | b \rangle \frac{\hbar}{2} \ |\uparrow\rangle \ - \ \langle y | b \rangle \frac{\hbar}{2} \ i |\uparrow\rangle \ - \ \langle z | b \rangle \frac{\hbar}{2} \ |\downarrow\rangle)$$
+  <br><br>
+  I'm not going to do this entire expansion. Notice that $|\uparrow \uparrow\rangle$, $|\uparrow \downarrow\rangle$, $|\downarrow \uparrow\rangle$, and $|\downarrow \downarrow\rangle$ are all orthogonal, therefore when we compute the expectation value by multiplying each of the componenets by
+  a bra of the form $|\uparrow \downarrow\rangle$ or $|\downarrow \uparrow\rangle$, the $|\uparrow \uparrow\rangle$ and the $|\downarrow \downarrow\rangle$ terms will be immediately eliminated, so we won't include them in this expansion to keep our equations within the margins:
+  <br><br>
+  $$\Rightarrow \ \frac{\hbar^2}{4} \ \Big[ (\langle x | a \rangle \langle x | b \rangle \ + \ \langle y | b\rangle \langle y | a\rangle) |\downarrow \uparrow\rangle \ - \ \langle z | b\rangle \langle z | a\rangle |\uparrow \downarrow \rangle\Big]$$
+  <br>
+  Similarly, we can expand:
+  <br><br>
+  $$\textbf{S}_{a} |\downarrow\rangle \ \otimes \ \textbf{S}_{b} |\uparrow\rangle \ = \ (\langle x | a \rangle \frac{\hbar}{2} \ |\uparrow\rangle \ - \ \langle y | a \rangle \frac{\hbar}{2} \ i |\uparrow\rangle \ - \ \langle z | a \rangle \frac{\hbar}{2} \ |\downarrow\rangle) \ \otimes
+  \ (\langle x | b \rangle \frac{\hbar}{2} \ |\downarrow\rangle \ + \ \langle y | b \rangle \frac{\hbar}{2} \ i |\downarrow\rangle \ + \ \langle z | b \rangle \frac{\hbar}{2} \ |\uparrow\rangle)$$
+  $$\Rightarrow \ \frac{\hbar^2}{4} \ \Big[ (\langle x | a \rangle \langle x | b \ + \ \langle y | b\rangle \langle y | a\rangle) \rangle |\uparrow \downarrow\rangle \ - \ \langle z | b\rangle \langle z | a\rangle |\downarrow \uparrow \rangle\Big]$$
+  <br><br>
+  And going back to our original equation:
+  <br><br>
+  $$\frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ (\textbf{S}_{a} \ \otimes \ \textbf{S}_{b}) \ (| \uparrow \downarrow \rangle \ - \ | \downarrow \uparrow \rangle) \ = \ \frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ (\textbf{S}_{a} |\uparrow\rangle \ \otimes \ \textbf{S}_{b} |\downarrow\rangle \ - \ \textbf{S}_{a} |\downarrow\rangle \ \otimes \ \textbf{S}_{b} |\uparrow\rangle)$$
+  $$\Rightarrow \ \frac{1}{2} \ (\langle \uparrow \downarrow | \ - \ \langle \downarrow \uparrow |) \ \frac{\hbar^2}{4} \ \Big[ (\langle x | a \rangle \langle x | b \rangle \ + \ \langle y | b\rangle \langle y | a\rangle) |\downarrow \uparrow\rangle \ - \ \langle z | b\rangle \langle z | a\rangle |\uparrow \downarrow \rangle \ - \
+  (\langle x | a \rangle \langle x | b \ + \ \langle y | b\rangle \langle y | a\rangle) \rangle |\uparrow \downarrow\rangle \ + \ \langle z | b\rangle \langle z | a\rangle |\downarrow \uparrow \rangle\Big]$$
+  <br><br>
+  When we expand this equation, recall that terms involving the inner product of bras and kets that do not correspond (are not the conjugate transposes of each other) will simply cancel, as $|\uparrow \downarrow\rangle$ and $|\downarrow \uparrow\rangle$ are orthogonal (this simplifies the expansion a lot, as we don't have to expand out every term).
+  Doing this expansion and collecting like terms we get:
+  <br><br>
+  $$\Rightarrow \ \frac{1}{2} \ \frac{\hbar^2}{4} \ \Big[ -2 (\langle x | a\rangle \langle x | b\rangle \ + \ \langle y | a\rangle \langle y | b\rangle \ + \ \langle z | a\rangle \langle z | b\rangle)\Big] \ = \
+  -\frac{\hbar^2}{4} \ \Big[\langle x | a\rangle \langle x | b\rangle \ + \ \langle y | a\rangle \langle y | b\rangle \ + \ \langle z | a\rangle \langle z | b\rangle\Big]$$
+  <br>
+  Now, since $|a\rangle$, $|b\rangle$, $|x\rangle$, $|y\rangle$, and $|z\rangle$ are completely real, we can reverse the order of the inner product:
+  <br><br>
+  $$-\frac{\hbar^2}{4} \ \Big[\langle x | a\rangle \langle x | b\rangle \ + \ \langle y | a\rangle \langle y | b\rangle \ + \ \langle z | a\rangle \langle z | b\rangle\Big] \ = \
+  -\frac{\hbar^2}{4} \ \Big[\langle a | x\rangle \langle x | b\rangle \ + \ \langle a | y\rangle \langle y | b\rangle \ + \ \langle b | z\rangle \langle z | b\rangle\Big]$$
+  <br>
+  And since we know that:
+  <br><br>
+  $$\displaystyle\sum_{j} \ |j\rangle \langle j| \ = \ I$$
+  <br>
+  For any complete orthonormal basis, therefore we have:
+  <br><br>
+  $$-\frac{\hbar^2}{4} \ \Big[\langle a | x\rangle \langle x | b\rangle \ + \ \langle a | y\rangle \langle y | b\rangle \ + \ \langle b | z\rangle \langle z | b\rangle\Big] \ = \
+  -\frac{\hbar^2}{4} \ \Big[\langle a | \ \Big( \displaystyle\sum_{n} \ |n\rangle \langle n| \Big) \ |b\rangle \Big] \ = \ -\frac{\hbar^2}{4} \ \langle a | b \rangle$$
+  <br>
+  Where $n$ runs over $x, \ y, \ z$. Since, like we said before, $|a\rangle$ and $|b\rangle$ are real:
+  <br><br>
+  $$\langle \ S^{(1)}_{a} \ S^{(2)}_{b} \ \rangle \ = \ -\frac{\hbar^2}{4} \ \langle a | b \rangle \ = \ -\frac{\hbar^2}{4} (a \ \cdot \ b) \ = \ -\frac{\hbar^2}{4} \ \cos \theta$$
+  <br>
+  Where $\theta$ is the angle between $\hat{a}$ and $\hat{b}$ (definition of the dot product).
+  <br>
+<br><br><br><br>
+</p>
+</div>
+</center>
+</body>
+</html>
