@@ -22,13 +22,98 @@ $$\hat{r} \ = \ \sin \theta \cos \phi \ \hat{i} \ + \ \sin \theta \sin \phi \ \h
 We are also told that in addition to finding the spin matrix $\textbf{S}_{r}$, we also have to find the normalized eigenspinors and eigenvalues of the spin matrix. To begin, we have to think about
 what $\textbf{S}_r$ actually represents. We want to find the spin along some arbitrary direction. For the angular momentum in direction $\hat{r}$, we know that a measurement of angular momentum will
 be a sum of the angular momentum in the $x, \ y, \ z$ componenets that make up $\hat{r}$ (as you recall, we previously defined total angular momentum as the sum of all the components of angular momentum. In this case,
-the only thing that changes is we are only interested in the amount of each of the components that are pointing along $\hat{r}$).
-<br>
-In the same form as the previous relationship, we have:
+the only thing that changes is we are only interested in the amount of each of the components that are pointing along $\hat{r}$). Now, at the root, we have to treat the generalized "total spin" is a vector in $\mathbb{R}^3$
+(exactly like angular momnentum). That is, we have:
 <br><br>
-$$S_{r} \ \hat{r} \ = \ \sin \theta \cos \phi \ S_{x} \hat{i} \ + \ \sin \theta \sin \phi \ S_{y} \hat{j} \ + \ \cos \theta \ S_{z} \hat{k}$$
+$$S \ = \ \begin{pmatrix} S_x \\ S_y \\ S_z \end{pmatrix}$$
 <br>
-This is because we are multiplying each unit vector in their respective directions by the total amount of angular momentum measured in that direction, then multiplying by the fraction representing "amount of angular momentum that is measured along $\hat{r}$" in that particular direction.
+To get the corresponding operators, we perform the substitution from scalar entries in the vector to spin operators:
+<br><br>
+$$S_x \ \rightarrow \ \textbf{S}_x, \ \ \ S_y \ \rightarrow \ \textbf{S}_y, \ \ \ S_z \ \rightarrow \ \textbf{S}_z$$
+<br>
+Notice how the usual definition of $S^2$ follows from taking the dot product of the spin vector with itself.
+<br><br>
+In order to find the componenet of total spin $S$ that lies along a specific vector, we simply must take the inner product of the $\hat{r}$ with $S$:
+<br><br>
+$$S_{r} \ = \ \langle r | S \rangle \ = \ \Big\langle \begin{pmatrix} \sin \theta \cos \phi \\ \sin \theta \sin \phi \\ \cos \theta \end{pmatrix} \ \Bigg| \ \begin{pmatrix} S_x \\ S_y \\ S_z \end{pmatrix} \Big\rangle \ = \ \sin \theta \cos \phi \ S_{x} \ + \ \sin \theta \sin \phi \ S_{y} \ + \ \cos \theta \ S_{z}$$
+<br><br>
+This makes sense! We are multiplying the angular momentum measured in each of the the cardinal directions by the fraction representing "amount of angular momentum that is measured along $\hat{r}$" in that particular direction.
+<br><br>
+Moving right along, let's now calculate the general spin matrix $S_{r}$:
+<br><br>
+$$S_{r} \ = \ \sin \theta \cos \phi \ S_{x} \ + \ \sin \theta \sin \phi \ S_{y} \ + \ \cos \theta \ S_{z} \ = \ \frac{\hbar}{2} \Big[\sin \theta \cos \phi \
+\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \ + \ \sin \theta \sin \phi \ \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \ + \ \cos \theta \ \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \Big]$$
+$$\Rightarrow \ S_{r} \ = \ \frac{\hbar}{2} \ \begin{pmatrix} \cos \theta & \sin \theta \cos \phi \ - \ \sin \theta \sin \phi i  \\ \sin \theta \cos \phi \ + \ \sin \theta \sin \phi i & -\cos \theta \end{pmatrix} \ = \
+\frac{\hbar}{2} \begin{pmatrix} \cos \theta & \sin \theta (\cos \phi \ - \ \sin \phi i)  \\ \sin \theta (\cos \phi \ + \ \sin \phi i) & -\cos \theta \end{pmatrix}$$
+<br>
+But by Euler's formula, we have:
+<br><br>
+$$e^{ia} \ = \ \cos a \ + \ i \sin a$$
+<br>
+Also recall that sine is an odd function, while cosine is even, so:
+<br><br>
+$$-\sin a \ = \ \sin (-a)$$
+$$\cos a \ = \ \cos (-a)$$
+$$\Rightarrow \ \cos a \ - \ i \sin a \ = \ \cos (-a) \ + \ i \sin (-a) \ = \ e^{-ia}$$
+<br>
+And so we have:
+<br><br>
+$$S_r \ = \ \frac{\hbar}{2} \begin{pmatrix} \cos \theta & \sin \theta (\cos \phi \ - \ \sin \phi i)  \\ \sin \theta (\cos \phi \ + \ \sin \phi i) & -\cos \theta \end{pmatrix}
+ \ = \ \frac{\hbar}{2} \begin{pmatrix} \cos \theta & e^{-i\phi} \sin \theta  \\ e^{i\phi} \sin \theta & -\cos \theta \end{pmatrix}$$
+ <br><br>
+ To get the eigenvalues and eigenspinors, we set up the equation:
+ <br><br>
+ $$S_r \chi \ = \ \lambda \chi \ \Rightarrow \ \frac{\hbar}{2} \begin{pmatrix} \cos \theta & e^{-i\phi} \sin \theta  \\ e^{i\phi} \sin \theta & -\cos \theta \end{pmatrix} \chi  \ = \ \lambda \chi$$
+ <br>
+ First, to get the eignevalues, we exploit the fact that $S_r \ - \ \lambda \mathbb{I}$ must be non-invertible, or else we are left with only the non-admissable eigenspinor with all entries being equal to $0$.
+ Non-invertible matrices have determinant equal to $0$, so:
+ <br><br>
+ $$\text{det} \ (S_r \ - \ \lambda \mathbb{I}) \ = \ \text{det} \ \begin{pmatrix} \frac{\hbar}{2} \cos \theta \ - \ \lambda & \frac{\hbar}{2} e^{-i\phi} \sin \theta  \\ \frac{\hbar}{2} e^{i\phi} \sin \theta & -\frac{\hbar}{2} \cos \theta \ - \ \lambda \end{pmatrix} \ = \ 0$$
+ $$\Rightarrow \ (\frac{\hbar}{2} \cos \theta \ - \ \lambda)(-\frac{\hbar}{2} \cos \theta \ - \ \lambda) \ - \ \frac{\hbar^2}{4}(e^{-i\phi} \sin \theta)(e^{i\phi} \sin \theta) \ = \ 0$$
+ $$\Rightarrow \ -(\frac{\hbar}{2} \cos \theta \ - \ \lambda)(\frac{\hbar}{2} \cos \theta \ + \ \lambda) \ = \ \frac{\hbar^2}{4}\sin^2 \theta \ \Rightarrow \ \lambda^2 \ = \ \frac{\hbar^2}{4}(\sin^2 \theta \ + \ \cos^2) \theta \ \Rightarrow \ \lambda \ = \ \pm \frac{\hbar}{2}$$
+ <br>
+ So the eignevalues that we got were exactly the same as those for $S_x$ and $S_z$ earlier in the textbook, exactly as we would expect! We can now find the eigenspinors:
+ <br><br>
+ $$\frac{\hbar}{2} \begin{pmatrix} \cos \theta & e^{-i\phi} \sin \theta  \\ e^{i\phi} \sin \theta & -\cos \theta \end{pmatrix} \chi  \ = \ \pm \frac{\hbar}{2} \chi \ \Rightarrow \
+ \begin{pmatrix} \cos \theta & e^{-i\phi} \sin \theta  \\ e^{i\phi} \sin \theta & -\cos \theta \end{pmatrix} \chi  \ = \ \pm \chi$$
+ $$\begin{pmatrix} \cos \theta & e^{-i\phi} \sin \theta  \\ e^{i\phi} \sin \theta & -\cos \theta \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix}  \ = \ \pm \begin{pmatrix} a \\ b \end{pmatrix}$$
+ $$\Rightarrow \ \cos \theta a + e^{-i\phi} \sin \theta b \ = \ \pm a$$
+ $$\Rightarrow \ e^{i\phi} \sin \theta a \ - \ \cos \theta b \ = \ \pm b$$
+ <br>
+ By doing some re-arranging, it is revealed that these two equations tell us the exact same information:
+ <br><br>
+$$e^{-i\phi} \sin \theta b \ = \ \pm a(1 \ \mp \ \cos \theta)$$
+$$\Rightarrow \ a \tan \frac{\theta}{2} \ = \ e^{-i\phi} b \ \ \ \text{and} \ \  \ -a \ = \ e^{-i\phi} \tan \frac{\theta}{2} b$$
+ <br>
+Let's start with the first equation. Remembering the normalization condition:
+ <br><br>
+ $$|a|^2 \ + \ |b|^2 \ = \ 1$$
+ <br>
+ We can express any complex number in "phase form", therefore we also have:
+ <br><br>
+ $$a \ = \ Ae^{i \phi} |a| \ \Rightarrow \ A, \ \phi \ \in \ \mathbb{R}$$
+ $$b \ = \ Be^{i \psi} |b| \ \Rightarrow \ B, \ \psi \ \in \ \mathbb{R}$$
+ <br>
+ And so we solve:
+ <br><br>
+ $$|a|^2 \ + \ |b|^2 \ = \ \Big| \cot \frac{\theta}{2} \ e^{-i\phi} b \Big|^2 \ + \ |b|^2 \ = \ |b|^2 \Big( \cot^2 \frac{\theta}{2} \ + \ 1 \Big) \ = \ 1 \ \Rightarrow \ |b|^2 \ = \ \Big( \cot^2 \frac{\theta}{2} \ + \ 1 \Big)^{-1} \ \Rightarrow \ |b| \ = \ \pm \sin \frac{\theta}{2} \ \Rightarrow \ b \ = \ Be^{i \psi} \sin \frac{\theta}{2}$$
+$$\Rightarrow \ a \ = \ Be^{i \psi} \ e^{-i\phi} \cos \frac{\theta}{2}$$
+<br><br>
+And for the second equation:
+<br><br>
+$$|a|^2 \ + \ |b|^2 \ = \ \Big| -\tan \frac{\theta}{2} \ e^{-i\phi} b \Big|^2 \ + \ |b|^2 \ = \ |b|^2 \Big( \tan^2 \frac{\theta}{2} \ + \ 1 \Big) \ = \ 1 \ \Rightarrow \ |b|^2 \ = \ \Big( \tan^2 \frac{\theta}{2} \ + \ 1 \Big)^{-1} \ \Rightarrow \ |b| \ = \ \pm \cos \frac{\theta}{2} \ \Rightarrow \ b \ = \ Be^{i \psi} \cos \frac{\theta}{2}$$
+$$\Rightarrow \ a \ = \ -Be^{i \psi} \ e^{-i\phi} \sin \frac{\theta}{2}$$
+ <br><br>
+So, we have for our two eigenspinors:
+<br><br>
+$$\chi_{+} \ = \ Be^{i \psi} \ \begin{pmatrix} \ e^{-i\phi} \cos \frac{\theta}{2} \\ \sin \frac{\theta}{2} \end{pmatrix} \ \ \ \ \ \ \ \chi_{-} \ = \ Be^{i \psi} \ \begin{pmatrix} \ e^{-i\phi} \sin \frac{\theta}{2} \\ \cos \frac{\theta}{2} \end{pmatrix}$$
+<br>
+But Griffith says that we are allowed to multiply by an overall phase and it doesn't change the actual state of the spinor, so we can neglect the $e^{i \psi}$. In addition, we neglect the real coefficient $B$, as these are only scaled versions of our "basis" eigenspinors (we do the exact same thing when we are finding regular eigenvectors).
+This means that we have:
+<br><br>
+$$\chi_{+} \ = \ \begin{pmatrix} \ e^{-i\phi} \cos \frac{\theta}{2} \\ \sin \frac{\theta}{2} \end{pmatrix} \ = \ \begin{pmatrix} \ \cos \frac{\theta}{2} \\ e^{i\phi} \sin \frac{\theta}{2} \end{pmatrix} \ \ \ \ \ \ \ \chi_{-} \ = \ \begin{pmatrix} \ e^{-i\phi} \sin \frac{\theta}{2} \\ \cos \frac{\theta}{2} \end{pmatrix}$$
+<br>
+<br>
 <br><br><br><br>
 </p>
 </div>
