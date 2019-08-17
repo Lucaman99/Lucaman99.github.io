@@ -15,7 +15,39 @@
 <h2>Griffiths Quantum Mechanics 2nd Edition: Problems 4.57</h2>
 <p>
 This problem is straightforward, but I thought it was worth it to type up as it's a pretty cool result! We have to start by verifying that the newly-defined operators that Griffiths presents
-in the introduction of this problem obey the same commutation relations as the position and momentum operators. 
+in the introduction of this problem obey the same commutation relations as the position and momentum operators. Right away, it is easy to see that $[q_1, \ q_2] \ = \ [p_1, \ p_2] \ = \ 0$, as
+$x, \ p_y, \ y, \ \text{and} \ p_x$ commute with themselves and in addition, $x$ commutes with $p_y$, and $y$ commutes with $p_x$. Terms of this form are the only ones involved in the expansion of these operators,
+therefore $[q_1, \ q_2] \ = \ [p_1, \ p_2] \ = \ 0$.
+<br><br>
+It is also fairly obvious that $[q_1, \ p_1] \ = \ [q_2, \ p_2] \ = \ i\hbar$. In this case, let's expand and see what happens:
+<br><br>
+$$[q_1, \ p_1] \ = \ \frac{1}{2} \Big( \Big[ x \ + \ (a^2/ \hbar)p_y \Big]\Big[ p_x \ - \ (\hbar/a^2)y \Big] \ - \ \Big[ p_x \ + \ (\hbar/a^2)y \Big]\Big[ x \ - \ (a^2/ \hbar)p_y \Big] \Big)$$
+$$\Rightarrow \ \frac{1}{2} \Big( [x, \ p_x] \ + \ [y, \ p_y] \ + \ \frac{a^2}{\hbar} [p_y, \ p_x]\Big) \ = \ \frac{1}{2} \Big( i\hbar \ + \ i\hbar \ + \ \frac{a^2}{\hbar} (0)\Big) \ = \ i\hbar$$
+<br>
+We follow pretty much the exact same process for $[q_2, \ p_2]$. We now have to prove that:
+<br><br>
+$$L_z \ = \ \frac{\hbar}{2a^2}(q_1^2 \ - \ q_2^2) \ + \ \frac{a^2}{2\hbar} (p_1^2 \ - \ p_2^2)$$
+<br>
+This, again, is fairly straightforward:
+<br><br>
+$$\frac{\hbar}{2a^2}(q_1^2 \ - \ q_2^2) \ + \ \frac{a^2}{2\hbar} (p_1^2 \ - \ p_2^2) \ = \ \frac{\hbar}{2a^2}(q_1 \ - \ q_2)(q_1 \ + \ q_2) \ + \ \frac{a^2}{2\hbar} (p_1 \ - \ p_2)(p_1 \ + \ p_2)$$
+$$\Rightarrow \ \frac{1}{2} \frac{\hbar}{2a^2} \frac{4a^2}{\hbar} \ p_y x \ + \ \frac{1}{2} \frac{a^2}{2\hbar} \ \Big(-\frac{4\hbar}{a^2} \Big) yp_x \ = \ p_y x \ - \ y p_x \ = \ L_z$$
+<br>
+Next, we have to show that $L_z \ = \ H_1 \ + \ H_2$, where $H$ is the Hamiltonian for the harmonic oscillator with mass $m \ = \ \hbar/a^2$ and frequency $\omega \ = \ 1$. Well, we can in fact
+do this, but this is not the Hamiltonian that we are used to. Specifically, instead of having $H(x, \ p)$, we have $H(q_n, \ p_n)$, where $q_n$ and $p_n$ represent the newly-defined variables. Thus, we have:
+<br><br>
+$$H_1 \ - \ H_2 \ = \ \frac{p_1^2}{2m} \ + \ \frac{1}{2} m\omega^2 q_1^2 \ - \ \frac{p_2^2}{2m} \ + \ \frac{1}{2} m\omega^2 q_2^2 \ = \ \frac{a^2 p_1^2}{2\hbar} \ + \ \frac{1}{2} \frac{\hbar}{a^2} q_1^2 \ - \ \frac{a^2 p_2^2}{2\hbar} \ + \ \frac{1}{2} \frac{\hbar}{a^2} q_2^2$$
+$$\Rightarrow \ \frac{a^2}{2\hbar} (p_1^2 \ - \ p_2^2) \ + \ \frac{\hbar}{2a^2} (q_1^2 \ - \ q_2^2) \ = \ L_z$$
+<br>
+This is all great, but now comes the crucial part. We know that our normal Hamiltonian has certain eigenvalues associated with it. Now, the way that we determined these eigenvalues algebraically (allowed energies of the harmonic oscillator) back in Chapter 2 involved
+exploiting the commutation relations between $x$ and $p$ in order to create a Hamiltonian expressed in terms of raising and lowering operators. Well, our newly-defined variables obey the same commutation relations, therefore, this new Hamiltonian-like operators $H_1$ and $H_2$, when
+solved using our raising/lowering operator method, will yield the same eigenvalues as with our normal quantum harmonic oscillator, represented with normal varaibles. Thus, we have:
+<br><br>
+$$L_z |\psi\rangle \ = \ (H_1 \ - \ H_2) |\psi\rangle \ = \ H_1 |\psi\rangle \ - \ H_2 |\psi\rangle \ = \ E_1 |\psi\rangle \ - \ E_2 |\psi\rangle \ = \ (E_1 \ - \ E_2) |\psi\rangle$$
+$$\Rightarrow \ E_1 \ - \ E_2 \ = \ \Big( n_1 \ + \ \frac{1}{2} \Big) \hbar \omega \ - \ \Big( n_2 \ + \ \frac{1}{2} \Big) \hbar \omega \ = \ (n_1 \ - \ n_2)\hbar \ = \ n\hbar \ \Rightarrow \ n \ \in \ \mathbb{Z}$$
+<br>
+By the way, $|\psi\rangle$ is just some general state vector, since we know that $L_z$ can share eigenvectors with $H$, all we know is that $|\psi\rangle$ is some determinate state of the angular momentum operator in the $z$ direction. This argument shows then that
+the allowed measureable values of $z$-angular momentum are integer multiples of $\hbar$, therefore compatible with the fact that $L_z$ and $H$ share a common set of eigenfunctions.
 <br><br><br><br>
 </p>
 </div>
