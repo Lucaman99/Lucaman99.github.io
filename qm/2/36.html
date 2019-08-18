@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problems 2.36</h2>
+<p>
+The best way to go about this problem is to exploit the odd-ness of sine when reflected across the y-axis. For the area between $-a/2$ to $a/2$ (I'm using $-a/2$ to $a/2$ because if we do this, we will get the exact same allowed energies/wavefunctions as earlier in the textbook), we have:
+<br><br>
+$$-\frac{\hbar}{2m}\frac{\text{d}\psi}{\text{dx}} \  = \ E\psi \ \Rightarrow \ k \ = \ \frac{\sqrt{2mE}}{\hbar}$$
+$$\frac{\text{d}\psi}{\text{dx}} \ = \ -k^2 \psi \ \Rightarrow \ \psi \ = \ A\sin(kx) \ + \ B\cos(kx)$$
+For the boundary conditions:
+<br><br>
+$$A\sin(-k\frac{a}{2}) \ + \ B\cos(-k\frac{a}{2}) \ = \ -A\sin(k\frac{a}{2}) \ + \ B\cos(k\frac{a}{2}) \ = \ 0$$
+<br>
+And:
+<br><br>
+$$A\sin(k\frac{a}{2}) \ + \ B\cos(k\frac{a}{2}) \ = \ 0$$
+<br>
+So:
+<br><br>
+$$\Rightarrow \ 2B\cos(k\frac{a}{2}) \ = \ 0$$
+<br>
+We can either chose $B \ = \ 0$ or we can set the cosine part of the equation equal to $0$. First, let's set $B$ to $0$:
+<br><br>
+$$A\sin(k\frac{a}{2}) \ = \ 0$$
+<br>
+If we set $A$ to $0$, nothing interesting happens, so instead:
+<br><br>
+$$k\frac{a}{2} \ = \ n\pi \ \Rightarrow \ k \ = \ \frac{2n\pi}{a} \ \Rightarrow \ k \ = \ \frac{n\pi}{a} \ \text{for even n}$$
+<br>
+So we get solutions for even $n$ and a wavefunction of:
+<br><br>
+$$\psi(x) \ = \ A \ \sin \Big( \frac{n\pi}{a} x \Big) \ \text{for even n}$$
+<br>
+Now, we set our cosine term equal to $0$ and get:
+<br><br>
+$$\frac{ka}{2} \ = \ \frac{n\pi}{2} \ \Rightarrow \ k \ = \ \frac{n\pi}{a} \ \text{for odd n}$$
+<br>
+Inputting this back into one our original "boundary" equations, we get $A \ = \ 0$, and so we get as solutions to the Schrödinger equation:
+<br><br>
+$$\psi(x) \ = \ B\cos\Big( \frac{n\pi}{a} x \Big) \ \ \text{for odd n}$$
+<br>
+The normalization factors for both of the wavefunctions can be found easily through integration. If we want to find the energies, we simply combine the even and odd solutions, making $n$ span over the positive integers, and giving us:
+<br><br>
+$$\frac{n\pi}{a} \ = \ \frac{\sqrt{2mE}}{\hbar} \ \Rightarrow \ E \ = \ \frac{n^2 \pi^2 \hbar^2}{2ma^2} \ \ n \ \in \ \mathbb{Z}^{+}$$
+
+<br><br><br><br>
+</p>
+</div>
+</center>
+</body>
+</html>
