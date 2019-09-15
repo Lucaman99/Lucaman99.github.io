@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics Problem 5.37 (Parts A and B)</h2>
+<p>
+  In this question, we are asked to find the chemical potential, as well as the total energy for a collection of distinguishable particles in the quantum harmonic oscillator potential. To do this, we
+  have to go back to the part of the textbook when Griffiths was using Lagrange multipliers to find the distributions for the most probable number of particles in each possible state in some quantum system.
+  If we recall the problem, we were given constraints which had to be satisfied in order for a solution to our problem of finding the most probable particle number distribution. Specifically, the sum of the
+  number of particles each of the $n$ quantum states, denoted as $N_n$ has to be equal to the total number of particles in the system, $N$ (this one is pretty intuitive):
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ N_n \ = \ N$$
+  <br>
+  The second condition is inuitive as well, and it states that the sum of all the energies corresponding to each of the particles must equal the total energy of the system, denoted as $E$. Since the allowed energy for
+  each of the quantum states is $E_n$, and there are $N_n$ particles in each state, we have:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ E_{n} N_n \ = \ E$$
+  <br>
+  Now, recall that we already found the most probable distribution of particle numbers in each state for distiguishable particles, it is given by:
+  <br><br>
+  $$N_n \ = \ d_n \ e^{-(\alpha \ + \ \beta E_n)}$$
+  <br>
+  Where $d_n$ is the degeneracy of the $n$-th energy level (how many different states corrspond to the same allowed energy $E_n$). The $\alpha$ and $\beta$ variables are related to the chemical
+  potential and the temperature of the system in the following way:
+  <br><br>
+  $$\beta \ = \ \frac{1}{k_B T} \ \ \ \ \ \ \ \ \ \ \alpha \ = \ -\frac{\mu(T)}{k_B T}$$
+  <br>
+  So we have:
+  <br><br>
+  $$N_n \ = \ d_n \ e^{-(\alpha \ + \ \beta E_n)} \ = \ d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ E_n)}$$
+  <br>
+  Substituting this back into our original equations:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ E_n)} \ = \ N$$
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ E_{n} d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ E_n)} \ = \ E$$
+  <br>
+  Now, let us consider the quantum harmonic oscillator in 3 dimensions, with:
+  <br><br>
+  $$V(r) \ = \ \frac{1}{2} m\omega^2 r^2 \ \Rightarrow \ V(x, \ y, \ z) \ = \ \frac{1}{2} m\omega^2 (x^2 \ + \ y^2 \ + \ z^2)$$
+  <br>
+  We can separate the time-independent Schrodinger equation to find its stationary states/corresponding energies:
+  <br><br>
+  $$-\frac{\hbar^2}{2m} \ \nabla^2 \ A(x) B(y) C(z) \ + \ V(x, \ y, \ z) \ A(x) B(y) C(z) \ = \ E \ A(x) B(y) C(z)$$
+  $$\Rightarrow \ -\frac{\hbar^2}{2m} \ \Big( \ B(y) C(z) \frac{\partial^2 A(x)}{\partial x^2} \ + \ A(x) C(z) \frac{\partial^2 B(y)}{\partial y^2} \ + \ A(x) B(y) \frac{\partial^2 C(z)}{\partial z^2} \ \Big) \ + \ V(x, \ y, \ z) \ A(x) B(y) C(z) \ = \ E \ A(x) B(y) C(z)$$
+  $$\Rightarrow \ -\frac{\hbar^2}{2m} \ \Big( \ \frac{1}{A(x)} \frac{\partial^2 A(x)}{\partial x^2} \ + \ \frac{1}{B(y)} \frac{\partial^2 B(y)}{\partial y^2} \ + \ \frac{1}{C(z)} \frac{\partial^2 C(z)}{\partial z^2} \ \Big) \ + \ V(x, \ y, \ z) \ = \ E$$
+  $$\Rightarrow \ -\frac{\hbar^2}{2m} \ \Big( \ \frac{1}{A(x)} \frac{\partial^2 A(x)}{\partial x^2} \ + \ \frac{1}{B(y)} \frac{\partial^2 B(y)}{\partial y^2} \ + \ \frac{1}{C(z)} \frac{\partial^2 C(z)}{\partial z^2} \ \Big) \ + \ \frac{1}{2} m\omega^2 (x^2 \ + \ y^2 \ + \ z^2) \ = \ E_x \ + \ E_y \ + \ E_z$$
+  <br>
+  This equation separates, and we get three seperate equations for each of the spatial components of the wavefunction. We can write this generally as:
+  <br><br>
+  $$-\frac{\hbar^2}{2m} \ \frac{1}{F(x_i)} \frac{\partial^2 F(x_i)}{\partial x_i^2} \ + \ \frac{1}{2} m\omega^2 x_i^2 \ = \ E_{x_i}$$
+  <br>
+  Well this is just the quantum harmonic oscillator in one-dimension! Therefore, we know that the energy is given as:
+  <br><br>
+  $$E_{x_i} \ = \ \Big( n_i \ + \ \frac{1}{2} \Big) \hbar\omega$$
+  <br>
+  Thus for three dimensions:
+  <br><br>
+  $$E \ = \ E_{x} \ + \ E_{y} \ + \ E_{z} \ = \ \Big( n_x \ + \ \frac{1}{2} \Big) \hbar\omega \ + \ \Big( n_y \ + \ \frac{1}{2} \Big) \hbar\omega \ + \ \Big( n_z \ + \ \frac{1}{2} \Big) \hbar\omega \ = \ \Big( n_x \ + \ n_y \ + \ n_z \ + \ \frac{3}{2} \Big) \hbar\omega \ = \ \Big( n \ + \ \frac{3}{2} \Big) \hbar\omega$$
+  <br>
+  Now that we have the energy for each of the energy levels of the quantum harmonic oscillator, we can plug this back into the original equations. We'll start with the constraint on the number of particles in the system:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ E_n)} \ = \ \displaystyle\sum_{n \ = \ 1}^{\infty} \ d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ \Big( n \ + \ \frac{3}{2} \Big) \hbar \omega)}$$
+  <br>
+  There is still one more missing piece before we can actually evaluate this sum. We need to find the degeneracy of each of the energy states of the quantum harmonic oscillator! Recall that:
+  <br><br>
+  $$n_x \ + \ n_y \ + \ n_z \ = \ n$$
+  <br>
+  So for any $n$, we need to find the number of possible combinations of $n_x, \ n_y, \ n_z$ that sum up to this number in order to find the degeneracy. Consider the case where I fix $n_x$ as some
+  number $a$, the other two numbers must sum to $n \ - \ a$. For two number partitions, it is evident that the number of possible ways that $n \ - \ a$ can be partitioned is $n \ - \ a \ + \ 1$. Thus, we have:
+  <br><br>
+  $$d_n \ = \ \displaystyle\sum_{a \ = \ 0}^{n} \ (n \ - \ a \ + \ 1) \ = \ (n \ + \ 1)^2 \ - \ \frac{n(n\ + \ 1)}{2} \ = \ \frac{2(n \ + \ 1)^2 \ - \ n(n\ + \ 1)}{2} \ = \ \frac{(n \ + \ 1)(2(n \ + \ 1) \ - \ n)}{2} \ = \ \frac{(n \ + \ 1)(n \ + \ 2)}{2}$$
+  <br>
+  And we can now plug this back into our original equation to get:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 1}^{\infty} \ \frac{(n \ + \ 1)(n \ + \ 2)}{2} \ e^{\frac{1}{k_B T}(\mu(T) \ - \ \Big( n \ + \ \frac{3}{2} \Big) \hbar \omega)} \ = \ \frac{1}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \displaystyle\sum_{n \ = \ 1}^{\infty} \ (n \ + \ 1)(n \ + \ 2) \ e^{-\frac{1}{k_B T} \hbar \omega n} \ = \ N$$
+  <br>
+  Now, Griffiths gives us a hint. He says to consider the geometric series of the form:
+  <br><br>
+  $$\frac{1}{1 \ - \ x} \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ x^n$$
+  <br>
+  We can multiply by $x$ and then take the derivative to get:
+  <br><br>
+  $$\frac{\text{d}}{\text{dx}} \frac{x}{1 \ - \ x} \ = \ \frac{\text{d}}{\text{dx}} \displaystyle\sum_{n \ = \ 0}^{\infty} \ x^{(n \ + \ 1)} \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ (n \ + \ 1)x^{n}$$
+  <br>
+  For the second derivative, we have:
+  <br><br>
+  $$\frac{\text{d}^2}{\text{dx}^2} \frac{x^2}{1 \ - \ x} \ = \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ (n \ + \ 2)(n \ + \ 1)x^{n}$$
+  <br>
+  Thus, we have:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 1}^{\infty} \ (n \ + \ 1)(n \ + \ 2) \ e^{-\frac{1}{k_B T} \hbar \omega n} \ \Rightarrow \ \displaystyle\sum_{n \ = \ 1}^{\infty} \ (n \ + \ 1)(n \ + \ 2) \ x^n \ = \ \frac{\text{d}^2}{\text{dx}^2} \frac{x^2}{1 \ - \ x} \ = \ \frac{2}{(1 \ - \ x)^3}$$
+  <br>
+  We can substitute $e^{-\frac{\hbar \omega}{k_B T}}$ into the equation in the place of $x$ to get an equivalent expression to our original equation:
+  <br><br>
+  $$\frac{1}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \displaystyle\sum_{n \ = \ 1}^{\infty} \ (n \ + \ 1)(n \ + \ 2) \ e^{-\frac{1}{k_B T} \hbar \omega n} \ = \ \frac{1}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \ \frac{2}{(1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3} \ = \ \frac{e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)}}{(1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3} \ = \ N$$
+  <br>
+  Thus, we can simply rearrange this equation to find the chemical potential:
+  <br><br>
+  $$\frac{e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)}}{(1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3} \ = \ N \ \Rightarrow \ \mu(T) \ = \ k_B T \ln N \ + \ k_B T \ln (1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3 \ + \ \frac{3}{2} \hbar \omega$$
+  <br>
+  Cool, so now we can find the total energy! Recall that:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ E_{n} d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ E_n)} \ = \ E$$
+  <br>
+  Thus, we have:
+  <br><br>
+  $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ E_{n} d_n \ e^{\frac{1}{k_B T}(\mu(T) \ - \ E_n)} \ = \ \displaystyle\sum_{n \ = \ 1}^{\infty} \ \Big( n \ + \ \frac{3}{2} \Big) \hbar \omega \frac{(n \ + \ 1)(n \ + \ 2)}{2} \ e^{\frac{1}{k_B T}(\mu(T) \ - \ \Big( n \ + \ \frac{3}{2} \Big) \hbar \omega)}$$
+  $$\Rightarrow \ \frac{\hbar \omega}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \displaystyle\sum_{n \ = \ 1}^{\infty} \ \Big( n \ + \ \frac{3}{2} \Big) (n \ + \ 1)(n \ + \ 2) \ e^{-\frac{n \hbar \omega}{k_B T}}$$
+  $$\Rightarrow \ \frac{\hbar \omega}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \Bigg[ \displaystyle\sum_{n \ = \ 1}^{\infty} \ n (n \ + \ 1)(n \ + \ 2) \ e^{-\frac{(n \ - \ 1) \hbar \omega}{k_B T} \ - \ \frac{\hbar \omega}{k_B T}} \ + \
+  \frac{3}{2} \displaystyle\sum_{n \ = \ 1}^{\infty} \ (n \ + \ 1)(n \ + \ 2) \ e^{-\frac{n \hbar \omega}{k_B T}} \Bigg]$$
+  $$\Rightarrow \ \frac{\hbar \omega}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \ \Bigg[ e^{-\frac{\hbar \omega}{k_B T}} \frac{\text{d}^3}{\text{dx}^3} \ \frac{x^3}{1 \ - \ x} \ + \ \frac{3}{2} \ \frac{\text{d}^2}{\text{dx}^2} \ \frac{x^2}{1 \ - \ x}\Bigg] \ = \ \frac{\hbar \omega}{2} e^{\frac{1}{k_B T}(\mu(T) \ - \ \frac{3}{2} \hbar \omega)} \ \Bigg[ \frac{6 e^{-\frac{\hbar \omega}{k_B T}}}{(x \ - \ 1)^4} \ - \ \frac{3}{(x \ - \ 1)^3}\Bigg]$$
+  <br>
+  We can substitute into the equation:
+  <br><br>
+  $$\Rightarrow \ \frac{\hbar \omega}{2} e^{\frac{1}{k_B T}(k_B T \ln N \ + \ k_B T \ln (1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3 \ + \ \frac{3}{2} \hbar \omega \ - \ \frac{3}{2} \hbar \omega)} \ \frac{3 e^{-\frac{\hbar \omega}{k_B T}} \ + \ 3}{(e^{-\frac{\hbar \omega}{k_B T}} \ - \ 1)^4} \ = \
+  \frac{3\hbar \omega}{2} e^{ \ln N \ + \ \ln (1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3} \ \frac{e^{-\frac{\hbar \omega}{k_B T}} \ + \ 1}{(e^{-\frac{\hbar \omega}{k_B T}} \ - \ 1)^4}$$
+  $$E \ = \ \frac{3}{2} N \hbar \omega \ (1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})^3 \ \frac{e^{-\frac{\hbar \omega}{k_B T}} \ + \ 1}{(e^{-\frac{\hbar \omega}{k_B T}} \ - \ 1)^4} \ = \ \frac{3}{2} N \hbar \omega \ \frac{(e^{-\frac{\hbar \omega}{k_B T}} \ + \ 1)}{(1 \ - \ e^{-\frac{\hbar \omega}{k_B T}})}$$
+  <br>
+  And so we've found the total energy of a system of distinguishable particles in the quantum harmonic oscillator! That was essentially the bulk of the question, although we still have a couple other things to address. First, wehave to discuss the limiting case where $k_B T$ is much less than $\hbar \omega$. Well, in this case, $e^{-\frac{\hbar \omega}{k_B T}}$ approaches $0$, thus the total
+  energy of the system takes the form:
+  <br><br>
+  $$E \ = \ \frac{3}{2} N\hbar \omega$$
+  <br>
+  This is interesting! This is the ground state energy of the 3-dimensional quantum harmonic oscillator, multiplied by the number of particles in the system (suggesting that each particle has an energy equivalent to the ground state of the quantum harmonic oscillator). This seems consistent with "quantum" behaviour that is observed when systems of particles are cooled to very low temperatures, this making their thermal energy
+  $k_B T$ much lower than $\hbar \omega$. In the other case, where $k_B T$ is much larger than $\hbar \omega$, the energy approaches infinity. Now, I have practically no background in statistical mechanics, so I'll probably update this solution with my thoughts about Part C of this question when I look further into the equipartition theorem.
+  <br><br><br><br>
+  </p>
+
+  <br><br><br><br>
+  </div>
+  </center>
+  </body>
+  </html>
