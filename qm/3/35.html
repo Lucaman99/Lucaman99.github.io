@@ -132,7 +132,23 @@
    <br><br>
    $$\displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{|\beta|^{2n}}{n!} \ c_0^2 \ = \ 1 \ \Rightarrow \ e^{|\beta|^2} c_0^2 \ = \ 1 \ \Rightarrow \ c_0 \ = \ e^{-|\beta|^2/2}$$
    <br>
-   THE LAST PART OF THE QUESTION IS STILL UNDER CONSTRUCTION!!!!!!! (Sorry)
+   Ok, now we have to prove that when we introduce time-dependence, the coherent state remains an eigenstate of the lowering operator, but the eigenvalue evolves in time. Let us consider the original
+   eigenvector-eigenvalue equation with time dependence:
+   <br><br>
+   $$\hat{a}_{-} |\alpha(t)\rangle \ = \ \alpha(t) |\alpha(t)\rangle \ \Rightarrow \ \hat{a}_{-} \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{\alpha^n}{\sqrt{n!}} c_0 e^{-iEt/\hbar} |n\rangle \ = \  \alpha(t) \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{\alpha^n}{\sqrt{n!}} c_0 e^{-iEt/\hbar} |n\rangle$$
+   <br>
+   By definition of the lowering operator, we have $\hat{a}_{-} |n\rangle \ = \ \sqrt{n}|n \ - \ 1\rangle$, thus we have:
+   <br><br>
+   $$\Rightarrow \ \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{\alpha^n}{\sqrt{(n \ - \ 1)!}} c_0 e^{-iEt/\hbar} |n \ - \ 1\rangle \ = \  \alpha(t) \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{\alpha^n}{\sqrt{n!}} c_0 e^{-iEt/\hbar} |n\rangle$$
+   $$\Rightarrow \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{\alpha^n}{\sqrt{(n \ - \ 1)!}} c_0 e^{-i\Big(n \ + \ \frac{1}{2} \Big) \hbar\omega t/\hbar} |n \ - \ 1\rangle \ = \  \alpha(t) \ \displaystyle\sum_{n \ = \ 0}^{\infty} \ \frac{\alpha^n}{\sqrt{n!}} c_0 e^{-i\Big(n \ + \ \frac{1}{2} \Big) \hbar\omega t/\hbar} |n\rangle$$
+   <br>
+   We can now match up the coefficients in order to make this equation hold true, by "shifting" the coefficients up by $1$:
+   <br><br>
+   $$\frac{\alpha^{n \ + \ 1}}{\sqrt{n!}} c_0 e^{-i\Big(n \ + \ 1 \ + \frac{1}{2} \Big) \hbar\omega t/\hbar} |n\rangle \ = \ \alpha(t) \ \frac{\alpha^n}{\sqrt{n!}} c_0 e^{-i\Big(n \ + \ \frac{1}{2} \Big) \hbar\omega t/\hbar} |n\rangle$$
+   $$\Rightarrow \ \alpha(t) \ = \ e^{-i\omega t}\alpha$$
+   <br>
+   And it is evident that when we add the time-dependence to the coherent states, the states remains coherent, as when the states evolve, the state vector is still an eigenvector as all we are doing is multiplying the vector by some scalar coefficient.
+   <br>
   <br><br><br><br>
 </p>
 
