@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 6.5</h2>
+<p>
+  We are asked to consider a charged particle in the one-dimenssional quantum harmonic oscillator. We then turn on a weak electric field (emphasis of <b>weak</b>, so the perturbation that we will introduce is sufficiently small).
+  Anyways, this means that our perturbation given as $H' \ = \ -qEx$ (our potential energy is shifted by this quantity). We first have to show that that there is no first-order correction to the energy. We know that the first order
+  correction will be given by:
+  <br><br>
+  $$E_n^1 \ = \ \langle \psi_n^0 | H' | \psi_n^0 \rangle$$
+  <br>
+  For the case of the quantum harmonic oscillator, our unperturbed energy eigenstates are given as the set $|n^0\rangle$. This means that we have:
+  <br><br>
+  $$E_n^1 \ = \ \langle n^0 | H' | n^0 \rangle \ = \ \langle n^0 | -qEx | n^0 \rangle \ = \ -qE \langle n^0 | x | n^0 \rangle$$
+  <br>
+  Let's write the $x$ operaotr in terms of creation and annhiliation operators:
+  <br><br>
+  $$\hat{x} \ = \ \sqrt{\frac{\hbar}{2m\omega}} \ (a_{+} \ + \ a_{-})$$
+  <br>
+  We now have:
+  <br><br>
+  $$E_n^1 \ = \ -qE \langle n^0 | \sqrt{\frac{\hbar}{2m\omega}} \ (a_{+} \ + \ a_{-}) | n^0 \rangle \ = \ -qE \sqrt{\frac{\hbar}{2m\omega}} \langle n^0 | (a_{+} \ + \ a_{-}) | n^0 \rangle$$
+  $$\Rightarrow \ -qE \sqrt{\frac{\hbar}{2m\omega}} (\langle n^0 | a_+ | n^0 \rangle \ + \ \langle n^0 | a_{-} | n^0 \rangle) \ = \ -qE \sqrt{\frac{\hbar}{2m\omega}} (\sqrt{n \ + \ 1} \langle n^0 | (n \ + \ 1)^0 \rangle \ + \ \sqrt{n} \langle n^0 | (n \ - \ 1)^0 \rangle) \ = \ 0$$
+  <br>
+  So we just get $0$, since each of the energy eigenstates are orthogonal. Therefore, there is no first-order correction. Now, let's try to find the second order correction. Recall how we find $E^2_n$:
+  <br><br>
+  $$E^2_n \ = \ \displaystyle\sum_{m \ \neq \ n} \ \frac{|\langle \psi^0_m | H' |\psi^0_n \rangle|^2}{E_n^0 \ - \ E_m^0}$$
+  <br>
+  So for the case of the quantum harmonic oscillator, we have:
+  <br><br>
+  $$E^2_n \ = \ q^2 E^2 \ \displaystyle\sum_{m \ \neq \ n} \ \frac{|\langle m^0 | x | n^0 \rangle|^2}{\hbar \omega (n \ - \ m)}$$
+  <br>
+  As the unperturbed allowed energies of the quantum harmonic oscillator are given by:
+  <br><br>
+  $$E_n \ = \ \Big( n \ + \ \frac{1}{2} \Big) \hbar\omega$$
+  <br>
+  Ok, now let's follow the same procedure and write $\hat{x}$ in terms of the creation and annhiliation operators, and expand:
+  <br><br>
+  $$E^2_n \ = \ q^2 E^2 \ \dfrac{\hbar}{2m\omega} \ \displaystyle\sum_{m \ \neq \ n} \ \frac{| (\sqrt{n \ + \ 1} \langle m^0 | (n \ + \ 1)^0 \rangle \ + \ \sqrt{n} \langle m^0 | (n \ - \ 1)^0 \rangle) |^2}{\hbar \omega (n \ - \ m)}$$
+  <br>
+  So the only time when we get non-zero terms is when $m \ = \ n \ - \ 1$ or $m \ = \ n \ + \ 1$. Evaluating these two terms, we get:
+  <br><br>
+  $$E^2_n \ = \ q^2 E^2 \ \dfrac{\hbar}{2m\omega} \ \Big( \frac{n}{\hbar\omega} \ - \ \frac{n \ + \ 1}{\hbar\omega} \Big) \ = \ -q^2 E^2 \ \dfrac{\hbar}{2m\omega} \ \frac{1}{\hbar\omega} \ = \ - \frac{q^2 E^2}{2m\omega^2}$$
+  <br>
+  So we have our second-order correction. Now, let's solve the time-independent Schrödinger equation <b>exactly</b> to find the exact new energies. We have:
+  <br><br>
+  $$-\frac{\hbar^2}{2m} \ \frac{d^2 \psi}{dx^2} \ + \ \frac{1}{2} m\omega^2 x^2 \psi \ - \ qEx \psi \ = \ E \psi$$
+  <br>
+  Let's do a bit of algebraic manipulation on the potential terms:
+  <br><br>
+  $$\Rightarrow \frac{1}{2} m\omega^2 x^2 \psi \ - \ qEx \psi \ = \ \frac{1}{2} m \omega^2 (x^2 \ - \ \frac{2qE}{m\omega^2} x) \ = \ \frac{1}{2} m \omega^2 (x^2 \ - \ \frac{2qE}{m\omega^2} x \ + \ \frac{q^2E^2}{m^2\omega^4} \ - \ \frac{q^2E^2}{m^2\omega^4})$$
+  $$\Rightarrow \ \frac{1}{2} m \omega^2 (x^2 \ - \ \frac{2qE}{m\omega^2} x \ + \ \frac{q^2E^2}{m^2\omega^4}) \ - \ \frac{q^2E^2}{2m\omega^2} \ = \ \frac{1}{2} m \omega^2 (x \ - \ \frac{qE}{m\omega^2})^2 \ - \ \frac{q^2E^2}{2m\omega^2}$$
+  <br>
+  Let's substitute this back into the Schrödinger equation:
+  <br><br>
+  $$\Rightarrow \ -\frac{\hbar^2}{2m} \ \frac{d^2 \psi}{dx^2} \ + \ \frac{1}{2} m \omega^2 (x \ - \ \frac{qE}{m\omega^2})^2 \psi \ - \ \frac{q^2E^2}{2m\omega^2} \psi \ = \ E \psi$$
+  <br>
+  Let's now do a change of variables:
+  <br><br>
+  $$x \ \rightarrow \ x \ + \ \frac{qE}{m\omega^2}$$
+  $$\Rightarrow \ -\frac{\hbar^2}{2m} \ \frac{d^2 \psi}{d(x \ + \ \frac{qE}{m\omega^2})^2} \ + \ \frac{1}{2} m \omega^2 x^2 \psi \ - \ \frac{q^2E^2}{2m\omega^2} \psi \ = \ -\frac{\hbar^2}{2m} \ \frac{d^2 \psi}{dx^2} \ + \ \frac{1}{2} m \omega^2 x^2 \psi \ - \ \frac{q^2E^2}{2m\omega^2} \psi \ = \ E \psi$$
+  <br>
+  And so we get:
+  <br><br>
+  $$\Rightarrow \ -\frac{\hbar^2}{2m} \ \frac{d^2 \psi}{dx^2} \ + \ \frac{1}{2} m \omega^2 x^2 \psi \ = \ \Big( E \ + \ \frac{q^2E^2}{2m\omega^2} \Big) \psi$$
+  <br>
+  Obtaining the allowed energies as we normally would for the case of the quantum harmonic oscillator (either the raising/lowering operator method or the power series method), we get:
+  <br><br>
+  $$E \ + \ \frac{q^2E^2}{2m\omega^2} \ = \ \Big( n \ + \ \frac{1}{2} \Big) \hbar\omega \ \Rightarrow \ E \ = \ \Big( n \ + \ \frac{1}{2} \Big) \hbar\omega \ - \ \frac{q^2E^2}{2m\omega^2}$$
+  <br>
+  Awesome! Our second-order correction predicts exactly what the change in the allowed energies of our quantum system will be!
+  <br><br><br><br>
+  </p>
+
+  <br><br><br><br>
+  </div>
+  </center>
+  </body>
+  </html>
