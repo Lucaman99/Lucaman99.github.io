@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 6.7</h2>
+<p>
+  So we have to start by demonstrating that for the "ring potential", the eigenfunctions are given by:
+  <br><br>
+  $$\psi_n(x) \ = \ \frac{1}{\sqrt{L}} e^{2\pi i n x/L} \ \ \ \ -L/2 \ < \ x \ < \ L/2$$
+  <br>
+  We can start by setting up the Schrödinger equation for our region from $-L/2$ to $L/2$. The potential is $0$ for all possible positions of the particle, as the particle is travelling on the ring-shaped path,
+  so the Schrödinger equation gives us:
+  <br><br>
+  $$-\frac{\hbar^2}{2m} \ \frac{\partial^2 \psi}{\partial x^2} \ = \ E \psi \ \Rightarrow \ \frac{\partial^2 \psi}{\partial x^2} \ = \ -k^2 \psi \ \ \ \ \ \ \ \ k \ = \ \frac{\sqrt{2mE}}{\hbar}$$
+  <br>
+  Solving this, we get:
+  <br><br>
+  $$\psi(x) \ = \ Ae^{ikx} \ + \ Be^{-ikx}$$
+  <br>
+  Now, we are allowed to let $k$ run negative, to cover the negative solutions (note that both terms in the sum, for arbitrary coefficients, also solve the Schrödinger equation with the same eigenvalue).
+  Since the particle is on a ring, and its path "wraps around", the wavefunction must be continuous when it goes from the leftmost point, approaching $-L/2$, to the rightmost point, approaching $L/2$. Thus, we
+  require that:
+  <br><br>
+  $$\psi(-L/2) \ = \ \psi(L/2) \ \Rightarrow \ Ae^{ikL/2} \ = \ Ae^{-ikL/2}$$
+  <br>
+  We thus get:
+  <br><br>
+  $$e^{ikL} \ = \ i\sin(kL) \ + \ \cos(kL) \ = \ 1$$
+  $$\Rightarrow \ kL \ = \ 2\pi n \ \Rightarrow \ k \ = \ \frac{2 \pi n}{L} \ \ \ \ \ \ k \ \in \ \mathbb{Z}$$
+  <br>
+  This gives us a wavefunction of:
+  <br><br>
+  $$\psi(x) \ = \ Ae^{2\pi i n x/L}$$
+  <br>
+  Finally, we normalize on the region $-L/2$ to $L/2$, as the particle has probability $0$ of being found anywhere else:
+  <br><br>
+  $$\displaystyle\int_{-L/2}^{L/2} \ |A|^2 e^{2i \pi n x/L} e^{-2i \pi n x/L} dx \ = \  \displaystyle\int_{-L/2}^{L/2} \ |A|^2 dx \ = \ 1 \ \Rightarrow \ A \ = \ \frac{1}{\sqrt{L}}$$
+  <br>
+  This gives us a final wavefunction of:
+  <br><br>
+  $$\psi_{n}(x) \ = \ \frac{1}{\sqrt{L}} e^{2\pi i n x/L} \ \ \ \ \ n \ \in \ \mathbb{Z}$$
+  <br>
+  As you can see, this is doubly degenerate (we first introduced this degeneracy when we let $k$ run negative). Now, we introduce the perturbation given by:
+  <br><br>
+  $$H' \ = \ -V_0 e^{-x^2/a^2}$$
+  <br>
+  We now have to find the new, perturbed first-order energy correction using the given equation:
+  <br><br>
+  $$E^{1}_{\pm} \ = \ \frac{1}{2} \Big[ (W_{aa} \ + \ W_{bb}) \ \pm \ \sqrt{(W_{aa} \ - \ W_{bb}) \ + \ 4 |W_{ab}|^2} \Big]$$
+  <br>
+  With:
+  <br><br>
+  $$W_{ij} \ = \ \displaystyle\int \psi_{i}(x)^* H' \psi_{j}(x) dx$$
+  <br>
+  We can calculate each of the matrix element of $W$, with $a \ = \ n$ and $b \ = \ -n$, for the degenerate pairs:
+  <br><br>
+  $$W_{nn} \ = \ W_{(-n)(-n)} \ = \ -\frac{V_0}{L} \displaystyle\int_{-L/2}^{L/2} e^{-x^2/a^2} dx \ = \ -\frac{V_0}{L} \displaystyle\int_{-\infty}^{\infty} e^{-x^2/a^2} dx \ = \ -\frac{V_0 a \sqrt{\pi}}{L}$$
+  <br>
+  Notice how we extend the bounds to $\pm \infty$. This may seem slightly mind-boggling, but the question specifies that $a \ll L$. Consider the points at $x \ = \ \pm a$. This function is already small, and is still not even close
+  to $\pm L/2$. At $\pm 2a$, the perturbation is practically $0$, and is still far away from $\pm L/2$, this it is safe for us to consider the rest of the area under this curve <b>past</b> the point $\pm L/2$ practically $0$, thus we are allowed to extend
+  the bounds of integration to $\pm \infty$. Now, let's solve the ret of the integrals:
+  <br><br>
+  $$W_{n(-n)} \ = \ -\frac{V_0}{L} \displaystyle\int_{-\infty}^{\infty} e^{-4 \pi i n x/L} e^{-x^2/a^2} dx$$
+  $$W_{(-n)n} \ = \ -\frac{V_0}{L} \displaystyle\int_{-\infty}^{\infty} e^{4 \pi i n x/L} e^{-x^2/a^2} dx$$
+  <br>
+  Let's do a little bit of algebra now:
+  <br><br>
+  $$-\frac{1}{a^2} x^2 \ \pm \ 4 \pi i n x \ = \ -\frac{1}{a^2} (x^2 \ \pm \ \frac{4 \pi a^2 i n}{L} x) \ = \ -\frac{1}{a^2} (x^2 \ \pm \ \frac{4 \pi a^2 i n}{L} x \ - \ \frac{4 \pi^2 a^4 n^2}{L^2} \ + \ \frac{4 \pi^2 a^4 n^2}{L^2})$$
+  $$\Rightarrow \ -\frac{1}{a^2} (x^2 \ \pm \ \frac{4 \pi a^2 i n}{L} x \ - \ \frac{4 \pi^2 a^4 n^2}{L^2}) \ - \ \frac{4 \pi^2 a^2 n^2}{L^2} \ = \ -\frac{1}{a^2} (x \ \pm \ \frac{2 \pi a^2 i n}{L})^2 \ - \ \frac{4 \pi^2 a^2 n^2}{L^2}$$
+  <br>
+  So our integrals are given as:
+  <br><br>
+  $$W_{n(-n)} \ = \ -\frac{V_0}{L} \displaystyle\int_{-\infty}^{\infty} e^{-\frac{1}{a^2} (x \ + \ \frac{2 \pi a^2 i n}{L})^2} e^{-\frac{4 \pi^2 a^2 n^2}{L^2}} dx \ = \ -\frac{V_0 a \sqrt{\pi}}{L}$$
+  $$W_{(-n)n} \ = \ -\frac{V_0}{L} \displaystyle\int_{-\infty}^{\infty} e^{-\frac{1}{a^2} (x \ - \ \frac{2 \pi a^2 i n}{L})^2} e^{-\frac{4 \pi^2 a^2 n^2}{L^2}} dx \ = \ -\frac{V_0 a \sqrt{\pi}}{L}$$
+  <br>
+  Notice how we got rid of the exponential coefficient, as $a \ \ll \ L$, thus it is practically equal to one.
+  <br>
+  We are now in a position to calculate our first-order energy corrections:
+  <br><br>
+  $$E^{1}_{\pm} \ = \ \frac{1}{2} \Big[ -\frac{2V_0 a \sqrt{\pi}}{L} \Big] \ \pm \ \frac{2V_0 a \sqrt{\pi}}{L} \Big]$$
+  $$\Rightarrow \ E^{1}_{+} \ = \ 0 \ \Rightarrow \ E^{1}_{-} \ = \ -\frac{2V_0 a \sqrt{\pi}}{L}$$
+  <br>
+  Cool, so now that we're done with that, we can attempt to find our "good" states. Let's do $E^{1}_{+}$ first:
+  <br><br>
+  $$\displaystyle\int (w\psi_{n} \ + \ z\psi_{-n})^{*} e^{-x^2/a^2} (w\psi_{n} \ + \ z\psi_{-n}) dx \ = \ -\frac{V_0a\sqrt{\pi}}{L} (w^2 \ + \ 2wz \ + \ z^2) \ = \ -\frac{V_0a\sqrt{\pi}}{L} (w \ + \ z)^2 \ = \ 0 \ \Rightarrow \ w \ = \ -z$$
+  <br>
+  Now, we can do $E^{1}_{-}$:
+  <br><br>
+  $$-\frac{V_0a\sqrt{\pi}}{L} (w \ + \ z)^2 \ = \ -\frac{2V_0a\sqrt{\pi}}{L} \ \Rightarrow \ w \ + \ z \ = \ \sqrt{2}$$
+  <br>
+  Remembering the normalization condition, we have:
+  <br><br>
+  $$|z|^2 \ + \ |w|^2 \ = \ 1$$
+  <br>
+  For $E^{1}_{+}$ this is easy, we have $w \ = \ 1/\sqrt{2}$ and $z \ = \ -1/\sqrt{2}$. For $E^{1}_{-}$, we have:
+  <br><br>
+  $$z^2 \ + \ (\sqrt{2} \ - \ z)^2 \ = \ 2z^2 \ - \ 2\sqrt{2} z \ + \ 1 \ = \ 0 \ \Rightarrow \ z^2 \ - \ \sqrt{2} z \ + \ \frac{1}{2} \ = \ 0 \ \Rightarrow \ (z \ - \ \frac{1}{\sqrt{2}})^2 \ = \ 0 \ \Rightarrow \ z \ = \ \frac{1}{\sqrt{2}}$$
+  $$\Rightarrow \ w \ = \ \frac{1}{\sqrt{2}}$$
+  <br>
+  So our good states are given as:
+  <br><br>
+  $$\frac{\psi_{n}(x) \ + \ \psi_{-n}(x)}{\sqrt{2}} \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \frac{\psi_{n}(x) \ - \ \psi_{-n}(x)}{\sqrt{2}}$$
+  <br>
+  We can write these wavefunctions in a more appealing form:
+  <br><br>
+  $$\frac{\psi_{n}(x) \ + \ \psi_{-n}(x)}{\sqrt{2}} \ = \ \frac{1}{\sqrt{2L}} e^{2 \pi i n x/L} \ + \ \frac{1}{\sqrt{2L}} e^{-2 \pi i n x/L} \ = \ \sqrt{\frac{2}{L}} \cos\Big(\frac{2 \pi n x}{L}\Big)$$
+  $$\frac{\psi_{n}(x) \ - \ \psi_{-n}(x)}{\sqrt{2}} \ = \ \frac{1}{\sqrt{2L}} e^{2 \pi i n x/L} \ - \ \frac{1}{\sqrt{2L}} e^{-2 \pi i n x/L} \ = \ \sqrt{\frac{2}{L}} \sin\Big(\frac{2 \pi n x}{L}\Big)$$
+  <br>
+  Note that we got rid of the overall phase on the final wavefunctions.
+  <br>
+    <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
