@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 6.10</h2>
+<p>
+  This is a nice little problem for a Wednesday morning (I didn't actually solve the problem this morning, I think it was sometime very late a couple nights ago, but it's been sitting in my notebook
+  and it's begging to be posted)! We will start by constructing our general eigenstate in the following form:
+  <br><br>
+  $$|\psi^{0}_g\rangle \ = \ \displaystyle\sum_{j} \alpha_j |\psi^{0}_j\rangle$$
+  <br>
+  Where each of the $|\psi_j^{0}\rangle$ state vectors are the degenerate state vectors for the eigenvalue $E^{0}$, for a system with $j$-fold degeneracy. Now, we know that for a small perturbation, we have:
+  <br><br>
+  $$H \ = \ H^{0} \ + \ \lambda H'$$
+  <br>
+  And our goal is to find the new eigenstates of the perturbed Hamiltonian. Thus, we want to solve the equation:
+  <br><br>
+  $$H|\psi'\rangle \ = \ E|\psi'\rangle \ \Rightarrow \ (H^{0} \ + \ \lambda H')(|\psi^{0}\rangle \ + \ \lambda |\psi^{1}\rangle \ + \ ...) \ = \ (E^{0} \ + \ \lambda E^{1} \ + \ ...)(|\psi^{0}\rangle \ + \ \lambda |\psi^{1}\rangle \ + \ ...)$$
+  <br>
+  Since our general state is an eigenstate of some $E^{0}$, we are allowed to plug it into our equation as $|\lambda^{0}\rangle$. We are also only looking for the first-order corrections, so we
+  will truncate the sums at the first-order terms in the Taylor expansion:
+  <br><br>
+  $$(H^{0} \ + \ \lambda H')(|\psi^{0}_g\rangle \ + \ \lambda |\psi^{1}_g\rangle) \ = \ (E^{0} \ + \ \lambda E^{1})(|\psi^{0}_g\rangle \ + \ \lambda |\psi^{1}_g\rangle)$$
+  <br>
+  Let's do a bit of expanding!
+  <br><br>
+  $$H^{0} |\psi^{0}_g\rangle \ + \ \lambda H^{0} |\psi^1_g\rangle \ + \ \lambda H' |\psi^0_g\rangle \ + \ \lambda^2 H' |\psi_g^1\rangle \ = \ E^{0} |\psi^{0}_g\rangle \ + \ \lambda E^{0} |\psi^1_g\rangle \ + \ \lambda E^{1} |\psi^0_g\rangle \ + \ \lambda^2 E^{1} |\psi_g^1\rangle$$
+  <br>
+  We then group terms using $\lambda$:
+  <br><br>
+  $$H^{0} |\psi^{0}_g\rangle \ + \ (H^{0} |\psi^1_g\rangle \ + \ H' |\psi^0_g\rangle) \lambda \ + \ \lambda^2 H' |\psi_g^1\rangle \ = \ E^{0} |\psi^{0}_g\rangle \ + \ (E^{0} |\psi^1_g\rangle \ + \ E^{1} |\psi^0_g\rangle) \lambda \ + \ \lambda^2 E^{1} |\psi_g^1\rangle$$
+  $$H^{0} |\psi^{0}_g\rangle \ = \ E^{0} |\psi^{0}_g\rangle \ \Rightarrow \ (H^{0} |\psi^1_g\rangle \ + \ H' |\psi^0_g\rangle) \lambda \ + \ \lambda^2 H' |\psi_g^1\rangle \ = \ (E^{0} |\psi^1_g\rangle \ + \ E^{1} |\psi^0_g\rangle) \lambda \ + \ \lambda^2 E^{1} |\psi_g^1\rangle$$
+  <br>
+  Now, we take the inner product of both sides with the $|\psi_j^0\rangle^{\dagger}$:
+  <br><br>
+  $$(\langle \psi^0_j | H^{0} |\psi^1_g\rangle \ + \ \langle \psi^0_j | H' |\psi^0_g\rangle) \lambda \ + \ \lambda^2 \langle \psi^0_j | H' |\psi_g^1\rangle \ = \ (\langle \psi^0_j | E^{0} |\psi^1_g\rangle \ + \ \langle \psi^0_j | E^{1} |\psi^0_g\rangle) \lambda \ + \ \lambda^2 \langle \psi^0_j | E^{1} |\psi_g^1\rangle$$
+  $$\langle \psi^0_j | H^{0} |\psi^1_g\rangle \ = \ E^{0} \langle \psi^0_j | \psi^1_g\rangle \ \Rightarrow \  \langle \psi^0_j | H' |\psi^0_g\rangle \lambda \ + \ \lambda^2 \langle \psi^0_j | H' |\psi_g^1\rangle \ = \ \langle \psi^0_j | E^{1} |\psi^0_g\rangle \lambda \ + \ \lambda^2 \langle \psi^0_j | E^{1} |\psi_g^1\rangle$$
+  <br>
+  Now, by the uniqueness of power series representations, we have:
+  <br><br>
+  $$\langle \psi^0_j | H' |\psi^0_g\rangle \ = \ \langle \psi^0_j | E^{1} |\psi^0_g\rangle \ = \ E^{1} \langle \psi^0_j | \displaystyle\sum_{i} \alpha_i |\psi^{0}_i\rangle \ = \ E^{1} \alpha_j$$
+  <br>
+  We just changed the variable we sum over to $i$ because we already used $j$. Now, we have:
+  <br><br>
+  $$\displaystyle\sum_i \alpha_i \langle \psi^0_j | H' | \psi_i^0 \rangle \ = \ E^1 \alpha_j \ \Rightarrow \ \displaystyle\sum_{i} \alpha_i W_{ji} \ = \ E^{1} \alpha_j$$
+  <br>
+  This is equivalent to the system of eigenvalue equations for the $W$ matrix (which is just the $H'$ matrix expressed in the basis of energy eigenstates). Basically, this equation is saying
+  that the $W$ matrix acting upon the general eigenstate must be equivalent to multiplying the eigenstate by $E^1$, thus the first-order perturbed energies are simply the eigenstates of the $W$ matrix.
+  <br>
+  Now, let's consider the "good" states. The goal of finding these good states is essentially to minimize our work, so we don't have to solve a system of eigenvalue equations. Consider our general vector once more:
+  <br><br>
+  $$|\psi_g^0\rangle \ = \ \displaystyle\sum_j \alpha_j |\psi_j^0\rangle$$
+  <br>
+  Now, the only condition we imposed upon $|\psi_j^0\rangle$ is that it is an eigenstate of $H^0$. Note that in a system with degeneeracy <b>linear combinations of degenerate states corresponding to the same energy are also eigenstates with that energy</b>.
+  Thus, there are a bunch of different bases in which we can express our general state vector $|\psi_g^0\rangle$, but we have no idea which one to choose! Well, we can actually choose a basis that makes our calculations easier, which Griffiths calls the "good" states!
+  Essentially, we want to choose the basis of <b>eigenstates</b> of the $W$ matrix. If we do this, then we get:
+  <br><br>
+  $$\displaystyle\sum_i \alpha_i \langle \psi^0_j | H' | \psi_i^0 \rangle \ = \ \displaystyle\sum_i V \alpha_i \langle \psi^0_j | \psi_i^0 \rangle \ = \ V \alpha_j \langle \psi^0_j | \psi_j^0 \rangle \ = \ \alpha_j \langle \psi^0_j | H' | \psi^0_j \rangle \ = \ E^{1} \alpha_j$$
+  <br>
+  Where $V$ is the eigenvalue. We also know that the eigenvalues of $H'$ are the first order energies, $E^1$, so, since for the "good" states, all terms in the sum become $0$ except for $\langle \psi^0_j | H' | \psi^0_j \rangle$, we simply get:
+  <br><br>
+  $$\langle \psi^0_j | H' | \psi^0_j \rangle \ = \ E^1$$
+  <br>
+  Where each $|\psi_j^0\rangle$ is a "good" state (eigenvector of the $W$ matrix). Thus, instead of solving a large system of equations, if we choose a basis that sends all terms of the sum to $0$ except for one, we can simply evaluate the inner products of this form to get the first-order energies. This is much less messy thsan solving a massive
+  system of linear equations. For a $j$-fold degenerate system, we will have $j$ eigenstates, so we will get $j$ new, perturbed energies, which is the "lifting" of energies that Griffiths discussed in the beginning of the chapter.
+    <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
