@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+<center>
+<div style="margin-left:25vw;margin-right:25vw;text-align:left">
+<br><br>
+<h2>Munkres Introduction to Topology: Section 21 Problem 8</h2>
+<p>
+This is my first topology solution in the past little while. I'm sorry for the huge delays, and hopefully, in the coming weeks, I'll be posting a lot more pure math/topology-related material. Anyways, let's jump right into the problem.
+<br><br>
+We have to prove that if we have some sequence of continuous functions $f_n$ such that $f_n : X \ \rightarrow \ Y$, where $X$ is a topological space and $Y$ is a metric space, and we also have some sequence of points $x_n \ \rightarrow \ x$ in $X$, then if $(f_n)$ converges uniformly to $f$, then $(f_n(x_n))$ converges to $f(x)$ in $Y$.
+<br><br>
+<b>Proof</b>
+<br><br>
+In order to complete this proof, we must first show that for some function between two topological spaces, $f: X \ \rightarrow \ Y$, where for each $x \ \in \ X$ and each neighbourhood $V$ around each $f(x)$, there exists some neighbourhood of $x$, denoted by $U$, such that $f(U) \ \subset \ V$ implies that $f$ is continuous and vice versa. We start by demonstrating that the first condition implies continuity. Let us pick some neighbourhood $V$ in $Y$, and some point $x$ with $x \ \in \ f^{-1}(V)$. Then $f(x)$ is contained within some open set $V$. Under the inverse image, we have $x \ \in \ f^{-1}(V)$. By the condition we provided, there must exist some $U$ around $x$ such that $f(U) \ \subset \ V$, which implies that $U \ \subset \ f^{-1}f(U) \ \subset \ f^{-1}(V)$, thus we have $x \ \in \ U \ \subset \ f^{-1}(V)$ for each point $x \ \in \ f^{-1}(V)$. Taking the union of all points $x$, we find that:
+<br><br>
+$$\displaystyle\bigcup_{x \ \in \ U} \ x \ = \ \displaystyle\bigcup_{x} \ U_{x} \ = \ U \ = \ f^{-1}(V)$$
+<br><br>
+Thus we find that $f^{-1}(V)$ is a union of open sets and is thus open, proving that $f$ is continuous.
+<br><br>
+Going the other way, let's assert that $f$ is continuous. It follows that for some open set $V$ in $Y$, that $f^{-1}(V)$ must be open in $X$. Pick $x$ to be some arbitrary point in $X$, with $f(x) \ \in \ V$. It follows that $x \ \in \ f^{-1}(V)$, which is by definition an open set, as we have already stated. Since $ff^{-1}(V) \ \subset \ V$, it follows that $f^{-1}(V)$ itself acts as an open neighbourhood $U$ for some $x$ such that $f(U) \ \subset \ V$, therefore we have completed our proof. $\blacksquare$
+<br><br>
+Now that we have proved this important fact, we can jump into our "main" proof. If $Y$ is a metric space, then we are at liberty to choose an open set $V$ around $f(x)$, which also contains some open ball $B(f(x), \ \epsilon) \ \subset \ V$ around $f(x)$ in $Y$, as well as some $B(f(x), \ 2\epsilon)$, which is contained within $V$ and contains the first open ball. Now, since $f$ is continuous, by the statement that we just proved, we should be able to find a neighbourhood around $x$ such that $f(U) \ \subset \ B_{\epsilon}$. Well, since $x_n \ \rightarrow \ x$, then it follows that for the open set around $x$ that gets mapped into $V$, there will also exist a collection of points of $x_a$ for $a \ > \ N_1$, for some $N_1$. This means that $(f(x_a)) \ \in \ f(U) \ \subset \ B \ \subset \ V$, for each $v$ around $f(x)$. Now, since $(f_n)$ converges uniformly, then for each $x \ \in \ X$, we have:
+<br><br>
+$$d(f(x), \ f_b(x)) \ < \ \epsilon$$
+<br><br>
+For for some $b$ greater than some $N_2$. This means that if we choose $N \ = \ \text{max}(N_1, \ N_2)$, then $(f(x_n))$ will be contained within $B_\epsilon$ for $n \ > \ N$. From uniformal convergence, it follows that the "metric distance" between some $f(x_n)$ and $f_n(x_n)$ is less than $\epsilon$, thus $(f_n(x_n)) \ \in \ B_{2\epsilon} \ \subset \ V$, for each open set $V$ around $f(x)$ and $n \ > \ N$. Since this collection is contained within each open neighbourhood of $f(x)$, for all $n$ greater than some number $N$, it follows that $f_n(x_n) \ \rightarrow \ f(x)$, and our proof is complete! $\blacksquare$
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
