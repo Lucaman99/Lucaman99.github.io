@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+<center>
+<div style="margin-left:25vw;margin-right:25vw;text-align:left">
+<br><br>
+<h2>Munkres Introduction to Topology: Section 21 Problem 11</h2>
+<p>
+I expected this problem to be fun, and it was. This is a fairly long problem, so it is split up into four parts, which I will go through sequentially.
+In addition, there are three other proofs that I am going to go through while I'm writing this solution, to further clarify what exactly is going on. In addition, I'll be citing a proof that I went
+through the the Section 21 Problem 8 solution, so if you are unfamiliar with my argument, see Problem 8. Without further delay, let's get into the solution.
+<br><br>
+<b>Part A</b>
+<br><br>
+We start off by proving a fairly simple statement: if $(s_n)$ is a bounded sequence of real numbers, and $s_n \ \leq \ s_{n \ + \ 1} \ \forall n$, then the sequence $(s_n)$ converges.
+In order for this sequence to converge to some number $s$, every neighbourhood of $s$ must contain $s_n \ \forall \ n \ > \ N$, for some value
+of $N$. If the sequence $(s_n)$ is bounded, then there must exist a lower bound and an upper bound on the set $(s_n)$. We will pick $s_a \ = \ \sup (s_n)$.
+<br><br>
+There are two cases that we can consider. The first is when an element of the sequence repeats itself an infinite number of times, which in that caase means that the series converges to the repeated number. This
+can be easily proven: if $s_n \ = \ s$ for $n \ > \ N$, then any open interval of $s$ contains $s_n$ for $n \ > \ N$, thus the sequence converges to $s$.
+<br><br>
+In addition, we can consider the case where the sequence does not repeat itself an infinite number of times. This means that for some $s_n$, we can always find $s_m$ with $m \ > \ n$ such that $s_n \ \neq \ s_m$. Since
+$s_{n \ + \ 1} \ \geq \ s_n$, it follows that $s_m \ > \ s_n$. We extend this, to write that for every $n$, there exists some $m$ such that:
+<br><br>
+$$s_n \ < \ s_m \ < \ s_a \ \ \ \text{for} \ n \ < \ m$$
+<br><br>
+And in addition, $s_n \ \leq \ s_{n \ + \ 1}$ for every $n$. It thus follows that our sequence must approach $s_a$. We assert that our sequence converges to $s_a$. We choose some open set $(s_a \ - \ \epsilon, \ s_a \ + \ \epsilon)$ around $s_a$. Now, since we
+can always find $s_m \ > \ s_n$, we can get arbitrarily close to $s_a$, with some element $s_N$. It follows from the fact that $s_n \ \leq \ s_{n \ + \ 1}$ that every $s_n$ with $n \ \geq \ N$ is is the open interval of $s_a$, thus proving our sequence converges to $s_a$. $\blacksquare$
+<br><br>
+<b>Part B</b>
+<br><br>
+Now, we let $(a_n)$ be a sequence of real numbers, with:
+<br><br>
+$$s_n \ = \ \displaystyle\sum_{i \ = \ 1}^{n} a_i$$
+<br><br>
+If $s_n \ \rightarrow \ s$, then we ssay the infinite series converges to $s$ as well. We must show that if $\sum a_i$ converges to $s$ and $\sum b_i$ converges to t, then:
+<br><br>
+$$\displaystyle\sum_{i} \ ca_i \ + \ b_i \ \rightarrow \ cs \ + \ t$$
+<br><br>
+Where $c$ is just some coefficient. In order to prove this, we have to prove a few other things first. Firstly, we must show that a function from a metric space to another metric space, $f:X \ \rightarrow \ Y$, will be continuous if an only if for every $\epsilon \ > \ 0$ and every $x$ and $y$, we can choose a
+$\delta$ such that if $d_X(x,  y) \ < \ \delta$, then this implies that $d_Y(f(x), \ f(y)) \ < \ \epsilon$. First, we let:
+<br><br>
+$$d_X(x, \ y) \ < \ \delta \ \Rightarrow \ d_Y(f(x), \ f(y)) \ < \ \epsilon$$
+<br><br>
+
+Convergent cartesian products
+Continuity of addition
+Equivalence of metric to continuity
+
+</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
