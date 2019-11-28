@@ -3,7 +3,7 @@
 <head>
 <title>Munkres</title>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
@@ -15,7 +15,7 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
 <h2>Munkres Introduction to Topology: Section 21 Problem 11</h2>
 <p>
 I expected this problem to be fun, and it was. This is a fairly long problem, so it is split up into four parts, which I will go through sequentially.
-In addition, there are three other proofs that I am going to go through while I'm writing this solution, to further clarify what exactly is going on. In addition, I'll be citing a proof that I went
+In addition, there are a few other proofs that I am going to go through while I'm writing this solution, to further clarify what exactly is going on. In addition, I'll be citing a proof that I went
 through the the Section 21 Problem 8 solution, so if you are unfamiliar with my argument, see Problem 8. Without further delay, let's get into the solution.
 <br><br>
 <b>Part A</b>
@@ -29,32 +29,154 @@ can be easily proven: if $s_n \ = \ s$ for $n \ > \ N$, then any open interval o
 <br><br>
 In addition, we can consider the case where the sequence does not repeat itself an infinite number of times. This means that for some $s_n$, we can always find $s_m$ with $m \ > \ n$ such that $s_n \ \neq \ s_m$. Since
 $s_{n \ + \ 1} \ \geq \ s_n$, it follows that $s_m \ > \ s_n$. We extend this, to write that for every $n$, there exists some $m$ such that:
-<br><br>
+<br>
 $$s_n \ < \ s_m \ < \ s_a \ \ \ \text{for} \ n \ < \ m$$
-<br><br>
+<br>
 And in addition, $s_n \ \leq \ s_{n \ + \ 1}$ for every $n$. It thus follows that our sequence must approach $s_a$. We assert that our sequence converges to $s_a$. We choose some open set $(s_a \ - \ \epsilon, \ s_a \ + \ \epsilon)$ around $s_a$. Now, since we
 can always find $s_m \ > \ s_n$, we can get arbitrarily close to $s_a$, with some element $s_N$. It follows from the fact that $s_n \ \leq \ s_{n \ + \ 1}$ that every $s_n$ with $n \ \geq \ N$ is is the open interval of $s_a$, thus proving our sequence converges to $s_a$. $\blacksquare$
 <br><br>
 <b>Part B</b>
 <br><br>
 Now, we let $(a_n)$ be a sequence of real numbers, with:
-<br><br>
+<br>
 $$s_n \ = \ \displaystyle\sum_{i \ = \ 1}^{n} a_i$$
-<br><br>
-If $s_n \ \rightarrow \ s$, then we ssay the infinite series converges to $s$ as well. We must show that if $\sum a_i$ converges to $s$ and $\sum b_i$ converges to t, then:
-<br><br>
+<br>
+If $s_n \ \rightarrow \ s$, then we say the infinite series converges to $s$ as well. We must show that if $\sum a_i$ converges to $s$ and $\sum b_i$ converges to t, then:
+<br>
 $$\displaystyle\sum_{i} \ ca_i \ + \ b_i \ \rightarrow \ cs \ + \ t$$
+<br>
+Where $c$ is just some coefficient. In order to prove this, we have to prove a few other things first.
 <br><br>
-Where $c$ is just some coefficient. In order to prove this, we have to prove a few other things first. Firstly, we must show that a function from a metric space to another metric space, $f:X \ \rightarrow \ Y$, will be continuous if an only if for every $\epsilon \ > \ 0$ and every $x$ and $y$, we can choose a
+<b>Proof 1</b>
+<br><br>
+Firstly, we must show that a function from a metric space to another metric space, $f:X \ \rightarrow \ Y$, will be continuous if an only if for every $\epsilon \ > \ 0$ and every $x$ and $y$, we can choose a
 $\delta$ such that if $d_X(x,  y) \ < \ \delta$, then this implies that $d_Y(f(x), \ f(y)) \ < \ \epsilon$. First, we let:
-<br><br>
+<br>
 $$d_X(x, \ y) \ < \ \delta \ \Rightarrow \ d_Y(f(x), \ f(y)) \ < \ \epsilon$$
+<br>
+Now, we prove that $f$ is continuous. If this statement is true, we know that for each $x_0$, that $f(B_X(x_0, \ \delta)) \ \subset \ B_Y(f(x_0), \ \epsilon)$. We then know that $B_X(x_0, \ \delta) \ \subset \ f^{-1}f(B_X(x_0, \ \delta)) \ \subset \ f^{-1}(B_Y(f(x_0), \ \epsilon))$ for each point $x_0 \ \in \ X$.
+$B_X(x_0, \ \delta)$ is a basis element for the metric topology on $X$, thus $f^{-1}(B_Y(f(x_0), \ \epsilon))$ is open by the basis definition of an open set. Conversely, let $f^{-1}(V)$ be open in $X$ for some open set $V$ in $Y$. Proving continuity with respect to basis elements is equivalent to to proving general continuity for all open
+sets, as only open set can be written as a union of open sets. Thus, $U \ = \ f^{-1}(B_Y(f(x_0), \ \epsilon))$ is open in $X$ for some $x_0 \ \in \ X$. In the metric topology, there exists an open ball basis element centred at $x_0$ in $U$, thus we have:
+<br>
+$$B_X(x_0, \ \delta) \ \subset \ U \ = \ f^{-1}(B_Y(f(x_0), \ \epsilon))$$
+<br>
+For each $x_0 \ \in \ X$. We thus have:
+<br>
+$$f(B_X(x_0, \ \delta)) \ \subset \ U \ = \ ff^{-1}(B_Y(f(x_0), \ \epsilon)) \ \subset \ B_Y(f(x_0), \ \epsilon)$$
+<br>
+This means that if we have some point $x$ such that $d_X(x_0, \ x) \ < \ \delta$, then we must have $d_Y(f(x_0), \ f(x)) \ < \ \epsilon$, which concludes our proof. $\blacksquare$
 <br><br>
-
-Convergent cartesian products
-Continuity of addition
-Equivalence of metric to continuity
-
+<b>Proof 2</b>
+<br><br>
+We now have to prove that the standard topologies on $\mathbb{R}$ and $\mathbb{R}$ are equivalent to the square metric topology. For $\mathbb{R}$, some basis element is represented as $(a, \ b)$. This open interval is
+also a basis element of the square metric topology, as:
+<br>
+$$(a, \ b) \ = \ B_{\rho}\Big(\frac{a \ + \ b}{2}, \ \frac{b \ - \ a}{2} \Big)$$
+<br>
+The other way, a basis element of the square metric topology is given a $B_{\rho}(x_0, \ \epsilon)$, which is a basis element of the standard topology of the form $(x_0 \ - \ \epsilon, \ x_0 \ + \ \epsilon)$. The corresponding proof for $\mathbb{R}^2$ follows in an almost identical fashion. We can actually generalize this to $\mathbb{R}^n$, but I'm not going to do that right now).
+<br><br>
+<b>Proof 3</b>
+<br><br>
+We now have to demonstrate that the function of addition between two real numbers is a continuous function! This is actually part of Problem 12, but I thought that it makes sense to just do it now, rather
+than just "accepting" that addition is continuous. We define addition between metric spaces as:
+<br>
+$$+ : \mathbb{R}^2 \ \rightarrow \ \mathbb{R}$$
+<br>
+We will prove continuity with respect to the square metric topology on $\mathbb{R}$ and $\mathbb{R}^2$, which we have just found is equivalent to proving continuity with respect to the standard topology.
+The textbook gives us a fairly big hint: Munkres tells us to let $\epsilon \ = \ \delta/2$ nd note that:
+<br>
+$$d(x \ + \ y, \ x_0 \ + \ y_0) \ \leq \ |x \ - \ x_0| \ + \ |y \ - \ y_0|$$
+<br>
+This is super helpful. Recall Proof 1. In order to prove continuity of addition, we must show that:
+<br>
+$$\rho((x, \ y), \ (x_0, \ y_0)) \ < \ \delta \ \Rightarrow \ \rho(x \ + \ y, \ x_0 \ + \ y_0) \ < \ \epsilon$$
+$$\Rightarrow \ \rho((x, \ y), \ (x_0, \ y_0)) \ = \ \text{max}(|x \ - \ x_0|, \ |y \ - \ y_0|)$$
+<br>
+Let's choose some $\epsilon \ > \ 0$. Our goal is to find a $\delta$ such that the first statement implies the second. For the $\delta$ condition holding true, we must then have:
+<br>
+$$\text{max}(|x \ - \ x_0|, \ |y \ - \ y_0|) \ < \ \delta$$
+$$\Rightarrow \ |x \ - \ x_0| \ + \ |y \ - \ y_0| \ \leq \ 2\text{max}(|x \ - \ x_0|, \ |y \ - \ y_0|) \ < \ 2\delta$$
+<br>
+And we have:
+<br>
+$$\rho(x \ + \ y, \ x_0 \ + \ y_0) \ = \ |x \ + \ y \ - \ x_0 \ - \ y_0| \ \leq \ |x \ - \ x_0| \ + \ |y \ - \ y_0|$$
+<br>
+So we conclude that:
+<br>
+$$\rho(x \ + \ y, \ x_0 \ + \ y_0) \ < \ 2\delta$$
+<br>
+If our $\delta$ condition holds true, this must hold true. In order for this to then imply the $\epsilon$ condition, we set $\delta \ = \ \epsilon/2$, to get:
+<br>
+$$\rho(x \ + \ y, \ x_0 \ + \ y_0) \ < \ \epsilon$$
+<br>
+Which is exactly what we wanted, thus addition is continuous with respect to the square metric topology, which implies it is continuous in the standard topology. $\blacksquare$
+<br><br>
+<b>Proof 4</b>
+<br><br>
+This is the last external proof before we jump back into the actual problem. We need to show that if $x_n \ \rightarrow \ x$ and if some $f:X \ \rightarrow \ Y$ continuous, then $f(x_n) \ \rightarrow \ f(x)$. Since $f$ is continuous,
+for each $x \ \in \ X$, and each open set $V$ around $f(x)$ in $Y$, there must exist some neighbourhood $U$ around $x$ such that $f(U) \ \subset \ V$. Let us take the point $x$ to which our sequence converges, and find the open set around it $U$ such
+that $f(U) \ \subset \ V$ (it exists, as $f$ is continuous). Within this open set, there must exist $x_n$ for $n \ > \ N$, as $x_n \ \rightarrow \ x$, thus we must have $f(x)$, along with $f(x_n)$ for $n \ > \ N$ in $V$. We can repeat this process for every open
+set $V$ around $f(x)$. It then follows by definition that $f(x_n) \ \rightarrow \ f(x)$. $\blacksquare$
+<br><br>
+<b>The Actual Proof</b>
+<br><br>
+Cool, so now we can actually jump into the proof. It was proved earlier in the textbook that if $x_n \ \rightarrow \ x$ and $y_n \ \rightarrow \ y$, then $x_n \ \times \ y_n \ \rightarrow \ x \ \times \ y$. This also means that since addition is continuous,
+$x_n \ + \ y_n \ \rightarrow \ x \ + \ y$. Finally, the function $f(x) \ = \ cx$ is continuous, thus $cx_n \ \rightarrow \ cx$. Putting this all together, and we get:
+<br>
+$$\displaystyle\sum_{i} \ ca_i \ + \ b_i \ \ = \ c \displaystyle\sum_i a_i \ + \ \displaystyle\sum_i b_i \ = \ cs_n \ + \ t_n \rightarrow \ cs \ + \ t$$
+<br>
+Which concludes our proof. $\blacksquare$
+<br><br>
+<b>Part C</b>
+<br><br>
+Next, we have to prove the <b>comparison test</b>. Specifically, if $|a_i| \ < \ b_i$ for all $i$, and $\sum_i b_i$ converges to $b$, then $\sum_i a_i$ converges. First, let us have:
+<br>
+$$s_n \ = \ \displaystyle\sum_{i \ = \ 1}^{n} \ |a_i| \ < \ \displaystyle\sum_{i \ = \ 1}^{n} \ b_i$$
+<br>
+Since $|a_i| \ < \ b_i$, each $b_i$ is positive, so $(s_n)$ is bounded above by $b$, as each term of the sum $s_n$ is less then the corresponding term $b_i$, and the sum of $b_i$ elements is always increasing. Evidently, $(s_n)$ is also bounded below by $0$. This implies that $s_n \ \rightarrow \ s$.
+Next, let's consider the sum:
+<br>
+$$t_n \ = \ \displaystyle\sum_{i \ = \ 1}^{n} |a_i| \ + \ a_i$$
+<br>
+The series $t_n$ is also evidently bounded below by $0$. Since $a_i \ < \ |a_i|$, then we have:
+<br>
+$$\displaystyle\sum_{i \ = \ 1}^{n} |a_i| \ + \ a_i \ = \ \displaystyle\sum_{i \ = \ 1}^{n} |a_i| \ + \ \displaystyle\sum_{i \ = \ 1}^{n} a_i \ < \ 2 \displaystyle\sum_{i \ = \ 1}^{n} b_i \ < \ 2b$$
+<br>
+So the series $(t_n)$ is also bounded above, thus it also converges. Finally, citing Part B, and multiplying the first sum by $c \ = \ -1$, then adding the two sums together, we find that $\sum_i a_i$ converges. $\blacksquare$
+<br><br>
+<b>Part D</b>
+<br><br>
+Finally, we will prove the <b>Weierstrass M-test</b>, which states that for a series of functions $f_n:X \ \rightarrow \ \mathbb{R}$, if:
+<br>
+$$s_n \ = \ \displaystyle\sum_{i \ = \ 1}^{n} f_i(x)$$
+<br>
+And if $|f_i(x)| \ \leq \ M_i$ for all $x \ \in \ X$ and all $i$ and $\sum_i M_i$ converges to $M$, then $(s_n)$ converges uniformly to $s$. To prove this
+we let:
+<br>
+$$r_n \ = \ \displaystyle\sum_{n \ + \ 1}^{\infty} M_i$$
+<br>
+We now pick elements $s_j$ and $s_k$, and we compute the metric distance between them. Since we are operating with the standard topology on $\mathbb{R}$, we can equivalently use the square metric topology, and thus
+define our metric to be the square metric. We have, for $j \ < \ k$:
+<br>
+$$|s_k \ - \ s_j| \ = \ \biggr\rvert \displaystyle\sum_{i \ = \ 1}^{k} f_i(x) \ - \ \displaystyle\sum_{i \ = \ 1}^{j} f_i(x) \biggr\rvert \ = \ \biggr\rvert \displaystyle\sum_{i \ = \ j \ + \ 1}^{k} f_i(x) \biggr\rvert \ = \ \displaystyle\sum_{j \ + \ 1}^{k} |f_{i}(x)| \ \leq \ \displaystyle\sum_{j \ + \ 1}^{\infty} |f_{i}(x)| \ \leq \ \displaystyle\sum_{j \ + \ 1}^{\infty} M_i \ = \ r_j$$
+<br>
+So in summary, we have:
+<br>
+$$|s_k \ - \ s_j| \ \leq \ r_j$$
+<br>
+For any value of $k$ and $j$, with $j \ < \ k$. By the comparison test, for the sums of $|f_i(x)|$ and $M_i$, we find that $s_n \ \rightarrow \ s$, thu we get:
+<br>
+$$|s \ - \ s_j| \ \leq \ r_j$$
+<br>
+Notice that:
+<br>
+$$r_j \ = \ \displaystyle\sum_{i \ = \ j \ + \ 1}^{\infty} M_i \ = \ M \ - \ \displaystyle\sum_{i \ = \ 0}^{j} M_i$$
+<br>
+Since $\sum_{i \ = \ 0}^{j} M_i$ converges to $M$, we find that by Part B, $r_j \ \rightarrow \ r \ = \ 0$. This means that for some value of $\epsilon$, we are able to pick some value $r_j$ that is smaller, thus giving us:
+<br>
+$$|s \ - \ s_j| \ \leq \ r_q \ < \ \epsilon \ \ \ \ \forall \epsilon \ > \ 0$$
+<br>
+This is the definition of uniform convergence, thus we conclude our proof. $\blacksquare$
 </p>
 <br><br><br><br>
 </div>
