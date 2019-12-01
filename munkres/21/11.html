@@ -20,20 +20,7 @@ through the the Section 21 Problem 8 solution, so if you are unfamiliar with my 
 <br><br>
 <b>Part A</b>
 <br><br>
-We start off by proving a fairly simple statement: if $(s_n)$ is a bounded sequence of real numbers, and $s_n \ \leq \ s_{n \ + \ 1} \ \forall n$, then the sequence $(s_n)$ converges.
-In order for this sequence to converge to some number $s$, every neighbourhood of $s$ must contain $s_n \ \forall \ n \ > \ N$, for some value
-of $N$. If the sequence $(s_n)$ is bounded, then there must exist a lower bound and an upper bound on the set $(s_n)$. We will pick $s_a \ = \ \sup (s_n)$.
-<br><br>
-There are two cases that we can consider. The first is when an element of the sequence repeats itself an infinite number of times, which in that caase means that the series converges to the repeated number. This
-can be easily proven: if $s_n \ = \ s$ for $n \ > \ N$, then any open interval of $s$ contains $s_n$ for $n \ > \ N$, thus the sequence converges to $s$.
-<br><br>
-In addition, we can consider the case where the sequence does not repeat itself an infinite number of times. This means that for some $s_n$, we can always find $s_m$ with $m \ > \ n$ such that $s_n \ \neq \ s_m$. Since
-$s_{n \ + \ 1} \ \geq \ s_n$, it follows that $s_m \ > \ s_n$. We extend this, to write that for every $n$, there exists some $m$ such that:
-<br>
-$$s_n \ < \ s_m \ < \ s_a \ \ \ \text{for} \ n \ < \ m$$
-<br>
-And in addition, $s_n \ \leq \ s_{n \ + \ 1}$ for every $n$. It thus follows that our sequence must approach $s_a$. We assert that our sequence converges to $s_a$. We choose some open set $(s_a \ - \ \epsilon, \ s_a \ + \ \epsilon)$ around $s_a$. Now, since we
-can always find $s_m \ > \ s_n$, we can get arbitrarily close to $s_a$, with some element $s_N$. It follows from the fact that $s_n \ \leq \ s_{n \ + \ 1}$ that every $s_n$ with $n \ \geq \ N$ is is the open interval of $s_a$, thus proving our sequence converges to $s_a$. $\blacksquare$
+We let $s_a \ = \ \sup (s_n)$, and we assert that our sequence converges to $s_a$. We choose some open set $(s_a \ - \ \epsilon, \ s_a \ + \ \epsilon)$ around $s_a$. Now, let us consider the point $s_a \ - \ \epsilon$. We prove that there must be some point $x_N$ such that $s_N \ > \ s_a \ - \ \epsilon$, by contradiction. Consider if there didn't exist any such point, then for all $i$, we would have $s_i \ \geq \ s_a \ - \ \epsilon$. This would make $s_a \ - \ \epsilon$ an upper bound on our sequence, and, since $s_a \ - \ \epsilon \ < \ s_a$, this point would be the lowest upper bound, which is obviously a contradiction, as we have already stated that $s_a$ is our supremum. Thus, there must exist some $s_N$, such that $s_N \ > \ s_a \ - \ \epsilon$. Since we already know $s_{n \ + \ 1} \ \geq \ s_n$, it follows that all points $s_n$, for $n \ > \ N$ are also greater than $s_a \ - \ \epsilon$, and thus contained within the open set. By definition, the sequence then converges to $s_a$. $\blacksquare$
 <br><br>
 <b>Part B</b>
 <br><br>
