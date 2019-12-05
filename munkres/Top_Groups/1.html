@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Topological Groups Problem 1</h2>
+                <p>
+                    We are now going to turn our attention to a very interesting idea that combines basic abstract algebra with the topological concepts introduced through this section of Munkres'
+                    book. To start, Munkres defines a topological group, which is a group that is also a topological space, which obeys the $T_1$ axiom. In addition, the functions:
+                    $f: G \ \rightarrow \ G$ with $f(g) \ = \ g^{-1}$ and $h: G \ \times \ G \ \rightarrow \ G$ with $h(g, \ j) \ = \ g \ \otimes \ j$ must be continuous.
+                    <br><br>
+                    <b>Proof</b>
+                    <br><br>
+                    We are first asked to prove that if we have some topological space $G$ that is also a group that obeys the $T_1$ axiom, it is a topological group if and only if the function
+                    $w : G \ \times \ G \ \rightarrow \ G$ defined as $w(g, \ j) \ = \ g \ \otimes \ j^{-1}$ is continuous. To start, let's prove a useful lemma that will help us with this proof:
+                    <br><br>
+                    <b>A Small Sub-Proof</b>
+                    <br><br>
+                    We will prove that following statement: If we have some function $f:A \ \rightarrow \ \prod_{i} X_i$, where the co-domain is given the product topology, and $f(a) \ = \ \prod_i f_i(a)$, then $f$ is continuous if and only if
+                    each $f_i: A \ \rightarrow \ X_i$ is continuous.
+                    <br><br>
+                    We will start off by proving that if $f$ is continuous, then each $f_i$ will be continuous. By inspection, we can see that $f_i \ = \ \pi_i \ \circ \ f$, which is the composite of two continuous functions, as for some open set $U_i \ \in \ X_i$, we will have $\pi_i^{-1}(U_i) \ = \ X_1 \ \times \ ... \ \times \ U_i \ \times \ ...$, which is open in the product topology. In addition, we can show that if we have some function $f \ = \ g \ \circ \ h$, with both $g$ and $h$ continuous, then $f$ will be continuous as well, as $f^{-1} \ = \ h^{-1} \ \circ \ g^{-1}$, which will map open sets to open sets, by the continuity of $g$ and $h$, thus $f$ is continuous. In addition to this, let us prove the converse. Let each $f_i$ be continuous. We show that $f$ is continuous as well. Essentially, we have to show that for some open $U \ \in \ \prod_i X_i$, that $f^{-1}(U)$ is open in $A$. Let's take a step back and consider what this actually means. $f^{-1}(U)$ is defined as the set of all $x$ such that $f(x) \ \in \ U$. But we also know that $x \ = \ \prod_i x_i$ and $U \ = \ \prod_i U_i$. Thus, for $x \ \in \ f^{-1}(U)$, it must be true that $x_i \ \in \ f_{i}^{-1}(U_i) \ \ \forall i$. Since this fact must be true for all $i$, we assert that:
+                    <br><br>
+                    $$f^{-1}(U) \ = \ \ \displaystyle\bigcap_{i} \ f_{i}^{-1}(U_i)$$
+                    <br>
+                    Which is an intersection of open sets in $A$, as each $f_i$ is continuous. The intersection itself will be open if this is a <i>finite</i> intersection, by definition, which it is, as we are operating in the product topology. Recall that $U_i \ = \ X_i$ except for a finite number of $i$ indices. We know that $f_{i}^{-1}(X_{i}) \ = \ A$, thus after a finite number of terms, we are simply intersecting $A$ repeatedly, which can be dropped from the series of intersections as we know that $f^{-1}(U_i) \ \subset \ A$ for each $i$, making this a finite intersection, and thus open in $A$. Notice that this fact is not necessarily true for the box topology, as we could have an <i>infinite</i> intersection of open sets, which is not necessarily open itself.
+                    <br><br>
+                    Moving along, the first proof becomes fairly simple. Let $G$ be a topological group. We can define the continuous function (by the "maps into products" lemma that just proved): $a(g, \ j) \ = \ (g, \ j^{1})$. Since $a_1 \ = \ i$ is continuous, and $a_2 \ = \ f$ is continuous, it follows $a$ is continuous. Then, we have:
+                    <br><br>
+                    $$w \ = \ h \ \circ \ a$$
+                    <br>
+                    Since $h$ and $a$ are both continuous, so is $w$. Conversely, we can show that if $w$ is continuous, then $G$ is a topological group. To do this, we must show that $f$ and $h$ are continuous. Let's start with $f$. We start with some $g$, and we have to map it to $g^{-1}$. Let us define the function $b(g) \ = \ (c_e(g), \ i(g))$. Since this is just a product of two continuous function (the constant map, which takes everything to the <b>identity</b> of $G$, and the inclusion map, which take $g$ to itself), it follows that $b$ is continuous as well (by maps into products). If we then map $b(g) \ = \ (e, \ g)$ under $w$, we will get:
+                    <br><br>
+                    $$w(e, \ g) \ = \ e \otimes \ g^{-1} \ = \ g^{-1}$$
+                    <br>
+                    So we can say that:
+                    <br><br>
+                    $$f \ = \ w \ \circ \ b$$
+                    <br>
+                    Which is the composite of two continuous functions, thus $f$ is continuous. Now, we turn our attention to $h$. We can define a final function $c(j, \ g) \ = \ (i(j), \ f(g)) \ = \ (j, \ g^{-1})$, which will be continuous. We then have:
+                    <br><br>
+                    $$h \ = \ w \ \circ \ c$$
+                    <br>
+                    Which is continuous, as $w$ and $c$ are continuous.
+                    <br><br>
+                </p>
+            </div>
+        </center>
+    </body>
+</html>

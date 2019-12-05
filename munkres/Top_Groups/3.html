@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Topological Groups Problem 3</h2>
+                <p>
+                    We are asked to prove that if $G$ is a topological group, and $H$ is a subspace of $G$ that is also a subgroup, then $H$ and $\bar{H}$ (the closure of $H$) are topological groups. We have to do a few extra proofs to demonstrate that this is true:
+                    <br><br>
+                    First, we must show that is some function $f$ is continuous, then resticting its domain will still yield a continuous function. We can do this be realizing that for some continuous function $f:X \ \rightarrow \ Y$, if we restrict the domain to $S \ \subset \ X$, then the new function $f_s \ = \ f \ \circ \ i$, where $i$ is the continuous inclusion map from $X$ to $S$. Thus, $f_s$ is continuous. This means that if the functions $f(x) \ = \ x^{-1}$ and $g(x \ \times \ y) \ = \ x \ \otimes \ y$ are continuous in $G$, then they will be continuous for the subspaces $H$ and $\bar{H}$.
+                    <br><br>
+                    Next, we must show that if some topological space has the propoert of the $T_1$ axiom, then so do its subspaces. The $T_1$ axiom says that any finite point set is closed. This implies that for each pair of points in our space, $x$ and $y$, each point has a neighbourhood that doesn't contain the other one. We can quickly prove this. Let us say that each finite point set is closed. This means $\{x\}$ is closed $\forall x \ \in \ X$, where $X$ is our topological space. Then $X \ - \ \{x\}$ is an open negihbourhood for every other point in $X$ that doesn't contain $x$. Conversely, if every point $x \ \in \ X \ - \ \{y\}$ has a neighbourhood that doesn't contain $y$, we can take the union of all of these neigbourhoods to find that $X \ - \ \{y\}$ is open, making $\{y\}$ closed. We can then take finite unions of these single point sets to get other closed sets, proving that finite point sets are closed.
+                    <br><br>
+                    Getting back to the original point, if we want to prove that for each $x \ \in \ A$, where $A$ is our subgroup has a neighbourhood not containing $y$, we simply have to recall that we have already imposed the $T_1$ axiom on $X$, thus for the points $x$ and $y$, there is some open $U$ in $X$ such that $x \ \in \ U$ and $y \ \notin \ U$. Since $x, \ y \ \in \ A$, it follows that $x \ \in \ U \ \cap \ A$ and $y \ \notin \ A \ \cap \ U$. We know that $A \ \cap \ U$ is open in $A$, thus we have proven the $T_1$ axiom holds.
+                    <br><br>
+                    The only thing that is left to prove now is that $\bar{H}$ is a subgroup, and to do that, we will require some fancy footwork.
+                    <br><br>
+                    We want to prove that $\bar{H \ \times \ H} \ = \ \bar{H} \ \times \ \bar{H}$ Let $x \ \times \ y \ \in \ \bar{H \ \times \ h}$. It follows that every open neighbourhood around $x \ \times \ y$ intersects $H \ \times \ H$. Among those open neighbourhoods are basis elements of the form $U \ \times \ V$, for every pair $U$ and $V$ open in $H$. Thus, we have $U \ \cap \ H \ \neq \ \emptyset$ for every neighbourhood $U$ of $x$, and $V \ \cap \ H \ \neq \ \emptyset$ for every neighbourhood $V$ of $y$. This means that $x \ \in \ \bar{H}$ and $y \ \in \ \bar{H}$, so $x \ \times \ y \ \in \ \bar{H} \ \times \ \bar{H}$. Conversely, let $x \ \times \ y \ \in \ \bar{H} \ \times \ \bar{H}$. This means that every neighbourhood of $x$ and every negihbourhood of $y$ intersects $H$. This means that $x \ \times \ y \ \in \ U \ \times \ V$. Since $U \ \times V$ forms a basis for open set in $H \ \times \ H$, if we have $x \ \times \ y \ \in \ U \ \times \ V$ that intersects $H \ \times \ H$, then this will be true for any neighbourhood $W$ around $x \ \times \ y$, as we can always chooe $U \ \times \ V$ with $x \ \times \ y \ \in \ U \ \times \ V \ \subset \ W$. This means that each $W$ will intersect $H \ \times \ H$, and $x \ \times \ y \ \in \ \bar{H \ \times \ H}$. Since we have demonstrated inclusion both ways, it follows that $\bar{H} \ \times \ \bar{H} \ = \ \bar{H \ \times \ H}$.
+                    <br><br>
+                    Also, recall from earlier in the textbook that if some function $f$ is continuous, then $f(\bar{A}) \ \subset \ \bar{f(A)}$. Now, we can jump into the actual proof. Since the functions $f(x) \ = \ x^{-1}$ and $g(x, \ \times \ y) \ = \ x \ \otimes \ y$ are continuous in $X$, we will have:
+                    <br><br>
+                    $$f(\bar{H}) \ = \ \bar{H}^{-1} \ \subset \ \bar{f(H)} \ = \ \bar{H^{-1}} \ \subset \ \bar{H}$$
+                    <br>
+                    Since the inverse of each element of a group uniquely exists and is contained within the group, we have $H^{-1} \ \subset \ H$. We have thus shown that $\bar{H}^{-1} \ \subset \ \bar{H}$, which means that the inverse of each element of $\bar{H}$ is contained within $\bar{H}$. Since $H \ \subset \ \bar{H}$, we know the identity is in $\bar{H}$, and associativity follows from the nature of the $\otimes$ operation. Finally, we have:
+                    <br><br>
+                    $$g(\hat{H} \ \times \ \bar{H}) \ \subset \ \bar{g(H \ \times \ H)} \ \subset \ \bar{H}$$
+                    <br>
+                    This means that the $\otimes$ operation between any two elements of $\bar{H}$ will be contained within $\bar{H}$. We have thus satisfied all the axioms necessary for $\bar{H}$ to be a group! $\blacksquare$
+                </p>
+            </div>
+        </center>
+    </body>
+</html>
