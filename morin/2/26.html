@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 2 Problem 26</h2>
+                <p>
+                    This is the first problem I'm writing in this new solution manual! The main reason for me writing this is because I really like good classical mechanics problems, and I want to get better (much MUCH better) at doing them. My eventual goal is to be able to do the majority of pretty difficult physics olympiad problems. Since this is going to be a journey filled with lot's of problem-solving, I thought I may as well take you, the reader (if anyone ends up actually reading this) on the journey with me. So, I have resolved to take the most interessting problem I solve in Morin's book and write up my personal solutions here, with my commentary and thoughts. In addition to helping out people whjo are interested in classical mechanics/get stuck on a problem in Morin, I also think that this problem set will force me to explain everything completely and coherently, without making any assumptions and working through all of my logic, which I'm sure will be a fantastic learning experience! This set will be structured very similarly to my other two problem sets (Munkres topology and Griffiths QM). I hope you enjoy!
+                    <br><br>
+                    Now, let's get to the problem! We are given a rope that hangs between two walls with mass $M$, with both ends anchored at the same height, with the angle between the wall and the tangent to the rope at the anchor point being equal to $\beta$. We are asked to calculate the tension at the bottom of the rope using two different methods:
+                    <br><br>
+                    <b>Method 1: The Fast Way</b>
+                    <br><br>
+                    Arguably the most efficient way to solve this problem is by resolving forces on half of the string, from the anchor point down to the lowest hanging point on the string. Since this portion of the string is in equilibrium, we get:
+                    <br><br>
+                    $$F_{B} \ = \ F_{T} \  \sin \ \beta \ \ \ \ \ \ \frac{mg}{2} \ = \ F_T \ \cos \ \beta$$
+                    <br>
+                    Where $F_{B}$ is the purely horizontally-aligned tension acting on the bottom point of the string, and $F_{T}$ is the tension acting at one of the anchor points. By dividing these two equations by one another, we get:
+                    <br><br>
+                    $$F_{B} \ = \ \frac{mg}{2} \tan \ \beta$$
+                    <br>
+                    <b>Method 2: The Slower Way</b>
+                    <br><br>
+                    Now, Morin asks us to consider the infinitesimal forces acting on the string at the bottom point. The best way to attack this problem is by putting the vertical forces in equilibrium. Thus, the bottom-most point of the curve, which we place at $x \ = \ 0$, then for a very small displacement along the curve on either side of this point, and for the very small mass of this point on the rope, we get:
+                    <br><br>
+                    $$g \Delta m \ = \ 2 T_{V}(\Delta x)$$
+                    <br>
+                    Since the curve is symmetric, we get $T(\Delta x) \ = \ T(-\Delta x)$, so we just multiply by $2$ to account for the force acting on both sides of the small mass. $T_V$ stands for the vertical component of tension. Now, from previous exercises, we know that the shape of a massive rope hanging under its own weight in space can be described by the function:
+                    <br><br>
+                    $$y(x) \ = \ \frac{1}{\alpha} \cosh (\alpha x)$$
+                    <br>
+                    In order to find $T_V(x)$, we must multiply by $\sin \ \theta$, where $\theta$ is the angle between the tangent to the point $x$ and the $x$-axis. We can find the slope of this line by taking the derivative of $y$, to get:
+                    <br><br>
+                    $$y'(x) \ = \ \sinh (\alpha x) \ \Rightarrow \ \tan \ \theta \ = \ \sinh(\alpha x)$$
+                    <br>
+                    Since we are working with a very small value of $x$, and thus, a very small angle, we can make some approximations:
+                    <br><br>
+                    $$\sinh (\alpha \Delta x) \ \approx \ \alpha \Delta x \ \Rightarrow \ \tan \theta \ \approx \ \theta \ \approx \ \alpha \Delta x$$
+                    <br>
+                    So we then have:
+                    <br><br>
+                    $$g \Delta m \ = \ 2 (T_{B} \ + \ \Delta T) \sin \alpha \Delta x$$
+                    <br>
+                    We take out the second-order "small" term, and we get:
+                    <br><br>
+                    $$g \Delta m \ = \ 2 T_{B} \sin \alpha \Delta x \ \Rightarrow \ g \Delta m \ \approx \ 2 T_{B} \alpha \Delta x \ \Rightarrow \ T_{B} \ = \ \frac{g \Delta m}{2 \alpha \Delta x} \ = \ \frac{g}{2 \alpha} \frac{dm}{dx} \ = \ \frac{mg}{2L\alpha}$$
+                    <br>
+                    Finally, we are tasked with finding $\alpha$ in terms of $\beta$. Again, consider the equation that we previously derived:
+                    <br><br>
+                    $$F_{B} \ = \ T_{B} \ = \ \frac{mg}{2} \tan \ \beta \ \Rightarrow \ \frac{mg}{2} \tan \ \beta \ = \ \frac{mg}{2L\alpha} \ \Rightarrow \ \alpha \ = \ \frac{1}{L \tan \ \beta}$$
+                    <br>
+                </p>
+            </div>
+        </center>
+    </body>
+</html>
