@@ -16,9 +16,24 @@
 My notebook is full of random proofs to certain propositions in Munkres book that he doesn't really prove himself while he is expalining stuff. While these proofs are not explicit answers
 to posed questions at the end of questions, they may be somewhat helpful for people going through the book (and I can compile all the information I want to remember into one place!). This
 page will be continuously updated with new "assorted proofs". Hopefully they will be in order (-ish) chronologically by section in the textbook.
-
-
-
+<br><br>
+<hr>
+<br>
+<b>Proposition: </b>An equivalent way to define a quotient map (equivalent to the standard definition) is by asserting that a quotient map is a continuous function that maps saturated open sets to open sets.
+<br><br>
+<b>Proof</b>
+<br><br>
+Munkres tells us that this is true in the book, but he never proves it. The proof is very short and not difficult to arrive at independently, but I just thought that I would write it out here, in case someone didn't know how to arrive at this fact themselves.
+<br><br>
+Let the standard definition of continuity hold true, where for some surjective function $f:X \ \rightarrow \ Y$, then $U \ \in \ Y$ is open if and only if $f^{-1}(U) \ \in \ X$ is open. It is fairly obvious that this function is continuous, as $U$ open in $Y$ implies that $f^{-1}(U)$ is open in $X$. In addition, let us have some saturated open set of $X$ called $V$. The definition of a saturated set is a set that contains every $f^{-1}\{y\}$ that it intersects. This means that we can assert $V \ = \ f^{-1}(A)$ for some set $A \ \in \ Y$. Since, we assert that $f$ is surjective initially, the map of our saturated open set under $f$ is given as:
+<br><br>
+$$f(V) \ = \ ff^{-1}(A) \ = \ A$$
+<br>
+Now, by our initial definition, if we have some open set in $X$ of the form $f^{-1}(U)$, then $U$ is open in $Y$, thus $A$ must be open in $Y$, and we conclude that our function maps saturated open sets to open sets.
+<br><br>
+Conversely, let us have some surjective, continuous function that maps saturated open sets to open sets. We will prove that $U$ is open in $Y$ if and only if $f^{-1}(U)$ is open in $X$. To do this, we have to prove that each of the last two statement imply each other. Let $U$ be open in $Y$. Since $f$ is continuous, this immediately implies that $f^{-1}(U)$ is open in $X$. Let $f^{-1}(U)$ be open in $X$. This is a saturated open set, thus its map, $ff^{-1}(U) \ = \ U$ must be open in $Y$ (we exploited the surjectivity of the function in this last step). $\blacksquare$
+<br><br>
+<hr>
 </div>
 </center>
 </body>
