@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 5 Problem 13</h2>
+                <p>
+                    <br><br>
+                    This was a very fun problem. We start by considering an infinitely large sheet of mass density $\sigma$, with a hole cut out of radius $\ell$. We then trace a line
+                    through the center of the hole extending all the way from negative to positive infinity, which we call $L$. We then place a particle of mass $m$ at distance $y$ from the center
+                     of the hole, on $L$. We have to find force acting on $m$. The best way to attack this problem is, as Morin says, by considering rings extending outwards from $L$. In fact, we know that:
+                    <br>
+                    $$dF_g \ = \ -\frac{Gm}{R^2} \ dM \ = \ -\frac{Gm}{R^2} \ \sigma \ dA \ = \ -\frac{Gm}{R^2} \ \sigma \ ( \pi (x \ + \ dx)^2 \ - \ \pi x^2) \ = \  -\frac{Gm}{R^2} \ 2\pi \sigma x dx \ = \
+                     - \frac{2\pi \sigma Gm x}{x^2 \ + \ y^2} \ dx$$
+                    <br>
+                    Where we discard the second-order differential term (as it is very small). The value $R$ is the straight-line distance from $m$ to a point of the plane, and $x$ is just the horizontal
+                    distance on the plane from the center of the cut-out circle to a point on the plane. We then want to integrate across the <b>vertical</b> components of the gravitational force
+                    acting on $m$, as the horizontal components are radially symetric, and thus cancel out. We would be able to pick out the vertical component of force if we knew $\cos \theta$,
+                      where $\theta$ is the angle between $L$ and the line $R$ extending to a point on the plane. Luckily, since $\cos \ \theta$ is just opposite over hypotenuse, we do know its value.
+                      Specifically:
+                    <br>
+                    $$\cos \theta \ = \ \frac{x}{R} \ = \ \frac{y}{\sqrt{x^2 \ + \ y^2}}$$
+                    <br>
+                    We are now in a position to construct our integral. We have:
+                    <br>
+                    $$F \ = \ \displaystyle\int \ dF_{gx} \ = \ - \displaystyle\int_{\ell}^{\infty} \ \frac{y}{\sqrt{x^2 \ + \ y^2}} \ \frac{2\pi \sigma Gm x}{x^2 \ + \ y^2} \ dx \ = \
+                    - \displaystyle\int_{\ell}^{\infty} \ \frac{2\pi \sigma Gm x y}{(x^2 \ + \ y^2)^{3/2}} \ dx \ = \ -2\pi \sigma Gmy \displaystyle\int_{\ell}^{\infty} \ \frac{x}{(x^2 \ + \ y^2)^{3/2}} \ dx$$
+                    <br>
+                    $$\Rightarrow \ -2\pi \sigma Gmy \displaystyle\int_{\ell}^{\infty} \ \frac{x}{(x^2 \ + \ y^2)^{3/2}} \ dx \ = \ 2\pi \sigma Gmy \Big( (x^2 \ + \ y^2)^{-1/2} \Big) \biggr\rvert_{\ell}^{\infty}
+                     \ = \ -\frac{2G\pi m \sigma y}{\sqrt{\ell^2 \ + \ y^2}}$$
+                    <br>
+                    Our next task is to find the frequency of oscillations if we place $m$ close the the hole (if $y$ is very small). Let $y \ \rightarrow \ 0$. This means that $\ell$ will dominate over $y$ and we
+                    will get:
+                    <br>
+                    $$F \ = \ -\frac{2G\pi m \sigma y}{\ell} \ = \ -\alpha y$$
+                    <br>
+                    This is a Hooke's law (therefore a harmonic oscillator)-type force, with force increasing linearly and back towards the origin as distance increases. Thus, we know that $m$ will undergo
+                    oscillations. Since we know $y$ is small, the amplitude of these oscillations is small and we can use the approximation:
+                    <br>
+                    $$\omega \ = \ \sqrt{\frac{V''(x_0)}{m}} \ = \ \sqrt{\frac{V''(0)}{m}}$$
+                    <br>
+                    We know that $F \ = \ - \partial V/\partial X$, so $\partial^2 V/\partial x^2 \ = \ - \partial F/ \partial x$. We get:
+                    <br>
+                    $$V''(y) \ = \ -\frac{\partial F}{\partial y} \ = \ \alpha \ = \ \frac{2G\pi m \sigma}{\ell} \ \Rightarrow \ V''(0) \ = \ \frac{2G\pi m \sigma}{\ell} \ \Rightarrow\  \omega \ = \ \sqrt{\frac{2 G \pi \sigma}{\ell}}$$
+                    <br>
+                    Finally, we are asked to consider the speed of a particle as it passes through the center of the hole. Then we will look at the case where we relase it from height $y$ much
+                     greater than $\ell$. First, let's look at the speed. Taking the integral of force to get the potential at $y$, we get:
+                     <br>
+                     $$V(y) \ = \ \displaystyle\int \ \frac{2G\pi m \sigma y}{\sqrt{\ell^2 \ + \ y^2}} dy \ = \ 2G\pi m \sigma \sqrt{\ell^2 \ + \ y^2}$$
+                     <br>
+                     So we then have:
+                     <br>
+                     $$2G\pi m \sigma \sqrt{\ell^2 \ + \ y^2} \ = \ \frac{1}{2} mv^2 \ \Rightarrow \ v \ = \ \sqrt{4G \pi \sigma } (\ell^2 \ + \ y^2)^{1/4}$$
+                     <br>
+                     In the limit, with $y \ \gg \ \ell$, we have:
+                     <br>
+                     $$v_l \ = \ \sqrt{4G \pi \sigma y} \ = \ \sqrt{4\pi y \big( \frac{gr^2}{M} \big) \big( \frac{M}{\pi r^2} \big)} \ = \ \sqrt{4yg} \ = \ 2\sqrt{yg}$$
+                     <br>
+                     Where $M$ is the total mass of the sheet and $r$ is the total radius. So the velocity is $\sqrt{2}$ times as much is it would be if we considered a block in free fall from height $y$ <b>close to the surface of the Earth</b>.
+                     <br><br>
+                </p>
+            </div>
+        </center>
+    </body>
+</html>
