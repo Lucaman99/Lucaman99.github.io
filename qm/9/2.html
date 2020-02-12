@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+    <br><br>
+<h2>Griffiths Quantum Mechanics 2nd Edition: Problem 9.2</h2>
+<p>
+  And so we begin our adventure into time-dependent perturbation theory. We start by noting the "master equations" for our 2-level quantum system:
+  <br>
+  $$\dot{c_a} \ = \ -\frac{i}{\hbar} H_{ab}' e^{-i \omega_0 t} c_b$$
+  $$\dot{c_b} \ = \ -\frac{i}{\hbar} H_{ba}' e^{i \omega_0 t} c_a$$
+  <br>
+  We are attempting to solve this system of differential equations for the case that our perturbation $H'$ is time-independent. Thus, we will simplify our notation by setting $\alpha \ = \ H_{ab}'$ and $\beta
+  \ = \ H_{ba}'$. We can go ahead and do some rearranging, then some substitution:
+  <br>
+  $$\dot{c_a} \ = \ -\frac{i}{\hbar} H_{ab}' e^{-i \omega_0 t} c_b \ \Rightarrow \ c_b \ = \ \frac{i \hbar}{\alpha} e^{i \omega_0 t} \dot{c_a}$$
+  $$\Rightarrow \ \dot{c_b} \ = \ \frac{d}{dt} \Big[ \frac{i \hbar}{\alpha} e^{i \omega_0 t} \dot{c_a} \Big] \ = \ \frac{i \hbar}{\alpha} \Big[ i \omega_0 e^{i \omega_0 t}
+   \dot{c_a} \ + \ e^{i \omega_0 t} \ddot{c_a} \Big] \ = \ -\frac{i}{\hbar} \beta e^{i \omega_0 t} c_a$$
+  $$\Rightarrow \ \ddot{c_a} \ + \ i\omega_0 \dot{c_a} \ + \ \frac{\alpha \beta}{\hbar^2} c_a \ = \ 0$$
+  <br>
+  Like all foreign second-order differential equations, this is mildly disgusting. However, we can deal with it through careful utilization of one of our most precious mathematical tools: guessing. Since we
+  don't have any terms that don't involve $c_a$, let's try a solution of the form $c_a \ = \ e^{iat}$. We get:
+  <br>
+  $$\frac{d^2}{d^2t} e^{iat} \ + \ i\omega_0 \frac{d}{dt} e^{iat} \ + \ \frac{\alpha \beta}{\hbar^2} e^{iat} \ = \ 0$$
+  $$\Rightarrow \ -a^2 e^{iat} \ - \ a \omega_0 e^{iat} \ + \ \frac{\alpha \beta}{\hbar^2} e^{iat} \ = \ 0 \ \Rightarrow \ a^2 \ + \ a \omega_0 \ - \ \frac{\alpha \beta}{\hbar^2} \ = \ 0$$
+  <br>
+  We can now find two possible values of $a$ by solving this quadratic equation:
+  <br>
+  $$a_{\pm} \ = \ -\frac{\omega_0}{2} \ \pm \ \Omega \ \ \ \ \ \ \ \ \ \ \ \ \Omega \ = \ \frac{\sqrt{\omega_0^2 \ + \ \frac{4 \alpha \beta}{\hbar^2}}}{2}$$
+  <br>
+  Thus, the general solution for $c_a$ is given as:
+  <br>
+  $$c_a(t) \ = \ Ae^{i a_{+} t} \ + \ Be^{i a_{-} t}$$
+  <br>
+  We can quickly recognize that the only difference between the solution for $c_a$ and solution for $c_b$ will be sign on $\omega_0$, thus we have:
+  <br>
+  $$c_b(t) \ = \ Ce^{i b_{+} t} \ + \ De^{i b_{-} t} \ \ \ \ \ \ \ \ b_{\pm} \ = \ \frac{\omega_0}{2} \ \pm \ \Omega$$
+  <br>
+  We are now free to impose initial conditions on our general solutions. Firstly, we know that $c_a(0) \ = \ 1$, thus we know that $A \ + \ B \ = \ 1$. We also know that $c_b(0) \ = \ 0$, so $C \ + \ D \ = \ 0$.
+  From the initial "master equations", we know that $\dot{c_a} \ = \ 0$ and $\dot{c_b} \ = \ -i\beta / \hbar$. This give us four equations for for unknowns:
+  <br>
+  $$A \ + \ B \ = \ 1$$
+  $$C \ + \ D \ = \ 0$$
+  $$i b_{+} C \ + \ i b_{-} D \ = \ -i\beta / \hbar$$
+  $$i a_{+} A \ + \ i a_{-} B \ = \ 0$$
+  <br>
+  We can start by solving for $A$ and $B$:
+  <br>
+  $$i a_{+} A \ + \ i a_{-} B \ = \ 0 \ \Rightarrow \ A \ = \ - \frac{a_{-}}{a_{+}} B \ \Rightarrow \ \Big( 1 \ - \ \frac{a_{-}}{a_{+}} \Big) B \ = \ 1 \ \Rightarrow \ B \ = \ \frac{a_{+}}{a_{+} \ - \ a_{-}}
+  \ \Rightarrow \ A \ = \ \frac{a_{-}}{a_{-} \ - \ a_{+}}$$
+  <br>
+  We can just as easily solve for $D$ and $C$:
+  <br>
+  $$C \ = \ -D \ \Rightarrow \ (b_{-} \ - \ b_{+}) D \ = \ -\frac{\beta}{\hbar} \ \Rightarrow \ D \ = \ \frac{\beta}{\hbar(b_{+} \ - \ b_{-})} \ \Rightarrow \ C \ = \ \frac{\beta}{\hbar(b_{-} \ - \ b_{+})}$$
+  <br>
+  We thus have:
+  <br>
+  $$c_a(t) \ = \ \frac{a_{-}}{a_{-} \ - \ a_{+}} e^{i a_{+} t} \ + \ \frac{a_{+}}{a_{+} \ - \ a_{-}} e^{i a_{-} t}$$
+  $$c_b(t) \ = \ \frac{\beta}{\hbar(b_{-} \ - \ b_{+})} e^{i b_{+} t} \ + \ \frac{\beta}{\hbar(b_{+} \ - \ b_{-})} e^{i b_{-} t}$$
+  <br>
+  Now comes the cumbersome task of showing that these functions remain normalized as they evolve in time. We require:
+  <br>
+  $$|c_a|^2 \ + \ |c_b|^2 \ = \ c_a^{*} c_a \ + \ c_b^{*} c_b \ = \ 1$$
+  <br>
+  Now, we note that:
+  <br>
+  $$\Rightarrow \ \frac{a_{-}}{a_{-} \ - \ a_{+}} \ = \ \frac{\Omega \ + \ \frac{\omega_0}{2}}{2 \Omega}$$
+  $$\Rightarrow \ \frac{a_{+}}{a_{+} \ - \ a_{-}} \ = \ \frac{\Omega \ - \ \frac{\omega_0}{2}}{2 \Omega}$$
+  $$\Rightarrow \ \frac{\beta}{\hbar(b_{-} \ - \ b_{+})} \ = \ -\frac{\beta}{2 \Omega \hbar}$$
+  $$\Rightarrow \ \frac{\beta}{\hbar(b_{+} \ - \ b_{-})} \ = \ \frac{\beta}{2 \Omega \hbar}$$
+  <br>
+  Now, here comes a crucial fact: since $H'$ is Hermitian, it follows by definition that $\beta \ = \ \alpha^{*}$. This allows us to note that:
+  <br>
+  $$\frac{\Omega \ + \ \frac{\omega_0}{2}}{2 \Omega} \ \frac{\Omega \ - \ \frac{\omega_0}{2}}{2 \Omega} \ = \ \frac{\Omega^2 \ - \ \frac{\omega_0^2}{4}}{4\Omega^2} \ = \ \frac{\alpha \beta}{4 \Omega^2 \hbar^2}
+   \ = \ \frac{|\beta|^2}{4 \Omega^2 \hbar^2} \ = \ \Big| \frac{\beta}{2 \Omega \hbar} \Big|^2$$
+  <br>
+  This is useful. When we expand the "cross terms" of $|c_a|^2$ and $|c_b|^2$, we see that the exponentials are the same (as they are just sums/differences of $b_{\pm}$ and $a_{\pm}$), and as we showed above, we see that
+  $|CD| \ = \ -|AB|$, thus the "cross terms" cancel.
+  <br><br>
+  For the "non-cross terms", the exponentials cancel, thus it remains to show that:
+  <br>
+  $$A^{*} A \ + \ B^{*} B \ + \ C^{*} C \ + \ D^{*} D \ = \ 1$$
+  <br>
+  Right off the bat, it is easy to see that:
+  <br>
+  $$C^{*} C \ + \ D^{*} D \ = \ \frac{|\beta|^2}{2 |\Omega|^2 \hbar^2}$$
+  <br>
+  We also have:
+  <br>
+  $$A^{*} A \ + \ B^{*} B \ = \ \Big| \frac{\Omega \ + \ \frac{\omega_0}{2}}{2 \Omega} \Big|^2 \ + \ \Big| \frac{\Omega \ - \ \frac{\omega_0}{2}}{2 \Omega} \Big|^2 \ = \ \frac{|\Omega|^2 \ + \ \frac{\omega_0^2}{4}}{2 |\Omega|^2}
+   \ = \ \frac{\frac{|\alpha \beta|}{\hbar^2} \ + \ \frac{\omega_0^2}{2}}{2 |\Omega|^2}$$
+   $$A^{*} A \ + \ B^{*} B \ + \ C^{*} C \ + \ D^{*} D \ = \ \frac{2|\beta|^2 \ + \ \frac{\hbar^2 \omega_0^2}{2}}{2 |\Omega|^2 \hbar^2} \ = \ \frac{2|\beta|^2 \ + \
+     \frac{\hbar^2 \omega_0^2}{2}}{\Big( \frac{\omega_0^2}{2} \ + \ \frac{2 |\beta|^2}{\hbar^2} \Big) \hbar^2} \ = \ \frac{2|\beta|^2 \ + \
+       \frac{\hbar^2 \omega_0^2}{2}}{2|\beta|^2 \ + \
+         \frac{\hbar^2 \omega_0^2}{2}} \ = \ 1$$
+  <br>
+  And so we have done it! The time-dependent coefficients remain normalized over time! This may seem kind of strange, as we would think that there would be no transitions between eigenstates for a time-independent perturbation.
+  However, we are operating with the eigenstates of the unperturbed Hamiltonian, thus for a time-independent perturbation these eigenstates are never eigenstates of the <b>actual</b> Hamiltonian of our system (with the perturbation).
+  <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
