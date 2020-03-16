@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Website</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+        </script>
+    </head>
+
+    <body style="padding-bottom:30px;">
+        <div style="margin-left:20vw;margin-right:20vw;text-align:left">
+            <br><br>
+            <b>Continuous-Variable Quantum Computing: Part 1</b>
+            <br>
+            <div style="padding-top:10px;">
+                <b style="font-size:12px;color:gray;">January 04, 2020</b>
+            </div>
+            <br>
+            <! -- The purpose of this blog post will be to cover some of the basics regarding continuous variable quantum computing, including the canonical commutation relation, Weil operators, the general form of the quadratic Hamiltonian, and my solutions to the first few problems in Serafini's book on CV quantum information. -->
+            <p>
+                <i>
+                    Hello everyone! First of all, Happy New Year! I'm writing now because I want to help you (the reader) start off the new year on a high note, with some insights/explanations regarding continuous-variable quantum computing! The purpose of this blog post will be to build some intuition as to what a CV paradigm of quantum computing looks like, and why we would ever want to use CV quantum computing over its discrete counterpart!
+                </i>
+                <br><br>
+                <hr class="line">
+                <br>
+                <p>
+                    <b style="font-weight:800;">Why Continuous Variables?</b>
+                    <br><br>
+                    At an intuitive level, I think that the best way to motivate the use of quantum computing over continuous variables is that we are able to exploit observables with a continuous spectrum, rahter than remaining in a "discret realm". Let's back up for one second. Within quantum mechanics, every quantity that we wish to measure is associated with some observable, which is just an operator acting on our complex Hilbert space of state vectors. For instance, in basic quantum mechanics, some of the observables we deal with quite a bit are position, momentum, and energy. Each observable has a corresponding spectrum, which can be thought of as the collection of values associated with that particular observable that we are allowed to measure.
+                    <br><br>
+                    We can categorize the spectrum of each physical observable as <i>continuous</i> or <i>discrete</i>.
+                </p>
+            </p>
+        </div>
+    </body>
+</html>
+
+<style>
+ body {
+     font-family:"Lucida Console", Monaco, monospace
+ }
+ p {
+     font-size:12px;
+ }
+ .line {
+     border:0;
+     height:1px;
+     background-image:-webkit-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-moz-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-ms-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-o-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0)
+ }
+ a:hover{text-decoration:none;color:grey}a{color:#000}
+</style>
