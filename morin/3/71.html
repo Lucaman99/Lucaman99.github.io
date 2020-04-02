@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 3 Problem 71</h2>
+                <p>
+                    <br><br>
+                    This question is intereting. We are asked to consider a motorcycle travelling on flat ground. The coefficient of friction between the motorcycle and the ground is
+                    $\mu$, and the motorcycle begin moving from rest. If the motorcycle wihes to travel in a circle of radius $R$, we must determine the least distance that the motorcycle
+                    must travel to accelerate to its maximum allowable speed. 
+                    <br><br>
+                    In order to achieve maximum acceleration, the motorcycle must use the entirety of the friction avaliable to it,
+                    in order travel forwards. Thus, we know that the force of friction will be given by $F_f \ = \ mg \mu$. We let the radial componenet of friction be $F_r$, and the tangent componenet be $F_t$.
+                    We thus have:
+                    <br><br>
+                    $$F_f \ = \ \sqrt{F_r^2 \ + \ F_t^2} \ = \ mg \mu$$
+                    <br>
+                     At some given instance in time, the radial forces acting on the motorcycle must
+                    be balanced, or else the motorcycle will skid outwards. Thus, it mut be true that at any given time $t$:
+                    <br><br>
+                    $$F_r(t) \ = \ \frac{mv(t)^2}{R}$$
+                    <br>
+                    It is also true that we will have:
+                    <br><br>
+                    $$ma \ = \ F_t(t) \ = \ \sqrt{m^2 g^2 \mu^2 \ - \ F_r(t)^2}$$
+                    <br>
+                    Thus, we can relate the velocity and the acceleration of the motorcycle:
+                    <br><br>
+                    $$ma \ = \ \sqrt{m^2 g^2 \mu^2 \ - \ \frac{m^2 v(t)^4}{R^2}}$$
+                    <br>
+                    Our goal is to now find the distance travelled by our motorcycle as a function of the velocity. This is due to the fact that we can easily find the final velocity of our motorcycle:
+                    at maximum $v$, the motorcycle will not be accelerating tangentially anymore, and all the friction will be acting radially, the prevent the motorcycle from skidding outwards. We thus
+                    have:
+                    <br><br>
+                    $$mg \mu \ = \ \frac{mv_f^2}{R} \ \Rightarrow \ v_f \ = \ \sqrt{R g \mu}$$
+                    <br>
+                    Going back to the velocity-acceleration equation, we know that $a \ = \ v dv/dx$, so we have:
+                    <br><br>
+                    $$v \frac{dv}{dx} \ = \ \sqrt{m^2 g^2 \mu^2 \ - \ \frac{m^2 v(t)^4}{R^2}} \ \Rightarrow \ \frac{dv}{dx} \ = \ \frac{\sqrt{ g^2 \mu^2 \ - \ \frac{ v(t)^4}{R^2}}}{v}$$ 
+                    <br>
+                    $$\Rightarrow \ \displaystyle\int \ dx \ = \ x(v) \ = \ \displaystyle\int \ \frac{v}{\sqrt{ g^2 \mu^2 \ - \ \frac{v^4}{R^2}}} dv \ = \ R \displaystyle\int \frac{v}{\sqrt{ R^2 g^2 \mu^2 \ - \ v^4}} dv$$
+                    <br>
+                    So we will have:
+                    <br><br>
+                    $$x(v_f) \ = \ R \displaystyle\int_{0}^{\sqrt{R g \mu}} \ \frac{v}{\sqrt{ R^2 g^2 \mu^2 \ - \ v^4}} dv \ = \ R \displaystyle\int_{0}^{\alpha} \ \frac{v}{\sqrt{ \alpha^4 \ - \ v^4}} dv$$
+                    <br>
+                    Where $\alpha \ = \ R^2 g^2 \mu^2$. Now, we perform a $u$-substitution. We let $\beta \ = \ v^2$. Then $d\beta \ = \ 2v dv$, so $dv \ = \ \frac{d \beta}{2}$. We thus rewrite our integral:
+                    <br><br>   
+                    $$x(v_f) \ = \ \frac{R}{2} \displaystyle\int_{0}^{\alpha^2} \ \frac{1}{\sqrt{a^4 \ - \ \beta^2}} \ d\beta \ = \ 
+                    \frac{R}{2} \displaystyle\int_{0}^{\alpha^2} \ \frac{1}{\alpha^2} \frac{1}{\sqrt{1 \ - \ \Big(\frac{\beta}{\alpha^2}\Big)^2}} \ d\beta \ = \ \frac{R}{2} \sin^{-1}\Big(\frac{\beta}{\alpha^2}\Big) \biggr\rvert_{0}^{a^2} \ = \ \frac{\pi R}{4}$$
+                    <br>
+                    Small confession: I solved this integral numerically the first time I did the problem, but whenI was typing this solution, I felt I owed it to the (likely non-existent) readers to solve it
+                    exactly.
+                    <br><br>
+                    Now, let's move onto the second method that can be used to solve this question. Morin dubs this the "slick method", and boy is he right. We set $\beta(t)$ to be the angle that the force of
+                    friction makes with the radial direction. We can set up the radial and tangential equations:
+                    <br><br>
+                    $$ma \ = \ m g \mu \sin \beta(t)$$
+                    <br>
+                    $$\frac{mv^2}{R} \ = \ mg \mu \cos \beta(t)$$
+                    <br>
+                    We take the derivative of the radial equation with respect to $x$, getting:
+                    <br><br>
+                    $$\frac{2v}{R} \frac{dv}{dx} \ = \ -g \mu \sin \beta \frac{d \beta}{dx}$$
+                    <br>
+                    We know that $v \frac{dv}{dx} \ = \ a$, thus we get:
+                    <br><br>
+                    $$\frac{2}{R} a \ = \ \frac{2}{R} g \mu \sin \beta \ = \ -g \mu \sin \beta \frac{d \beta}{dx} \ \Rightarrow \ -\frac{2}{R} \ = \ \frac{d \beta}{dx}$$ 
+                    <br>
+                    Now, when the motorcycle begins moving, it's velocity will be $0$, thus the centripetal force will be $0$, and no friction is needed to balance it. This means that $\beta(0) \ = \ \frac{\pi}{2}$.
+                    In addition, as we discussed earlier, at maximum velocity, the motorcycle will not be accelerating and all the friction will be used to balance the centripetal force, thus $\beta(t_f) \ = \ 0$.
+                    We thus have:
+                    <br><br>
+                    $$-\frac{2}{R} \displaystyle\int \ dx \ = \ -\frac{2x}{R} \ = \ \displaystyle\int_{\frac{\pi}{2}}^{0} \ d\beta \ = \ -\frac{\pi}{2} \ \Rightarrow \ x \ = \ \frac{\pi R}{4}$$
+                    <br>
+                    The two solutions agree with each other, thus I am fairly certain that this is in fact the correct answer.
+                    <br><br>
+                </p>
+            </div>
+            </center>
+            </body>
+            </html>
