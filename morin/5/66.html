@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 5 Problem 66</h2>
+                <p>
+                    <br><br>
+                    We are asked to consider the system involving an infinitely long rod and a point mass, $m$, which is a distance $\ell$ away from the rod (which was a mass density of $\sigma$, which is
+                    the mass per unit length, as we assume the rod to have diameter very close to $0$). We mut show that the force $F$ acting on the point mass is given by:
+                    <br><br>
+                    $$F \ = \ \frac{2G \omega m}{\ell}$$
+                    <br>
+                    We are going to explore two methods of solving this problem, first a force-based one, and second an energy-based one. We'll start by considering the graviational force. If we break
+                    the rod up into an infinite number of small pieces, each with mas $dM \ = \ \sigma dx$, then we will have:
+                    <br><br>
+                    $$dF \ = \ \frac{G m dM}{R(x)^2} \ = \ \frac{G m \sigma dx}{R(x)^2}$$
+                    <br>
+                    Now, we have to determine $R$. Let's do a change of coordinates to make this simpler. Let $\theta$ be the angle between the vertical vector between the point mass and the rod, and the vector extending in the direction of $R$.
+                    This meanss that we have:
+                    <br><br>
+                    $$R \ = \ \frac{\ell}{\cos \theta}$$
+                    <br>
+                    Thus, we will have:
+                    <br><br>
+                    $$dF \ = \ \frac{G m \sigma \cos^2 \theta}{\ell^2} dx \ = \ \frac{G m \sigma \cos^2 \theta}{\ell^2} \frac{dx}{d\theta} d\theta$$
+                    <br>
+                    Now, we must find the derivative of $x$ with respect to $\theta$. From the previous trigonometric relationship, we know that $\tan \theta \ = \ \frac{x}{\ell}$. Thus:
+                    <br><br>
+                    $$\frac{1}{\ell} \frac{dx}{d \theta} \ = \ \frac{d}{d \theta} \tan \theta \ = \ 1 \ + \ \frac{\sin^2 \theta}{\cos^2 \theta} \ = \ 
+                    \frac{1}{\cos^2 \theta} \ \Rightarrow \ \frac{dx}{d \theta} \ = \ \frac{\ell}{\cos^2 \theta}$$
+                    <br>
+                    Thus, we have:
+                    <br><br>
+                    $$dF \ = \ \frac{G m \sigma \cos^2 \theta}{\ell^2} \frac{\ell}{\cos^2 \theta} d\theta \ = \ \frac{G m \sigma}{\ell} d\theta$$
+                    <br>
+                    Now, all that's left to do is to integrate across all of the small subunits of gravitational force to get the total force. There is one more nuance we must consider first: since the rod extends
+                    in both direction with respect to the point mass, the horizontal components of gravitation force will cancel out, leaving only the vertical componenet. The vertical sub-componenets of force $dF_x$ are thus given
+                    by $F_x \ = \ \cos \theta dF$. In addition to this, we are integrating with respect to the angle. As the length of the rod approaches infinity, the angle will approach $\frac{\pi}{2}$. Finally, since the
+                    force will be symmetric in both directions, we can integrate from $0$ to $\frac{\pi}{2}$, and multiply by $2$, thus we get:
+                    <br><br>
+                    $$F \ = \ 2 \displaystyle\int_{0}^{\frac{\pi}{2}} \ \frac{G m \sigma}{\ell} \cos \theta d\theta \ = \ \frac{2G \sigma m}{\ell}$$
+                    <br>
+                    Now, instead of considering gravitational force, let's consider gravitational potential energy. Gravity is a conservative force, thus $F_g \ = \ -\nabla V_g$, where $F_g$ is the force of gravity, and
+                    $V_g$ is the gravitational potential energy. We will not do a change of coordinates this time. Rather we will use Pythagorean theorem:
+                    <br><br>
+                    $$dE \ = \ -\frac{G m \sigma}{R} dx \ = \ -\frac{G m \sigma}{\sqrt{X^2 \ + \ \ell^2}} dx \ = \ -\frac{G m \sigma}{\ell \sqrt{\frac{x^2}{\ell^2} \ + \ 1}} dx $$
+                    <br>
+                    Now, using a truty integral look-up table, we see that the integral of $\frac{1}{\sqrt{x^2 \ + \ 1}}$ is $\sinh^{-1} x$, so we will have (we again exploit symmetry of our integral):
+                    <br><br>
+                    $$E \ = \ 2 \displaystyle\int_{0}^{\infty} -\frac{G m \sigma}{\ell \sqrt{\frac{x^2}{\ell^2} \ + \ 1}} dx \ = \ -2 Gm \sigma \sinh^{-1} (\frac{x}{\ell}) \biggr\rvert_{0}^{\infty}$$
+                    <br>
+                    We have a bit of an issue: when we evaluate this expression, it is infinite. Thi is actually fine, we can replace $\infty$ with some very large number $\epsilon$, and let $\epsilon \ \rightarrow \ \infty$ 
+                    after we take the derivative, to find the force. Thus, we have:
+                    <br><br>
+                    $$E \ = \ -2Gm\sigma \sinh^{-1}\Big(\frac{\epsilon}{\ell}\Big)$$
+                    <br>
+                    We take the derivative with resspect to $\ell$, representing a change in the position of the point mass (the potential won't change for movement in the horizontal direction, as the rod is infinite in length).
+                    Thus, we have:
+                    <br><br>
+                    $$F \ = \ \frac{dE}{d\ell} \ = \ \frac{2Gm \sigma}{\ell^2} \frac{\epsilon}{\sqrt{1 \ + \ \frac{\epsilon^2}{\ell^2}}} \ = \ \frac{2 G m \sigma}{\ell} \sqrt{\frac{\epsilon^2}{\epsilon^2 \ + \ \ell^2}}$$
+                    <br>
+                    Ass $\epsilon \ \rightarrow \ \infty$, we have:
+                    <br><br>
+                    $$F \ = \ \frac{2 G m \sigma}{\ell}$$
+                    <br>
+                    <br><br>
+                </p>
+            </div>
+            </center>
+            </body>
+            </html>
