@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 6 Problem 29</h2>
+                <p>
+                    <br><br>
+                    As we have seen in the past, for small oscillations where $\sin \theta \ \approx \ \theta$, we can approximate a pendulum to be a simple harmonic oscillator. This approximation
+                    quickly breaks down as the amplitude of oscillations increases. As it turns out, <b>there is a way that we can make a "pendulum" that oscillates in SHM for
+                    any amplitude!</b> In order to do this, we must place round blocks in the shape of cycloids on either side of the pendulum. To begin this problem, we are asked to consider the angle
+                    with the vertical that the part of the string suspended in the air makes. Since the string is wrapped tightly around the cycloid up until this point, it follows that the portion of the string
+                    in the air is tangent to the cycloidal curve at the point it leaves the cycloid. Let the angle made with the vertical be $\alpha$. It follows that:
+                    <br><br>
+                    $$-\frac{1}{\tan \alpha} \ = \ \frac{dy}{dx}$$
+                    <br>
+                    The cycloid is parametrized by the parameter $\theta$ as follows:
+                    <br><br>
+                    $$(x, \ y) \ = \ R(\theta \ - \ \sin \theta, \ -1 \ + \ \cos \theta)$$
+                    <br>
+                    Thus, we have:
+                    <br><br>
+                    $$\frac{dy}{dx} \ = \ \frac{dy}{d\theta} \frac{d\theta}{dx} \ = \ \frac{dy}{d\theta} \frac{1}{\frac{dx}{d\theta}}$$
+                    $$\Rightarrow \ \frac{dy}{d\theta} \ = \ \frac{d}{d\theta} R(-1 \ + \ \cos \theta) \ = \ -R \sin \theta$$
+                    $$\Rightarrow \ \frac{dx}{d\theta} \ = \ \frac{d}{d\theta} R(\theta \ - \ \sin \theta) \ = \ R(1 \ - \ \cos \theta)$$
+                    <br><br>
+                    Thus, we have:
+                    <br><br>
+                    $$\frac{dy}{dx} \ = \ \frac{\sin \theta}{\cos \theta \ - \ 1} \ \Rightarrow \ \tan \alpha \ = \ \frac{1 \ - \ \cos \theta}{\sin \theta} \ = \ \tan \frac{\theta}{2}$$
+                    <br>
+                    By the half-angle identities. This implies that:
+                    <br><br>
+                    $$\theta \ = \ 2\alpha$$
+                    <br>
+                    Next, we are asked to find the length of the string touching the cycloid. We will have to perform a line integral over the parametrized surface. We have:
+                    <br><br>
+                    $$L \ = \ \displaystyle\int \ \sqrt{dx^2 \ + \ dy^2} \ = \ \displaystyle\int \ \sqrt{1 \ + \ \Big( \frac{dy}{dx} \Big)^2} dx$$
+                    <br>
+                    Well, we already know the derivative of $y$ with respect to $x$. Thus, we can write:
+                    <br><br>
+                    $$L \ = \ \displaystyle\int_{0}^{\ell} \ \sqrt{1 \ + \ \Big( \frac{\sin \theta}{\cos \theta \ - \ 1} \Big)^2} dx \ = \ 
+                    \displaystyle\int_{0}^{2 \alpha} \ \sqrt{1 \ + \ \Big( \frac{\sin \theta}{\cos \theta \ - \ 1} \Big)^2} \frac{dx}{d\theta} d\theta \ = \ 
+                    R \displaystyle\int_{0}^{2 \alpha} \ \sqrt{1 \ + \ \Big( \frac{\sin \theta}{\cos \theta \ - \ 1} \Big)^2} (1 \ - \ \cos \theta) d\theta$$
+
+                    $$\Rightarrow \ L \ = \ R \displaystyle\int_{0}^{2\alpha} \ \sqrt{(1 \ - \ \cos \theta)^2 \ + \ \sin^2 \theta} d\theta \ = \ 
+                    \sqrt{2} R \displaystyle\int_{0}^{2\alpha} \ \sqrt{1 \ - \ \cos \theta} d\theta \ = \ 2R \displaystyle\int_{0}^{2\alpha} \ \sin \frac{\theta}{2} d\theta$$
+
+                    $$\Rightarrow \ L \ = \ - 4R \cos \frac{\theta}{2} \biggr\rvert_{0}^{2\alpha} \ = \ 4R(1 \ - \ \cos \alpha)$$
+                    <br>
+                    Now, we are asked to find the Lagrangian in terms of $\alpha$. Well, the general form of the Lagrangian will be:
+                    <br><br>
+                    $$\mathcal{L} \ = \ \frac{1}{2} m \dot{x_b}^2 \ + \ \frac{1}{2} m\dot{y_b}^2 \ - \ mgy_b$$ 
+                    <br>
+                    We now have to determine the $(x_b, \ y_b)$ in terms of $\alpha$. Well, we know the length of string that is in the air for a given $\alpha$, and we also know the coordinates of the "anchor point"
+                    of the string on the surface of the cycloid. Thus, we can determine the coordinates:
+                    <br><br>
+                    $$x_b \ = \ x \ + \ (4R \ - \ L) \sin \alpha \ = \ R(2\alpha \ - \ \sin 2\alpha) \ + \ 4R \cos \alpha \sin \alpha \ = \ 2R\alpha \ + \ R \sin 2\alpha$$
+                    $$y_b \ = \ y \ - \ (4R \ - \ L) \cos \alpha \ = \ R(-1 \ + \ \cos 2\alpha) \ - \ 4R \cos^2 \alpha \ = \ -2R \ - \ 2R \cos^2 \alpha$$
+                    <br>
+                    We can now begin the process of putting these coordinates into the Lagrangian. First, let us take the time-derviatives:
+                    <br><br>
+                    $$\frac{dx_b}{dt} \ = \ 2R \dot{\alpha} \ + \ 2R \cos 2 \alpha \dot{\alpha}$$
+                    $$\frac{dy_b}{dt} \ = \ 4R \cos \alpha \sin \alpha \dot{\alpha}$$
+                    <br>
+                    And so we have:
+                    <br><br>
+                    $$\mathcal{L} \ = \ 2 m R^2 \dot{\alpha}^2 \big( 1 \ + \ \cos 2 \alpha \big)^2 \ + \ 8m R^2 \dot{\alpha}^2 \cos^2 \alpha \sin^2 \alpha \ + \ 2Rmg \ + \ 2Rmg \cos^2 \alpha$$
+                    $$\Rightarrow \ \mathcal{L} \ = \ 2mR^2 \dot{\alpha}^2 \big( (1 \ + \ \cos 2 \alpha)^2 \ + \ \sin^2 2\alpha \big) \ + \ 2Rmg \ + \ 2Rmg \cos^2 \alpha \ = \ 
+                    8mR^2 \dot{\alpha}^2 \cos^2 \alpha \ + \ 2Rmg (1 \ + \ \cos^2 \alpha)$$
+                    $$\Rightarrow \ \mathcal{L} \ = \ 2mR \cos^2 \alpha (4R \dot{\alpha}^2 \ + \ g) \ + \ 2Rmg$$
+                    <br>
+                    Now, let's consider thee Euler-Lagrange equation:
+                    <br><br>
+                    $$\frac{d}{dt} \ \Big[ \frac{\partial \mathcal{L}}{d\dot{\alpha}} \Big] \ = \ \frac{\partial \mathcal{L}}{\partial \alpha}$$
+                    <br>
+                    This means that we will have:
+                    <br><br>
+                    $$16mR^2 \ddot{\alpha} \cos^2 \alpha \ - \ 32 mR^2 \dot{\alpha}^2 \cos \alpha \sin \alpha \ = \ -16mR^2 \dot{\alpha}^2 \cos \alpha \sin \alpha \ - \ 4Rmg \cos \alpha \sin \alpha$$
+                    $$\Rightarrow \ \ddot{\alpha} \cos \alpha \ - \ \dot{\alpha}^2 \sin \alpha \ = \ -\frac{g}{4R} \sin \alpha$$
+                    $$\Rightarrow \ \frac{d^2}{dt^2} \Big[ \sin \alpha \Big] \ = \ -\frac{g}{4R} \sin \alpha$$
+                    <br>
+                    If we let $\beta \ = \ \sin \alpha$, then we will have:
+                    <br><br>
+                    $$\Rightarrow \ \ddot{\beta} \ = \ -\frac{g}{4R} \beta$$
+                    <br>
+                    This is the differential equation that deescribes a simple harmonic oscillator with frequency $\omega \ = \ \sqrt{g / 4R}$, exactly as predicted in the textbook! Now, the final step
+                    of this soultion is to solve this question once again using Newtonian mechanics (rather than Lagrange mechanics). Well, this shouldn't be too difficult, especially since we can check our work against
+                    the Lagrange forumulation. We already have the Cartesian coordinates of the mass in terms of $\alpha$, thus we can write two differential equations to describe the motion of the mass:
+                    <br><br>
+                    $$m \ddot{x_b} \ = \ 2R\ddot{\alpha}m \ + \ 2R\cos 2\alpha \ddot{\alpha}m \ - \ 4R\sin 2\alpha \dot{\alpha}^2 m \ = \ -T \sin \alpha$$
+                    $$m \ddot{y_b} \ = \ 4R \cos 2\alpha \dot{\alpha}^2 m \ + \ 2R\sin 2\alpha \ddot{\alpha} m \ = \ T \cos \alpha \ - \ mg$$
+                    <br>
+                    Now, we will have:
+                    <br><br>
+                    $$T \ = \ - \frac{m \ddot{x_b}}{\sin \alpha} \ \Rightarrow \ \ddot{y_b} \ + \ \frac{\cos \alpha}{\sin \alpha} \ddot{x_b} \ = \ -g$$
+                    <br>
+                    Now, we can plug-in the values that we already got:
+                    <br><br>
+                    $$4R \cos 2\alpha \dot{\alpha}^2 \ + \ 2R\sin 2\alpha \ddot{\alpha} \ + \ \frac{\cos \alpha}{\sin \alpha} \Big( 2R\ddot{\alpha} \ + \ 
+                    2R\cos 2\alpha \ddot{\alpha} \ - \ 4R\sin 2\alpha \dot{\alpha}^2 \Big) \ = \ -g$$
+                    $$\Rightarrow \ \Big[ 2R \sin 2\alpha \ + \ \frac{2R}{\tan \alpha} \ + \ \frac{2R \cos 2\alpha}{\tan \alpha} \Big] \ddot{\alpha} \ + \ \Big[ 4R \cos 2\alpha \ - \ 
+                    \frac{4R \sin 2\alpha}{\tan \alpha} \Big] \dot{\alpha}^2 \ = \ -g$$
+                    $$\Rightarrow \ \Big[ \sin \alpha \cos \alpha \ + \ \frac{\cos^2 \alpha}{\tan \alpha} \Big] \ddot{\alpha} \ + \ \Big[ \cos 2\alpha \ - \ 
+                    \frac{\sin 2\alpha}{\tan \alpha} \Big] \dot{\alpha}^2 \ = \ -\frac{g}{4R}$$
+                    $$\frac{1}{\tan \alpha} \ddot{\alpha} \ - \ \dot{\alpha}^2 \ = \ -\frac{g}{4R} \ \Rightarrow \ \cos \alpha \ddot{\alpha} \ - \ \sin \alpha \dot{\alpha}^2 \ = \ -\frac{g}{4R} \sin \alpha$$
+                    <br>
+                    And thus, just like before, we have:
+                    <br><br>
+                    $$\ddot{\beta} \ = \ -\frac{g}{4R} \beta$$
+                    <br>
+                    Now, let's think about what this actually means. Essentially, we have found that the quantity $\sin \alpha$ oscillates in SHM, independent of ampltidue. at some constant frequency. This means that the
+                    time that the period of the pendulum's motion is constant as well, as this implies that the time it takes for $\alpha$ to complete one "cycle" is independent of amplitude as well.
+                    <br><br>
+                </p>
+            </div>
+            </center>
+            </body>
+            </html>
