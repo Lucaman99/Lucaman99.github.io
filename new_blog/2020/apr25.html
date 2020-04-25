@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Website</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+        </script>
+    </head>
+
+    <body style="padding-bottom:30px;">
+        <div style="margin-left:20vw;margin-right:20vw;text-align:left">
+            <br><br>
+            <b>Abstract Algebra Thoughts #1</b>
+            <br>
+            <div style="padding-top:10px;">
+                <b style="font-size:12px;color:gray;">March 16, 2020</b>
+                <br><br>
+                <i style="font-size:12px;"></i>
+              <br><br>
+                  <hr class="line">
+                  <br><br>
+                  <p>
+                  Today, I began my journey (once again) into abstract algebra. I'm hoping that this blog series will depart from the formality of my past solution manuals, and will be more like a discussion, 
+                  where I can talk abut what I read, things that I realized, and some of the problems I attempted/solved. I am reading Dummit and Foote's textbook on introductory abstract algebra, which 
+                  comes highly reccomended by a lot of math-people who are much smarter than me. 
+                <br><br>
+                  
+                  <br><br>
+                  And so, we finally venture into the end-of-chapter exercises. A lot of the problems at the beginning of the set seemed either pretty simple, or imply involved rote computation, so I 
+                  decided to skip to closer to the end. The first problem I attempted was the following: given some integer $n$, and some prime number $p$, find the greatet power of $p$ such that it divides 
+                  $n! \ = \ n \ \cdot \ (n \ - \ 1) \ \cdot \ (n \ - \ 2) \ ... \ 2 \ \cdot 1$. Esentially, we wish to find the greatest $k$ such that:
+                 <br><br> 
+                  $$\frac{n!}{p^k} \ = \ x \ \ \ \ \ \ \ \ \ x \ \in \ \mathbb{Z}$$
+                  <br>
+                  I spent an embarassingly long time on this problem. I approached it the complete wrong way from the very beginning. I first thought that we could begin be equating $p^k$ and $n!$, and solve 
+                  for $k$, and then see where we could go from there, as $1$ i the lowet integer that we could get as the result of this division. Well, this turned out to be a misguided pursuit: equating these 
+                  two number basically tells us nothing. I then tried to think about $n!$ in term of its prime factorization. We can write $n!$ as:
+                  <br><br>.
+                  $$n! \ = \ p_1^{k_1} p_2^{k_2} \ ... \ p_{i}^{k_i}$$
+                  <br>
+                  Thus, finding the maximum value of $k$ such that $p^k$ divides $n!$ is the same as <b>finding the power of our given prime $p$ in the prime factorization of $n!$</b>. We can further our 
+                  argument that realizing, by the definition of the factorial, that the prime factorization of $n!$ will be the product of the prime factorizations of all integers from $1$ to $n$. Now, it 
+                  is just a matter of identifying the power of a given prime in this product. This is where I got stuck for a while. I played around with a few different ideas for a little while. I wanted to 
+                  try to derive an expression that would allow me to find the greatest integer $x$ in the "product expansion" of $n!$ such that $p$ is a prime number. As it turns out, this is possible. Consider 
+                  the expresion $\frac{n}{p}$. If $p$ divides $n$ (meaning, that $p$ is a prime factor of $n$) then this expression will yield an integer. If not, we will get some non-integer real number 
+                  (an integer $z$, plus some real number $y$ such that $0 \ < \ y \ < \ 1$). Now, consider this integer $z$. Since it is an integer, this could be the result of $\frac{x}{p}$
+                   for some $x \ < \ n$. We can now consider the following proposition:
+                  <br><br>
+                  <b>Proposition</b>: If $n$ is an integer and $p$ is a prime number, then the greatest integer $z$ such that $z \ \leq \ n$ that has $p$ as a prime factor is given by:
+                  <br><br>
+                  $$z \ = \ \left \lfloor{\frac{n}{p}} \right \rfloor p$$
+                  <br>
+                  <b>Proof:</b> Let us consider the prime factorization of $z$:
+                  <br><br>
+                  $$z \ = \ p_1^{k_1} p_2^{k_2} \ ... \ p_{i}^{k_i} p^{t} \ = \ \ell p$$
+                  <br>
+                  Where $\ell$ is simply the integer that is found from multiplying all of the prime factor of $z$, except for $p$ to the first power. Now, $z$ must be maximized, so we let $\ell$ be the
+                   greatest integer less than or equal to $n$ such that $\ell p \ \leq \ n$. We will thus have $\ell \ \leq \ \frac{n}{p}$. Since $\ell$ must be an integer, it must be true that:
+                  <br><br>
+                  $$\ell \ \leq \ \left \lfloor{\frac{n}{p}}\right \rfloor \ \leq \ \frac{n}{p}$$
+                  <br>
+                  Maximum $\ell$ occurs at equality, thus:
+                  <br><br>
+                  $$\ell \ = \ \left \lfloor{\frac{n}{p}} \right \rfloor \ \Rightarrow \ z \ = \ \ell p \ = \ \left \lfloor{\frac{n}{p}} \right \rfloor p$$
+                  <br>
+                  Which concludes the proof. Now, I originally worked out this fact with little direction, but once I thought about it a bit more, it became more clear that I 
+                  was heading in the right direction. 
+                  Now, given the fact that the product expansion of $n$ is comprised of all integers less than or equal to $n$,  it follows that 
+                  <br><br>
+                  Thus, we find that the maximum power $k$ such that $p^k$ divides $n!$ is given by:
+                  <br><br>
+                  $$k \ = \ \displaystyle\sum_{p^i \ \leq \ n} \left \lfloor{\frac{n}{p^i}} \right \rfloor$$
+                  <br>
+                  for $i \ \ \in \ \mathbb{Z}$. Solving for equality, we find that $i$ ranges from $1$ to $\left \lfloor{\frac{\ln n}{\ln p}} \right \rfloor$.
+                     Now, we can easily test this out. Consider $n \ = \ 10$. Using a computer program, we find that $10! \ = \ 3268800$. Using another computer program, 
+                     we find the prime factorization of $10!$:
+                  <br><br>
+                  $$10! \ = \ 2^8 \ \times \ 3^4 \ \times \ 5^2 \ \times \ 7$$
+                  <br>
+                  Let's try to use our formula to find the $k$ corresponding to $p \ = \ 3$ (which, from the prime factorization, should be $4$). We get:
+                  <br><br>
+                  $$k \ = \ \displaystyle\sum_{3^i \ \leq \ 10} \left \lfloor{\frac{10}{3^i}} \right \rfloor \ = \ \left \lfloor{\frac{10}{3}} \right \rfloor \ + \ \left \lfloor{\frac{10}{9}} \right \rfloor
+                   \ = \ 3 \ + \ 1 \ = \ 4$$
+                  <br>
+                  So our formula seems to work!
+                  <br><br>
+                  Writing about this solution took up more space than I thought it would,
+                  </p>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>
+
+<style>
+ body {
+     font-family:"Lucida Console", Monaco, monospace;
+     line-height:20px;
+ }
+ p {
+     font-size:12px;
+ }
+ .line {
+     border:0;
+     height:1px;
+     background-image:-webkit-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-moz-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-ms-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-o-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0)
+ }
+ a:hover{text-decoration:none;color:grey}a{color:#000}
+</style>
