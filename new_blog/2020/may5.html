@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Website</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+        </script>
+    </head>
+
+    <body style="padding-bottom:30px;">
+        <div style="margin-left:20vw;margin-right:20vw;text-align:left">
+            <br><br>
+            <b>Abstract Algebra Thoughts #1</b>
+            <br>
+            <div style="padding-top:10px;">
+                <b style="font-size:12px;color:gray;">May 4th, 2020</b>
+                <br><br>
+                <i style="font-size:12px;"></i>
+              <br>
+                  <hr class="line">
+                  <br>
+                  <p>
+                  A couple weeks ago, I began my journey (once again) into abstract algebra. I'm hoping that this blog series will depart from the formality of my past solution manuals, and will be more like a discussion, 
+                  where I can talk abut what I read, things that I realized, and some of the problems I attempted/solved. I am reading Dummit and Foote's textbook on introductory abstract algebra, which 
+                  comes highly reccomended by a lot of math-people who are much smarter than me. Unfortunately, I don't have much to talk about quite yet, as I am still fairly early in the book. Thus, I'm going to begin
+                  by talking about a derivation that I did of one of the things Dummit and Foote assert without a proof, and then I'll jump into my solutions to an assortment of practice problems.
+                <br><br>
+                 We'll start by discussing the following fact: the Euler totient function, when taking a power of a prime number as an argument is given by:
+                 <br><br>
+                 $$\phi(p^k) \ = \ p^k \ - \ p^{k \ - \ 1} \ = \ p^{k \ - \ 1}(p \ - \ 1)$$
+                 <br>
+                 No proof of this fact is provided in the book, but I will provide one here. Consider some $p^k$. Also, consider the definition of the Euler totient function, which is to output
+                 the number of coprime integers less than or equal to it's agument (in this case, we want to find the number of coprime integers of $p^k$, such that they are less than or equal to $p^k$).
+                 Now, it is fairly easy to see that each integer of the form $ap$ is <b>not comprime</b> with respect to $p^k$. We can also see that the set of all integers of the form $ap$ comprises the set
+                 of <b>all</b> integers that are not comprime relative to $p^k$, as $p^k$ is only divisible by some power of $p$, and any integer of the form $ap^n$ can be expressed as $bp$ with $b \ = \ ap^{n \ - \ 1}$.
+                 Since the integers that we concerning ousevles with must be less than or equal to $p^k$, it follows that $1 \ \leq \ a \ \leq \ p^{k \ - \ 1}$. Since there are $p^k$ integers from $1$ to $p^k$, we can say
+                 that the number of integers that are comprime relative to $p^k$ is given by the diffence of $p^k$ (all possible integers that we can consider) and $p^{k \ - \ 1}$, which is the number of possible values
+                 of $a$ that can give us integers that are not comprime to $p^k$. Thus, we arrive at the quantity $p^k \ - \ p^{k \ - \ 1}$.
+                  <br><br>
+                  There's not much else to discuss, so let's venture into the end-of-chapter exercises. A lot of the problems at the beginning of the set seemed either pretty simple, or imply involved rote computation, so I 
+                  decided to skip to closer to the end. The first problem I attempted was the following: given some integer $n$, and some prime number $p$, find the greatet power of $p$ such that it divides 
+                  $n! \ = \ n \ \cdot \ (n \ - \ 1) \ \cdot \ (n \ - \ 2) \ ... \ 2 \ \cdot 1$. Esentially, we wish to find the greatest $k$ such that:
+                 <br><br> 
+                  $$\frac{n!}{p^k} \ = \ x \ \ \ \ \ \ \ \ \ x \ \in \ \mathbb{Z}$$
+                  <br>
+                  I spent an embarassingly long time on this problem. I approached it the complete wrong way from the very beginning. I first thought that we could begin be equating $p^k$ and $n!$, and solve 
+                  for $k$, and then see where we could go from there, as $1$ i the lowet integer that we could get as the result of this division. Well, this turned out to be a misguided pursuit: equating these 
+                  two number basically tells us nothing. I then tried to think about $n!$ in term of its prime factorization. We can write $n!$ as:
+                  <br><br>
+                  $$n! \ = \ p_1^{k_1} p_2^{k_2} \ ... \ p_{i}^{k_i}$$
+                  <br>
+                  Thus, finding the maximum value of $k$ such that $p^k$ divides $n!$ is the same as <b>finding the power of our given prime $p$ in the prime factorization of $n!$</b>. We can further our 
+                  argument that realizing, by the definition of the factorial, that the prime factorization of $n!$ will be the product of the prime factorizations of all integers from $1$ to $n$. Now, it 
+                  is just a matter of identifying the power of a given prime in this product. This is where I got stuck for a while. I played around with a few different ideas for a little while. I wanted to 
+                  try to derive an expression that would allow me to find the greatest integer $x$ in the "product expansion" of $n!$ such that $p$ is a prime number. As it turns out, this is possible. Consider 
+                  the expresion $\frac{n}{p}$. If $p$ divides $n$ (meaning, that $p$ is a prime factor of $n$) then this expression will yield an integer. If not, we will get some non-integer real number 
+                  (an integer $z$, plus some real number $y$ such that $0 \ < \ y \ < \ 1$). Now, consider this integer $z$. Since it is an integer, this could be the result of $\frac{x}{p}$
+                   for some $x \ < \ n$. We can now consider the following proposition:
+                  <br><br>
+                  <b>Proposition</b>: If $n$ is an integer and $p$ is a prime number, then the greatest integer $z$ such that $z \ \leq \ n$ that has $p$ as a prime factor is given by:
+                  <br><br>
+                  $$z \ = \ \left \lfloor{\frac{n}{p}} \right \rfloor p$$
+                  <br>
+                  <b>Proof:</b> Let us consider the prime factorization of $z$:
+                  <br><br>
+                  $$z \ = \ p_1^{k_1} p_2^{k_2} \ ... \ p_{i}^{k_i} p^{t} \ = \ \ell p$$
+                  <br>
+                  Where $\ell$ is simply the integer that is found from multiplying all of the prime factor of $z$, except for $p$ to the first power. Now, $z$ must be maximized, so we let $\ell$ be the
+                   greatest integer less than or equal to $n$ such that $\ell p \ \leq \ n$. We will thus have $\ell \ \leq \ \frac{n}{p}$. Since $\ell$ must be an integer, it must be true that:
+                  <br><br>
+                  $$\ell \ \leq \ \left \lfloor{\frac{n}{p}}\right \rfloor \ \leq \ \frac{n}{p}$$
+                  <br>
+                  Maximum $\ell$ occurs at equality, thus:
+                  <br><br>
+                  $$\ell \ = \ \left \lfloor{\frac{n}{p}} \right \rfloor \ \Rightarrow \ z \ = \ \ell p \ = \ \left \lfloor{\frac{n}{p}} \right \rfloor p$$
+                  <br>
+                  Which concludes the proof. Now, I originally worked out this fact with little direction, but once I thought about it a bit more, it became more clear that I 
+                  was heading in the right direction. 
+                  Consider some integer between from $1$ to $n$ (which is contained in the product expansion of $n!$). if we wish to find the number of numbers in which a given prime factor occurs, we
+                  can simply consider the quantity that we just derived. Essentially, we have found the maximum multiple of $p$ that is in the product expansion. to find out how many of these multiples exist,
+                  we can simply recognize that any number that is a multiple of $p$ can be written as $ap$, where $a$ ranges from $1$ to $\left \lfloor{\frac{n}{p}} \right \rfloor$ (as, like I said, this is the <b>maximum allowed value
+                    by which we can multiply $p$ to get a number in the product expansion of $n!$</b>). Thus, $a$ gives us the number of integersin the product expansion that have $p$ as a factor. We are almost done.
+                   The original goal was to find the power to which $p$ is raised in the prime factorization. There is a way that we can modify the tool we have just discovered to find this value: we can evaluate 
+                   $\left \lfloor{\frac{n}{p^i}} \right \rfloor$ for all powers of $p$, given by $p^i$. The reason this works is because it allows us to "count" the number of powers of a prime in the prime factorization
+                   of some given integer from $1$ to $n$. This we, for some prime $p$, we end up "counting it" the same number of times as the power to which it is raised, as such a number will be a multiple of $p^i, \ p^{i \ - \ 1},
+                    \ ..., \ p^{2}, \ p$. If this proposition seemed "hand-wavy", it was. This was simply meant to help build intuition for why we find that the maximum power $k$ such that $p^k$ divides $n!$ is given by:
+                  <br><br>
+                  $$k \ = \ \displaystyle\sum_{p^i \ \leq \ n} \left \lfloor{\frac{n}{p^i}} \right \rfloor$$
+                  <br>
+                  for $i \ \ \in \ \mathbb{Z}$. Now, let's do a formal proof using induction. It is easy
+                  to check this formula in the case of $n \ = \ 1$. Now, we assume it is true for $n$, and we prove it true for the case of $n\ + \ 1$. We have:
+                  <br><br>
+                 $$\displaystyle\sum_{p^i \ \leq \ n \ + \ 1} \left \lfloor{\frac{n \ + \ 1}{p^i}} \right \rfloor$$ 
+                  <br>
+                 For each term in this sum, there are two cases we must consider, the one where $p^i$ divides $n \ + \ 1$, and the case where it doesn't. If it doesn't, then $\left \lfloor{\frac{n \ + \ 1}{p^i}} \right \rfloor
+                  \ = \ \left \lfloor{\frac{n}{p^i}} \right \rfloor$. If it does, then we will have $\left \lfloor{\frac{n \ + \ 1}{p^i}} \right \rfloor
+                  \ = \ \left \lfloor{\frac{n}{p^i}} \right \rfloor \ + \ 1$. Thus, we have:
+                  <br><br>
+                  $$k \ = \ \Big( \displaystyle\sum_{p^i \ \leq \ n} \left \lfloor{\frac{n}{p^i}} \right \rfloor \Big) \ + \ s$$ 
+                  <br>
+                  Where $s$ is the number of $i$ such that $p^i$ divides $n \ + \ 1$ (since we add $1$ to the sum each time this happens). At the beginning of the problem, we showed fairly easily that this
+                  problem is equivalent to finding the number $k$ such that $k$ is the power of $p$ in the prime factorization of $n!$. We have found that the sum in question is equal to the power of
+                  $p$ in the prime factorization of $n!$ (which we will call $k_{n!}$, thus we can write $n! \ = \ bp^{k_{n!}}$, where $b$ does not divide $p$), plus $s$. Let us write $n \ + \ 1 \ = \ ap^{r}$ 
+                  (where $a$ does not divide $p$), where $r$ is in the natural numbers, plus $0$. For this number, we see that $p^j$ for all $j$ from $1$
+                  to $r$ divide $n \ + \ 1$. Thus, $s$ is the power to which $p$ is raised in the prime factorization of $n \ + \ 1$. Now, we have:
+                    <br><br>
+                  $$(n \ + \ 1)! \ = \ n! \ \cdot \ (n \ + \ 1) \ = \ bp^{k_{n!}} \ \cdot \ ap^{s} \ = \ c p^{k_{n!} \ + \ s}$$
+                  <br>
+                  Thus, we see that when we sum together the power of $p$ in $n!$ and $n \ + \ 1$, we get the
+                  power of $p$ in $(n \ + \ 1)!$, thus we have proven our proposition for the case of $n \ + \ 1$ and have completed our proof by induction. $\blacksquare$
+                  <br><br>
+                  Now, we can easily test this out. Consider $n \ = \ 10$. Using a computer program, we find that $10! \ = \ 3268800$. Using another computer program, 
+                     we find the prime factorization of $10!$:
+                  <br><br>
+                  $$10! \ = \ 2^8 \ \times \ 3^4 \ \times \ 5^2 \ \times \ 7$$
+                  <br>
+                  Let's try to use our formula to find the $k$ corresponding to $p \ = \ 3$ (which, from the prime factorization, should be $4$). We get:
+                  <br><br>
+                  $$k \ = \ \displaystyle\sum_{3^i \ \leq \ 10} \left \lfloor{\frac{10}{3^i}} \right \rfloor \ = \ \left \lfloor{\frac{10}{3}} \right \rfloor \ + \ \left \lfloor{\frac{10}{9}} \right \rfloor
+                   \ = \ 3 \ + \ 1 \ = \ 4$$
+                  <br>
+                  So our formula seems to work!
+                  <br><br>
+                  Writing about this solution took up more space than I thought it would, so I'm going to write about one more problem before I wrap this post up. We wish to prove that for some integer $N$, there
+                  exist a finite number of integers $n$ such that $\phi(n) \ = \ N$. We then must conclude that as $n \ \rightarrow \ \infty$, then $\phi(n) \ \rightarrow \ \infty$.
+                  <br><br>
+                  We know (as it was written previously in this chapter) that:
+                  <br><br>
+                    $$\phi(n) \ = \ p_1^{\alpha_1 \ - \ 1} (p_1 \ - \ 1) p_2^{\alpha_2 \ - \ 1} (p_2 \ - \ 1) \ ... \ p_s^{\alpha_s \ - \ 1} (p_s \ - \ 1)$$
+                  <br>
+                  Where each $p_i$ is a prime factor of $n$. Now, let's assert that $\phi(n) \ = \ N$. Clearly, we must have:
+                  <br><br>
+                  $$p_1^{\alpha_1 \ - \ 1} (p_1 \ - \ 1) p_2^{\alpha_2 \ - \ 1} (p_2 \ - \ 1) \ ... \ p_s^{\alpha_s \ - \ 1} (p_s \ - \ 1) \ = \ N$$
+                  <br>
+                  The product of all $p_i^{\alpha_i \ - \ 1}$ will just be some nautral number, so we have:
+                  <br><br>
+                  $$a (p_1 \ - \ 1) (p_2 \ - \ 1) \ ... \ (p_s \ - \ 1) \ = \ N$$
+                  <br>
+                  Now, let's absorb all $(p_i \ - \ 1)$ into the natural number $a$, except for one:
+                  <br><br>
+                    $$b (p_k \ - \ 1) \ = \ N$$
+                  <br>
+                  Clearly, $b \ \geq \ 1$, so we have:
+                  <br><br>
+                    $$(p_k \ - \ 1) \ \leq \ N \ \Rightarrow \ p_k \ \leq \ N \  + \ 1$$
+                  <br>
+                  Thus, for any prime factor in the prime factorization of $n$, if $\phi(n) \ = \ N$, it must be true that any such $p$ is less than or equal to $N \ + \ 1$. Now, let us write
+                  the product in a different way. This time, we combine all of the $(p_i \ - \ 1)$, and leave one power of $p_k$:
+                  <br><br>
+                  $$c p_k^{\alpha_k \ - \ 1} \ = \ N \ \Rightarrow \ p_{k}^{\alpha_k \ - \ 1} \ \leq \ N$$
+                  <br>
+                  This implies that:
+                  <br><br>
+                $$\alpha_k \ \leq \ \log_{p_k} N \ + \ 1 \ \leq \ \log_2 N \ + \ 1$$
+                  <br>
+                  Since $2$ is the smallest prime number. Let's recap: we have shown that in order for $\phi(n)$ to equal $N$, for some prime factor $p$ in the expansion of $n$, it must
+                  be true that $p \ \leq \ N \ + \ 1$. We have also shown that for any prime in the prime factorization of $n$, the power to which that prime can be raised must be less than $\log_2 N \ + \ 1$.
+                  <br><br>
+                  Now, let us pick some $j$. If $\phi(j) \ = \ N$, then $j$ must be equal to the product of all primes less than $N \ + \ 1$, where each prime is raised to some power from $0$ to $\left \lfloor{\log_2 N \ + \ 1} \right \rfloor$.
+                  There are a finite number of such combinations of powers to which each prime must be raised, and since each $j$ has a unique prime factorization, it follows that there are a finite number of $j$ such that $\phi(j) \ = \ N$. 
+                  <br><br>
+                  From this, we must conclude that
+                  $\phi(n) \ \rightarrow \ \infty$ as $n \ \rightarrow \ \infty$. Consider the case where $\phi(n)$ is bounded by some natural number $a$. It would follow that for all $n \ \in \ \mathbb{N}$, that
+                  $\phi(n)$ must take on a natural number value from $1$ to $a$. It follows that there must exist at least one natural number $k$ with $1 \ \leq \ k \ \geq \ a$ where $\phi(n) \ = \ k$ for an infinite
+                  number of $n$. Thus, $\phi(n)$ cannot be bounded, by what we have already proved. From this, $\phi(n)$ is unbounded, meaning that it must approach $\infty$. Since it is clear that $\phi(n) \ \leq \ n$, $\phi$
+                  can only approach $\infty$ as $n$ approaches $\infty$, thus as $n \ \rightarrow \ \infty$, it follows that $\phi(n) \ \rightarrow \ \infty$.
+                  </p>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>
+
+<style>
+ body {
+     font-family:"Lucida Console", Monaco, monospace;
+     line-height:20px;
+ }
+ p {
+     font-size:12px;
+ }
+ .line {
+     border:0;
+     height:1px;
+     background-image:-webkit-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-moz-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-ms-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-o-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0)
+ }
+ a:hover{text-decoration:none;color:grey}a{color:#000}
+</style>
