@@ -1,1 +1,91 @@
-Testing
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 2 Problem 38</h2>
+                <br>
+                <p>
+                    This is a fun little problem, with a result that genuinely surprised me. We are asked to consider a collection of blocks, which are suspended over the side of a table. We are then
+                    asked to find for the case of $N \ = \ 4$ blocks, the largest possible distance the right-most point of the top block can hang out beyond the table. Immediately, we can see that
+                    this question has everything to do with balancing of torques. Specifically, we have to consider each collection of blocks individually, and balance the torque in each case, combining the
+                    results to the distance to which the rightmost point of each block can extend. I'm not going to do the case of $N \ = \ 4$ explicitly, rather I'm going to solve the general case of $N$ blocks, then
+                    plug $4$ into the general formula. 
+                    <br><br>
+                    Consider a stack of blocks. We consider the "substack" of blocks within the stack from the top-most block to some block below it. Now,
+                    we let our "substack" of blocks be considered as "one mass", resolved around the pivot point defined by the place where the bottom block in the "substack" extends past the end of the block directly below it. 
+                    After some careful thought, we can assert that the <b>normal force acting on the left side of our "substack" of blocks will be $0$ all along the length of the bottom block, except for at the pivot point</b>. 
+                    This may seem complicated, but it is very clear why it is true: if the block below the "substack" is pushing upwards on the "substack", that torque could
+                    just as well be applied to the block by gravity, by shifting the "substack" further to the right. Thus, we reach "maximum right-ward distance", when there is no more torque provided by normal force to "replace" with
+                    torque applied by gravity. Thus, we are only interested in balancing torques provided by gravity.
+                    <br><br>
+                    Let us label the blocks from top to bottom: the top block is block $0$. We will denote the distance beyond the table that the rightmost point $n$-th block lies 
+                    by $x \ = \ x_n$, with the origin of our coordinate system (determined by $x$) being the edge of the table. In addition, we will define $\Delta x_n \ = \ x_n \ - \ x_{n \ - \ 1}$. 
+                    <br><br>
+                    Now, let's back up for a moment and consider, for some arbitrary rod with $\Delta x$ extending to the right, past the pivot point, what the torque acting on this side of right side of the rod will be. We
+                    can simply integrate across each of the infinitesimal contributions to the torque, getting:
+                    <br><br>
+                    $$\tau_R \ = \ \displaystyle\int_{0}^{\Delta x} d\tau \ = \ \displaystyle\int_{0}^{\Delta x} \lambda(x) g x dx \ = \ \displaystyle\int_{0}^{\Delta x} \frac{M}{L} g x dx \ = \ \frac{Mg \Delta x^2}{2L}$$
+                    <br>
+                    Where $\lambda(x)$ is the linear mass density (mass per unit length). Similarly, the torque due to gravity on the left-hand side of the rod (of length $L$) will be:
+                    <br><br>
+                    $$\tau_L \ = \ \displaystyle\int_{0}^{L \ - \ \Delta x} d\tau \ = \ \displaystyle\int_{0}^{L \ - \ \Delta x} \lambda(x) g x dx \ = \ \displaystyle\int_{0}^{L \ - \ \Delta x} \frac{M}{L} g x dx \ = \ \frac{Mg (L \ - \ \Delta x)^2}{2L}$$
+                    <br>
+                    Now that we have this information, let's consider what happens in the situation outlined in the problem, with $N \ \rightarrow \ \infty$ blocks stacked on top
+                    of each other. Consider the case of balancing torque for the $(n \ + \ 1)$-th block.
+                    The distance beyond which the $(n \ - \ i)$-th block extends past the pivot point on the $(n \ + \ 1)$-th block is given by the following sum:
+                    <br><br>
+                    $$S^{n}_{i} \ = \ \displaystyle\sum_{j \ = \ n}^{n \ - \ i} \Delta x_{j}$$
+                    <br>
+                    We need to balance the torques on either side of the pivot point. We have already talked about why the normal force acting on the collective mass, on the left side of the pivot point should be $0$. 
+                    In addition, any internal normal force acting upon neighboruing blocks within the collective mass that we are resolving around the pivot point are simply <b>internal forces</b>, so they will cancel, 
+                    leaving us only to consider the torque supplied by gravity on all of the rods. Thus we can consider the
+                    gravitational force acting on the rods, separated across both sides of the pivot point:
+                    <br><br>
+                    $$\displaystyle\sum_{j \ = \ 0}^{n} \frac{Mg (L \ - \ S_j^n)^2}{2L} \ = \ \displaystyle\sum_{j \ = \ 0}^{n} \frac{Mg (S_j^n)^2}{2L} \ \Rightarrow \ \displaystyle\sum_{j \ = \ 0}^{n} L S_j^n \ = \ 
+                    \frac{n L^2}{2} \ \Rightarrow \ \displaystyle\sum_{j \ = \ 0}^{n} S_j^n \ = \ \displaystyle\sum_{i \ = \ 0}^{n} \displaystyle\sum_{j \ = \ n}^{n \ - \ i} \Delta x_{j} \ = \ \frac{(n \ + \ 1)L}{2}$$ 
+                    <br>
+                    Now, we consider the torques resolved around the pivot point on the $n$-th block (essentially identical to above, as the general formula holds true for any value of $n$):
+                    <br><br>
+                    $$\displaystyle\sum_{i \ = \ 0}^{n \ - \ 1} \displaystyle\sum_{j \ = \ n \ - \ 1}^{(n \ - \ 1) \ - \ i} \Delta x_{j} \ = \ \frac{nL}{2}$$ 
+                    <br>
+                    We do a change of variables, getting:
+                    <br><br>
+                    $$\displaystyle\sum_{r \ = \ 1}^{n} \displaystyle\sum_{j \ = \ n \ - \ 1}^{n \ - \ r} \Delta x_{j} \ = \ \frac{nL}{2}$$
+                    <br>
+                    Now, we turn our attention back to the previous sum, and make some changes to "make it look more like" the second sum:
+                    <br><br>
+                    $$\displaystyle\sum_{i \ = \ 0}^{n} \displaystyle\sum_{j \ = \ n}^{n \ - \ i} \Delta x_{j} \ = \ \Delta x_n \ + \ \displaystyle\sum_{i \ = \ 1}^{n} \displaystyle\sum_{j \ = \ n}^{n \ - \ i} \Delta x_{j}
+                     \ = \ \Delta x_n \ + \ \displaystyle\sum_{i \ = \ 1}^{n} \Big( \Delta x_n \ + \ \displaystyle\sum_{j \ = \ n \ - \ 1}^{n \ - \ i} \Delta x_{j} \Big) \ = \ (n \ + \ 1) \Delta x_n \ + \ 
+                     \displaystyle\sum_{i \ = \ 1}^{n} \displaystyle\sum_{j \ = \ n \ - \ 1}^{n \ - \ i} \Delta x_{j} \ = \ \frac{(n \ + \ 1)L}{2}$$
+                    <br>
+                    We can now take the difference of the two sums, getting:
+                    <br><br>
+                    $$(n \ + \ 1) \Delta x_n \ = \ \frac{L}{2} \ \Rightarrow \ \Delta x_n \ = \ \frac{L}{2 (n \ + \ 1)}$$
+                    <br>
+                    The total length of the overhang will be equal to the sum of all the "delta terms", which simply represent the difference in distance between the right-most points of blocks that are directly
+                    adjacent. Thus, we get:
+                    <br><br>
+                    $$D_N \ = \ \displaystyle\sum_{n \ = \ 0}^{N} \frac{1}{2(n \ + \ 1)} \ = \ \frac{L}{2} \displaystyle\sum_{n \ = \ 1}^{N \ + \ 1} \frac{1}{n}$$
+                    <br>
+                    So for $N \ \rightarrow \ \infty$, we arrive at the <b>harmonic series</b>, which surprisingly, is know to diverge! This is a pretty crazy result: theoretically, given enough blocks, we can make the overhang arbitrarily large!
+                    <br><br>
+                    Also, the original problem tells us to solve this problem in th case of $N \ = \ 4$, which we mighy as well write down, as we now have a general formula for $n$ blocks:
+                    <br><br>
+                    $$D_4 \ = \ \frac{L}{2} \displaystyle\sum_{n \ = \ 1}^{4} \frac{1}{n} \ = \ \frac{L}{2} \Big[ \frac{1}{4} \ + \ \frac{1}{3} \ + \ \frac{1}{2} \ + \ 1  \Big] \ = \ \frac{25L}{24}$$
+                    <br>
+                    <br><br><br><br>
+                </p>
+            </div>
+        </center>
+    </body>
+</html>
