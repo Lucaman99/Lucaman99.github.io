@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 5 Problem 72</h2>
+                <p>
+                    <br><br>
+                    We are asked to consider a system in which a brick is being thrown from the ground level at some angle $\theta$. When the brick hits the ground afterr travelling through air, it slides
+                    on the ground, which has a coefficient of friction of $\mu$. If we assume that as the brick travels through the air, the bottom-facing side of the brick remains parallel with the ground, and that the brick
+                    collides completely inelastically with the ground, we must
+                    find the angle at which we should throw the block to maximize the total horizontal distance it travels before coming to rest.
+                    <br><br>
+                    Morin gives us a small (but useful) hint at the end of the problem statement: think in terms of impulse. We will do exactly that! Consider what happens when the brick collides with the floor: for a given amount of time, a force
+                    is appliedto the brick such that its vertical velocity is reduced to $0$. If we throw a brick with some initial velocity $v_0$, at angle $\theta$, then just before it hits the ground, the angle that the velocity
+                    vector  makes with the horizontal will also be $\theta$. Thus, we can deduce that the block's vertical momentum before the collision is given by $m v_0 \sin \theta$, and after the collision, it is $0$. Thus, we know that
+                    an impulse is applied to the block. The net force acting in the vertical direction on this block is given by:
+                    <br><br>
+                    $$F_{\text{Net}} \ = \ N \ - \ mg$$
+                    <br>
+                    Where $N$ is the normal force acting upwards on the block. We know that the impulse will be equal to the change in momentum, thus we have:
+                    <br><br>
+                    $$mv_0 \sin \theta \ = \ \displaystyle\int_{0}^{T} (N \ - \ mg) dt \ = \ \displaystyle\int_{0}^{T} N dt \ - \ mgT$$
+                    <br>
+                    Where $T$ is the amount of time it takes to reduce the block's vetical momentum to $0$. 
+                    <br><br>
+                    Now, let's consider the momentum in the horizontal direction. Specifically, we wish to consider the change in momentum of the block between the point when it first comes into
+                    contact with the ground, and $T$. We know that the only force acting in the horizontal direction is friction, which is given by $F_f \ = \ N\mu$, thus, if we denote the velocity
+                    of the block at time $T$ by $v_T$, we can set up our "impulse relationship":
+                    <br><br>
+                    $$mv_0 \cos \theta\ - \ mv_T \ = \ \mu \displaystyle\int_{0}^{T} N dt$$
+                    <br>
+                    Now, we have two equation that we can work with! Specifically, we can rearrange the first equation and substitute it into the second:
+                    <br><br>
+                    $$\displaystyle\int_{0}^{T} N dt \ = \ mgT \ + \ mv_0 \sin \theta \ \Rightarrow \ mv_0 \cos \theta \ - \ mv_T \ = \ \mu mgT \ + \ \mu mv_0 \sin \theta$$
+                    $$\Rightarrow \ v_T \ = \ v_0 \big[\cos \theta \ - \ \mu \sin \theta \big] \ - \ \mu gT$$
+                    <br>
+                    Now, we have arrived at a very important quantity: we know how fast the block is moving after its vertical momentum has been reduced to $0$. From this point on, we can determine normal force, and
+                    thus the exact value of the force of friction very easily: since the ground no longer has to supply extra force to bring the block's vertical velocity to $0$, the only normal force it needs to supply
+                    is that which balances the force force of gravity. Thus, for our new normal force $N'$, we have $N' \ = \ mg$. We can now take an energy-based approach to determine how far our block will travel while sliding
+                    on the ground, by setting the initial kinetic energy equal to the work done by friction over some distance, which we will solve for:
+                    <br><br>
+                    $$N' D \mu \ = \ mg D \mu \ = \ \frac{1}{2} m v_T^2 \ = \ \frac{1}{2} m \big( v_0 \big[\cos \theta \ - \ \mu \sin \theta \big] \ - \ \mu gT \big)^2$$
+                    $$\Rightarrow \ D \ = \ \frac{1}{2 \mu g} \big( v_0 \big[\cos \theta \ - \ \mu \sin \theta \big] \ - \ \mu gT \big)^2$$
+                    <br>
+                    Now there is one more component to this problem we must consider beforewe can find the optimal angle: the horizontal distance that the brick travels in the air. This can be determined
+                    fairly easily. We find the time at which the brick hits the ground by solving the veritical equation of motion and setting $y \ = \ 0$:
+                    <br><br>
+                    $$v_0 \sin \theta t \ - \ \frac{1}{2} gt^2 \ = \ 0 \ \Rightarrow \ t \ = \ \frac{2 v_0 \sin \theta}{g}$$
+                    <br>
+                    We can then substitute this into the equation that gives us $x(t)$:
+                    <br><br>
+                    $$X \ = \ v_0 \cos \theta t \ = \ \frac{v_0^2 \sin 2\theta}{g}$$
+                    <br>
+                    Thus, the total range of the brick is given by:
+                    <br><br>
+                    $$R \ = \ X \ + \ D \ = \ \frac{v_0^2 \sin 2\theta}{g} \ + \ \frac{1}{2 \mu g} \big( v_0 \big[\cos \theta \ - \ \mu \sin \theta \big] \ - \ \mu gT \big)^2$$ 
+                    <br>
+                    Now, we can find the maximum range $R_{\text{Max}}$ by simply taking the derivative with respect to $\theta$, setting to $0$, and solving to finding the optimal angle! We will have:
+                    <br><br>
+                    $$\frac{d R}{d\theta} \ = \ \frac{2 v_0^2}{g} \cos 2\theta \ - \ \frac{1}{\mu g} \big( v_0 \big[\cos \theta \ - \ \mu \sin \theta \big] \ - \ \mu gT \big) 
+                    \big( v_0 \big[\sin \theta \ + \ \mu \cos \theta \big] \big)$$
+                    <br>
+                    Now, to simplify, Morin says that we should consider the situation in which the ground does not deform during the collision. This implies that the time over which
+                    the collision takes place is approaching $0$, as in order to change velocity over a very very short distance, the force must be very large, which implies that the acceleration
+                    is very large, which implies that for finite initial and final velocities, the time interval over which the force actsmust approach $0$. Thus, we have $T \ \rightarrow \ 0$, and we get:
+                    <br><br>
+                    $$2 \cos 2\theta \ = \ \frac{1}{\mu} \big[ \mu \cos^2 \theta \ - \ \mu \sin^2 \theta \ + \ \sin \theta \cos \theta \ - \ \mu^2 \sin \theta \cos \theta \big]$$
+                    $$\Rightarrow \ 2 \mu \cos 2\theta \ = \ \mu \cos 2\theta \ + \ \frac{1}{2} \sin 2\theta (1 \ - \ \mu^2) \ \Rightarrow \ 2 \mu \cos 2\theta \ = \ \sin 2\theta (1 \ - \ \mu^2)$$
+                    <br>
+                    Which gives us:
+                    <br><br>
+                    $$\frac{\sin 2\theta}{\cos 2\theta} \ = \ \frac{2 \sin \theta \cos \theta}{\cos^2 \theta \ - \ \sin^2 \theta} \ = \ \frac{2 \tan \theta}{1 \ - \ \tan^2 \theta} \ = \ \frac{2 \mu}{1 \ - \ \mu^2}$$
+                    <br>
+                    Solving this gives us:
+                    <br><br>
+                    $$\tan \theta \ = \ \mu$$
+                    <br>
+                    Which in turn gives us the optimal angle at which we should launch our brick to travel the longest distance.
+                    <br><br><br><br>
+                </p>
+            </div>
+            </center>
+            </body>
+            </html>
