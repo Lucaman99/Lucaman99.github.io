@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 5 Problem 81</h2>
+                <p>
+                    <br><br>
+                    This problem isn't particularly elegant (although the CM frame is slick), but I want to write it out to cement my understanding of the CM frame.
+                    We are tasked with proving that in a collision of "billiard balls" (two balls of equal mass colliding elastically, with one ball being initially stationary), the resulting trajectories
+                    will be orthogonal to each other.
+                    <br>
+                    We can begin by setting up our problem: we have one ball moving towards the other at velocity $v_0$. We can calculate the velocity of the CM frame, relative to the lab frame:
+                    <br><br>
+                    $$u_x \ = \ \frac{P_x}{\sum M} \ = \ \frac{mv}{2m} \ = \ \frac{v}{2}$$
+                    $$u_y \ = \ \frac{P_y}{\sum M} \ = \ 0$$
+                    <br>
+                    We can then calculate the velocities of the masses relative to the CM frame
+                    <br><br>
+                    $$v_{0x}' \ = \ v_0 \ - \ u_x \ = \ \frac{v}{2}$$
+                    $$v_{1x}' \ = \ 0 \ - \ \frac{v}{2} \ = \ -\frac{v}{2}$$
+                    <br>
+                    Where it is clear that the $y$-direction velocities are still $0$. Now, consider this elastic collision in the CM frame: we have two equal masses
+                    travelling towards each other at <b>equal velocities</b>. This is an example of the CM frame exposing nice symmetry in a physical system. Let $f_0'$ and 
+                    $f_1'$ be the speeds of the respective balls in the CM frame. Since momentum must sum to $0$ in the CM frame and the balls have equal mass, we have:
+                    <br><br>
+                    $$f_0' \sin \theta_0 \ = \ - f_1' \sin \theta_1$$
+                    $$f_0' \cos \theta_0 \ = \ - f_1' \cos \theta_1$$
+                    <br>
+                    Where $\theta_0$ and $\theta_1$ are the angles that the ball trajectories make with the horizontal, in the CM frame. It follows that:
+                    <br><br>
+                    $$(f_0')^2 \big[ \sin^2 \theta_0 \ + \ \cos^2 \theta_0 \big] \ = \ (f_1')^2 \big[ \sin^2 \theta_1 \ + \ \cos^2 \theta_1 \big] \ \Rightarrow \ |f_0'| \ = \ |f_1'|$$
+                    <br>
+                    So the speeds are equal, which is obvious due to underlying symmetry in the system. Thus, in order for energy to be conserved, it must be true that each ball has a speed of $\frac{v}{2}$.
+                     If we go back to the original equations, this implies that $\theta_0 \ = \ \theta_1$.
+                    Now, let's switch back to the rest frame with our newly-found CM velocities:
+                    <br><br>
+                    $$f_{0y} \ = \ \frac{v}{2} \sin \theta$$
+                    $$f_{0x} \ = \ \frac{v}{2} (1 \ - \ \cos \theta)$$
+                    <br>
+                    $$f_{1y} \ = \ -\frac{v}{2} \sin \theta$$
+                    $$f_{1x} \ = \ \frac{v}{2} (1 \ + \ \cos \theta)$$
+                    <br>
+                    Now, if we treat each of these values as the components of velocity vectors, $\vec{f}_0$ and $\vec{f}_1$, we can take the dot product of the vectors
+                    to determine the angle between them:
+                    <br><br>
+                    $$\vec{f}_0 \ \cdot \ \vec{f}_1 \ = \ \frac{v^2}{4} \Big[ -\sin^2 \theta \ - \ \cos^2 \theta \ + \ 1 \Big] \ = \ 0$$
+                    <br>
+                    Thus, the vectors are orthogonal and we have completedthe proof.
+                    <br><br><br><br>
+                </p>
+            </div>
+            </center>
+            </body>
+            </html>
