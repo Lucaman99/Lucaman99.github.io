@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://latex.now.sh/style.css">
-<title>Griffiths QM</title>
+<title>Coprime States</title>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
@@ -44,12 +44,32 @@
        This seems to be somewhat related to the definition of the Euler totient function, $\phi(n)$, which is defined to 
        be the number of integers below $n$ that are also coprime to $n$. For instance, in the case of $a = d = D$, we have $\sigma(a, d) = \phi(D)$. We can also look at special 
        cases, for different values of $a$ and $b$. For instance, if both $a$ and $b$ are prime, then they will be coprime with every positive integer between $D$ and $k$, except 
-       the number itself, thus we will have $\sigma(a, b) \ = \ D - k$. 
+       the number itself, thus we will have $\sigma(a, b) \ = \ D - k$.
+       <br><br>
+       <h4>A Modified Totient Function</h4>
+       Another worthwhile question to consider is what the diagonal elements on this matrix are. If we consider the entries where $a = d$, then we know that the 
+       associated entry in the density matrix will be of the form $\sigma(a, a)$, or more clearly, the number of positive integers that are coprime to $a$ from 
+       $k$ to $D$. Clearly, we will be considering values of $a$ from $k$ to $D$. Again, we can draw parallels between this and the definition of the Euler totient function. 
+       We will denote this function by $\phi_{D}(n)$. Let's begin by considering the properties of $\phi_D$ when it takes a a power of a prime as 
+       an argument:
+       <br>
+       <div class="lemma">For some power of a prime, $p^{\alpha}$, it is true that $\phi_{D}(p^{\alpha}) \ = \ D \ - \ \left 
+         \lfloor{\frac{D}{p}} \right \rfloor \ - \ 1$</div>
+       <div class="proof">
+        For some given $2 \leq x \leq D$, it is true that $\gcd(x, p^{\alpha}) \neq 1$ if and only if $x$ and $p^{\alpha}$ share a common prime factor. The only prime 
+        factor of $p^{\alpha}$ is $p$, this is follows that $p$ must be a prime factor of $x$, meaning that we can say that $x \ = \ ap$ for some integer $a$. It follows that 
+        a can range from $1$ to $\ell = \left \lfloor{\frac{D}{p}} \right \rfloor$, as we have:
+        <br><br>
+        $$\frac{D}{p} \ \leq \ \ell \ + \ 1 \ = \ \left \lfloor{\frac{D}{p}} \right \rfloor \ + \ 1$$
+        <br>
+        And since $\ell + 1$ is the next integer above $\ell$, any integer $y$ greater than $\ell$ will result in $yp \geq D$. Thus, there are $\ell$ 
+        different values of $a$. This means that the number of integers that <b>are</b> coprime with $p^{\alpha}$ is given by $D \ - \ \ell \ - \ 1$, where 
+        we have subtracted $1$ from the difference of $D$ and $\ell$ to ensure that $1$ isn't "counted".
+       </div>
+       
        <br><br>
        An important property to note about this matrix is that it is non-negative and symmetric. This means that each entry is greater than our equal to $0$, and 
        the matrix is invariant under taking the transpose.
-    <h4>A Modified Totient Function</h4>
-    <h4>Von Neumann Entropy / Entropy of Entanglement</h4>
     <br><br><br><br>
   </p>
   </div>
