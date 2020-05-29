@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Griffiths QM</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+<h2>Coprime States - Notes</h2>
+<p>
+    <h4>Defining Coprime States</h4>
+   We define a coprime state as a two-qudit state $|\psi_k\rangle$, such that:
+  <br><br> 
+   $$|\psi_k\rangle \ = \frac{1}{\sqrt{N}} \displaystyle\sum_{n \ = \ k}^{D} \displaystyle\sum_{m \ = \ k}^{D} G(n, m) |n \ m\rangle$$ 
+   <br>
+   Where we define $G(m, n) \ = \ 1$ if $\gcd(m, n) = 1$ and $0$ otherwise. In addition, we let $k \in \{1, 2\}$, since we will concern oursevles with coprime states
+   where we consider $1$ and any other positive integer to be coprime, and states where we don't consider this to be the case. We can go on to consider the density
+   matrix defined by the coprime state, which will be given as $\rho_k$:
+   <br><br>
+    $$\rho_k \ = \ |\psi_k\rangle \langle \psi_k | \ = \ \frac{1}{N} \displaystyle\sum_{a, b} \displaystyle\sum_{c, d} |a \ b\rangle \langle c \ d|$$
+   <br>
+   Where $\gcd(a, b) = 1$ and $\gcd(c, d) = 1$. From the density matrix, we can determine more proerties about this quantum state. First, let us consider what happens
+   when we take the partial trace over the second subsystem of our state (as we will eventually need this to calculate the entropy of entanglement). We have:
+   <br><br>
+    $$\rho^{A}_{k} \ = \ \displaystyle\sum_{i} \langle i_B | \rho_k |i_B \rangle \ = \ 
+    \frac{1}{N} \displaystyle\sum_{i} \displaystyle\sum_{a, b} \displaystyle\sum_{c, d} \big[\langle i | b \rangle \langle c | i \rangle \big] |a\rangle \langle d |
+     \ = \ \frac{1}{N} \displaystyle\sum_{a, b} \displaystyle\sum_{c, d} \delta_{bc} |a\rangle \langle d |$$
+   <br>
+   Where $\delta_{bc}$ is the Kronecker delta for $b$ and $c$. Thus, we are effectively summing over the outer product of all basis states that <b>share at least one 
+       common positive integer that is coprime to both $a$ and $b$</b>, with different coefficients on each term.
+       <br><br>
+       We can reduce this further by noting that the coefficient on each term of the sum will simply be the number of positive integers between $k$ and $D$ such that 
+       the integer is both coprime with $a$ and $d$ We will call this coefficient $\sigma(a, d)$, and we can write the density matrix as:
+        <br><br>
+        $$\rho^{A}_{k} \ = \ \frac{1}{N} \displaystyle\sum_{a, d} \sigma(a, d) |a\rangle \langle d|$$ 
+       <br>
+       This seems to be somewhat related to the definition of the Euler totient function, $\phi(n)$, which is defined to 
+       be the number of integers below $n$ that are also coprime to $n$. For instance, in the case of $a = d = D$, we have $\sigma(a, d) = \phi(D)$. We can also look at special 
+       cases, for different values of $a$ and $b$. For instance, if both $a$ and $b$ are prime, then they will be coprime with every positive integer between $D$ and $k$, except 
+       the number itself, thus we will have $\sigma(a, b) \ = \ D - k$. 
+       <br><br>
+       An important property to note about this matrix is that it is non-negative and symmetric. This means that each entry is greater than our equal to $0$, and 
+       the matrix is invariant under taking the transpose.
+    <h4>A Modified Totient Function</h4>
+    <h4>Von Neumann Entropy / Entropy of Entanglement</h4>
+    <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
