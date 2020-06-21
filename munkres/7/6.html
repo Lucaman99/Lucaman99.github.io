@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Munkres Introduction to Topology: Section 7 Problem 6</h2>
+    <br>
+    <b>Part A</b>
+    <p>Given sets $A$ and $B$, with $B \ \subset \ A$, we wish to prove that if there is an injection
+        $f : A \ \rightarrow \ B$, then $A$ and $B$ have the same cardinality, meaning that there is 
+        a bijection between them. Munkres gives us a lot of help in figuring out exactly
+        how to do this. We define $A_1 \ = \ A$ and $B_1 \ = \ B$. We then define recursive 
+        formulas for $n \ > \ 1$, which is given by $A_n \ = \ f(A_{n \ - \ 1})$ and 
+        $B_n \ = \ f(B_{n \ - \ 1})$. We assert that a bijection $h : A \ \rightarrow \ B$ 
+        is defined by:
+        <br>
+        $$h(x) \ = \ \begin{cases} 
+        f(x) & \text{if} \ x \ \in \ A_n \ - \ B_n \ \text{for some} \ n \\
+        x & \text{otherwise}
+        \end{cases}$$
+        
+    </p>
+    We then prove that this function is $1$-to-$1$ and onto. Let us pick two elements of
+    $A$, $a$ and $b$. Let us assert that $f(a) \ \neq \ f(b)$. Clearly, if both $a$ and 
+    $b$ are in $A_n \ - \ B_n$ for some $n$, then $h(a) \ = \ f(a)$ and $h(b) \ = \ f(b)$.
+    Since $f$ is injective, it follows that $f(a) \ \neq \ f(b)$ and thus $h(a) \ \neq \ h(b)$. 
+    The same is true if both unique
+    $a$ and $b$ are mapped under $h(x) \ = \ x$, as this function is also injective.
+    Now, consider the case where $a \ \in \ A_n \ - \ B_n$ and $b$ is not. We must prove 
+    that $f(a) \ \neq \ b$. It is true that in the case of an injective function, we have 
+    $f(A \ - \ B) \ = \ f(A) \ - \ f(B)$. It follows that $f(a) \ \in \ f(A_n) \ - \ 
+    f(B_n) \ = \ A_{n + 1} \ - \ B_{n + 1}$. But by definition, $b \ \not\in \ A_{k} \ - \ 
+    B_{k}$ for any $k$, so it can't be in $A_{n + 1} \ - \ B_{n + 1}$. Thus we have proved 
+    that $f(a) \ \neq \ b$, or else we arrive at a contradiction. 
+    <br><br>
+    Next, we have to prove that $h$ is surjective. Let's pick some $x \ \in \ B$. 
+    Let's also assume that $x \ \not\in \ A_k \ - \ B_k$ for any $k$. Well, in this 
+    case, it follows that $h^{-1}(x) \ = \ x$, so for $x \ \in \ B$, we know that $x \ \in \ A$ is a point 
+    that maps to it.
+    <br><br>
+    Now, let's consider each set $A_k \ - \ B_k$, for all $k$. By the recursive definition, we 
+    have:
+    <br>
+    $$f(A_k \ - \ B_k) \ = \ f(A_k) \ - \ f(B_k) \ = \ A_{k + 1} \ - \ B_{k \ + \ 1}$$
+
+    This implies that $A \ - \ B \ \rightarrow \ A_2 \ - \ B_2$, then $A_2 \ - \ B_2 \ \rightarrow \ 
+    A_3 \ - \ B_3$, and so on, for all positive integers. Thus, for some $x \ \in A_n \ - \ B_n$, it 
+    is true that $x \ \in \ f(A_{n - 1} \ - \ B_{n \ - \ 1})$, meaning that $x \ \in \ B$ must be the image of 
+    some point $y \ \in \ A_{n \ - \ 1} \ - \ B_{n \ - \ 1} \ \subset \ A$. With both cases accounted for, we have 
+    proved that for any $x \ \in \ B$, there exists some point $y \ \in \ A$ such that $f(y) \ = \ x$. Thus,
+    $h$ is surjective and injective, making it a bijection.
+    <br><br>
+    <b>Part B</b>
+    <p>
+        <div>
+            <b>Theorem 1 (Schroeder-Bernstein).</b> <i>Given sets $A$ and $C$, if there exist injections 
+                $f : A \ \rightarrow \ C$ and $g : C \ \rightarrow \ A$, then $A$ and $C$ have the same 
+                cardinality.
+            </i>
+            <br>
+        </div>
+        <div class="proof">
+        Let us consider the image of $C$ under $g$, which we denote by $g(C)$. Since $g$ is injective, it 
+        follows that the function given by $g : C \ \rightarrow \ g(C)$ is a bijection. We wish to prove 
+        that there exists some injective map from $A$ to $g(C)$. Consider the composite function $g \ \circ \ f$, 
+        where $g$ is the range-restricted bijection from $C$ to $g(C)$. The composite of two injections is also an 
+        injection, thus we have an injection from $A$ to $g(C) \ \subset \ A$. By Part A, it follows that $A$ and 
+        $g(C)$ have the same cardinality. This implies that there is a bijection $h : g(C) \ \rightarrow \ A$. 
+        It follows that $(h \ \circ \ g) : C \ \rightarrow \ A$ is a bijection, which implies that $A$ and $C$ have the 
+        same cardinality.
+        </div>
+        </p>
+    </p>
+    <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
