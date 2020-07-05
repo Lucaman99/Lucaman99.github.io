@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Morin</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Morin Introduction to Classical Mechanics: Chapter 5 Problem 94</h2>
+    <br>
+    <p>
+    <i>
+    	I'm trying to only post 3-4 star problem solutions, as these are usually the ones with more nuanced solutions 
+	that are worth typing up (plus I can't solve most of them, so I feel more accomplished if I do manage to get one, 
+	which gives me more motivation to write up my solution!). This is a 2 star problem, but nevertheless, the result of this 
+	problem is pretty cool, so it feels like a good solution to docoument/share.
+    </i>
+	<br><br>
+	In this problem, we are asked to consider a very light dustpan of wheels, rolling 
+	down a hill. Spread along the hill is dust of mass density $\sigma \ \text{kg/m}$, along the 
+	slope. The dustpan begins to roll down the hill and collects all of the dust in its path. We are 
+	asked to find the acceleration of the dustpan.
+	<br><br>
+	In this particular instance, the mass of the rolling dustpan is increasing, so we use the following 
+	form of Newton's second law:
+
+	$$F_{\text{Net}} \ = \ \frac{d p}{dt} \ = \ ma \ + \ \dot{m} v$$
+
+	It is clear that $m(x) \ = \ \sigma x$, which implies that $\dot{m} \ = \ \sigma v$. One can also see 
+	that the net force acting on the dustpan at any given point in time is the gravitational force parallel 
+	to the slope, which gives us:
+
+	$$\sigma x g \sin \theta \ = \ \sigma x a \ + \ \sigma v^2 \ \Rightarrow \ a \ = \ g \sin \theta \ = \ v \frac{dv}{dx} \ + \ \frac{v^2}{x}$$
+
+	This appears to be a linear differential equation, as $\frac{d}{dx} v^2 \ = \ 2v \frac{dv}{dx}$. Let the integrating factor be $\mu$. We assert that:
+
+	$$\frac{1}{2} \frac{d}{dx} \Big( \mu v^2 \Big) \ = \ \mu v \frac{dv}{dx} \ + \ \frac{\mu v^2}{x} \ \Rightarrow \ \mu v \frac{dv}{dx} \ + \ \frac{v^2}{2} \frac{d \mu}{dx} \ = \ \mu v \frac{dv}{dx} \ + \ \frac{\mu v^2}{x}$$
+	$$\Rightarrow \ \frac{d \mu}{dx} \ = \ \frac{2 \mu}{x} \ \Rightarrow \ \mu(x) \ = \ Ax^2$$
+
+	where we solved the differential equation on the second line through separation and integration. We thus have:
+
+	$$\mu v \frac{dv}{dx} \ + \ \frac{\mu v^2}{x} \ = \ \frac{1}{2} \frac{d}{dx} \Big( x^2 v^2 \Big) \ = \ g \sin \theta x^2$$
+	$$\Rightarrow \ \frac{1}{2} x^2 v^2 \ = \ \frac{g \sin \theta x^3}{3} \ \Rightarrow \ v \ = \ \sqrt{\frac{2}{3} g \sin \theta x}$$
+
+	Thus, we can calculate the acceleration:
+
+	$$a \ = \ v \frac{dv}{dx} \ = \ \frac{2}{3} g \sin \theta \sqrt{x} \frac{d}{dx} \sqrt{x} \ = \ \frac{1}{3} g \sin \theta$$
+
+	This is an interesting result. Independent of the density of the dust, the acceleration is a constant value, exactly one-third of the acceleration that 
+	the dustpan would have if there was no dust along the slope!
+
+    <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
