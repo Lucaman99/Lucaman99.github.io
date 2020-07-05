@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Munkres Introduction to Topology: Section 7 Problem 4</h2>
+    <br>
+    <b>Part A</b>
+          <p>
+	  We must prove that the set of algebraic numbers is countable. An algebraic number is 
+	  defined as some number $x$ that satisfies an equation of the form:
+
+	  $$x^n \ + \ a_{n - 1}x^{n - 1} \ + \ ... \ a_2 x^2 \ + \ a_1 x \ + \ a_0$$
+
+   	  for rational coefficients. We are to assume that every algebraic equation has a finite number 
+	  of solutions (this follows from the fundamental theorem of algebra). 
+	  <div class="proof">
+	  Let us imagine some algebraic 
+	  equation of order $n$. Clearly, this alegraic equation can be determined by its coefficients. Thus, we 
+	  denote some algebraic equation by the Cartesian product of all of its coefficients, $(a_{n-1}, \ ..., \ a_1, \ a_0)$.
+	  For algebraic equations of order $n$, the set of all possible coefficient products is the set:
+	  
+	  $$A_n \ = \ \displaystyle\prod_{i \ = \ 1}^{n} \ \mathbb{Q}$$
+
+	  We know that $\mathbb{Q}$ is countable (from exercise 1), and we know that a finite product of countable sets 
+	  is countable, therefore $A_n$ for any $n \ \in \ \mathbb{Z}$ is countable. Let $A \ = \ \{A_1, \ A_2, \ ... \}$. 
+	  One can check that $A$ is countable quite easily, as its elements are indexed by the positive integers. We 
+	  know that a countable union of countable sets is countable, meaning that:
+
+	  $$S \ = \ \displaystyle\bigcup_{n \ \in \ \mathbb{Z}} A_n$$
+
+	  is also countable. Let us pick some element $s \ \in \ S$. This element $s$ will have a finite set 
+	  of algebraic numbers associated with it, which we call $X_s$ (as we assumed at the beginning of the theorem). 
+	  Since $S$ is countable, the union of all $X_s$, which we call $X$, is a countable union of countable sets (since each $X_s$ is finite). 
+	 By definition, $X$ is the set of algebraic numbers. Thus, the set of algebraic numbers is countable.
+	  </div>
+	  </p>
+	  <b>Part B</b>
+	  <p>
+	  We now must prove that the set of transcendental numbers ic uncountable (all real numbers that are not algebraic). 
+	  We are to assume that $\mathbb{R}$ is uncountable.
+	  <div class="proof">
+		  Assume that the set of transcendental numbers, $\textbf{T}$, is not uncountable (and is thus countable). 
+		  By definition, $\textbf{T} \ = \ \mathbb{R} \ - \ \textbf{A}$, where $\textbf{A}$ is the set of algebraic numbers.
+		  Thus, $\textbf{T} \ \cup \ \textbf{A} \ = \ \mathbb{R}$. A countable union of countable sets is countable, so by our 
+		  initial assumption and Part A, this would imply that $\mathbb{R}$ is countable, which is a contradiction. Thus, $\textbf{T}$ 
+		  must be uncountable.
+	  </div>
+	  </p>
+    <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
