@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Munkres Introduction to Topology: Section 11 Problems 5, 6 and 7</h2>
+    <br>
+    <i>I'm trying a new format where I will group relevant problems and  their solutions together. In my humble opinion, these three problems  are three steps of one problem to show that
+    a bunch of lemmas (and a principle) are equivalent to each other.</i>
+          <p>
+	  <b>Problem 5</b>
+	  <br><br>
+	  <div class="named-theorem">
+		  <b>Lemma (Kuratowski).</b> <i>Let $\mathcal{A}$ be a collection of sets. Suppose that for every 
+			  subcollection $\mathcal{B}$ of $\mathcal{A}$ that is simply ordered by proper inclusion, the union 
+			  of the elements of $\mathcal{B}$ belongs to $\mathcal{A}$. Then $\mathcal{A}$ has an element that 
+			  is properly contained in no other element of $\mathcal{A}$.</i>
+	  </div>
+	  <div class= "proof">
+		  We are to show that this theorem is implied by Zorn's lemma. Consider some simply ordered collection of sets 
+		  $\mathcal{B} \ \subset \ \mathcal{A}$. Now, consider the set:
+
+		  $$S \ = \ \displaystyle\bigcup_{B \in \mathcal{B}} B$$
+
+		  By the initial assumption, $S \ \in \ \mathcal{A}$. It is also clear that for any $B \ \in \ \mathcal{B}$, 
+		  it will be true that $B \ \subset \ S$, or $B \ = \ S$. Since proper inclusion is the order relation on 
+		  $\mathcal{B}$, it is true that $B \ \prec \ S$ or $B \ = \ S$. By definition, $S$ is thus an upper bound on 
+		  $\mathcal{B}$. Since any such $\mathcal{B}$ is simply ordered, Zorn's lemma tells us that $\mathcal{A}$ has a 
+		  maximal element. By definition, this is an element $A \ \in \ \mathcal{A}$ such that $A \ \prec \ C$ never holds 
+		  true for another $C \ \in \ \mathcal{A}$. Since the partial order being considered is proper inclusion, it follows 
+		  that there is no $C$ such that $A \ \subset \ C$. Thus, $A$ is an element of $\mathcal{A}$ that is properly contained
+		  in no other element of $\mathcal{A}$ and the proof is complete.
+	  </div>
+	  <br>
+	  <b>Problem 6</b>
+	  <br><br>
+	   <div class="named-theorem">
+		   <b>Lemma (Tukey).</b> <i>Let $\mathcal{A}$ be a collection of sets. If $\mathcal{A}$ is of finite type, 
+			   then $\mathcal{A}$ has an element has an element that is properly contained in no other element of 
+			   $\mathcal{A}$.</i>
+	  </div>
+	  <div class="proof">
+		  Consider some collection $\mathcal{B} \ \in \ \mathcal{A}$ that is simply ordered by proper inclusion. 
+		  Let us pick some $B \ \in \ \mathcal{B}$. By the initial assumption, it is true that every finite 
+		  subset of $B$ is contained in $\mathcal{A}$. Now, let us consider the set:
+
+		  $$S \ = \ \displaystyle\bigcup_{B \ \in \ \mathcal{B}} B$$
+
+		  Let $X$ be a finite subset of $S$. Each $x \ \in \ X$ must, by definition, be contained in some $B \ \in \ \mathcal{B}$. We invoke the axiom of 
+		  choice (the existence of a choice function) and assert that we can choose some $B_x \ \in \ \mathcal{B}$ that contains each $x$. Since 
+		  there are a finite number of elements $x$, the set of $B_x$ sets is finite, and thus has a largest element in the simple order relation imposed 
+		  on $\mathcal{B}$. We call this maximal element $B'$. Since the simple order relation is proper inclusion, every other $B_x$ will be contained 
+		  in $B'$. Thus, $X \ \subset \ B'$ (note that this is not necessarily proper inclusion). This means that $X$ is a finite subset of $B'$. 
+		  Since each finite subset of $B'$ is 
+		  contained in $\mathcal{A}$, it follows that any such $X$ (every finite subset of $S$) is contained in $\mathcal{A}$.
+		  By the initial assumption, it must be true that $S \ \in \ \mathcal{A}$. From this, Kuratowski's lemma implies that there exists some element of $\mathcal{A}$ that 
+		  is properly contained in no other element of $\mathcal{A}$. This completes the proof.
+	  </div>
+	  <br>
+	  <b>Problem 7</b>
+	<br><br>
+	<div>
+		<i>Show that the Tukey lemma implies the Hausdorff maximal principle.</i>
+		<br>
+		<p>
+		Munkres gives us a pretty big hint here. We let $\prec$ be a strict partial order on $A$, and let $\mathcal{A}$ be 
+		the set of subsets of $A$ that are simply ordered by $A$. Munkres tells us to show that $\mathcal{A}$ is of finite type.
+		<br><br>
+		First, let us consider some subset $B$ of $A$ such that each finite subset of $B$ belongs to $\mathcal{A}$. This means that 
+		each finite subset of $B$ is simply ordered by the strict partial order. We wish to prove that $B$ is also contained within 
+		$\mathcal{A}$. In order to for this to be true, $B$ must also be ordered by the strict partial order. Let us consider the union 
+		of all order relations defined on each finite subset of $B$. We prove that this is a simple order on $B$. 
+		One can see that either $a \ \prec \ b$ or $b \ \prec \ a$, for any $a$ and $b$ in $B$, as the finite subset $\{a, \ b\}$ of $B$ is contained 
+		within $\mathcal{A}$, and is thus ordered. By definition of the partial order, it must be 
+		true that $b \ \prec \ b$ is not contained in the new order relation, and that for $x \ \prec \ z$ and $z \ \prec \ y$ that $x \ \prec \ y$. Thus, 
+		we have an order relation on $B$, and $B \ \in \ \mathcal{A}$.
+		<br><br>
+		We now have to prove that if $B$ is in $\mathcal{A}$, then so will each of its finite subsets. Let $C$ be the order relation on $B$. We define the following 
+		procedure for defining an order relation on any finite subset $S$ of $B$: Take some element of $(x, \ y) \ \in \ C$. If $x$ and $y$ are in $S$, add it to $C_S$, 
+		the order relation on $S$. Otherwise, throw it out. Clearly, all elements of the new order relation will be comparable, and by definition of the partial order, the other 
+		two axioms will hold. Thus, $C_S$ is a simple order relation on $S$.
+		<br><br>
+		With the knowledge that $\mathcal{A}$ is of finite type, we can prove the Hausdorff maximum principle. The Hausdorff maximum principle 
+		says that given a set $A$ with a partial order, there exists a maximal simply ordered subset of $A$. Since $\mathcal{A}$ is of finite 
+		type, Tukey's lemma implies that there exists an element $X$ of $\mathcal{A}$ that is properly contained in no other element of $\mathcal{A}$. 
+		Said differently, $X$ is a simply ordered set that is not properly contained in any other simply ordered set. This is the definition of a maximal set, and 
+		thus, Tukey's lemma is equivalent to the maximum principle.
+		</p>
+	</div>
+	<br>
+	<p>
+	Here is visual representation of what we now know:
+
+	$$\text{Hausdorff maximum principle} \ \rightarrow \ \text{Zorn's lemma} \ \rightarrow \ \text{Kuratowski's lemma} \ \rightarrow \ \text{Tukey lemma} \ \rightarrow \ \text{Hausdorff maximum principle}$$
+
+	Thus, each of these statements imply one another!
+	</p>
+	  <br><br><br><br>
+  </p>
+  </div>
+  </center>
+  </body>
+  </html>
