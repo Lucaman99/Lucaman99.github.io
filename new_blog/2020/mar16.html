@@ -57,7 +57,7 @@
                     we add $1$ to $|S|$, continuing this process until we have checked all $a$.
                     <br><br>
                     An equivalent way to formulate this problem is through the language of graph colouring. Consider, instead of thinking about partitioning in terms of a cut, we create partitions based on
-                    whether we colour specific nodes of our graph black or white. Thus, we have two sets of nodes, $W$ for white and $B$ for black, such that $W \ \cup \ B \ = \ V$ and $W \ \cap \ B \ = \ 
+                    whether we colour specific nodes of our graph black or white. Thus, we have two sets of nodes, $W$ for white and $B$ for black, such that $W \ \cup \ B \ = \ V$ and $W \ \cap \ B \ = \
                     \emptyset$. We wish to maximize the number of edges that end in nodes that have different colourings. We can construct this by considering each $w \ \in \ W$. If there exists some $b \ \in \ B$,
                     such that $(w, \ b) \ \in \ E$, then we know that we have an edge with different-coloured endings, and we add $1$ to our "score". Looking back, this is completely equivalent to the "cutting" formulation
                     of this problem.
@@ -76,19 +76,19 @@
                     Since this post assumes you are already familiar with QAOA, I will jump right into choosing cost and mixer Hamiltonian for our alternating unitary layers. We will turn our attention to the
                     cost Hamiltonian first. Recall that we are interested in finding the colouring of our graph that yields the maximum number of edges with endings of different colours. Thus, it would
                     make sense for our cost function to "reward" edges with different-coloured endings, and do nothing when the endings are the same colour. In fact, we can quantify this. Let's say that $-1$ is
-                    added to our overall cost function when adjacent nodes have different colours, and $0$ when they are the same (as we are trying to <b>minimize</b> our cost function). 
+                    added to our overall cost function when adjacent nodes have different colours, and $0$ when they are the same (as we are trying to <b>minimize</b> our cost function).
                     <br><br>
                     We also know that within
                     a quantum computer, our qubits, when measured, take on one of the <b>computational basis states</b> corresponding to the basis in which we are performing measurement. For each individual
-                    qubit, that "basis value" can be denoted by $0$ or $1$. Thus, for each individual qubit $|0\rangle$ corresponds to a black colouring, and $|1\rangle$ corresponds to a white colouring. 
-                    However, in , we are not going to 
+                    qubit, that "basis value" can be denoted by $0$ or $1$. Thus, for each individual qubit $|0\rangle$ corresponds to a black colouring, and $|1\rangle$ corresponds to a white colouring.
+                    However, in , we are not going to
                     use $0$ and $1$, instead using $1$ and $-1$, respectively, in their place (the reasoning for this will
                     become apparent very soon). Thus, we assign $1$ to a <b>black colouring</b> of a node and $-1$ to a <b>white colouring</b> of a node. We then define our cost function
                     as follows:
                     <br><br>
                     $$C \ = \ \displaystyle\sum_{a, \ b} \ \frac{1}{2} (c_a c_b \ - \ 1) \ \ \ \ \ (a, \ b) \ \in \ E$$
                     <br>
-                    Where $c_a$ and $c_b$ represent colourings of vertex $a$ and vertex $b$ respectively. As you can check for yourself, when $c_a \ \neq \ c_b$, we get a value of $-1$, and when $c_a \ = \ c_b$, 
+                    Where $c_a$ and $c_b$ represent colourings of vertex $a$ and vertex $b$ respectively. As you can check for yourself, when $c_a \ \neq \ c_b$, we get a value of $-1$, and when $c_a \ = \ c_b$,
                     we get $0$. Our cost function then sums over all $a$ and $b$ that are joined by an edge.
                     <br><br>
                     Now that we have a "classical" cost function, we can map it to the language of quantum computing. This essentially means that we need to map the $c_n$ "function" that tells us the colouring of
@@ -104,7 +104,7 @@
                     We can easily verify that this operator acting on pairs of basis states, $|00\rangle$, $|01\rangle$, $|10\rangle$, and $|11\rangle$ yields the expected values of $-1$ and $0$.
                     <br><br>
                     In order to choose our mixer Hamiltonian, the general strategy is to find something that does not commute with $\hat{H}_C$, so that the algorithm is able to explore all possibilities in the
-                    search space. Consider what would happen in $\hat{H}_{M}$ <b>did commute</b> with $\hat{H}_C$, and each value of our spectrum is unique to a specific eigenvector (which they are). 
+                    search space. Consider what would happen in $\hat{H}_{M}$ <b>did commute</b> with $\hat{H}_C$, and each value of our spectrum is unique to a specific eigenvector (which they are).
                     This would imply, $|\psi\rangle$ is an eigenstate of $\hat{H}_C$ if and only if it is an eigenstate
                     of $\hat{H}_M$. Let $|\psi\rangle$ be an eigenstate of $\hat{H}_C$:
                     <br><br>
@@ -219,7 +219,7 @@
                   <br><br>
                   <center>
                       <img src="assets/first.png" style="width:30vw">
-                      <p style="font-size:10px;color:gray">The cool graph returns!</p> 
+                      <p style="font-size:10px;color:gray">The cool graph returns!</p>
                   </center>
                   <br><br>
                   <p>
@@ -278,14 +278,14 @@
                     <br>
                     So all together, we have:
                     <br><br>
-                    $$\hat{H}_{C} \ = \ \displaystyle\sum_{n} Z_{n} \ + \ \omega \ \displaystyle\sum_{a, \ b} \frac{Z_a \ \otimes \ Z_b \ - \ Z_a \ - \ Z_b}{2}$$ 
-                    <br> 
+                    $$\hat{H}_{C} \ = \ \displaystyle\sum_{n} Z_{n} \ + \ \omega \ \displaystyle\sum_{a, \ b} \frac{Z_a \ \otimes \ Z_b \ - \ Z_a \ - \ Z_b}{2}$$
+                    <br>
                     The reason we have $\omega$ is because the "clique part" of the Hamiltonian is more important than the "max part". We could have all the ones in the world, but if our subgraph isn't even
                     a clique to begin with, we have to reject this solution. We call the clique-ness of our solution a <b>hard constraint</b> and the max-ness of our solution a <b>soft constraint</b>. We want
                     to weight the hard constraint higher in our Hamiltonian, so we scale it up by some factor. If we choose $\omega$ to be $2$, we get rid of the denominator in $\hat{H}_{\text{Clique}}$, and we
                     make the bad solution "cost" a lot more, thus we have $\omega \ = \ 2$, and:
                     <br><br>
-                    $$\hat{H}_{C} \ = \ \displaystyle\sum_{n} Z_{n} \ + \ \displaystyle\sum_{a, \ b} Z_a \ \otimes \ Z_b \ - \ Z_a \ - \ Z_b$$   
+                    $$\hat{H}_{C} \ = \ \displaystyle\sum_{n} Z_{n} \ + \ \displaystyle\sum_{a, \ b} Z_a \ \otimes \ Z_b \ - \ Z_a \ - \ Z_b$$
                     <br>
                     Again, we choose our mixer Hamiltonian to simply to a sum of $X$ operations over all qubits in the circuit. We can now begin writing up our simulations! We won't rewrite all of the previous code
                     for qubit initialization and the mixer unitary, so we begin by writing a small method that identifies $\bar{G}$:
@@ -319,10 +319,10 @@
                         It is possible to perform MaxClique for more complicated graphs, with increased circuit depth, but for now, we are going to leave those simulations to the reader and move on to the next QAOA application.
                     </p>
                   <br><br>
-                  <b>QAOA Travelling Salesman Problem</b>
+                  <b id="tsp">QAOA Travelling Salesman Problem</b>
                   <br><br>
                   <p>
-                  The travelling salesman problem is defined as follows : given a graph $G \ = \ (V, \ E)$, along with a metric $D_{E}(e)$ that assigns <b>distances</b> to each $e \ \in \ E$, 
+                  The travelling salesman problem is defined as follows : given a graph $G \ = \ (V, \ E)$, along with a metric $D_{E}(e)$ that assigns <b>distances</b> to each $e \ \in \ E$,
                   what is the <b>path</b>, $P$, that includes all $v \ \in \ V$, such that:
                   <br><br>
                   $$C \ = \ \displaystyle\sum \ D_{E}(p) \ \ \ \forall p \ \in \ P$$
@@ -337,7 +337,7 @@
                   $$A \ = \ \begin{pmatrix} 0 & 1 & 1 & 1 & 1 & 1 & 0 \\ 1 & 0 & 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 0 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 1 & 1 & 0 & 0 & 0
                    \\ 1 & 0 & 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 1 & 0 & 0 & 0 \end{pmatrix}$$
                   <br><br>
-                    So when we define our path, it would make sense to also use an adjacency matrix, where the number of $1$s in a given row is equal to $2$. Now, we must consider the cost function itself. 
+                    So when we define our path, it would make sense to also use an adjacency matrix, where the number of $1$s in a given row is equal to $2$. Now, we must consider the cost function itself.
                     We wish to minimize the distance travelled
                     along the given path, thus we should just used the originally defined $C$ as our cost function. Each value associated with $D_E$ can be stored in some look-up table that we reference
                     when constructing our circuit. Thus, we define this part of our cost Hamiltonian as:
@@ -346,7 +346,7 @@
                     <br><br>
                     Where $D_{ij}$ is the distance of the edge between vertex $i$ and vertex $j$, and $Z_{ij}$ is the $Z$ gate on the qubit corresponding to the $i$-th row and $j$-th column of
                     the adjacency matrix. However, this cost function says <b>nothing</b> about the hard constraint, which is that each row of the adjacency matrix must have only two entries equal
-                    to $1$. We will thus borrow a technique used in this paper: <a href="https://arxiv.org/pdf/1810.13411.pdf">"A quantum alternating operator ansatz with hard and soft constraints for 
+                    to $1$. We will thus borrow a technique used in this paper: <a href="https://arxiv.org/pdf/1810.13411.pdf">"A quantum alternating operator ansatz with hard and soft constraints for
                      lattice protein folding"</a>. Essentially, we want to encode the hard contraints of our problem in the mixer unitary, such that only the state-space of feasible solutions is explored.
                      In this case, it will be the states where the Hamming weight (sum of binary digits) of each row of the adjacency matrix is equal to $2$. In order to actually do this, we will initialize
                      our qubit register in an even superposition of qubit state with Hamming weight two (I'll talk more about this soon), and we define our mixer to be the <b>generalized SWAP gate</b>, used
@@ -362,7 +362,7 @@
                      $2$, I am not smart enough to think of any rhyme or reason to the method that I have found to initialize these bitstrings, but essentially it just comes down to intuitively thinking
                      of the $\sqrt{SWAP}$ gate as something that has a $50\%$ chance of swapping qubits (while adding some local phases in the process), and trying to "balance" out the probabilities of all bitstrings of a given Hamming weight, then
                      correcting for the local phases with exponential $Z$ gates. The initialization circuits that we will use for TSP aren't exact (the probabilities of measuring the feasable bitstrings
-                     are different), however, with this initialization we restrict ourselves to the subspace of feasable bitstrings. The subsequent layers of unitaries will hopefully correct for the 
+                     are different), however, with this initialization we restrict ourselves to the subspace of feasable bitstrings. The subsequent layers of unitaries will hopefully correct for the
                      non-uniform initialized probabilities, as we pass the initial state through
                      the QAOA circuit. There is definitely an initialization circuit such that the initial probabilities for each of feasable bitstrings are equal, so if you are reading this and bothered by the "slopiness" of this step, by all means
                      try to find the "more-correct" circuit. For now, we are going to attempt to do TSP with $3$ nodes, thus the initialization circuit that we use for each "row" of the adjacnecy matrix
@@ -374,7 +374,7 @@
                   </center>
                   <br><br>
                   <p>
-                    For this initialization circuit, we correct for the different phases with the single quibts applied after the $\sqrt{SWAP}$ gates, however, the initial probability distribution is not uniform. 
+                    For this initialization circuit, we correct for the different phases with the single quibts applied after the $\sqrt{SWAP}$ gates, however, the initial probability distribution is not uniform.
                     <br><br>
                     In order to proceed, there is also one other hard constraint that we must consider: the fact that our bitstrings have to represent an actual adjacency matrix. Allow me to elaborate, consider the following matrix:
                     <br><br>
@@ -400,7 +400,7 @@
                     Let's choose $\omega$ to be relatively large. Like before, we want to ensure that the hard-constraints are always satisfied. Thus, let's choose $\omega \ = \ 5$, and define our
                     cost unitary:
                     <br><br>
-                    $$\hat{U}_C \ = \ e^{i\gamma \big(\frac{1}{2} \sum_{i, \ j} \ D_{ij} Z_{ij} \ + \ 5 \sum_{a, \ b} Z_a Z_b \big)} \ = \ e^{i \gamma \frac{1}{2} \sum_{i, \ j} \ D_{ij} Z_{ij}} 
+                    $$\hat{U}_C \ = \ e^{i\gamma \big(\frac{1}{2} \sum_{i, \ j} \ D_{ij} Z_{ij} \ + \ 5 \sum_{a, \ b} Z_a Z_b \big)} \ = \ e^{i \gamma \frac{1}{2} \sum_{i, \ j} \ D_{ij} Z_{ij}}
                     e^{5 i \gamma \sum_{a, \ b} Z_a Z_b} \ = \ \displaystyle\prod_{i, \ j} e^{i \frac{\gamma}{2} D_{ij} Z_{ij}} \ \displaystyle\prod_{a, \ b} e^{5 i \gamma Z_{a} Z_{b}}$$
                     <br><br>
                     We can also define our new mixer unitary:
@@ -485,7 +485,7 @@
                   <br><br>
                  <p>We will use pretty much the exact same code as before, with the same restrictions on the search space, and a new distance matrix that encodes all of the edges of this particular graph.
                      The only thing that changes is the initialization circuit, which now needs to accomodate $4$ qubits:
-                 </p>                 
+                 </p>
                  <br><br>
                  <center>
                     <img src="assets/new_init.png" style="width:40vw">
@@ -519,22 +519,22 @@
                   <p>
                   I want to end off this blog post by re-iterating the power of graph theory. Graphs are very general and very useful mathematical structures. Essential any system that involves multiple
                   "agents", each of which are interacting with one another in different ways, a graph provides a really good (yet, very simplified) mathematical picture of what exactly is going on. The
-                  graphs that we investigated in this post didn't necessarily represent any system that we see in the real world, however, they could. 
-                  
+                  graphs that we investigated in this post didn't necessarily represent any system that we see in the real world, however, they could.
+
                   For instance, ProteinQure and Xanadu, two Toronto-based
                   startups released a two papers a little while back, one of which is using QAOA to solve the protein folding problem (by modelling proteins as graphs), and another which attempts to predict
                   molecular docking using an approach to solving graph problems called Gaussian Boson Sampling. This is different from QAOA, but at the root, they were essentially trying to find the maximum
                   clique of a molecular, to precict binding sites, which they theoretically could have just used QAOA MaxClique to find!
                   </p>
                   <p class="tsp">
-                  In addition to this cool work, I was recently scrolling through Twitter (probably procrastinating, when I should have been working on this blog post), and I came across a guy 
+                  In addition to this cool work, I was recently scrolling through Twitter (probably procrastinating, when I should have been working on this blog post), and I came across a guy
                   named <a href="https://twitter.com/kvogt">Kyle Vogt</a>, who just recently finished running <b>7 marathons on 7 continents in 81 hours</b>. I enjoy running, but such an expedition
-                  would surely result in my painful and hasty demise before I even finished the first half of the first marathon, so I was naturally very impressed by this superhuman endeavour. 
+                  would surely result in my painful and hasty demise before I even finished the first half of the first marathon, so I was naturally very impressed by this superhuman endeavour.
                   I became even more impressed/intrigued when I came across the <a href="https://github.com/kvogt/around_the_world">code that he used to plan his trip</a>. To choose his path around the world, Vogt used a variant of the Travelling Salesman Problem. Through
                   encoding a bunch of constraints like location of airports, physical connection to the mainland, and war-torn countries where there was a non-zero probability of his plane being shot down, he performed
                   TSP between a bunch of cities/Antarctic research bases, and found the optimal route. Theoretically, if Vogt had enough qubits (which he wouldn't, at least with current quantum computational devices),
-                  Vogt could have observed a computational speedup when planning his trip by using TSP! So as you can so, there are (theoretical, painfully theoretical) applications everywhere, 
-                  ranging from modelling proteins, to planning an ultra-ultra-ultra marathon. 
+                  Vogt could have observed a computational speedup when planning his trip by using TSP! So as you can so, there are (theoretical, painfully theoretical) applications everywhere,
+                  ranging from modelling proteins, to planning an ultra-ultra-ultra marathon.
                   <br><br>
                   Hopefully this post was somewhat illuminating, and
                   maybe even inspired you to come up with your own graph-theoretic combinatorial problems to crush with quantum algorithms!
