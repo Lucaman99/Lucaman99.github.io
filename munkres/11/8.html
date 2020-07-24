@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Munkres Introduction to Topology: Section 11 Problems 8</h2>
+    <br>
+    <b>Part A</b>
+    <p>
+    <div class="lemma">If $A$ is independent and $v \ \in \ V$ does not belong to the span of $A$, then
+	    $A \ \cup \ \{v\}$ is independent. 
+	</div>
+	<div class="proof">
+	    Assume that $A \ \cup \ \{v\}$ is not independent. We know 
+	    that $A$ is independent, so any finite linear combination of elements contained within $A$ 
+	    can only equal $0$ in the trivial case. For $A \ \cup \ \{v\}$ to not be independent, it would thus 
+	    have to be true that a finite linear combination of elements in $A$, along with $v$ must be equal to $0$
+	    in a non-trivial case:
+	    
+	    $$c v \ + \ \displaystyle\sum_{i \ = \ 1}^{N} \ c_i a_i \ = \ 0$$
+
+	    where each $a_i \ \in \ A$. It also must be true that $c \ \neq \ 0$, as if it were, then this would simply 
+	    be a non-trivial linear combination of elements of $A$, contradicing the fact that $A$ is independent. We can 
+	    thus write:
+
+	    $$v \ = \ - \displaystyle\sum_{i \ = \ 1}^{N} \frac{c_i}{c} a_i$$
+
+	    Thus, $v$ is a linear combination of elements of $A$, and is thus in the span of $A$. This is a contradiction, 
+	    implying that $A \ \cup \ \{v\}$ must be independent.</div>
+    </p>
+	    <br>
+	    <b>Part B</b>
+	    <p>
+		<i>The collection of all independent sets in $V$ has a maximal element.</i>
+		<div class= "proof">
+			Let us consider the set $\mathcal{A}$ of all independent sets in $V$. Let us also 
+			consider some subset $A$ of $\mathcal{A}$ that is simply ordered by proper inclusion. 
+			We wish to prove that any such subset will have an upper bound contained within $\mathcal{A}$.
+			It would follow (by Zorn's lemma) that for every 
+			element of the subset, there always exists another which contains it as a proper subset. 
+			<br><br>
+			Assume that the union of all elements of $A$, which we denote by $\bigcup A$ is not independent. 
+			This would imply that there exists some $\textbf{v} \ \in \ \bigcup A$ such that:
+
+			$$\textbf{v} \ = \ \displaystyle\sum_{n \ = \ 1}^{N} c_n v_n$$
+
+			with each $v_n \ \in \ \bigcup A$. By definition, $\textbf{v}$ and each $v_n$ must be 
+			contained in at least one element of $A$. It follows from the finite axiom of choice 
+			that we can pick such elements of $A$, which we denote as:
+
+			$$A_{V} \ = \ \{A_{\textbf{v}}, A_{v_1}, \ ..., \ A_{v_n}\}$$
+
+			Since $A$ is order by proper inclusion, it follows that $A_{V}$ is also ordered by proper 
+			inclusion. This implies that there exists a maximal element $A_{v_i}$ of $A_V$ (since $A_V$ is 
+			finite). Since every element of $A_V$ is contained in $A_{v_i}$, it follows that:
+
+			$$A_{v_i} \ = \ \bigcup A_{V}$$
+
+			We know that $A_{v_i}$ is independent, so it follows that $\bigcup A_V$ is independent. However, the 
+			element $\textbf{v}$ of $\bigcup A_V$ is equal to a finite linear combination of other elements of $A_V$, which 
+			implies that $A_V$ is not independent.
+
+			<br><br>
+
+			This is a clear contradiction, which implies that $\bigcup A$ is independent. It follows that $\bigcup A$ is 
+			in $\mathcal{A}$ and is an upper bound for $A$. This implies that $\mathcal{A}$ has a maximal element, by Zorn's 
+			lemma.
+
+
+		</div>
+	    </p>
+	    <br>
+	    <b>Part C</b>
+	    <p>
+	    <i>Show that $V$ has a basis.</i>
+	    <div class="proof">
+		    We have proven that $\mathcal{A}$ has a maximal element, which we will call $A$. By the 
+		    first lemma, it must be true that $A \ \cup \ \{v\} \ \in \ \mathcal{A}$ for some $v \ \in \ V$ 
+		    that does not belong to the span of $V$. If such an element existed, this would contradict the fact 
+		    that $A$ is a maximal element. Thus, it must be true that there exists no $v \ \in \ V$ that is 
+		    not in the span of $A$. Thus, $A$ is independent and spans the vector space. By definition, $A$ is 
+		    a <b>basis</b> of $V$.
+	    </div>
+	    </p>
+    </div>
+    <br><br><br><br>
+  </div>
+  </center>
+  </body>
+  </html>
