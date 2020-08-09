@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 20 Problems 3 (Part A)</h2>
+	<br>
+	<p>
+
+	Part B will be released soon!
+
+	<br>
+	
+	<div class= "theorem">If $X$ is a metric space with metric $d$, the map $d : X \ \times \ X \ \rightarrow \ 
+		\mathbb{R}$ is continuous.</div>
+
+	<div class= "proof">
+		We will prove this theorem by demonstrating that for each point $x \ \times \ y \ \in \ X \ \times \ X$, and 
+		each open set $V$ around $d(x, y)$, there exists some neighbourhood $U$ of $x \ \times \ y$ such that 
+		$d(U) \ \in \ V$.
+
+		<br><br>
+
+		We begin by choosing an arbitrary point, $x \ \times \ y \ \in \ X \ \times \ X$. When we map this 
+		point under the metric, we get a real number, $d(x, \ y) \ \in \ \mathbb{R}$. Consider some open 
+		$V$ around this point. We know, from the definition of the standard/metric topology imposed on 
+		$\mathbb{R}$ that there exists some open ball around the point: $d(x, \ y) \ \in \ B(d(x, \ y), \ \epsilon)$. 
+		This is defined to be the set of all points $p$ of $\mathbb{R}$ such that:
+
+		$$|p \ - \ d(x, y)| \ < \ \epsilon$$
+
+	     	It follows that $d^{-1}(B)$ is the set of all $a \ \times \ b$ such that:
+
+	     	$$|d(a, b) \ - \ d(x, y)| \ < \ \epsilon$$
+
+	     	Now, let us switch gears and consider open sets around $x \ \times \ y$. Clearly, by definition of the 
+	     	product topology, the topology imposed on $X \ \times \ X$ will have a basis comprised of products of 
+	     	basis elements of $X$. Since the topology on $X$ is defined by the metric $d$, the basis elements will be 
+	     	open balls. Consider the following open balls around $x$ and $y$ in $X$:
+
+	     	$$x \ \in \ B_{d}(x, \ \epsilon/2) \ \ \ \ \ \ \ \ \ \ \ \ y \ \in \ B_{d}(y, \ \epsilon/2)$$
+
+	     Clearly, the set $x \ \times \ y \ \in \ B_{d}(x, \ \epsilon/2) \ \times \ B_{d}(y, \ \epsilon/2) \ = \ B_{d}$ is 
+	     open in $X \ \times \ X$. Consider some element $a \ \times \ b \ \in \ B_{d}$. For this to be the case, 
+	     it must be true that:
+
+	     	$$d(a, \ x) \ < \ \epsilon/2 \ \ \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \ \ d(b, \ y) \ < \ \epsilon/2$$
+
+	     By the triangle inequality, we have:
+
+	     	$$d(x, \ y) \ - \ d(b, \ x) \ \leq \ d(b, \ y) \  < \ \epsilon/2$$
+
+	     and 
+
+	     	$$d(b, \ x) \ - \ d(a, \ b) \ \leq \ d(a, \ x) \ \leq \ \epsilon/2$$
+
+	     Combining these two equations, we get:
+
+	     	$$d(x, \ y) \ - \ d(a, \ b) \ < \ \epsilon$$
+
+	     This implies that $a \ \times \ b \ \in \ d^{-1}(B)$ for all $a \ \times \ b \ \in \ B_{d}$. It follows that 
+	     $B_{d}$ is an open set of $X \ \times \ X$ such that $d(B_{d}) \ \subset \ B \ \subset \ V$ for all points 
+	     $x \ \times \ y \ \in \ X \ \times \ X$. Thus, $d$ is continuous.
+	</div>
+
+	<br>
+
+	<!--
+
+	<div class="theorem">
+	Let $X'$ be a space with the same underlying set as $X$. If $d : X' \ \times \ X'$ is continuous, then the topology of $X'$ 
+	is finer than the topology of $X$.
+	</div>
+
+	<div class= "proof">
+	Consider some point $x \ \in \ X$ and some basis element $B$ around $x$. We will prove that there exists some basis element $B'$ of $X'$ 
+	such that $x \ \in \ B' \ \subset \ B$.
+
+	<br><br>
+
+	Let us choose a point $x \ \times \ y$ in $X \ \times \ X$ and $X' \ \times \ X'$. In the metric topology, consider a basis element around 
+	$x \ \times \ y$ of the form:
+
+	$$x \ \times \ y \ \in \ B_d(x, \ \epsilon) \ \times \ B_d(y, \ \delta)$$
+
+	Let $\epsilon_0 \ = \ \text{min} \{ \epsilon, \ \delta\}$. Clearly:
+
+	$$x \ \times \ y \in \ B_d(x, \ \epsilon_0) \ \times \ B_d(y, \ \epsilon_0) \ \subset \ B_d(x, \ \epsilon) \ \times \ B_d(x, \ \delta)$$
+	
+	We call these two products of balls $B_0$ and $B$ respectively. Now, we also have:
+
+	$$d(x \ \times \ y) \ \in \ d(B_0) \ \subset \ d(B)$$
+
+	Let us denote the set $d(X \ \times \ X) \ \subset \ \mathbb{R}$ by $Z$. 
+	We assert that $V \ = \ Z \ \cap \ (d(x, \ y) \ - \ \epsilon_0, \ d(x, \ y) \ + \ \epsilon_0) \ \subset \ d(B_0)$. Consider some point of 
+	$V$. Since all points of $V$ lie in the image of $X \ \times \ X$, such a point can be written as $d(a, \ b)$, for some points $a, \ b \ \in \ X$. 
+	By definition of such as set, it must be true that:
+
+	$$|d(x, \ y) \ - \ d(a, \ b) | \ < \ \epsilon_0$$
+
+	By the triangle inequality, we have:
+
+	-->	
+
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
