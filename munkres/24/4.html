@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 24 Problems 4</h2>
+	<br>
+	<p>
+
+	<div class="theorem">let $X$ be an ordered set in the order topology. If $X$ is connected, then 
+	$X$ is a linear continuum</div>
+
+	<div class="proof">
+	Assume that the least upper bound property does not hold. This means that there will exist some subset $S$ of 
+	$X$ such that $S$ has an upper bound, but not a least upper bound. Any ordered set that contains an upper bounds 
+	will have a least upper bound: the upper bound that it contains. Thus the subset $S$ that is a counterexample to the LUB 
+	property must not contain an upper bound.  Now consider the set $S'$ which is the set of all $s$ such that 
+	$s \ \leq \ x$, for at least one $x \ \in \ S$. It is easy to see that this set is open in the order topology on $X$. It also 
+	follows from the definition of the set, and more directly, the fact that $S \ \subset \ S'$, that the set of upper bounds 
+	of $S$ is equal to the set of upper bounds of $S'$.
+	<br><br>
+	Consider the set of upper bounds on $S'$, which we will call $L$. Recall this is also the set of upper bounds of $S$. Since, by assumption, this set 
+	does not have a least element, it must not contain its infimum, and $L$ is thus open in the order topology. We assert 
+	that $S'$ and $L$ form a separation of $X$. These two sets are disjoint. If they weren't then there would exist some $\ell$ of $L$ such 
+	that $\ell \ \leq \ x$, for some $x \ \in \ S$. In the case of equality, we contradict the definition of $S$. Otherwise, we contradict the fact that 
+	$\ell$ is an upper bound on $S'$. Now we prove the two sets contain all points of $X$. Assume there is 
+	some $z \ \in \ X$ that is not contained in either $S'$ or $L$. It would follow that $z$ is greater than all elements of $S'$, 
+	which is a contradiction, as this would be an upper bound of $S'$, and be contained within $L$. Thus, $S' \ \cup \ L \ = \ X$. This 
+	contradicts the initial assumption that $X$ is connected. Thus, $X$ must satisfy the LUB property.
+	<br><br>
+	Next, we have to prove that for any two $x, \ y \ \in \ X$, there exists some $z$ such that $x \ < \ z \ < \ y$. Assume that this 
+	wasn't the case. This means that there would exist $x$ and $y$ with no $z$ such that $x \ < \ z \ < \ y$. Consider the sets:
+	<br>
+	$$S_y \ = \ \{ s \ | \ s \ < \ y\} \ \ \ \ \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \ \ \ \ \ S_x \ = \ \{s \ | \ s \ > \ x \}$$
+	
+	Both sets are disjoint and contain all points of $X$, due to the lack of existence of $z$. Both sets are also open in the order topology. Thus, 
+	$S_y$ and $S_x$ constitute a separation of $X$, contradicting the initial assumption that $X$ is connected. Thus, $X$ must satisfy the above axiom, and we 
+	have shown that $X$ is a linear continuum.
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
