@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 24 Problems 10</h2>
+	<br>
+	<p>
+
+	<div class="theorem">
+		If $U$ is an open, connected subspace of $\mathbb{R}^2$, then $U$ is path-connected.
+	</div>
+
+	<div class="proof">
+		Let us call the set of all $y$, such that there exists a path between $x_0$ and $y$, $A$. 
+		Assume that $A$ isn't closed. Consider the set $\bar{A}$. For some $a \ \in \ \bar{A}$, it holds 
+		true that each neighbourhood of $a$ intersects $A$. Since $A$ isn't closed, it follows that 
+		$A \ \neq \ \bar{A}$. Thus, there is some $b \ \in \ \bar{A}$ such that $b \ \notin A$. 
+		Note that $b \ \in \ U$, as $U \ = \ \bar{U}$, since $U$ is connected.
+		Consider an aribtrary open ball around $b$ in $B_d(b, \ \epsilon)$. This open ball must 
+		intersect $A$ at at least one point, $c$. Since $c$ is in $A$, it follows by definition that 
+		there is a path from $x_0$ to $c$. We also know that open balls are path connected, so there is a 
+		path from $c$ to $b$. The map formed from pasting these two paths together, thus going from $x_0$ to $b$, 
+		is clearly continuous. Thus, there is a path from $x_0$ to $b$, and $b$ isn't in $A$. This is a contradiction, 
+		so it follows that $A \ = \ \bar{A}$ and $A$ is closed.
+		<br><br>
+		We now attempt to prove that $A$ is open. We pick some arbitrary point $a$ of $A$. Since $U$ is open, 
+		we know that there exists some open ball around $a$, which we call $B_d(a, \ \delta)$, such that 
+		$B_d(a, \ \delta) \ \subset \ U$. Let us pick some point $b \ \in \ B_d$. We know that there exists a 
+		path between $a$ and $b$, as open balls are path connected. We also know that there exists a path from $x_0$ to $a$. It follows that 
+		$x_0$ and $b$ are connected by a path, and $B_d \ \subset \ A$. Thus, for each point $a$ of $A$, there exists 
+		an open set of $U$, such that $a \ \in \ B_d \ \subset \ A$. By definition, $A$ is open in $U$.
+		<br><br>
+		Since $A$ is both open and closed in $U$, and in a connected set, the only set that is both open and 
+		closed is the full set itself, it follows that $A \ = \ U$, and $U$ is path-connected.
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>

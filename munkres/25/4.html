@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 24 Problems 4</h2>
+	<br>
+	<p>
+
+	<div class="theorem">
+		If $X$ is locally path-connected, then every connected open set in $X$ is path-connected.
+	</div>
+
+	<div class="proof">
+		Let us choose some point $x$ of an arbitrary connected open set $U$. Take the subset $A$ of 
+		$U$ to be the set of all points $a$ such that $x$ and $a$ are path-connected. We realize that $A$ 
+		is simply the path-component of $U$ containing $x$. 
+	<br><br>
+		By Theorem 25.4, for each open set of $X$, each path-component is open 
+		in $X$. Thus, $A$ is open in $X$, and thus, open in $U$. By Theorem 25.5, the components and path-components of $X$ are the same. 
+		Since the components of a set will be closed, it follows that the path-components of $X$ are also closed. 
+		Thus, $A$ is both open and closed in $U$. 
+		<br><br>
+		Since $U$ is connected, the only subset of $U$ that is both open and closed in $U$ is $U$ itself. Thus, $A \ = \ U$. 
+		This implies that each pair of points in $U$ connected by a path, making $U$ path-connected.
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
