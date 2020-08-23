@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 6 Problem 45</h2>
+                <p>
+                    <br><br>
+		   The goal of this problem is to find the normal modes of oscillation of a fairly simple system comprised of a mass that is free to rotate on a ring. We begin by considering
+		   a point mass $m$ that is free to rotate on the rim of a massless wheel, with a mass $M$ located at the center. In order to find the normal modes of small oscillations, we
+		   first have to construct the Lagrangian. We must consider the kinetic energy of both masses, as well as the gravitational potential. For the potential, we have:
+		   <br><br>
+			$$U(\theta) \ = \ mgR(1 \ - \ \cos \theta)$$
+		    <br>
+		Now we must determine the kinetic energy. We will find the velocity of $m$ in the $x$ and $y$ directions in terms of our coordinate system. Let $X$ be the horizontal distance at
+		which $M$ is located. It follows that the $x \ = \ X \ + \ R \sin \theta$ and $y \ = \ R(1 \ - \ \cos \theta)$. Thus, it follows that the total kinetic energy is given by:
+		<br><br>
+		$$T \ = \ \frac{1}{2} M \dot{X}^2 \ + \ \frac{1}{2} m\dot{x}^2 \ + \ \frac{1}{2} m \dot{y}^2 \ = \ \frac{1}{2} M \dot{X}^2 \ + \ \frac{m}{2} \big[ (\dot{X} \ + \ R \cos \theta
+		\dot{\theta})^2 \ + \ R^2 \dot{\theta} \sin^2 \theta \big]$$
+		$$\Rightarrow \ T \ = \ \frac{M \ + \ m}{2} \dot{X}^2 \ + \ \frac{1}{2} mR^2 \dot{\theta}^2 \ + \ m R \cos \theta \dot{X} \dot{\theta}$$
+		<br>
+		This gives us:
+		<br><br>
+		$$\mathcal{L} \ = \ \frac{M \ + \ m}{2} \dot{X}^2 \ + \ \frac{1}{2} mR^2 \dot{\theta}^2 \ + \ m R \cos \theta \dot{X} \dot{\theta} \ - \ mgR(1 \ - \ \cos \theta)$$
+		<br>
+		Now, let's attempt to solve the Euler-Lagrange equation for both coordinates. We will start with $X$, which gives us:
+		<br><br>
+		$$\frac{d}{dt} \ \Big[ (M \ + \ m) \dot{X} \ + \ mR \cos \theta \dot{\theta} \Big] \ = \ (M \ + \ m) \ddot{X} \ + \ mR \big[ \cos \theta \ddot{\theta} \ - \ \sin \theta \dot{\theta} \big] \ = \ 0$$
+		$$C \ = \ (M \ + \ m) \dot{X} \ + \ mR \cos \theta \dot{\theta} \ \Rightarrow \ \frac{d C}{dt} \ = \ 0$$
+		<br>
+		Thus, $C$ is a conserved quantity, which we might find useful later. In fact, this is exactly the total momentum of the system in the horizontal 
+		direction, as one can easily check. This makes complete sense, as there are no external forces acting on the system in the horizontal direction (only gravity, in 
+		the vertical direction), which would imply that momentum should be conserved horizontally. Now, let's set up the Euler-Lagrange equation for $\theta$:
+		<br><br>
+		$$mR^2 \ddot{\theta} \ + \ mR \big[ \cos \theta \ddot{X} \ - \ \sin \theta \dot{X} \big] \ = \ - mgR \sin \theta \ - \ mR \sin \theta \dot{X} \dot{\theta}$$
+		<br>
+		Now, we can make some simplifications, and expand $\sin \theta$ and $\cos \theta$ to the first order, as we are interested in small oscillations. In addition, it is clear
+		that the equilibrium angle for this system is $\theta \ = \ 0$, which makes things pretty easy:
+		<br><br>
+		$$ \ddot{\theta} \ = \ - \frac{g}{R} \theta \ - \ \frac{1}{R} \theta \dot{X} \dot{\theta} \ - \ \frac{1}{R} \big[ \ddot{X} \ - \ \theta \dot{X} \big]$$
+		$$\ddot{X} \ = \ \frac{mR}{M \ + \ m} \big[ \ddot{\theta} \ - \ \theta \dot{\theta} \big]$$
+		<br>
+                </p>
+            </div>
+            </center>
+            </body>
+            </html>
+

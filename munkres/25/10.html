@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 25 Problems 10</h2>
+	<br>
+	<p>
+	
+	<b>Part A</b>
+
+	<div class="lemma">
+		Let $X$ be a space. Let us define $x \sim y$ if there is not separation $X = A \cup B$ such that 
+		$x \in A$ and $y \in B$. This relation is an equivalence relation.
+	</div>
+
+	<div class="proof">
+		Clearly reflexivity and symmetry hold. Assume that $x \sim y$ and $y \sim z$, but $x \nsim z$. This would
+		imply that there is a separation $X = A \cup B$ such that $x \in A$ and $z \in B$. Since the separation 
+		is equal to the whole set, it must be true that $y \in A$ or $y \in B$. In the former case, this would contradict 
+		$y \sim z$, while the latter would contradict $x \sim y$. Thus, it must be true that $x \sim z$. Thus, transitivity 
+		holds, and the relation is an equivalence relation.
+	</div>
+	<br>
+	<b>Part B</b>
+	<br>
+	We call the equivalence classes defined by this equivalence relation <b>quasicomponents</b>.
+
+	<div class="lemma">
+		Each component of $X$ lies in a quasicomponent of $X$.
+	</div>
+
+	<div class="proof">
+		Let us consider the component $C$, determined by some reference point $x$. Let $C'$ be the quasicomponent determined by $x$. 
+		Let us pick some $y \in C$. By definition, it must be true that $x$ and $y$ lie in a connected subspace $L$ of $X$. Assume that $y \notin C'$. 
+		It would then hold true that there exists a separation $X = A \cup B$ such that $x \in A$ and $y \in B$. If this was the case, then 
+		$L \cap A$ and $L \cap B$ would be disjoint open sets of $L$, whose union is $L$. This contradicts the fact that $L$ is connected. Thus, 
+		it must be true that $y \in C'$. It follows that $C \subset C'$ and each component is contained in a quasicomponent.
+	</div>
+	<br>
+	<div class="lemma">
+		The components and quasicomponents of $X$ are the same if $X$ is locally connected.
+	</div>
+
+	<div class="proof">
+		Consider the quasicomponent $C'$ determined by the reference point $x$. Also consider the component $C$ determined by $x$. Let 
+		us have $y \in C'$. This implies there exists no separation with $x$ and $y$ in different sets. Assume that $y \notin C$. This implies 
+		that $y \in X - C$. We know that components are closed. It follows that $X - C$ is open. We also know that if $X$ is locally connected, 
+		then every component will be open. Thus, $C$ is open. This means that $C$ and $X - C$ are two disjoint open sets whose union is $X$, with 
+		$x \in C$ and $y \in X - C$. This contradicts the fact that $x \sim y$. It follows that $y \in C$. Combinoting this with the previous lemma, and 
+		we have $C' = C$.
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>

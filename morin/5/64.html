@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+    <title>Morin</title>
+    <script type="text/x-mathjax-config">
+	    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Morin Introduction to Classical Mechanics: Chapter 5 Problem 64</h2>
+    <br>
+    <b>Part A</b>
+	We are first tasked with demonstrating that in order for the gravitational force 
+	of Earth to increase as we descend through the crust towards the core, it must be true 
+	that $\rho_c \ < \ (2/3)\rho_{avg}$, where $\rho_c$ is the density of the Earth at surface-level, 
+       near the upper layer of the crust, and $\rho_{avg}$ is the average density of the Earth.
+       <br><br>
+       In order for it to be true that the gravitational force increases upon descent, it must 
+       be true that the derivative of the force with respect to "distance travelled downwards" 
+       is positive (a negative derivative would imply that the force is decreasing at some point).
+       We'll keep this fact in mind for later.
+
+       Now, let's try to find out what force actually is. Imagine we have a mass $m$ at distance $R$ 
+       away from the center of the Earth. By Gauss' law for gravitation (as was outlined 
+       earlier in the chapter), the only contribution to force comes from the region contained inside the 
+       sphere with $m$ on the surface:
+
+       $$F \ = \ \frac{GM(R)m}{R^2}$$
+
+       We can find $M(R)$ by integrating across the contributions of each co-centric shell making up the sphere:
+
+       $$M(R) \ = \ \displaystyle\int_{0}^{R} \rho(r) dS \ = \ 4\pi \displaystyle\int_{0}^{R} \rho(r) r^2 dr$$
+
+       This gives us:
+
+       $$F(R) \ = \ \frac{4G \pi m}{R^2} \displaystyle\int_{0}^{R} \rho(r) r^2 dr$$
+
+       We then take the derivative to get:
+
+       $$\frac{dF}{dR} \ = \ 4 G \pi m \frac{d}{dR} \frac{1}{R^2} \displaystyle\int_{0}^{R} \rho(r) r^2 dr \ = \ 
+       4 G \pi m \Big[ -\frac{2}{R^3} \displaystyle\int_{0}^{R} \rho(r) r^2 dr \ + \ \frac{1}{R^2} \Big( \frac{\rho(R)}{R^2} \Big) \Big] \ = \ 
+        4 G \pi m \Big[\rho(R) \ - \ \frac{2}{R^3} \displaystyle\int_{0}^{R} \rho(r) r^2 dr \Big]$$
+
+       Now, let's take a quick detour and consider the value of $\rho_{avg}$. By definition, this is just the total mass 
+       of Earth divided by the total volume. This implies that we will have:
+
+       $$\rho_{avg} \ = \ \frac{M_{E}}{V_{E}} \ = \ \frac{4 \pi \displaystyle\int_{0}^{R_E} \rho(r) r^2 dr}{\frac{4}{3} \pi R_{E}^{3}}$$
+
+       where $R_E$ is the radius of the Earth. Rearranging this gives us:
+
+       $$\displaystyle\int_{0}^{R_E} \rho(r) r^2 dr \ = \ \frac{\rho_{avg} R_E^3}{3}$$
+
+    <br><br>
+    <b>Part B</b>
+    <br><br>
+
+    Consider the force being exterted on the mass above the sheet. We'll first consider the vertical force acting on the mass by an infinitesimally 
+    thin sheet. Let our mass be  a distance $x$ from the sheet. We will have:
+
+    $$F(d)_{S} \ = \ G m \displaystyle\int \frac{1}{x^2} dm \ = \ 2 \pi G m \rho dx \displaystyle\int x \tan \theta \frac{\cos^2 \theta}{x^2} \cos \theta d\theta \ =  \ 
+    2\pi G \rho m \frac{dx}{x} \displaystyle\int \ \sin \theta \cos^2 \theta d\theta \ = \ \frac{2 \pi G \rho m}{3} \frac{dx}{x}$$
+
+    Now, assume the mass of a distance $d$ from the top of the entire sheet. We will have:
+
+    $$F(d) \ = \ \frac{2 \pi G m \rho}{3} \displaystyle\int_{d}^{d \ + \ x} \frac{1}{x} dx \ = \  \frac{2 \pi G m \rho}{3} \Big[ \ln (d \ + \ x) \ - \ \ln d \Big]$$
+
+     Now, the force acting on the mass by the Earth is given by:
+
+    $$F_g(\ell) \ = \ \frac{G M m}{\ell^2} \ = \ \frac{4 \pi G M \rho_{avg} R_E^3}{3 \ell^2}$$
+
+    When   
+
+    <b>Part C</b>
+	<br><br>
+    Our final task is to find how density should vary with distance under the surface of the Earth, such 
+    that the gravitational force remain constant. Well, for this to be true, we must have:
+
+    $$\frac{d F}{dR} \ = \ 0$$
+
+    Using the formula we derived above, we get:
+
+    $$ 4 G \pi m \Big[\rho(R) \ - \ \frac{2}{R^3} \displaystyle\int_{0}^{R} \rho(r) r^2 dr \Big] \ = \ 0 \ \Rightarrow \ 
+    \rho(R) \ = \ \frac{2}{R^3} \ \displaystyle\int_{0}^{R} \rho(r) r^2 dr \ \Rightarrow \ \rho(R) R^3 \ = \ 2 \displaystyle\int_{0}^{R} \rho(r) r^2 dr
+    \ = \ \frac{2 \pi G m \rho}{3} \ln \Big( \frac{x \ + \ d}{d} \Big)$$
+
+    We can then take the derivative once again to get:
+
+    $$ \frac{d \rho}{d R} R^3 \ + \ 3R^2 \rho(R) \ = \ 2 \rho(R) R^2 \ \Rightarrow \ \frac{d \rho}{dR} \ = \ -\frac{\rho (R)}{R}$$
+
+    This is a simple separable differential equation, so we get:
+
+    $$\displaystyle\int \frac{d\rho}{\rho} \ = \ \displaystyle\int \frac{dr}{R} \ \Rightarrow \ \ln \rho \ = \ C \ - \ \ln R \ \Rightarrow \ \rho \ = \ \frac{A}{R}$$
+
+    If we let $\rho_C$ be the density at the crust, we will have:
+
+    $$\rho(R) \ = \ \frac{\rho_C R_E}{R}$$
+
+    Thus, for force to remain constant, the density must be inversely proportional to the radius from the center of the Earth, approaching infinity near 
+    the center of the Earth.
+  </div>
+  </center>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 19 Problem 10</h2>
+	<br>
+	<p>
+
+	<b>Part A and Part B</b>	
+
+	<div class="theorem">
+		Let $A$ be a set and let $\{X_{\alpha}\}$ be an indexed family of spaces. We also let $\{f_{\alpha}\}$ be an 
+		indexed family of functions, $f_{\alpha} : A \ \rightarrow \ X_{\alpha}$. There exists a unique coarsest topology 
+		$\mathcal{T}$ on $A$, relative to which each of the functions $f_{\alpha}$ is continuous.
+	</div>
+
+	<div class= "proof">
+		In order to define a coarsest topology, $\mathcal{T}$ of $A$, it must be true that for any other 
+		topology $T$, we have $T \supset \mathcal{T}$. Consider the set of topologies $\{T_{\alpha}\}$, where 
+		$T_{\alpha}$ denotes the topology composed of all $f^{-1}_{\alpha}(V)$, for $V_{\alpha}$ open in $X_{\alpha}$.
+
+		<br><br>
+		Let $\mathcal{A}$ be the union of all topologies $T_{\alpha}$. We define $\mathcal{T}$ to be all possible unions 
+		and all finite intersections of elements of $\mathcal{A}$.
+		<br><br>
+
+		It isn't difficult to prove that this is a topology. First, we know that $f^{-1}_{\alpha}(X_{\alpha}) \ = \ A$ and 
+		$f^{-1}_{\alpha}(\emptyset) \ = \ \emptyset$, so the first axiom is satisfied. By definition of the topology, unions and finite 
+		intersections of open sets will be open, thus satisfying the second and third axioms.
+
+		<br><br>
+
+		Consider some topology $\mathcal{F}$ on $A$ relative to which each $f_{\alpha}$ is continuous. Clearly, any element of the form 
+		$f^{-1}_{\alpha}(V_{\alpha})$ must be contained in $\mathcal{F}$, or else there exists some open $V_{\alpha}$ such that the inverse image 
+		isn't open, which contradicts the fact that $f_{\alpha}$ is continuous. Since $\mathcal{F}$ is a topology, it must contain all finite intersections 
+		and all unions. Thus, $\mathcal{T} \ \subset \ \mathcal{F}$, for any $\mathcal{F}$, making $\mathcal{T}$ the coarsest topology.
+
+		<br><br>
+
+		Part B follows form the definition of the subbasis.
+	</div>
+	<br>
+	<b>Part C</b>
+	<div class="theorem">A map $g : Y \ \rightarrow \ A$ is continuous relative to $\mathcal{T}$ if and only if each map 
+		$f_{\alpha} \ \circ \ g$ is continuous.</div>
+	<div class="proof">
+		Let us assume that $g$ is continuous relative to $\mathcal{T}$. We know that $f_{\alpha}$ is continuous relative to 
+		the topology imposed on $X_{\alpha}$. The composition of two continuous functions is continuous, meaning that $f_{\alpha} 
+		\ \circ g$ is continuous, for each $\alpha$.
+		<br><br>
+		Conversely, assume that $(f_{\alpha} \ \circ \ g) : Y \ \rightarrow \ X_{\alpha}$ is continuous. 
+		Let us pick an open set $U$ of $A$, which, by definition of $\mathcal{T}$, can be written as $f^{-1}_{\alpha}(V_{\alpha})$, 
+		for some open $V_{\alpha}$ and some value of $\alpha$. This means that we have:
+
+		$$g^{-1}(U) \ = \ g^{-1} (f^{-1}_{\alpha} (V_{\alpha}))$$
+
+		Since $g \ \circ \ f_{\alpha}$ is continuous, we know that $g^{-1} (f^{-1}_{\alpha} (V_{\alpha})) \ = \ W$, where $W$ is 
+		open in $Y$. Thus, $g^{-1}(U)$ is open in $Y$ for all open $U$ in $a$, and $g$ is continuous.
+	</div>
+
+	<br>
+	<b>Part D</b>
+
+	We will begin by proving a lemma, which will be useful when composing the proof:
+
+	<div class="lemma">
+		A map $g : Y \ \rightarrow \ A$ is continuous relative to $\mathcal{T}$ if and only if the map $f \ \circ \ g$ is continuous, 
+		with $f : A \ \rightarrow \ f(A) \ \subset \ \prod X_{\alpha}$ defined as:
+
+		$$f(a) \ = \ (f_{\alpha}(a))_{\alpha \in J}$$
+
+		with $\prod X_{\alpha}$ being given the product topology.
+	</div>
+
+	<div class="proof">
+	Let $g$ be continuous relative to $\mathcal{T}$. It follows that each $f_{\alpha} \ \circ \ g$ is continuous. From Theorem 19.6, 
+	we conclude that $f \ \circ \ g$ is continuous with respect to the product space. Restricting the range to $f(A)$, we conclude the proof, 
+	as the range restirction of a continuous function is continuous. Conversely, let $f \ \circ \ g$ be continuous. 
+	We expand the range to the full product space, which preserves the continuity of the function. It follows by Theorem 19.6 that 
+	each $f_{\alpha} \ \circ \ g$ is continuous. By the previous theorem, $g$ is continuous relative to $\mathcal{T}$.
+	</div>
+	<div class="theorem">
+		</div>
+	<div class="proof">
+		Consider the function $f^{-1} : f(A) \ \rightarrow \ A$.
+		By the previous lemma, $f^{-1}$ will be continuous relative to $\mathcal{T}$ if $f \ \circ \ f^{-1}$ is continuous. 
+		Since $f$ is clearly surjective, we will have $f(f^{-1}(B)) \ = \ B$. This is identical to the identity map, which is continuous, 
+		implying that $f^{-1}$ is continuous with respect to $\mathcal{T}$. Thus, the image $f(U)$ of an element $U$ of $\mathcal{T}$ will 
+		be open in $f(A) \ = \ Z$, completing the proof.
+	</div>
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>

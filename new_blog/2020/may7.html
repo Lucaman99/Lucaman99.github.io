@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Website</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+        </script>
+    </head>
+
+    <body style="padding-bottom:30px;">
+        <div style="margin-left:20vw;margin-right:20vw;text-align:left">
+            <br><br>
+            <b>3 Ways to Think About QAOA</b>
+            <br>
+            <div style="padding-top:10px;">
+                <b style="font-size:12px;color:gray;">May 7th, 2020</b>
+                <br><br>
+                <i style="font-size:12px;">Yes, now that you mention it, I do believe that I am somewhat obsessed with QAOA. What can I say, it's a cool algorithm! In my last blog post, I talked a lot about what
+                QAOA can do, but I didn't give a lot motivation for <b>why QAOA works</b> (except for that tangent about non-commuting operators). I did write about this a decent bit back in late 2019, in my CV QAOA
+            Notebook, however, I only discussed one way, out of the three ways I believe exist to conceptualize QAOA. The first is from the perspective ofthe Quantum Adiabatic Theorem, where QAOA is essentially an approximation
+        of the adiabatic time-evolution from the grund state of an initial "simmple" Hamiltonian, to the ground state of a more complex one. The second way is  by thinkig about QAOA almost as a "sifter" and a "shaker" (this analogy
+    will make a lot more sense later in the post). The third way is thinking about QAOA as gradient descent in superposition. I frankly don't know if anyone has thought about QAOA in this way before (othr than in the paper on CV QAOA), but in my opinion,
+it is a nifty way to think about why the algorithm actually works!</i>
+<br>
+              <br>
+                  <hr class="line">
+                  <br>
+                  <h5>Method 3: Gradient Descent in Superposition</h5>
+                  <p>
+                  We begin by considering the discrete unitary evolution of the $Z$ operator under the mixer unitary, which we choose to be the simple sum of $X$ gates acting on each qubit:
+                  <br><br>
+                    $$U^{\dagger} Z U \ = \ e^{i \alpha H_M} Z e^{-i \alpha H_M} \ = \ e^{i \alpha X} Z e^{-i \alpha X}$$
+                  <br>
+                  Since $X^2 \ = \ \mathbb{I}$, we get:
+                  <br><br>
+                  $$e^{i \alpha X} \ = \ \cos \alpha \mathbb{I} \ + \ i \sin \alpha X$$
+                  <br>
+                  Thus, we have:
+                  <br><br>
+                $$U^{\dagger} Z U \ = \ \big( \cos \alpha \mathbb{I} \ + \ i \sin \alpha X \big) Z \big( \cos \alpha \mathbb{I} \ - \ i \sin \alpha X \big) \ = \ \cos^2 \alpha Z \ + \ \sin^2 \alpha XZX \ + \
+                 i \sin \alpha \cos \alpha (XZ \ - \ ZX)$$
+                 $$\Rightarrow \ (\cos^2 \alpha \ - \ \sin^2 \alpha) Z \ + \ 2 \sin \alpha \cos \alpha Y \ = \ \cos 2\alpha Z \ + \ \sin 2 \alpha Y$$
+                  <br>
+                  Now, we can consider the action of the cost layer upon our resulting unitary. Since our cost Hamiltonian will be diagonal in the $Z$ basis, we have, for $H_C \ = \ \text{diag}(a, \ b)$:
+                  <br><br>
+                    $$e^{i \gamma H_C} \ = \ \text{diag} (e^{i \gamma a}, \ e^{i \gamma b})$$
+                  <br>
+                  Thus, this transformation will have no effect on $Z$. We are left only to consider how it changes $Y$:
+                  <br><br>
+                    
+                  <br>
+                  </p>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>
+
+<style>
+ body {
+     font-family:"Lucida Console", Monaco, monospace;
+     line-height:20px;
+ }
+ p {
+     font-size:12px;
+ }
+ .line {
+     border:0;
+     height:1px;
+     background-image:-webkit-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-moz-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-ms-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-o-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0)
+ }
+ a:hover{text-decoration:none;color:grey}a{color:#000}
+</style>

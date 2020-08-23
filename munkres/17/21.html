@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+  <center>
+  <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+    <br><br>
+    <h2>Munkres Introduction to Topology: Section 11 Problems 5, 6 and 7</h2>
+    <br>
+    <b>Part A</b>
+   <p>
+   <div class="named-theorem">
+	   <b>Theorem (Kuratowski).</b> <i> Let $g$ be the map from all subsets of a topological space $X$ to itself (we 
+		   denote this set by $\mathcal{A}$), defined
+		   as $g: A \ \rightarrow \ \bar{A}$, with $A \ \in \ \mathcal{A}$. Similarly, let us define $f$ as 
+		   a function that performs the mapping: $f : A \ \rightarrow \ X \ - \ A$. It is possible to generate 
+		   no more than $14$ distinct sets by applying these operations successsively on some $A$.</i>
+   </div>
+   <div class="proof">
+	   It seems very unlikely that I will actually solve this problem, but I'm going to give it a try anyways 
+	   (kudos to Kuratowski for figuring this out).  We can begin by playing around with the mappings at see what 
+	   arises.
+	   <br><br>
+	   Firstly, it is clear that $(f \circ f)(A) \ = \ A$. Thus, in our sequence of function compositions, we can't 
+	   apply $f$ two times in a row, since we are interested in generating unique sets. Consider the mapping $(g 
+	   \circ g)(A) \ = \ g(\bar{A}) \ = \ \bar{A}$, since $\bar{A}$ is a closed set, and the closure of a closed set 
+	   is the set itself. Thus, we also cannot apply two $g$ operations in a row. We have to alternate between applications 
+	   of $g$ and $f$.
+	   <br><br>
+	   Consider what happens when we apply an operation of the form $(g \circ f)$ on some set $A$. This will result 
+	   in the mapping $A \ \rightarrow \ \overline{X \ - \ A}$. Similarly, the operation $(f \circ g)$ yields the transformation 
+	   $A \ \rightarrow \ X \ - \ \overline{A}$. In general, since $\overline{X} \ = \ X$, we know that $X \ - \ \overline{A} \ \subset \ 
+	   \overline{X \ - \ A}$.
+
+	   $$A \ \rightarrow \ \overline{A} \ \rightarrow \ X \ - \ \overline{A} \ \rightarrow \ \overline{X \ - \ \overline{A}} \ \rightarrow \ X \ - \ \overline{X \ - \ \overline{A}}$$
+	   $$A \ \rightarrow \ X \ - \ A \ \rightarrow \ \overline{X \ - \ A} \ \rightarrow \ X \ - \ \overline{X \ - \ A} \ \rightarrow \ \overline{X \ - \ \overline{X \ - \ A}}$$
+	   <br><br>
+   </div>
+   </p>
+    <br><br><br><br>
+  </div>
+  </center>
+  </body>
+  </html>

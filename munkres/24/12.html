@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 24 Problems 12</h2>
+	<br>
+	<p>
+
+	<b>Part A</b>
+
+	<div class="lemma">
+		Let $X$ be an ordered set; let $a \ < \ b \ < \ c$ be points of $X$. $[a, \ c)$ has order type if and only if 
+	     	both $[a, \ b)$ and $[b, \ c)$ have order type of $[0, \ 1)$.
+	</div>
+
+	<div class="proof">
+		First assume that $[a, \ b)$ and $[b, \ c)$ have order type $[0, \ 1)$. This implies that there exist bijective, order-preserving 
+		maps $f_1 : [a, \ b) \ \rightarrow \ [0, \ 1)$ and $f_2 : [b, \ c) \ \rightarrow \ [0, \ 1)$. Let us define the maps $g_1 : [0, \ 1) \ 
+		\rightarrow \ [0, \ \frac{1}{2})$ with $g_1(x) \ = \ x/2$ and $g_2 : [0, \ 1) \ \rightarrow \ [\frac{1}{2}, \ 1)$ with $g_2(x) \ = \ 1 \ + 
+		\ x/2$. Clearly, both of these maps are also order-preserving and bijective. This implies that:
+
+		$$(g_1 \ \circ \ f_1) : [a, \ b) \ \rightarrow \ [0, \ 1/2) \ \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \ (g_2 \ \circ \ f_2) : [b, \ c) \ \rightarrow \ [1/2, \ 1)$$
+
+		are also order-preserving and bijective. We define the function $h : [a, \ c) \ \rightarrow \ [0, \ 1)$, with $h(x) \ = \ (g_1 \ \circ \ f_1)(x)$ if 
+		$x \ \in \ [a, \ b)$ and $h(x) \ = \ (g_2 \ \circ \ f_2)(x)$ if $x \ \in \ [b, \ c)$. Clearly, this map is bijective. In addition it is easy to see 
+		that if we choose any two points $x, \ y \ \in \ [a, \ b)$ with $x \ < \ y$, then $h$ preserves the order. If both $x$ and $y$ are in $[a, \ b)$, or 
+	     	both are in $[b, \ c)$, then the preservation of order follows from the fact that $(g_1 \ \circ \ f_1)$ and $(g_2 \ \circ \ f_2)$ preserve order. 
+	     	If $x \ \in \ [a, \ b)$ and $y \ \in \ [b, \ c)$, then $h(x) \ < \ h(y)$, an arbitrary element of $[0, \ 1/2)$ will be less than any element of $[1/2, \ 1)$. 
+	     	Thus, $h$ is bijective and preserves order, so $[a, \ c)$ has order type $[0, \ 1)$.
+		<br><br>
+		Conversely, assume that $[a, \ c)$ has order type $[0, \ 1)$. Let $f$ be the order-preserving, bijective function from $[a, \ c)$ to $[0, \ 1)$. Define the 
+		bijective functions $f_1$ and $f_2$ to be $f$, but with the domain and range restricted:
+
+		$$f_1 : [a, \ b) \ \rightarrow \ [0, \ f(b))$$
+		$$f_2 : [b, \ c) \ \rightarrow \ [f(b), \ 1)$$
+
+		Now, define the following functions:
+
+		$$g_1 : [0, \ f(b)) \ \rightarrow \ [0, \ 1) \ \ \ \ \ \ \ \ g_1(x) \ = \ \frac{x}{f(b)}$$
+		$$g_2 : [f(b), \ 1) \ \rightarrow \ [0, \ 1) \ \ \ \ \ \ \ \ g_2(x) \ = \ \frac{x \ - \ f(b)}{1 \ - \ f(b)}$$
+
+		It is easy to check that these functions are bijective. It is also quite easy to see that if $x \ < \ y$, then $g_1(x) \ < \ g_1(y)$ and 
+	     	$g_2(x) \ < \ g_2(y)$. Thus, the two functions $(g_1 \ \circ \ f_1)$ and $(g_2 \ \circ \ f_2)$ are bijective and order-preserving. This implies 
+	     	that $[a, \ b)$ and $[b, \ c)$ have order type $[0, \ 1)$.
+	</div>
+
+	<div class="lemma">
+		Let $X$ be an ordered set. Let $x_0 \ < \ x_1 \ < \ ...$ be an increasing sequence of points of $X$. Suppose that $b \ = \ \sup \{x_i\}$. 
+	     $[x_0, \ b)$ has order type of $[0, \ 1)$ if and only if each interval $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$.
+	</div>
+	<div class="proof">
+		Let us assume that $[x_0, \ b)$ has order type $[0, \ 1)$. The previous lemma implies that $[x_0, \ x_{i+1})$ and $[x_{i+1}, \ b)$ have order type 
+		$[0, \ 1)$. We can again use the previous lemma to say that $[x_0, \ x_i)$ and $[x_i, \ x_{i+1})$ have order type $[0, \ 1)$.
+		<br><br>
+		Conversely, assume that every $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$. Assume that $[x_i, \ x_{i+n})$ has order type $[0, \ 1)$. 
+		Since $[x_{i+n}, \ x_{i+n+1})$ has order type of $[0, \ 1)$ by assumption. By the previous theorem, $[x_i, \ x_{i+n+1})$ has order type 
+		$[0, \ 1)$. It follows by induction that given any $i$, the interval $[x_i, \ x_i+n)$ will have order type $[0, \ 1)$ for any $n$. Let $C_{n}$ 
+		be the relation representing an order-preserving, bijective function from $[x_0, \ x_n)$. We will show that the union of all $C$
+	</div>
+
+	<b>Part C</b>
+
+	<div class="lemma">
+	Let $a_0$ be the smallest element of $S_{\Omega}$. For each element $a$ of $S_{\Omega}$ (different from $a_0$), the interval $[a_0 \ \times \ 0, \ a \ \times \ 0)$ of $S_{\Omega} \ \times \ [0, \ 1)$ 
+	has order type $[0, \ 1)$.
+	</div>
+
+	<b>Part D</b>
+
+	<div class="lemma">
+		The space $L$ is path-connected.
+	</div>
+
+	<div class="proof">
+		Let us choose two points $a$ and $b$ of $L$. We know that 
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Griffiths QM</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:25vw;margin-right:25vw;text-align:left">
+                <br><br>
+                <h2>Griffiths Quantum Mechanics 2nd Edition: Problem 8.15</h2>
+                <p>
+                    This is a pretty long problem, which is probably part of the reason it is rated 3 stars. Despite how much grunt work goes into this problem, it looked interesting enough to go through here, so here we go!
+
+                    We have to start by finding the WKB approximate wavefunctions for our double-well potential. Since the well is symetric (the potential is even), we know the wavefunction will be symmetric as well (either even or odd), so we only have to find the wavefunction on one side of the well, and it's counterpart on the other side of the well can be found trivially. We will be examining three regions: the first non-classical region between $0$ and $x_1$, the classical region between $x_1$ and $x_2$, and finally the second non-classical region beyond $x_2$. Early in the chapter, Griffiths determined the appropriate connection formula for joining the wavefunctions at $x_2$, which leaves us the task of finding the connection formula at $x_1$.
+                    <br><br>
+                    I'm probably going to write a blog post in the near future arranging some of my thoughts/ideas relating to WKB, but for now, I'm not going to explain/re-derive everything, but rather assert that the WKB approximate wavefunction in the first non-classical region is given as:
+                    <br>
+                    $$\psi_c(x) \ = \ \frac{C}{\sqrt{|p(x)|}} \ e^{\frac{1}{\hbar} \int_{x}^{0} \ |p(x')| \ dx'} \ + \  \frac{D}{\sqrt{|p(x)|}} \ e^{-\frac{1}{\hbar} \int_{x}^{0} \ |p(x')| \ dx'} $$
+                    <br>
+                    We're using the same strategy as Griffiths used earlier in the chapter by assuming our turning point is at the origin, then shifting over our "patched" wavefunction as necessary to the real turning point. In addition, we will use the convenient bounds of $x$ and the turning point itself. note that this is not <b>a requirement</b>, we are free to choose any lower/upper bound in addition to $x$ that we please, but for the majority of these problems, it look like choosing the turning point itself leads to some simplification.
+                    <br><br>
+                    We already know what the wavefunction look like on the other side of our turning point, all we have to do now is patch them together. Writing out the Schrodinger equation for the linearized potential at $0$, we get:
+                    <br>
+                    $$-\frac{\hbar^2}{2m} \frac{d^2 \psi_p}{dx^2} \ + \ (E \ + \ xV'(0))\psi_p \ = \ E\psi_p \ \Rightarrow \ + \  \frac{d^2 \psi_p}{dx^2} \ = \ \frac{2mV'(0)}{\hbar^2} x \psi_p$$
+                    <br>
+                    $$\alpha \ = \ \Big[ \frac{2mV'(0)}{\hbar^2} \Big]^{1/3} \ \Rightarrow \ \frac{1}{\alpha^2} \frac{d^2 \psi_p}{dx^2} \ = \ \alpha x \psi_p \ \Rightarrow \ \frac{d^2 \psi_p}{dx^2} \ = \ z \psi_p$$
+                    <br>
+                    Where $z \ = \ \alpha x$. There's a good chance you already knew that, as Griffiths goes through this in the chapter. Now, we know that this variant of the Schrodinger equation has a solution:
+                    <br>
+                    $$\psi_p \ = \ a \text{Ai(z)} \ + \ b \text{Bi(z)}$$
+                    <br>
+                    We can then use the asymptotic form of the Airy functions to solve analytically. Substituting this in, we get:
+                    <br>
+                    $$\psi_p^{-} \ = \ \frac{1}{\sqrt{\pi} (-z)^{1/4}} \Big[ a \sin \Big( \frac{2}{3} (-z)^{2/3} \ + \ \frac{\pi}{4} \Big) \ + \  b \cos \Big( \frac{2}{3} (-z)^{2/3} \ + \ \frac{\pi}{4} \Big) \Big]$$
+                    <br>
+                    $$\psi_p^{+} \ = \ \frac{1}{\sqrt{\pi} z} \ \Big[ \frac{a}{2} e^{-\frac{2}{3} z^{-3/2}} \ + \ b e^{-\frac{2}{3} z^{3/2}} \Big]$$
+                    <br>
+                    Now comes the majority of the grunt work: we have to use the patching wavefunction to "patch" the two regions. From earlier the the chapter, we know the wavefunction between $x_1$ and $x_2$ is given as:
+                    <br>
+                    $$\psi_d \ = \ \frac{2D}{\sqrt{p(x)}} \ \sin \Big[ \frac{1}{\hbar} \ \displaystyle\int_{x}^{x_2} \ p(x') \ dx' \ + \ \frac{\pi}{4} \Big]$$
+                    <br>
+                    The idea is to examine $p(x)$ in the patching region, then match up the WKB wavefunctions to the patching wavefunctions. We will have, <b>around the turning point</b>:
+                    <br>
+                    $$p(x) \ = \ \sqrt{2m (E \ - \ V(x))} \ = \ \sqrt{2m (E \ - \ (E \ + \ xV'(0)))} \ = \ \sqrt{-2mV'(0) x} \ = \ \hbar \alpha^{2/3} \sqrt{-x}$$
+                    <br><br><br><br>
+                    <br><br><br><br>
+                </p>
+            </div>
+        </center>
+    </body>
+</html>
