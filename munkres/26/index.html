@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 26 - Compact Sets (Work in Progress)</h2>
+	<p>
+
+	<i>I am once again trying out a new format for my topology posts. For this section, I am going to put all 
+	of my solutions into one big "blog post" that I will continuously update. Why am I doing this? I don't really 
+	like posting a bunch of small solutions, all to seperate links. I would rather just post a bunch 
+	of solutions at once in the same place.</i>
+
+	<br><br>
+
+  <b>Problem 3</b>
+  <br>
+  <div class="lemma">
+      A finite union of compact subspaces of $X$ is compact.
+  </div>
+
+  <div class="proof">
+      Consider the collection of compact subspaces $\{X_1, \ X_2, \ ..., \ X_n\}$. Consider an open cover $\mathcal{U}$
+      of their union. For each $X_j$, it follows that $\mathcal{U}$ is an open cover of $X_j$, so we find a finite subcover,
+      $\mathcal{U}_j$. The union:
+
+      $$U \ = \ \displaystyle\bigcup_{j} \mathcal{U}_j$$
+
+      will be a finite subcover of the union of all $X_j$, so the union is compact.
+  </div>
+  <br>
+
+	<b>Problem 4</b>
+	<br>
+	<div class="lemma">Every compact subspace of a metric space is bounded in the metric.</div>
+
+	<div class="proof">
+	Take $Y$ to be a compact subspace of some metric space, $X$. 
+	Let us consider the open cover of $Y$, where each point $y \ \in \ Y$ is contained in the $\epsilon$-ball 
+	centred at $y$. Since $Y$ is compact, it follows that a finite subcollection of $N$ of these balls, which we call $\mathcal{B}$, cover the subspace:
+
+	$$\mathcal{B} \ = \ \{B(y_1, \epsilon), \ B(y_2, \ \epsilon), \ ..., \ B(y_N, \ \epsilon)\}$$
+	
+	Now, let us pick two points $x$ and $z$ of the metric space. Clearly, $x$ and $y$ must be contained in $\epsilon$-balls centred 
+	at some $y_x$ and some $y_z$. It follows from the triangle inequality that:
+
+	$$d(x, \ z) \ < \ d(x, \ y_x) \ + \ d(y_x, \ y_z) \ + \ d(y_z \ + \ z) \ < \ 2\epsilon \ + \ d(y_x, \ y_z)$$
+	
+	Since $N$ is finite, the set of all $d(y_x, \ y_z)$ is finite, and thus has a maximal element, $\alpha$. It follows that for any two 
+	points $x$ and $z$ of $Y$, we have $d(x, \ z) \ < \ 2\epsilon \ + \ \alpha$. This implies that each subspace must be bounded.
+	</div>
+	<br>
+	<div class="corollary">
+		<b>Corollary 1.</b> <i>Every compact subspace of a metric space is closed.</i>
+	</div>
+
+	<div class="proof">
+		This is a direct result of Theorem 26.3. Every metric space is Hausdorff, thus, every compact subspace is closed.
+	</div>
+	<br>
+	<div class="proposition">
+		The converse of the above two results does not hold, in general.
+	</div>
+	<br>
+	<b>Problem 5</b>
+
+	<div class="lemma">If $A$ and $B$ are disjoint compact subspaces of the Hausdorff space $X$, then there exists disjoint open sets 
+	$U$ and $V$ containing $A$ and $B$, respectively.</div>
+
+	<div class="proof">
+		We choose some point $a \ \in \ A$. Now, for each point $b \ \in \ B$, 
+		there exists open sets $U_{a}^{b}$ and $V_{a}^{b}$ around $a$ and $b$ that are disjoint. Since $b$ is compact, a finite union of such 
+		sets results in some $V_a$ which covers $B$, while the finite intersection of their counterparts around $a$ form a disjoint open set $U_a$, so
+		$V_a \ \cap \ U_a \ = \ \emptyset$:
+
+		$$V_a \ = \ V_{a}^{b_1} \ \cup \ ... \ \cup \ V_{a}^{b_n}$$
+		$$U_a \ = \ U_{a}^{b_1} \ \cap \ ... \ \cap \ U_{a}^{b_n}$$
+
+		Now, consider the set $\{U_a\}$ for all $a$. Since $A$ is compact, there is a finite subcover of this cover. The union of this finite subcover 
+		results in an open set $U$ that covers $A$. Taking the finite intersection of all corresponding $V_a$ gives us a disjoint open set $V$ that contains $B$.
+		
+	</div>
+	<br>
+	<b>Problem 6</b>
+
+	<div class="lemma">
+		If $f : X \ \rightarrow \ Y$ is continuous, where $X$ is compact and $Y$ is Hausdorff, then $f$ is a closed map. 
+	</div>
+
+	<div class="proof">
+		Let us take $C$ to be closed in $X$. Since $X$ is compact, $C$ is also compact. It follows that $f(C)$ is compact. Since 
+		$Y$ is Hausdorff, $f(C)$ is closed.
+	</div>
+	<br>
+	<b>Problem 7</b>
+
+	<div class="lemma">If $Y$ is compact, then the projection $\pi_1 : X \times Y \rightarrow X$ is a closed map.</div>
+
+	<div class="proof">
+		Choose some closed set $C$ of $X \ \times \ Y$. Clearly, $X \ \times \ Y \ - \ C$ is open. By the tube lemma, for 
+		all $x_0 \ \times \ Y$ contained in $N$, it follows that $N$ contains a tube around $x_0 \ \times \ Y$. The union 
+		of all such tubes projected onto their first coordinate is an open set of $X$. The complement of this set in $X$ is $\pi_1(C)$. 
+		This implies that $\pi_1(C)$ is closed in $X$.
+	</div>
+	<br>
+	<b>Problem 8</b>
+
+	<div class="theorem">Let $f : X \ \rightarrow \ Y$ and let $Y$ be compact Hausdorff. Then $f$ is continuous if and only if the 
+		<b>graph</b> of $f$:
+
+	$$G_f \ = \ \{x \ \times \ f(x) \ | \ x \in X \}$$
+
+	is closed in $X \ \times \ Y$.
+	</div>
+
+	<div class="proof">
+		Assume that $f$ is continuous. We also know that $Y$ is compact and Hausdorff. We wish to show that the 
+		complement of $G_f$ is open. Pick some point $x \ \times \ y$ of the complement. Consider the two points $y$ 
+		and $f(x)$ of $Y$. Since $Y$ is Hausdorff, we know that there exists disjoint open sets $U$ and $V$ containing $y$ 
+		and $f(x)$ respectively. Since $f$ is continuous, we know that the set $f^{-1}(V)$ is open as well. Clearly, this set 
+		contains $x$, as $f(x) \ \in \ V$. Consider the set $A \ = \ f^{-1}(V) \ \times \ U$. Assume that there exists some $x \ \times \ f(x)$ 
+		in $A$. This implies that $x \ \in \ f^{-1}(V)$ and $f(x) \ \in \ U$. But from the first condition, we have $f(x) \ \in \ V$, a clear contradiction 
+		as $V$ and $U$ are disjoint. Thus, the open set $A$ around $x \ \times \ y$ is disjoint from $G_f$. It follows that 
+		the complement of $G_f$ is open, and $G_f$ is closed.
+		<br><br>
+		Conversely, assume that $G_f$ is closed in $X \ \times \ Y$. Consider some closed $V$ of $Y$. 
+		It follows that $G_f \ \cap \ X \ \times \ V$ is closed 
+		in $X \ \times \ Y$. Note that this set is exactly the set of all $x \ \times \ f(x)$ such that $f(x) \ \in \ V$.
+		From the previous lemma, it follows that $\pi_{1} : X \ \times \ Y \ \rightarrow \ X$ is closed. It follows that:
+
+		$$\pi_1 ( G_f \ \cap \ X \ \times \ V) \ = \ \{x \ | \ f(x) \ \in \ V\} \ = \ f^{-1}(V)$$
+		
+		is closed. This is implies that $f$ is continuous.
+	</div>
+  <!--
+	<br>
+	<b>Problem 10</b>
+
+	<div class="theorem">
+		Let $f_n : X \ \rightarrow \ \mathbb{R}$ be a sequence of continuous functions, with $f_n(x) \ \rightarrow \ f(x)$ for each 
+		$x \ \in \ X$. If $f$ is continuous and the sequence $f_n$ is monotone increasing, and if $X$ is compact, then the convergence 
+		is uniform.
+	</div>
+	<div class="proof">
+		Recall that in order for $(f_n)$ to converge uniformly, it must be true that for each $\epsilon$ &gt; $0$, there is some $N$ such that 
+		for all $n \ \geq \ N$:
+
+		$$| f(x) \ - \ f_n(x) | \ < \ \epsilon$$
+
+			for all $x \ \in \ X$. Consider some value $\epsilon \ > \ 0$. For each point $x$ and the corresponding $f(x)$, there exists some
+			$N_x$ such that for all $n \ \geq \ N_x$, it holds true that $f_n(x) \ \in \ B(f(x), \ \epsilon)$, which implies that
+			$|f(x) \ - \ f_n(x) | \ < \ \epsilon$. Consider the set of all such $N_x$, which we call $\mathcal{N}_{\epsilon}$. We need to find a
+			way such that we can choose a maximal element of $\mathcal{N}_{\epsilon}$, as this would be an integer $N$, such that for all $x$ and all
+			$n \ \geq \ N$, we have $|f(x) \ - \ f_n(x)| \ < \ \epsilon$. This follows from the fact that $f_n$ is strictly increasing. The idea of
+			compactness allows us to get finite "things" from infinite "things". 
+	</div>
+  -->
+	<br>
+  <div class="theorem">
+      Let $X$ be a compact Hausdorff space. Let $\mathcal{A}$ be a collection of closed connected subsets of $X$ that is simply ordered
+      by proper inclusion. Then:
+
+      $$Y \ = \ \displaystyle\bigcap_{A \in \mathcal{A}} A$$
+
+      is connected.
+  </div>
+  <div class="proof">
+	  Let us assume that there exists a separation $C \ \cup \ D$ of $Y$. Clearly, $Y$ is closed in $X$. Since $C \ = \ Y \ - \ D$ and $D \ = \ Y \ - \ C$, 
+	  both $C$ and $D$ are closed in $Y$. It follows that they are both closed in $X$. Since all closed subspaces of a compact set are also compact, it follows 
+	  from Problem 5 that we can choose disjoint open set $U$ and $V$ around $C$ and $D$. Now, consider the following intersection:
+
+	  $$Z \ = \ \displaystyle\bigcap_{A \in \mathcal{A}} (A \ - \ (U \ \cup \ V))$$
+
+	  Clearly $A \ - \ (U \ \cup \ V)$ is closed in $A$. Since each $A$ is closed in $X$, it follows that $A \ - \ (U \ \cup \ V)$ is closed in $X$. 
+	  All of the sets $A \ \in \ \mathcal{A}$ are ordered by proper inclusion. In addition, each $A \ - \ (U \ \cup \ V)$ must be non-empty, or else 
+	  $A \ \cap \ U$ and $A \ \cap \ V$ would form a separation of $A$, which contradicts the fact that each $A$ is connected. 
+	  It follows that the collection of closed set $A \ - \ (U \ \cup \ V)$ 
+	  for $A \ \in \ \mathcal{A}$ has the finite intersection property. Since $X$ is compact, it follows that $Z$ must be non-empty. This is clearly a 
+	  contradiction, as:
+
+	  $$Y \ \subset \ U \ \cup \ V$$
+
+	  This would imply that we have "deleted" all of the points that the sets $A \ \in \ \mathcal{A}$ have in common, and yet, their intersection is still 
+	  non-empty, which can't possibly be the case. Thus, it must be true that no separation $C \ \cup \ D$ exists, and $Y$ is connected.
+ 
+  </div>
+  <br>
+  <b>Problem 12</b>
+  <br>
+  <div class="theorem">
+	  Let $p : X \ \rightarrow \ Y$ be a closed continuous surjective map such that $p^{-1}(\{y\})$ is compact, for each $y \ \in \ Y$. This is called 
+	  a perfect map. If $Y$ is compact, then $X$ is compact.
+  </div>
+  <div class="proof">
+      Consider the open set $U$ of $X$. Consider some $p^{-1}(\{y\}) \ \subset \ U$. It follows that $y \ \in \ p(U)$. Now, since $p$ is a closed map,
+      we know that the set $W \ = \ Y \ - \ p(X \ - \ U)$ is open. We assert that $y \ \in \ W$. Assume that $y$ wasn't in $W$. It follows that $y \ \in \ p(X \ - \ U)$.
+      This implies that there exists some point $x$ of $X \ - \ U$ such that $p(x) \ = \ y$, as $p$ is surjective. This would imply that $x \ \in \ p^{-1}(\{y\})$, which
+      would mean that $p^{-1}(\{y\})$ intersects $X \ - \ U$, a contradiction. It is easy to see that $p^{-1}(W) \ \subset \ U$. Thus, for some open $U$ containing $p^{-1}(\{y\})$,
+      there exists a neighbourhood $W$ of $y$ such that $p^{-1}(W)$ is in $U$.
+      <br><br>
+      Now, consider some open cover of $X$, which we call $\mathcal{U}$. Consider the collection of all sets of the form $p^{-1}(\{y\})$. The union of all
+      such sets, for all $y \ \in \ Y$ will equal all of $X$. For each $p^{-1}(\{y\})$ consider all of the open sets of $\mathcal{U}$ that intersect it, which we call $\mathcal{U}_y$. Since
+      $p^{-1}(\{y\})$ is compact, it follows that a finite collection of these sets will cover it:
+
+      $$p^{-1}(\{y\}) \ \subset \ U_y \ = \ U_1 \ \cup \ U_2 \ \cup \ ... \ \cup \ U_n \ \ \ \ \ \ \ U_j \ \in \ \mathcal{U}_y$$
+
+      Now, for each $p^{-1}(\{y\})$, let us consider the open set $W$ around $y$ such that $p^{-1}(W) \ \subset \ U_y$. Since $Y$ is compact, a finite
+      number of such $W$ sets cover $Y$:
+
+      $$W_1 \ \cup \ W_2 \ \cup \ ... \ \cup \ W_n \ = \ Y$$
+
+      Now comes the interesting part: for each $W_j$, we take the inverse image $p^{-1}(W_j)$. We know that each $p^{-1}(W_j)$ is contained in some $U_y$, which in
+      turn is equal to the union of a finite number of open sets in the cover $\mathcal{U}$. Thus:
+
+      $$p^{-1}(W_1) \ \cup \ p^{-1}(W_2) \ \cup \ ... \ p^{-1}(W_n) \ = \ p^{-1}(Y) \ = \ X$$
+
+      Is equal to the union of a finite number of open sets, with each open set in the union being a finite union of open sets of $\mathcal{U}$. A finite collection of finite sets is finite.
+      Thus, there exists a finite subcover of $X$ with respect to $\mathcal{U}$. It follows that $X$ is compact.
+  </div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
