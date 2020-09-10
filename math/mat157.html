@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['(',')']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>MAT 157 Exam Solutions</h2>
+                <br>
+                <p>
+
+                    <div class="proof">
+                        Pick some $a$ such that $f(a) \ \neq \ g(a)$. Let us define $|f(a) \ - \ f(g)| \ = \ 2\epsilon$, which will be greater than $0$. Now, since
+                        $f$ and $g$ are both continuous, it follows that if we consider the number $\epsilon$, we can choose $\delta_f$ and $\delta_g$, respectively, such that:
+
+                        $$|x \ - \ a| \ < \ \delta_f \ \Rightarrow \ |f(x) \ - \ f(a)| \ < \ \epsilon$$
+                        $$|x \ - \ a| \ < \ \delta_g \ \Rightarrow \ |g(x) \ - \ g(a)| \ < \ \epsilon$$
+
+                        Let $\delta \ = \ \text{min} \{\delta_f, \ \delta_g\}$. By the triangle inequality, we have:
+
+                        $$|f(x) \ - \ f(a)| \ + \ |f(x) \ - \ g(x)| \ + \ |g(x) \ - \ g(a)| \ \geq \ |f(a) \ - \ g(a)| \ = \ 2\epsilon$$
+
+                        for some $x$. This gives us:
+
+                        $$|f(x) \ - \ g(x)| \ \geq \ 2\epsilon \ - \ |f(x) \ - \ f(a)| \ - \ |g(x) \ - \ g(a)|$$
+
+                        Thus, for all $x$ such that $|x \ - \ a| \ < \ \delta$, we have:
+
+                        $$|f(x) \ - \ g(x)| \ \geq \ 2\epsilon \ - \ |f(x) \ - \ f(a)| \ - \ |g(x) \ - \ g(a)| \ > \ 2\epsilon \ - \ \epsilon \ - \ \epsilon \ = \ 0$$
+                        $$\Rightarrow \ |f(x) \ - \ g(x)| \ > \ 0$$
+
+                        This concludes the proof of the lemma, as the above line implies that $f(x) \ \neq \ g(x)$ for all $x$ such that $|x \ - \ a| \ > \ \delta$, for
+                        some $\delta$.
+                    </div>
+
+                    <br>
+
+                    <div class="proof">
+                        Assume that there exists an irrational number $r$ such that $f(r) \ \neq \ g(r)$. By the previous lemma, it follows that
+                        there exists some $\delta \ > \ 0$ such that if $|x \ - \ r| \ < \ \delta$, then $f(x) \ \neq \ g(x)$. All such $x$ will be
+                        contained in the interval $L \ = \ (r \ - \ \delta, \ r \ + \ \delta)$. Since there exists a rational number between any two real numbers,
+                        it follows that there is some rational $s \ \in \ L$, which would imply that $f(s) \ \neq \ g(s)$. This contradicts the original assumption that
+                        the functions are equal over the rationals. Thus, there must exists no such $r$, and the functions are equal over the reals.
+                    </div>
+
+                    <div class="proof">
+                        Assume that $f(x)$ is not a constant function. This implies that there exists $a$ and $b$ such that
+                        $f(a) \ \neq \ f(b)$. By mean value theorem, for some $r$ between $f(a)$ and $f(b)$, there exists some
+                        $c$ such that $f(c) \ = \ r$. Since there is an irrational number between every pair of rational numbers, there will
+                        be some $f(c)$ equal to an irrational $r$. This contradicts our initial assumption, thus $f$ must be constant.
+                    </div>
+
+                    <div class="proof">
+                        Assume that:
+
+                        $$f'(a) \ = \ \lim_{h \ \rightarrow \ 0} \frac{f(a \ + \ h) \ - \ f(a)}{h}$$
+
+                        is well-defined. This implies that for any value of $\epsilon \ > \ 0$, we can choose
+                        some value of $\delta$ such that $|x| \ < \ \delta$ implies that:
+
+                        $$\Big| \ f'(a) \ - \ \frac{f(a \ + \ x) \ - \ f(a)}{x} \Big| \ < \ \epsilon$$
+
+                        Doing a quick change of variables, we have:
+
+                        $$|x \ - \ a| \ < \ \delta \ \Rightarrow \ \Big| \ r \ - \ \frac{f(x) \ - \ f(a)}{x \ - \ a} \Big| \ < \ \epsilon$$
+
+                        where $r \ = \ f'(a)$. It follows that:
+
+                        $$r \ - \ \epsilon \ < \ \frac{f(x) \ - \ f(a)}{x \ - \ a} \ < \ r \ + \ \epsilon$$
+
+                        Let the middle expression be denoted by $d(x)$. In the case that $r \ \geq \ 0$, it follows that $|d(x)| \ < \ |r \ + \ \epsilon|$. In the
+                        case that $r \ < \ 0$, it follows that $|d(x)| \ < \ |r \ - \ \epsilon|$. In either case, let us denote this number by $\sigma$.
+
+                        Now, let us consider the number $\delta \sigma$. Assume that $f$ isn't continuous at $a$. It follows that there exists some $\
+                    </div>
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Section 27</h2>
+                <br>
+                <p>
+                    <div class="proof">
+                        Consider some subset $S$ of $X$ that has an upper bound in $X$. Let $L$ be the set of all such upper bounds (it will be non-empty, by the initial
+                        assumption). For each $s \ \in \ S$, consider the closed set:
+
+                        $$C_s \ = \ \{x \ | \ s \ \leq \ x\}$$
+
+                        Let $C$ be the intersection of all such sets. This will be the set $L$, as both are the sets of all $x$ such that $s \ \leq \ x$ for all $s \ \in \ S$.
+                        It follows that $L$is closed. Assume that $L$ has no least element. It follows that the open sets $\{(\ell, \ \infty) \ | \ \ell \ \in \ L\}
+                        cover $L$. Consider a finite subcollection of such sets, \{(\ell_1, \ \infty), \ ..., \ (\ell_n, \ \infty)\}. Let $\ell_i$ be the minimum
+                        of all such $\ell$ values. By definition, $\ell_i \ \in \ L$ but is not in the union of the open sets. This contradicts the fact that $L$ is compact, which
+                        implies that $L$ must have a minimal element. This is will be the least upper bound of $S$.
+                    </div>
+
+                    <b>Problem 2</b>
+                    <br>
+                    Let $X$ be a metric space with metric $d$; let $A \ \subset \ X$ be non-empty.
+                    <br><br>
+                    <div class="lemma">
+                        $d(x, \ A) \ = \ 0$ if and only if $x \ \in \ \bar{A}$
+                    </div>
+                    <div class="proof">
+                        Assume that $x \ \in \ \bar{A}$. It follows that every open set of $x$ intersects $A$. Thus, for any
+                        $\epsilon \ > \ 0$, we can choose some open $B_{\epsilon}(x)$ such that it contains an element of $a$,
+                        implying that $d(x, \ a) \ < \ \epsilon$. Assume that $f \ = \ \inf \{d(x, \ a) \ | \ a \ \in \ A\}$ is greater than
+                        $0$. It follows that there exists some $\delta$ such that $0 \ < \ \delta \ < \ f$ such that $d(x, \ a) \ > \ \delta$ for
+                        all $a \ \in \ A$. This contradicts the prior statement, which implies that $f \ = \ 0$.
+                        <br><br>
+                        Conversely, assume that $d(x, \ A) \ = \ 0$. Also assume that $x \ \notin \ \bar{A}$. This means that there exists some
+                        open set around $U$ that does not intersect $A$. By definition of the metric topology, there also exists some $\epsilon$-ball $B$
+                        around $x$ such that $B \ \subset \ U$. Thus, $d(x, \ a) \ \geq \ \epsilon$ for any $a \ \in \ A$, which is a contradiction. This implies
+                        that $x$ must be in $\mathcal{A}$.
+                    </div>
+                    <br>
+                    <div class="lemma">
+                        If $A$ is compact, then $d(x, \ A) \ = \ d(x, \ a)$ for some $a \ \in \ A$.
+                    </div>
+                    <div class="proof">
+                        This is just another way of saying the set $\{d(x, \ a) \ | \ a \ \in \ A\}$ has a smallest element. We know that the function
+                        $d : X \ \times \ X \ \rightarrow \ \mathbb{R}$ is continuous. If we restrict the domain to $x \ \times \ A$, we also have a continuous
+                        function. Clearly, this new domain is compact, as $A$ is compact. Thus, by extreme value theorem, there exists a minimum value of
+                        $d(x, \ a')$ Thus, $d(x, \ A) \ = \ \inf \ \{d(x, \ a) \ | \ a \ \in \ A\} \ = \ d(x, \ a')$, and the theorem is proved.
+                    </div>
+
+                    <br>
+                    We define the $\epsilon$-neighbourhood of $A$ in $X$ to be the set:
+                    <br>
+                    $$U(A, \ \epsilon) \ = \ \{x \ | \ d(x, \ A) \ < \ \epsilon\}$$
+                    <div class="lemma">
+                        $U(A, \ \epsilon)$ equals the union of the open balls $B_{d}(a, \ \epsilon)$ for $a \ \in \ A$.
+                    </div>
+                    <div class="proof">
+                        Pick some $x \ \in \ U(A, \ \epsilon)$. It follows that $d(x, \ A) \ < \ \epsilon$. Assume that there exists no $d(x, \ a') \ < \ \epsilon$.
+                        This contradicts the assumption that $d(x, \ A)$ is the greatest lower bound of the set $\{d(x, \ a) \ | \ a \ \in \ A\}$, as $\epsilon$ would be
+                        a greater lower bound. Thus, there exists some $d(x, \ a') \ < \ \epsilon$, which implies that $x \ \in \ B_d(a', \ \epsilon)$, which is in the union
+                        of all such sets.
+                        <br><br>
+                        Now, assume that $x \ \in \ B_{\epsilon}$ (the union of all $\epsilon$-balls around each $a \ \in \ A$). Consider the set of all $\epsilon$-balls centred
+                        at $a$ that contain $x$. It must be true that $d(x, \ a) \ < \ \epsilon$ for all such balls. As for the balls that don't contain $x$, it follows that $d(x, \ a) \ \geq \ \epsilon$.
+                        Thus, it follows that $\inf \ \{d(x, \ a) \ | \ a \ \in \ A\} \ < \ \epsilon$, which implies that $x \ \in \ U(A, \ \epsilon)$. It follows that $B_{\epsilon} \ = \ U(A, \ \epsilon)$.
+                    </div>
+                    <br>
+                    <div class="theorem">
+                        Let $A$ be compact; let $U$ be an open set containing $A$. Some $\epsilon$-neighbourhood of $A$ is contained in $U$.
+                    </div>
+                    <br>
+                    <b>Problem 4</b>
+                    <br>
+                    <div class="theorem">
+
+                    </div>
+                    <div class="proof">
+                        Assume that there exists som function $f : 
+                    </div>
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

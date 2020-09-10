@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Munkres</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Munkres Introduction to Topology: Section 23</h2>
+	<br>
+	<p>
+	<b>Problem 11</b>
+	
+	<div class="theorem">
+	Let $p : X \ \rightarrow \ Y$ be a quotient map. If each set $p^{-1}(\{y\})$ is connected, and if $Y$ is 
+	connected, then $X$ is connected.
+	</div>
+
+	<div class="proof">
+		Assume that there exists a separation $A \ \cup \ B \ = \ X$. It would follow that each 
+		$p^-1(\{y\})$ would have to be contained completely in either $A$, or $B$ (not both, or else 
+		$A \ \cap \ p^{-1}(\{y\})$ and $B \ \cap \ p^-1(\{y\})$ would separate $p^{-1}(\{y\})$). Thus, 
+		$A$ and $B$ are saturated open sets. Since a quotient map maps saturated open sets to open sets, 
+		it follows that $p(A)$ and $p(B)$ are open set whose union is $p(X) \ = \ Y$ (from the surjectivity of 
+		$p$). Assume that $p(A) \ \cap \ p(B) \ \neq \ \emptyset$. It would follow that there exists some $y$ such 
+		that $p(a) \ = \ p(b) \ = \ y$, for $a \ \in \ A$ and $b \ \in \ B$. It would follow that $p^{-1}(\{y\})$ would 
+		intersect both $A$ and $B$, which can't be the case. Thus, $p(A)$ and $p(B)$ are disjoint, and therefore 
+		form a separation of $Y$. This is a contradiction, so $X$ must be connected.
+	</div>
+
+	<div class="theorem">
+
+	</div>
+
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>
