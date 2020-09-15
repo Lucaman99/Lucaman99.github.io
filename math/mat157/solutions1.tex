@@ -1,0 +1,162 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+  []% init options
+  {problem}% name
+  {Problem}% title
+  {%
+    fonttitle=\bfseries,
+  }% options
+  {prob}% prefix
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+
+\newcommand{\tr}{\mathrm{Tr}}
+
+
+\title{Spivak Chapter Problem Set 1 Chapter 28}
+\author{Jack Ceroni \thanks{jackceroni@gmail.com}}
+\date{September 2020}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\vspace{.25in}
+
+\section{Chapter 28}
+
+\subsection{Problem 5}
+
+\begin{lem}
+	For any field, we have:
+
+	$$\underbrace{(e \ + \ \cdots \ + \ e)}_{m \ \text{times}} \ \cdot \ \underbrace{(e \ + \ 
+	\cdots \ + \ e)}_{n \ \text{times}} \ = \ \underbrace{(e \ + \ \cdots \ + \ e)}_{mn \ \text{times}}$$
+
+	for all natural numbers $n$ and $m$.
+\end{lem}
+
+\begin{proof}
+	Pick ome arbitrary natural number $m$. We proceed by induction. Clearly, the lemma is true in 
+	the case of $n \ = \ 1$. Let us assume the case of $n$. Consider the case of $n \ + \ 1$. We have:
+	
+	$$\underbrace{(e \ + \ \cdots \ + \ e)}_{m \ \text{times}} \ \cdot \ \underbrace{(e \ + \ 
+	\cdots \ + \ e)}_{n \ + \ 1 \ \text{times}} \ = \ \underbrace{(e \ + \ \cdots \ + \ e)}_{m \ \text{times}} \ \cdot \ \big[ \underbrace{(e \ + \ 
+\cdots \ + \ e)}_{n \ \text{times}} \ + \ e \big]$$
+
+  Now, we use the distributive property of fields and the definition of the identity, along with the assumtpion that
+  the lemma holds true in the case of $n$ to get:
+
+$$\Rightarrow \ \big[ \underbrace{(e \ + \ 
+\cdots \ + \ e)}_{mn \ \text{times}} \ + \ e \ \cdot \  \underbrace{(e \ + \ \cdots \ + \ e)}_{m \ \text{times}} \big] \ = \ 
+\big[ \underbrace{(e \ + \ 
+\cdots \ + \ e)}_{mn \ \text{times}} \ + \ \underbrace{(e \ + \ \cdots \ + \ e)}_{m \ \text{times}} \big] \ = \ 
+\underbrace{(e \ + \ 
+\cdots \ + \ e)}_{m(n \ + \ 1) \ \text{times}}$$ 
+
+So the lemma is proved.
+
+\end{proof}
+
+\begin{thm}
+	If in some field $F$ we have:
+
+	$$\underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}} \ = \ 0$$
+
+	then the smallest $n$ for which this is true is prime.
+\end{thm}
+
+\begin{proof}
+	Assume that $n$ isn't prime. It follows that we can write $n$ as a product of at least two whole numbers 
+	less than $n$ and greater than $1$. Thus, $n \ = \ ab$. By the previous lemma, we have:
+\newpage	
+	$$\underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}} \ = \ \underbrace{(e \ + \ \cdots \ + \ e)}_{a \ \text{times}} \ \cdot \ \underbrace{(e \ + \ 
+	  \cdots \ + \ e)}_{b \ \text{times}} \ = \ 0$$
+
+  In a field, we know that $a \ \cdot \ 0 \ = \ a$, as $0$ is the element of the field such that $a \ + \ 0 \ = \ a$. We then have (by distribution) that
+  $(a \cdot a) \ + \ (a \cdot 0) \ = \ (a \cdot a) \ = \ (a \cdot a) \ + \ 0$. By left cancellation, we have $a \cdot 0 \ = \ 0$. Assume that both the right-hand sums
+  of $e$ (for $a$ and $b$) are non-zero. It follows that they have inverses. Let us denote the two sums by $A$ and $B$. It follows that:
+
+  $$e \ = \ A^{-1} A B^{-1} B \ = \ (A^{-1} B^{-1}) \cdot (A B) \ = \ (A^{-1} B^{-1}) \cdot 0 \ = \ 0$$
+
+  which is a contradiction to the definition of a field, as the additive and multiplicative identities must be different. Thus, at least one of these sums is equal to $0$ it follows that either $a$ or $b$ is a whole number
+  less than $n$ such that:
+
+  $$\underbrace{e \ + \ \cdots \ + \ e}_{a \ \text{or} \ b \ \text{times}} \ = \ 0$$
+
+  which is a contradiction. Thus, $n$ must be prime.
+
+\end{proof}
+
+\subsection{Problem 6}
+
+\begin{lem}
+  For some field $F$ with a finite number of elements, there exist distinct natural numbers $m$ and $n$ such that:
+
+  $$\underbrace{e \ + \ \cdots \ + \ e}_{m \ \text{times}} \ = \ \underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}}$$
+\end{lem}
+
+\begin{proof}
+  Let $|F| \ = \ k$ be the cardinality of the set defining the field (which we know is some finite natural number, $k$). Let:
+
+  $$E(n) \ = \ \underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}}$$
+
+  Now, consider the set $\{E(1), \ E(2), \ ..., \ E(k), \ E(k \ + \ 1)\}$. It follows that there must exist two elements of
+  this set that are equal, or else we would have a subset of $F$ that contains $k \ + \ 1$ \textbf{distinct} elements, a clear contradiction.
+  Hence, there exist $m$ and $n$ such that:
+
+  $$\underbrace{e \ + \ \cdots \ + \ e}_{m \ \text{times}} \ = \ \underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}}$$
+
+\end{proof}
+
+\begin{thm}
+  In a field $F$ with a finite number of elements, there exists some natural number $r$ such that:
+
+  $$\underbrace{e \ + \ \cdots \ + \ e}_{r \ \text{times}} \ = \ 0$$
+\end{thm}
+
+\begin{proof}
+  By the previous lemma, we know there exist $m$ and $n$ such that $E(m) \ = \ E(n)$. Without loss of generality, let $n \ < \ m$ (the two numbers
+  are distinct, so one is larger than the other). We have:
+
+  $$0 \ + \ \underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}} \ = \ \underbrace{e \ + \ \cdots \ + \ e}_{m \ \text{times}} \ = \ \underbrace{e \ + \ \cdots \ + \ e}_{m \ - \ n \ \text{times}} \ + \
+  \underbrace{e \ + \ \cdots \ + \ e}_{n \ \text{times}}$$
+
+  So by right cancellation, we have:
+
+  $$\underbrace{e \ + \ \cdots \ + \ e}_{m \ - \ n \ \text{times}} \ = \ 0$$
+
+  It follows that $r \ = \ m \ - \ n$ and the theorem is proved.
+  \end{proof}
+
+\end{document}
