@@ -22,6 +22,32 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 	of solutions at once in the same place.</i>
 
 	<br><br>
+  <b>Problem 1</b>
+  <br>
+  <div class="lemma">
+      Let $T$ and $T'$ be topologies on the set $X$. Let $T' \ \supset \ T$. If $X$ is compact under $T'$, then
+      $X$ is compact under $T$.
+  </div>
+
+      <div class="proof">
+      Pick some open cover of $X$ under $T$. This is also an open cover of $X$ under $T'$. Since
+      $X$ is compact under $T'$, there exists a finite subcover of the open cover that covers $X$. This is also a finite subcover
+      in $T$. Thus, $X$ is compact under $T$.
+  </div>
+
+  <div class="lemma">
+      if $X$ is compact Hausdorff under both $T$ and $T'$, then either $T \ = \ T'$ or $T$ and $T'$ are not comparable.
+  </div>
+
+  <div class="proof">
+      Assume, without loss of generality, that $T$ is a strict subset of $T'$ This implies that there is some open $U' \ \in \ T'$ such that
+      $U' \ \notin \ T$. Now, pick some point $x \ \in \ U'$. Since $X \ - \ U'$ is closed under $T'$, it is compact under $T'$. It follows from the
+      previous lemma that it is compact under $T$. Since $X$ is Hausdorff, $X \ - \ U'$ is closed under $T$, which implies that $U'$ is open under $T$, a contradiction.
+      Thus, $T$ cannot be a strict subset of $T'$. A similar argument shows that $T'$ cannot be a strict subset of $T$. It follows that either $T \ = \ T'$ or
+      $T$ and $T'$ are not comparable.
+  </div>
+
+  <br>
 
   <b>Problem 3</b>
   <br>

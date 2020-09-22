@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://latex.now.sh/style.css">
 <title>Munkres</title>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
@@ -63,10 +63,15 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
 		Let us assume that $[x_0, \ b)$ has order type $[0, \ 1)$. The previous lemma implies that $[x_0, \ x_{i+1})$ and $[x_{i+1}, \ b)$ have order type 
 		$[0, \ 1)$. We can again use the previous lemma to say that $[x_0, \ x_i)$ and $[x_i, \ x_{i+1})$ have order type $[0, \ 1)$.
 		<br><br>
-		Conversely, assume that every $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$. Assume that $[x_i, \ x_{i+n})$ has order type $[0, \ 1)$. 
-		Since $[x_{i+n}, \ x_{i+n+1})$ has order type of $[0, \ 1)$ by assumption. By the previous theorem, $[x_i, \ x_{i+n+1})$ has order type 
-		$[0, \ 1)$. It follows by induction that given any $i$, the interval $[x_i, \ x_i+n)$ will have order type $[0, \ 1)$ for any $n$. Let $C_{n}$ 
-		be the relation representing an order-preserving, bijective function from $[x_0, \ x_n)$. We will show that the union of all $C$
+		Conversely, assume that every $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$. This means that for each $i$, there exists some order-preserving bijection $f_i$ that 
+		maps the interval to $[0, \ 1)$. For each interval, let us define the functions:
+
+		$$g_i(x) \ = \ \frac{i}{i \ + \ 1} (1 \ - \ f_i(x)) \ + \ \frac{i \ + \ 1}{i \ + \ 2} f_i(x)$$
+
+		We let $g$ denote the peicewise function defined for all such $i$. we assert that $g(x)$ is an order-preserving bijection from $[x_0, \ b)$ to $[0, \ 1)$. 
+		Clearly, each $g_i(x)$ is bijective, so $g$ will be a bijection. The union of all the images of the sets is $[0, \ 1)$. In addition, let us pick some point 
+		$x \ \in \ [x_0, \ b)$. It follows that $x \ \in \ [x_k, \ x_{k+1})$ for some $k$, or else $x$ would be a lower upper bound on the set $\{x_i\}$ than $b$. Thus, 
+		$g(x) \ = \ g_k(x)$ for some $k$. It follows that the image of each point in the domain is well-defined.
 	</div>
 
 	<b>Part C</b>
@@ -83,7 +88,8 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
 	</div>
 
 	<div class="proof">
-		Let us choose two points $a$ and $b$ of $L$. We know that 
+		Let us choose two points $a \ \times \ c$ and $c \ \times \ d$ of $S_{\Omega} \ \times \ [0, \ 1)$. Firstly, we know that $a \ \times \ c$ will 
+		clearly be connected by a path to $a \ \times \ 0$. 
 	</div>
 
 	</p>

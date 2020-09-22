@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://latex.now.sh/style.css">
 <title>Munkres</title>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
@@ -36,8 +36,25 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
 	</div>
 
 	<div class="theorem">
-
+      Let $A \ \subset \ X$. If $C$ is a connected subspace of $X$ that intersects both $X$ and $X \ - \ A$, then $C$
+      intersects $\text{Bd} \ A$.
 	</div>
+
+  <div class="proof">
+      Assume that $C$ does not intersect $\text{Bd} \ A$. This implies that there exists no point of $C$ that is in both
+      $\bar{A}$ and $\overline{X \ - \ A}$. Consider some point $x \ \in \ C$. If $x \ \in \ C \ \cap \ A$, it follows that
+      there exists at least one neighbourhood of $x$ that does not intersect $X \ - \ A$ (or else $x \ \in \ \overline{X \ - \ A}$).
+      Similarly, if $x \ \in \ C \ \cap (X \ - \ A)$,
+      it follows that there exists at least one neighbourhood of $x$ that does not intersect $A$ (or else $x \ \in \ \bar{A}$).
+      We call such open sets $U_x$ for each $x$.
+      For each $x \ \in \ C$, consider the intersection $U_x \ \cap \ C$. Each of these sets are open in $C$. Now, consider:
+
+      $$U_{A} \ = \ \displaystyle\bigcup_{x} \ U_x \ \cap \ C \ \ \ \ \ \ x \ \in \ C \ \cap \ A$$
+      $$U_{X \ - \ A} \ = \ \displaystyle\bigcup_{x} \ U_x \ \cap \ C \ \ \ \ \ \ x \ \in \ C \ \cap \ X \ - \ A$$
+
+      Clearly, $U_A$ and $U_{X \ - \ A}$ form a separation of $C$, contradicting the fact that it is connected. Thus, $C$ must
+      intersect $\text{Bd} \ A$.
+  </div>
 
 	</p>
 <br><br><br><br>

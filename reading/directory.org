@@ -1,0 +1,16 @@
+#+TITLE: Resource Directory
+#+DESCRIPTION: A list of interesting people, websites, blogs, papers, books and other resources that I have come across over the years.
+
+* Blogs/Websites
+** Technical/Scientific
+*** /bactra.org/, the website and blog of Cosma Rohilla Shaliz. [http://bactra.org/]
+    
+    The majority of writing on this website relates to computation and other technical scientific topics, as well as some 
+    great book reviews.
+
+    *Noteable Posts*
+
+    - /A New Kind of Science/ Book Review [http://bactra.org/reviews/wolfram/]
+
+*** /gwern.net/, the website and blog of Gwern Branwen. [https://www.gwern.net/]
+*** /guzey.com/, the website and blog of Alexey Guzey

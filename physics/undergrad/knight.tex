@@ -1,0 +1,102 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+  []% init options
+  {problem}% name
+  {Problem}% title
+  {%
+    fonttitle=\bfseries,
+  }% options
+  {prob}% prefix
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+
+\newcommand{\tr}{\mathrm{Tr}}
+
+
+\title{Knight Classical Mechanics Solutions \\
+\large Some Problems and Solutions Worth Writing Down}
+\author{Jack Ceroni \thanks{jack.ceroni@mail.utoronto.ca}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\vspace{.25in}
+
+\section{Motivation}
+
+Knight's textbook on classical mechanics is the book used for the first-year classical mechanics course at the Univeristy of 
+Toronto (a course that I am currently taking). 
+\newline\newline
+While I believe that there are classical mechanics resources that are far 
+superior to this textbook (for instance, Morin, which is an absolute pleasure to read and possibly one of the best textbooks I've had the privledge of learning from). However, there are likely some challenging problems in this textbook that are worth solving aand writing up (especially considering I will be using this textbook for my course throughout the year anyways). Thus, 
+I will be writing solutions to problems from Knight that I find interesting (the challenging ones, most likely). 
+\newline\newline
+Hopefully someone finds this useful at some point (myself included)!
+
+\section{Circular Motion}
+
+\begin{problem}{Spinning Water Surface}
+	A beaker of water of radius $r$ is spinning at a constant angular velocity $\omega$. 
+	If the spinning is uniform (each point moves 
+	with the same angular velocity), then the shape that the surface of the water makes 
+	is given by the parabola:
+
+	$$z(r) \ = \ \frac{\omega^2}{2g} r^2$$
+
+	where $z(r)$ is the height of the water above some reference point.
+\end{problem}
+
+Pick some water particle lying on the surface of the spinning water. Such a point must be in equilibrium, so we 
+have:
+
+$$N \cos \theta \ = \ (\Delta m)g$$
+$$N \sin \theta \ = \ (\Delta m) \omega^2 r$$
+
+where $N$ is the normal force from the surface being exterted on the "particle", $\Delta m$ is the mass, $r$ is the radius 
+from the center, and $\theta$ is the angle between the horizontal and the line tangent to the surface.
+\newline\newline
+This gives us:
+
+$$ g \tan \theta \ = \ \omega^2 r$$
+
+But we also know that it must be true that:
+
+$$\frac{dz}{dr} \ = \ \tan \theta$$
+
+Integrating, we get:
+
+$$z(r) \ = \ \frac{\omega^2}{2g} r^2$$
+
+\end{document}

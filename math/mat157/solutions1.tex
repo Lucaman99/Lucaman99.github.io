@@ -42,7 +42,7 @@
 \newcommand{\tr}{\mathrm{Tr}}
 
 
-\title{Spivak Chapter Problem Set 1 Chapter 28}
+\title{Spivak Problem Set 0.1}
 \author{Jack Ceroni \thanks{jackceroni@gmail.com}}
 \date{September 2020}
 
@@ -52,6 +52,99 @@
 \tableofcontents
 
 \vspace{.25in}
+
+
+\textit{Quick disclaimer: I am using the third edition of Spivak (not the fourth), so there is a non-zero probability that the
+	question assigned by Professor Meinrenken are different than the ones solved here (due to question numbering changing
+  between editions).}
+
+\section{Chapter 1}
+
+\subsection{Problem 3}
+
+\begin{enumerate}
+
+\item $\frac{a}{b} \ = \ $
+  \item $\frac{a}{b} \ + \ \frac{c}{d} \ = \ \frac{ad}{bd} \ + \ \frac{cb}{db} \ = \ (db)^{-1} (ad \ + \ cb) \ = \ \frac{ad \ + \ cb}{db}$
+	\item $(ab)^{-1} \ = \ e \cdot e \cdot (ab)^{-1} \ = \ (a a^{-1}) \cdot (b b^{-1}) \cdot (ab)^{-1} \ = \
+		a \cdot a^{-1} \cdot b \cdot b^{-1} \cdot (ab)^{-1} \ = \ (a^{-1} b^{-1}) \cdot (ab) \cdot (ab)^{-1} \ = \
+		a^{-1} b^{-1}$
+	\item $\frac{a}{b} \cdot \frac{c}{d} \ = \ (a b^{-1}) \cdot (c d^{-1}) \ = \ a \cdot c \cdot d^{-1} \cdot b^{-1}
+		\ = \ (ac) \cdot (db)^{-1} \ = \ \frac{ac}{db}$
+	\item $\frac{a / b}{c / d} \ = \ \frac{a}{b} \cdot \Big( \frac{c}{d} \Big)^{-1} \ = \ \frac{a}{b} \cdot (c d^{-1})^{-1}
+		\ = \ \frac{a}{b} \cdot \big( c^{-1} (d^{-1})^{-1} \big) \ = \ \frac{a}{b} \cdot
+		(c^{-1} \cdot (d^{-1})^{-1} \cdot e) \ = \ \frac{a}{c} \cdot
+		(c^{-1} \cdot (d^{-1})^{-1} \cdot (d d^{-1})) \ = \ \frac{a}{b} \cdot (c^{-1} d) \ = \
+		\frac{a}{b} \cdot \frac{d}{c} \ = \
+		\frac{ad}{bc}$
+
+\end{enumerate}
+
+\subsection{Problem 8}
+
+\begin{lem}
+  If we assume that modified definition of an order relation (see Problem 8 in Spivak), then the Trichotomy law holds.
+\end{lem}
+
+\begin{proof}
+  Consider the pair of numbers $0$ and $a$. By the first axiom, it follows that either $a \ = \ 0$, $a \ > \ 0$ (which implies that $a \ \in \ P$, by definition of $P$), or,
+  $a \ < \ 0$. Using the third axiom, we add $-a$ to both sides to get: $a \ + \ (-a) \ = \ 0 \ < \ -a$. Thus, in this case, it follows that $-a \ \in \ P$. This proves the Trichotomy law.
+\end{proof}
+
+\begin{lem}
+  The modified definition of an order relation implies that if $a, \ b \ \in \ P$, then $a \ + \ b \ \in \ P$.
+\end{lem}
+
+\begin{proof}
+  Assume that $a, \ b \in \ P$. It follows that $0 \ < \ a$ and $0 \ < \ b$. By the third axiom, we have: $0 \ + \ a \ = \ a \ < \ b \ + \ a$. Thus, we have:
+  \newpage
+  $$0 \ < \ a \ < \ b \ + \ a$$
+
+  By the second axiom, we have $0 \ < \ a \ + \ b$. Thus, $a \ + \ b \ \in \ P$.
+\end{proof}
+
+\begin{lem}
+  The modified definition of an order relation implies that if $a, \ b \ \in \ P$, then $a \cdot b \ \in \ P$.
+\end{lem}
+
+\begin{proof}
+  Assume that $a, \ b \ \in \ P$. We thus have $0 \ < \ a$ and $0 \ < \ b$. It follows from the fourth axiom that $0 \cdot b \ = \ 0 \ < \ a \cdot b$. Thus,
+  $a \cdot b \ \in \ P$.
+\end{proof}
+
+\subsection{Problem 13}
+
+\begin{prop}
+  For two numbers $x$ and $y$, we have:
+
+  $$\max (x,  y) \ = \ \frac{x \ + \ y \ + \ |y \ - \ x|}{2}$$
+
+  $$\min (x,  y) \ = \ \frac{x \ + \ y \ - \ |y \ - \ x|}{2}$$
+  \end{prop}
+
+\begin{proof}
+Let us pick two numbers, $x$ and $y$. Assume, without loss of generality, that $x \ < \ y$. Consider the quantity:
+
+$$\text{max} (x,  y) \ = \ \frac{x \ + \ y \ + \ |y \ - \ x|}{2}$$
+
+Since $x \ < \ y$, it follows that $0 \ < \ y \ - \ x$, and we have $|y \ - \ x| \ = \ y \ - \ x$:
+
+$$\text{max} (x,  y) \ = \ \frac{x \ + \ y \ + \ y \ - \ x}{2} \ = \ \frac{2y}{2} \ = \ y$$
+
+which is in fact the larger of the pair $x, \ y$. We can also consider the quantity:
+
+$$\text{min} (x,  y) \ = \ \frac{x \ + \ y \ - \ |y \ - \ x|}{2} \ = \ \frac{x \ + \ y \ - \  y \ + \ x}{2} \ = \ x$$
+
+which is in fact the smaller of the pair $x, \ y$. Thus, the proof is complete.
+\end{proof}
+
+\newline
+
+\texit{Derive expressions for $\max(x, \ y, \ z)$ and $\min(x, \ y, \ z)$.}
+
+Since $\max(x, \ y, \ z) \ = \ \max(x, \ \max(y, \ z))$, we have:
+
+$$\max(x, \ y, \ z) \ = \ = \ \frac{x \ + \ \max(y, \ z) \ + \ |\max(y, \ z) \ - \ x|}{2}$$
 
 \section{Chapter 28}
 

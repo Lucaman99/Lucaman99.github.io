@@ -34,13 +34,28 @@ Now, by our initial definition, if we have some open set in $X$ of the form $f^{
 Conversely, let us have some surjective, continuous function that maps saturated open sets to open sets. We will prove that $U$ is open in $Y$ if and only if $f^{-1}(U)$ is open in $X$. To do this, we have to prove that each of the last two statement imply each other. Let $U$ be open in $Y$. Since $f$ is continuous, this immediately implies that $f^{-1}(U)$ is open in $X$. Let $f^{-1}(U)$ be open in $X$. This is a saturated open set, thus its map, $ff^{-1}(U) \ = \ U$ must be open in $Y$ (we exploited the surjectivity of the function in this last step). $\blacksquare$
 <br><br>
 <hr>
+<br>
+<b>Proposition: </b>If a set is compact, then it is limit point compact.
 <br><br>
-
+<b>Proof</b>
+<br><br>
 Assume that a set $X$ is compact. Consider some infinite subset of $X$, which we call $A$. Let us assume that $A$ does not have a limit point. It follows that 
 there exists no point $x \ \in \ X$ such that every open set around $x$ intersects $A$  at some point other than itself. Thus, for each point $x$, we can choose a 
 neighbourhood around $x$ that only intersects $A$ at $x$. The union of all such neighbourhoods forms an open cover of $A$. Consider some finite subcollection of such 
 open sets. Since each set intersects $A$ at most at exactly one point, the union of this subcollection will only contain a finite number of elements of $A$. But $A$ is infinite, so 
-no subcollection can cover all of $X$, which is a contradiction to the compactness of $A$. It follows that each infinite subset has a limit point. 
+no subcollection can cover all of $X$, which is a contradiction to the compactness of $A$. It follows that each infinite subset has a limit point.
+<br><br>
+<hr>
+<br>
+<b>Proposition: </b>The closure of a connected set is connected
+<br><br>
+<b>Proof</b>
+<br><br>
+Let $A$ be a connected set. Assume that there exists a separation $U \ \cup \ V \ = \ \bar{A}$ where $U$ and $V$ are non-empty. Since $A$ is a subset of $\bar{A}$, it follows that
+$A \ \subset \ U$ or $A \ \subset \ V$. In either case, $V$ or $U$ is a non-empty open set containing $x \ \in \ \bar{A}$ that does not intersect $A$. This contradicts the fact
+that $x \ \in \ \bar{A}$. Thus, $V$ or $U$ must be empty, and no separation exists, implying that $\bar{A}$ is connected.
+<br><br>
+<hr>
   </div>
 </center>
 </body>
