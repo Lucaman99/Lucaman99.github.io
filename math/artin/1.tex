@@ -1,0 +1,83 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{Artin Algebra: Chapter 1 Solutions}
+    \author{Jack Ceroni}
+    \date{September 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \section{Notes}
+
+    \begin{prop}
+      If matrices $A$ and $B$ are invertible, then so is the matrix $AB$, and $(AB)^{-1} \ = \ B^{-1} A^{-1}$
+    \end{prop}
+
+    \begin{proof}
+      \begin{equation}
+        \mathbb{I} \ = \ A A^{-1} \ = \ A I A^{-1} \ = \ A (B B^{-1}) A^{-1} \ = \ (AB) (B^{-1} A^{-1})
+      \end{equation}
+
+      Therefore, by definitionof the inverse, $(AB)^{-1}$ exists and is equal to $B^{-1} A^{-1}$.
+    \end{proof}
+
+    \begin{prop}
+      The equation $AB \ - \ BA \ = \ \mathbb{I}$ has no solutions, for $n \ \times \ n$ matrices with  real entries.
+    \end{prop}
+
+    \begin{proof}
+      \begin{equation}
+        \tr{(AB \ - \ BA)} \ = \ \tr{(AB)} \ -\ \tr{(BA)} \ = \ 0
+      \end{equation}
+      But we also know that $\tr{(\mathbb{I})} \ \neq \ 0$, so it follows that $AB \ - \ BA \ \neq \ \mathbb{I}$.
+      \end{proof}
+
+    \section{Solutions}
+
+    \end{document}

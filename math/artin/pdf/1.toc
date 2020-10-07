@@ -1,0 +1,5 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Notes}{1}{section.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Solutions}{1}{section.2}

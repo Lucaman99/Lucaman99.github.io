@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<link rel="stylesheet" href="https://latex.now.sh/style.css">
+<title>Morin</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+
+<body>
+	<center>
+	<div style="margin-left:-100px;margin-right:-100px;text-align:left">
+	<br><br>
+	<h2>Morin Introduction to Classical Mechanics Chapter 7 Problem 38</h2>
+	<br>
+	<p>
+
+	    We begin by setting up the Lagrangian for this system, assuming no constraints:
+
+      $$\mathcal{L} \ = \ \frac{1}{2} m \Big[ \dot{x}^2 \ + \ \dot{y}^2 \Big] \ - \ V(x, \ y)$$
+
+      where $V(x, \ y)$ is the potential that constrains our bead to the curve $y \ = \ f(x)$. We then set up our Euler-Lagrange equations:
+
+      $$\frac{d}{dt} \Big[ \frac{\partial \mathcal{L}}{d \dot{x}} \Big] \ = \ m\ddot{x} \ = \ \frac{\partial \mathcal{L}}{\partial x} \ = \ -\frac{\partial V}{\partial x}$$
+      $$\frac{d}{dt} \Big[ \frac{\partial \mathcal{L}}{d \dot{y}} \Big] \ = \ m\ddot{y} \ = \ \frac{\partial \mathcal{L}}{\partial y} \ = \ -\frac{\partial V}{\partial y}$$
+
+      Now, we wish to write everything in terms of $x$, so we have:
+
+      $$m\ddot{y} \ = \ m \frac{d}{dt} \Big[ \frac{dy}{dt} \Big] \ = \ m \frac{d}{dt} \Big[ \frac{dy}{dx} \frac{dx}{dt} \Big]
+      \ = \ m \Big[ \Big( \frac{d}{dx} \frac{dy}{dx} \Big) \Big( \frac{dx}{dt} \Big)^2 \ + \ \frac{dy}{dx} \frac{d^2 x}{dt^2} \Big]$$
+
+      So we re-write the $y$-equation:
+
+      $$m \Big[ \Big( \frac{d}{dx} \frac{dy}{dx} \Big) \Big( \frac{dx}{dt} \Big)^2 \ + \ \frac{dy}{dx} \frac{d^2 x}{dt^2} \Big] \ = \ -\frac{\partial V}{\partial x} \frac{dx}{dy}$$
+
+      Now, we can use the $x$-equation to get rid of the $\ddot{x}$ in the $y$-equation:
+
+      $$m \Big( \frac{d}{dx} \frac{dy}{dx} \Big) \Big( \frac{dx}{dt} \Big)^2 \ - \ \frac{dy}{dx} \frac{\partial V}{\partial x} \ = \ -\frac{\partial V}{\partial x} \frac{dx}{dy}$$
+
+      Now, we re-arragne for $dV/dx$, and substitute in the constraint $y \ = \ f(x)$, which gives us:
+
+      $$\frac{\partial V}{\partial x} \Big( f'(x) \ - \ \frac{1}{f'(x)} \Big) \ = \ m f''(x) \dot{x}^2 \
+      \Rightarrow \ \frac{\partial V}{\partial x} \ = \ \Big( \frac{f'(x)}{f'(x)^2 \ - \ 1} \Big) m f''(x) \dot{x}^2$$
+
+      Now, we know that:
+
+      $$v \ = \ \sqrt{ \Big(\frac{dx}{dt} \Big)^2 \ + \ \Big( \frac{dy}{dt} \Big)^2} \ = \ \Big( \frac{dx}{dt} \Big) \sqrt{1 \ + \ \Big( \frac{dy}{dx} \Big)^2} \ = \ \dot{x} \sqrt{1 \ + \ f'(x)^2}$$
+
+      So we get:
+
+      $$\dot{x} \ = \ \frac{v}{\sqrt{1 \ + \ f'(x)^2}}$$
+
+      We can substitute this back into the equation to get:
+
+      $$\frac{\partial V}{dx} \ = \ \Big( \frac{m f''(x) v^2}{1 \ + \ f'(x)^2} \Big) \Big( \frac{f'(x)}{f'(x)^2 \ - \ 1} \Big)$$
+
+      Finally, we know that:
+
+      $$F \ = \ \sqrt{F_x^2 \ + \ F_y^2} \ = \ \frac{\partial V}{dx} \sqrt{1 \ + \ \Big( \frac{1}{f'(x)^2} \Big)} \ = \
+      \Big( \frac{m f''(x) v^2}{1 \ + \ f'(x)^2} \Big) \Big( \frac{f'(x)}{f'(x)^2 \ - \ 1} \Big) \frac{\sqrt{1 \ + \ f'(x)^2}}{f'(x)}$$
+      $$ \ = \ \Big( \frac{1}{\sqrt{1 \ + \ f'(x)^2}} \Big) \Big( \frac{ f''(x) }{f'(x)^2 \ - \ 1} \Big) mv^2$$
+
+      We can verify that this is true by considering a basic case: circular motion. The equation of a circle is given by:
+
+      $$f(x) \ = \ \sqrt{R^2 \ - \ x^2}$$
+
+      We then take the first and second derivatives of this function:
+
+      $$f'(x) \ = \ -\frac{x}{\sqrt{R^2 \ - \ x^2}} \ \ \ \ \ \ \ \ \ \ \ \ f''(x) \ = \ -x^2 (R^2 \ - \ x^2)^{-3/2} \ - \ \frac{1}{\sqrt{R^2 \ - \ x^2}}$$
+
+      We then plug these quantities into the force equation:
+
+      $$F \ = \ \Bigg( \frac{1}{\sqrt{1 \ + \ \big( -\frac{x}{\sqrt{R^2 \ - \ x^2}} \big)^2}} \Bigg) \Bigg( \frac{
+      -x^2 (R^2 \ - \ x^2)^{-3/2} \ - \ \frac{1}{\sqrt{R^2 \ - \ x^2}} }{\big( -\frac{x}{\sqrt{R^2 \ - \ x^2}} \big)^2 \ - \ 1} \Bigg) mv^2$$
+
+      $$ \ = \ \Big( \frac{\sqrt{R^2 \ - \ x^2}}{R} \Big) \Bigg( \frac{
+      -x^2 (R^2 \ - \ x^2)^{-3/2} \ - \ \frac{1}{\sqrt{R^2 \ - \ x^2}} }{\big( \frac{2x^2 \ - \ R^2}{R^2 \ - \ x^2} \big)} \Bigg) mv^2
+       \ = \ \frac{1}{R} \Big( -\frac{x^2}{R^2 \ - \ x^2} \ - \ 1 \Big) \Big( \frac{R^2 \ - \ x^2}{2x^2 \ - \ R^2} \Big)$$
+	</p>
+<br><br><br><br>
+</div>
+</center>
+</body>
+</html>

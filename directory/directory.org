@@ -1,0 +1,35 @@
+#+TITLE: Resource Directory
+#+DESCRIPTION: A list of interesting people, websites, blogs, papers, books and other resources that I have come across over the years.
+
+* Blogs/Websites
+** Technical/Scientific
+*** /bactra.org/, the website and blog of Cosma Rohilla Shaliz. [http://bactra.org/]
+    
+    The majority of writing on this website relates to computation and other technical scientific topics, as well as some 
+    great book reviews.
+
+    *Noteable Posts*
+
+    - /A New Kind of Science/ Book Review [http://bactra.org/reviews/wolfram/]
+
+*** /gwern.net/, the website and blog of Gwern Branwen. [https://www.gwern.net/]
+*** /guzey.com/, the website and blog of Alexey Guzey
+*** /Terry Tao's Blog/, where Terry Tao (the Fields medalist super-genius) writes [https://terrytao.wordpress.com/] 
+*** /Dror Bar-Natan's Website/, full of resources/posts written by the notable mathematician [https://www.math.toronto.edu/~drorbn/]
+*** /spinor.info/, Viktor Toth's (independent physicist and programmer) blog [https://spinor.info/weblog/]
+* Papers
+** Haven't Read (Yet)
+   - Entanglement rate and area laws [https://arxiv.org/pdf/1304.5931.pdf]
+   - Adiabaticity in open systems [https://t.co/WGyStuVcI2?amp=1]
+   - Generalized Fisher information [https://arxiv.org/abs/2010.02904]
+   - Wolfram physics quantum information [https://arxiv.org/abs/2010.02752]
+   - Thermodynamics of strongly-coupled light/matter systems [https://doi.org/10.22331/q-2020-09-28-335]
+   - De-signing Hamiltonians [https://doi.org/10.22331/q-2020-09-24-334]
+   - Quantum search on vertex transitive graphs [https://arxiv.org/abs/2002.11227]
+   - Hypergraph states [https://arxiv.org/abs/1211.5554]
+   - Phase transitions and persistent homology [https://arxiv.org/abs/2009.14231]
+   - Scrambling unitaries [https://scirate.com/arxiv/2009.14808]
+   - Manifold optimization/Gaussian states [https://scirate.com/arxiv/2009.11884]
+   - Non-locality of observables in quasi-Hermitian quantum theory [https://arxiv.org/abs/2002.04703]
+   - Variational fast-forwarding [https://arxiv.org/abs/1910.04292]
+   - Meta-VQE [https://arxiv.org/abs/2009.13545]

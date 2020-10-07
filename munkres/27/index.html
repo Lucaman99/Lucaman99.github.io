@@ -89,10 +89,26 @@
                     <b>Problem 4</b>
                     <br>
                     <div class="theorem">
-
+                        Every connected metric space is uncountable.
                     </div>
                     <div class="proof">
-                        Assume that there exists some function $f : 
+                        Consider the metric $d$ as a map $d : X \ \times \ X \ \rightarrow \ \mathbb{R}$, restricted to $d(X \ \times \ X)$.
+                        Assume that $d(X \ \times \ X) \ \neq \ [a, \ b]$, for some $a$ and $b$.
+                        It follows that for some two points of $d(X \ \times \ X)$, which we call $x$ and $y$, with $x \ < \ y$, we can choose some
+                        $z$ with $x \ < \ z \ < \ y$ such that $z \ \notin d(X \ \times \ X)$. We know that $X$ has more than one point, so there are at least two points of
+                        $d(X \ \times \ X)$ which can take the place of $x$ and $y$ (namely, $d(p, \ p)$ and $d(p, \ q)$, for $p, \ q \ \in \ X$).
+                        <br><br>
+                        Now, let us consider the open sets $U \ = \ (-\infty, \ z) \ \cap \ d(X \ \times \ X)$ and $V \ = \ (\infty, \ z) \ \cap \ d(X \ \times \ X)$ of $d(X \ \times \ X)$.
+                        Clearly:
+
+                        $$U \ \cup \ V \ = \ d(X \ \times \ X)$$
+
+                        Since $d$ is continuous and bijective, it follows that $d^{-1}(U)$ and $d^{-1}(V)$ are open, disjoint sets whose union is $X$. This contradicts the fact
+                        that $X$ is connected. Thus, $d(X \ \times \ X)$ is an interval in the real numbers. We have proved that any interval of the reals is uncountable, and since
+                        $d$ is a bijection, $X \ \times \ X$ is also uncountable.
+                        <br><br>
+
+                        Assume that $X$ is countable. It follows that $X \ \times \ X$ is countable, a contradiction. Thus, $X$ is uncountable.
                     </div>
                 </p>
                 <br><br><br><br>
