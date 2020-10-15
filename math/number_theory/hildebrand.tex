@@ -1,0 +1,86 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=1.5in, rmargin =1.5in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{MAT157 Assignment 3}
+    \author{Jack Ceroni}
+    \date{October 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \newpage
+
+    \section{Solutions}
+
+    \begin{lem}[Problem 0.1]
+
+      \end{lem}
+
+    \begin{lem}[Problem 0.2]
+      The sum $p(n)$, defined as:
+
+      $$p(x) = \displaystyle\sum_{i = 0}^{k} a_i x^i$$
+
+      where each $a_i$ is an integer and the degree of $p(x)$ is greater than or equal to $1$ will be
+      composite for infinitely many $n \in \mathbb{Z}$.
+    \end{lem}
+
+    \begin{proof}
+      Since the degree of the polynomial is greater than or equal to $1$, there must exist some $j \geq 1$ such that $a_j$ is non-zero.
+      In the case of degree $k = 1$, then we have:
+
+      $$p(x) = a_1 x + a_0$$
+
+      where $a_1$ is non-zero. If $a_0 = 0$, then $a_1 n$ is clearly composite for all $n$. Otherwise, let $n = a_0 k$ for integer $k$:
+
+      $$p(n) = a_1 (a_0 k) + a_0 = a_0 (a_1 k + 1)$$
+
+      This is clearly composite
+    \end{proof}
+
+    \end{document}

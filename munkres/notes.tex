@@ -1,0 +1,74 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{Munkres Topology: Running Notes}
+    \author{Jack Ceroni}
+    \date{October 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+    
+    \section{Problems and Solutions}
+
+    \begin{prop}[Problem 21.7]
+      Let $f_n : X \ \rightarrow \ \mathbb{R}$ be a sequence of functions. Let $\bar{\rho}$ be the uniform metric on the function space $\mathbb{R}^X$.
+      This will be defined as:
+
+      $$\bar{\rho}(f, \ g) = \sup \{ \bar{d}(f(x), \ g(x)) \ | \ x \in X\} = \sup \{ \min(|f(x) - g(x)|, \ 1) \ | \ x \in X\}$$
+
+      The sequence $f_n$ converges uniformly to the function $f : X \ \rightarrow \ \mathbb{R}$ if and only if the sequence $(f_n)$ converges
+      to $f$ as elements of the metric space $(\mathbb{R}^X, \ \bar{\rho})$.
+    \end{prop}
+
+    \begin{proof}
+      This is fairly easy, we'll do this later.
+    \end{proof}
+
+
+
+    \end{document}

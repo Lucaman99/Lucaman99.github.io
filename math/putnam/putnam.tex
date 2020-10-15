@@ -1,0 +1,88 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{Running Putnam Notes}
+    \author{Jack Ceroni}
+    \date{October 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+
+    
+    \section{Introduction}
+
+    \textit{These notes are my attempt at keeping a log of any useful Putnam-related notes and solutions during undergrad.}
+
+    \section{Solutions}
+
+    \begin{prop}
+      Every non-zero coefficient of the Maclauren series of:
+
+      $$f(x) = (1 - x + x^2) e^x$$
+
+      is rational, with the numerator being either $1$ or a prime number (when fully reduced).
+    \end{prop}
+
+    \begin{proof}
+      Clearly:
+
+      \begin{equation}
+        \begin{split}
+        f(x) = (1 - x + x^2) e^x = (1 - x + x^2) \displaystyle\sum_{n = 0}^{\infty} \frac{x^n}{n!} = \displaystyle\sum_{n = 0}^{\infty} \frac{x^n - x^{n + 1} + x^{n + 2}}{n!} \\
+         = \displaystyle\sum_{n = 0}^{\infty} \frac{x^n}{n!} - \displaystyle\sum_{n = 1}^{\infty} \frac{x^n}{(n - 1)!} + \displaystyle\sum_{n = 2}^{\infty} \frac{x^n}{(n - 2)!}
+        \end{split}
+      \end{equation}
+
+      In the case that $n \geq 2$, the $n$-th coefficient of the series(which we denote by $c_n$) is thus given by:
+
+      \begin{equation}
+        c_n = \frac{1}{n!} - \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} = \frac{1 - n + n(n + 1)}{n!} = \frac{n^2 + 1}{n!}
+        \end{equation}
+    \end{proof}
+    
+    \end{document}

@@ -1,0 +1,105 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{Advanced Putnam Problems 1}
+    \author{Jack Ceroni}
+    \date{October 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \begin{prop}[Problem B11]
+      Let $T_n$ be the collection of non-empty subset of $\{1, \ ..., \ n\}$, where each subset contains no consecutive integers. For each $S \in T_n$, let
+      $P_S$ be the square of the product of all the elements of $S$. The sum of all $P_S$ for $S \in T_n$ is given by $(n + 1)! - 1$.
+    \end{prop}
+
+    \begin{proof}
+      Clearly, any subset of the set $\{1, \ ..., \ n + 1\}$ containing $n + 1$ will either be $\{n + 1\}$, or be of the form $\{a_1, \ ..., \ a_k, \ n + 1\}$ for
+      $a_i \in \{1, \ ..., \ n -  1\}$. Thus, we can form all sets $S$ in $T_{n + 1}$ containing $n + 1$ by simply ``appending'' $n + 1$ to each $S \in T_{n - 1}$.
+      Let $P_n$ be the sum of all $P_S$ for $S \in T_n$. It follows that $(n + 1)^2 P_{n - 1}$ is the sum of all squares of product of such subsets.
+      \newline
+
+      We must also include all sets in $T_n$, which have square/product $P_n$. In addition, we include $\{n + 1\}$, the square of which's product is $(n + 1)^2$. Thus:
+
+      $$P_{n + 1} = (n + 1)^2 P_{n - 1} + P_n + (n + 1)^2$$
+
+      It is easy to check that the cases of $n = 1$ and $n = 2$ hold true for the above proposition. We assume the case of all natural numbers up to and including
+      $n$ for $n \geq 3$ (Strong induction) and prove $n + 1$:
+
+      $$P_{n + 1} = (n + 1)^2 P_{n - 1} + P_n + (n + 1)^2 = (n + 1)^2 (n! - 1) + (n + 1)! + (n + 1)^2 - 1$$
+      $$= (n + 1)^2 n! + (n + 1)! - 1 = (n + 1 + 1)(n + 1)! - 1 = (n + 2)! - 1$$
+
+      This completes the proof.
+      \end{proof}
+
+    \begin{prop}[Problem A1]
+      Let $k$ be a fixed positive integer. The $n$-th derivative of $\frac{1}{x^k - 1}$ has the form $\frac{P_n(x)}{(x^k - 1)^{n + 1}}$ where
+      $P_n(x)$ is a polynomial. Find $P_n(1)$.
+    \end{prop}
+
+    \begin{proof}
+      Consider the $n$-th derivative of $\frac{1}{x^k - 1}$, given by $\frac{P_n(x)}{x^k - 1}$. We take the derivative again, giving us:
+
+      $$\frac{d}{dx} \frac{P_n(x)}{(x^k - 1)^{n + 1}} = \frac{P_n'(x)}{(x^k - 1)^{n + 1}} - \frac{(n + 1) kx^{k - 1} P_n(x)}{(x^k - 1)^{n + 2}} = \frac{P_{n + 1}(x)}{(x^k - 1)^{n + 2}}$$
+
+      We then multiply both sides by $(x^k - 1)^{n + 2}$ and changing the indices giving us:
+
+      $$P_{n}(x) = P_{n - 1}'(x) (x^k - 1) - n kx^{k - 1} P_{n - 1}(x)$$
+
+      We are interested in $P_n(1)$, so we get:
+
+      $$P_n(1) = -nk P_{n - 1}(1)$$
+
+      We assert that $P_n(1) = (-1)^n k^n n!$. This is clearly true in the case of $n = 1$, as $P_0(x) = 1$. We assume this is true for $n$ and prove $n + 1$:
+
+      $$P_{n + 1}(1) = (-1) (n + 1) k P_n(1) = (-1) (n + 1)k (-1)^n k^n n! = (-1)^{n + 1} k^{n + 1} (n + 1)!$$
+
+      Thus, we have proved this statement by induction.
+      \end{proof}
+
+    \end{document}
