@@ -23,10 +23,19 @@
                         $$C_s \ = \ \{x \ | \ s \ \leq \ x\}$$
 
                         Let $C$ be the intersection of all such sets. This will be the set $L$, as both are the sets of all $x$ such that $s \ \leq \ x$ for all $s \ \in \ S$.
-                        It follows that $L$is closed. Assume that $L$ has no least element. It follows that the open sets $\{(\ell, \ \infty) \ | \ \ell \ \in \ L\}
-                        cover $L$. Consider a finite subcollection of such sets, \{(\ell_1, \ \infty), \ ..., \ (\ell_n, \ \infty)\}. Let $\ell_i$ be the minimum
+                        It follows that $L$ is closed.
+
+                        <br><br>
+
+                        Assume that $L$ has no least element. It follows that the open sets $\{(\ell, \ \infty) \ | \ \ell \ \in \ L\}$
+                        cover $L$. Consider a finite subcollection of such sets, $\{(\ell_1, \ \infty), \ ..., \ (\ell_n, \ \infty)\}$. Let $\ell_i$ be the minimum
                         of all such $\ell$ values. By definition, $\ell_i \ \in \ L$ but is not in the union of the open sets. This contradicts the fact that $L$ is compact, which
                         implies that $L$ must have a minimal element. This is will be the least upper bound of $S$.
+                    </div>
+
+                    <div class="proof">
+                        Consider some non-empty subset $S$ of $X$ that has an upper bound. We let $L$ be the set of upper bounds of $S$. Let us consider $s \in S$ and
+                        $\ell \in S$. If $s = \ell$, then this is automatically the least upper bound of $S$ and we are done. Otherwise, consider the closed interval $[s, \ \ell]$. 
                     </div>
 
                     <b>Problem 2</b>
@@ -73,14 +82,16 @@
                         of all such sets.
                         <br><br>
                         Now, assume that $x \ \in \ B_{\epsilon}$ (the union of all $\epsilon$-balls around each $a \ \in \ A$). Consider the set of all $\epsilon$-balls centred
-                        at $a$ that contain $x$. It must be true that $d(x, \ a) \ < \ \epsilon$ for all such balls. As for the balls that don't contain $x$, it follows that $d(x, \ a) \ \geq \ \epsilon$.
-                        Thus, it follows that $\inf \ \{d(x, \ a) \ | \ a \ \in \ A\} \ < \ \epsilon$, which implies that $x \ \in \ U(A, \ \epsilon)$. It follows that $B_{\epsilon} \ = \ U(A, \ \epsilon)$.
+                        at $a$ that contain $x$. It must be true that $d(x, \ a) \ < \ \epsilon$ for all such balls. As for the balls that don't contain $x$, it
+                        follows that $d(x, \ a) \ \geq \ \epsilon$.
+                        Thus, it follows that $\inf \ \{d(x, \ a) \ | \ a \ \in \ A\} \ < \ \epsilon$, which implies that $x \ \in \ U(A, \ \epsilon)$. It follows
+                        that $B_{\epsilon} \ = \ U(A, \ \epsilon)$.
                     </div>
                     <br>
-                    <div class="theorem">
+                    <div class="theorem" style="display:none">
                         Let $A$ be compact; let $U$ be an open set containing $A$. Some $\epsilon$-neighbourhood of $A$ is contained in $U$.
                     </div>
-                    <div class="proof">
+                    <div class="proof" style="display:none;">
                         This implies that we should be able to choose some $\epsilon$ such that all $\epsilon$-balls around $a \ \in \ A$ are in $U$. Since
                         $U$ is open, for any $x \ \in \ U$ (and thus any $a \ \in \ A$), we can define an $\epsilon_a$-ball around $a$ that that
                         $B_{\epsilon_a}(a) \ \subset \ U$. 
@@ -109,6 +120,24 @@
                         <br><br>
 
                         Assume that $X$ is countable. It follows that $X \ \times \ X$ is countable, a contradiction. Thus, $X$ is uncountable.
+                    </div>
+                    <br>
+                    <b>Problem 6</b>
+                    <br>
+                    <div class="proof">
+                        Let us consider some subset $S \subset C$. If $S$ has one point, it will be connected, which is allowed. Assume that
+                        $S$ has at least two points, $a$ and $b$. We wish to show that there exists a "deleted section" that lies between $a$ and
+                        $b$, thus allowing us to form a separation. First of all, consider the "distance" from $a$ to $b$, which is given by $|b - a|$.
+                        We assume without loss of generality that $b > a$.
+
+                        <br><br>
+
+                        Since $b - a$ is a real number, by the Archimedean property, we can find integer $n$ such that:
+
+                        $$3^n > 2n > \frac{1}{b - a} \ \Rightarrow \ \frac{2}{3^n} < b - a$$
+
+
+
                     </div>
                 </p>
                 <br><br><br><br>

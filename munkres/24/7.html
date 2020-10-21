@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Section 24 Problem 7</h2>
+                <br>
+                <p>
+
+                    <div class="lemma">
+                        If $f$ is an order-preserving, surjective function from $X$ to $Y$, it will be true that $f((a, \ b)) = (f(a), \ f(b))$.
+                    </div>
+
+                    <div class="proof">
+                        First, let us show that $f$ is a bijection. We already know that $f$ is surjective, so it is sufficient to show that it is injective as well.
+                        Assume that for $x, y \in X$, that $f(x) = f(y)$. Assume, without loss of generality, that $x < y$. Since $f$ is order-preserving, we will have
+                        $f(x) < f(y)$, a clear contradiction. Thus, $x = y$ and $f$ is injective.
+                        <br><br>
+
+                        Now, let us pick an open interval $(a, \ b) \subset X$. First, we prove that $f((a, \ b)) \subset (f(a), \ f(b))$. Pick some
+                        $f(x) \in f((a, \ b))$. Since $f$ is bijective, we have $x \in (a, \ b)$, so $a < x < b$. Since $f$ is order preserving, we then have
+                        $f(a) < f(x) < f(b)$, so $f(x) \in (f(a), \ f(b))$.
+                        <br><br>
+
+                        Now, we prove that $(f(a), \ f(b)) \subset f((a, \ b))$. We pick $f(x) \in (f(a), \ f(b))$, so $f(a) < f(x) < f(b)$. It then must be true that
+                        $a < x < b$ (as $f$ is order preserving and bijective), so $x \in (a, \ b)$ and $f(x) \in f((a, \ b))$.
+                        <br><br>
+
+                        This implies that $f((a, \ b)) = (f(a), \ f(b))$.
+
+                    </div>
+
+                    <div class="corollary">
+                        <b>Corollary 1.</b> If $f$ is an order-preserving, surjective function from space $X$ to space $Y$, both in the order topology, then $f$ is a homeomorphism.
+                    </div>
+
+                    <div class="proof">
+                        We apply the above lemma to the functions $f$ and $f^{-1}$.
+                    </div>
+
+                    <div class="lemma">
+                        The inverse of $f : \bar{\mathbb{R}}_+ \ \rightarrow \ \bar{\mathbb{R}}_+$ with $f(x) = x^n$ for a positive integer $n$ is continuous.
+                    </div>
+                        <div class="proof">
+                        Let us pick $x$ and $y$ such that $x < y$. Assume that $x^n < y^n$. We know that $0 \leq x, y$, so
+                        we then have $x^n \cdot x < y^n \cdot x < y^n \cdot y \ \Rightarrow \ x^{n + 1} < y^{n + 1}$, so
+                        $f$ is order-preserving for all $n$.
+                        <br><br>
+
+                        Now, assume that $x^n = y^n$. If $x < y$, by the above, it must be true that $x^n < y^n$. If $y < x$, then $y^n < x^n$. Both are contradictions,
+                        so $x = y$. It follows that $f$ is surjective.
+                        <br><br>
+
+                        From the above corollary, $f$ is a homeomorphism. Therefore, $f^{-1}$ is continuous. Thus, we have shown that the $n$-th root function is continuous.
+
+                        </div>
+
+
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

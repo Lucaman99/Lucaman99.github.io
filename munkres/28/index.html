@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Section 28</h2>
+                <br>
+                <p>
+
+                    <div class="theorem">
+                        $[0, \ 1]$ is <b>not</b> limit point compact when considered as a subspace of $\mathbb{R}_\ell$.
+                    </div>
+
+                    <div class="proof">
+                        Consider the set $S \subset [0, \ 1]$ defined as:
+
+                        $$S = \Big\{ 1 - \frac{1}{n} \ \biggr\rvert \ n \in \mathbb{Z}^{+} \Big\} = \Big\{ 0, \ \frac{1}{2}, \ \frac{2}{3}, \ ... \Big\}$$
+
+                        Let us pick some real $s \in [0, \ 1)$. First, we note that since $s < 1$, $1 - s$ is also a real number, and so is $1/(1 - s)$. Using the Archimedean property, we can then pick
+                        an integer $n$ such that $1/(1 - s) \leq n$. Using the well-ordering principle, the set of all $n$ that satisfy this inequality
+                        has a minimal element, which we call $m$. Clearly, it
+                        then holds true that:
+
+                        $$m - 1 \leq \frac{1}{1 - s} \leq m$$
+
+                        so we will have:
+
+                        $$1 - \frac{1}{m - 1} \leq s \leq 1 - \frac{1}{m}$$
+
+                        This implies that $s$ lies between two elements of the set $S$. Since $[0, \ 1]$ is a linear continuum, there is an element of $[0, \ 1]$ between $s$ and $1 - 1/m$, which we call
+                        $y$. We then consider the open set $[s, \ y)$. We have found, for each point of $[0, \ 1)$, an
+                        open set containg this point that does not intersect $S$ at a point other than itself.
+                        It follows that $S$ has no limit point in $[0, \ 1)$. In addition, we can consider the open set $\{1\}$ containing $1$, which clearly does not intersect $S$.
+                        <br><br>
+
+                        Thus, we have found an infinite set $S$, such that every point of $[0, \ 1]$ is contained in an open set that does not intersect $S$ at a point other than itself. It follows that
+                        $S$ has no limit points, and is thus not limit point compact.
+                    </div>
+
+                    <br>
+
+                        <div class="definition">
+                            A space $X$ is said to be countably compact if every countable open covering of $X$ contains a finite subcollection that covers $X$.
+                        </div>
+
+                        <br>
+
+                        <div class="theorem">
+                            If a space $X$ satisfies the $T_1$ axiom, countable compactness is equivalent to limit point compactness.
+                        </div>
+
+                        <div class="proof">
+                            Let us first assume that the space is sequentially compact. We will assume that there exists a countable covering, $\{U_n\}$ that does
+                            not have a finite subcover.
+                            <br><br>
+
+                            We define a sequence by setting:
+
+                            $$x_i \notin U_1 \cup U_2 \cup ... \cup U_i$$
+
+                            We can do this as we have assumed there is no finite subcover of $\{U_n\}$. We know that there must exist some $x$ to which a subsequence
+                            of $x_i$ converges to. By definition, $x \in U_k$ for some $k$. Except, for all $i \geq k$, we know that $x_i \notin U_k$, so the points
+                            can't converge to $x$. Thus, we have a derived a contradiction, and the space must be countably compact.
+                            <br><br>
+
+                            Now, assume that the space is countably compact. Let us consider the sequence $x_i$.
+                        </div>
+
+                        <br>
+
+                        <div class="theorem">
+                            A space is countably compact if and only if every nested sequence of nonempty closed sets of $X$ has a nonempty intersection.
+                        </div>
+
+                        <div class="proof">
+                            First assume that the space is countably compact. Let us consider some nested sequence, $C_1 \supset C_2 \supset \cdots$. It must be true that:
+
+                            $$\displaystyle\bigcap_{n \in \mathbb{Z}^+} = \displaystyle\bigcap_{n \in \mathbb{Z}^+} (X - U_n) = X - \displaystyle\bigcup_{n \in \mathbb{Z}^+} U_n$$
+
+                            where each $U_n$ is open in $X$. Assume that $\cup_{n} U_n = X$. It would then follow that $\{U_n\}$ is a countable cover of $X$, so it contains a finite subcover
+                            that also covers $X$. Let $k$ be the largest index of the subcover. Clearly, for $i < j$, we have $U_i \subset U_j$, so it follows that the union
+                            of the elements of the subcover is equal to $U_k$. It then must be true that $U_k = X$, which would imply that $C_k = X - U_k = \emptyset$, a contradiction, as
+                            we have assumed each $C_n$ to be nonempty.
+                            <br><br>
+
+                            Thus, it follows that $\cup_{n} U_n \neq X$, and $X - \cup_{n} U_n \neq \emptyset$. Therefore, the intersection of the nested sequence is non-empty.
+                            <br><br>
+
+                            Now, let us assume that each nested sequence of closed sets has a non-empty intersection. Consider the countable cover $\{U_n\}$ of $X$. Assume that each closed set:
+
+                            $$C_n = X - \displaystyle\bigcup_{k = 1}^{n} U_k$$
+
+                            is non-empty. It follows that:
+
+                            $$\displaystyle\bigcap_n C_n = \displaystyle\bigcap_n \Big[ X - \displaystyle\bigcup_{k = 1}^{n} U_k \Big] = X - \displaystyle\bigcup_{n} \displaystyle\bigcup_{k = 1}^{n} U_k$$
+
+                            is non-empty. Except we know that $\{U_n\}$ covers $X$, so $\cup_{n} \cup_{k = 1}^{n} U_k = \cup_n U_n = X$. Thus the intersection is empty, contradicting the initial assumption
+                            that any such intersection is non-empty. It follows that there must exist some $m$ such that:
+
+                            $$C_n = X - \displaystyle\bigcup_{k = 1}^{m} U_k$$
+
+                            is empty, implying that $\cup_{k = 1}^{m} U_k = X$, so we have a finite subcover that covers the space.
+
+                        </div>
+
+                        <br>
+
+                        <div class="definition">
+                            Let $X$ be a metric space. If $f : X \ \rightarrow \ X$ satisfies the condition:
+
+                            $$d(f(x), \ f(y)) =  d(x, \ y)$$
+
+                            then $f$ is called an <b>isometry</b> of $X$.
+                        </div>
+
+                        <br>
+
+                        <div class="theorem">
+                            If $f$ is an isometry of $X$, and $X$ is compact, then $f$ is a homeomorphism.
+                        </div>
+
+                        <div class="proof">
+                            First, let us show that $f$ is a bijection. Pick $x$ and $y$ of $X$  such that $f(x) = f(y)$. It follows that:
+
+                            $$d(x, \ y) = d(f(x), \ f(y)) = d(f(x), \ f(x)) = 0$$
+
+                            so by definition of the metric, $x = y$. Thus, the map is injective. Now, we prove surjectivity. Assume that there is some $a \in X$
+                            such that $a \notin f(X)$. Recall that $X$ is compact, so $f(X)$ is compact. It follows that $d(a, \ f(X)) = d(a, \ f(x))$ for some
+                            $f(x) \in f(X)$ (we proved this result in the exercises of the last section). Since $a \neq f(x)$, it follows that:
+
+                            $$d(a, \ f(x)) = \epsilon \ \Rightarrow \ B_d(a, \ \epsilon) \cap f(X) = \emptyset$$
+
+                            so there is an $\epsilon$-neighburhood around $a$ that is disjoint from $f(X)$.
+                            <br><br>
+
+                            Now, we define a sequence by setting $x_1 = a$ and $x_{n + 1} = f(x_n)$. Let us pick $n$ and $m$ such that $n \neq m$ (without loss
+                            of generality, assume $n < m$). We will have:
+
+                            $$d(x_n, \ x_m) = d(x_n, \ f \cdots f(x_n))$$
+
+                            where the function $f$ is applied $m - n$ times. Using the original formula, we then have:
+
+                            $$d(x_n, \ f \cdots f(x_n)) = d(a, \ f \cdots f(a))$$
+
+                            where the function is repeated $m - n$ times. Clearly, the second argument in the metric map is an element of $f(X)$. We have assumed
+                            that $a$ is contained in an $\epsilon$-neighbourhood disjoint from $f(X)$, so:
+
+                            $$\epsilon \leq d(a, \ f \cdots f(a)) = d(x_n, \ x_m)$$
+
+                            for all $n$ and $m$ with $n \neq m$.
+                            <br><br>
+
+                            Now, we complete the proof. Since $X$ is compact and a metric space, it will also be sequentially compact. Assume that
+                            there exists a finite subsequence of $x_i$ given by $x_{n_i}$ that converges to some point $x$. It follows that
+                            for the $\epsilon/2$-ball around $x$, there exists some $N$ such that for $n_i \geq N$, we have $x_{n_i} \in B_{\epsilon/2}$.
+                            But this would imply that there exist $x_n$ and $x_m$ such that $d(x_n, \ x_m) < \epsilon$, a clear contradiction.
+                            <br><br>
+
+                            It follows that no such $a$ can exist, and $f(X) = X$. Thus, the function is surjective.
+                            <br><br>
+
+                            The remainder of the proof is straightforward: we simply note that given some function $f$ that is an isometry,
+                            $f(B(x, \ \epsilon)) = B(f(x), \ \epsilon)$, and we apply this fact to both $f$ and $f^{-1}$ showing continuity both ways.
+
+                        </div>
+
+                        <br>
+
+                        <div class="definition">
+                            Let $(X, \ d)$ define a metric space. If $f$ satisfies the condition:
+
+                            $$d(f(x), \ f(y)) < d(x, \ y)$$
+
+                            for all $x, y \in X$ with $x \neq y$, then $f$ is called a shrinking map. If there is a number $\alpha < 1$ such that
+
+                            $$d(f(x), \ f(y)) \leq \alpha d(x, \ y)$$
+
+                            for all $x, \ y \in X$, then $f$ is called a contraction.
+                        </div>
+
+                        <div class="lemma">
+                            If $f$ is a contraction and $X$ is compact, $f$ has a unique fixed point.
+                        </div>
+
+                        <div class="proof">
+                            Let us first assume that there exist two fixed points, $x$ and $y$. It follows that $d((f(x), \ f(y)) = d(x, \ y)$. But $f$ is a
+                            contraction, so there must exist $\alpha < 1$ such that:
+
+                            $$d(f(x), \ f(y)) = d(x, \ y) \leq \alpha d(x, \ y)$$
+
+                            Clearly, no such $\alpha$ exists. It follows that there is <b>at most</b> one fixed point of $f$.
+                            <br><br>
+
+                            Now, let us prove that $f$ is continuous. We pick some $f(x) \in X$ and an open set $V$ around $f(x)$. Since
+                            $X$ is a metric space, there is an $\epsilon$ ball around $f(x)$ that is contained in $V$. Since $f$ is a contraction, we know
+                            that a number $\alpha$ exists that satisfies the criteria in Definition 3.
+                            <br><br>
+
+                            Consider the open ball $B(x, \ \epsilon)$. Let $y$ be an element of the open ball. It is then true that
+                            $d(x, \ y) < \epsilon$. We then know that $d(f(x), \ f(y)) \leq \alpha \epsilon < \epsilon$, for $f(y)$ is in the $\epsilon$-ball
+                            around $f(x)$. It follows that $f(B) \subset V$. This proves continuity.
+
+                            <br><br>
+                            Now, consider the sets of the form $A_n = f^{n}(X)$ where $f^1 = f$ and $f^{n + 1} = f \circ f^n$. Since $f$ is continuous, each $A_n$ will be compact.
+                            In addition, we are operating in a metric space, so it is automatically Hausdorff. This implies that each $A_n$ is closed.
+                            Clealy, $A_{n + 1} \subset A_n$, so it follows that the set of all $A_n$ has the finite intersection property. This implies that:
+
+                            $$A = \displaystyle\bigcap_{n \in \mathbb{Z}^+} A_n$$
+
+                            is non-empty. It is clear that the set of fixed points will be contained in $A$. In addition, if we assume that there is a point $a$ of $A$,
+                            such that $a$ is not a fixed point, 
+                        </div>
+
+                        <div class="lemma">
+                            If $X$ is compact, and $f$ is a shrinking map on $X$, then $f$ has a unique fixed point.
+                        </div>
+
+                        <div class="proof">
+
+                            First, let us assume that there are two fixed points $x, y \in X$. It would then be true that:
+
+                            $$d(f(x), \ f(y)) < d(x, \ y) \ \Rightarrow \ d(x, \ y) < d(x, \ y)$$
+
+                            a clear contradiction. Thus, there is at most one fixed point of the space. Now, we pick some open $V$ of $X$ around some $f(x)$.
+                            There is an $\epsilon$-ball around $f(x)$. Now, consider the $\epsilon$ ball around $x$, which we call $B_x$. For some $y \in B_x$,
+                            we will have $d(f(x), \ f(y)) < d(x, \ y) < \epsilon$, so $f(y)$ is in the $\epsilon$ ball around $f(x)$. It follows that $f$ is continuous.
+                            <br><br>
+
+                            With this fact, we then use the same reasoning from above to conclude that $A$ is non-empty (we define it in the same way).
+                            We pick some $x \in A$ (we know that $A$ is non-empty, from above). We now define the sequence $x_n$ so that:
+
+                            $$f^{n + 1}(x_n) = x$$
+
+                            we then define another sequence: $y_n = f^{n} (x_n)$. Since $X$ is a compact metric space, it is sequentially compact. It follows that
+                            $y_n$ has a convergent subsequence that converges to some point $a$. We index this subsequence as $y_{n_i}$. If we assume that there
+                            exist some $n$ such that $a \notin f^n(A)$, we can employ the same strategy in the above exercises to define an $\epsilon$-neighbourhood around
+                            $a$. Clearly, for such an open set, no $N$ exists such that for $n_k \geq N$, $y_{n_k}$ is contained in the $\epsilon$ neighbourhood, as
+                            any $y_{n_k}$ for $n_k \geq n$ will lie inside $f^n(A)$, and thus outside the open neighbourhood. It follows that $a \in A$.
+                            <br><br>
+
+                            Now, since $y_{n_i} \ \rightarrow \ a$, then $f(y_{n_i}) \ \rightarrow \ f(a)$, so we get:
+
+                            $$f(y_{n_i}) = (f \circ f^{n_i})(x_{n_i}) = f^{n_i + 1}(x_{n_i}) = x$$
+
+                            so it follows that the sequence given by taking the continuous image of each $y_{n_i}$ is the constant sequence, $x$, so $f(a) = x$.
+                            <br><br>
+
+                            This result implies that some $x \in A$ can be written as $f(a) \in f(A)$, so $A \subset f(A)$.
+                            We also note that $f(A) \subset A$. Thus, $f(A) = A$.
+                            <br><br>
+
+                            We then have:
+
+                            $$\text{diam} \ A = \sup\{d(x, \ y) \ | \ x, y \in A\} = \sup\{d(f(x), \ f(y)) \ | \ x, y \in A\} \leq \alpha \sup\{d(x, \ y) \ | \ x, y \in A\}$$
+
+                            so since $\alpha < 1$, it follows that $\text{diam} \ A = 0$. This implies that the set $A$ contains one point.
+                            <br><br>
+
+                            Now, we know that $A$ contains only one point. We have shown that $x \in A$ and $a \in A$, so it must be true that $x = a$. We also know that
+                            $f(a) = x$, so it follows that $f(x) = x$ and $x$ is a fixed point.
+                            <br><br>
+
+                            We have shown that the space contains at most one fixed point, and at least one fixed point. Thus, the space contains exactly one, unique fixed point, and
+                            the proof is complete.
+                        </div>
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

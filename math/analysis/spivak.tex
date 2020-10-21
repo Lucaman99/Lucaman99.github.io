@@ -1,0 +1,166 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim,
+  bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\setlength\parindent{0pt}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\tcbuselibrary{theorems}
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{Spivak Problems and Solutions}
+    \author{Jack Ceroni}
+    \date{October 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \section{Introduction}
+
+    The goal of this set of notes is to solve the most challenging problems in Spivak, and
+    write up the solutions in a clean and concise way. I apologize in advance for any
+    possible mistakes, or instances in which I may skip over certain important points.
+
+    \newpage
+
+    \section{Chapter 3}
+
+    \begin{problem}{3.17}
+      Prove that if $f(x + y) = f(x) + f(y)$ and $f(x \cdot y) = f(x) \cdot f(y)$, where $f(x) \neq 0$, then $f(x) = x$ for all $x$.
+    \end{problem}
+
+    \begin{proof}
+      We go through the steps of the proof, as organized in Spivak:
+
+      \begin{enumerate}
+      \item Clearly, we will have $f(1) = f(1 \cdot 1) = f(1) \cdot f(1)$, so either $f(1) = 0$ or $f(1) = 1$. If we assume that $f(1) = 0$,
+        then this would imply that $f(n) = 0$ for all $n$ (we can prove this by induction, assuming that $f(n) = 0$, and noting that $f(n + 1) = f(n) + f(1) = 0$).
+        This is a contradiction to our initial assumption, so $f(1) = 1$.
+
+      \item First, we note that:
+
+        $$f(0) = f(0 + 0) = f(0) + f(0) \ \Rightarrow \ f(0) = 0$$
+
+        Next, we note that $f(n) = n$, for natural $n$. We prove this by induction, first assuming that $f(n) = n$, then noting that $f(n + 1) = f(n) + f(1) = n + 1$.
+        We then note that $f(-n) = n - n + f(-n) = -n + f(n) + f(-n) = -n + f(0) = -n$. Thus, $f$ is the identity for all integers.
+
+        Now, we can see that:
+
+        $$f\Big(\frac{1}{b}\Big) = \frac{b}{b} \cdot f\Big(\frac{1}{b}\Big) = \frac{1}{b} \cdot f(b) \cdot f\Big(\frac{1}{b}\Big) = \frac{1}{b} \cdot f(1) = \frac{1}{b}$$
+
+        Thus,
+
+        $$f\Big(\frac{a}{b}\Big) = f(a) \cdot f\Big( \frac{1}{b} \Big) = \frac{a}{b}$$
+
+      \item Assume that $x > 0$. It then follows that $\sqrt{x}$ is well-defined and greater than $0$. We then have:
+
+        $$f(x) = f(\sqrt{x} \cdot \sqrt{x}) = f(\sqrt{x}) f(\sqrt{x}) = f(\sqrt{x})^2$$
+
+        we know that for any real number $r$, we have $r^2 \geq 0$, so $f(x) \geq 0$. Assume that $f(x) = 0$.
+        Since $x > 0$, this would imply that:
+
+        $$f(1) = f\Big( \frac{x}{x} \Big) = f(x) \cdot f\Big( \frac{1}{x} \Big) = 0$$
+
+        a clear contradiction. Thus, $f(x) > 0$.
+
+      \item If $x > y$, then we know that $x - y > 0$, so it follows from previous result that:
+
+        $$f(x - y) > 0 \ \Rightarrow \ f(x) - f(y) > 0 \ \Rightarrow \ f(x) > f(y)$$
+
+      \item Assume that there exists some $x$ such that $x < f(x)$. Since there exists a rational number between any two reals, it follows that we have:
+
+        $$x < \frac{a}{b} < f(x)$$
+
+        for some $a/b$. From the previous result, we then get $f(x) < f(a/b)$, a clear contradiction to the right-most inequality above. Similarly, if we assume
+        that $f(x) < x$, we will have:
+
+        $$f(x) < \frac{a}{b} < x$$
+
+        so $f(a/b) < f(x)$, another contradiction. It follows that $f(x) = x$, and we have proved the proposition.
+
+        \end{enumerate}
+    \end{proof}
+
+    \begin{problem}{3.20B}
+      If a function satisfies:
+
+      $$f(y) - f(x) \leq (x - y)^2$$
+
+      for all $, y \in \mathbb{R}$, then $f(x) = c$ for some $c$ and all $x$
+    \end{problem}
+
+    \textit{Part B is the interesting part of this problem, so I skipped writing out Part A}
+
+    \begin{proof}
+      Assume that there exist distinct $x$ and $y$ such that $f(x) \neq f(y)$. Without loss of generality, let $f(x) < f(y)$. It follows that:
+
+      $$f(y) - f(x) \leq (y - x)^2$$
+
+      Consider what happens when we split up the interval from $x$ to $y$ into $n$ ``chunks''. We let:
+
+      $$z_j = \Big(1 - \frac{j}{n} \Big) x + \frac{j}{n} y$$
+
+      so we get $z_0 = x$ and $z_n = y$. Clearly the distance between $z_i$ and $z_{j - 1}$ is given by:
+
+      $$z_{j} - z_{j - 1} = \Big(1 - \frac{j}{n} \Big) x + \frac{j}{n} y - \Big(1 - \frac{j - 1}{n} \Big) x - \frac{j - 1}{n} y = \frac{y - x}{n}$$
+
+      It follows that:
+
+      $$f(z_{j}) - f(z_{j - 1}) \leq (z_{j} - z_{j - 1})^2 =  \frac{(y - x)^2}{n^2}$$
+
+      Now comes the crucial step. Notice that
+
+      $$\displaystyle\sum_{j = 1}^{n} \big( f(z_{j}) - f(z_{j - 1}) \big) = f(z_{n}) - f(z_{0}) = f(y) - f(x)$$
+
+      as the rest of the terms cancel. Thus, we will have:
+
+      $$\displaystyle\sum_{j = 1}^{n} \big( z_{j} - z_{j - 1} \big) \leq \displaystyle\sum_{j = 1}^{n} \frac{(y - x)^2}{n^2} \ \Rightarrow \  f(y) - f(x) \leq n \cdot \frac{(y - x)^2}{n^2} = \frac{(y - x)^2}{n}$$
+
+      for all possible values of $n$. Since we have assume $f(y) \neq f(x)$, it follows that $f(y) - f(x)$ is a positive real number, and that:
+
+      $$\epsilon = \frac{f(y) - f(x)}{(y - x)^2}$$
+
+      is a positive real as well. Thus, this implies that there exists a real number $\epsilon$ such that for any positive integer $n$:
+
+      $$\epsilon \leq \frac{1}{n}$$
+
+      But this clearly contradicts the Archimedean property of the real numbers. We have derived a contradiction, so it follows that for any $x$ and $y$, $f(x) = f(y)$. Thus,
+      the function $f$ is constant.
+
+      \end{proof}
+
+    \end{document}
