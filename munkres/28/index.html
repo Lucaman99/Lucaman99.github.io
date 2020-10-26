@@ -43,7 +43,8 @@
                         It follows that $S$ has no limit point in $[0, \ 1)$. In addition, we can consider the open set $\{1\}$ containing $1$, which clearly does not intersect $S$.
                         <br><br>
 
-                        Thus, we have found an infinite set $S$, such that every point of $[0, \ 1]$ is contained in an open set that does not intersect $S$ at a point other than itself. It follows that
+                        Thus, we have found an infinite set $S$, such that every point of $[0, \ 1]$ is contained in an open set that does not intersect $S$ at a
+                        point other than itself. It follows that
                         $S$ has no limit points, and is thus not limit point compact.
                     </div>
 
@@ -73,10 +74,32 @@
                             can't converge to $x$. Thus, we have a derived a contradiction, and the space must be countably compact.
                             <br><br>
 
-                            Now, assume that the space is countably compact. Let us consider the sequence $x_i$.
+                            <!--
+                            Now, assume that the space is countably compact. Let us consider the sequence $x_i$. We know from the previous section an important theorem
+                            regarding $T_1$ spaces: given some infinite subset $A$ of the $T_1$ space, a point $x$ will be a limit point if and only if every neighbourhood of $x$
+                            intersects $A$ in infinitely many points.
+                            <br><br>
+
+                            Consider the set $A = \{x_n \ | \ n \in \mathbb{Z}^+\}$. Assume that for every $x \in X$, there exists a neighbourhood of $x$ that intersects
+                            $A$ in a finite number of points (we call each of these neighbourhoods $U_x$). For each $U_x$ we then consider the largest $n$ such that $x_n \in U_x$
+                            (we know such an $n$ exist, as there are only a finite number of $x_n$ in each neighbourhood). We then let $U_i$ be the union of all $U_x$ such that
+                            $i$ is the largest $x_i$ in each set.
+                            <br><br>
+
+                            The set of all $U_i$ will be a countable cover, so it will have a finite subcover. But this clearly can't be the case, as for all $U_i$ in the
+                            subcover, there will exist some largest $i$, which we call $k$. Then, by definition, $x_{k + 1}$ is not in any $U_i$ in the subcover, a contradiction.
+                            Thus, there must exist some $x$ such that each neighbourhood of $x$ intersects $A$ in an infinite number of points.
+                            <br><br>
+
+                            We now define a subsequence $y_n$ of $x_n$ that converges to $x$. For each neighbourhood of $x$, we choose $y_1$ arbitrarily
+                            -->
+
                         </div>
 
-                        <br>
+                        <b>Note: </b> This proof is incomplete, as I haven't yet proved that countable compactness implies sequential compactness. This
+                        portion of the proof will be added soon!
+
+                        <br><br>
 
                         <div class="theorem">
                             A space is countably compact if and only if every nested sequence of nonempty closed sets of $X$ has a nonempty intersection.
@@ -102,9 +125,11 @@
 
                             is non-empty. It follows that:
 
-                            $$\displaystyle\bigcap_n C_n = \displaystyle\bigcap_n \Big[ X - \displaystyle\bigcup_{k = 1}^{n} U_k \Big] = X - \displaystyle\bigcup_{n} \displaystyle\bigcup_{k = 1}^{n} U_k$$
+                            $$\displaystyle\bigcap_n C_n = \displaystyle\bigcap_n \Big[ X - \displaystyle\bigcup_{k = 1}^{n} U_k \Big] = X -
+                            \displaystyle\bigcup_{n} \displaystyle\bigcup_{k = 1}^{n} U_k$$
 
-                            is non-empty. Except we know that $\{U_n\}$ covers $X$, so $\cup_{n} \cup_{k = 1}^{n} U_k = \cup_n U_n = X$. Thus the intersection is empty, contradicting the initial assumption
+                            is non-empty. Except we know that $\{U_n\}$ covers $X$, so $\cup_{n} \cup_{k = 1}^{n} U_k = \cup_n U_n = X$. Thus the intersection
+                            is empty, contradicting the initial assumption
                             that any such intersection is non-empty. It follows that there must exist some $m$ such that:
 
                             $$C_n = X - \displaystyle\bigcup_{k = 1}^{m} U_k$$
@@ -113,7 +138,7 @@
 
                         </div>
 
-                        <br>
+                        <br><br>
 
                         <div class="definition">
                             Let $X$ be a metric space. If $f : X \ \rightarrow \ X$ satisfies the condition:
@@ -123,7 +148,7 @@
                             then $f$ is called an <b>isometry</b> of $X$.
                         </div>
 
-                        <br>
+                        <br><br>
 
                         <div class="theorem">
                             If $f$ is an isometry of $X$, and $X$ is compact, then $f$ is a homeomorphism.
@@ -174,7 +199,7 @@
 
                         </div>
 
-                        <br>
+                        <br><br>
 
                         <div class="definition">
                             Let $(X, \ d)$ define a metric space. If $f$ satisfies the condition:
@@ -187,6 +212,8 @@
 
                             for all $x, \ y \in X$, then $f$ is called a contraction.
                         </div>
+
+                        <br><br>
 
                         <div class="lemma">
                             If $f$ is a contraction and $X$ is compact, $f$ has a unique fixed point.
@@ -220,6 +247,8 @@
                             is non-empty. It is clear that the set of fixed points will be contained in $A$. In addition, if we assume that there is a point $a$ of $A$,
                             such that $a$ is not a fixed point, 
                         </div>
+
+                        <br><br>
 
                         <div class="lemma">
                             If $X$ is compact, and $f$ is a shrinking map on $X$, then $f$ has a unique fixed point.
@@ -272,6 +301,56 @@
 
                             We have shown that the space contains at most one fixed point, and at least one fixed point. Thus, the space contains exactly one, unique fixed point, and
                             the proof is complete.
+                        </div>
+
+                        <br><br>
+
+                        <div class="lemma">
+                            The function $f : [0, \ 1] \ \rightarrow \ [0, \ 1]$ given by:
+
+                            $$f(x) = x - x^2/2$$
+
+                            is a shrinking map that is not a contraction.
+                        </div>
+
+                        <div class="proof">
+                            Let us pick two distinct points $x$ and $y$ of $[0, \ 1]$. Without loss of generality, assume that $x < y$. We then have:
+
+                            $$d(f(x), \ f(y)) = \Big| y - y^2/2 - x + x^2/2 \Big|$$
+
+                            we know that $y - x$ is positive. In addition, we see that since $x < y$, $x^2 < y^2$, so:
+
+                            $$d(f(x), \ f(y)) = \Big| y - y^2/2 - x + x^2/2 \Big| < |y - x| = d(x, \ y)$$
+
+                            Thus, the map is a shrinking map. Now, assume that there exists some $\alpha \in [0, \ 1)$ such that:
+
+                            $$|f(x) - f(y)| \leq \alpha d(x, \ y)$$
+
+                            for all $x$ and $y$ in $[0, \ 1]$. It follows that:
+
+                            $$\frac{|f(x) - f(y)|}{|x - y|} \leq \alpha$$
+
+                            From the mean value theorem of calculus, we know that given $x$ and $y$, there exists some $z \in (x, \ y)$ such that:
+
+                            $$f'(z) = 1 - z = \frac{|f(x) - f(y)|}{|x - y|} \leq \alpha$$
+
+                            Let us pick $x = 0$ and $y = 1 - \alpha$. We then must have $z \in (0, \ 1 - \alpha)$, so $z < 1 - \alpha$, which
+                            implies that $1 - z > \alpha$. But this is clearly a contradiction to the above equation. Thus, no such $\alpha$ exists,
+                            and the map is not a contraction.
+                        </div>
+
+                        <br><br>
+
+                        <div class="lemma">
+                            The map $f : \mathbb{R} \ \rightarrow \ \mathbb{R}$ given by:
+
+                            $$f(x) = \frac{x + (x^2 + 1)^{1/2}}{2}$$
+
+                            is a shrinking map that is not a contraction and has no fixed point.
+                        </div>
+
+                        <div class="proof">
+                            Now, we show that $f$ is not a contraction. Assume that some $\alpha$ exists such 
                         </div>
                 </p>
                 <br><br><br><br>

@@ -49,12 +49,42 @@
     \section{Solutions}
 
     \begin{problem}
-      Find:
+      We define the sequence $x_i$ as $x_1 = a$ and:
 
-      $$\displaystyle\sum_{n = 1}^{\infty} \frac{n}{n^4 + n^2 + 1}$$
+      $$x_{n + 1} = \frac{x_n^2 + b^2}{2}$$
+
+      Find the area of the region covered by the points of the set:
+
+      $$S = \{(a, \ b) \ | \ x_n \ \text{converges}\}$$
     \end{problem}
 
     \begin{proof}
+
+      We begin by noting the necessary conditions for convergence of the sequence. Clearly, as $n \ \rightarrow \ \infty$,
+      the elements $x_n \ \rightarrow \ c$, where $c$ is a constant. It follows that the quantity $x_{n + 1} - x_n \ \rightarrow \ 0$ as
+      $n$ becomes larger. We note that:
+
+      $$d_n = x_{n + 1} - x_{n} = \frac{x_n^2 + b^2}{2} - x_n$$
+
+      Notice that this equation is parabolic in $x_n$. We complete the square, giving us:
+
+      $$d_n = \frac{1}{2} (x_n - 1)^2 + \frac{b^2 - 1}{2}$$
+
+      When $d_n = 0$, we will have:
+
+      $$(x_n - 1)^2 + b^2 - 1 = 0 \ \Rightarrow \ x_n = 1 \pm \sqrt{1 - b^2}$$
+
+      It follows that as $d_n \ \rightarrow \ 0$, it must be true that $x_n \ \rightarrow \ 1 \pm (1 - b^2)^{1/2}$. It follows
+      that the allowed values of $b$ are in the interval $[-1, \ 1]$.
+      \newline
+
+      Now, given some $b$, we turn our attention to the allowed values of $a$. Let us first consider the necessary conditions for
+      $x_n$ to approach $1 + (1 - b^2)^{1/2}$.
+      \newline
+
+      Thus, it follows that the area enclosed by this region is given by:
+
+      $$2 \displaystyle\int_{-1}^{1} 1 + \sqrt{1 - b^2} db = 4 + \pi$$
 
       \end{proof}
 

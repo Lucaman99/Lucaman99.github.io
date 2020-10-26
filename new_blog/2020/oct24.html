@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <title>Website</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" id="">
+        </script>
+    </head>
+
+    <body style="padding-bottom:30px;">
+        <div style="margin-left:20vw;margin-right:20vw;text-align:left">
+            <br><br>
+            <b>Playing with $\pi$</b>
+            <br>
+            <div style="padding-top:10px;">
+                <b style="font-size:12px;color:gray;">October 26th, 2020</b>
+            </div>
+            <br>
+
+            <p>
+                <i>
+                    While browsing math Twitter today, I came across an interesting problem. In addition to this, a few days ago, I was doing a problem set for an
+                advanced Putnam training group which I am trying (and struggling) to keep up with, and I came across another incredibly elegant problem.
+                Both problems involve $\pi$ in interesting ways, with its emergence in the second problem being much, <b>much</b> more unexpected than the first. Nevertheless,
+                I thought the title of this post was fitting to both.
+                <br><br>
+
+                My solution to the second problem is slightly more "iffy" than my solution to the first, but I'll do my best to explain my reasoning.
+            </i>
+            </p>
+            <br>
+
+            <hr class="line">
+            <br>
+
+            <b>Problem 1</b>
+            <br>
+
+            <center>
+                <img src="assets/triangle.png" style="width:400px;">
+            </center>
+
+            <p>
+            <i>Given an equilateral triangle of side-length $1$, what is the total area of
+                circles that can be packed inside the triangle as the radius approaches $0$?</i>
+            <br><br>
+
+            Let's begin by assuming that we have cirlces of radius $R$ and are interested in finding out how many we can fit inside of the triangle. We will make the assumtpion
+            that circles are being packed as shown in the figure, where we fill up the bottom row, then the next row, and so on.
+            <br><br>
+
+            Along the bottom of the triangle, we are able to pack circles so that the sum of these diameters equal the distance from the left side to the right side of the triangle, at a
+            distance of $R$ above the base. Then the next row can be packed from side to side a distance of $3R$ above the base, and so on, until we reach the top. Thus, for row $n$, the distance
+            along with circles can be packed is given by $1 - 2
+
+            $$\tan \theta = \frac{(2n - 1)R}{d} \ \Rightarrow \ d = \frac{(2n - 1)R}{\tan \theta} = $$
+
+            </p>
+
+
+        </div>
+    </body>
+</html>
+
+<style>
+ body {
+     font-family:"Lucida Console", Monaco, monospace
+ }
+ p {
+     font-size:12px;
+ }
+ .line {
+     border:0;
+     height:1px;
+     background-image:-webkit-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-moz-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-ms-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0);
+     background-image:-o-linear-gradient(left,#f0f0f0,#8c8b8b,#f0f0f0)
+ }
+ a:hover{text-decoration:none;color:grey}a{color:#000}
+</style>

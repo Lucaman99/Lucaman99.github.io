@@ -148,7 +148,8 @@
 
       as the rest of the terms cancel. Thus, we will have:
 
-      $$\displaystyle\sum_{j = 1}^{n} \big( z_{j} - z_{j - 1} \big) \leq \displaystyle\sum_{j = 1}^{n} \frac{(y - x)^2}{n^2} \ \Rightarrow \  f(y) - f(x) \leq n \cdot \frac{(y - x)^2}{n^2} = \frac{(y - x)^2}{n}$$
+      $$\displaystyle\sum_{j = 1}^{n} \big( z_{j} - z_{j - 1} \big) \leq \displaystyle\sum_{j = 1}^{n}
+      \frac{(y - x)^2}{n^2} \ \Rightarrow \  f(y) - f(x) \leq n \cdot \frac{(y - x)^2}{n^2} = \frac{(y - x)^2}{n}$$
 
       for all possible values of $n$. Since we have assume $f(y) \neq f(x)$, it follows that $f(y) - f(x)$ is a positive real number, and that:
 
@@ -161,6 +162,46 @@
       But this clearly contradicts the Archimedean property of the real numbers. We have derived a contradiction, so it follows that for any $x$ and $y$, $f(x) = f(y)$. Thus,
       the function $f$ is constant.
 
+    \end{proof}
+
+    \section{Chpater 5}
+
+    \begin{problem}{5.20}
+      If $f(x) = x$ for rational $x$ and $f(x) = -x$ for irrational $x$, show that $\lim_{x \to a} f(x)$ does not exist for $a \neq 0$.
+    \end{problem}
+
+    \begin{proof}
+      Assume that there exists some non-zero $a$ such that:
+
+      $$\lim_{x \to a} f(x) = L$$
+
+      It follows that for any $\epsilon > 0$, we can choose a $\delta$ such that if $|x - a| < \delta$, then $|f(x) - L| < \epsilon$. We begin by considering the case when $a > 0$.
+      We let $\epsilon = a$ and assume that we can choose a $\delta$ such that:
+
+      $$|x - a| < \delta \ \Rightarrow \ |f(x) - L| < a$$
+
+      Now, since there exists a rational and an irrational number between any two reals, we pick rational $r$ and irrational $i$ from the interval $(a, \ a + \delta)$. We will then have:
+
+      $$|r - a| < \delta \ \Rightarrow \ |r - L| < a$$
+      $$|i - a| < \delta \ \Rightarrow \ |-i - L| = |i + L| < a$$
+
+      So we will have:
+
+      $$|(r - L) + (i + L)| = |r + i| \leq |r - L| + |i + L| < 2a$$
+
+      But this is a contradiction, as $a < i, \ r$, so $2a < i + r$. Thus, we can choose no such $\delta > 0$, and the limit does not exist.
+      \newline
+
+      Now, assume that $a < 0$. We let $\epsilon = |a|$ and assume that we can choose a corresponding $\delta$. We then choose rational and irrational $r, i \in (a - \delta, a)$.
+      Similar to above, we get:
+
+      $$|(r - L) + (i + L)| = |r + i| \leq |r - L| + |i + L| < 2|a|$$
+
+      But this is a contradiction, as $i, r < a$, so $i + r < 2a$, which implies that $|i + r| > 2|a|$ (as $a$, $i$, and $r$ are negative). Thus, we can choose no such $\delta$, and the limit does
+      not exist.
+      \newline
+
+      We conclude that the limit does not exist for any $a > 0$, and any $a < 0$, making $a = 0$ the only point at which the limit exists.
       \end{proof}
 
     \end{document}
