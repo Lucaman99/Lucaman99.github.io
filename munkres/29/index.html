@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Section 29</h2>
+                <br>
+                <p>
+
+                    <b>Problem 2</b>
+
+                    <div class="theorem">
+                        If $\prod_{\alpha} X_{\alpha}$ is locally compact, then each $X_{\alpha}$ is locally compact, and $X_{\alpha}$ is compact for all but finitely
+                        many values of $\alpha$.
+                    </div>
+
+                    <div class="proof">
+                        Since $X = \prod_{\alpha} X_{\alpha}$ is locally compact in the product topology, we know that for every point $\boldsymbol x \in X$, there exists a
+                        compact subspace of $X$ that contains a neighbourhood of $U$. Let us choose $x_\alpha \in X_\alpha$.
+                        We define $\boldsymbol x$ so coordinate $\alpha$ of $\boldsymbol x$ is $x_\alpha$. By definition, we then have:
+
+                        $$\boldsymbol x \in B \subset U \subset C$$
+
+                        where $B$ is a basis element of the product topology (a product of open sets of each $X_\alpha$, where
+                        each set is equal to $X_\alpha$ except for finitely many values of $\alpha$) and $C$ is compact in $X$.
+                        <br><br>
+
+                        Clearly, $\pi_\alpha$ is a continuous map, so it maps the compact subspace $C$ to a compact subspace $\pi_\alpha(C)$ of
+                        $X_\alpha$, where $x_\alpha \in U_\alpha \subset \pi_\alpha(C)$. It follows that each $X_\alpha$ is locally compact.
+                        <br><br>
+
+                        Furthermore, let us pick some $\boldsymbol x \in X$. We know that each coordinate of $\boldsymbol x$ (Which we denote $x_\alpha$) is contained
+                        in some $U_\alpha$, which is itself contained in $\pi_\alpha(C)$. However, we know that only for finitely many $\alpha$ is $U_\alpha \neq X_\alpha$.
+                        Thus, for the rest of $\alpha$ values, we have
+                        $X_\alpha \subset \pi_\alpha(C)$ and $\pi_\alpha(C) \subset X_\alpha$, so $X_\alpha = \pi_\alpha(C)$. Since $\pi_\alpha(C)$ is compact,
+                        it follows that $X_\alpha$ is compact.
+                        <br><br>
+
+                        This completes the proof: $X_\alpha$ will be compact except for finitely many values of $\alpha$.
+
+                    </div>
+
+                    <div class="theorem">
+                        Assuming the Tychonoff theorem, if each $X_\alpha$ is locally compact, and each $X_\alpha$ is compact, except for
+                        finitely many values of $\alpha$, then $X = \prod_\alpha X_\alpha$ is also locally compact.
+                    </div>
+
+                    <div class="proof">
+
+                        Let us pick some $\boldsymbol x$ of $X$. We know that $x_\alpha \in U_\alpha \subset C_\alpha$, where
+                        $C_\alpha$ compact in $X_\alpha$. We also know that $U_\alpha = X_\alpha$, except for finitely many values of
+                        $\alpha$. This allows us to conclude that:
+
+                        $$\boldsymbol x \in U_{\alpha_1} \times \ \cdots \ \times U_{\alpha_n} \times \prod_{j} X_j \subset \prod_{\alpha} C_{\alpha}$$
+
+                        We know that $\prod_{\alpha} C_\alpha$ is compact so it follows by definition that $X$ is locally compact.
+
+                    </div>
+
+                    <br><br>
+
+                    <b>Problem 3</b>
+
+                    <div class="prop">
+                        If $f$ is open and continuous, $f(X)$ is locally compact.
+                    </div>
+
+                    <div class="proof">
+
+                        Let $X$ be a locally compact space. Let us assume that $f$ is continuous. Since for each $x$, we can choose $U$ and $C$, such
+                        that $x \in U \subset C$. We then know that $x \in f(U) \subset f(C)$. Since $f$ is continuous, $f(C)$ is comapact. However,
+                        unless $f$ is open, $f(U)$ is not necessarily open (if it is open, then $f(U)$ is open, so $f(X)$ is locally compact).
+                    </div>
+
+                    <div class="theorem">
+                        If $f : X_1 \ \rightarrow \ X_2$ is a homeomorphism of locally compact Hausdorff spaces, then $f$ extends to a
+                        homeomorphism of their one-point compactifications.
+                    </div>
+
+                    <div class="proof">
+
+                        We define a new bijection $g$ from $X_1 \cup \{\infty_1\}$ to $X_2 \cup \{\infty_2\}$, such that $g(x) = f(x)$ if $x \in X_1$ and $g(\infty_1) = \infty_2$, where
+                        $\infty_1$ and $\infty_2$ are the added points in the one-point compactifications of $X_1$ and $X_2$ respectively.
+                        <br><br>
+
+                        We know that the open set of $X_2 \cup \{\infty_2\}$ are all of the open sets of $X_2$ and all sets of the form $X_2 - C$, where
+                        $C$ is a compact subspace of $X_2$. Clearly, $g^{-1}(U) = f^{-1}(U)$ when $U$ is open in $X_2$, and is thus open in $X_1$
+                        (and therefore $X_1 \cup \{\infty_1\}$) as $f$ is continuous.
+                        <br><br>
+
+                        In addition:
+
+                        $$f^{-1}(X_2 - C) = f^{-1}(X_2) - f^{-1}(C) = X_1 - f^{-1}(C)$$
+
+                        Since $f^{-1}$ is continuous, $f^{-1}(C)$ is compact in $X_1$. Therefore, $X_1 - f^{-1}(C)$ is open in $X_1 \cup \{\infty_1\}$ and
+                        $g$ is continuous
+                        <br><br>
+
+                        An essentially identical argument shows that $g^{-1}$ is also continuous. Therefore, $g$ is a homeomorphism between $X_1 \cup \{\infty_1\}$ and
+                        $X_2 \cup \{\infty_2\}$ and the proof is complete.
+
+                    </div>
+
+                    <div class="theorem">
+                        If $p : X \ \rightarrow \ Y$ is a quotient map and if $Z$ is a locally compact Hausdorff space, then the map:
+
+                        $$\pi = p \times i_Z : X \times Z \ \rightarrow \ Y \times Z$$
+
+                        is a quotient map.
+                    </div>
+
+                    <div class="proof">
+                        Recall the definition of the quotient map: a map $p : X \ \rightarrow \ Y$ is a quotient map when $U$ is open if and only if $p^{-1}(U)$ is open.
+                        Equivalently, a quotient map is a continuous map that takes saturated open sets to open sets
+                        <br><br>
+
+                        Clearly, $\pi$ is the product of two continuous functions, so it will be continuous itself.
+                        <br><br>
+
+                        Now, let us consider some saturated open set $U$ of $X \times Z$. We will then have $U = \pi^{-1}(A)$, where
+                        $A$ is a subset of $Y \times Z$.
+                        <br><br>
+
+                        We pick some $x \times y \in \pi^{-1}(A)$. Since $\pi^{-1}(A)$ is open, we can choose a basis element $U_1 \times W$ containing $x \times y$.
+                        In addition, since $Z$ is locally compact, we can choose some $V \subset U$ such that $\bar{V}$ is compact and $V \subset W$, giving us:
+
+                        $$x \times y \in U_1 \times V \subset U_1 \times \bar{V} \subset U_1 \times W \subset \pi^{-1}(A)$$
+
+                        Now, we will define a sequence of open sets as follows: Given $U_i \times \bar{V}$, we will choose an
+                        open set $U_{i + 1}$ containing $p^{-1}(p(U_i))$ such that $U_{i + 1} \times \bar{V} \subset \pi^{-1}(A)$.
+                        To do this, we will use the tube lemma.
+                        <br><br>
+
+                        We have already defined $U_1$ above. To define subsequent $U_i$, we
+                        consider the subspace $X \times \bar{V}$ of $X \times Z$. Since $\pi^{-1}(A)$ is open in $X \times Z$, we know that
+                        $\pi^{-1}(A) \cap (X \times \bar{V})$ will be open in $X \times \bar{V}$. Since this set contains $U_i$, it will also
+                        contain $p^{-1}(p(U_i))$, as $\pi^{-1}(A)$ is saturated.
+                        <br><br>
+
+                        Now, for each $x \in p^{-1}(p(U_i))$, we consider the slice $x \times \bar{V}$. Since $\bar{V}$ is compact and
+                        $\pi^{-1}(A) \cap (X \times \bar{V})$ is open, the tube lemma
+                        tells us that we can choose some open $W_x \subset X$ such that:
+
+                        $$W_x \times \bar{V} \subset \pi^{-1}(A) \cap (X \times \bar{V})$$
+
+                        We let $U_{i + 1} = \cup_{x} W_x$. Clearly, this set will be open in $X$, will contain $p^{-1}(p(U_i))$, and
+                        $U_{i + 1} \times \bar{V} \subset \pi^{-1}(A)$.
+                        <br><br>
+
+                        Note that using the method we defined above:
+
+                        $$x \times y \in U_1 \times V \subset U_2 \times V \subset U_3 \times V \subset \cdots$$
+
+                        Finally, we note that:
+
+                        $$U = \displaystyle\bigcup_{i} U_i$$
+
+                        is open in $X$. In addition, given some $u \in U_i$, we note that $u \in p^{-1}(p(U_i))$. In addition, given some
+                        $u \in p^{-1}(p(U_i))$, we know that $u \in U_{i + 1}$ (this is direct consequence of how we defined each $U_i$). Therefore:
+
+                        $$\displaystyle\bigcup_{i} U_i = \displaystyle\bigcup_{i} p^{-1}(p(U_i)) = p^{-1} \Bigg( \displaystyle\bigcup_{i} p(U_i) \Bigg)$$
+
+                        so not only is $U$ open, but it is saturated with respect to $p$. We conclude that $x \times y \in U \times V \subset \pi^{-1}(A)$.
+                        <br><br>
+
+                        Given some $\boldsymbol p = x \times y \in \pi^{-1}(A)$, let $U_{\boldsymbol p} \times V_{\boldsymbol p}$ be the
+                        open neighbourhood containing $\boldsymbol p$ that we defined above. We will have:
+
+                        $$\pi^{-1}(A) = \displaystyle\bigcup_{\boldsymbol p} (U_{\boldsymbol p} \times V_{\boldsymbol p})$$
+
+                        So:
+
+                        $$\pi(\pi^{-1}(A)) = \pi \Bigg( \displaystyle\bigcup_{\boldsymbol p} (U_{\boldsymbol p} \times V_{\boldsymbol p}) \Bigg) =
+                        \displaystyle\bigcup_{\boldsymbol p} p(U_{\boldsymbol p}) \times i_Z(V_{\boldsymbol p})$$
+
+                        Since $U_{\boldsymbol p}$ is a saturated open set and $p$ is a quotient map, $p(U_{\boldsymbol p})$ will also be open. Clearly,
+                        $i_Z(V) = V$ is open. Therefore $\cup_{\boldsymbol p} p(U_{\boldsymbol p}) \times i_Z(V_{\boldsymbol p})$ is open in $Y \times Z$.
+                        <br><br>
+
+                        It follows that $\pi(\pi^{-1}(A)$ is open, implying that $\pi$ takes saturarated open sets to open sets. Combining this with
+                        continuity (which we proved above), we conclude that $\pi$ is a quotient map.
+
+                    </div>
+
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

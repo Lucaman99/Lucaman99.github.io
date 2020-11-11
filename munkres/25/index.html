@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['(',')']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Section 25</h2>
+                <br>
+                <p>
+
+                    <div class="theorem">
+                        Assume thaat $\mathbb{R}^2$ is path-connected. If $A$ is countable, then $\mathbb{R}^2 - A$ is also path-connected.
+                    </div>
+
+                    <div class="proof">
+
+                        We attempt to form a path from $(x_1, \ y_1)$ to $(x_2, \ y_2)$ by finding straight lines through both points that intersect, and then
+                        using the pasting lemma to "join" these maps together. More specifically, if.
+
+                    </div>
+
+                    <div class="theorem">
+                        Let $X$ denote the set of all rational points of the interval $[0, \ 1] \times 0$ of $\mathbb{R}^2$. Let $T$ denote the set of all line-segments
+                        joining the point $p = 0 \times 1$ to points of $X$. Show that $T$ is path-connected, but locally connected only at $p$.
+                    </div>
+
+                    <div class="proof">
+                        Consider the points $x \times 0$ and $y \times 0$ of $T$. Each of these points will lie on some line segement
+                        connecting them to the point $p = 0 \times 1$. Thus, we define the maps $f_1 : [0, \ 1/2] \ \rightarrow \ T$ and $f_2 : [1/2, \ 1] \ \rightarrow \ T$
+                        such that:
+
+                        $$f_1(t) = ( (1 - 2t)x, \ 2t) \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \ f_2(t) = ( (2t - 1)y, \ 2 - 2t)$$
+
+                        Clearly both maps are continuous. Therefore, we can use the pasting lemma to conclude that the function $f$ defined as $f(x) = f_1(x)$ for $x \in [0, \ 1/2]$
+                        and $f(x) = f_2(x)$ for $x \in [1/2, \ 1]$ is a continuous map from $[0, \ 1]$ to $T$ such that $f(0) = x \times 0$ and $f(1) = y \times 0$. It follows that
+                        $T$ is path-connected.
+                        <br><br>
+
+                        Now, we prove local connectedness only occurs at points $p$. 
+
+                    </div>
+
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

@@ -55,6 +55,10 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 	     	that $[a, \ b)$ and $[b, \ c)$ have order type $[0, \ 1)$.
 	</div>
 
+  <br>
+
+  <b>Part B</b>
+
 	<div class="lemma">
 		Let $X$ be an ordered set. Let $x_0 \ < \ x_1 \ < \ ...$ be an increasing sequence of points of $X$. Suppose that $b \ = \ \sup \{x_i\}$. 
 	     $[x_0, \ b)$ has order type of $[0, \ 1)$ if and only if each interval $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$.
@@ -74,12 +78,43 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 		$g(x) \ = \ g_k(x)$ for some $k$. It follows that the image of each point in the domain is well-defined.
 	</div>
 
+  <br>
+
 	<b>Part C</b>
 
 	<div class="lemma">
 	Let $a_0$ be the smallest element of $S_{\Omega}$. For each element $a$ of $S_{\Omega}$ (different from $a_0$), the interval $[a_0 \ \times \ 0, \ a \ \times \ 0)$ of $S_{\Omega} \ \times \ [0, \ 1)$ 
 	has order type $[0, \ 1)$.
 	</div>
+
+  <div class="proof">
+      As is suggested by Munkres, we will proceed by transfinite induction. Let $J$ be the set of all $\alpha$ such that $[a_0 \times 0, \ \alpha \times 0)$ has the order type $[0, \ 1)$.
+      We will assume that for some $a \in S_{\Omega}$, that $S_a \subset J$, and prove that $a \in J$, which will imply that $J = S_{\Omega} - \{a_0\}$.
+      <br><br>
+
+      Given some $a$, we know, by definition of $S_{\Omega}$, that $S_a$ will be counbtable. In the case that $S_a$ is finite, it will have a maximal element, so $a$ will have an
+      immediate predecessor, $b$. We then know that $[a_0 \times 0, \ b \times 0)$ has order type $[0, \ 1)$. We also note that the interval $[b \times 0, \ a \times 0) = b \times [0, \ 1)$
+      will clearly have order type $[0, \ 1)$. Thus, from Part A, we conclude that $[a_0 \times 0, \ a \times 0)$ has order type $[0, \ 1)$, so $a \in J$.
+      <br><br>
+
+      In the case that $S_a$ is countably infinite, with $a$ as the least upper bound of this set. We define a sequence of elements of $S_a$ as follows: let $x_0 = a_0$, then
+      let:
+      $$x_i = \min \{S_a - \{x_0, \ ..., \ x_{i - 1}\} \}$$
+
+      (we know that such a minimal element will exist as $S_{\Omega}$ is well-ordered). Since $S_a$ is countable, this
+      will yield a strictly increasing, countable sequence of the elements of $S_a$. Since each $x_i \in S_a$, it follows that:
+
+      $$[x_i \times 0, \ x_{i + 1} \times 0) = x_i \times [0, \ 1)$$
+
+      So each $[x_i \times 0, \ x_{i + 1} \times 0)$ has order type $[0, \ 1)$. Thus, by Part B, $[a_0 \times 0, \ a \times 0)$ has order type $[0, \ 1)$,
+      as $a = \sup\{x_i\}$.
+      <br><br>
+
+      We have shown in both cases that $[a_0 \times 0, \ a \times 0)$ has order type $[0, \ 1)$, so our proof by transfinite induction is complete.
+
+  </div>
+
+  <br>
 
 	<b>Part D</b>
 
@@ -88,8 +123,15 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 	</div>
 
 	<div class="proof">
-		Let us choose two points $a \ \times \ c$ and $c \ \times \ d$ of $S_{\Omega} \ \times \ [0, \ 1)$. Firstly, we know that $a \ \times \ c$ will 
-		clearly be connected by a path to $a \ \times \ 0$. 
+		  Let us choose two points $a \ \times \ c$ and $d \ \times \ d$ of $S_{\Omega} \ \times \ [0, \ 1)$. We consider the continuous map
+
+      $$f_1 : [0, \ 1/3) \ \rightarrow \ [a \times c, \ a \times 1) = a \times [c, \ 1)$$
+
+      Clearly, such a map exists (it will be of the same form as the maps in the previous sections). Now, let $R_a$ be the set of all $s \in S_{\Omega}$ such that
+      $a < s$. Since the set is well-ordered, it follows that such a set has a minimum, $r$. We define the continuous map:
+
+      $$f_2 : [1/3, \ 2/3) \ \rightarrow \ [r \times 0, \ b \times 0)$$. 
+
 	</div>
 
 	</p>

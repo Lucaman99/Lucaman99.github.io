@@ -1,0 +1,65 @@
+#+TITLE:Topology Intuition Glossary
+#+DESCRIPTION: Intuitive definitions for different concepts in topology, along with some proofs that help to illuminate these ideas
+#+HTML_HEAD: <style> body {width:900px; margin-left:20vw;} </style>
+
+* General Topology
+
+** The Basics: Set Theory
+
+   Theorem + Intuition: Any countable subset of the minimal uncountable set $S_{\Omega}$ has an upper bound in $S_{\Omega}$.
+
+   The main idea behind this theorem is that we can't "squish" an uncountable number of points into an arbitrarily small interval.
+
+   $\Omega$ will be an upper bound on any such set $A$, in the set $S_{\Omega} \cup \{\Omega\}$. 
+   Since the set in which we are operating is well-ordered, the set of upper bounds on $A$ will have a minimal element. Assume that $\Omega$ is this 
+   minimum element. This will imply that for any $x \in S_{\Omega}$, there will exist some $a \in A$ such that $x < a$, so $x \in S_a$, which will be 
+   countable, by definition of the set $S_\Omega$.
+
+   Now, this implies that:
+
+   $$S_\Omega = \displaystyle\bigcup_{n \in \mathbb{N}} a_n$$
+
+   where $A$ is countable, so each $a_n \in A$ can be labelled with a natural number. This implies that $S_\Omega$ is a countable union of countable sets, 
+   which is itself countable. This is a clear contradiction, so $\Omega$ can't be the least upper bound of $A$, implying that 
+   it has some bound in $S_\Omega$.
+
+** Open and Closed Sets
+   
+   - The best way to think about open sets is a generalization of its counterpart in real analysis (open intervals). In analysis, 
+     if we have some point $x$, and we are interested in all of the points that are "close enough" to this point $x$, then 
+     we can consider sets of the form $(x - \epsilon, \ x + \epsilon)$, for some $\epsilon$.
+     
+   - The farther points are from one another, we will be able to pick "fewer" intervals that contain both points.
+   
+   - In topology, an open set generalizes this idea. If two points are "close enough" to one another, they will be contained in an open set.
+     The "closer" two points are, the more open sets will contain both points. 
+
+   - Note that we have to choose exactly what we mean by "closeness" of points when we *define* the topology (choose which subsets of a space are open). 
+     For example, in the discrete topology, every subset is an open set, so all of the points are "equally" close together.
+
+** Uniform Properties
+
+   /What is uniform about the uniform topology?/ - Me
+
+** Connectedness and Local Connectedness and Path Connectedness
+
+   - Here's an example: the topologist's sine curve, $\bar{S}$, where:
+
+     $$S = \{(x, \ x \sin \frac{1}{x}) \ | \ x \in \mathbb{R}\}$$
+
+     is connected but not locally connected. Why is this the case? Well, the main idea, in my humble opinion, is that this strange looking 
+     sine curve is effectively one very long line in the plane $\mathbb{R}^2$, so it will be connected. However, when we examine 
+     each point along the vertical $0 \times [-1, \ 1]$, we can notice that 
+
+** Components
+
+** Compactness
+     
+** Local Compactness and Compactifications
+
+   - The main idea behind constructing a compactification of some locally compact Hausdorff space is to 
+     turn it into a slightly larger compact Hausdorff space (such spaces behave nicely). To do this, we 
+     add a "point at infinity" to the original space, as well as a bunch of extra open set to account for the extra 
+     point.
+   
+   - 
