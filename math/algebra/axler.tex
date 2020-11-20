@@ -1,5 +1,5 @@
 \documentclass[10pt, oneside]{article} 
-\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
+\usepackage{amsmath, amsthm, amssymb, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{tcolorbox}
 
@@ -11,21 +11,13 @@
 
 \addbibresource{ref.bib}
 
-\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=1.25in, rmargin = 1.25in}
 \setlength\parindent{0pt}
 
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
 \tcbuselibrary{theorems}
-\newtcbtheorem
-    []% init options
-    {problem}% name
-    {Problem}% title
-    {%
-      fonttitle=\bfseries,
-    }% options
-    {prob}% prefix
 
     \newcommand{\R}{\mathbb{R}}
     \newcommand{\C}{\mathbb{C}}
@@ -43,9 +35,11 @@
     \newtheorem{prop}{Proposition}
 
     \newcommand{\tr}{\mathrm{Tr}}
+    \newcommand{\pow}{\mathcal{P}}
+     \newcommand{\Null}{\text{null}}
 
 
-    \title{}
+    \title{Axler Algebra Problems and Solutions}
     \author{Jack Ceroni}
     \date{}
 
@@ -56,6 +50,296 @@
 
     \vspace{.25in}
 
-    % Write stuff here!
+    \newpage
+
+    \section{Section 3B}
+
+    \begin{problem}{3.12}
+
+      Suppose that $V$ is finite-dimensional and $T \in \mathcal{L}(V, \ W)$. Prove that there exists a subspace
+      $U$ of $V$ such that $U \cap \text{null} \ T = \{0\}$ and $\text{range} \ T = \{Tu : u \in U\}$.
+
+      \end{problem}
+
+      \begin{proof}
+
+      Let us consider a basis $B$ of $\Null \ T$. We then choose some basis $B'$ of $V$, which, by rank-nullity theorem, will
+      have cardinality greater than or equal to $B$. We use $B$ to extend $B'$ to a basis $C$ of $V$ (which we can do, as each $B'$
+      is linearly independent).
+      \newline
+
+      Let $U = \text{span}(C - B')$ (linear combinations of
+      the elements in the new basis that are not in $B'$). We assert that this is the $U$ that satisfies these
+      conditions.
+      \newline
+
+      Firstly, it is clear that $U$ and $\text{null} \ T$ contain the zero vector. In addition, if there were some non-zero vector $v$
+      in $U$ and $\text{null} \ T$, this would imply that there exist coefficients such that:
+
+      $$v = a_1 u_1 + \ \cdots \ + a_n u_n = b_1 v_1 + \ \cdots \ + b_m v_m$$
+
+      where $u_i \in U$ and $v_i \in B'$. We know that $U \cup B'$ forms a basis for $V$, so the above equation implies that:
+
+      $$a_j u_j = b_1 v_1 + \ \cdots \ + b_m v_m -  a_1 u_1 + \ \cdots \ + a_{j - 1} v_{j - 1} - a_{j + 1} v_{j + 1} + \ \cdots \ + a_n u_n$$
+
+      where we know that at least one $a_i$ (namely $a_j$) is non-zero, and at least one $b_i$ is non-zero to conclude that the existence of
+      $v$ violates the linear independence of $U \cup B'$.
+      \newline
+
+      Clearly, $\{Tu : u \in U\} \subset \text{range} \ T$. In addition, we pick some $T(x) \in \text{range} \ T$. We have:
+
+      $$x = a_1 u_1 + \ \cdots \ + a_n u_n + b_1 v_1 + \ \cdots \ + b_m v_m$$
+
+      as $U \cup B'$ is a basis for $V$. We then get:
+
+      $$T(x) =  T(a_1 u_1 + \ \cdots \ + a_n u_n) + T(b_1 v_1 + \ \cdots \ + b_m v_m) = T(a_1 u_1 + \ \cdots \ + a_n u_n) = T(u)$$
+
+      where $u \in U$. Thus, $\text{range} \ T \subset \{Tu : u \in U\}$. We have inclusion both ways, so $\{Tu : u \in U\} = \text{range} \ T$.
+      This completes the proof.
+
+      \end{proof}
+
+      \begin{problem}{3.19}
+
+        Suppose that $V$ and $W$ are finite dimensional and $U$ is a subspace of $V$. Prove that there exists $T \in \mathcal{L}(V, \ W)$ such that
+        $\Null T = U$ if and only if $\dim U \geq \dim V - \dim W$.
+
+      \end{problem}
+
+      \begin{proof}
+
+        First, assume that exists such a $T$. From rank-nullity theorem, we have:
+
+        $$\dim V = \dim \text{range} \ T + \dim \Null T = \dim \text{range} \ T + \dim U \leq \dim W + \dim U$$
+
+        which clearly implies that $\dim U \geq \dim V - \dim W$. Conversely, assume that $\dim U \geq \dim V - \dim W$.
+        Consider the basis $u_1, \ ..., \ u_n$ of $U$. We extend this to a basis for $V$ by adding vectors $v_1, \ ..., \ v_m$.
+        \newline
+
+        We define $T$ to be the map that takes each $u_k$ to $0$. We define a basis for $W$, which we label $w_1, \ ..., \ w_r$.
+        We know that $\dim W \geq \dim V - \dim U$, which is equal to the number of vectors $v_k$. Thus, we are able to assign
+        each $v_k$ to some vector $w_s$ of the basis for $W$.
+        \newline
+
+        We have assigned values to each basis vector of $V$, which means that $T$ is linear. In addition, it is clear that $\Null T = U$.
+
+      \end{proof}
+
+    \begin{problem}{3.26}
+      Suppose $D \in \mathcal{L}(\mathcal{P}(\mathbb{R}), \ \mathcal{P}(\mathbb{R}))$ is such that $\deg \ Dp = (\deg \ p) - 1$ for
+      every non-constant polynomial $p \in \pow(\R)$. Prove that $D$ is surjective.
+    \end{problem}
+
+    \begin{proof}
+
+      Consider some $p \in \pow(\R)$ such that the degree of $p$ is $n$. Consider the subset $\{x^{n + 1}, \ x^n, \ ..., \ x\}$ of $\pow(\R)$.
+      We map each of these terms under $D$ to get the set $B = \{D(x^{n + 1}, \ D(x^n), \ ..., \ D(x)\}$.
+      \newline
+
+      The $k$-th elements of this list will be a polynomial of degree $n + 1 - k$. It is easy to check that such a list is linearly
+      independent: we complete the redundancy-removal procedure, starting at $D(x)$, noting that for each $D(x^k)$, we cannot write
+      $D(x^k)$ as a sum of the polynomials $\{D(x^{k - 1}, \ ..., \ D(x)\}$ as $D(x^k)$ contains a term of degree $n + 1 - k$, which
+      none of the other elements posses.
+      \newline
+
+      It follows that the elements of $B$ are linearly independent. Let us consider the subspace $V_n \subset \pow(\R)$ of all polynomials
+      of degree $n$. Clearly, such a space will have degree $n + 1$. It is also clear that each element of $B$ is in $V_n$. Thus, $B$ is a
+      linearly independent list of length $n + 1$ contained in $V_n$. It follows that $B$ is a basis for $V_n$.
+      \newline
+
+      Thus, for the $p$ that we considered initially, we can write:
+
+      $$p = c_1 D(x) + \ \cdots \ + c_{n + 1} D(x^{n + 1}) = D(c_1 x + \ \cdots \ c_{n + 1} x^{n + 1})$$
+
+      Therefore, $p$ can be written asd the image of some element of $\pow(\R)$ and the map $D$ is surjective.
+
+    \end{proof}
+
+    \begin{problem}{3.29}
+      Suppose $\phi \in \mathcal{L}(V, \ \mathbb{F})$. Suppose that $u \in V$ is not in $\text{null} \ \phi$. Prove that:
+
+      $$V = \text{null} \ \phi \oplus \{au \ : \ a \in \mathbb{F}\}$$
+    \end{problem}
+
+    \begin{proof}
+
+      In the case that $\phi$ is the trivial map, the null space of $\phi$ is all $V$ and the theorem is proved.
+      \newline
+
+      In the case that $\phi$ is not the trivial map, we know from rank-nullity theorem that:
+
+      $$\dim \ V = \dim \ \text{null} \ \phi + \dim \ \text{range} \ \phi$$
+
+      However, it is clear that $\text{range} \ \phi = \mathbb{F}$, so $\dim \ \text{range} \ \phi = \dim \ \mathbb{F} = 1$. This
+      implies that:
+
+      $$\dim \ V - \dim \ \text{null} \ \phi = 1$$
+
+      Now, we know that given some $V$, and a subspace $U$ of $V$, there exists some $U'$ such that $V = U \oplus U'$.
+      We let $U = \text{null} \ \phi$.
+      Since the sum
+      of these subspaces is direct, it follows that:
+
+      $$\dim \ V = \dim \ \text{null} \ \phi + \dim \ U' \ \Rightarrow \ \dim U' = \dim \ V - \dim \ \text{null} \ \phi = 1$$
+
+      where we used the equation above. Thus, $U'$ must be a one-dimensional subspace. All one dimensional subspaces
+      of some vector space $V$ are all multiples of a single vector, $u$. In addition, since the sum of $U'$ and the null space is direct,
+      this vector cannot be in $\text{null} \ \phi$. Therefore:
+
+      $$U' = \{au \ : \ a \in \mathbb{F}\}$$
+
+      and:
+
+      $$V = \text{null} \ \phi \oplus \{au \ : \ a \in \mathbb{F}\}$$
+
+      for some $u \in V$.
+      \newline
+
+      Now, the last thing we have to show is that $U'$ can be multiples of \textbf{any} vector not in the null-space (not just $u$).
+      Given some $v \in V$, we will have, from above:
+
+      $$v = n + au$$
+
+      for some $n$ in the null space. Given some $w$ also not in the null space, we choose $c$ such that $a \phi(u) - c \phi(w) = 0$, which
+      we can do as we know that both $\phi(u)$ and $\phi(w)$ are non-zero. Thus:
+
+      $$n + au = (n + au - cw) + cw = m + cw$$
+
+      where $m$ is in the null space. We prove inclusion the other way in a similar fashion, implying that:
+
+      $$\text{null} \ \phi \ \oplus = \{au \ : \ a \in \mathbb{F}\} = \text{null} \ \phi \ \oplus = \{aw \ : \ a \in \mathbb{F}\}$$
+
+      Therefore, we are able to conclude that:
+
+      $$V = \text{null} \ \phi \oplus \{au \ : \ a \in \mathbb{F}\}$$
+
+      for \textbf{any} $u$ not in the null space.
+      
+
+   \end{proof}
+
+    \begin{problem}{3.30}
+
+      Suppose $\phi_1$ and $\phi_2$ are linear maps from $V$ to $\mathbb{F}$ that have the same null space. Show that there exists
+      some $c \in \mathbb{F}$ such that $\phi_1 = c\phi_2$.
+
+    \end{problem}
+
+    \begin{proof}
+
+      Using the previous result, we can write $V$ as the sum:
+
+      $$V = \text{null} \ \phi_1 \ \oplus \ \{au : u \in \mathbb{F}\} = \text{null} \ \phi_2 \ \oplus \ \{au : u \in \mathbb{F}\}$$
+
+      Let us pick some $v \in V$. We will have $v = n + au$ where $n$ is in the null-space of both maps. We will have:
+
+      $$\phi_1(v) = \phi_1(n + au) = \phi_1(n) + a\phi_1(u)$$
+
+      We then choose some $c$ such that $\phi_1(u) = c \phi_2(u)$, which we can do as both $\phi_1(u)$ and $\phi_2(u)$ are non-zero. In addition, we will have:
+      $\phi_1(n) = \phi_2(n) = 0$, as both maps have the same null-space. We note that $c \phi_2(n) = \phi_2(n)$. Thus, we will have:
+
+      $$\phi_1(n) + a\phi_1(u) = c \phi_2(n) + c \phi_2(au) = c \phi_2(n + au) = c \phi_2(v)$$
+
+      This completes the proof.
+
+    \end{proof}
+
+    \section{Section 3C}
+
+    \begin{problem}{3.6}
+
+      Suppose that $V$ and $W$ are finite-dimensional and $T \in \mathcal{L}(V, \ W)$. Prove that if $\dim \text{range} \ T = 1$ if and only if
+      there exists a basis of $V$ and a basis of $W$ such that with respect to these bases, all entires of $\mathcal{M}(T)$ are equal to $1$.
+
+    \end{problem}
+
+    \begin{proof}
+
+      Clearly, if there are bases of $V$ and $W$ such that $\mathcal{M}(T)$ has ones in all entries, then each basis vector in the chosen basis
+      will get mapped to the sum of all the chosen basis vectors of $W$, which we call $w$. It follows that $\text{range} \ T = \text{span}(w)$, implying
+      that the dimension of the range of $T$ is $1$.
+      \newline
+
+      Conversely, assume that $\dim \text{range} \ T = 1$. From rank-nullity theorem, it follows that $\dim \Null T = n - 1$, where
+      $n$ is the dimension of $V$. Since the dimension of the range is $1$. There must exist some vector $v$ of $V$ such that
+      $T(v) = w$, where $w \neq \boldsymbol 0$. We choose a basis $w_1, \ ..., \ w_m$ of $W$, which means that:
+
+      $$w = a_1 w_1 + \ \cdots \ + a_m w_m$$
+
+      We let the set $\{a_1 w_1, \ ..., \ a_m w_m\}$ be a basis for $W$, and denote the $k$-th element of the basis $w'_k$.
+      Now, consider some basis $v_1, \ ..., \ v_{n - 1}$ for the null space of $T$.
+      The set of vectors $\{v + v_0, \ v + v_1, \ ..., \ v + v_{n - 1}\}$ (where $v_0 = \boldsymbol 0$) will clearly be a basis for $V$, as each vector in the $n$-element set is linearly independent. We
+      denote the $k + 1$-th element of this basis $v'_k$.
+      \newline
+
+      Now, consider $T$ acting upon some basis vector:
+
+      $$T(v'_k) = T(v) + T(v_0) = w = w'_1 + \ \cdots \ + w'_m$$
+
+      So in the primed bases, each element of $\mathcal{M}(T)$ is $1$, by definition.
+
+    \end{proof}
+
+    \section{Section 3D}
+
+    \begin{problem}{3.17}
+      Suppose $V$ is finite-dimensional and $\mathcal{E}$ is a subspace of $\mathcal{L}(V)$ such that $ST \in \mathcal{E}$ and $TS \in \mathcal{E}$ for
+      all $S \in \mathcal{L}(V)$ and all $T \in \mathcal{E}$. Prove that $\mathcal{E} = \{\boldsymbol 0\}$ or $\mathcal{E} = \mathcal{L}(V)$.
+
+    \end{problem}
+
+    \begin{proof}
+
+      Clearly, $\mathcal{E}$ can be the trivial subspace.
+      \newline
+
+      Now, consider what happens when we assume that there is some non-zero $T \in \mathcal{E}$. It follows that there must exist some $v \in V$ such that
+      $T(v) = w_1$, where $w_1$ is non-zero. Extending $w_1$ to a basis for $V$, we get the set $w_1, \ ..., \ w_n$.
+      \newline
+
+      We let $S^k_1$ be the map that takes $w_k$ to $v$ and all other basis elements to $0$. We let $S^k_2$ be the map that takes $w_1$ to $w_k$, and all other
+      basis elements to $0$. It follows that the map $T S^k_1$ takes $w_k$ to $w_1$, and all other basis vectors to $0$, and is in $\mathcal{E}$. We can then conclude that
+      $S^r_2 T S^k_1$ is also in $\mathcal{E}$, and is the map that takes $w_k$ to $w_r$, and all other basis elements to $0$.
+      \newline
+
+      Clearly, any map from $V$ to $V$ can be written as a linear combination of maps of the form $S^r_2 T S^k_1$. Since $\mathcal{E}$ is a subspace, all such
+      linear combinations are in $\mathcal{E}$. This implies that $\mathcal{E} = \mathcal{L}(V)$.
+      \newline
+
+      It follows that $\mathcal{E}$ is either trivial, or the whole space $\mathcal{L}(V)$.
+      \end{proof}
+
+  \section{Section 3E}
+    
+    \begin{problem}{3.18}
+
+      Suppose that $T \in \mathcal{L}(V, \ W)$ and $U$ is a subspace of $V$. Let $\pi$ denote the quotient map from $V$ onto $V/U$.
+      Prove that there exists $S \in \mathcal{L}(V/U, \ W)$ such that $T = S \circ \pi$ if and only if $U \subset \text{null} \ T$.
+
+    \end{problem}
+
+    \begin{proof}
+
+      Assume that there exists $S$ such that $T = S \circ \pi$. Let us pick some $u \in U$. We note that $Tu = (S \circ \pi)(u) = S([u]) = S([0]) = 0$,
+      so $U \subset \text{null} \ T$.
+      \newline
+
+      Assume that $U \subset \text{null} \ T$. Since $U$ is a subspace of the null space, it follows that for $u \in U$, we have $T(u) = 0$. Thus,
+      given $w$ and $v$ in $V$ such that $\pi(w) = \pi(v)$, we can notice that $w - v \in U$, by definition of the quotient space, so
+
+      $$T(w - v) = T(w) - T(v) = 0 \ \Rightarrow T(w) = T(v)$$
+
+      Thus, we define $S$ to be the map that takes $[v]$ in the quotient space to $T(v)$ in $W$. Such a map is well defined as if $[v] = [w]$, then
+      $S([w]) = T(w) = T(v) = S([v])$. Clearly, such a map is linear, as:
+
+      $$S([w] + [v]) = S([w + v]) = T(w + v) = T(w) + T(v) = S([w]) + S([v])$$
+
+      and:
+
+      $$\lambda S([w]) = \lambda T(w) = T(\lambda w) = S([\lambda w]) = S(\lambda [w])$$
+
+      and the proof is complete.
+
+    \end{proof}
 
     \end{document}

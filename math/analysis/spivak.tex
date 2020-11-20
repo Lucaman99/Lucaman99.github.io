@@ -38,7 +38,7 @@
     \newcommand{\tr}{\mathrm{Tr}}
 
 
-    \title{Spivak Problems and Solutions}
+    \title{Spivak Notes, Problems, and Solutions}
     \author{Jack Ceroni}
     \date{October 2020}
 
@@ -166,6 +166,57 @@
 
     \section{Chpater 5}
 
+    \begin{lem}[Uniqueness of Limits]
+      The limit of a function is unique: If a function $f$ approaches $\ell_1$ as $x$ approaches $a$, and $f$ approaches $\ell_2$ as
+      $x$ approaches $a$, then $\ell_1 = \ell_2$.
+    \end{lem}
+
+    \begin{proof}
+      Suppose the the function $f$ approaches $\ell_1$ and $\ell_2$. It follows that given some $\epsilon > 0$, we can choose $\delta_1$ and $\delta_2$ such that:
+
+      $$|x - a| < \delta_1 \ \Rightarrow \ |f(x) - \ell_1| < \epsilon$$
+      $$|x - a| < \delta_2 \ \Rightarrow \ |f(x) - \ell_2| < \epsilon$$
+
+      Assume that $\ell_1 \neq \ell_2$, so $|\ell_1 - \ell_2| > 0$. Let us then pick $\epsilon = \frac{|\ell_1 - \ell_2|}{2}$. We can then pick $\delta_1$ and $\delta_2$ corresponding
+      to this $\epsilon$. We then let $\delta = \text{min}(\delta_1, \ \delta_2)$ so:
+
+      $$|x - a| < \delta \ \Rightarrow \ |f(x) - \ell_1| < \ \epsilon \ \ \ \ \ \text{and} \ \ \ \ \ |f(x) - \ell_2| < \epsilon$$
+
+      It then follows that:
+
+      $$|x - a| < \delta \ \Rightarrow \ |f(x) - \ell_1| + |f(x) - \ell_2| < 2\epsilon = |\ell_1 - \ell_2|$$
+
+      We know that there exists some $x_0$ such that $|x_0 - a| < \delta$, which implies that:
+
+      $$|\ell_1 - \ell_2| \leq |f(x_0) - \ell_1| + |f(x_0) - \ell_2| < |\ell_1 - \ell_2|$$
+
+      a clear contradiction. It follows that $\ell_1$ must equal $\ell_2$.
+
+    \end{proof}
+
+    \begin{lem}[Sums of Limits]
+      If $\lim_{x \to a} f(x) = m$ and $\lim_{x \to a} g(x) = \ell$, then $\lim_{x \to a} (f + g)(x) = m + \ell$.
+    \end{lem}
+
+    \begin{proof}
+
+      Let us pick some $\epsilon > 0$. We will have, for $\epsilon/2$:
+
+      $$|x - a| < \delta_1 \ \Rightarrow \ |f(x) - m| < \epsilon/2$$
+      $$|x - a| < \delta_2 \ \Rightarrow \ |g(x) - \ell| < \epsilon/2$$
+
+      we choose $\delta = \text{min}(\delta_1, \ \delta_2)$, giving us:
+
+      $$|x - a| < \delta \ \Rightarrow \ |f(x) - m| + |g(x) - \ell| < \epsilon$$
+
+      Then, given $x$ such that $|x - a| < \delta$, we have:
+
+      $$|f(x) + g(x) - (m + \ell)| \leq |f(x) - m| + |g(x) - \ell| < \epsilon$$
+
+      Thus, given $\epsilon$, we can choose a $\delta$. It follows by definition that $\lim_{x \to a} (f + g)(x) = m + \ell$.
+
+    \end{proof}
+
     \begin{problem}{5.20}
       If $f(x) = x$ for rational $x$ and $f(x) = -x$ for irrational $x$, show that $\lim_{x \to a} f(x)$ does not exist for $a \neq 0$.
     \end{problem}
@@ -202,6 +253,85 @@
       \newline
 
       We conclude that the limit does not exist for any $a > 0$, and any $a < 0$, making $a = 0$ the only point at which the limit exists.
+    \end{proof}
+
+    \begin{problem}{5.12}
+
+      Suppose that $f(x) \leq g(x)$ for all $x$. Prove that $\lim_{x \to a} f(x) \leq \lim_{x \to a} g(x)$, assuming the limits exist.
+
+    \end{problem}
+
+    \begin{proof}
+
+      We let the first limit be denoted by $\ell_f$ and the second by $\ell_g$. Assume that $\ell_f > \ell_g$. It follows that
+      $\ell_f - \ell_g$ is a positive real number, so we let $\epsilon = (\ell_f - \ell_g)/2$. Now, by definition of the limits, we
+      can choose $\delta_1$ and $\delta_2$ such that:
+
+      $$0 < |x - a| < \delta_1 \ \Rightarrow \ |f(x) - \ell_f| < (\ell_f - \ell_g)/2$$
+      $$0 < |x - a| < \delta_2 \ \Rightarrow \ |g(x) - \ell_g| < (\ell_f - \ell_g)/2$$.
+
+      We let $\delta = \min\{\delta_1, \ \delta_2\}$. We then have:
+
+      $$0 < |x - a| < \delta \ \Rightarrow \ |\ell_f - f(x) + g(x) - \ell_g| \leq |f(x) - \ell_f| + |g(x) - \ell_g| < \ell_f - \ell_g$$
+
+      So we have:
+
+      $$|(g(x) - f(x)) + (\ell_f - \ell_g)| < \ell_f - \ell_g$$
+
+      but since $f(x) \leq g(x)$ and $\ell_g < \ell_f$, both numbers in the brackets will be greater than or equal to $0$, so:
+
+      $$g(x) - f(x) + \ell_f - \ell_g < \ell_f - \ell_g$$
+
+      which is a contradiction. Thus, $\ell_f \leq \ell_g$ and the proof is complete.
+
+      \end{proof}
+
+    \begin{problem}{5.23}
+
+      Let $f$ be a function with the following property: if $g$ is a function for which $\lim_{x \to 0} g(x)$ does not exists, then $\lim_{x \to 0} [f(x) \cdot g(x)]$ also does not exist. Prove
+      that $f$ has this property if and only if $\lim_{x \to 0} f(x)$ exists.
+
+    \end{problem}
+
+    \begin{proof}
+
+      We start by considering the case where $\lim_{x \to 0} f(x)$ exists and is equal to $m \neq 0$. Let $g(x)$ be a function such that $\lim_{x \to 0} g(x)$ does not exist. Assume that $\lim_{x \to 0} [f(x) \cdot g(x)]$
+      exists, so it is equal to some real $\ell$. We then have:
+
+     $$\frac{\lim_{x \to 0} [f(x) \cdot g(x)]}{\lim_{x \to 0} f(x)} = \lim_{x \to 0} \Big(\frac{f(x) \cdot g(x)}{f(x)}$$
+
+    \end{proof}
+
+    \begin{problem}{5.24}
+
+      Suppose that $A_n$ is, for each natural $n$, some finite set of numbers of $[0, \ 1]$, and
+      that $A_n$ and $A_m$ are disjoint if $n \neq m$. Define $f$ as follows:
+
+      $$f = \begin{cases}
+        1/n & x \in A_n \\
+        0 & x \notin A_n \forall n \in \mathbb{N}
+      \end{cases}
+      $$
+
+      Prove that $\lim_{x \to a} f(x) = 0$ for any $a \in [0, \ 1]$.
+
+    \end{problem}
+
+    \begin{proof}
+
+      Let us pick some $a \in [0, \ 1]$ and some $\epsilon > 0$. By the Archimedean property, we can pick some natural $n$ such that
+      $1/n < \epsilon$. Since each $A_m$ contains only a finite number of elements, it follows that the union of the collection
+      of set $\{A_{1}, \ ..., \ A_{n - 1}\}$ also contains a finite number of elements.
+      \newline
+
+      By definition of $f$, this implies that there are a finite
+      number of $x \in [0, \ 1]$ such that $1/n < f(x)$. We denote the set of such $x$ by $X$. Then, we let:
+
+      $$\delta = \min\{|x - a| \ | \ x \in X - \{a\}\}$$
+
+      where the minimum of the set is well-defined, as $X$ contains a finite number of elements. It then follows that
+      given some $y$ such that $0 < |y - a| < \delta$, $y$ cannot possibly be in $X$, so it must be true that $f(x) \leq 1/n < \epsilon$.
+
       \end{proof}
 
     \end{document}

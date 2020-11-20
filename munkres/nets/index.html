@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="https://latex.now.sh/style.css">
         <title>Munkres</title>
         <script type="text/x-mathjax-config">
-         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['(',')']]}});
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
         </script>
         <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     </head>
@@ -17,10 +17,223 @@
                 <br>
                 <p>
 
-                    <i>We will not include solutions to the first few questions, as the answers aren't particularly interesting.</i>
-                    <br><br>
+                    <div class="lemma">
+
+                        If $J$ is a directed set, and $K$ is cofinal in $J$, then $K$ is a directed set.
+
+                    </div>
+
+                    <div class="proof">
+
+                        We choose $x, \ y \in K$. Since $K \subset J$, which is directed, there exists some $z \in J$ such that
+                        $x \preceq z$ and $y \preceq z$. Since $K$ is cofinal, we then know that there is $k \in K$ such that
+                        $z \preceq k$. Thus, $x \preceq k$ and $y \preceq k$. It follows that $K$ is directed, by definition.
+
+                    </div>
+
+                    <br>
+
+                    <div class="lemma">
+
+                        Let $(x_\alpha)$ and $(y_\alpha)$ be nets. If $(x_\alpha)_{\alpha \in J} \ \rightarrow \ x$ in $X$ and
+                        $(y_\alpha)_{\alpha \in J} \ \rightarrow \ y$, then:
+
+                        $$(x_{\alpha} \times y_{\alpha}) \ \rightarrow \ x \times y$$
+
+                        in $X \times Y$.
+
+                    </div>
+
+                    <div class="proof">
+
+                        Pick some neighbourhood $x \times y \in U \subset X \times Y$. We can choose a basis element such that
+                        $x \times y \in V \times W \subset U \subset X \times Y$.
+                        <br><br>
+
+                        Since the individual nets converge, we know that there exists $\alpha_1$ such that for $\alpha_1 \preceq \beta$,
+                        then $x_\beta \in V$. In addition, we can choose $\alpha_2$ such that for $\alpha_2 \preceq \beta$, then
+                        $y_\beta \in W$.
+                        <br><br>
+
+                        Since $J$ is directed, we can choose $\alpha$ such that $\alpha_1 \preceq \alpha$ and $\alpha_2 \preceq \alpha$. It follows that
+                        for all $\beta$ such that $\alpha \preceq \beta$, then:
+
+                        $$x_\beta \times y_\beta \in V \times W \subset U$$
+
+                        which implies that $(x_\alpha \times y_\alpha)$ converges to $x \times y$.
+
+                    </div>
+
+                    <div class="lemma">
+                        If $X$ is Hausdorff, then a net in $X$ converges to at most one point.
+                    </div>
+
+                    <div class="proof">
+
+                        Assume that some net $(x_\alpha)$ converges to two distinct points, $x$ and $y$. Since $X$ is Hausdorff, we can choose disjoint neighbourhoods
+                        $U$ and $V$ around $x$ and $y$ respectively. Since $(x_\alpha)$ converges to both points, we can choose $\alpha_1$, such that $x_\beta \in U$ if
+                        $\alpha_1 \preceq \beta$, and $\alpha_2$ such that $x_\beta \in V$ if $\alpha_2 \preceq \beta$. Since $J$ is directed, we can choose
+                        an $\alpha$ such that $\alpha_1 \preceq \alpha$ and $\alpha_2 \preceq \alpha$, so $x_\beta \in U$ and $x_\beta \in V$, for $\alpha \preceq \beta$.
+                        But this contradicts the fact that $U$ and $V$ are disjoint. Therefore, no two points $x$ and $y$ can exist, and $(x_\alpha)$ can converge to at most one
+                        point.
+
+                    </div>
+
+                    <div class="theorem">
+                        Let $A$ be in $X$. Then some point of $X$ is in $\bar{A}$ if and only if there is a net of points of $A$ converging to $x$.
+                    </div>
+
+                    <div class="proof">
+
+                        Let us first assume that $x \in \bar{A}$. By definition, every neighbourhood of $x$ will intersect $A$. We let $J$ be the
+                        set of all neighbourhoods of $x$, ordered by reverse inclusion (this means that $U \preceq V$ if $U \supset V$). For each
+                        $\alpha \in J$, we let $x_\alpha$ be a point of $A$ that is contained in $\alpha$.
+                        <br><br>
+
+                        Now, we prove the net converges. We pick some neighbourhood $U$ of $x$. Such a neighbourhood will contain the point $x_U$ of the net. Then,
+                        we note that for any $U \preceq V$, we will have $U \supset V$, so any $x_V \in V$ will be contained in $U$ as well. Thus, the net does converge to
+                        $x$.
+                        <br><br>
+
+                        Conversely, if $(x_\alpha)$ is a net of points of $A$ converging to $x$, then for any neighbourhood $U$ of $x$, we will be able
+                        to choose $x_\beta \in U$, so $U$ intersects $A$, implying that $x \in \bar{A}$.
+
+                    </div>
+
+                    <br>
+
+                    <div class="theorem">
+
+                        Let $f : X \ \rightarrow \ Y$. Then $f$ is continuous if and only if for every convergent net of $(x_\alpha) \ \rightarrow \ x$, then
+                        $(f(x_\alpha)) \ \rightarrow \ f(x)$.
+
+                    </div>
+
+                    <div class="proof">
+
+                        First, let $f$ be continuous. We pick some neighbourhood $V$ of $f(x)$. Since $f$ is continuous, we can choose some neighbourhood $U$ of $x$
+                        such that $f(U) \subset V$. Since $(x_\alpha) \ \rightarrow \ x$, there must exist some $\gamma$ such that $x_\beta \in U$ for $\gamma \preceq \beta$.
+                        It then follows that $f(x_\beta) \in f(U) \subset V$ for $\gamma \preceq \beta$. Therefore, by definition, the sequence $(f(x_\alpha))$ converges to $f(x)$.
+                        <br><br>
+
+                        Conversely, let us assume that $(x_\alpha) \ \rightarrow \ x$ implies that $(f(x_\alpha)) \ \rightarrow \ f(x)$. Recall that a function is
+                        continuous if, for every $A$, we have $f(\bar{A}) \subset \bar{f(A)}$. We pick some $x \in \bar{A}$. From the above theorem, there is a net
+                        $(x_\alpha) \ \rightarrow \ x$. We then know that $(f(x_\alpha)) \ \rightarrow \ f(x)$. We use the above theorem again to conclude that
+                        $f(x) \in \bar{f(A)}$. Therefore, $f(\bar{A}) \subset \bar{f(A)}$ and the function is continuous.
+
+                    </div>
+
+                    <br>
+
+                    <div class="lemma">
+                        If a net $(x_\alpha)$ converges to $x$, then so does any subnet of $(x_\alpha)$.
+                    </div>
+
+                    <div class="proof">
+
+                        Consider the net $(x_\alpha) \ \rightarrow \ x$. Let us pick some neighbourhood $U$ of $x$. We know that there is some
+                        $\gamma$ such that when $\gamma \preceq \beta$, then $x_\beta \in U$.
+                        <br><br>
+
+                        Since $g(K)$ is cofinal in $J$, there exists
+                        some $g(k) \in g(K)$ such that $\gamma \preceq k$. We then note that given some $j in K$, it follows that
+                        if $k \preceq j$, then $g(k) \preceq g(j)$, so $\gamma \preceq g(j)$ and $x_{g(j)} \in U$. Since we can choose such
+                        a $k$ for every $U$, it follows that the subnet converges to $x$, by definition.
+
+                    </div>
+
+                    <br>
+
+                    <div class="lemma">
+                        The net $(x_\alpha)$ has the point $x$ as an accumulation point if and only if some subnet of $(x_\alpha)$ converges to $x$.
+                    </div>
+
+                    <div class="proof">
+
+                        Let us assume that the net $(x_\alpha)$ has $x$ as an accumulation point. We let $K$ be the set of all pairs $(\alpha, \ U)$, where
+                        $\alpha \in J$ and $U$ is a neighbourhood of $x$ containing $x_\alpha$. We define $(\alpha, \ U) \preceq (\beta, \ V)$ if $\alpha \preceq \beta$
+                        and $V \subset U$. It is easy to see that this is a valid partial order. In addition, given $(\alpha, \ U)$ and $(\beta , \ V)$, we
+                        know that there is some $\gamma$ such that $\alpha \preceq \gamma$ and $\beta \preceq \gamma$. In addition, we know that $X \subset U$ and
+                        $X \subset V$, so:
+
+                        $$(\alpha, \ U), \ (\beta, \ V) \preceq (\gamma, \ X)$$
+
+                        It follows that $K$ is a directed set.
+                        <br><br>
+
+                        Now, we define a subnet that converges to $x$. Let $g : K \ \rightarrow \ J$ be the map that send
+                        $(\alpha, \ U)$ to $\alpha$. Clearly, $g(K)$ is the collection of all $\alpha$ such that $x_\alpha \in U$, for
+                        some $U$ of $x$. Since $x$ is an accumulation point, this set of points will be cofinal in $J$. In addition,
+                        it is clear from the definition that $i \preceq j \Rightarrow \ g(i) \preceq g(j)$. Thus, we have defined a valid
+                        subnet.
+                        <br><br>
+
+                        Finally, we show that this subnet converges to $x$. We pick some neighbourhood $U$ of $x$. Since the set of $\alpha$ for
+                        which $x_\alpha \in U$ is cofinal, there must exist at least one $x_\beta \in U$.
+                        <br><br>
+
+                        Now, we consider the
+                        elements of $K$ such that:
+
+                        $$(\beta, \ U) \preceq (\gamma, \ V)$$
+
+                        Clearly, we must have $\beta \preceq \gamma$ and $U \supset V$. Thus $x_{g((\gamma, \ V))} = x_{\gamma} \in V \subset U$.
+                        Therefore, by definition, the subnet converges to $x$.
+
+                        <br><br>
+
+                        Conversely, let some subnet of $(x_\alpha)$ converges to $x$. For any neighbourhood $U$ of $x$, we can choose some
+                        $x_\beta = x_{g(k)} \in U$ such that if $g(k) \preceq g(\ell)$, then $x_{g(\ell)} \in U$. By definition, the set
+                        $g(K)$ is cofinal in $J$. Let us pick some $\alpha \in J$. Since $J$ is directed, we can choose some
+                        $\gamma$ such that $\alpha \preceq \gamma$, and $g(k) \preceq \gamma$. Then, since $g(K)$ is cofinal, we choose $g(r)$ such
+                        that $\gamma \preceq g(r)$. Clearly, $x_{g(r)} \in U$ as $g(k) \preceq g(r)$. It follows that the set is cofinal.
+
+                    </div>
+
+                    <br>
+
+                    <div class="theorem">
+                        $X$ is compact if and only if every net has a convergent subnet.
+                    </div>
+
+                    <div class="proof">
+
+                        Let us define:
+
+                        $$B_{\alpha} = \{x_\beta \ | \ \alpha \preceq \beta\}$$
+
+                        for $\alpha \in J$. Given $B_{\alpha_1}$ and $B_{\alpha_2}$, we know that there is $\alpha$ such that $\alpha_1 \preceq \alpha$ and
+                        $\alpha_2 \preceq \alpha$, as $J$ is directed. Thus, $\alpha \in B_{\alpha_1}$ and $\alpha \in B_{\alpha_2}$, so the set
+                        $B_{\alpha}$ is in $B_{\alpha_1}$ and $B_{\alpha_2}$, so:
+
+                        $$B_{\alpha} \subset B_{\alpha_1} \cap B_{\alpha_2}$$
+
+                        From this result, we can show inductively that an intersection of finitely many sets of the form $B_{\alpha}$ will be non-empty.
+
+                        <br><br>
+
+                        Since $X$ is compact, it follows the intersection of all $B_\alpha$ will be non-empty. Let $x_\gamma$ be an element in the intersection.
+                        We consider some neighbourhood $U$ around $x_\gamma$. If we consider the set of all $\alpha$ such that $x_\alpha \in U$, we immediately note that
+                        one of these $\alpha$ is $\gamma$ itself. Since $x_\gamma$ is in all $B_\alpha$, it must be true that $\alpha \preceq \gamma$ for all $\alpha \in J$.
+                        Therefore, any set containing $\gamma$ will be cofinal. It follows that $x_\gamma$ is an accumulation point of the net.
+                        <br><br>
+
+                        Using the previous lemma, we conclude that $(x_\alpha)$ must have a convergent subnet.
+                        <br><br>
+
+                        Conversely, let $\mathcal{A}$ be a collection of closed sets in $X$ having the finite intersection property. Let $\mathcal{B}$ be the collection
+                        of all finite intersections of elements of $\mathcal{A}$, partially ordered by reverse inclusion.
+                        <br><br>
+
+                        It is easy to check that this is a valid partial order. We define a net $(x_\alpha)$ with $\alpha \in \mathcal{B}$, where $x_\alpha$ is a point
+                        of the set $\alpha$ (which will be non-empty, as $\mathcal{A}$ has the finite intersection property). Now, we kow that this net has a convergent
+                        subnet. Assume that the point to which this subnet converges is $x$. We assert that $x$ is in the intersection of all elements of $\mathcal{A}$.
+                        <br><br>
+
+                        If we pick some $a \in \mathcal{A}$, there must exist some $g(k) \in g(K)$ such that $a \supset g(k)$. 
 
 
+                    </div>
 
                 </p>
                 <br><br><br><br>
