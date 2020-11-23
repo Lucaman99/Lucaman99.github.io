@@ -7,3 +7,5 @@
 \contentsline {section}{\numberline {3}Section 3D}{5}{section.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Section 3E}{5}{section.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Section 3F}{5}{section.5}

@@ -39,7 +39,7 @@
      \newcommand{\Null}{\text{null}}
 
 
-    \title{Axler Algebra Problems and Solutions}
+    \title{Axler Algebra Notes, Problems and Solutions}
     \author{Jack Ceroni}
     \date{}
 
@@ -341,5 +341,59 @@
       and the proof is complete.
 
     \end{proof}
+
+    \section{Section 3F}
+
+    \begin{prop}
+      Let $U^0$ be the annihiltor of $U$ as a subspace of $V$. It follows that:
+
+      $$\dim U^{0} + \dim U = \dim V$$
+    \end{prop}
+
+    \begin{proof}
+
+      We attempt to prove this in the language of linear functionals.
+      \newline
+
+      We know that $V'$ is the space of functionals from $V$ to $\mathbb{F}$. We know that $U$ is a subspace of $V$,
+      so it follows that we can choose a basis $v_1, \ ..., \ v_n$ of $U$, then extend it to a basis for $V$ by adding
+      vector $v_{n + 1}, \ ..., \ v_m$.
+      \newline
+
+      Using this basis, we can define the dual basis on $V'$ of the elements $\phi_{i}(v_k)$ for $v_k$ in the basis of $V$.
+      \newline
+
+      We define a linear map $T : V' \ \rightarrow \ V'$ which takes the basis element $\phi_i$ to itself if $1 \leq i \leq n$ (so the
+      corresponding $v_i$ is in $U$), and to $0$ otherwise.
+      \newline
+
+      We assert that $\text{null} \ T = U^0$. Let us pick some $\phi \in \text{null} \ T$. We will have:
+
+      $$T(a_1 \phi_1 + \ \cdots \ + a_m \phi_m) = a_1 \phi_1 + \ \cdots \ + a_n \phi_n = 0$$
+
+      Since each element of the dual basis is linearly independent, all $a_k$ must be $0$, thus, $\phi$ is a linear combination of the $\phi_k$ basis elements for $k \geq n + 1$.
+      It follows that $\phi(u) = 0$ for all $u \in U$, as $u$ is a linear combination of exclusively the basis elements $v_k$ from $k = 1$ to $k = n$. Thus, $\phi$ is in $U^0$.
+      \newline
+
+      Now, if $\phi \in U^0$, it follows that $\phi(u) = 0$ for all $u \in U$, so we will have:
+
+      $$T(\phi) = a_1 T(\phi_1) + \ \cdots \ a_m T(\phi_m) = a_1 \phi_1 + \ \cdots \ + a_n \phi_n$$
+
+      Now, given some $v_k$ for $k$ between $1$ and $n$, we will have:
+
+      $$(a_1 \phi_1 + \ \cdots \ + a_n \phi_n)(v_k) = a_k \phi_k(v_k) = a_k = 0$$
+
+      so each $a_k$ is equal to $0$, implying that $T(\phi)$ is the zero map, so $\phi$ is in the null space. Thus, $U^0 = \text{null} \ T$.
+      \newline
+
+      Finally, using the fundmanetal theorem of linear maps:
+
+      $$\dim V' = \dim \ \text{range}(T) + \dim \ \text{null}(T) = \dim \ U' + \dim U^0$$
+
+      But we know that $\dim V' = \dim V$ and $\dim U' = \dim U$, so:
+
+      $$\dim V = \dim U + \dim U^0$$
+
+      \end{proof}
 
     \end{document}
