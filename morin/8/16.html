@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Morin</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['(',')']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Morin Introduction to Classical Mechanics: Chapter 8 Problem 16</h2>
+                <br>
+                <p>
+
+                    <b>Part A</b>
+                    <br><br>
+
+                    We can begin by considering the first case, where there is no friction between the cylinders, but there is friction betweenthe cylinders and the floor.
+                    This allows us to write down the translational and rotational equations, for the top cylinder, and one of the bottom cylinders:
+
+                    $$mA = 2N \cos \theta - mg$$
+
+                    $$ma = N \sin \theta - N_f \mu_k$$
+
+                    and:
+
+                    $$I \alpha = N_f \mu_k R$$
+
+                    where $N$ is the normal force between the cylinders, $N_f$ is the normal force exterted in the bottom cylinders by the floor, and $\theta$ is the angle
+                    from the vertical of the line passing from the center of the top cylinder, to the center of one of the bottom cylinders.
+                    <br><br>
+
+                    Since the cylinders roll without slipping on the floor, we will have $\alpha = a/R$. Thus:
+
+                    $$\mu_k = \frac{I \alpha}{N_f R} = \frac{I a}{N_f R^2}$$
+
+                    so:
+
+                    $$ma = N \sin \theta - \frac{I a}{R^2} \ \Rightarrow \ N = \Big( m + \frac{I}{R^2}\Big) \frac{a}{\sin \theta}$$
+
+                    This gives us:
+
+                    $$mA = \Big( m + \frac{I}{R^2}\Big) \frac{2 a}{\tan \theta} - mg$$
+
+                    Finally, we note that the cylinders always must be in contact. Therefore, we can draw a right triangle with the radii of the cylinder a the hypotenue,
+                    the height of the top cylinder above the center of the bottom cylinders, $h$, and the horizontal length from the center of the top cylinder to the center of the bottom cylinder, $x$.
+                    Therefore, we can differentiate with resepct to time
+
+                    $$x^2 + h^2 = 4R^2 \ \Rightarrow \ 2xv + 2hV = 0 \ \Rightarrow \ 2v^2 + 2xa + 2V^2 + 2hA = 0$$
+
+                    Clearly, at $t = 0$, we have $v = V = 0$, so initially:
+
+                    $$a = -\frac{hA}{x} = -\frac{A}{\tan \theta_0}$$
+
+                    where $\theta_0$ is the initial angle with the vertical. Thus:
+
+                    $$mA = \Big( m + \frac{I}{R^2}\Big) \frac{2 a}{\tan \theta_0} - m = -\Big( m + \frac{I}{R^2}\Big) \frac{2 A}{\tan^2 \theta} - m$$
+
+                    which implies that:
+
+                    $$\Big[m + \Big( m + \frac{I}{R^2} \Big) \frac{2}{\tan^2 \theta_0} \Big] A = -mg$$
+
+                    For a cylinder, we have $I = (1/2) mR^2$. In addition, we know that $\theta_0 = \pi/6$, so $\tan^2 \theta_0 = 1/3$. Thus:
+
+                    $$\Big[m + \Big( m + \frac{I}{R^2} \Big) \frac{2}{\tan^2 \theta_0} \Big] A = \Big[m + 6\Big( m + \frac{1}{2} m \Big) \Big] A = 10 m A = -mg$$
+
+                    So:
+
+                    $$\boxed{A = -\frac{g}{10}}$$
+
+                    <b>Part B</b>
+                    <br><br>
+
+                    Now, we consider the situation in which there is friction between the cylinders, such that they do not slip, and there is no friction between the
+                    cylinders and the floor. Again, we can set up the rotational and translational equations:
+
+                    $$mA = 2 N \cos \theta + 2 N \mu_k \sin \theta - mg$$
+
+                    $$ma = N \sin \theta - N \mu_k \cos \theta$$
+
+                    and:
+
+                    $$I \alpha = N \mu_k R$$
+
+                    In addition, we again use the no-slip contraint to set up a constraining equation for the angular acceleration. We will have:
+
+                    $$\sin \theta = \frac{x}{2R} \ \Rightarrow \ \cos \theta \dot{\theta} = \frac{v}{2R} \ \Rightarrow \ -\sin \theta \dot{\theta}^2 + \cos \theta \ddot{\theta} = \frac{a}{2R}$$
+
+                    Clearly, at $t = 0$, we will have $\dot{\theta} = 0$, so it follows that at this instant:
+
+                    $$\ddot{\theta} = \alpha = \frac{a}{2R \cos \theta}$$
+
+                    Thus:
+
+                    $$N \mu_k = \frac{I \alpha}{R} = \frac{I a}{2R^2 \cos \theta}$$
+
+                    So it follows that:
+
+                    $$mA = 2 N \cos \theta + \frac{I a \tan \theta}{R^2} - mg$$
+
+                    and:
+
+                    $$ma = N \sin \theta - \frac{I a}{2R^2} \ \Rightarrow \ N = \Big( m + \frac{I}{2R^2} \Big) \frac{a}{\sin \theta}$$
+
+                    which implies that:
+
+                    $$mA =  \Big( m + \frac{I}{2R^2} \Big) \frac{2 a}{\tan \theta} + \frac{I a \tan \theta}{R^2} - mg$$
+
+                    Finally, we use the constraint from the previous part to conclude that $a = -A/\tan \theta$. Thus:
+
+                    $$mA = -\Big( m + \frac{I}{2R^2} \Big) \frac{2 A}{\tan^2 \theta} - \frac{I A}{R^2} - mg$$
+
+                    So:
+
+                    $$\Big[ m + \Big( m + \frac{I}{2R^2} \Big) \frac{2}{\tan^2 \theta} + \frac{I}{R^2} \Big] A = -mg$$
+
+                    Once again, for the case of a cylinder, we have $I = (1/2) mR^2$, and $\theta = \pi/6$, so:
+
+                    $$\Big[ m + 6 \Big( m + \frac{m}{4} \Big) + \frac{m}{2} \Big] A = 9 m A = -mg$$
+
+                    So:
+
+                    $$\boxed{A = -\frac{g}{9}}$$
+
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

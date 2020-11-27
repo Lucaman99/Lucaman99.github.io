@@ -46,3 +46,4 @@ The names of the members of the group will be posted below.
 - Peter Ma
 - Freeman Cheng
 - Diba Heydary
+- Daniel Mishan
