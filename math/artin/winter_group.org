@@ -21,7 +21,7 @@ The goals of this reading group are as follows:
 
 In this reading group, we respect copyright laws, so if you don't have a copy of Artin's book, you definitely *should not* Google "Artin Algebra PDF" and download the first link.
 
-To communicate/ask questions during the week, we have a Slack channel to which each member of the group will be invited.
+To communicate/ask questions during the week, we have a Discord server to which each member of the group will be invited.
 
 Any inquiries about joining the reading group, or any other questions should be directed to: [[mailto:jack.ceroni@mail.utoronto.ca][jack.ceroni@mail.utoronto.ca]]
 
@@ -29,7 +29,7 @@ Any inquiries about joining the reading group, or any other questions should be 
 
 TBD
 
-* Solutiond and Notes
+* Solutions and Notes
 
 The notes and solutions created by the members of the group will be posted here each week.
 
@@ -42,3 +42,7 @@ Under Construction
 The names of the members of the group will be posted below.
 
 - [[https://lucaman99.github.io][Jack Ceroni]] (Organizer)
+- Maya Rehem
+- Peter Ma
+- Freeman Cheng
+- Diba Heydary
