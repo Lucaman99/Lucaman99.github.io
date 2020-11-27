@@ -1,0 +1,44 @@
+#+TITLE: UofT Undergraduate Winter Math Reading Group
+#+DESCRIPTION: The website for a University of Toronto undergraduate reading group
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+
+* Information
+
+Welcome to the website for the University of Toronto Undegraduate Winter Math Reading Group!
+
+Over the 2020/2021 Christmas break, we will be reading the first few chapters of 
+Michael Artin's /Algebra/. This book is supposed to provide a rigorous and engaging introduction to elementary abstract algebra (group theory, ring theory, etc.)
+
+** Goals
+
+The goals of this reading group are as follows:
+
+- To read and gain an understanding for the first few chapters of Artin's textbook.
+- To have weekly discussions about the previous week's readings and problems.
+- To collaborate to create a communal set of solutions/lecture notes/cool diagrams/other resources which can be shared with others at the end of the break.
+
+** Details
+
+In this reading group, we respect copyright laws, so if you don't have a copy of Artin's book, you definitely *should not* Google "Artin Algebra PDF" and download the first link.
+
+To communicate/ask questions during the week, we have a Slack channel to which each member of the group will be invited.
+
+Any inquiries about joining the reading group, or any other questions should be directed to: [[mailto:jack.ceroni@mail.utoronto.ca][jack.ceroni@mail.utoronto.ca]]
+
+* Reading Schedule
+
+TBD
+
+* Solutiond and Notes
+
+The notes and solutions created by the members of the group will be posted here each week.
+
+* Further Resources
+
+Under Construction
+
+* People
+
+The names of the members of the group will be posted below.
+
+- [[https://lucaman99.github.io][Jack Ceroni]] (Organizer)

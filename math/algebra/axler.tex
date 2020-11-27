@@ -309,7 +309,19 @@
       It follows that $\mathcal{E}$ is either trivial, or the whole space $\mathcal{L}(V)$.
       \end{proof}
 
-  \section{Section 3E}
+    \section{Section 3E}
+
+    \begin{problem}{3.7}
+      If $x, \ v \in V$ and $U, \ W$ are subspaces of $V$, such that $v + U = x + W$, then $U = W$
+    \end{problem}
+
+    \begin{proof}
+      Clearly, $v \in v + U$. It follows that $v = x + w$, for some $w \in W$. We then have $v - x = w$, so $v - x \in W$.
+      \newline
+
+      Now, consider $u \in U$. We will have $v + u = x + w' \ \Rightarrow \ u = x - v + w' = w' - (v - x) = w' - w$, so $u \in W$. Proving
+      this each $w \in W$ is in $U$ is identical. Thus, we have inclusion both ways, so $U = W$.
+      \end{proof}
     
     \begin{problem}{3.18}
 
@@ -394,6 +406,111 @@
 
       $$\dim V = \dim U + \dim U^0$$
 
+    \end{proof}
+
+    \begin{problem}{}
+
+      \end{problem}
+
+    \section{Section 5A}
+
+    \begin{prop}
+      Given a set of $m$ distinct eigenvalues $\lambda_1, \ ..., \ \lambda_m$, along with a set of corresponding eigenvectors $V = \{v_1, \ ..., \ v_m\}$, the
+      set $V$ is linearly independent.
+    \end{prop}
+
+    \begin{proof}
+
+      We will prove this proposition by induction. Clearly, this will be true in the case of one eigenvalue, $\lambda$. Assume that
+      it holds true given $n$ eigenvalues. We prove it holds true for $n + 1$.
+
+      Consider the set of eigenvalues $\{\lambda_1, \ ..., \ \lambda_{n + 1}\}$ with
+      corresponding eigenvectors $\{v_1, \ ..., \ v_{n + 1}\}$.
+      Assume that there is a non-trivial linear combination:
+
+      $$a_{1} v_1 + \ \cdots \ + a_{n} v_{n} + a_{n + 1} v_{n + 1} = 0$$
+
+      Note that since eigenvectors are non-zero, for this non-trivial linear combination to be $0$, we must have at least two $a_i$ not equal to
+      $0$ otherwise we would have $a_k v_k = 0$, for non-zero $a_k$, which can't be the case. It follows that at least one $a_i$ with $1 \leq i \leq n$
+      is non-zero.
+
+
+      We define the linear operator $(T - \lambda_{n + 1} I)$. We then have:
+
+      $$(T - \lambda_i I)(a_1 v_1 + \ \cdots \ + a_n v_n + a_{n + 1} v_{n + 1}) = \displaystyle\sum_{k \neq n + 1} a_k (\lambda_k - \lambda_{n + 1}) v_k = 0$$
+
+      But since all eigenvalues are unique, we must have $\lambda_k - \lambda_{n + 1} \neq 0$. In addition, it least one $a_i$ in this sum is non-zero. Thus,
+      we have found a non-trivial linear combination of $n$ eigenvectors that yields the zero vector, a contradiction to the inductive hypothesis.
+      \newline
+
+      It follows that the set $\{v_1, \ ..., \ v_{n + 1}\}$ is linearly independent and the proof is complete.
+
       \end{proof}
+
+    \begin{problem}{5.28}
+      Suppose $V$ is finite-dimensional with $\dim V \geq 3$ and $T \in \mathcal{L}(V)$ is such that every 2-dimensional subspace of $V$ is
+      invariant under $T$. Prove that $T$ is a scalar multiple of the identity operator.
+    \end{problem}
+
+    \begin{proof}
+
+      Consider some $v \in V$. Since the dimension of $V$ is greater than or equal to $3$, we can also choose
+      two other vectors, $w$ and $z$ that form a linearly independent set $\{v, \ w, \ z\}$.
+      We consider the two-dimensional subspaces $A = \text{span}(v, \ w)$ and $B = \text{span}(v, \ z)$. We know that
+      $A$ is invariant, so it follows that $Tv = av + bw$, but we know that $B$ is also invariant, so $Tv = cv + dz$. This implies that:
+
+      $$(c - a)v + dz - bw = 0$$
+
+      and since these vectors are linearly independent, we have $d = b = 0$, so it follows that $v$ is sent to a multiple of itself.
+      \newline
+
+      Now, we pick linearly independent $v$ and $w$ in $V$ such that $T v = a v$ and $T w = b w$. We will have:
+
+      $$T(v + w) = c(v + w) = T(v) + T(w) = av + bw$$
+
+      so since $v$ and $w$ are linearly independent, it follows that $c = a = b$, so $Tv = cv$ and $Tw = cw$. Thus, $T$ is a scalar multiple of the
+      identity map and the proof is complete.
+
+    \end{proof}
+
+    \begin{problem}{5.35}
+      Suppose $V$ is finite-dimnensional, $T \in \mathcal{L}(V)$, and $U$ is invariant under $T$. Prove that each eigenvalue of $T/U$ is an eigenvalue of $T$.
+    \end{problem}
+
+    \begin{proof}
+      Clearly, if $\lambda$ is an eigenvalue of $T$, then there is $v$ such that $Tv = \lambda v$, so it follows that $Tv - \lambda v = 0$, implying that
+      $Tv - \lambda v \in U$, so:
+
+      $$Tv + U = \lambda v + U \ \Rightarrow \ (T/U)(v + U) = \lambda (v + U)$$
+
+      so $\lambda$ is an eigenvalue of $T/U$.
+      \newline
+
+      Conversely, let us assume that is $v + U$ such that $(T/U)(v + U) = T(v) + U = \lambda v + U$. This
+      implies that $Tv - \lambda v \in U$.
+      \newline
+
+      To do this, it is enough to show that the map $T - \lambda I$ is not surjective. 
+
+    \end{proof}
+
+    \section{Section 8}
+
+    \begin{prop}
+      Given some operator $T : V \ \rightarrow \ V$ with $V$ finite dimensional, there is a minimal polynomial $p(z)$ such that
+      $p(T) = 0$. In other words, there exists a polynomial such that for all $q(z)$, with $q(T) = 0$, we have:
+
+      $$q(z) = t(z) p(z)$$
+
+      for some polynomial $t(z)$
+    \end{prop}
+
+    \begin{proof}
+
+    \end{proof}
+
+    \begin{prop}
+      
+      \end{prop}
 
     \end{document}
