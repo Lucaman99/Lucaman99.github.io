@@ -1,6 +1,7 @@
 #+TITLE: UofT Undergraduate Winter Math Reading Group
 #+DESCRIPTION: The website for a University of Toronto undergraduate reading group
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
 
 * Information
 
@@ -25,9 +26,29 @@ To communicate/ask questions during the week, we have a Discord server to which 
 
 Any inquiries about joining the reading group, or any other questions should be directed to: [[mailto:jack.ceroni@mail.utoronto.ca][jack.ceroni@mail.utoronto.ca]]
 
-* Reading Schedule
+** Logistics
 
-TBD
+Please see [[https://lucaman99.github.io/math/artin/logistics.html][this]] page for more information about the logistics of the group.
+
+* Schedule
+
+Below is the tentative reading schedule. Note that we will be scheduling a meeting sometime during the week the December 7th to discuss the reading/meeting schedule, 
+and other details. 
+
+\\
+
+
+| Week | Date                          | Details                                       |
+|    0 | Friday December 11th, 2020    | Discussing the logistics of the reading group |
+|    1 | Friday December 18th, 2020    | Discussing Week 1 readings and solutions      |
+|    2 | Wednesday December 23rd, 2020 | Discussing Week 2 readings and solutions      |
+|    3 | Wednesday December 30th, 2020 | Discussing Week 3 readings and solutions      |
+|    4 | Wednesday January 6th, 2020   | Discussing Week 4 readings and solutions      |
+|    5 | Saturday January 9th, 2020    | Final session and discussion, takeaways       |
+
+\\
+
+The weekly meeting room can be joined [[https://utoronto.zoom.us/j/89168691329][here]]. The passcode will be shared in the Discord server.
 
 * Solutions and Notes
 
@@ -39,7 +60,7 @@ Under Construction
 
 * People
 
-The names of the members of the group will be posted below.
+Below is a list of members of the group:
 
 - [[https://lucaman99.github.io][Jack Ceroni]] (Organizer)
 - Maya Rehem

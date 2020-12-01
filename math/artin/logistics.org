@@ -1,0 +1,53 @@
+#+TITLE: UofT Undergraduate Winter Math Reading Group: Logitics
+#+DESCRIPTION: The website for a University of Toronto undergraduate reading group
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+* Readings
+
+Each week, as a group, we will read an assigned section of the text. The actual reading schedule will be determined at the Week 0 meeting, 
+so we can ensure that all the members of the group are in agreement about the amount of material that is realistic to cover. Once the readings 
+schedule is determined, it will be posted below. In addition, problem assignements will be done a week-by-week basis and posted in this page each week. 
+Week 1 problems will be assigned after the reading schedule is finalized.
+
+* Meetings
+
+Each week (give or take), we will meet as a group to discuss the previous week's readings. The tentative meeting shcedule is posted in the homepage of the website, but 
+it will be finalized during the Week 0 meeting.
+
+\\
+The first 30 minutes of the meeting will be a general discussion of the previous week;s readings, where group members can ask questions, or present ideas in the readings 
+that they found interesting. If you come across an idea in the text that lends itself wll to an intuitive explanation or a diagram, please write it up, and share it with the group!
+
+\\
+During the next 1-1.25 hours of the meeting, each member of the group will present 
+the solution to *one* of their assigned questions that they found the most interesting. There is no pressure for the members of the group to have complete, typed solutions to 
+all of their assigned problems, but try to complete/type at least one, so you can contribute during the meeting. However, the more you have,the better! 
+The group members will then discuss the correctness of the proof, and 
+make suggestions as to how it can be improved.
+
+\\
+The final 20 minutes of the meeting will be dedicated to putting all of the solutions/notes written during the week into the the communal lecture notes (more information below).
+
+* Solution Manual and Notes
+
+One of the goals of this reading group will be to create a communal set of lecture notes and solutions to the problems. Members of the group can contribute both 
+typed solution to the assigned problems, as well as other remarks and notes about the readings. 
+
+\\
+I want to make sure that these lecture notes only include interesting ideas, so 
+the goal is *not* to summarize the week's readings, but rather to provide critical insight into concepts with diagrams, new explanations, or solutions to problems presented in the text.
+
+\\
+We will review the notes for correctness of a week-by-week basis. We will, as a group, review the correctness of the presented solutions during our discussion. As for other notes and 
+other, non-presented solutions, these will simply be reviewed by the community. Try to take a look/rtead through the notes each week and see if you can notice any mistakes. 
+If you do, send a message in the Discord so the mistakes can be adressed! You don't *have* 
+to do this every week, by try to do it at least a couple times!
+
+To collaborate on thee note, I will set up a shared repository on [[https://github.com/][Github]], where solutions can be uploaded. I will explain how to do this during the Week 0 call. Each week, 
+I will take all of the uploads, and put them, into the "master document", which will also be located on the same Github repository. If you absolutely do not want to use Github, then 
+you can just email your work to me, and I will put it on the repository.
+
+\\
+We won't have any "universal" style guide for the lecture notes, just type them in LaTeX and try to make sure they are decently neat. When 
+we compile all of the notes/solutions together each week, I will edit them during the week to make sure that the format of the final version is consistent.
