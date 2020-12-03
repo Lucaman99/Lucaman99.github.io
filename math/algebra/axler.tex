@@ -52,9 +52,56 @@
 
     \newpage
 
+    \section{Section 3A}
+
+    \begin{problem}{3.9}
+    Give an example a function $\rho : \mathbb{C} \ \rightarrow \ \mathbb{C}$ such that:
+
+    $$\rho(w + z) = \rho(w) + \rho(z)$$
+
+    for all $w, z \in \mathbb{C}$ but is not linear.
+    \end{problem}
+
+    \begin{proof}
+      Consider the \textbf{complex conjugate} function with $\rho(x) = \bar{x}$, where for $x = a + bi$, then $\bar{x} = a - bi$. Given complex $x$ and $y$, we will have:
+
+      $$\rho(x + y) = \rho((a_1 + ib_1) + (a_2 + ib_2)) = \rho((a_1 + a_2) + (b_1 + b_2)i)$$
+      $$ = (a_1 + a_2) - (b_1 + b_2)i = (a_1 - b_1i) + (a_2 - b_2i) = \rho(x) + \rho(y)$$
+
+      However, this function is not linear, as given some complex $c$ with non-zero real and imaginary components, we know that $c^2$ is also imaginary. We also know that $\bar{c} c$ is real. Thus:
+      $\rho(c^2)$ can't be equal to $c \rho(c) = c \bar{c}$. Hence, the function is not linear.
+    \end{proof}
+
+    \begin{problem}{3.12}
+      If $V$ is finite-dimensional with $\dim \ V > 0$ and $W$ is infinite-dimensional, prove that $\mathcal{L}(V, \ W)$ is infinite-dimensional.
+    \end{problem}
+
+    \begin{proof}
+      Assume that $\mathcal{L}(V, \ W)$ is finite-dimensional. It follows that there exists a basis of the form $V = (v_1, \ ..., \ v_n)$ that span $\mathcal{L}(V, \ W)$. We also choose a basis
+      $m_1, \ ..., \ m_k$ for $V$, since $\dim \ V > 0$.
+      For each $w \in W$, consider the linear map $f_w$ that takes $m_1$ to $w$, and all other $m_i$ to $0$. Since $V$ is a basis, we must have:
+
+      $$f_w(m_1) = a_1 v_1(m_1) + \ \cdots \ + a_n v_n(m_1) = w$$
+
+      for some choice of coefficients. It follows that $v_1(m_1), \ ..., \ v_n(m_1)$ forms a basis for $W$, a contradiction to the fact that $W$ is infinite-dimensional
+    \end{proof}
+
+    \begin{problem}{3.14}
+          Suppose that $V$ is finite dimensional with $\dim \ V \geq 2$. Prove that there exist $S, \ T \in \mathcal{L}(V, \ V)$ such that $ST \neq TS$.
+    \end{problem}
+
+    \begin{proof}
+      Since linear maps can be explicitly defined as how they map basis vectors we first choose a basis $v_1, \ ..., \ v_n$ of $V$. We define $S$ to be the operator that sends $v_1$ to $v_n$ and
+      $v_n$ to $v_1$, with all other $v_k$ being sent to themselves, and $T$ to be the operator that sends $v_1$ to $0$, and all other basis vectors to themself.
+      \newline
+
+      Clearly, $ST(v_1) = 0$ and $TS(v_1) = v_n$. Since $n \geq 2$, these vectors are distinct. Thus $ST \neq TS$.
+      \end{proof}
+
     \section{Section 3B}
 
     \begin{problem}{3.12}
+
 
       Suppose that $V$ is finite-dimensional and $T \in \mathcal{L}(V, \ W)$. Prove that there exists a subspace
       $U$ of $V$ such that $U \cap \text{null} \ T = \{0\}$ and $\text{range} \ T = \{Tu : u \in U\}$.
@@ -408,9 +455,70 @@
 
     \end{proof}
 
-    \begin{problem}{}
+    \begin{problem}{3.36}
+      Suppose $U$ is a subspace of $V$. Let $i : U \ \rightarrow \ V$ be the inclusion map defined by $i(u) = u$. Thus, $i' \in \mathcal{L}(V', \ U')$.
+    \end{problem}
 
-      \end{problem}
+    \textit{Show that $\text{null} \ i' = U^0$}
+
+    \begin{proof}
+      By definition, $i'(\rho) = i \circ \rho$. Thus, the null space of $i$ will be all $\rho$ such that $\rho \circ i$ is the $0$ map. Clearly, if $u \in U$, then
+      $i(u) = u$, so we must then have $\rho(u) = 0$ for all $u \in U$. Thus, $\rho$ is in $U^{0}$.
+
+      Recall that $U^0$ is
+      the set of all $\rho$ such that $\rho(u) = 0$ for all $u \in U$. It follows that $(\rho \circ i)(u) = \rho(u) = 0$ for all $u \in U$, so $\rho$ is in the null space. Thus,
+      the two sets are equal.
+    \end{proof}
+
+    \textit{Prove that if $V$ is finite-dimensional, then $\text{range} \ i' = U'$.}
+
+    \begin{proof}
+      $\text{range} \ i'$ is the set of all $\rho \circ i$. Clearly, this will be a map from $U$ to $\mathbb{F}$, so it follows that $\rho \circ i$ is in $U'$.
+      \newline
+
+      Conversely, consider some $\rho \in U'$. We define $\gamma$ to be the map that takes $u$ to $\rho(u)$ if $u \in U$ and $0$ otherwise. Since $U$ is a subspace,
+      it is easy to verify that such a map is linear. Clearly $\gamma \circ i$ will be equal to $\rho$. Thus, $\rho$ is in the range of $i'$.
+      \newline
+
+      It follows that the two sets are equal.
+    \end{proof}
+
+    \textit{Prove that if V is finite dimensional, then $\tilde{i'}$ is an isomorphism from $V' / U^{0}$ onto $U'$}
+
+    \begin{proof}
+      Recall the definition of the ``tilded'' operator, which is a map from $V/(\text{null} \ T)$ to $W$ defined by $T(v + \text{null} \ T) = Tv$.
+      \newline
+
+      We prove first that $\tilde{T}$ is an isomorphism from $V/(\text{null} \ T)$ to $\text{range} \ T$. First, it is easy to see that such a map is surjective.
+      Now assume that $\tilde{T}(v + \text{null} \ T) = T(v) = 0$. Thus, $v \in \text{null} \ T$, so $v + \text{null} \ T = 0 + \text{null} \ T$. It follows that
+      $v + \text{null}$ is the zero vector of the space. Thus, the null space of $\tilde{T}$ is trivial, so it is injective.
+      \newline
+
+      From the above results, $U^{0} = \text{null} \ i'$ and $U' = \text{range} \ i'$, so it follows immediately that $\tilde{i'}$ is an isomorphism.
+    \end{proof}
+
+    \begin{problem}{3.37}
+      Suppose $U$ is a subspace of $v$. Let $\pi : V \ \rightarrow \ V/U$ be the usual quotient map. Thus, $\pi' \in \mathcal{L}'((V/U)', \ V')$.
+    \end{problem}
+
+    \textit{Show that $\pi'$ is injective.}
+
+    \begin{proof}
+      Assume that $\pi'(\rho) = \rho \circ \pi = 0$. Assume that $\rho$ is not the $0$ map, so there exists some $v + U$ such that $\rho(v + U) \neq 0$. It then
+      follows that $(\rho \circ \pi)(v) = \rho(v + U) \neq 0$, so $\rho \circ \pi$ is not the zero map. Thus, $\rho$ must be the the zero map. It follows that the
+      null space of $\pi'$ is trivial, so it is injective.
+    \end{proof}
+
+    \textit{Show that $\text{range} \pi' = U^{0}$}
+
+    Pick some $\rho \circ \pi$ is the range of $\pi'$. Let us pick some $u \in U$. It follows that:
+
+    $$(\rho \circ \pi)(u) = \rho(u + U) = \rho(0 + U) = 0$$
+
+    as the zero vector must get mapped to the zero vector. Thus, $\rho \circ \pi$ is in $U^{0}$.
+    \newline
+
+    Conversely, consider some $\rho$ in $U^{0}$. 
 
     \section{Section 5A}
 
@@ -478,17 +586,11 @@
     \end{problem}
 
     \begin{proof}
-      Clearly, if $\lambda$ is an eigenvalue of $T$, then there is $v$ such that $Tv = \lambda v$, so it follows that $Tv - \lambda v = 0$, implying that
-      $Tv - \lambda v \in U$, so:
-
-      $$Tv + U = \lambda v + U \ \Rightarrow \ (T/U)(v + U) = \lambda (v + U)$$
-
-      so $\lambda$ is an eigenvalue of $T/U$.
-      \newline
-
-      Conversely, let us assume that is $v + U$ such that $(T/U)(v + U) = T(v) + U = \lambda v + U$. This
+      Let us assume that we have $\lambda$ such that there exists $v + U$ where $(T/U)(v + U) = T(v) + U = \lambda v + U$. This
       implies that $Tv - \lambda v \in U$.
       \newline
+
+      Assume that 
 
       To do this, it is enough to show that the map $T - \lambda I$ is not surjective. 
 

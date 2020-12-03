@@ -1,15 +1,17 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Section 3B}{2}{section.1}
+\contentsline {section}{\numberline {1}Section 3A}{2}{section.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Section 3C}{4}{section.2}
+\contentsline {section}{\numberline {2}Section 3B}{2}{section.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Section 3D}{5}{section.3}
+\contentsline {section}{\numberline {3}Section 3C}{5}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Section 3E}{5}{section.4}
+\contentsline {section}{\numberline {4}Section 3D}{5}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Section 3F}{5}{section.5}
+\contentsline {section}{\numberline {5}Section 3E}{5}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Section 5A}{6}{section.6}
+\contentsline {section}{\numberline {6}Section 3F}{6}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Section 8}{7}{section.7}
+\contentsline {section}{\numberline {7}Section 5A}{8}{section.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Section 8}{9}{section.8}
