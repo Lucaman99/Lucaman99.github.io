@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Section 30</h2>
+                <br>
+                <p>
+
+                    <div class="lemma">
+                        In a first-countable $T_1$ space, every one-point set is a $G_\delta$ set.
+                    </div>
+
+                    <div class="proof">
+
+                        We know that there is a countable basis $\{B_1, \ B_2, \ ...\}$ around $x$. Consider the intersection of all such elements.
+                        We know that given distinct points $x$ and $y$, there exist neighbourhoods around these points that don't contain eacxh other. Thus,
+                        there is some $B_k$ that does not contain $y$. It follows that:
+
+                        $$B = \displaystyle\bigcap_{k} B_k$$
+
+                        does not contain $y$. Thus, it must be the one-point set $\{x\}$. It follows that $\{x\}$ is a $G_\delta$ set.
+
+                    </div>
+
+                    <br>`
+
+                    <div class="lemma">
+                        Let $X$ have a countable basis. Let $A$ be an uncountable subset of $X$. Uncountably many points of $A$ are limit points of $A$.
+                    </div>
+
+                    <div class="proof">
+                        Assume that $A$ is an uncountable set with countably many limit points. By definition, there then must be an uncountable number of points in $A$ that
+                        are not limit points of $A$. Once again, by definition, any of these points, $a$, must be contained in an open set $U_a$ that intersects $A$ only at itself.
+                        <br><br>
+
+                        By definition, for each non-limit point $a$, we must then have $a \in B_k \subset U_a$, where $B_k$ is an element of the countable basis. This is a clear contradiction, as
+                        there are uncountably many $a$, and each $U_a$ must be disjoint from all other $U_a$. Thus, $A$ must have an uncountable number of limit points.
+                    </div>
+                    <br>
+
+                    <div class="lemma">
+                        Every compact metrizable space has a countable basis.
+                    </div>
+
+                    <div class="proof">
+
+                        For each $x \in X$, we define $B_{1/n}(x)$ to be the $1/n$-ball around $x$ for some natural $n$. We let $A_n$ be the covering made by all such
+                        balls. Since $X$ is compact, $A_n$ will have a finite subcovering. We then define:
+
+                        $$A = \displaystyle\bigcup_{n \in \mathbb{N}} A_n$$
+
+                        Clearly, given an open neighbourhood $U$ (in the metric topology) of some point $x$, we can choose some $B_\epsilon(x)$ such that
+                        $x \in B_{\epsilon}(x) \subset U$. We choose $n$ such that $1/n < \epsilon/2$. We know that there must exist some $B_{1/n}(y)$ in $A$
+                        that contains $x$. Clearly, we will have $|x - y| < 1/n$ and for $z \in B_{1/n}(y)$ we will have $|z - y| < 1/n$. Thus, by the triangle inequality:
+
+                        $$|x - z| \leq |x - y| + |z - y| < \frac{1}{n} + \frac{1}{n} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
+
+                        Thus, $x \in B_{1/n}(y) \subset B_{\epsilon}(x) \subset U$. We therefore have a collection $A$ of open sets such that for each $x$ we have $x \in B \subset U$ for
+                        each neighbourhood $U$ of $X$, and where $B$ is an element of $A$.
+                        Thus, $A$ forms a countable basis of $X$.
+
+                    </div>
+                    <br>
+
+                    <div class="lemma">
+                        Every metrizable space $X$ with a countable dense subset has a countable basis.
+                    </div>
+
+                    <div class="proof">
+
+                        Let $S$ be the countable dense subset of $X$. For each $s_n \in S$, we let $B(s_n)$ be the set of all $1/n$-balls around
+                        $s_n$. Clearly, the union $B$ of all $B(s_n)$ will be countable. We assert that this is a basis for the space.
+                        <br><br>
+
+                        Given some $x$, and some neighbourhood $U$ around $x$, we know that there exists some $\epsilon$ ball $B_\epsilon(x)$ around $x$. We then
+                        consider the $1/2n$ ball $B_{1/2n}(x)$ ball around $x$, where we choose $n$ such that $1/n < \epsilon$.
+                        <br><br>
+
+                        By definition of the dense subset, we must have $\bar{S} = X$. Thus,
+                        for each $x \in X$, every open neighbourhood of $x$ intersects $S$. It follows that there is some $s_k$ in $B_{1/2n}(x)$. We
+                        then consider the $1/2n$ ball around $s_k$, $B_{1/2n}(s_k)$. Since $|x - s_k| < 1/2n$, we know that $x \in B_{1/2n}(s_k)$.
+                        <br><br>
+
+                        Clearly, given some $z$ in the $B_{1/2n}(s_k)$ ball, we will have:
+
+                        $$|z - x| \leq |z - s_k| + |s_k - x| < \frac{1}{2n} + \frac{1}{2n} = \frac{1}{n}$$
+
+                        So $x \in B_{1/2n}(s_k) \subset B_{1/n}(x) \subset B_{\epsilon}(x) \subset U$. Thus, each $x$ is contained in an element of $B$, which is itself
+                        contained in $U$. It follows that $B$ is a basis.
+                    </div>
+                    <br>
+
+                    <div class="lemma">
+                        A metrizable Lindelof space has a countable basis.
+                    </div>
+
+                    <div class="proof">
+                        This follows directly from Lemma 3: we simply replace finite subcover with a countable subcover.
+                    </div>
+
+                    <div class="lemma">
+                        If $X$ has a countable dense subset, then every collection of disjoint open sets in $X$ is countable.
+                    </div>
+
+                    <div class="proof">
+
+                        Suppose that there existed an uncountable collection of disjoint open sets in $X$. For each of these sets that are non-empty,
+                        they must intersect the countable dense subset at different points, as they are all disjoint. This would imply that the dense subset is
+                        uncountable: a contradiction.
+                    </div>
+
+                    <div class="lemma">
+                        Give $\mathbb{R}^{I}$ the uniform metric with $I = [0, \ 1]$. Let $C(I, \ \mathbb{R})$ be the subspace consisting of continuous functions.
+                        Show that $C(I, \ \mathbb{R})$ has a countable dense subset, and therefore a countable basis.
+                    </div>
+
+                    <div class="proof">
+
+                        We consider the set $F$ of continuous functions whose graphs consist of finitely many line segments with rational endpoints.
+                        \newline
+
+                        Consider the set $F_n$ of continuous function in $C(I, \ \mathbb{R})$ that consist of $n$ line-segments with rational endpoints.
+                        Clearly, such a graph will have $n + 1$ endpoints, which will be a rational pair of the form $(r_1, \ r_2)$. It follows that
+                        each graph can be specified by the list of endpoints:
+
+                        $$( (a_1, \ b_1), \ ..., \ (a_{n + 1}, \ b_{n + 1}))$$
+
+                        Since the set of rational number is countable, it follows that the set of all lists of $2n + 2$ rational numbers (the above list)
+                        is also countable.
+                        <br><br>
+
+                        We then note that:
+
+                        $$F = \displaystyle\bigcup_{n \in \mathbb{N}} F_n$$
+
+                        is a countable union of countable sets, so is itself countable.
+                        <br><br>
+
+                        Now, we will demonstrate that this countable set is dense in $C(I, \ \mathbb{R})$. Consider some $f \in C(I, \ \mathbb{R})$. Consider some
+                        open set neighbourhood $U$ of $f$. It follows that definition of the topology that we can choose some $\epsilon$-ball $B$ such that:
+
+                        $$f \in B \subset U$$
+
+                        By definition: $B = \{g \ | \ \sup \{ \bar{d}(f(x), \ g(x)) \ | \ x \in [0, \ 1] \} < \epsilon \}$.
+                        <br><br>
+
+                        For each $x \in [0, \ 1]$, we choose an neighbourhood $U_r$ around $r$ such that $f(U_x) \subset B_{\epsilon}(f(x))$, where
+                        $B_\epsilon$ is the $\epsilon$-ball around $f(x)$. Since $[0, \ 1]$ is compact, we choose a finite subcover of the collection of all $U_x$.
+
+                        $$\{U_{x_1}, \ ..., \ U_{x_n}\}$$
+
+                        Clearly, there will be rational number in each $U_{x_k}$, which we call $r_k$. We then consider the set of all such rationals $\{r_1, \ ..., \ r_n\}$.
+                        We relabel this finite set so that it is an ordered list of the form $(t_1, \ ..., \ t_n)$. 
+
+                    </div>
+
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>

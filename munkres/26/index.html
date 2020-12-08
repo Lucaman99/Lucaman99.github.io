@@ -168,8 +168,8 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 		
 		is closed. This is implies that $f$ is continuous.
 	</div>
-  <!--
 	<br>
+
 	<b>Problem 10</b>
 
 	<div class="theorem">
@@ -178,19 +178,40 @@ MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
 		is uniform.
 	</div>
 	<div class="proof">
-		Recall that in order for $(f_n)$ to converge uniformly, it must be true that for each $\epsilon$ &gt; $0$, there is some $N$ such that 
-		for all $n \ \geq \ N$:
+		 For each $\epsilon$ &gt; $0$, there is some $N$ such that 
+		  for all $n \ \geq \ N$:
 
-		$$| f(x) \ - \ f_n(x) | \ < \ \epsilon$$
+		  $$| f(x) \ - \ f_n(x) | \ < \ \epsilon/3$$
 
-			for all $x \ \in \ X$. Consider some value $\epsilon \ > \ 0$. For each point $x$ and the corresponding $f(x)$, there exists some
-			$N_x$ such that for all $n \ \geq \ N_x$, it holds true that $f_n(x) \ \in \ B(f(x), \ \epsilon)$, which implies that
-			$|f(x) \ - \ f_n(x) | \ < \ \epsilon$. Consider the set of all such $N_x$, which we call $\mathcal{N}_{\epsilon}$. We need to find a
-			way such that we can choose a maximal element of $\mathcal{N}_{\epsilon}$, as this would be an integer $N$, such that for all $x$ and all
-			$n \ \geq \ N$, we have $|f(x) \ - \ f_n(x)| \ < \ \epsilon$. This follows from the fact that $f_n$ is strictly increasing. The idea of
-			compactness allows us to get finite "things" from infinite "things". 
+      For each $x$, we denote this value of $N$ by $N_x$. Now, for each $x$, let $B_{\epsilon/3}(f(x))$ be the $\epsilon/3$ ball around $f(x)$, and
+      let $B_{\epsilon/3}(f_{N_x}(x))$ be the $\epsilon/3$ ball around $f_{N_x}(x)$.
+      <br><br>
+
+      Since both functions are continuous, we can choose neighbourhoods $U_x$ and
+      $V_x$ of $x$, such that $f(U_x) \subset B_{\epsilon/3}(f(x))$ and $f(V_x) \subset B_{\epsilon/3}(f_{N_x}(x))$. We let $W_x = U_x \cap V_x$. Clearly, this open
+      set will be non-empty, as it contains $x$.
+      <br><br>
+
+      Since $X$ is compact, we choose some finite subcover $W_{x_1}, \ ..., \ W_{x_m}$.
+      Consider some $y \in X$. It must be true that $y \in W_{x_k}$, for some $k$. We then note that $f_{N_{x_k}}(y) \in B_{\epsilon/3}(f_{N_{x_k}}(x_k))$ and
+      $f(y) \in B_{\epsilon/3}(f(x))$.
+      <br><br>
+
+      Thus:
+      <br><br>
+
+      $$|f_{N_{x_k}}(y) - f_{N_{x_k}}(x_k)| < \epsilon/3$$
+      $$|f_{N_{x_k}}(x_k) - f(x)| < \epsilon/3$$
+      $$|f(x) - f(y)| < \epsilon/3$$
+
+      so it follows that $|f_{N_{x_k}}(y) - f(y)| < \epsilon$. Since the functions are increasing montone, we must have $f_n(y) \leq f(y)$, for all $n$, or else the sequence would not converge.
+      Thus, for any $n \geq N_{x_k}$, we must also have $|f_n(y) - f(y)| < \epsilon$.
+      <br><br>
+
+      Finally, we let $N = \max \{N_{x_k} \ | \ 1 \leq k \leq m\}$. For this $N$, we will have, from above, for all $n \geq N$, then $|f_n(x) - f(x)| < \epsilon$, for all $x$. Thus,
+      $f$ converges uniformly.
 	</div>
-  -->
+
 	<br>
   <b>Problem 11</b>
   <br>

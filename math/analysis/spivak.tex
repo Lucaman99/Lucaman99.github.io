@@ -12,7 +12,7 @@
 
 \addbibresource{ref.bib}
 
-\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=1in, rmargin =1in}
 \setlength\parindent{0pt}
 
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
@@ -332,6 +332,215 @@
       where the minimum of the set is well-defined, as $X$ contains a finite number of elements. It then follows that
       given some $y$ such that $0 < |y - a| < \delta$, $y$ cannot possibly be in $X$, so it must be true that $f(x) \leq 1/n < \epsilon$.
 
+    \end{proof}
+
+
+    \section{Chapter 7}
+
+    \begin{problem}{7.5}
+      Suppose that $f$ is continuous on $[a, \ b]$ and that $f(x)$ is always rational. What can be said about $f$?
+    \end{problem}
+
+    \begin{proof}
+      We can say that $f$ is constant, $f(x) = c$.
+      \newline
+
+      Let us pick $x$ and $y$ with $x \neq y$. Assume that $f(x) \neq f(y)$. Without loss of generality, we say $f(x) < f(y)$. Both
+      $f(x)$ and $f(y)$ are rational. We know that there will be in irrational number $r$ in the interval $[f(x), \ f(y)]$. But since $f$ is continuous, by
+      IVT, there must be some $z$ with $f(z) = r$, a contradiction. Thus, $f(x)$ must equal $f(y)$, so $f$ is constant.
       \end{proof}
+
+    \begin{problem}{7}
+      Suppose that $\phi$ is continuous and $\lim_{x \to \infty} \phi(x)/x^n = 0 = \lim_{x \to -\infty} \phi(x)/x^n$.
+    \end{problem}
+
+    \textit{Prove that if $n$ is odd, then there is a number $x$ such that $x^n + \phi(x) = 0$}
+
+    \begin{proof}
+      Since $\phi$ and $x^n$ are both continuous, the function $g(x) = x^n + \phi(x)$ is also continuous. We also note that:
+
+      $$\lim_{x \to \pm \infty} \frac{g(x)}{x^n} = \lim_{x \to \pm \infty} \big(1 + \frac{\phi(x)}{x^n} \big) = 1$$
+
+      So it follows that:
+
+      $$\lim_{x \to \infty} g(x) = \lim_{x \to \infty} \frac{g(x)}{x^n} x^n = \lim_{x \to \infty} x^n \lim_{x \to \infty} \frac{g(x)}{x^n} = \lim_{x \to \infty} x^n = \infty$$
+
+      and similarly:
+
+      $$\lim_{x \to -\infty} g(x) = \lim_{x \to -\infty} \frac{g(x)}{x^n} x^n = -\infty$$
+
+      Thus, it follows that there must exist $C$ such that $f(C) < 0$ and $D$ such that $f(D) > 0$. Thus, we apply intermediate value theorem to the interval
+      $[C, \ D]$, to conclude there must exist some $x$ such that $g(x) = x^n + \phi(x) = 0$. This completes the proof.
+    \end{proof}
+
+    \textit{Prove that if $n$ is even, then there is a number $y$ such that $y^n + \phi(y) \leq x^n + \phi(x)$ for all $x$.}
+
+    \begin{proof}
+      Again, we let $g(x) = x^n + \phi(x)$ and note that the limit as $g(x)/x^n$ approaches $\pm \infty$ is $1$. From this, we proceed in a similar
+      fashion to the previous proof, noting that the limit as $g(x)$ approaches $\pm \infty$ is $\infty$.
+      \newline
+
+      Thus, we can choose some
+      $A$ such that $x > A > 0 \ \Rightarrow \ g(x) > g(0)$, and some $B$ such that $x < B < 0 \ \Rightarrow \ g(x) > g(0)$. We then apply the extreme value
+      theorem to the interval $[A, \ B]$ to conclude that this interval has a minimum, which occurs at the point $x = y$. We note that all points not in this interval
+      are greater than $g(0)$, which is itself in the interval, so $y$ must be the global minimum of the function. By definition:
+
+      $$y^n + \phi(y) \leq x^n + \phi(x)$$
+
+      for all $x$ and the proof is complete.
+    \end{proof}
+
+    \section{Chapter 8: Appendix}
+
+    \begin{prop}
+      The function $f : (0, \ 1] \ \rightarrow \ \mathbb{R}$ defined by:
+
+        $$f(x) = \sin \Big( \frac{1}{x} \Big)$$
+
+      is not uniformly continuous.
+    \end{prop}
+
+    \begin{proof}
+      Pick $\epsilon = 1$. Consider some $\delta > 0$. (Finish this)
+      \end{proof}
+
+    \section{Chapter 10}
+
+    \begin{problem}{10.19a}
+      Suppose that $f$ is continuous on $[0, \ 1]$ and $f(0) = f(1)$. Let $n$ be any natural number. Prove that there is some number $x$
+      such that $f(x) = f(x + 1/n)$.
+    \end{problem}
+
+    \begin{proof}
+      Consider the continuous function $g(x) = f(x) - f(x + 1/n)$. Suppose that $g(x) \neq 0$ for all $x$. The intermediate value theorem implies that $g(x)$ must then either be
+      positive for all $x$, or negative for all $x$, as if it took on both positive and negative values, it would have to take on the value $0$.
+      \newline
+
+      This would then imply that $f(x) > f(x + 1/n)$ or $f(x) < f(x + 1/n)$ for all $x$. In either case, we would have $f(0) > f(1/n)$ or $f(1/n) < f(0)$. It is then
+      easy to prove inductively that for all $k$ from $1$ to $n$, we will have $f(0) > f(k/n)$ or $f(k/n) < f(0)$, which gives us $f(0) > f(1)$ or $f(1) < f(0)$, both
+      clear contradictions.
+      \newline
+
+      Thus, there must exist a value of $x$ for which $g(x) = 0$, implying that $f(x) = f(x + 1/n)$.
+    \end{proof}
+
+    \begin{problem}{10.19b}
+      
+    \end{problem}
+
+    \begin{problem}{10.20a}
+      Prove that there does not exist a continuous function on $\mathbb{R}$ that takes on every value exactly twice.
+    \end{problem}
+
+    \begin{proof}
+      Suppose that we have a function $f$ such that it takes on every value exactly twice. It follows that given some value $a$, there
+      exists exactly one other value $b$ such that $f(a) = f(b)$. Assume without loss of generality that $a < b$.
+      \newline
+
+      It follows that we
+      can apply the intermediate value theorem to the interval $[a, \ b]$, to conlude that either $f(a) < f(x)$ for all $x \in (a, \ b)$ or $f(x) < f(a)$
+      for all $x \in (a, \ b)$, as if the function changes sign, then there must be some $c \in (a, \ b)$ such that $f(a) = f(c) = f(b)$, a contradiction.
+      \newline
+
+      We can again assume without loss of generality that $f(x) < f(a)$ for all $x \in (a, \ b)$. Now, by extreme value theorem, there is a value $y \in (a, \ b)$ such that
+      $f(y) \geq f(x)$ for all $x \in [a, \ b]$. Thus, we apply intermediate value theorem to the intervals $[a, \ y]$ and $[y, \ b]$ to find that every $c \in [f(a), \ f(y)]$, except $f(y)$,
+      is equal to $f(x)$ for exactly two $x \in [a, \ b]$.
+      \newline
+
+      Since $f$ takes on the same value exactly twice, it follows that for $x < a$ or $x > b$, we must have $f(x) < f(a)$, or else there would exist some value that the function takes on at least
+      three times. But $f(a) \leq f(y)$, so it follows that $f(y)$ is only taken on by one value of $x$. This is a contradiction, so such a function cannot exist.
+    \end{proof}
+
+    \begin{problem}{10.27}
+      Suppose $f$ is differentiable at $0$, and that $f(0) = 0$. Prove that $f(x) = x g(x)$ for some function $g$ which is continuous at $0$.
+    \end{problem}
+
+    \begin{proof}
+      Since $f$ is differentiable at $0$, it follow that:
+
+      $$f'(0) = \lim_{x \to 0} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0} \frac{f(x)}{x}$$
+
+      is a well-defined real number. Thus, we define $g(x) = f(x)/x$ for all $x$ other than $0$ and $f'(0)$ when $x = 0$. Clearly, since
+      $f$ is differentiable, it is continuous, so:
+
+      $$\lim_{x \to a} g(x) = \lim_{x \to a} \frac{f(x)}{x} = \frac{f(a)}{a}$$
+
+      for non-zero $a$, and $f'(0)$ for $a = 0$. Thus, the function $g$ is continuous at all $a$, and $f(x) = x g(x)$ for all $x$. This completes the proof.
+    \end{proof}
+
+    \begin{problem}{10.28}
+      Prove that it is impossible to write $x = f(x) g(x)$ where $f$ and $g$ are differentiable and $f(0) = g(0) = 0$
+    \end{problem}
+
+    \begin{proof}
+      Assume that this is possible. It would follow from differentiating that:
+
+      $$f'(x) g(x) + g'(x) f(x) = 1$$
+
+      where $f'(x)$ and $g'(x)$ are well defined. We then must have $f'(0) g(0) + g'(0) f(0) = 1$, which is impossible, as
+      $f(0) = g(0) = 0$. Thus, we cannot find $f$ and $g$ such that $f(x) g(x) = x$ and the proof is complete.
+    \end{proof}
+
+    \section{Other Proofs}
+
+    \begin{prop}
+      If $f : A \ \rightarrow \ \mathbb{R}$ is differentiable at $a$, and $g : B \ \rightarrow \ \mathbb{R}$ is differewntiable at $b = f(a)$, with $f(A) \subset B$. Then
+      $g \circ f$ is differentiable at $a$ with:
+
+      $$(g \circ f)'(a) = g'(f(a)) \cdot f'(a)$$
+    \end{prop}
+
+    \begin{proof}
+      First, we define two functions that effectively act as the ``derivatives'' of $f$ and $g$ for $x$ approaching $a$ and $b = f(a)$ respectively:
+
+      \begin{equation}
+        \tilde{f}(x) = \begin{cases}
+          \frac{f(x) - f(a)}{x - a} & \text{if} \ x \neq a \\
+          f'(a) & \text{if} \ x = a
+          \end{cases}
+      \end{equation}
+
+      \begin{equation}
+        \tilde{g}(x) = \begin{cases}
+          \frac{g(x) - g(b)}{x - b} & \text{if} \ x \neq b \\
+          g'(b) & \text{if} \ x = b
+          \end{cases}
+      \end{equation}
+
+      Clearly, by definition of the limit and the derivative, these functions are continuous at $a$ and $b$ respectively.
+      \newline
+
+      We assert that:
+
+      $$\frac{g(f(x)) - g(f(a))}{x - a} = \tilde{g}(f(x)) \tilde{f}(x)$$
+
+      for all $x \neq a$, which can easily be verified by checking the cases of $f(x) = f(a)$ and $f(x) \neq f(a)$. The main idea here
+      is that we are showing the expression of which we are calculating the limit is equal to the product of expressions which one would take the limit of
+      to get $g'(f(a))$ and $f'(a)$.
+      \newline
+
+      From here, it is just a matter of actually carrying out the limit:
+
+      $$(g \circ f)'(a) = \lim_{x \to a} \frac{g(f(x)) - g(f(a))}{x - a} = \lim_{x \to a} \tilde{g}(f(x)) \tilde{f}(x) =
+      \lim_{x \to a}  \tilde{g}(f(x)) \lim_{x \to a} \tilde{f}(x) = \tilde{g}(b) f'(a) = g'(f(a)) f'(a)$$
+
+      and the proof is complete.
+    \end{proof}
+
+    \begin{prop}
+     If $f : [a, \ b] \ \rightarrow \ \mathbb{R}$ is continuous and is increasing on $(a, \ b)$, then $f$ is increasing on $[a, \ b]$. 
+    \end{prop}
+
+    \begin{proof}
+      Assume that there exists some $x \in [a, \ b]$ such that $f(b) \leq f(x)$. It follows that since $f$ is increasing, we can choose $y \in (x, \ b)$ such
+      that $f(b) \leq f(x) < f(y)$.
+      \newline
+
+      We then apply intermediate value theorem to the interval $[y, \ b]$. The function $f$ is continuous on this interval, so it follows that given $c$ such that
+      $f(b) < c < f(y)$, there must be some $z \in (y, \ b)$ such that $f(z) = c$. But this is a contradiction, as this would imply $f$ is not increasing on $(a, \ b)$.
+      \newline
+
+      We make the same argument for the other side of the interval.
+    \end{proof}
 
     \end{document}

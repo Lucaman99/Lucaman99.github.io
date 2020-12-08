@@ -1,2 +1,14 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{The Decomposition Theorem}{}% 2
+\BOOKMARK [1][-]{section.2}{What Are These Notes About?}{}% 2
+\BOOKMARK [1][-]{section.3}{Invariant Subspaces}{}% 3
+\BOOKMARK [1][-]{section.4}{Eigenvalues and Eigenvectors}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Eigenspaces}{section.4}% 5
+\BOOKMARK [1][-]{section.5}{The Decomposition Theorem}{}% 6
+\BOOKMARK [2][-]{subsection.5.1}{Motivation}{section.5}% 7
+\BOOKMARK [2][-]{subsection.5.2}{Eigenspaces}{section.5}% 8
+\BOOKMARK [2][-]{subsection.5.3}{Operators and Polynomials}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.4}{The Decomposition Theorem}{section.5}% 10
+\BOOKMARK [1][-]{section.6}{Upper Triangular Matrices}{}% 11
+\BOOKMARK [1][-]{section.7}{Jordan Canonical Form}{}% 12
+\BOOKMARK [2][-]{subsection.7.1}{Sending Lemmings Off the Cliff: Finding the Jordan Basis}{section.7}% 13
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Finding a Basis for Each Invariant Subspace}{subsection.7.1}% 14
