@@ -1,0 +1,17 @@
+#+TITLE:Week 0 Meeting Stuff
+#+DESCRIPTION: All the stuff relating to the Week 0 meeting
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+* Pre-Meeting Agenda
+
+- We'll spend the first 5-ish minutes on just introducing ourselves.
+- We can then spend the next 20-ish minutes discussing Artin/paging through the table of contents, and 
+  discussing what stuff seems reasonable to cover
+- We'll spend the next 20-ish minutes going through the schedule, and the notes discussing the solution manual/seeing 
+  what everyone thinks about all of that stuff.
+- We'll spend the final 5 minutes wrapping things up and assinging reading for week 1. I'm thinking that we should assign problems 
+  on maybe Monday?
+
+* Meeting Notes
+* Action Items/Next Week
