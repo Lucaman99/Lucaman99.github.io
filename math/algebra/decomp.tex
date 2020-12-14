@@ -298,8 +298,29 @@
    \section{Upper Triangular Matrices}
 
    \begin{prop}
-     Every operator over $\mathbb{C}$ has an upper-triangular matrix representation in some basis.
+     Every operator over $\mathbb{C}$ on a finite-dimensional vector space has an upper-triangular matrix representation in some basis.
    \end{prop}
+
+   \begin{proof}
+
+     This is clearly true when $T$ is an operator on a vector space of dimension $1$. Now, assume that this proposition holds true
+     in the case of a vector space $V$ with $\dim \ V = n$. We prove the case of $n + 1$.
+     \newline
+
+     Since the vector space is over the complex field, we choose an eigenvalue $\lambda$. We consider the invariant subspace:
+
+     $$U = \text{range} (T - \lambda I)$$
+
+     Since $T - \lambda I$ is not injective, it is not surjective, so $\dim \ U < \dim \ V$. By our inductive hypothesis, we choose a
+     basis $u_1, \ ..., \ u_m$ of $U$ that puts $T|_{U}$ in upper triangular form. Then, we extend the list $u_1, \ ..., \ u_m$ to a basis
+     by adding $v_1, \ ..., \ v_k$, and note that:
+
+     $$Tv_j = (T - \lambda I)v_j + \lambda v_j$$
+
+     so $v_j$ is a sum of an element of $U$, and a multiple of $v_j$ itself. Thus, $Tv_j \in \text{span}(u_1, \ ..., \ u_m, \ v_1, \ ..., \ v_j)$.
+     It follows by definition that our new basis puts $T$ in upper triangular form.
+
+     \end{proof}
 
    \begin{lem}
      An operator $T$ on $V$ is invertible if and only if all the entries on the diagonal of an
@@ -340,6 +361,51 @@
 
    \subsubsection{Finding a Basis for Each Invariant Subspace}
 
-   Let us consider some component of our vector space, of the form $(T - \lambda_k I)^{m_k}$. 
+   Let us consider some component of our vector space, of the form $U = \text{Null} \ (T - \lambda_k I)^{m_k}$.
+   \newline
+
+   By definition of this space, given some $u \in U$, it follows that $u$ must be sent to $0$ by $(T - \lambda_k I)^{m_k}$:
+   However,
+   there are a lot of different ways this could happen. For instance, if $m_k = 3$, then we must have:
+
+   $$(T - \lambda_k I) (T - \lambda_k I) (T - \lambda_k I) v = 0$$
+
+   so hypothetically, $v$ could be sent to $0$ be the first application of $(T - \lambda_k I)$, the second or the third. In other words,
+   we could have $(T - \lambda_k I) v = 0$, $(T - \lambda_k I)^2 v = 0$, or $(T - \lambda_k I)^3 v = 0$.
+   \newline
+
+   More generally given some $m_k$, some
+   $v \in U$ will be sent to $0$ for some least $k \leq m_k$, and then will also be sent to $0$ be all subsequent $k$, as a linear map applied to $0$ is still $0$.
+   \newline
+
+   PIC
+   \newline
+
+   This fact gives us an interesting way to find a nice-looking basis for $U$. Let $e_1, \ ..., \ e_n$ be some arbitrary basis of $U$. From above we know that each of
+   these basis vectors must be sent to $0$ by repeatedly applying $(T - \lambda_k I)$ some number of times. This implies that there is a natural way that we can
+   ``split up'' our basis into different subsets, based
+   on the \textbf{smallest number of times} we have to apply $(T - \lambda_k I)$ to get the $0$ vector.
+   \newline
+
+   For instance, in the case of $m_k = 3$, maybe we will have three basis vectors $e_1$, $e_2$ and $e_3$, where $e_1$ and $e_3$ get sent to $0$ with one application of $(T - \lambda_k I)$, while
+   $e_2$ gets sent to $0$ by two applications of $(T - \lambda_k I)$, but does not get sent to $0$ by only one application.
+   \newline
+
+   Note that since $e_2$ \textbf{doesn't} get sent to $0$ by
+   one application of $(T - \lambda_k I)$, it follows that the vector $(T - \lambda_k I)(v)$ is non-zero, and will get sent to $0$ by \textbf{one} application of $(T - \lambda_k I)$. Therefore,
+   we can conclude that $(T - \lambda_k I)(v)$ must be a linear combination of $e_1$ and $e_3$ (the basis vectors that get sent to $0$ be one application of $(T - \lambda_k I)$). In fact, the
+   null spaces of the operators will looking something like this:
+   \newline
+
+   PIC
+   \newline
+
+   As you may have guessed, this method gives us nice way to look for a matrix in Jordan form. Recall that a matrix of some operator in Jordan form looks something like this:
+   \newline
+
+   PIC
+   \newline
+
+   Where each ``block'' is called a \textbf{Jordan block}. 
 
     \end{document}

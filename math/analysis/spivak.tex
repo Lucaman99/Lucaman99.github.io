@@ -390,18 +390,23 @@
       for all $x$ and the proof is complete.
     \end{proof}
 
-    \section{Chapter 8: Appendix}
+    \section{Chapter 8}
 
-    \begin{prop}
-      The function $f : (0, \ 1] \ \rightarrow \ \mathbb{R}$ defined by:
-
-        $$f(x) = \sin \Big( \frac{1}{x} \Big)$$
-
-      is not uniformly continuous.
-    \end{prop}
+    \begin{problem}{8.20}
+      Let $(a, \ b)$ be an interval of shadow points, with $a$ and $b$ not shadow points. Prove that for all $x \in (a, \ b)$, we have
+      $f(x) \leq f(b)$.
+    \end{problem}
 
     \begin{proof}
-      Pick $\epsilon = 1$. Consider some $\delta > 0$. (Finish this)
+      Consider some point $x \in (a, \ b)$. We let $A = \{y \ : \ x \leq y \leq b \ \text{and} \ f(x) \leq f(y)\}$. Assume that $\sup A < b$. It follows
+      that $\sup A \in (a, \ b)$, so $\sup A$ is a shadow point.
+      \newline
+
+      It follows that there must exist some $y > \sup A$ such that $f(y) > f(\sup A)$. In addition, since $b \notin A$, we must have $f(b) < f(x)$. If $y \in [x, \ b]$, with $f(y) > f(\sup A) \geq f(x)$, then $y$ would
+      be an element of $A$ greater than $\sup A$, a contradiction. Thus, $b < y$. Thus, we have found a point $y$ such that $b < y$ and $f(b) < f(y)$. Thus, $b$ is a shadow point, a contradiction.
+      \newline
+
+      Since $b$ is an upper-bound on $A$, it follows that $\sup A = b$, for any $x$. 
       \end{proof}
 
     \section{Chapter 10}

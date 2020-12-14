@@ -1,0 +1,634 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, wasysym, verbatim, bbm, color, graphics, geometry, hyperref, biblatex, mathtools, xcolor}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\addbibresource{ref.bib}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=1in, rmargin =1in}
+\setlength\parindent{0pt}
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+    []% init options
+    {problem}% name
+    {Problem}% title
+    {%
+      fonttitle=\bfseries,
+    }% options
+    {prob}% prefix
+
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\Z}{\mathbb{Z}}
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+    \newtheorem{thm}{Theorem}
+    \newtheorem{defn}{Definition}
+    \newtheorem{conv}{Convention}
+    \newtheorem{rem}{Remark}
+    \newtheorem{lem}{Lemma}
+    \newtheorem{cor}{Corollary}
+    \newtheorem{prop}{Proposition}
+
+    \newcommand{\tr}{\mathrm{Tr}}
+
+
+    \title{Challenge Accepted, Matt}
+    \author{Jack Ceroni}
+    \date{December 2020}
+
+    \begin{document}
+
+    \maketitle
+    \tableofcontents
+
+    \vspace{.25in}
+
+    \newpage
+
+    \section{Problem 1}
+
+    \begin{prop}
+      The degree of $(x - a_1) \cdots (x - a_n)$ is $n$, for $a_k \in \mathbb{F}$.
+    \end{prop}
+
+    \begin{proof}
+      Clearly, this product does not have a non-zero term of the form $a x^{k}$, for $k > n$ (this can be formally demonstrated using induction).
+      In addition, this
+      polynomial has a term of the form $x^n$.
+      \newline
+
+      There exists no field in which $1 = 0$, so it follows that
+      $x^n$ is a non-zero term in the expansion.
+    \end{proof}
+
+    \textbf{Part 1}
+    \newline
+
+    Assume that $p(x)$ does split over $\mathbb{R}$. We then must have $x^2 + 1 = (x - a)(x - b)$, as if there were any more terms
+    in the product, the degree of the resulting polynomial would be greater than $2$.
+    \newline
+
+    We then have:
+
+    $$x^2 + 1 = x^2 - (a + b)x + ab$$
+
+    so $a = -b$ and $ab = -a^2 = 1$, which implies that $a^2 = -1$. However, from the axioms of $\mathbb{R}$, the square of any $r \in \mathbb{R}$ must be
+    positive, so this is a contradiction. It follows that $p(x)$ cannot be split over $\mathbb{R}$.
+    \newline
+
+    \textbf{Part 2}
+    \newline
+
+    Assume $q(x) = x^2 + x + 1$ does split over $\mathbb{F}_2$. By Proposition 1:
+
+    $$x^2 + x + 1 = (x - a)(x - b) = x^2 - (a + b)x + ab$$
+
+    So $-a - b = 1$ and $ab = 1$. The second equation implies that we must have $a = b = 1$, but $-1 + (-1) = 0 \neq 1$, so we have a contradiction.
+    Thus, $q(x)$ does not split over $\mathbb{F}_2$.
+    \newline
+
+    \textbf{Part 3}
+    \newline
+
+    Let $T$ be a map such that $p_T(x)$ splits. It follows that $T$ can be put in Jordan form. In other words, there exists a basis such that the
+    matrix of $T$ with respect to this basis is in Jordan form.
+    \newline
+
+    \textcolor{red}{There is no notion of similarity between linear maps, only matrices, so this question is not well-defined.}
+    \newline
+
+    \textbf{Part 4}
+    \newline
+
+    Pick some matrix $\mathcal{A} \in M_n(\mathbb{C})$. We define a linear operator $A : \mathbb{F}^{n \times 1} \ \rightarrow \ \mathbb{F}^{n \times 1}$, over the field $\mathbb{C}$, such
+    that $A(v) = \mathcal{A}v$ (clearly such a map is linear, by definition of matrix multiplication). 
+    \newline
+
+    It is easy to see that if $\beta$ is the standard
+    basis on $\mathbb{F}^{n \times 1}$, then $\mathcal{A} = {}_{\beta} [A]_{\beta}$
+    \newline
+
+    We let $p_A$ be the minimal polynomial of $A$. We know that any polynomial can be factored over the complex field, so it follows that $p_A$ splits. Therefore, from
+    Part 3, there exists a basis $\beta'$ such that the matrix of $A$ with respect to this basis is in Jordan form. In other words:
+
+    $${}_{\beta'} [A]_{\beta'} = {}_{\beta'} I_{\beta} {}_{\beta} [A]_{\beta} {}_{\beta} I_{\beta'} = P^{-1} \mathcal{A} P$$
+
+    is in Jordan form, where $P = {}_{\beta} I_{\beta'}$. Thus, by definition, $\mathcal{A}$ is similar to a matrix in Jordan form and the proof is complete.
+    \newline
+
+    \textbf{Part 5}
+
+    \begin{prop}
+      If $A$ is an upper-diagonal matrix, then $A^n$ is also upper-diagonal, for any natrual $n$.
+    \end{prop}
+
+    \begin{proof}
+      Clearly, this is true in the case of $n = 1$. Assume the case of $n$. For the case of $n + 1$, we note that:
+
+      $$A_{ij}^{n + 1} = \displaystyle\sum_{r} A_{ir}^{n} A_{rj}$$
+
+      Assume that $i > j$ (these are entries below the upper diagonal). If $r \geq i$, then $r > j$, so $A_{rj} = 0$ and $A_{ij}^{n + 1} = 0$. If $r < i$, then
+      from the inductive hypothesis, $A_{ir}^{n} = 0$, so $A_{ij}^{n + 1} = 0$. Thus, $A^{n + 1}$ is upper-diagonal and the proof by induction is complete.
+    \end{proof}
+
+    \begin{prop}
+      If $A$ is upper-diagonal with diagonal entries $A_{kk}$, then for the diagonal entires of $A^{n}$ (which we call $A_{kk}^n$), we have $A_{kk}^{n} = (A_{kk})^n$.
+      \end{prop}
+
+    \begin{proof}
+    Clearly, this is true in the case of $k = 1$. Assume the case of $k = n$. Consider the case of $k = n + 1$. The entries of the matrix $A^{n + 1}$ will be given by:
+
+    $$A_{ij}^{n + 1} = \displaystyle\sum_{r} A_{ir}^{n} A_{rj}$$
+
+    So for $i = j$, we will have:
+
+    $$A_{ii}^{n + 1} = \displaystyle\sum_{r} A_{ir}^{n} A_{ri}$$
+
+    Clearly $A^n$ is upper-diagonal, so for $r < i$, we will have $A_{ir}^{n} = 0$. In the case of $r > i$, we have $A_{ri} = 0$. Thus, the only
+    term in the sum that can be non-zero is $r = i$, By the inductive hypothesis:
+
+    $$\displaystyle\sum_{r} A_{ir}^{n} A_{ri} = A_{ii}^{n} A_{ii} = (A_{ii})^n A_{ii} = (A_{ii})^{n + 1}$$
+
+    and the proof is complete.
+    \end{proof}
+
+    \section{Problem 2}
+
+    \textbf{Part 1}
+    \newline
+
+    We will have, from the defintition
+
+    $$e^U = \displaystyle\sum_{n = 0}^{\infty} \frac{U^n}{n!}$$
+
+    where we define $U^0 = I$. The matrix sum in entry-wise, so if we let $E_{rj}$ be the $(r, \ j)$-th element
+    of $e^U$ and $U^n_{rj}$ be the $(r, \ j)$-th entry of $U^n$, then we will have:
+
+    $$E_{rj} = \displaystyle\sum_{n = 0}^{\infty} \frac{U^{n}_{rj}}{n!}$$
+
+    We note that from Problem 5, we will have $U^{n}_{rr} = a_{r}^n$, so it follows that:
+
+    $$E_{rr} = \displaystyle\sum_{n = 0}^{\infty} \frac{a_{r}^n}{n!} = e^{a_r}$$
+
+    by definition of the function $e^x$. This completes the proof.
+    \newline
+
+    \textbf{Part 2}
+    \newline
+
+    \begin{prop}
+      For some natrual $n$ and some arbitrary $A$:
+
+      $$(Q A Q^{-1})^n = Q A^n Q^{-1}$$
+    \end{prop}
+
+    \begin{proof}
+      Clearly, this is true for $n = 1$. Assume the case of $n$. For $n + 1$, we have:
+
+      $$(Q A Q^{-1})^{n + 1} = (Q A Q^{-1}) (Q A Q^{-1})^{n} = (Q A Q^{-1})(Q A^n Q^{-1}) = Q A^{n + 1} A^{-1}$$
+
+      and the proof by induction is complete.
+      \end{proof}
+
+    We will have:
+
+    $$\exp(Q A A^{-1}) = \displaystyle\sum_{n = 0}^{\infty} \frac{(Q A Q^{-1})^n}{n!} = \displaystyle\sum_{n = 0}^{\infty} \frac{Q A^n Q^{-1}}{n!} =
+    Q \Big[ \displaystyle\sum_{n = 0}^{\infty} \frac{A^n}{n!} \Big] Q^{-1} = Q e^A Q^{-1}$$
+
+    \textbf{Part 3}
+    \newline
+
+    \begin{prop}
+      $e^{x + y} = e^x e^y$
+    \end{prop}
+
+    \begin{proof}
+      $$e^{x + y} = \displaystyle\sum_{n = 0}^{\infty} \frac{(x + y)^n}{n!} = \displaystyle\sum_{n = 0}^{\infty} \frac{1}{n!} \displaystyle\sum_{j = 0}^{n} {n \choose j} x^{j} y^{n - j} =
+      \displaystyle\sum_{n = 0}^{\infty} \displaystyle\sum_{j = 0}^{n} \frac{x^j}{j!} \frac{y^{n - j}}{(n - j)!}$$
+
+      We make the claim that:
+
+      $$\displaystyle\sum_{n = 0}^{\infty} \displaystyle\sum_{j = 0}^{n} \frac{x^j}{j!} \frac{y^{n - j}}{(n - j)!} = \displaystyle\sum_{p = 0}^{\infty} \displaystyle\sum_{q = 0}^{\infty} \frac{x^p}{p!} \frac{y^q}{q!}$$
+
+      Clearly, given some pair $(p, \ q)$ characterizing a unique term of the right-hand sum, there will exist a unique term in the left-hand sum with $n = p + q$ and $j = p$ that is equal to this term.
+      \newline
+
+      In addition, given some pair $(n, \ j)$ characterizing a unique term in the left-hand sum, there exists a unique term in the right-hand sum with $p = j$ and $q = n - j$ that is equal to this term.
+      \newline
+
+      Thus, there is a one-to-one correspondence between the terms of the sums, so:
+
+      $$\displaystyle\sum_{n = 0}^{\infty} \displaystyle\sum_{j = 0}^{n} \frac{x^j}{j!} \frac{y^{n - j}}{(n - j)!} = \displaystyle\sum_{p = 0}^{\infty} \displaystyle\sum_{q = 0}^{\infty} \frac{x^p}{p!} \frac{y^q}{q!} =
+      \Big( \displaystyle\sum_{p = 0}^{\infty} \frac{x^p}{p!} \Big) \Big( \displaystyle\sum_{q = 0}^{\infty} \frac{x^q}{q!} \Big) = e^{x} e^{y}$$
+
+      and the proof is complete.
+      \newline
+
+      Note that this proof can easily be generalized to aribtrary sums, using induction.
+      \end{proof}
+
+    From Problem 4, we note that $A$ is similar to an upper triangular matrix, so $A = Q B Q^{-1}$, where $B$ is upper-triangular. It follows that:
+
+    $$\det(e^A) = \det( e^{Q B Q^{-1}} ) = \det( Q e^B Q^{-1} )$$
+
+    Since the determinant is invariant under change of basis, it follows that:
+
+    $$\det(Q e^{B} Q^{-1}) = \det(e^{B})$$
+
+    Since trace is invariant under change of basis, it follows that $\text{trace}(A) = \text{trace}(B) = 0$, which implies that:
+
+    $$\displaystyle\sum_{k} b_{kk} = 0$$
+
+    where $b_{ij}$ is the $(i, \ j)$-th element of the matrix $B$.
+    \newline
+
+    The determinant of an upper-triangular matrix is simply the product of the diagonal entires. Since $e^B$ is a sum of powers of an
+    upper-diagonal matrix, it is also upper-diagonal, so its determinant will be the product of its diagonal.
+    \newline
+
+    Therefore, from Part 1 and Proposition 4:
+
+    $$\det(e^{B}) = \displaystyle\prod_{k} e^{b_{kk}} = \exp \Big[ \displaystyle\sum_{k} b_{kk} \Big] = e^0 = 1$$
+
+    and the proof is complete, $\det(e^A) = \det(e^B) = 1$. Note that it is easy to see that $e^0 = 1$, from the definition of the exponential function.
+
+    \section{Problem 3}
+
+    \textbf{Part 1}
+    \newline
+
+    Clearly, the commutator is a valid bilinear map:
+
+    $$[A + B, \ Y] = (A + B)Y - Y(A + B) = AY - YA + BY - YB = [A, \ Y] + [B, \ Y]$$
+    $$[\lambda X, \ Y] = \lambda X Y - Y (\lambda X) = \lambda [X, \ Y]$$
+
+    where we can verify that the same linearity holds true for the second entry in a similar fashion.
+    \newline
+    
+    In addition, given $X \in GL(n, \ \mathbb{R})$, we have $[X, \ X] = XX - XX = 0$. Finally:
+
+    $$[X, \ [Y, \ Z]] + [Z, \ [X, \ Y]] + [Y, \ [Z, \ X]] = [X, \ YZ - ZY] + [Z, \ XY - YX] + [Y, \ ZX - XZ]$$
+    $$ = XYZ - XZY - YZX + ZYX + ZXY - ZYX - XYZ + YXZ + YZX - YXZ - ZXY + XZY = 0$$
+
+    Trust me, all the terms cancel. Therefore, $GL(n, \ \mathbb{R})$ equipped with the commutator
+    is a real Lie algebra (we already know that $M_{n}(\mathbb{R})$ is a vector space over $\mathbb{R}$).
+    \newline
+
+    The dimension of $GL(n, \ \mathbb{R})$ is $n^2$, as it is easy to verify that the list of matrices
+    with a $1$ in entry $(i, \ j)$ and $0$s everywhere else, for all $i, \ j$ from $1$ to $n$ is a linearly independent spanning set, and
+    has $n^2$ elements.
+    \newline
+
+    \textbf{Part 2}
+    \newline
+
+    \begin{prop}
+      $\mathrm{trace}(XY) = \mathrm{trace}(YX)$
+    \end{prop}
+
+    \begin{proof}
+      $$\text{trace}(XY) = \displaystyle\sum_{k} (XY)_{kk} = \displaystyle\sum_{k} \displaystyle\sum_{r} X_{kr} Y_{rk} = \displaystyle\sum_{r} \displaystyle\sum_{k} Y_{rk} X_{kr} = \displaystyle\sum_{r} (YX)_{rr} = \text{trace}(YX)$$
+      \end{proof}
+
+    First, we note that given $X$ and $Y$ in the vector space, we will have:
+
+    $$\text{trace}(XY - YX) = \text{trace}(XY) - \text{trace}(YX) = \text{trace}(XY) - \text{trace}(XY) = 0$$
+
+    Thus, $[X, \ Y]$ is an element of $SL(n, \ \mathbb{R})$, so the commutator is a valid bilinear map.
+    \newline
+
+    Now, it is sufficient to show that $SL(n, \ \mathbb{R})$ is a vector space, as we have already proved the sufficient propoerties of the commutator
+    above.
+    \newline
+
+    Clearly, given two trace $0$ matrices, their vector sum (component-wise addition) will result in a matrix that also has trace $0$. The
+    same is clearly true for component-wise scalar multiplication. Finally, it is clear that the $0$ matrix is in $SL(n, \ \mathbb{R})$. Thus, it is a vector space.
+    \newline
+
+    It is easy to verify that trace is a linear map. Clearly, $SL(n, \ \mathbb{R})$ is the null-space of the trace operator when it maps from
+    $M_n(\mathbb{R})$ to $\mathbb{F}$. Thus, by rank-nullity theorem:
+
+    $$\dim \ M_n(\mathbb{R}) = \dim \ SL(n, \ \mathbb{R}) + \dim \ \mathbb{F} \ \Rightarrow \ \dim \ SL(n, \ \mathbb{R}) = n^2 - 1$$
+
+    where we note that $\text{range} \ \text{trace} = \mathbb{F}$, as there exists a matrix with non-zero trace $\lambda$, and all other elements of $\mathbb{F}$ will
+    simply be scalar multiples of $\lambda$.
+    \newline
+
+    \textbf{Part 3}
+    \newline
+
+    Clearly, $[X, \ Y] = 0$ is a valid bilinear map from $V$ to $V$, as $0 \in V$. In addition, $[X, \ X] = 0$, by definition of the map.
+    \newline
+
+    It is easy to verify that the Jacobi identity also holds.
+    \newline
+
+    \textbf{Part 4}
+    \newline
+
+    Consider $X, \ Y \in SO(n, \ \mathbb{R})$. We note, from the basic properties of transposition:
+
+    $$(XY - YX)^{T} = (XY)^{T} - (YX)^{T} = Y^{T} X^{T} - X^{T} Y^{T} = (-Y)(-X) - (-X)(-Y) = YX - XY = -(XY - YX)$$
+
+    Thus, the given bracket is a valid bilenear map. It is easy to verify that set $SO(n, \ \mathbb{R})$ is closed under
+    scalar multiplication and vector addition, and contains the $0$ matrix. Therefore, $SO(n, \ \mathbb{R})$ is a vector space.
+    \newline
+
+    \begin{prop}
+      The dimension of $SO(n, \ \mathbb{R})$ is $n(n - 1)/2$.
+    \end{prop}
+
+    \begin{proof}
+      Consider the set $B$ of matrices $m$:
+
+      $$B = \{m \ | \ m \in M_{n}(\mathbb{R}), \ m_{ij} = -1, \ m_{ji} = 1\}$$
+
+      with $0$s in all other entries, and $1 \leq i \leq n$ and $j < i$. Clearly, every element of $B$ is in $SO(n, \ \mathbb{R})$, so $\text{span}(B) \subset SO(n, \ \mathbb{R})$.
+      In addition, consider some $M \in SO(n, \ \mathbb{R})$. We must have:
+
+      $$M^{T} = -M \ \Rightarrow \ M_{ij} = -M_{ji}$$
+
+      for all $i$ and $j$ from $1$ to $n$. We note that the above
+      equation implies that $M_{ii} = -M_{ii}$, so $M_{ii} = 0$. In other words, the main diagonal of $M$ is all $0$s.
+
+      Let $\mathcal{M}^{ij}$ be the matrix with a $1$ in entry $(i, \ j)$ and $0$s everywhere else. Using the above facts, we will have:
+
+      $$M = \displaystyle\sum_{i, \ j} M_{ij} \mathcal{M}^{ij} = \displaystyle\sum_{i = 1}^{n} \displaystyle\sum_{j < i} M_{ij} (\mathcal{M}^{ij} - \mathcal{M}^{ji})$$
+
+      By definition, $\mathcal{M}^{ij} - \mathcal{M}^{ji}$ is an element of $B$, so it follows that $B$ is a linear combination of elements of $B$. Therefore, $SO(n, \ \mathbb{R}) \subset \text{span}(B)$.
+      \newline
+
+      We have inclusion both ways, so $SO(n, \ \mathbb{R}) = \text{span}(B)$. Finally, we note that all elements of $B$ are linearly independent, as each matrix in $B$
+      contains a non-zero entry in some entry $(i, \ j)$ where no other element of $B$ has a non-zero entry.
+      \newline
+
+      Thus, by definition, $B$ is a basis for $SO(n, \ \mathbb{R})$. Clearly, there are ${n \choose 2} = n(n - 1)/2$ elements in $B$, so the dimension of $SO(n, \ \mathbb{R})$ is $n(n - 1)/2$. This
+      completes the proof.
+    \end{proof}
+
+    \textbf{Part 5}
+    \newline
+
+    Using a very similar proof to Proposition $3$, it is clear that the product of two upper diagonal matrices with $0$s on the main diagonal is also an upper-diagonal
+    matrix with $0$s on the main diagonal. Thus, given $X$ and $Y$ in the Heisenberg group, $XY - YX$ is also in the Heisenberg group as well.
+    \newline
+
+    It follows that $[X, \ Y]$ is a valid bilinear map into the Heisenberg group.
+    \newline
+
+    It isn't difficult to see that $H(3, \mathbb{R})$ is closed under vector addition and scalar multiplication, and contains the $0$ vector. Therefore, $H(3, \ \mathbb{R})$ is
+    in fact a real Lie algebra.
+    \newline
+
+    Clearly:
+
+    $$B = \Big( \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \Big)$$
+
+    is a basis for $H(3, \ \mathbb{R})$ so the Lie algebra has dimension $3$.
+    \newline
+
+    \textbf{Part 6}
+    \newline
+
+    Using the component-wise definition of the cross product in $\mathbb{R}^3$, one can verify that it does in fact alternate and satisfies the Jacobi identity (I omit these computations for brevity).
+    \newline
+
+    Clearly, the
+    result will also be an element of $\mathbb{R}^3$. Thus, $\mathbb{R}^3$ with $[] = \times$ is a valid Lie algebra.
+
+    \textbf{Part 7}
+    \newline
+
+
+
+    \textbf{Part 8}
+    \newline
+
+    
+
+    \textbf{Part 9}
+    \newline
+
+    \textit{I fucked up the notation a bit by not using the fancy symbols to denote $GL$, $SL$ and $SO$, so I'll refer to $SL$ (as it is used in the notes) as $S$.}
+    \newline
+
+    In Problem 2, we showed that if $A$ has trace equal to $0$, then $\det(e^A) = 1$. It follows that given some element of $SL(n, \ \mathbb{C})$ (which has trace equal to $0$), then
+    the determinant of the exponential of this element is $1$, so it is in $S(n, \ \mathbb{C})$. Thus, $\exp : SL(2, \ \mathbb{C}) \ \rightarrow \ S(n, \ \mathbb{C})$ is a valid map.
+    \newline
+
+    Now, let us pick some element $M \in S(n, \ \mathbb{C})$. Since this vector space is over the complex field, it follows that $M$ is similar to a matrix in Jordan form. Thus,
+    $M = Q^{-1} P Q$, where $P$ is in Jordan form.
+    \newline
+
+    It follows that $P$ is either diagonal (with determinant $1$, as determinant is invariant under change of basis), or of the form:
+
+    \begin{equation}
+      P = \begin{pmatrix} \pm 1 & 1 \\ 0 & \pm 1 \end{pmatrix}
+      \end{equation}
+
+    For the purpose of this exercise, we will assume that the function $f : \mathbb{C} \ \rightarrow \ \mathbb{C}$ with $f(x) = e^x$ is surjective (this follows from
+    Euler's formula).
+    \newline
+
+    If $P = \text{diag}(a, \ b)$, we note that $\det(P) = ab = 1$. We choose the matrix $N$ to have an entry $x$ in the top right corner such that $e^x = a$ (this follows from the
+    surjectivity of $e^x$). We then choose $N$ to have the entry $-x$ in the bottom right corner. We note that $e^{-x} = b$, as $b$ is the unique multiplicative inverse of $a$, and:
+
+    $$a e^{-x} = e^{x} e^{-x} = e^{0} = 1$$
+
+    Clearly, $N$ has trace $0$, so it is in $SL(n, \ \mathbb{C})$. We know that trace is invariant under change of basis, so $Q^{-1} N Q$ is also in $SL(n, \ \mathbb{R})$. Finally, we
+    note that:
+
+    $$\exp(Q^{-1} N Q) = Q^{-1} \exp(N) Q = Q^{-1} \exp \Big[ \begin{pmatrix} x & 0 \\ 0 & -x \end{pmatrix} \Big] Q = Q^{-1} \exp \Big[ \begin{pmatrix} e^x & 0 \\ 0 & e^{-x} \end{pmatrix} \Big] Q$$
+
+    $$ = Q^{-1} \exp \Big[ \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix} \Big] Q = Q^{-1} P Q = M$$
+
+    In addition, if $M = Q^{-1} P Q$, with $P$ of the form of equation (1), then we note that:
+
+    $$\exp \Big[ Q^{-1} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} Q \Big] = Q^{-1} \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} Q$$
+
+    $$\exp \Big[ Q^{-1} \begin{pmatrix} i\pi & 1 \\ 0 & -i\pi \end{pmatrix} Q \Big] = Q^{-1} \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} Q$$
+
+    \textbf{Part 10}
+    \newline
+
+    Note that if $A$ has two unique eigenvalues, then it can be diagonalized, and we can use the same proof is was presented in Question 2 to conclude that $\det(e^A) = 1$.
+    \newline
+
+    Otherwise, $A$ has less than two unique eigenvalues. It follows that $A$ is not invertible. Therefore, we must have $\det A = 0$. Using the rational canonical form, we note that:
+
+    $$A = Q^{-1} \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} Q$$
+
+    It is easy to see that:
+
+    $$\begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$$
+
+    Thus, using the definition of the matrix exponential, it is clear that:
+
+    $$\exp \Big[ \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} \Big] = I + \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ -1 & 1 \end{pmatrix}$$
+
+    So the exponential of this matrix has determinant $1$. Finally, we see that:
+
+    $$\exp(A) = Q^{-1} \begin{pmatrix} 1 & 0 \\ -1 & 1 \end{pmatrix} Q$$
+
+    Since determinant remains invariant under change of basis, it follows that $\det(e^A) = 1$ in this case as well.
+    \newline
+
+    We have shown that for any $A \in SL(n, \ \mathbb{R})$, the exponential $e^A$ has determinant $1$. Therefore, $\exp : SL(n, \ \mathbb{R}) \ \rightarrow \ S(n, \ \mathbb{R})$ is a valid
+    map.
+    \newline
+
+    \textbf{Part 11}
+    \newline
+
+    \begin{prop}
+      The map $\exp : SL(n, \ \mathbb{R}) \ \rightarrow \ S(n, \ \mathbb{R})$ is not surjective.
+    \end{prop}
+
+    \begin{proof}
+      Consider the matrix:
+
+      $$A = \begin{pmatrix} -1 & 1 \\ 0 & -1 \end{pmatrix}$$
+
+      The characteristic polynomial of this matrix is clearly $(\lambda + 1)^2 = \lambda^2 + 2\lambda + 1$ (as the matrix is upper diagonal). 
+      \end{proof}
+
+    \section{Problem 4}
+
+    \textbf{Part 1}
+    \newline
+
+    Clearly, $g$ is a vector subspace of itself, so it is a Lie subalgebra of $g$. In addition, it is clear that $[g, \ g] \subset g$, as the bracket is a bilinear
+    map into $g$. Therefore, $g$ is an ideal, by definition.
+    \newline
+
+    \textbf{Part 2}
+    \newline
+
+    Clearly, $\{0\}$ is a Lie subalgebra of $g$, as it is a vector subspace and $[0, \ 0] = 0$. We then note that given $0 \in \{0\}$ and $G \in g$, we will have:
+
+    $$[G, \ 0] = [G, \ G - G] = [G, \ G] - [G, \ G] = 0$$
+
+    so $[g, \ \{0\}] \subset \{0\}$. Therefore, $\{0\}$ is an ideal.
+    \newline
+
+    \textbf{Part 3}
+    \newline
+
+    Recall that an Abelian Lie algebra is, by definition, an $n$-dimensional vector space $V$ equipped with the bracket $[X, \ Y] = 0$.
+    \newline
+
+    Consider some arbitrary vector subspace $U \subset V$. Clearly, given $u, \ v \in U$, we will have $[u, \ v] = 0$, which is in $U$, so
+    $U$ is a Lie subalgebra. Furthermore, given $u \in U$ and $v \in V$, we have $[v, \ u] = 0 \in V$, so $U$ is an ideal.
+    \newline
+
+    Therefore, all vector subspaces of $V$ are ideal under the Abelian Lie algebra.
+    \newline
+
+    \textbf{Part 4}
+    \newline
+
+    \begin{prop}
+      The only one-dimensional Lie algebra is the Abelian one.
+    \end{prop}
+
+    \begin{proof}
+      Let $V$ be a one-dimensional vector space, so $V = \text{span}(v)$ over some field $\mathbb{F}$, where $v$ is some element of $V$.
+      \newline
+
+      Let $[\cdot, \ \cdot]$ be a bilinear map from $V \times V$ to $V$. Assume that this bracket along with $V$ form a Lie algebra. Clearly,
+      given two elements $av$ and $bv$ of $V$, we must have:
+
+      $$[av, \ bv] = a[v, \ bv] = ab[v, \ v] = ab \cdot 0 = 0$$
+
+      Therefore, the bracket must take all pairs of elements in $V$ to $0$. It follows that if $V$, along with some bracket form a Lie algebra, then
+      it must be the Abelian Lie algebra.
+    \end{proof}
+
+    \textbf{Part 5a}
+    \newline
+
+    \section{Problem 5}
+
+    \textbf{Part 1}
+
+    \begin{prop}
+      For some natural $k$ (or $k = 0$), $g^{(k)} \subset g_{(k)}$.
+    \end{prop}
+
+    \begin{proof}
+      We proceed by induction. Clearly, this is true for the case of $k = 0$ and $k = 1$. We note that for $k \geq 1$:
+
+      $$g_{(k)} = [g_{(k - 1)}, \ g]$$
+
+      and:
+
+      $$g^{(k)} = [g^{(k - 1)}, \ g^{(k - 1)}]$$
+
+      Assume that for the case of $k$, the proposition holds true. In the case of $k + 1$ we have $g_{(k + 1)} = [g_{(k)}, \ g]$ and
+      $g^{(k + 1)} = [g^{(k)}, \ g^{(k)}]$. From the inductive hypothesis, $g_{(k)} \subset g_{(k)}$. Finally, we note that $g^{(k)}$ is a subalgebra of $g$, so $g^{(k)} \subset g$.
+      \newline
+
+      It follows from the definition of the bracket that:
+
+      $$g^{(k + 1)} = [g^{(k)}, \ g^{(k)}] \subset [g_{(k)}, \ g^{(k)}] \subset [g_{(k)}, \ g] = g_{(k + 1)}$$
+
+      and the proof by induction is complete.
+      \end{proof}
+
+    \begin{cor}
+      Every nilpotent Lie algebra is solvable
+    \end{cor}
+
+    \begin{proof}
+      Let $g$ be a nilpotent Lie algebra. It follows that there exists some $k$ such that $g_{(k)} = 0$. In the case that $k = 0$, this
+      proposition clearly holds. Otherwise, there is some $k$ such that $[g_{(k - 1)}, \ g] = \{0\}$.
+      \newline
+
+      From above, we know that $[g^{(k - 1)}, \ g^{(k - 1)}] \subset [g_{(k - 1)}, \ g] = \{0\}$, so it follows that $g^{(k)} = 0$. By definition,
+      the Lie algebra is solvable and the proof is complete.
+    \end{proof}
+
+    \textbf{Part 2}
+    \newline
+
+    Consider an Abelian Lie algebra $g$. Given two elements $x, \ y \in G$, we note that $[x, \ y] = 0$, so it follows that $g_{(1)} = [g, \ g] = 0$.
+    Thus, every Abelian Lie algebra is nilpotent (and solvable).
+    \newline
+
+    \textbf{Part 3}
+    \newline
+
+    \begin{prop}
+      Every $2$-dimensional Lie algebra is solvable.
+    \end{prop}
+
+    \begin{proof}
+      Let $g$ be a two-dimensional Lie algebra. It follows that $g = \text{span}(v, \ w)$, for two linearly independent vectors $v$ and $w$.
+      Given two elements in $g$, of the form $av + bw$ and $cv + dw$, we note that:
+
+      $$[av + bw, \ cv + dw] = [av + bw, \ cv] + [av + bw, \ dw] = bc[w, \ v] + ad[v, \ w] = (ad - bc)[v, \ w] = z$$
+
+      where $z \in g$. Therefore, $g^{(1)}$ has dimension $1$. It follows (from a previous question), that $g^{(1)}$ must be the Abelian Lie algebra. Therefore,
+      $g^{(2)} = [g^{(1)}, \ g^{(1)}] = \{0\}$, so $g$ is solvable.
+    \end{proof}
+
+    \textbf{Part 4}
+    \newline
+
+    \textbf{Part 5}
+    \newline
+
+    \textbf{Part 6}
+    \newline
+
+    \end{document}
