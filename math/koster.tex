@@ -405,21 +405,47 @@
 
     Clearly, the
     result will also be an element of $\mathbb{R}^3$. Thus, $\mathbb{R}^3$ with $[] = \times$ is a valid Lie algebra.
+    \newline
 
     \textbf{Part 7}
     \newline
 
+    We first write down the bases for both Lie algebras:
 
+    $$B_{\times} = ((1, \ 0, \ 0), \ (0, \ 1, \ 0), \ (0, \ 0, \ 1))$$
+
+    $$B_{SO} = \Big( \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0 \end{pmatrix} \Big)$$
+
+    Let $v_1, \ v_2, \ v_3$ be the elements of the first basis, and $e_1, \ e_2, \ e_3$ be the elements of the second basis. We define a map from $\mathbb{R}^3$ to $SO(n, \ 3)$ by extending the bijection
+    that sends $v_k$ to $e_k$ to a linear map.
+    \newline
+
+    We then note from some computation that $[v_1, \ v_2] = v_3$, \ $[v_2, \ v_3] = v_1$, and $[v_3, \ v_1] = v_2$.
+    \newline
+
+    In addition, we find that $[e_1, \ e_2] = e_3$, \ $[e_2, \ e_3] = e_1$, and $[e_3, \ e_1] = e_2$. Therefore, we note that:
+
+    $$T([e_{i}, \ e_{j}]) = T(e_k) = v_k = [v_{i}, \ v_{j}] = [T(e_i), \ T(e_j)]$$
+
+    so it follows that $T$ is a valid isomorphism between the Lie algebras.
+    \newline
 
     \textbf{Part 8}
     \newline
 
-    
+    We already know that $\wedge(v)$ is a vector space. We then note that given two elements of $\wedge(v)$ of the form $[v_1]$ and $[v_2]$, we will have:
+
+    $$[v_1] \wedge [v_2] - [v_2] \wedge [v_1] = \pi(v_1 \otimes v_2) - \pi(v_2 \otimes v_1) = \pi(v_1 \otimes v_2 - v_2 \otimes v_1)$$
+
+    $$ = \pi(v_1 \otimes v_2 - v_2 \otimes v_1) + \pi(v_1 \otimes v_1) - \pi(v_2 \otimes v_2) = \pi((v_1 - v_2) \otimes (v_1 + v_2)) = [0]$$
+
+    Therefore, this is a valid Abelian Lie algebra (this automatically confirms the Jacobi identity).
+    \newline
 
     \textbf{Part 9}
     \newline
 
-    \textit{I fucked up the notation a bit by not using the fancy symbols to denote $GL$, $SL$ and $SO$, so I'll refer to $SL$ (as it is used in the notes) as $S$.}
+    \textit{I screwed up the notation a bit by not using the fancy symbols to denote $GL$, $SL$ and $SO$, so I'll refer to $SL$ (as it is used in the notes) as $S$.}
     \newline
 
     In Problem 2, we showed that if $A$ has trace equal to $0$, then $\det(e^A) = 1$. It follows that given some element of $SL(n, \ \mathbb{C})$ (which has trace equal to $0$), then
@@ -430,7 +456,7 @@
     $M = Q^{-1} P Q$, where $P$ is in Jordan form.
     \newline
 
-    It follows that $P$ is either diagonal (with determinant $1$, as determinant is invariant under change of basis), or of the form:
+    It follows that $P$ either has $2$ eigenvalues, and is diagonal (with determinant $1$, as determinant is invariant under change of basis), or has $1$ eigenvalue ($1$ or $-1$) and is of the form:
 
     \begin{equation}
       P = \begin{pmatrix} \pm 1 & 1 \\ 0 & \pm 1 \end{pmatrix}
@@ -452,64 +478,52 @@
 
     $$ = Q^{-1} \exp \Big[ \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix} \Big] Q = Q^{-1} P Q = M$$
 
-    In addition, if $M = Q^{-1} P Q$, with $P$ of the form of equation (1), then we note that:
+    In addition, it is easy to verify that:
 
-    $$\exp \Big[ Q^{-1} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} Q \Big] = Q^{-1} \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} Q$$
+    $$\exp \Big[ \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \Big] = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} $$
 
-    $$\exp \Big[ Q^{-1} \begin{pmatrix} i\pi & 1 \\ 0 & -i\pi \end{pmatrix} Q \Big] = Q^{-1} \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} Q$$
+    Finally, consider the matrix:
 
-    \textbf{Part 10}
+    $$T = \begin{pmatrix} -i \pi & -1 \\ 0 & i \pi \end{pmatrix}$$
+
+    it isn't difficult to see that for each term of $e^T$ with an even power of $T$, the top right entry of the matrix is $0$, and for any odd power,
+    $k$, the entry is the $k - 1$-th entry of $-e^{i\pi}$
+    (this can be proved formally, but it is straightforward).
     \newline
 
-    Note that if $A$ has two unique eigenvalues, then it can be diagonalized, and we can use the same proof is was presented in Question 2 to conclude that $\det(e^A) = 1$.
+    But by Euler's formula, the sum of all such entries is the real part of $-e^{i\pi}$, which is equal to $-\cos(\pi) = 1$.
     \newline
 
-    Otherwise, $A$ has less than two unique eigenvalues. It follows that $A$ is not invertible. Therefore, we must have $\det A = 0$. Using the rational canonical form, we note that:
+    Therefore:
 
-    $$A = Q^{-1} \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} Q$$
+    $$\exp \Big[ \begin{pmatrix} i\pi & -1 \\ 0 & -i\pi \end{pmatrix} \Big] = \begin{pmatrix} -1 & 1 \\ 0 & -1 \end{pmatrix}$$
 
-    It is easy to see that:
-
-    $$\begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$$
-
-    Thus, using the definition of the matrix exponential, it is clear that:
-
-    $$\exp \Big[ \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} \Big] = I + \begin{pmatrix} 0 & 0 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ -1 & 1 \end{pmatrix}$$
-
-    So the exponential of this matrix has determinant $1$. Finally, we see that:
-
-    $$\exp(A) = Q^{-1} \begin{pmatrix} 1 & 0 \\ -1 & 1 \end{pmatrix} Q$$
-
-    Since determinant remains invariant under change of basis, it follows that $\det(e^A) = 1$ in this case as well.
+    Therefore, if $M = Q^{-1} P Q$, with $P$ of the form of equation (1), then there exists an element of the domain $T$ such that $e^{T} = M$.
     \newline
 
-    We have shown that for any $A \in SL(n, \ \mathbb{R})$, the exponential $e^A$ has determinant $1$. Therefore, $\exp : SL(n, \ \mathbb{R}) \ \rightarrow \ S(n, \ \mathbb{R})$ is a valid
-    map.
+    It follows that $\exp$ is surjective, and the proof is complete.
     \newline
-
-    \textbf{Part 11}
-    \newline
-
-    \begin{prop}
-      The map $\exp : SL(n, \ \mathbb{R}) \ \rightarrow \ S(n, \ \mathbb{R})$ is not surjective.
-    \end{prop}
-
-    \begin{proof}
-      Consider the matrix:
-
-      $$A = \begin{pmatrix} -1 & 1 \\ 0 & -1 \end{pmatrix}$$
-
-      The characteristic polynomial of this matrix is clearly $(\lambda + 1)^2 = \lambda^2 + 2\lambda + 1$ (as the matrix is upper diagonal). 
-      \end{proof}
 
     \section{Problem 4}
 
     \textbf{Part 1}
     \newline
 
-    Clearly, $g$ is a vector subspace of itself, so it is a Lie subalgebra of $g$. In addition, it is clear that $[g, \ g] \subset g$, as the bracket is a bilinear
-    map into $g$. Therefore, $g$ is an ideal, by definition.
+    Clearly, $[g, \ g]$ (all linear combinations of brackets) is closed under vector addition and scalar multiplication, and contains the $0$ vector, so it is a vector subspace.
     \newline
+
+    Since $[g, \ g] \subset g$, it follows from the definition of the bracket that $[[g, \ g], \ [g, \ g]] \subset [g, \ g]$. Therefore, $[g, \ g]$ is a Lie subalgebra. Finally,
+    note once again hat since $[g, \ g] \subset g$, we have $[g, \ [g, \ g]] \subset [g, \ g]$. Therefore, $[g, \ g]$ is an ideal.
+
+    \begin{prop}
+      Given a Lie algebra $g$, it follows that $[g, \ g]$ is a Lie subalgebra.
+    \end{prop}
+
+    \begin{proof}
+      Clearly, $[g, \ g] \subset g$, and $[[g, \ g], \ [g, \ g]] \subset g$, so $[g, \ g]$. In addition, we note that given $[A_1, \ B_1]$ and
+      $[A_2, \ B_2]$ in $[g, \ g]$, we have:
+
+      \end{proof}
 
     \textbf{Part 2}
     \newline
@@ -554,8 +568,59 @@
       it must be the Abelian Lie algebra.
     \end{proof}
 
+    \textbf{Part 5}
+    \newline
+
+    Consider some Lie algebra $g$. Clearly, an arbitrary element of $[g, \ g]$ will be of the form:
+
+    $$[A, \ B] = \Big[ \displaystyle\sum_{i} a_i e_i, \ \displaystyle\sum_{j} b_{j} e_{j} \Big] = \displaystyle\sum_{i, \ j} a_{i} b_{j} [e_i, \ e_j] = \displaystyle\sum_{i} \displaystyle\sum_{i < j} (a_{i} b_{j} - a_{j} b_{i}) [e_i, \ e_j]$$
+
+    Therefore, all linear combinations of all such $[A, \ B]$ will be a linear combinations of elements of the form $[e_i, \ e_j]$.
+    In addition, we know that $[g, \ g]$ is a vector subspace, so any linear combination of element of the form $[e_i, \ e_j]$ will also be in $[g, \ g]$.
+    \newline
+
+    Therefore, the set of all $[e_i, \ e_j]$ with $i < j$ forms
+    a basis for $[g, \ g]$, so to find $[g, \ g]$ for each of the outlined vector spaces, we simply have to choose a basis $e_1, \ ..., \ e_n$ for $g$, and compute all brackets, then conclude that
+    $[g, \ g]$ will simply be the span of all such brackets.
+    \newline
+
     \textbf{Part 5a}
     \newline
+
+    We choose the following basis:
+
+    $$B = \Big( \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \Big)$$
+
+    and note that $[e_1, \ e_2] = 0$, $[e_1, \ e_3] = 0$, and $[e_2, \ e_3] = e_1$. Therefore:
+
+    $$[H(3, \ \mathbb{R}), \ H(3, \ \mathbb{R})] = \text{span}(e_1)$$
+
+    \textbf{Part 5b}
+    \newline
+
+    It is easy to verify that the following set is a basis for $SL(2, \ \mathbb{R})$:
+
+    $$B = \Bigg( \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \ \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \ \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \Bigg)$$
+
+    We then calculate $[e_1, \ e_2] = -2e_2$, $[e_1, \ e_3] = 2e_3$, and $[e_2, \ e_3] = -e_1$. Therefore, $[SL(2, \ \mathbb{R}), \ SL(2, \ \mathbb{R})] = SL(2, \ \mathbb{R})$.
+    \newline
+
+    \textbf{Part 5c}
+    \newline
+
+    An identical process to above allows us to conclude that $[SL(2, \ \mathbb{C}), \ SL(2, \ \mathbb{C})] = SL(2, \ \mathbb{C})$.
+    \newline
+
+    \textbf{Part 5d}
+    \newline
+
+    The result of Part 7 imply that $[SO(3, \ \mathbb{R}), \ SO(3, \ \mathbb{R})] = SO(3, \ \mathbb{R})$.
+    \newline
+
+    \textbf{Part 5e}
+    \newline
+
+    It is easy to verify that $[h, \ h] = \{0\}$, so it follows that $[g, \ g] = [[h, \ h], \ [h, \ h]] = \{0\}$ as well.
 
     \section{Problem 5}
 
@@ -618,17 +683,161 @@
 
       $$[av + bw, \ cv + dw] = [av + bw, \ cv] + [av + bw, \ dw] = bc[w, \ v] + ad[v, \ w] = (ad - bc)[v, \ w] = z$$
 
-      where $z \in g$. Therefore, $g^{(1)}$ has dimension $1$. It follows (from a previous question), that $g^{(1)}$ must be the Abelian Lie algebra. Therefore,
+      where $z \in g$. Therefore, $g^{(1)}$ has dimension less than or equal to $1$. It follows (from a previous question), that $g^{(1)}$ must be the Abelian Lie algebra. Therefore,
       $g^{(2)} = [g^{(1)}, \ g^{(1)}] = \{0\}$, so $g$ is solvable.
     \end{proof}
 
     \textbf{Part 4}
     \newline
 
+    Consider the two-dimensional vector space $V$ with basis $v_1, \ v_2$. Consider the null-bracket, which combine with $V$ to form an Abelian Lie algebra,
+    and the bracket such that $[v_1, \ v_2] = v_1$ and $[v_k, \ v_k] = 0$ (we then extend its action upon the basis to a bilinear map).
+    \newline
+
+    One can easily verify
+    that the Jacobi identity holds for such a bracket.
+    \newline
+
+    \begin{prop}
+      The two Lie algebras presented above are not isomorphic.
+    \end{prop}
+
+    \begin{proof}
+      Assume that such an ismorphism $T$ from the Abelian Lie group to the second Lie group exists. We then must have:
+
+      $$T([v_1, \ v_2]) = 0 = [T(v_1), \ T(v_2)] = [av_1 + bv_2, \ cv_1 + dv_2] = (ad - bc)[v_1, \ v_2] = (ad - bc)v_1$$
+
+      Clearly, $v_1 \neq 0$, so we then must have $ad = bc$. Clearly, at least one of $c$ or $d$ must be non-zero, or else $T(v_1) = 0$, which would imply that $T$ is not an isomorphism.
+      Therefore, in the case of $d \neq 0$:
+
+      $$d T(v_1) = ad v_1 + db v_2 = bc v_1 + db v_2 = b(cv_1 + dv_2) = b T(v_2) \ \Rightarrow \ T(v_1) = \lambda T(v_2)$$
+
+      which contradicts the fact that $T$ is an isomorphism. In addition, if $c \neq 0$, then:
+
+      $$c T(v_1) = ac v_1 + bc v_2 = ac v_1 + ad v_2 = a(cv_1 + dv_2) = a T(v_2) \ \Rightarrow \ T(v_1) = \lambda' T(v_2)$$
+
+      which again contradicts the fact that $T$ is an isomorphism. Therefore, we derive a contradiction in both cases. It follows that no such
+      bijection exists and the proof is complete.
+      \end{proof}
+
     \textbf{Part 5}
     \newline
 
+    \begin{prop}
+      Any two-dimensional Lie algebra is isomorphic to one of the two from Part 4.
+    \end{prop}
+
+    \begin{proof}
+      Let $g$ be a two-dimensional Lie algebra. It follows that $g$ has a basis of the form $e_1, \ e_2$, along
+      with a bracket. Clearly, such a bracket is completely determined by how it maps the pair $e_1, \ e_2$.
+      \newline
+
+      We will have $[e_1, \ e_2] = z$, where $z = c_1 e_1 + c_2 e_2$. In the case that $z$ is the zero vector, then
+      we define an bijection that takes $v_1$ to $e_1$, and $v_2$ to $e_2$, and extend it to a linear map to form
+      an ismorphism from $V$ to $g$.
+      \newline
+
+      We note that given $v, \ w \in V$, we will have:
+
+      $$T([v, \ w]) = T(0) = 0 = [T(v), \ T(w)]$$
+
+      so $T$ is a valid Lie algebra isomorphism.
+      \newline
+
+      Now, consider the case when $z$ is non-zero. We choose a vector $x$ such that $(z, \ x)$ is linearly independent. Noting that $[z, \ x] = \gamma z$,
+      for some $\gamma \neq 0$ (or else $x$ and $z$ would be linearly dependent, as can be easily verified), we define a new basis for $g$ as $(z, \ x/\gamma)$.
+      \newline
+
+      We then
+      define a bijection between bases that takes $v_1$ to $z$ and $v_2$ to $y = x/\gamma$, then extend it to a linear map (which is
+      also an isomorphism).
+      \newline
+
+      We note that, given $v, \ w \in V$:
+
+      $$T([v, \ w]) = T([av_1 + bv_2, \ cv_1 + dv_2]) = (ad - bc)T(v_1) = (ad - bc)z = \frac{1}{\gamma}(ad - bc)[z, \ x]$$
+      $$= (ad - bc)[z, \ y] = [az + by, \ cz + dy] = [T(v), \ T(w)]$$
+
+      so it follows that $T$ is a valid Lie algebra isomorphism.
+
+    \end{proof}
+
     \textbf{Part 6}
     \newline
+
+    Clearly, $H(3, \ \mathbb{R})$ is solvable, as $g^{(2)} = [[H(3, \ \mathbb{R}), \ H(3, \ \mathbb{R})], \ [H(3, \ \mathbb{R}), \ H(3, \ \mathbb{R})]] = 0$.
+    \newline
+
+    Since we proved that every $2$-dimensional Lie algebra is solvable, then $SL(2, \ \mathbb{R})$ and $SL(2, \ \mathbb{C})$ are solvable.
+    \newline
+
+    $g = SO(3, \ \mathbb{R})$ is not solvable, as $[SO(3, \ \mathbb{R}), \ SO(3, \ \mathbb{R})] = SO(3, \ \mathbb{R})$, so it follows from the definition of $g^{(k)}$ that
+    $g^{(k)} = SO(3, \ \mathbb{R})$ for all $k$.
+    \newline
+
+    Finally, we note that for the example in Part (e) $g^{(1)} = [g, \ g] = [[h, \ h], \ [h, \ h]] = 0$ (in the same fashion as the first example).
+
+    \section{Problem 6}
+
+    \textbf{Part 1}
+    \newline
+
+    \begin{prop}
+      Every simple Lie algebra is semi-simple.
+      \end{prop}
+
+    \begin{proof}
+      This is the trivial case, $g$ is the direct sum of itself, which is simple, so it is semisimple
+    \end{proof}
+
+    \textbf{Part 2}
+    \newline
+
+    \begin{prop}
+      $g$ is semisimple if and only if $g$ has no non-zero Abelian ideals.
+    \end{prop}
+
+    \begin{proof}
+      First, assume that $g$ is semisimple. It follows that $g = o \oplus k$, where $o$ and $k$ are simple. Assume that $g$ has a non-zero Abelian ideal $i$.
+      Note that at least one of the intersections $o \cap i$ and $k \cap i$ must be non-empty.
+      \newline
+
+      Assume without loss of generality that it is $o \cap i$. Since $o$ and $i$ are both vector subspaces, so too will be $o \cap i$.
+      \newline
+
+      We then note that $o \cap i$ is also an Abelian Lie subalgebra under $[]_{o}$. As given $A, \ B \in i \cap o$:
+
+      $$[(A, \ 0), \ (B, \ 0)] = ([A, \ B]_{o}, \ 0) = [A, \ B]_{o} = 0$$
+
+      Finally, we note that $[o, \ o \cap i]_{o} \subset o$, by definition of the bracket, and by definition of the ideal:
+
+      $$[o, \ o \cap i]_{o} \subset [o, \ i]_{o} \subset [o \oplus k, \ i] \subset i$$
+
+      so $o \cap i$ is a non-zero Abelian ideal of $o$. In the case that $o \cap i = o$, then $o$ is Abelian and we have a contradiction to the simplicity
+      of $o$. Otherwise, $o \cap i$ is a non-zero proper ideal of $o$, so we also have a contradiction to the simplicity of $o$.
+      \newline
+
+      Therefore, $g$ cannot have any non-zero Abelian ideals.
+      \newline
+
+      \textcolor{red}{I still need to prove the other direction}
+    \end{proof}
+
+    \textbf{Part 4}
+    \newline
+
+    We note that $[H(3, \ \mathbb{R}), \ H(3, \ \mathbb{R}_]$ is a non-zero Abelian ideal of $H(3, \ \mathbb{R})$. Therefore, this Lie algebra is not semisimple.
+    \newline
+
+    Clearly, neither $SL(2, \ \mathbb{R})$ or $SL(2, \ \mathbb{C})$ have any non-zero Abelian ideals (as $[g, \ h] = g$ for any non-zero subalgebra $h$, so neither has any proper ideals, and is not itself Abelian, so they have
+    no Abelian ideals). Thus, both of
+    these algebras are semisimple.
+    \newline
+
+    The same logic holds true for this group: $[g, \ h] = g$ for any non-zero subalgebra $h$, so $SO(3, \ \mathbb{R})$ has no proper ideals, and is itself not Abelina, so it has no
+    non-zero Abelian ideals. Therefore, it is semisimple.
+    \newline
+
+    Finally, in Part (e), the resulting algebra is clearly itself Abelian, so it is not semisimple.
 
     \end{document}

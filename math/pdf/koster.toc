@@ -8,4 +8,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Problem 4}{8}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Problem 5}{9}{section.5}
+\contentsline {section}{\numberline {5}Problem 5}{10}{section.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Problem 6}{12}{section.6}
