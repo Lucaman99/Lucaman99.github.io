@@ -1,4 +1,4 @@
-\documentclass[10pt, oneside]{article} 
+\documentclass[10pt, oneside]{amsart} 
 \usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim,
   bbm, color, graphics, geometry, hyperref, biblatex, mathtools}
 \usepackage[framemethod=TikZ]{mdframed}
@@ -12,7 +12,7 @@
 
 \addbibresource{ref.bib}
 
-\geometry{tmargin=.75in, bmargin=.75in, lmargin=1in, rmargin =1in}
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=1.25in, rmargin =1.25in}
 \setlength\parindent{0pt}
 
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
@@ -45,17 +45,18 @@
     \begin{document}
 
     \maketitle
+
     \tableofcontents
 
     \vspace{.25in}
+
+    \newpage
 
     \section{Introduction}
 
     The goal of this set of notes is to solve the most challenging problems in Spivak, and
     write up the solutions in a clean and concise way. I apologize in advance for any
     possible mistakes, or instances in which I may skip over certain important points.
-
-    \newpage
 
     \section{Chapter 3}
 
@@ -65,23 +66,31 @@
 
     \begin{proof}
       We go through the steps of the proof, as organized in Spivak:
+      \newline
 
       \begin{enumerate}
+
       \item Clearly, we will have $f(1) = f(1 \cdot 1) = f(1) \cdot f(1)$, so either $f(1) = 0$ or $f(1) = 1$. If we assume that $f(1) = 0$,
         then this would imply that $f(n) = 0$ for all $n$ (we can prove this by induction, assuming that $f(n) = 0$, and noting that $f(n + 1) = f(n) + f(1) = 0$).
         This is a contradiction to our initial assumption, so $f(1) = 1$.
+        \newline
 
       \item First, we note that:
 
         $$f(0) = f(0 + 0) = f(0) + f(0) \ \Rightarrow \ f(0) = 0$$
+        \vspace{3pt}
 
+        \noindent
         Next, we note that $f(n) = n$, for natural $n$. We prove this by induction, first assuming that $f(n) = n$, then noting that $f(n + 1) = f(n) + f(1) = n + 1$.
         We then note that $f(-n) = n - n + f(-n) = -n + f(n) + f(-n) = -n + f(0) = -n$. Thus, $f$ is the identity for all integers.
+        \newline
 
+        \noindent
         Now, we can see that:
 
         $$f\Big(\frac{1}{b}\Big) = \frac{b}{b} \cdot f\Big(\frac{1}{b}\Big) = \frac{1}{b} \cdot f(b) \cdot f\Big(\frac{1}{b}\Big) = \frac{1}{b} \cdot f(1) = \frac{1}{b}$$
 
+        \noindent
         Thus,
 
         $$f\Big(\frac{a}{b}\Big) = f(a) \cdot f\Big( \frac{1}{b} \Big) = \frac{a}{b}$$
@@ -90,12 +99,16 @@
 
         $$f(x) = f(\sqrt{x} \cdot \sqrt{x}) = f(\sqrt{x}) f(\sqrt{x}) = f(\sqrt{x})^2$$
 
+        \noindent
         we know that for any real number $r$, we have $r^2 \geq 0$, so $f(x) \geq 0$. Assume that $f(x) = 0$.
         Since $x > 0$, this would imply that:
 
         $$f(1) = f\Big( \frac{x}{x} \Big) = f(x) \cdot f\Big( \frac{1}{x} \Big) = 0$$
 
+        \noindent
         a clear contradiction. Thus, $f(x) > 0$.
+
+        \vspace{8pt}
 
       \item If $x > y$, then we know that $x - y > 0$, so it follows from previous result that:
 
@@ -105,11 +118,13 @@
 
         $$x < \frac{a}{b} < f(x)$$
 
+        \noindent
         for some $a/b$. From the previous result, we then get $f(x) < f(a/b)$, a clear contradiction to the right-most inequality above. Similarly, if we assume
         that $f(x) < x$, we will have:
 
         $$f(x) < \frac{a}{b} < x$$
 
+        \noindent
         so $f(a/b) < f(x)$, another contradiction. It follows that $f(x) = x$, and we have proved the proposition.
 
         \end{enumerate}
@@ -390,9 +405,18 @@
       for all $x$ and the proof is complete.
     \end{proof}
 
+    \begin{problem}{7.18}
+	    Suppose the $f$ is continuous on $[a, \ b]$ and let $x$ be any number. Prove that there is a point on the graph of $f$ that 
+	    is closest to $(x, \ 0)$.
+    \end{problem}
+
+    \begin{proof}
+	We note that 
+    \end{proof}
+
     \section{Chapter 8}
 
-    \begin{problem}{8.20}
+    \begin{problem}{8.20a}
       Let $(a, \ b)$ be an interval of shadow points, with $a$ and $b$ not shadow points. Prove that for all $x \in (a, \ b)$, we have
       $f(x) \leq f(b)$.
     \end{problem}
@@ -407,6 +431,51 @@
       \newline
 
       Since $b$ is an upper-bound on $A$, it follows that $\sup A = b$, for any $x$. 
+    \end{proof}
+
+    \begin{problem}{8.20b}
+      Prove that $f(a) \leq f(b)$.
+    \end{problem}
+
+    \begin{proof}
+      Assume that $f(a) > f(b)$. It follows that for any $c$ with $f(b) < c < f(a)$, we can choose $r \in (a, \ b)$ such that $f(r) = c$ (by IVT). But this is a clear contradiction
+      to Part A. Thus, $f(a) \leq f(b)$.
+    \end{proof}
+
+    \begin{problem}{8.20c}
+      Prove that $f(a) = f(b)$.
+    \end{problem}
+
+    \begin{proof}
+      Assume that $f(a) < f(b)$. It would follow from the definition that $a$ is a shadow point, a contradiction. Therefore, $f(a) = f(b)$.
+    \end{proof}
+
+    \section{Chapter 9}
+
+    \begin{problem}{9.15}
+      let $f$ be a function such that $|f(x)| \leq x^2$ for all $x$. Prove that $f$ is differentiable at $x$.
+    \end{problem}
+
+    \begin{proof}
+      It is clear that for all $x$, we have $0 \leq |f(x)|$. Thus:
+
+      $$0 \leq |f(x)| \leq x^2 \ \Rightarrow \ 0 \leq \frac{|f(x)|}{x} \leq x$$
+
+      for all $x \neq 0$. We then invoke squeeze theorem to conclude that:
+
+      $$f'(0) = \lim_{x \to 0} \frac{|f(x)|}{x} = 0$$
+
+      and the proof is complete.
+    \end{proof}
+
+    \textit{Generalize this result be replacing $x^2$ with $|g(x)|$. What property must $g$ have?}
+
+    \begin{prop}
+      If $g(0) = 0$, then the derivative of $f$ at $0$ exists.
+    \end{prop}
+
+    \begin{proof}
+      Similarly to above, we note that $0 \leq |f(x)| \leq |g(x)|$ so $0 \leq |f(x)|/x \leq |g(x)|/x$ for all $x \neq 0$. Then, by squeeze theorem, $f'(0) = 0$
       \end{proof}
 
     \section{Chapter 10}
@@ -456,6 +525,47 @@
       three times. But $f(a) \leq f(y)$, so it follows that $f(y)$ is only taken on by one value of $x$. This is a contradiction, so such a function cannot exist.
     \end{proof}
 
+    \begin{problem}{10.25a}
+      Suppose that $a$ and $b$ are consecutive roots of $f(x)$, so $f(x) = (x - a) (x - b) g(x)$, where $g(a) \neq 0$ and $g(b) \neq 0$.
+      Prove that $g(a)$ and $g(b)$ have the same sign.
+    \end{problem}
+
+    \begin{proof}
+      Assume without loss of generality that $g(a)$ is positive, and that $g(b)$ is negative. It follows from the intermediate value theorem that there must exist some $x$ such that
+      $g(x) = 0$ and $a < x < b$, clearly contradicting the fact that $a$ and $b$ are consecutive roots. Thus, $g(a)$ and $g(b)$ must have the same sign.
+    \end{proof}
+
+    \begin{problem}{10.25b}
+      Prove that there is some $x$ with $a < x < b$ and $f'(x) = 0$.
+    \end{problem}
+
+    \begin{proof}
+      We note that:
+
+      $$f'(x) = (x - b) g(x) + (x - a) g(x) + (x - a) (x - b) g'(x)$$
+
+      Therefore, $f'(a) = (a - b)g(a)$. We can assume that $a < b$, so $a - b$ is negative. In addition, we note that $f'(b) = (b - a)g(b)$, with $b - a$
+      positive. Thus, $f'(a)$ and $f'(b)$ have opposite signs (as $g(a)$ and $g(b)$ have the same sign). It follows from IVT that there exists some point $x$
+      between $a$ and $b$ such that $f'(x) = 0$.
+    \end{proof}
+
+    \begin{problem}{10.25c}
+      Prove the same fact, even if $a$ and $b$ are multiple roots.
+    \end{problem}
+
+    \begin{proof}
+      We may write $f(x) = (x - a)^{m} (x - b)^{n} g(x)$. We note that:
+
+      $$f'(x) = m(x - a)^{m - 1} (x - b)^{n} g(x) + n (x - a)^{m} (x - b)^{n - 1} g(x) + (x - a)^{m} (x - b)^{n} g'(x)$$
+
+      We then define:
+
+      $$h(x) = \frac{f'(x)}{(x - a)^{m - 1} (x - b)^{m - 1}} = m (x - b) g(x) + n (x - a) g(x) + (x - a) (x - b) g'(x)$$
+
+      We use the same logic as in 10.25a to note that $g(a)$ and $g(b)$ must have the same sign. It then follows (suing the same logic as 10.25b) that
+      there is some point $x$ between $a$ and $b$ such that $h(x) = 0$. By definition, this implies that $f'(x) = 0$ and the proof is complete.
+      \end{proof}
+
     \begin{problem}{10.27}
       Suppose $f$ is differentiable at $0$, and that $f(0) = 0$. Prove that $f(x) = x g(x)$ for some function $g$ which is continuous at $0$.
     \end{problem}
@@ -485,6 +595,408 @@
       where $f'(x)$ and $g'(x)$ are well defined. We then must have $f'(0) g(0) + g'(0) f(0) = 1$, which is impossible, as
       $f(0) = g(0) = 0$. Thus, we cannot find $f$ and $g$ such that $f(x) g(x) = x$ and the proof is complete.
     \end{proof}
+
+    \section{Chapter 11}
+
+    \begin{prop}
+      If $f'(x) \geq M$, then $f(x) \geq Mx + f(0)$ for all $x \in [0, \ 1]$.
+    \end{prop}
+
+    \begin{proof}
+      Assume that there exsits a point $y$ such that $f(y) < My + f(0)$. It follows from mean value theorem that there exists some $z$ such that:
+
+      $$f'(z) = \frac{f(y) - f(0)}{y} < \frac{My + f(0) - f(0)}{y} = M$$
+
+      a clear contradiction.
+    \end{proof}
+
+    \begin{problem}{11.26}
+      Suppose that $f'(x) \geq M > 0$ for all $x \in [0, \ 1]$. Prove that there exists an interval of length $1/4$ such that
+      $|f| \geq M/4$.
+    \end{problem}
+
+    \begin{proof}
+      First, assume that $f(0) \geq -M/2$. Using the above proposition, we note that:
+
+      $$f(3/4) \geq \frac{3M}{4} + f(0) \geq \frac{3M}{4} - \frac{M}{2} = \frac{M}{4}$$
+
+      Then, since $f$ is strictly increasing, we will have $|f| \geq M/4$ on the interval $[3/4, \ 1]$.
+      \newline
+
+      Now, consider the case where $f(0) < -M/2$. 
+      \end{proof}
+
+    \begin{problem}{11.27}
+      Show that if $f'(x) > g'(x)$ for all $x$ and $f(a) = g(a)$, then $f(x) > g(x)$ for all $x > a$ and $f(x) < g(x)$ for all $a < x$.
+    \end{problem}
+
+    \begin{proof}
+      We make use of the Cauchy mean value theorem. Choose $b$ such that $b > a$. It follows that we can choose some point $x$ such that:
+
+      $$\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(x)}{g'(x)}$$
+
+      But since $f'(x) > g'(x)$, we note that $f'(x)/g'(x) > 1$, so:
+
+      $$f(b) - f(a) > g(b) - g(a) \ \Rightarrow \ f(b) > g(b)$$
+
+      where we used the fact that $f(a) = g(a)$. Similar logic shows the case of $b < a$.
+    \end{proof}
+
+    \begin{problem}{11.33}
+      Suppose that $|f(x) - f(y)| \leq |x - y|^{n}$ for some $n > 1$. Prove that $f(x) = c$ for all $x$.
+    \end{problem}
+
+    \begin{proof}
+      Consider $f'(x)$. We assert that $f'(a)$, for some $a$, is equal to $0$. We pick some $\epsilon > 0$. We let $\delta = \min \{1, \ \epsilon\}$. We then have:
+
+      $$|x - a| < \delta \ \Rightarrow \ \Big| \frac{f(x) - f(a)}{x - a} \Big| = \frac{|f(x) - f(a)|}{|x - a|} \leq \frac{|x - a|^{n}}{|x - a|} = |x - a|^{n - 1} \leq |x - a| < \delta \leq \epsilon$$
+
+      as $n > 1$ and $\delta \leq 1$. Thus, by definition, the derivative of $f$ at $a$ is equal to $0$. It follows that $f(x) = c$ (this can be formally demonstrated using mean value theorem).
+    \end{proof}
+
+    \begin{problem}{11.34a}
+      If $f$ is Lipschtiz of order $\alpha > 0$, at $x$, then $f$ is continuous at $x$.
+    \end{problem}
+
+    \begin{proof}
+      We
+    \end{proof}
+
+    \begin{problem}{11.39}
+      Prove that if $f$ is twice-differentiable function with $f(0) = 0$ and $f(1) = 1$, as well as $f'(0) = f'(1) = 0$, then $|f''(x)| \geq 4$ for some
+      $x \in [0, \ 1]$.
+    \end{problem}
+
+    \begin{proof}
+      \textbf{To do}
+    \end{proof}
+
+    \begin{problem}{11.40}
+      Consider some function $f$ such that $f'(x) = 1/x$ for all $x > 0$ and $f(1) = 0$. Prove that $f(xy) = f(x) + f(y)$ for all $x, \ y > 0$.
+    \end{problem}
+
+    \begin{proof}
+      Let us consider $g(x) = f(xy)$, taking the derivative with respect to $x$:
+
+      $$\frac{dg}{dx} = y f'(xy) = y \frac{1}{xy} = \frac{1}{x} = \frac{df}{dx}$$
+
+      for all $x > 0$. We know that the derivatives of the functions $f$ and $g$ are the same, so it follows that $g(x) = f(xy) = f(x) + c$, for
+      some constant $c$ (by mean value theorem). We then note that for $x = 1$, we have:
+
+      $$f(y) = f(1) + c = c$$
+
+      Therefore, $f(xy) = f(x) + f(y)$ for all $x, \ y > 0$.
+    \end{proof}
+
+    \begin{problem}{11.47}
+      Prove that if $f$ and $g$ are continuous on $[a, \ b]$ and differentiable on $(a, \ b)$, and $g'(x) \neq 0$ for $x$ in $(a, \ b)$, then
+      there is some $x$ in $(a, \ b)$ with:
+
+      $$\frac{f'(x)}{g'(x)} = \frac{f(x) - f(a)}{g(b) - g(x)}$$
+    \end{problem}
+
+    \begin{proof}
+      We let:
+
+      $$h(x) = g(x) f(x) - f(a) g(x) - g(b) f(x)$$
+
+      We note that $h(a) = - g(b) f(a) = h(b)$. It follows that we may apply Rolle's theorem to conclude that there exists
+      some $x \in (a, \ b)$ such that $h'(x) = 0$. Thus:
+
+      $$h'(x) = g'(x) f(x) + f'(x) g(x) - f(a) g'(x) - g(b) f'(x) = 0$$
+
+      which implies that:
+
+      $$g'(x) \big[ f(x) - f(a) \big] = f'(x) \big[ g(b) - g(x) \big]$$
+
+      so:
+
+      $$\frac{f'(x)}{g'(x)} = \frac{f(x) - f(a)}{g(b) - g(x)}$$
+
+      and the proof is complete.
+    \end{proof}
+
+    \begin{problem}{11.54a}
+      Suppose that $f$ is differentiable on $[a, \ b]$. Prove that if the minimum of $f$ on $[a, \ b]$ is at $a$, then $f'(a) \geq 0$, and if it is at $b$, then $f'(b) \leq 0$.
+    \end{problem}
+
+    \begin{proof}
+      Suppose that $a$ is the minimum and $f'(a) < 0$. If we let $\epsilon = |f'(a)|$, then we note that we can choose a $\delta$ such that for all $x$ with $a < x < a + \delta$
+      such that:
+
+      $$\frac{f(x) - f(a)}{x - a} < 0 \ \Rightarrow \ f(x) < f(a)$$
+
+      which contradicts the fact that $a$ is a minimum. Thus, we must have $f'(a) \geq 0$. We proceed in a similar fashion to show that $f'(b) \leq 0$.
+    \end{proof}
+
+    \begin{problem}{11.54b}
+      Suppose that $f'(a) < 0$ and $f'(b) > 0$. Show that $f'(x) = 0$ for some $x$ in $(a, \ b)$.
+    \end{problem}
+
+    \begin{proof}
+      Clearly, from above, the minimum can't be at $a$ or $b$, so it must be in $(a, \ b)$. Therefore, at this point, we will have $f'(x) = 0$.
+    \end{proof}
+
+    \begin{problem}{11.54c}
+      We let $g(x) = f(x) - cx$. We note that $g'(x) = f'(x) - c$. Since $'f(a) < c$, then $g'(a) < 0$. In addition, $g'(b) > 0$. Therefore, there is a point $x$
+      such that $g'(x) = f'(x) - c = 0$, so $f'(x) = c$.
+    \end{problem}
+
+    \begin{problem}{11.56}
+      If $|f|$ is differentiable at $a$ and $f$ is continuous at $a$, then $f$ is differentiable at $a$.
+    \end{problem}
+
+    \begin{proof}
+      First, consider the case where $f(a) > 0$. It follows that there exists an interval around $a$ such that $f$ is positive, as $f$ is continuous. In other words,
+      for all $x$ in such an interval, we have $|f|(x) = |f(x)| = f(x)$. Thus $|f|'(x) = f(x)$.
+      \newline
+
+      Similarly, in the case of $f(a) < 0$, there exists an interval around $a$ such that $f$ is negative (as $f$ is continuous). Thus, for all
+      $x$ in the interval, $f(x) = -|f|(x)$, so $f'(x) = -|f|'(x)$.
+      \newline
+
+      Finally, let us consider the case where $f(a) = 0$. We note that $|f|(a) = 0$. Thus, $|f|$ takes on a local minimum at $a$, and is differentiable, so
+      by Fermat's theorem, we note that $|f|'(a) = 0$.
+      \newline
+
+      We then can easily apply the $\epsilon$-$\delta$ definition to show that $f'(a) = 0$ as well. More specifically, we choose
+      $\delta$ such that:
+
+      $$|x - a| < \delta \ \Rightarrow \ | |f|(a) | < \epsilon$$
+
+      and note that $||f|(a)| = |f(a)|$, so we can use this same $\delta$ to show that $f'(a) = 0$. This completes the proof.
+    \end{proof}
+
+    \begin{problem}{11.57}
+      For even $n$, $x^n + y^n = (x + y)^n$ only when $x = 0$.
+    \end{problem}
+
+    \begin{proof}
+
+      Assume that for some even $n$, there is some $x_0$ such that $x_0^n + y^n = (x_0 + y)^n$. Without loss of generality, we assume that $x_0 > 0$. It follows that we can apply Rolle's theorem
+      to the interval $[0, \ x_0]$ on $f(x) = x^n + y^n - (x + y)^n$ to conclude that there is a point $x_1$ such that:
+
+      $$f'(x_1) = n x_1^{n - 1} - n(x_1 + y)^{n - 1} = 0 \ \Rightarrow \ x_1^{n - 1} = (x_1 + y)^{n - 1}$$
+
+      Since $n$ is even, then $n - 1$ must be odd, so the $n - 1$-th root of both sides of this equation must be positive. This implies that $x_1 = x_1 + y$, so $y = 0$, a contradiction.
+    \end{proof}
+
+    \begin{problem}{11.58}
+      If $n$ is even and $f(x) = x^n$, then every tangent line intersects $f(x)$ only once.
+    \end{problem}
+
+    \begin{proof}
+    Any tangent line to $f(x)$ at $x = a$ is clearly of the form:
+
+    $$y(x) = f'(a)(x - a) + f(a) = na^{n - 1}(x - a) + a^n = nxa^{n - 1} + a^n(1 - n)$$
+
+    Let $x_0$ be a point such that $y(x_0) = f(x_0)$. Without loss of generality, we assume that $x_0 > a$. We apply Rolle's theorem to $g(x) = y(x) - f(x)$
+    to conclude that there is a point $x$ in $(a, \ x_0)$ such that $g'(x) = 0$, so:
+
+    $$g'(x) = y'(x) - f'(x) = na^{n - 1} - nx^{n - 1} = 0 \ \Rightarrow \ a^{n - 1} = x^{n - 1}$$
+
+    As we concluded above, since $n - 1$ is odd, we therefore must have $a = x$, a contradiction. Thus, the tangent line can only intersect $f(x)$ at $a$.
+    \end{proof}
+
+    \begin{problem}{11}
+      If $f'$ is increasing, then every tangent line intersects $f$ only once
+    \end{problem}
+
+    \begin{proof}
+      Once again, any tangent line to $f$ will be of the form:
+
+      $$y(x) = f'(a)(x - a) + f(a)$$
+
+      Let us assume that there exists some point $x_0$ such that $f(x_0) = y(x_0)$, where $x_0 \neq a$. As we did above, we apply Rolle's theorem
+      to the function $g(x) = f(x) - y(x)$ to the interval $(a, \ x_0)$ (we assume without loss of generality that $x_0 > a$, but the proof is identical
+      for $x_0 < a$).
+      \newline
+
+      There must be a point $x$ such that $g'(x) = 0$. Thus:
+
+      $$g'(x) = f'(x) - f'(a) = 0 \ \Rightarrow \ f'(x) = f'(a)$$
+
+      However, we know that $f'$ is increasing, so we must have $f'(a) < f'(x)$, a contradiction. It follows that no such
+      point $x_0$ exists, and the tangent line intersects $f$ only once.
+    \end{proof}
+
+    \begin{problem}{11.60}
+      Suppose that $f(0) = 0$ and $f'(x)$ is increasing. Prove that the function $g(x) = f(x)/x$ is increasing on $(0, \ \infty)$.
+    \end{problem}
+
+    \begin{proof}
+      Consider:
+
+      $$g'(x) = \frac{f'(x)}{x} - \frac{f(x)}{x^2}$$
+
+      Let us consider some point $y \in (0, \ \infty)$. We note from the mean value theorem that there exists some point $z \in (0, \ y)$ such that:
+
+      $$f'(z) = \frac{f(y)}{y}$$
+
+      which implies that:
+
+      $$\frac{f'(z)}{y} = \frac{f(y)}{y^2}$$
+
+      Since $f'$ is increasing and $z < y$, it follows that $f'(z) < f'(y)$, so we may conclude that:
+
+      $$\frac{f(y)}{y^2} = \frac{f'(z)}{y} < \frac{f'(y)}{y} \ \Rightarrow \ g'(y) = \frac{f'(y)}{y} - \frac{f(y)}{y^2} > 0$$
+
+      Therefore, for any point $y \in (0, \ \infty)$, we will have $g'(y) > 0$, so $g(x) = f(x)/x$ is increasing, and the proof is complete.
+    \end{proof}
+
+    \begin{problem}{11.61}
+      Use derivatives to prove that if $n > 1$, then:
+
+      $$(1 + x)^{n} > 1 + nx$$
+
+      for $-1 < x < 0$ and $0 < x$.
+    \end{problem}
+
+    \begin{proof}
+      Assume that there exists some point $y$ such that
+      $-1 < y < 0$ or $0 < y$ and $(1 + y)^{n} < 1 + ny$.
+      \newline
+
+      We let $f(x) = (1 + x)^{n}$. Note that $f(x) > 0$ for all $x$ that we consider
+      In the case of $0 < y$, we can use mean value theorem to conclude that there exists some point $z$ such that:
+
+      $$f'(z) = \frac{f(y) - f(0)}{y} < \frac{ny + 1 - 1}{y} = n$$
+
+      but this clearly cannot be the case, as $f'(x) = n(1 + x)^{n - 1}$, and $(1 + x)^{n - 1} > 1$ for $x > 0$.
+      For the case of $-1 < y < 0$, we can again use mean value theorem to conclude that there must be a point $z$ such that:
+
+      $$f'(z) = \frac{f(0) - f(y)}{-y} > \frac{1 - 1 - ny}{-y} = n$$
+
+      But again, this clearly cannot be the case as $f'(x) = n(1 + x)^{n - 1}$ and $(1 + x)^{n - 1} < 1$ for all $x$ where $-1 < x < 0$.
+      \newline
+
+      Thus, we must have $(1 + x)^{n} > 1 + nx$ for all $x > 0$ and $x$ with $-1 < x < 0$. This completes the proof.
+      \end{proof}
+
+    \begin{problem}{11.63a}
+      Prove that if $f'(a) > 0$, and $f'$ is continuous at $a$, then $f$ is increasing on some interval containing $a$.
+    \end{problem}
+
+    \begin{proof}
+      Since $f'(a) > 0$, we let it equal $\epsilon$. We then note that by definition of continuity, we maay choose some $\delta$ such that:
+
+      $$|x - a| < \delta \ \Rightarrow \ |f'(x) - f'(a)| < \epsilon = f'(a)$$
+
+      or, in other words, given some $x \in U = (a - \delta, \ a + \delta)$, we will have $f'(x) > 0$. It follows by definition of the derivative that $f$
+      is increasing on $U$ and the proof is complete.
+    \end{proof}
+
+    \begin{problem}{11.63b}
+      
+    \end{problem}
+
+    \begin{problem}{11.65a}
+      Suppose that $f$ is continuous on $[0, \ 1]$ and that $f$ is increasing at $a$ for every $a \in [0, \ 1]$. Prove that $f$ is increasing
+      on $[0, \ 1]$.
+    \end{problem}
+
+    \begin{proof}
+      Consider some point $b$ such that $0 < b < 1$. Let us consider the subset $[b, \ 1]$. Since $f$ is continuous, it takes on its maximum
+      and minimum values.
+      \newline
+
+      Clearly, $f$ cannot take on its minimum value at some $c > b$, as we know that $f$ is increasing at $c$, so for
+      some $\delta$ (which does exist), we note that $f(x) < f(c)$ when $c - \delta < x < c$, which contradicts the fact that $f$ takes on its minimum at $c$.
+      \newline
+
+      Thus, $f$ must take on its minimum value at $b$. It follows that given some $x$, and some $y > x$, we will have $f(x) < f(y)$, as $y \in [x, \ 1]$. It follows by definition that
+      $f$ is increasing on $[0, \ 1]$ and the proof is complete.
+    \end{proof}
+
+    \begin{problem}{11.65b}
+      Prove the above theorem without the assumption that $f$ is continuous.
+    \end{problem}
+
+    \begin{proof}
+      Let:
+
+      $$S_b = \{x \ : \ f(y) \geq f(b) \ \text{for all} \ y \in [b, \ x]\}$$
+
+      Clearly, such a set has an upper bound ($x = 1$), so it must have a least upper bound (a supremum), which we call $s$. Assume that $s < 1$.
+      \newline
+
+      By definition, there exists some $\delta$ such that for $z$ with $s < z < s + \delta$, then $f(s) < f(z)$. In addition, we can choose such a $\delta$
+      such that $s + \delta < 1$. We then choose some $y$ such that $s - \delta < y < s$, and note that $y \in S_b$, so:
+
+      $$f(b) \leq f(y) < f(s) < f(z)$$
+
+      so $z \in S_b$, contradicting the fact that $s$ is the least upper bound. It follows that $s = 1$. Finally, we choose $y$ such that $1 - \delta < y < 1$,
+      and note that $y \in S_b$, so $f(b) \leq f(y) < f(1)$, so $1$ is also in $S_b$. Thus, $S_b = [b, \ 1]$.
+        \newline
+
+       Finally, we pick $x$ and $y$ such that $x < y$. We note that $y \in [x, \ 1] = S_x$, so $f(x) < f(y)$. 
+      
+    \end{proof}
+
+    \begin{problem}{11.65c}
+      Prove that if $f$ is increasing at $a$, and $f$ is differentiable at $a$, then $f'(a) \geq 0$.
+    \end{problem}
+
+    \begin{proof}
+      Note that by definition, there is an interval around $a$, such that for $x$ in the interval, $x < a$ implies that $f(x) < f(a)$ and $x > a$ implies that $f(a) > f(x)$.
+      \newline
+
+      It follows that:
+
+      $$g(x) = \frac{f(x) - f(a)}{x - a}$$
+
+      is always positive. Assume that $f'(a) < 0$. It follows that $f'(a) = \lim_{x \to a} g(x)$ must be greater than or equal to $0$, as if this weren't the case,
+      we simply let $\epsilon = |f'(a)|$ and derive a contradiction.
+    \end{proof}
+
+    \begin{problem}{11.65d}
+      Let's go back to the definition of the derivative. We know that if $f'(a)$ exists and is greater than $0$, it follows that we can choose a $\delta$ such that:
+
+      $$|x - a| < \delta \ \Rightarrow \ \Big| \frac{f(x) - f(a)}{x - a} - f'(a) \Big| < f'(a)$$
+
+      Thus, for $x \in (a - \delta, \ a + \delta)$, we must have:
+
+      $$\frac{f(x) - f(a)}{x - a} > 0$$
+
+      In the case that $x < a$, so $x - a$ is negative, we will have $f(x) - f(a) < 0$, so $f(x) < f(a)$. In the case that
+      $a < x$, so $x - a$ is positive, we will have $0 < f(x) - f(a)$, so $f(a) < f(x)$.
+      \newline
+
+      To summarize, for $x$ such that $a < x < a + \delta$, we have $f(a) < f(x)$ and for $x$ such that $a - \delta < x < a$,
+      we have $f(x) < f(a)$. It follows, by definition, that $f$ is increasing at $a$.
+    \end{problem}
+
+    \begin{problem}{11.65e}
+      Show that if $f$ is continuous on $[0, \ 1]$, and $f'(a) > 0$ for all $a \in [0, \ 1]$, then $f$ is increasing
+      on $[0, \ 1]$.
+    \end{problem}
+
+    \begin{proof}
+      Since $f'(a) > 0$, we can use the previous problem's result to conclude that $f$ is increasing at $a$, for all $a \in [0, \ 1]$. Then,
+      using Problem 11.65a, we note that this implies that $f$ is increasing on $[0, \ 1]$.
+      \end{proof}
+
+    \begin{problem}{11.65f}
+      Suppose that $f$ is continuous on $[0, \ 1]$ and $f'(a) = 0$ for all $a \in (0, \ 1)$.
+      Apply the result in 11.65e to the function $g(x) = f(x) + \epsilon x$ to show that $f(1) - f(0) > -\epsilon$.
+      \newline
+
+      Similarly, show that $f(1) - f(0) < \epsilon$ be considering $\epsilon x - f(x)$. Conclude that $f(0) = f(1)$.
+    \end{problem}
+
+    \begin{proof}
+      Clearly, $g$ is continuous on $[0, \ 1]$, as it is the sum of two continuous functions. We also note that $g'(x) = f'(x) + \epsilon = \epsilon$,
+      so $g'(x) > 0$ for all $x \in [0, \ 1]$ (we assume that $\epsilon$ is positive). It follows that $g$ is increasing on $[0, \ 1]$. It follows by
+      defintion that $g(1) > g(0)$, so we have:
+
+      $$0 < g(1) - g(0) = [f(1) + \epsilon] - f(0) \ \Rightarrow \ -\epsilon < f(1) - f(0)$$
+
+      We proceed in an identical fashion using the function $h(x) = \epsilon x - f(x)$ to show that $f(1) - f(0) < \epsilon$.
+      \newline
+
+      Now, assume that $f(1) - f(0) = c$, where $c > 0$. We let $\epsilon = c$ and derive a contradiction. We can derive a similar contradiction
+      for $c < 0$. Thus, we must have $f(1) - f(0) = 0$, and the proof is complete.
+      \end{proof}
 
     \section{Other Proofs}
 
