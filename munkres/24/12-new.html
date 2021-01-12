@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://latex.now.sh/style.css">
+        <title>Munkres</title>
+        <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+        </script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <center>
+            <div style="margin-left:-100px;margin-right:-100px;text-align:left">
+                <br><br>
+                <h2>Munkres Introduction to Topology: Problem 24.12</h2>
+                <br>
+                <p>
+
+                    <i>We let $S_{\Omega}$ denote the minimal uncountable well-ordered set. We let $L = S_{\Omega} \times [0, \ 1)$ with the smallest element removed, in the dictionary order.
+                        We will refer to $L$ as the long line.</i>
+
+                    <br><br>
+
+                    <div class="lemma">
+		                    Let $X$ be an ordered set; let $a \ < \ b \ < \ c$ be points of $X$. $[a, \ c)$ has order type if and only if 
+	     	                both $[a, \ b)$ and $[b, \ c)$ have order type of $[0, \ 1)$.
+	                  </div>
+
+                    <div class="proof">
+		                    First assume that $[a, \ b)$ and $[b, \ c)$ have order type $[0, \ 1)$. This implies that there exist bijective, order-preserving 
+		                    maps $f_1 : [a, \ b) \ \rightarrow \ [0, \ 1)$ and $f_2 : [b, \ c) \ \rightarrow \ [0, \ 1)$. Let us define the maps $g_1 : [0, \ 1) \ 
+		                    \rightarrow \ [0, \ \frac{1}{2})$ with $g_1(x) \ = \ x/2$ and $g_2 : [0, \ 1) \ \rightarrow \ [\frac{1}{2}, \ 1)$ with $g_2(x) \ = \ 1/2 \ + 
+		                    \ x/2$. Clearly, both of these maps are also order-preserving and bijective. This implies that:
+
+		                    $$(g_1 \ \circ \ f_1) : [a, \ b) \ \rightarrow \ [0, \ 1/2) \ \ \ \ \ \ \ \text{and} \ \ \ \ \ \ \ (g_2 \ \circ \ f_2) : [b, \ c) \ \rightarrow \ [1/2, \ 1)$$
+
+		                    are also order-preserving and bijective. We define the function $h : [a, \ c) \ \rightarrow \ [0, \ 1)$, with $h(x) \ = \ (g_1 \ \circ \ f_1)(x)$ if 
+		                    $x \ \in \ [a, \ b)$ and $h(x) \ = \ (g_2 \ \circ \ f_2)(x)$ if $x \ \in \ [b, \ c)$. Clearly, this map is bijective. In addition it is easy to see 
+		                    that if we choose any two points $x, \ y \ \in \ [a, \ b)$ with $x \ < \ y$, then $h$ preserves the order. If both $x$ and $y$ are in $[a, \ b)$, or 
+	     	                both are in $[b, \ c)$, then the preservation of order follows from the fact that $(g_1 \ \circ \ f_1)$ and $(g_2 \ \circ \ f_2)$ preserve order. 
+	     	                If $x \ \in \ [a, \ b)$ and $y \ \in \ [b, \ c)$, then $h(x) \ < \ h(y)$, an arbitrary element of $[0, \ 1/2)$ will be less than any element of $[1/2, \ 1)$. 
+	     	                Thus, $h$ is bijective and preserves order, so $[a, \ c)$ has order type $[0, \ 1)$.
+		                    <br><br>
+		                    Conversely, assume that $[a, \ c)$ has order type $[0, \ 1)$. Let $f$ be the order-preserving, bijective function from $[a, \ c)$ to $[0, \ 1)$. Define the 
+		                    bijective functions $f_1$ and $f_2$ to be $f$, but with the domain and range restricted:
+
+		                    $$f_1 : [a, \ b) \ \rightarrow \ [0, \ f(b))$$
+		                    $$f_2 : [b, \ c) \ \rightarrow \ [f(b), \ 1)$$
+
+		                    Now, define the following functions:
+
+		                    $$g_1 : [0, \ f(b)) \ \rightarrow \ [0, \ 1) \ \ \ \ \ \ \ \ g_1(x) \ = \ \frac{x}{f(b)}$$
+		                    $$g_2 : [f(b), \ 1) \ \rightarrow \ [0, \ 1) \ \ \ \ \ \ \ \ g_2(x) \ = \ \frac{x \ - \ f(b)}{1 \ - \ f(b)}$$
+
+		                    It is easy to check that these functions are bijective. It is also quite easy to see that if $x \ < \ y$, then $g_1(x) \ < \ g_1(y)$ and 
+	     	                $g_2(x) \ < \ g_2(y)$. Thus, the two functions $(g_1 \ \circ \ f_1)$ and $(g_2 \ \circ \ f_2)$ are bijective and order-preserving. This implies 
+	     	                that $[a, \ b)$ and $[b, \ c)$ have order type $[0, \ 1)$.
+	                  </div>
+
+                    <br>
+
+                    <div class="lemma">
+		                    Let $X$ be an ordered set. Let $x_0 \ < \ x_1 \ < \ ...$ be an increasing sequence of points of $X$. Suppose that $b \ = \ \sup \{x_i\}$. 
+	                      It follows that $[x_0, \ b)$ has order type of $[0, \ 1)$ if and only if each interval $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$.
+	                  </div>
+
+                    <div class="proof">
+		                    Let us assume that $[x_0, \ b)$ has order type $[0, \ 1)$. The previous lemma implies that $[x_0, \ x_{i+1})$ and $[x_{i+1}, \ b)$ have order type 
+		                    $[0, \ 1)$. We can again use the previous lemma to say that $[x_0, \ x_i)$ and $[x_i, \ x_{i+1})$ have order type $[0, \ 1)$, for all $i$.
+		                    <br><br>
+
+                        Conversely, assume that every $[x_i, \ x_{i+1})$ has order type $[0, \ 1)$. This means that for each $i$, there exists some order-preserving bijection $f_i$ that 
+		                    maps the interval to $[0, \ 1)$.
+                        <br><br>
+                        For each interval, let us define the functions:
+
+		                    $$g_i(x) \ = \ \frac{i}{i \ + \ 1} (1 \ - \ f_i(x)) \ + \ \frac{i \ + \ 1}{i \ + \ 2} f_i(x)$$
+
+		                    We let $g$ denote the peicewise function defined for all such $i$. we assert that $g(x)$ is an order-preserving bijection from $[x_0, \ b)$ to $[0, \ 1)$. 
+		                    Let us pick some point 
+		                    $x \ \in \ [x_0, \ b)$. It follows that $x \ \in \ [x_k, \ x_{k+1})$ for some $k$, or else $x$ would be a lower upper bound on the set $\{x_i\}$ than $b$. Thus, 
+		                    $g(x) \ = \ g_k(x)$ for some $k$. It follows that the image of each point in the domain is well-defined.
+                        <br><br>
+
+                        All of the images are disjoint, and the union of all the images of the sets is $[0, \ 1)$. It is easy to verify that each $g_i(x)$ is bijective, so combining these
+                        two facts, $g$ will itself be a bijection. It is also easy to verify that such a map is order preserving, by definition of $f_i$.
+
+                        <br><br>
+
+                        Thus, we have an order-presefving bijection from $[0, \ 1)$ to $[x_0, \ b)$,
+                        so $[x_0, \ b)$ has order type $[0, \ 1)$.
+	                  </div>
+
+                    <br>
+
+                    <div class="lemma">
+                        Any countable subset of the minimal uncountable well-ordered set $S_{\Omega}$ has an upper bound in $S_{\Omega}$.
+                    </div>
+
+                    <div class="proof">
+                        We let $A$ be a countable subset. $\Omega$ will be an upper bound on any such set $A$, in the set $S_{\Omega} \cup \{\Omega\}$.
+                        <br><br>
+                        Since the set in which we are operating is well-ordered, the set of upper bounds on $A$ will have a minimal element. Assume that $\Omega$ is this 
+                        minimum element. This will imply that for any $x \in S_{\Omega}$, there will exist some $a \in A$ such that $x < a$, so $x \in S_a$, which will be 
+                        countable, by definition of the set $S_\Omega$.
+
+                        Now, this implies that:
+
+                        $$S_\Omega = \displaystyle\bigcup_{n \in \mathbb{N}} S_{a_n}$$
+
+                        where $A$ is countable, so each element $a_n \in A$ can be labelled with a natural number. This implies that $S_\Omega$ is a countable union of countable sets, 
+                        which is itself countable. This is a clear contradiction, so $\Omega$ can't be the least upper bound of $A$ in $S_{\Omega} \cup \{\Omega\}$, implying that 
+                        it has some upper bound in $S_\Omega$.
+                    </div>
+
+                    <br>
+
+                    <div class="lemma">
+	                      Let $a_0$ be the smallest element of $S_{\Omega}$. For each element $a$ of $S_{\Omega}$ (different from $a_0$), the interval $[a_0 \ \times \ 0, \ a \ \times \ 0)$ of $S_{\Omega} \ \times \ [0, \ 1)$ 
+	                      has order type $[0, \ 1)$.
+	                  </div>
+
+                    <div class="proof">
+                        As is suggested by Munkres, we will proceed by transfinite induction. Let $J$ be the set of all $\alpha$ such that $[a_0 \times 0, \ \alpha \times 0)$ has the order type $[0, \ 1)$.
+                        We will assume that for some $a \in S_{\Omega}$, that $S_a \subset J$, and prove that $a \in J$, which will imply that $J = S_{\Omega} - \{a_0\}$.
+                        <br><br>
+
+                        Given some $a$, we know, by definition of $S_{\Omega}$, that $S_a$ will be counbtable. In the case that $S_a$ is finite, it will have a maximal element, so $a$ will have an
+                        immediate predecessor, $b$. We then know that $[a_0 \times 0, \ b \times 0)$ has order type $[0, \ 1)$. We also note that the interval $[b \times 0, \ a \times 0) = b \times [0, \ 1)$
+                        will clearly have order type $[0, \ 1)$. Thus, from Part A, we conclude that $[a_0 \times 0, \ a \times 0)$ has order type $[0, \ 1)$, so $a \in J$.
+                        <br><br>
+
+                        In the case that $S_a$ is countably infinite, with $a$ as the least upper bound of this set. We define a sequence of elements of $S_a$ as follows: let $x_0 = a_0$, then
+                        let:
+                        $$x_i = \min \{S_a - \{x_0, \ ..., \ x_{i - 1}\} \}$$
+
+                        (we know that such a minimal element will exist as $S_{\Omega}$ is well-ordered). Since $S_a$ is countable, this
+                        will yield a strictly increasing, countable sequence of the elements of $S_a$. Since each $x_i \in S_a$, it follows that:
+
+                        $$[x_i \times 0, \ x_{i + 1} \times 0) = x_i \times [0, \ 1)$$
+
+                        So each $[x_i \times 0, \ x_{i + 1} \times 0)$ has order type $[0, \ 1)$. Thus, by Part B, $[a_0 \times 0, \ a \times 0)$ has order type $[0, \ 1)$,
+                        as $a = \sup\{x_i\}$.
+                        <br><br>
+
+                        We have shown in both cases that $[a_0 \times 0, \ a \times 0)$ has order type $[0, \ 1)$, so our proof by transfinite induction is complete.
+                    </div>
+
+                    <br>
+
+                    <div class="lemma">
+		                    The space $L$ is path-connected.
+	                  </div>
+
+                    <div class="proof">
+		                    Let us choose two points $a \ \times \ c$ and $b \ \times \ d$ of $S_{\Omega} \ \times \ [0, \ 1)$. We consider a continuous map of the form:
+
+                        $$f_1 : [0, \ 1/3) \ \rightarrow \ [a \times c, \ a \times 1) = a \times [c, \ 1)$$
+
+                        Clearly, such a map exists, as $[c, \ 1)$ has order type $[0, \ 1)$, and any surjective, order-preserving map between spaces in the order topology is a homeomorphism, so it is continuous (this
+                        result was proved in an earlier exercise).
+                        <br><br>
+                        Now, let $R_a$ be the set of all $s \in S_{\Omega}$ such that
+                        $a < s$. Since the set is well-ordered, it follows that such a set has a minimum, $r$. We define the continuous map:
+
+                        $$f_2 : [1/3, \ 2/3) \ \rightarrow \ [r \times 0, \ b \times 0)$$
+
+                        Since $[a_0 \times 0, \ b \times 0)$ has order type $[0, \ 1)$, this implies that $[r \times 0, \ b \times 0)$ also has
+                        order type $[0, \ 1)$. Thus we can define an order-preserving surjective map $f_2$, which is continuous by definition.
+                        <br><br>
+
+                        Finally, since $[b \times 0, \ b \times d] = b \times [0, \ d]$ clearly has order type $[0, \ 1]$, we may define a surjective, order-preserving (and hence continuous) map:
+
+                        $$f_3 : [2/3, \ 1/3] \ \rightarrow \ [b \times 0, \ b \times d]$$
+
+                        We then can use the pasting lemma to glue the three maps $f_1, \ f_2, \ f_3$ together to create one continuous map $f$ that maps from $[0, \ 1]$ to $[a \times c, \ b \times d]$, where $f(0) = a \times c$ and
+                        $f(1) = b \times d$. We also know that we can expand the range of a continuous function, and it will still be continuous, so the map $f : [0, \ 1] \ \rightarrow \ S_{\Omega}$ is continuous.
+                        Thus, the space is path-connected the proof is complete.
+	                  </div>
+
+                    <br>
+
+                    <div class="lemma">
+                        Every point of $L$ has a neighbourhood homeomorphic with an open interval in $L$.
+                    </div>
+
+
+                    <div class="proof">
+                        First, let pick a point $\boldsymbol x$ of $L$. We note that since the smallest element of $L$ has been removed, there will always exist $\boldsymbol y$ and $\boldsymbol z$ such that
+                        $\boldsymbol y < \boldsymbol x < \boldsymbol z$.
+
+                        <br><br>
+
+                        Above, we found that we can define a homeomorphism from the interval $[0, \ 1]$ to the interval $[\boldsymbol y, \ \boldsymbol z]$. We restrict the domain and range to $(0, \ 1)$ and $(\boldsymbol y, \ \boldsymbol z)$,
+                        and note that the resulting function is still a homeomorphism. Thus, for each $\boldsymbol x \in S_{\Omega}$, there exists and open interval around $\boldsymbol x$ that is homeomorphic to an open interval in $\mathbb{R}$.
+                    </div>
+
+                    <br>
+
+                    <div class="lemma">
+                        $L$ cannot be embedded in $\mathbb{R}$, or $\mathbb{R}^{n}$ for any $n$.
+                    </div>
+
+                    <div class="proof">
+
+                        Assume that there exists an embedding $f$ of $L$ into $\mathbb{R}^{n}$. We note that any subspace of $\mathbb{R}^{n}$ will have a countable basis (for instance, in the case
+                        of $\mathbb{R}$, this will be all intervals with rational endpoints, which intersect the subspace). Thus, $f(L)$ will have a countable basis.
+                        <br><br>
+
+                        It follows that given some
+                        $x \in L$, and some neighbourhood $U$ of $x$, we will have $f(x) \in f(U)$. We then choose some element $B$ of the countable basis such that $f(x) \in B \subset f(U)$, and
+                        note that $x \in f^{-1}(B) \subset U$. It follows that the inverse images of all elements in the countable basis for $f(L)$ form a basis for $L$, so $L$ has a countable basis.
+                        <br><br>
+
+                        Consider the collection of points $s \times 1/2$ for all $s \in S_{\Omega}$. Each of these points will be contained in the open interval $(s \times 0, \ s \times 1)$. Each of these sets are clearly disjoint.
+                        By definition of the basis, there must therefore be a unique basis element $B$ such that $s \times 1/2 \in B \subset (s \times 0, \ s \times 1)$. But the set $S_{\Omega}$ is uncountable, so we would
+                        have to have an uncountable number of basis elements $B$ for each $s$, a clear contradiction.
+                        <br><br>
+
+                        Thus, there can't exist an embedding $f$, and it follows that $L$ cannot be embedded in $\mathbb{R}^{n}$ for any $n \geq 1$.
+                    </div>
+
+                    <br>
+
+                    The above results imply the following theorem:
+                    <br>
+
+                    <div class="theorem">
+                        The long line is path-connected and locally homeomorphic to $\mathbb{R}$ but cannot be embedded in $\mathbb{R}$.
+                    </div>
+
+                 
+                </p>
+                <br><br><br><br>
+            </div>
+        </center>
+    </body>
+</html>
