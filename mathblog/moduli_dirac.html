@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-06-18 Wed 20:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Lie groupoid/Lie algebroid correspondence</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">The Lie groupoid/Lie algebroid correspondence</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org83299b8">1. Introduction</a></li>
+<li><a href="#orga569a70">2. Lie groupoids</a>
+<ul>
+<li><a href="#org8ece18e">2.1. Notes</a></li>
+<li><a href="#org5d513ab">2.2. Solutions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org83299b8" class="outline-2">
+<h2 id="org83299b8"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The main goal of this blog post is to work through the Lie groupoid/Lie algebroid correspondence, which is a generalization of the well-known Lie group/Lie algebra correspondence.
+I am working through the lecture notes of Meinreneken, and will be trying to provide solutions to his exercises as I read.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga569a70" class="outline-2">
+<h2 id="orga569a70"><span class="section-number-2">2.</span> Lie groupoids</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org8ece18e" class="outline-3">
+<h3 id="org8ece18e"><span class="section-number-3">2.1.</span> Notes</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<b>Definition 2.1.</b> A Lie groupoid is a Lie group \(\mathcal{G}\) such that the set of morphisms \(\text{Mor}(\mathcal{G}) = M\) and the set of objects \(\text{Obj}(\mathcal{G}) = S\) have smooth manifold structure,
+and the inclusion \(\iota : S \rightarrow M\) sending an object to its corresponding identity arrow is a smooth embedding, making the set of identity arrows a smooth submanifold of \(M\). Additionally, we require
+that the source and target maps \(\texttt{s}, \texttt{t} : M \rightarrow S\) are surjective submersions, and that the composition map on arrows is smooth, where the domain of this map, the set of composable arrows,
+inherits a natural smooth submanifold structure from \(M \times M\) (this is proved in an exercise).
+</p>
+
+<p>
+<b>Definition 2.2.</b> As one might expect, a morphism of Lie groupoids \(\mathcal{G}\) and \(\mathcal{F}\) is a functor \(F : \mathcal{G} \rightarrow \mathcal{H}\) which is also smooth with respect to the smooth structures
+on the groupoids.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5d513ab" class="outline-3">
+<h3 id="org5d513ab"><span class="section-number-3">2.2.</span> Solutions</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+<b>Solution 1.1.</b> We can actually prove a stronger result: given maps \(f : A \rightarrow L\) and \(g : B \rightarrow L\) which are transverse at every point \(p = f(a) = g(b)\) (that is, \(T_p L = \text{Im}(f_{*, a}) + \text{Im}(g_{*, b})\),
+then the fibre product \(A {}_f \times_g B\) is a smooth submanifold of \(A \times B\). To do this, let us first prove that if \(A, B \subset L\) are embedded submanifolds such that the tangent spaces are transverse at each \(p \in A \cap B\), then
+the intersection \(A \cap B\) is an embedded submanifold. Let \(p \in A \cap B\), let \((U, \varphi) = (U, x^i)\) be a slice chart for \(A\) around \(p\) and let \((V, \psi) = (V, y^i)\) be a slice chart for \(B\) around \(p\), so that \(x^{a + 1} = \cdots = x^{\ell} = 0\)
+on \(A\) and \(y^{b + 1} = \cdots = y^{\ell} = 0\) on \(B\). Define \(\Phi : U \cap V \rightarrow \mathbb{R}^{2\ell - a - b}\) as
+</p>
+
+\begin{equation}
+\Phi(q) = (x^{a + 1}(q), \dots, x^{\ell}(q), y^{b + 1}(q), \dots, y^{\ell}(q)) = (f(q), g(q))
+\end{equation}
+
+<p>
+Note that \(A \cap B \cap U \cap V = \Phi^{-1}(0, \dots, 0)\). If we can show that \(\Phi\) is a submersion, then this inverse image will be a \((a + b) - \ell\) dimensional manifold. Note that
+\(\text{Ker}(\Phi_{*, p}) = \text{Ker}(f_{*, p}) \cap \text{Ker}(g_{*, p}) = T_p A \cap T_p B\). Thus,
+</p>
+
+\begin{equation}
+\dim \text{Im}(\Phi_{*, p}) = \ell - \dim \text{Ker}(\Phi_{*, p}) = \ell - \dim (T_p A \cap T_p B) = \ell + \dim(T_p A + T_p B) - \dim(T_p A) - \dim(T_p B) = 2\ell - a - b
+\end{equation}
+
+<p>
+which means that the desired map is surjective, so \(\Phi^{-1}(0)\) is a submanifold of dimension \(a + b - \ell\). From here, let \(\Gamma_f \subset A \times L\) and \(\Gamma_g \subset B \times L\)
+denotes the graphs of \(f\) and \(g\), which are \(a\) and \(b\) dimensional submanifolds, respectively. Then \(\Gamma_f \times \Gamma_g \subset A \times L \times B \times L\) is also a \((a + b)\) -dimensional
+submanifold. Let \(\Delta \subset A \times L \times B \times L\) be the \((a + b + \ell)\) -dimensional submanifold consisting of all points \((a, s, b, s)\). Then
+</p>
+
+\begin{equation}
+M = (\Gamma_f \times \Gamma_g) \cap \Delta = \{ (a, s, b, s) \ | \ f(a) = g(b) = s\}
+\end{equation}
+
+<p>
+We will show that this intersection is transverse, impyling that the above intersection is a manifold. To demonstrate transversality, note that a generic
+element of \(T_{p} (\Gamma_f \times \Gamma_g)\) is of the form \((v, f_{*} v, w, g_{*} w)\), as \(\Gamma_f\) is the image of the smooth embedding \(x \mapsto (x, f(x))\) (same goes for \(\Gamma_g\)).
+In addition, a generic element of \(\Delta\) is of the form \((j, k, i, k)\). Note that if we are given \((0, x, 0, y)\), we have \(x = f_{*} x_1 + g_{*} x_2\) and \(y = f_{*} y_1 + g_{*} y_2\), so
+</p>
+
+\begin{equation}
+(0, x, 0, y) - (x_1, f_{*} x_1, y_2, g_{*} y_2) = (-x_1, g_{*} x_2, -y_2, f_{*} y_1)
+\end{equation}
+
+<p>
+and
+</p>
+
+\begin{equation}
+(-x_1, g_{*} x_2, -y_2, f_{*} y_1) - (0, g_{*} x_2 + f_{*} y_1, 0, g_{*} x_2 + f_{*} y_1) = (-x_1, -f_{*} y_1, 0, -y_2, -g_{*} x_2) \in T_p (\Gamma_f \times \Gamma_g)
+\end{equation}
+
+<p>
+so tracing back through the equalities, any \((0, x, 0, y)\) is in \(T_p (\Gamma_f \times \Gamma_g) + T_p \Delta\). It follows immediately that any tangent vector is in this sum.
+Thus, the intersection \(M\) is a manifold of dimension \(a + b + (a + b + \ell) - (a + b + 2\ell) = a + b - \ell\). From here, let \(\pi : M \rightarrow A \times B\) be the projection.
+This is clearly a topological embedding. To show that \(\pi_{*}\) is injective, note that the elements of \(T_p M\) are of the form \((v, f_{*} v, w, g_{*} w)\) where \(f_{*} v = g_{*} w\). If a
+tangent vector of this form is killed by \(\pi_{*}\), then \(v = w = 0\), so \(\pi_{*}\) is injective.
+</p>
+
+<p>
+Thus, \(A {}_f \times_g B\) is the image under a smooth embedding of a manifold, and is thus itself a manifold of dimension of \(a + b - \ell\).
+</p>
+
+<p>
+Going back to the original problem statement, it is clear that if 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-06-18 Wed 20:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

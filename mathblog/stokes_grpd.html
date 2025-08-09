@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-06-20 Fri 09:48 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Stokes groupoids I</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">The Stokes groupoids I</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org49005a5">1. Introduction</a></li>
+<li><a href="#org3644134">2. Motivation</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org49005a5" class="outline-2">
+<h2 id="org49005a5"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The goal of this blog post (actually, this will probably be a <i>series</i> of blog posts) is to go through the details of the paper of Gualtieri, Li, and Pym, <i>The Stokes groupoids</i>.
+The target audience of this post is someone who, like me, is familar with some of the very basic theory of Lie groupoids and algebroids, but it still pretty much a beginner in the
+field. I will be writing this post in a very "stream-of-counscious" way, taking many digressions to explain basic pieces of theory with which I wasn't familiar at the time of writing.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3644134" class="outline-2">
+<h2 id="org3644134"><span class="section-number-2">2.</span> Motivation</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Let us first go through the motivation for the paper's results. The authors begin by summarizing the Riemann-Hilbert correspondence: an equivalence between flat connection over a manifold
+and representations of its fundamental group, \(\rho : \pi_1(M, x_0) \rightarrow \text{End}(V)\). They explain this correspondence as follows: we know that a flat connection \(\nabla : \Gamma(TX) \times \Gamma(E) \rightarrow \Gamma(E)\)
+on a vector bundle \(E \to X\) (i.e. one which satisfies \([\nabla_V, \nabla_W] = \nabla_{[V, W]}\) for \(V, W \in \Gamma(TX)\)) is a representation of the "tautological" Lie algebroid \(TX\). Of course,
+we also know that given any connection and curve \(\gamma\) from \(a \in M\) to \(b \in M\), there is a parallel transport isomorphism \(P_{\gamma} : E_a \rightarrow E_b\). Recall:
+</p>
+
+<p>
+<b>Definition 2.1.</b> If \(G\) is a groupoid, a functor \(F : G \rightarrow \text{Core}(\text{Vect})\), where the core of the category of vector spaces is the category obtained from discarding all arrows
+which are not isomorphisms, thus making \(\text{Core}(\text{Vect})\) a groupoid itself. It is clear that in the case that \(G\) is a groupoid (has a single element), this definition is equivalent to the
+usual representation of a group.
+</p>
+
+<p>
+From here, define \(F : \Pi_1(X) \rightarrow \text{Core}(\text{Vect})\) by taking \(a \in X\) to \(E_a\) and \([\gamma] \in \text{Mor}_{\Pi_1(X)}(a, b)\) to \(P_{\gamma} : E_a \rightarrow E_b\).
+This map is well-defined in the case that \(\nabla\) is flat, by the standard result:
+</p>
+
+<p>
+<b>Theorem 2.1.</b> If \(\nabla\) is a flat connection on \(E \to X\), then the parallel transport operator induced by path-homotopic paths are equal.
+</p>
+
+<p>
+<i>Proof.</i> Let \(H : I \times I \rightarrow X\) be a path-homotopy between paths from \(a\) to \(b\), so that \(H(0, s) = a\) and \(H(1, s) = b\) for all \(s\). Let \(\gamma(t) = H(t, 0)\) and \(\sigma(t) = H(t, 1)\).
+Our first goal is to find smooth \(V : I \times I \rightarrow TX\) such that \(V(t, s) \in T_{H(t, s)} X\), \(V(0, s) = V_0\), and
+</p>
+
+\begin{equation}
+D_t V = 0
+\end{equation}
+
+<p>
+so that for each fixed \(s\), vector field \(t \mapsto V(t, s)\) is parallel along \(t \mapsto H(t, s)\). By expanding in coordinates, this becomes a first-order ODE for which we have existence and uniqueness,
+so such a function \(V\) does exist. The map \(V_0 \mapsto V(1, 0)\) is the parallel transport along \(\gamma\) and the map \(V_0 \mapsto V(1, 1)\) is the parallel transport along \(\sigma\). We want to
+show that \(V(1, 0) = V(1, 1)\). It is a standard fact in Riemannian geometry that
+</p>
+
+\begin{equation}
+D_t D_s V - D_s D_t V = R(\partial_s H, \partial_t H) V
+\end{equation}
+
+<p>
+But in the case that our connection is flat, \(R = 0\), so it follows that \(D_t D_s V = D_s D_t V = 0\). Note that \(V(0, s) = V_0\) for all \(s\), so \(D_s V(0, s) = 0\). Thus, by uniqueness,
+\(D_s V(t, s)\) is the parallel transport along \(t \mapsto H(t, s)\) of \(0\), so \(D_s V(t, s) = 0\) for all \((t, s)\). It follows that \(V(1, 0) = V(1, 1)\), as desired. \(\blacksquare\)
+</p>
+
+<p>
+It is now clear that \(F\) is a functor (preserves composition of arrows). Via the map which takes a flat connection/Lie algebroid representation to the corresponding representation \(F\) of
+the fundamental groupoid, the paper claim that the categories \(\text{Rep}(TX)\) and \(\text{Rep}(\Pi_1(X))\) are equivalent. I don't really know what the inverse map is yet. We know that the categories \(\Pi_1(X)\) and \(\pi_1(X, p)\) are equivalent,
+so \(\text{Rep}(\Pi_1(X)) \simeq \text{Rep}(\pi_1(X, p))\) as well.
+</p>
+
+<hr />
+
+<p>
+We now move on to the contribution of the paper: we wish to study the case where the connection is allowed to have singularities along a divisor \(D\) in \(X\)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-06-20 Fri 09:48</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

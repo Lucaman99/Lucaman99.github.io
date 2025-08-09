@@ -1,0 +1,33 @@
+#+TITLE:Round-up post: Densities, measures on manifolds, and Milnor's proof of the collar neighbourhood theorem
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted:/ 
+
+------------------
+
+* Introduction
+
+In this blog post, I'm covering two unrelated results in smooth manifold theory which I was recently reading about/don't want to forget, neither of which is really long enough
+for their own blog post. So, here we are.
+
+* Densities and measures on manifolds
+
+I want to briefly discuss how one goes about defining Lebesgue measure on smooth manifolds. Given an $n$ -dimensional vector space $V$, we define a density $\mu : V \times \cdots \times V \rightarrow \mathbb{R}$
+to be a function such that for any linear map $T : V \rightarrow V$,
+
+\begin{equation}
+\mu(Tv_1, \dots, Tv_n) = |\det(T)| \mu(v_1, \dots, v_n)
+\end{equation}
+
+Obviously, $\mu$ is only non-zero when it is fed a basis for $V$, and its value on any other basis is then determined by the determinant of the transition matrix between
+the new basis and the reference basis. We denote the set of all densities on $V$ as $\mathcal{D}(V)$. Given a smooth manifold $M$, we can always consider the Borel $\sigma$ -algebra $\mathcal{B}(M)$,
+and some Borel measure $\mu : \mathcal{B}(M) \rightarrow [0, \infty]$ (we could also consider signed and complex measures). However, there is no canonical choice of measure in this formulation. Ideally,
+we would like to use the fact that a manifold is locally Euclidean to define a ``Lebesgue measure" on $M$.
+
+To this end, 
+
+* Milnor's proof of the collar neighbourhood theorem
+
+------------------

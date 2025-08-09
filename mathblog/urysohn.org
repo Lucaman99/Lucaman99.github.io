@@ -1,0 +1,36 @@
+#+TITLE:Urysohn's Lemma
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+The idea is to define a sequence of open sets with the closure of the previous set contained in
+the next set of the sequence, as we know that it is possible to uniquely extend continuous a function on a set $A$ to the set $\overline{A}$. In particular, we
+should index this sequence by the rationals, which are countable, ensuring that
+
+$$p < q \Longrightarrow \overline{U_p} \subset U_q$$
+
+Defining the sequence inductively is clearly the path that must be taken. We let $P$ denote the set of rationals in $[0, 1]$, as Munkres does, with $p_0 = 1$ and $p_1 = 0$.
+We let $U_1 = X - B$, an open set, and from normality, we choose $U_0$ to be an open set containing $A$ which is disjoint from a neighbourhood of $B$, and thus has $\overline{U_0} \subset U_1$.
+Thus, we have defined $U_p$ satisfying the desired condition for the first two elements of $P$.
+
+Assume we have define $U_p$ up until $U_{p_n}$, we wish to define the case of $U_{p_{n + 1}}$. Let $P_n$ denote all rationals $\{p_0, p_1, \dots, p_n\}$. Clearly,
+we can separate $P_n$ into sets $P_L$ and $P_R$, where $P_R$ contains the rationals less than $p_{n + 1}$, and $P_R$ contains the ones greater than $p_{n + 1}$. Clearly,
+$P_L$ has a greatest element, while $P_R$ has a least element. Let these elements be $U_L$ and $U_R$ respectively. Note that $\overline{U_L} \subset U_R$. We choose $U$ to be an
+open set containing $\overline{U_L}$ disjoint from a neighbourhood of $X - U_R$, so $\overline{U} \subset U_R$. Thus, $U_{p_{n + 1}} = U$ satisfies the desired condition, and we have constructed our sequence.
+
+Moving along, we define $U_p$ for all rationals $p \in \mathbb{Q}$. This is easy: we let $U_p = \emptyset$ for $p < 0$ and $U_p = X$ for $p > 1$.
+
+Now, we have all the pieces needed to construct our continuous function. We define the function $\mathbb{Q}(x)$
+as follows. Let
+
+$$\mathbb{Q}(x) = \{ p \ | \ x \in U_p\}.$$
+
+Such a set is lower-bounded by $0$, as $x \notin U_p$ for any $p < 0$, since in this case, $U_p = \emptyset$. Thus, it has a greast lower-bound, and $f(x) = \inf \mathbb{Q}(x)$ is well-defined. We claim
+that this is the continuous function on $X$ that we need. Indeed, note that for $x \in A$, $x$ is contained in $U_0$, so $f(x) = 0$. Similarly, for $x \in B$, we have $x \in U_1$ and not in any $U_p$ for $p \in [0, 1)$,
+so $f(x) = 1$.
+
+Now, we must demonstrate that $f$ is in fact continuous. Let $(a, b) \subset [0, 1]$. Suppose $f(x) \in (a, b)$. By definition, note that $\inf \{p \ | \ x \in U_p\} = f(x)$, so for any rational $r > f(x)$, there exists
+rational $r' < r$ such that $x \in U_{r'}$. Since $U_{r'} \subset U_r$, it follows that $x \in U_r$ for all $r > f(x)$. In addition, it is clear that $f(x) \notin U_r$ for $r < f(x)$, or else $\inf \{p \ | \ x \in U_p\}$ would be less
+than $f(x)$. We choose rational $a'$ and $a''$ such that $a < a' < a'' < f(x)$. Since $\overline{U_{a'}} \subset U_{a''}$, and $f(x) \notin U_{a''}$, $f(x) \notin \overline{U_{a'}}$, so $f(x) \in X - \overline{U_{a'}}$, which is open.
+
+Let $U = (X - \overline{U_{a'}}) \cap U_{b'}$, where $b'$ is rational with $f(x) < b' < b$. Clearly, $U$ is open and $x \in U$. Moreover, note that given $y \in U$, we must have $\inf \{p \ | \ y \in U_p\} \leq b'$, and
+similarly, it must be greater than $a'$, so $f(y) \in (a, b)$. Thus, by definition, $f$ is continuous.

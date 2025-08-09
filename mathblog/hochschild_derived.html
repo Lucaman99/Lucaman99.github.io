@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-07-09 Wed 10:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Crash course in derived functors</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Crash course in derived functors</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc00d8d4">1. Introduction</a></li>
+<li><a href="#org558bd58">2. Derived functors and other category theory</a>
+<ul>
+<li><a href="#org889ba4e">2.1. Adjoint functors</a></li>
+<li><a href="#orgcb623fa">2.2. Abelian categories</a></li>
+<li><a href="#org9901010">2.3. Snake lemma</a></li>
+<li><a href="#org1ac4c4d">2.4. Derived functors</a></li>
+<li><a href="#orgce55c91">2.5. \(\text{Tor}\) and \(\text{Ext}\)</a></li>
+</ul>
+</li>
+<li><a href="#orgca105bf">3. Applications</a>
+<ul>
+<li><a href="#org9461c5e">3.1. </a></li>
+<li><a href="#orgde6693f">3.2. Hochschild homology</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i>
+</p>
+
+<hr />
+
+<div id="outline-container-orgc00d8d4" class="outline-2">
+<h2 id="orgc00d8d4"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The goal of this blog post is to introduce some of the most basic ideas surrounding derived categories, and then apply them to constructing homology and cohomology theories (for example, the Hochschild homology of a bimodule).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org558bd58" class="outline-2">
+<h2 id="org558bd58"><span class="section-number-2">2.</span> Derived functors and other category theory</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The goal of the first section of this post is to explain some basic categorical ideas which will be used at length in the next section. We start simple, building
+to the correct intuition for adjoint functors. Note that we will invoke some of the ideas developed in a previous blog post on the fundamental groupoid Seifert-Van Kampen
+theorem, so you, the reader, may have to consult this piece at certain times.
+</p>
+</div>
+
+<div id="outline-container-org889ba4e" class="outline-3">
+<h3 id="org889ba4e"><span class="section-number-3">2.1.</span> Adjoint functors</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<b>Definition 2.1.1</b> (Adjoint, informal). The best, succinct way to think of a functor \(G : D \rightarrow C\) adjoint to functor \(F : C \rightarrow D\) is that \(G\) is the most efficient way to systematically
+"solve the problem" posed by \(F\). If \(F\) is, for example, a forgetful functor which throws away some of the structure of category \(C\), is there a method with reconstructs an element of \(D\) which imposes the
+minimal amount of extra structure possible? If such a method exists, and is functorial, in the sense that it works the same for any object, then it can be described via a functor \(G : D \rightarrow C\)
+which is adjoint to \(F\).
+</p>
+
+<p>
+<b>Definition 2.2.2</b> (Adjoint, first definition). Let us now be more precise. We say that functors \(F : C \rightarrow D\) and \(G : D \rightarrow C\) are adjoint is there exists a "natural bijection" between the morphism sets \(\text{Hom}_D(d, F(c))\)
+and \(\text{Hom}_C(G(d), c)\) for \(d \in \text{Obj}(D)\) and \(c \in \text{Obj}(C)\). By "natural", we mean that for a fixed \(c \in \text{Obj}(C)\) or a fixed \(d \in \text{Obj}(d)\), the following diagrams commute:
+</p>
+
+
+<div id="org880da8a" class="figure">
+<p><img src="./assets/com.png" alt="com.png" />
+</p>
+</div>
+
+<p>
+for every arrow \(g : d' \rightarrow d\) in \(D\) and \(f : c \rightarrow c'\) in \(C\).
+</p>
+
+<p>
+Even though this definition is the most common, it is not the most intuitive. A better definition is via universal morphisms. When
+we find an object which satisfies a universal property, we are effectively finding the "most efficient" object which satisfies some desired property. An adjoint functor is a technique to define such universal
+objects at a global, categorical level, rather than locally. To define adjoints via this intuition, we require a bit more background.
+</p>
+
+<p>
+<b>Definition</b> (Comma category). Let \(F : C \rightarrow D\) be a functor, let \(x\) be an object of \(D\). The comma category \((x \downarrow F)\) is defined as follows:
+</p>
+
+<ul class="org-ul">
+<li>The objects are pairs \((c, f : x \rightarrow F(c))\) for objects \(c \in \text{Obj}(C)\).</li>
+<li>The morphisms between \((c, f)\) and \((c', f' : x \rightarrow F(c'))\) are morphisms \(h : c \rightarrow c'\) in \(C\) such that \(F(h) \circ f = f'\).</li>
+</ul>
+
+<p>
+It is very easy to verify that we have defined a valid category. We can also define another type of comma category, \((F \downarrow x)\), where we look at objects of the form \((c, f : F(c) \rightarrow x)\),
+and define the morphisms in the obvious way. Comma categories are a good way to restrict a particular category to only include those elements which exhibit certain properties which are preserved under certain maps.
+</p>
+
+<p>
+<b>Example</b> For example, the category of pointed topological spaces is precisely \((\cdot \downarrow \textbf{Top})\): a fact which is very easy to verify.
+</p>
+
+<p>
+<b>Definition</b> (Universal morphism). A universal morphism is an initial object in \((x \downarrow F)\), a particular comma category, or a terminal object in \((F \downarrow x)\). Intuitively, a universal morphism
+encodes a property which characterizes some object up to isomorphism. Recall that if \(C\) is a category, an initial object is some \(c \in \text{Obj}(C)\) such that for every other \(c' \in \text{Obj}(C)\), there
+is precisely one arrow \(c \rightarrow c'\). A terminal object is when there is precisely one arrow \(c' \rightarrow c\).
+</p>
+
+<p>
+In the case of the comma category, the existence of a single morphism from an initial object \((c, f : x \rightarrow F(c))\) to some other object \((c', f' : x \rightarrow F(c'))\) is identical
+to the condition that for any objects \(c'\) and arrow \(f' : x \rightarrow F(c')\), there is a unique arrow \(h : c \rightarrow c'\) such that \(F(h) \circ f = f'\). The other kind of universal morphism,
+defined via terminal objects, is characterized similarly.
+</p>
+
+<p>
+<b>Corollary</b> A universal morphism is unique up to unique isomorphism in the comma category: this follows immediately from the fact that initial and terminal objects are unique up
+to unique isomorphism. In other words, if an object \(c\) satisfies a universal property (i.e. \((c, f : x \rightarrow F(c))\) is initial in the comma category), then it is unique
+up to "isomorphism which preserves \(x\)".
+</p>
+
+<p>
+<b>Example</b> The tensor algebra of a vector space is a great example of an object characterized via a universal property.
+</p>
+
+<p>
+<b>Remark</b> Returning to our initial justification, it should be clear that writing down a universal morphism is dependent on a <i>particular choice</i> of object \(X \in D\) relative to which we define a comma category.
+One way to interpret the utility of an adjoint functor is that it "chooses every \(X\) at once" in a functorial manner.
+</p>
+
+<p>
+<b>Definition</b> (Adjoint, second definition).
+</p>
+
+<p>
+<b>Example 2.1.1</b> (Free groups). I went into a lot of detail regarding the construction of free groups in my blog post on groupoid Seifert-Van Kampen theorem. This is probably one of the most accessible examples
+of an adjoint functor.
+</p>
+
+<p>
+In particular, suppose we have set \(S\). For each element \(s \in S\), we can define a infinite cyclic group which is labelled by \(s\). For convenience, we take elements of this cyclic
+group to be denoted by \(s^n\) for \(n \in \mathbb{Z}\), and we define \(\cdot\) as the operation \(s^{n} \cdot s^{m} = s^{n + m}\). We also use \(1\) to denote \(s^0\). Call this group \(G_s\). We showed in the Seifert-Van Kampen
+post that there exists an external free product of the groups \(G_s\), for all \(s \in S\), which we denote \(G_S\). We actually had a particular name for \(G_S\): the free group on generators \(S\). Remember how we defined
+the external free product of groups: we said that \(G\) was an external free product of \(G_{\alpha}\) if there existed monomorphisms \(i_{\alpha} : G_{\alpha} \rightarrow G\) such that for any collection of morphisms
+\(\varphi_{\alpha} : i_{\alpha}(G_{\alpha}) \rightarrow H\), there exists a unique morphism \(\varphi : G \rightarrow H\) which extends the \(\varphi_{\alpha}\). For the particular case that the \(G_{\alpha}\) are the
+cyclic groups \(G_s\). Note that each monomorphisms \(i_{s} : G_s \rightarrow G\) can be uniquely represented by a unique element of \(G\). Thus, each collections of monomorphisms \(\{i_s\}_{s \in S}\) can
+be uniquely represented by a <i>set</i> map \(i : S \rightarrow G\). Thus, one can rephrase the property which characterizes the free group as follows: \(G\) is a free group of generators \(S\) if there is a
+set map \(i : S \rightarrow G\) such that each \(\langle i(s) \rangle\) is infinite cyclic, and for any collection of morphisms, \(\varphi_s : \langle i(s) \rangle \rightarrow H\), there is a
+unique \(\varphi : G \rightarrow H\) extending them.
+</p>
+
+<p>
+Something we can notice:
+for some set map \(i : S \rightarrow G\) to satisfy the desired criterion, it must <i>a priori</i> be injective. If we had \(i(s) = i(s') \neq 0\), and we chose different homomorphisms \(\varphi_s, \varphi_{s'}\) into some group (which
+we can always do), then we obviously couldn't find an extension \(\varphi\). It follows immediately that any collection of \(\{\varphi_s\}\) can be uniquely represented as a set map \(f : S \rightarrow H\).
+Thus, the property we must satisfy becomes the following: we need an a set map \(i : S \rightarrow G\) such that for any set map \(f : S \rightarrow H\) (where \(H\) is a group), there exists a unique morphism \(\varphi : G \rightarrow H\)
+such that \(\varphi \circ i = f\). In addition, we require that all of the subgroups \(\langle i(s) \rangle\) are free. As it turns out, we can drop this assumption. Suppose \(\langle i(s) \rangle\) were not free, so \(i(s)^n = 1\) for
+some \(s\) and \(n \neq 0\). Pick \(f : S \rightarrow \mathbb{Z}\) to send every \(s \in S\) to \(2\), let \(\varphi : G \rightarrow \mathbb{Z}\) be the unique morphism where \(\varphi \circ i = f\). We then must have \(\varphi(i(s)) = f(s) = 2\), but
+we also have
+</p>
+\begin{equation}
+0 = \varphi(1) = \varphi(i(s)^n) = \varphi(i(s))^n = 2n \neq 0
+\end{equation}
+
+<p>
+which is a contradiction. Thus, \(G_S\) is a free group with generators \(S\) if there is a set map \(i : S \rightarrow G_S\) such that for any group \(H\) and set map \(f : S \rightarrow H\),
+there exists a unique morphism \(\varphi : G_S \rightarrow H\) with \(\varphi \circ i = f\).
+</p>
+
+<p>
+Let us recap what we have done: given some \(S \in \text{Obj}(\textbf{Set})\), we have described the property some \(G = \text{Free}(S) \in \text{Obj}(\textbf{Grp})\) must satisfy for \(\text{Free}(S)\) to be
+a "free group with generators \(S\)", in terms of morphisms in the categories \(\textbf{Set}\) and \(\textbf{Grp}\). This is a local procedure: we have "defined" \(\text{Free}(S)\) via a <i>particular</i> set \(S\) in \(\textbf{Set}\)
+and arrow \(i\) from \(S \in \textbf{Set}\) to \(\text{For}(\text{Free}(S)) \in \text{For}(\textbf{Grp})\) (where \(\text{For}\) is the forgetful functor which gets rid of group structure). As it turns out,
+this strategy works <i>globally</i>: we can actually think of \(\text{Free}\) as a functor from \(\textbf{Set}\) to \(\textbf{Grp}\): it is <i>adjoint</i> to \(\text{For}\), the forgetful functor. This is the prototypical example
+one should always carry.
+</p>
+
+<p>
+Let us
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcb623fa" class="outline-3">
+<h3 id="orgcb623fa"><span class="section-number-3">2.2.</span> Abelian categories</h3>
+</div>
+
+<div id="outline-container-org9901010" class="outline-3">
+<h3 id="org9901010"><span class="section-number-3">2.3.</span> Snake lemma</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+I am going to dedicate this (short) section to proving the snake lemma: a basic result in homological algebra which implies other classic results like the zig-zag lemma. This
+result will be critical in the construction of derived functors.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1ac4c4d" class="outline-3">
+<h3 id="org1ac4c4d"><span class="section-number-3">2.4.</span> Derived functors</h3>
+</div>
+
+<div id="outline-container-orgce55c91" class="outline-3">
+<h3 id="orgce55c91"><span class="section-number-3">2.5.</span> \(\text{Tor}\) and \(\text{Ext}\)</h3>
+</div>
+</div>
+
+<div id="outline-container-orgca105bf" class="outline-2">
+<h2 id="orgca105bf"><span class="section-number-2">3.</span> Applications</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org9461c5e" class="outline-3">
+<h3 id="org9461c5e"><span class="section-number-3">3.1.</span> </h3>
+</div>
+
+<div id="outline-container-orgde6693f" class="outline-3">
+<h3 id="orgde6693f"><span class="section-number-3">3.2.</span> Hochschild homology</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The jumping-off point for Hochschild homology is the desire for a "natural" homology theory for algebras over rings. 
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-07-09 Wed 10:57</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

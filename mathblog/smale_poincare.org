@@ -1,0 +1,142 @@
+#+TITLE:Smale's proof of the smooth Poincare Conjecture in dimension 5 and greater
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted/
+
+------------------
+
+* Introduction
+
+This will be my most ambitious blog post to date. Of course, I have a decent background in differential geometry and topology at the undergraduate level, but I expect that I will have to fill
+in many gaps in my knowledge while reading this paper. I will use this blog post to go through all of the background ideas with which I am unfamilar, as well as the proof itself.
+I'm following Smale's original 1961 paper. Let's ride.
+
+------------------
+
+* Proof strategy
+
+Smale makes use of the notion of a /nice/ function, which is a particular kind of Morse function:
+
+*Definition 1.* A function $f \in C^{\infty}(M)$, where $M$ is a closed smooth manifold with non-degenerate critical points (i.e. the Hessian of $f$ at a critical point does not vanish) such
+that if $p$ is a critical point, then $f(p)$ is the index of $p$, which is simply the number of negative eigenvalues of $\text{Hess}(f)_p$, counted with multiplicity.
+
+In order to prove both the smooth and PL-smooth $n \geq 5$ Poincare conjecture, Smale proves another theorem. First, recall the following definition:
+
+*Definition 2.* Space $X$ is said to be $n$ -connected if its homotopy groups are trivial up to degree- $n$.
+
+We then have the following:
+
+*Theorem 1.* Suppose $M$ is a closed, smooth $n$ -manifold, and is $(m - 1)$ -connected with $n \geq 2m$, $(n, m) \neq (4, 2)$. Then there is a nice function $f$ on $M$ with /type numbers/
+($M_k$, the number of critical points of $f$ with index $k$) satisfying $M_0 = M_n = 1$ and $M_i = 0$ for $0 < i < m$ and $n - m < i < n$.
+
+* Supporting results
+
+Smale uses a lot of geometric machinery in his proof. I'm going to try to go through most of it in this section, in the order that it appears.
+The reader should probably read Section 4, and revisit/consult this section for the proofs of certain results invoked.
+
+** Milnor's Angle-Straightening
+
+/In hindsight, I should have consulted Lee's book before going back to the historical literature, as there is a much easier way to prove the following technical lemmas via flowouts. However, it's
+still a good exercise to be able to arrive at the desired result in a more brute-force fashion, so I'll stick with this approach./
+
+This technique will allow us to impart a consistent smooth structure on the space $(W_1 \sqcup W_2) / \sim$ where $W_1$ and $W_2$ are smooth manifolds with boundary and the equivalence
+is some gluing along the boundaries $\partial W_1$ and $\partial W_2$, which is critical when we "attach handles" to our underlying manifold.
+
+*Lemma 1.* Let $A$ be a subset of the smooth manifold $M$ and let $N$ be a smooth manifold without boundary. Then every smooth map $h : A \rightarrow N$ can be extended to a smooth map
+of a neighbourhood $U \supset A$ into $N$.
+
+/Proof./ To begin, suppose $N = \mathbb{R}^n$. By definition of a smooth map on a set which might not be open, for each $a \in A$, we can choose a neighbourhood
+$V_a$ of $a$ and a smooth map $h_a : V_a \rightarrow \mathbb{R}^n$ which extends $h|_{V_a \cap A}$. We let $V$ be the union of the $V_a$, and let $\rho_a$ be a partition
+of unity subordinate to this cover. Immediately, $\sum_{a \in A} \rho_a h_a$ is the desired extension (abuse of notation here, but you know what I mean).
+
+For the general case,
+of arbitrary $N$, use Whitney embedding to obtain smooth embedding $j : N \rightarrow \mathbb{R}^{2n + 1}$. In fact, there is also smooth retraction
+$r : V \rightarrow j(N)$, where $V$ is a neighbourhood of $j(N)$ (Whitney proved this, I'm going to stop
+going recursively backwards into previous literature, so this fact will go unproved for now). From what we proved earlier, $j \circ h$ extends to $H : U \rightarrow \mathbb{R}^{2n + 1}$,
+therefore to $r \circ H : H^{-1}(V) \rightarrow j(N) \simeq N$. This immediately gives us our desired extension.
+
+*Corollary 1.* If $M$ is a smooth manifold with boundary, there exists a neighbourhood $V$ of $\partial M$ and a smooth retraction $r : V \rightarrow \partial M$.
+
+/Proof./ This follows immediately from taking $A = \partial M = N$, $h = \text{id}$, and then applying Lemma 1.
+
+We'll also need this somewhat obvious lemma:
+
+*Lemma 2.* If $f : M \rightarrow N$ is a smooth map of equidimensional manifolds with everywhere-full-rank differential and $f(\partial M) = \partial N$, then $f$ is a local diffeomorphism.
+
+/Proof./ Obviously, if $p \in \text{Int}(M)$, we can pick interior chart $(U, \varphi)$ around $p$ and chart $(V, \psi)$ around $f(p)$. We can think of the
+map $(\psi \circ f \circ \varphi^{-1}) : U \rightarrow V \subset \mathbb{H}^n$ as being into $\mathbb{R}^n$ and apply inverse function theorem to conclude that there is an
+open set $W \subset U$ around $\varphi(p)$ such that $(\psi \circ f \circ \varphi^{-1})(W) \subset V \subset \mathbb{H}^n$ is open in $\mathbb{R}^n$ and the restriction of this map to the smaller open set is a diffeomorphism.
+Then $f : \varphi^{-1}(W) \rightarrow f(\varphi^{-1}(W))$ is the desired local diffeomorphism around $p$.
+
+Otherwise, if $p \in \partial M$, so $f(p) \in \partial N$, then we pick boundary charts $(U, \varphi)$ and $(V, \psi)$ around the points. We can extend $\psi \circ f \circ \varphi^{-1}$ to a smooth function
+on an open set of $\mathbb{R}^n$ which has full-rank at $\varphi(p)$, allowing us to apply inverse function theorem again to see that on open neighbourhood $\widetilde{W}$ of $\varphi(p)$ in $\mathbb{R}^n$,
+$\widetilde{f} : \widetilde{W} \rightarrow \widetilde{f}(\widetilde{W})$ is a diffeomorphism and $\widetilde{f}(\widetilde{W})$ is open in $\mathbb{R}^n$. It follows that
+
+\begin{equation}
+\widetilde{f}(\widetilde{W} \cap \varphi(U))
+\end{equation}
+
+* The proof
+
+We begin the actual proof by letting $M$ be a compact $n$ -manifold (smooth), $Q$ be a path-component of $\partial M$, and $f_i : \partial D_i^{s} \times D_i^{n - s} \rightarrow Q$ be smooth embeddings
+with disjoint images, where $n \geq s \geq 0$. We can use this data to construct a new topological space, via using each $f_i$ as an attaching map, gluing copies of $D_i^{s} \times D_i^{n - s}$ to $M$ (which we call /handles/).
+The easiest case of this procedure to visualize is when $s = 1$ and $n = 3$, in which case $D^s \times D^{n - s} = [-1, 1] \times D^2$ (a filled-cylinder) and $\partial D^s \times D^{n - s} = \{-1\} \times D^2 \sqcup \{1\} \times D^2$,
+so we attach this cylinder at its "ends". As Smale notes, this quotient space clearly has a natural smooth manifold structure everywhere except along the gluing regions (it is obviously already a topological manifold).
+
+*Lemma 2.* If $M$ is a smooth manifold with boundary, then there is a neighbourhood $U$ of $\partial M$ and a diffeomorphism $g : \partial M \times [0, 1) \rightarrow U$
+where $g(x, 0) = x$.
+
+/Proof./ It is easy to construct a smooth map $\lambda : M \rightarrow \mathbb{R}$ which vanishes on $\partial M$, is positive everywhere else, and has non-vanishing derivative on $\partial M$:
+we construct such a map inside coordinate charts and glue them together via a smooth partition of unity. We then take a retraction $\rho$ as in Corollary 1 and define
+$\mu : V \rightarrow \partial M \times \mathbb{R}$ to be $\mu(x) = (\rho(x), \lambda(x))$.
+Let $V_2$ be the collection of points of $V$ where the Jacobian of $\mu$ has maximal rank, which is obviously open. Take some $x \in \partial M$, note that in a boundary coordinate chart
+$\mu$ is the identity in all but a single coordinate, and moreover, the derivative of $\lambda$ at $x$ is non-zero. It follows that $\mu$ has maximal rank $\dim(M)$ at $x$, so $\partial M \subset V_2$.
+
+We now have a smooth map $\mu|_{V_2}$ of full rank between equidimensional spaces. We now shrink $V_2$ to $V_3$ on which $\mu$ is one-to-one, thus yielding a diffeomorphism.
+We take $D \subset V_2 \times V_2$ to be the set of all $(y_1, y_2)$ such that $\mu(y_1) = \mu(y_2)$ but $y_1 \neq y_2$. Since $\mu|_{V_2}$ is full-rank everywhere, it is a local homeomorphism everywhere except the boundary. Therefore,
+for each $y \in V_2 - \partial M$ (which is open), we can pick an open neighbourhood $W_y$ on which $\mu|_{V_2}$ is one-to-one. To handle the points in $\partial M$, we need to do a little bit more work. In particular,
+given some $y \in \partial M$, let $(U, \varphi)$ be a boundary chart with $\varphi(U) = \mathbb{H}^n$. The map $\mu \circ \varphi^{-1} : \mathbb{H}^n \rightarrow \partial M \times \mathbb{R}$ is smooth and has full rank
+at $\varphi(y) \in \partial \mathbb{H}^n$, so there exists a neighbourhood $\widetilde{W}$ of $\varphi(y)$ in $\mathbb{R}^n$ and smooth map $\widetilde{\mu} : \widetilde{W} \rightarrow \partial M \times \mathbb{R}$ which extends
+$\mu \circ \varphi^{-1}$. The derivative of this extension at $\varphi(y)$ does not change, so it is full-rank. Thus, we may choose an even smaller neighbourhood $\widetilde{V}$ of $\varphi(y)$ so that $\widetilde{\mu}$ is a diffeomorphism
+to its image when restricted, and in particular, $\widetilde{\mu}$ is one-to-one. Then $W_y = \varphi^{-1}(\widetilde{V} \cap \mathbb{H}^n)$ is an open neighbourhood of $y \in \partial M$ on which $\mu$ is one-to-one.
+
+Consider the neighbourhood $W_y \times W_y$ of $(y, y) \in \Delta$, the diagonal. If $(y_1, y_2) \in W_y \times W_y$
+satisfies $\mu(y_1) = \mu(y_2)$, then $y_1 = y_2$ and $(y_1, y_2)$ lies on the diagonal. Clearly, the collection of $(y_1, y_2)$ where $\mu(y_1) \neq \mu(y_2)$ is $(\mu \times \mu)^{-1}(\widetilde{\Delta}^C)$, where $\widetilde{\Delta}$
+is the diagonal in the range of $\mu \times \mu$, therefore is open. It follows that
+
+\begin{align}
+D^C = \{ (y_1, y_2) \ | \ \mu(y_1) = \mu(y_2) \ \text{and} \ y_1 \neq y_2\}^C &= \{ (y_1, y_2) \ | \ \mu(y_1) \neq \mu(y_2) \ \text{or} \ y_1 = y_2 \}
+\\ &= \{ (y_1, y_2) \ | \ \mu(y_1) \neq \mu(y_2) \} \cup \left( \bigcup_{y \in V_2} W_y \times W_y \right)
+\end{align}
+
+is open, so $D$ is closed. Clearly $V_2$ is metrizable, so let $d$ be a metric and define metric $\text{dist}$ for $V_2 \times V_2$ as
+
+\begin{equation}
+\text{dist}((x_1, y_2), (y_1, y_2)) = \max\{ d(x_1, y_1), d(x_2, y_2)\}
+\end{equation}
+
+The function $\delta : V_2 \rightarrow \mathbb{R}$ where $\delta(x) > 0$ is the distance from $(x, x)$ to $D$ is well-defined and continuous (and positive as $D$ is closed), we then let
+$V_3$ be the set of all points $x \in V_2$ where $d(x, \rho(x)) < \delta(\rho(x))$. Obviously $V_3$ is open and contains $\partial M$, as $x \in \partial M$ implies $\rho(x) = x$.
+
+The idea with this construction is to take only points $x$ such that the distance between the point and its retraction to the boundary, $\rho(x)$ is less than the minimum possible distance from
+$(\rho(x), \rho(x))$ to a pair of points in $D$, where injectivity fails. In particular, given $y_1$ and $y_2$ such that $\mu(y_1) = \mu(y_2)$ with $y_1, y_2 \in V_3$, the retractions agree, $\rho(y_1) = \rho(y_2) = y$,
+but the distance from both $y_1$ and $y_2$ to $y$ is less than the distance from $(y, y)$ to $D$. Thus, $\text{dist}((y_1, y_2), (y, y))$ is less than the distance of $(y, y)$ to $D$, so $(y_1, y_2)$ cannot be in $D$, and we
+have $y_1 = y_2$. It follows that $\mu$ is one-to-one on $V_3$.
+
+To recap, we now have a map $\mu|_{V_3} : V_3 \rightarrow \partial M \times \mathbb{R}$ which is injective and full-rank, where $\mu(x) = (x, 0)$ for $x \in \partial M$.
+
+The only thing that we have to fix now is the fact that the image $\mu(V_3) \subset \partial M \times \mathbb{R}$ might not look like a ``cylinder whose base is $\partial M$" (i.e. $\partial M \times [0, 1)$),
+but rather the ``height of the cylinder" might change as we vary $y \in \partial M$. To remedy this, we can construct smooth $\varepsilon : \partial M \rightarrow \mathbb{R}$ such that the collection of $(y, t)$
+with $0 \leq t < \varepsilon(y)$ lies inside $\mu(V_3)$. To do so, pick some $y \in \partial M$, so $\mu(y) = (y, 0)$. Note that $\mu(V_3) \subset \partial M \times \mathbb{R}$ is an open
+submanifold, so pick chart $(U, \varphi)$ around $y$ and $(W, t)$ around $0$ so that ds 
+
+and pick some boundary coordinate chart $(U, \varphi)$ around $y$ which is contained in $V_3$.
+Pick some open $W \times [0, \varepsilon) \subset \varphi(U)$, let $\widetilde{U} = \varphi^{-1}(W \times [0, \varepsilon)) around $\varphi(x)$, 
+
+---------------
+
+With these lemmas, we are able to prove our angle-straightening result.
+
+

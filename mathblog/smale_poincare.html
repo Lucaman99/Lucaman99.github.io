@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-05-11 Sun 17:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smale's proof of the smooth Poincare Conjecture in dimension 5 and greater</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Smale's proof of the smooth Poincare Conjecture in dimension 5 and greater</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0817aeb">1. Introduction</a></li>
+<li><a href="#org16ad49b">2. Proof strategy</a></li>
+<li><a href="#orgb8405dc">3. Supporting results</a>
+<ul>
+<li><a href="#org987434d">3.1. Milnor's Angle-Straightening</a></li>
+</ul>
+</li>
+<li><a href="#org04b8f49">4. The proof</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org0817aeb" class="outline-2">
+<h2 id="org0817aeb"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This will be my most ambitious blog post to date. Of course, I have a decent background in differential geometry and topology at the undergraduate level, but I expect that I will have to fill
+in many gaps in my knowledge while reading this paper. I will use this blog post to go through all of the background ideas with which I am unfamilar, as well as the proof itself.
+I'm following Smale's original 1961 paper. Let's ride.
+</p>
+
+<hr />
+</div>
+</div>
+
+<div id="outline-container-org16ad49b" class="outline-2">
+<h2 id="org16ad49b"><span class="section-number-2">2.</span> Proof strategy</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Smale makes use of the notion of a <i>nice</i> function, which is a particular kind of Morse function:
+</p>
+
+<p>
+<b>Definition 1.</b> A function \(f \in C^{\infty}(M)\), where \(M\) is a closed smooth manifold with non-degenerate critical points (i.e. the Hessian of \(f\) at a critical point does not vanish) such
+that if \(p\) is a critical point, then \(f(p)\) is the index of \(p\), which is simply the number of negative eigenvalues of \(\text{Hess}(f)_p\), counted with multiplicity.
+</p>
+
+<p>
+In order to prove both the smooth and PL-smooth \(n \geq 5\) Poincare conjecture, Smale proves another theorem. First, recall the following definition:
+</p>
+
+<p>
+<b>Definition 2.</b> Space \(X\) is said to be \(n\) -connected if its homotopy groups are trivial up to degree- \(n\).
+</p>
+
+<p>
+We then have the following:
+</p>
+
+<p>
+<b>Theorem 1.</b> Suppose \(M\) is a closed, smooth \(n\) -manifold, and is \((m - 1)\) -connected with \(n \geq 2m\), \((n, m) \neq (4, 2)\). Then there is a nice function \(f\) on \(M\) with <i>type numbers</i>
+(\(M_k\), the number of critical points of \(f\) with index \(k\)) satisfying \(M_0 = M_n = 1\) and \(M_i = 0\) for \(0 < i < m\) and \(n - m < i < n\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb8405dc" class="outline-2">
+<h2 id="orgb8405dc"><span class="section-number-2">3.</span> Supporting results</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Smale uses a lot of geometric machinery in his proof. I'm going to try to go through most of it in this section, in the order that it appears.
+The reader should probably read Section 4, and revisit/consult this section for the proofs of certain results invoked.
+</p>
+</div>
+
+<div id="outline-container-org987434d" class="outline-3">
+<h3 id="org987434d"><span class="section-number-3">3.1.</span> Milnor's Angle-Straightening</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<i>In hindsight, I should have consulted Lee's book before going back to the historical literature, as there is a much easier way to prove the following technical lemmas via flowouts. However, it's
+still a good exercise to be able to arrive at the desired result in a more brute-force fashion, so I'll stick with this approach.</i>
+</p>
+
+<p>
+This technique will allow us to impart a consistent smooth structure on the space \((W_1 \sqcup W_2) / \sim\) where \(W_1\) and \(W_2\) are smooth manifolds with boundary and the equivalence
+is some gluing along the boundaires \(\partial W_1\) and \(\partial W_2\), which is critical when we "attach handles" to our underlying manifold.
+</p>
+
+<p>
+<b>Lemma 1.</b> Let \(A\) be a subset of the smooth manifold \(M\) and let \(N\) be a smooth manifold without boundary. Then every smooth map \(h : A \rightarrow N\) can be extended to a smooth map
+of a neighbourhood \(U \supset A\) into \(N\).
+</p>
+
+<p>
+<i>Proof.</i> To begin, suppose \(N = \mathbb{R}^n\). By definition of a smooth map on a set which might not be open, for each \(a \in A\), we can choose a neighbourhood
+\(V_a\) of \(a\) and a smooth map \(h_a : V_a \rightarrow \mathbb{R}^n\) which extends \(h|_{V_a \cap A}\). We let \(V\) be the union of the \(V_a\), and let \(\rho_a\) be a partition
+of unity subordinate to this cover. Immediately, \(\sum_{a \in A} \rho_a h_a\) is the desired extension (abuse of notation here, but you know what I mean).
+</p>
+
+<p>
+For the general case,
+of arbitrary \(N\), use Whitney embedding to obtain smooth embedding \(j : N \rightarrow \mathbb{R}^{2n + 1}\). In fact, there is also smooth retraction
+\(r : V \rightarrow j(N)\), where \(V\) is a neighbourhood of \(j(N)\) (Whitney proved this, I'm going to stop
+going recursively backwards into previous literature, so this fact will go unproved for now). From what we proved earlier, \(j \circ h\) extends to \(H : U \rightarrow \mathbb{R}^{2n + 1}\),
+therefore to \(r \circ H : H^{-1}(V) \rightarrow j(N) \simeq N\). This immediately gives us our desired extension.
+</p>
+
+<p>
+<b>Corollary 1.</b> If \(M\) is a smooth manifold with boundary, there exists a neighbourhood \(V\) of \(\partial M\) and a smooth retraction \(r : V \rightarrow \partial M\).
+</p>
+
+<p>
+<i>Proof.</i> This follows immediately from taking \(A = \partial M = N\), \(h = \text{id}\), and then applying Lemma 1.
+</p>
+
+<p>
+We'll also need this somewhat obvious lemma:
+</p>
+
+<p>
+<b>Lemma 2.</b> If \(f : M \rightarrow N\) is a smooth map of equidimensional manifolds with everywhere-full-rank differential and \(f(\partial M) = \partial N\), then \(f\) is a local diffeomorphism.
+</p>
+
+<p>
+<i>Proof.</i> Obviously, if \(p \in \text{Int}(M)\), we can pick interior chart \((U, \varphi)\) around \(p\) and chart \((V, \psi)\) around \(f(p)\). We can think of the
+map \((\psi \circ f \circ \varphi^{-1}) : U \rightarrow V \subset \mathbb{H}^n\) as being into \(\mathbb{R}^n\) and apply inverse function theorem to conclude that there is an
+open set \(W \subset U\) around \(\varphi(p)\) such that \((\psi \circ f \circ \varphi^{-1})(W) \subset V \subset \mathbb{H}^n\) is open in \(\mathbb{R}^n\) and the restriction of this map to the smaller open set is a diffeomorphism.
+Then \(f : \varphi^{-1}(W) \rightarrow f(\varphi^{-1}(W))\) is the desired local diffeomorphism around \(p\).
+</p>
+
+<p>
+Otherwise, if \(p \in \partial M\), so \(f(p) \in \partial N\), then we pick boundary chart around both points.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org04b8f49" class="outline-2">
+<h2 id="org04b8f49"><span class="section-number-2">4.</span> The proof</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+We begin the actual proof by letting \(M\) be a compact \(n\) -manifold (smooth), \(Q\) be a path-component of \(\partial M\), and \(f_i : \partial D_i^{s} \times D_i^{n - s} \rightarrow Q\) be smooth embeddings
+with disjoint images, where \(n \geq s \geq 0\). We can use this data to construct a new topological space, via using each \(f_i\) as an attaching map, gluing copies of \(D_i^{s} \times D_i^{n - s}\) to \(M\) (which we call <i>handles</i>).
+The easiest case of this procedure to visualize is when \(s = 1\) and \(n = 3\), in which case \(D^s \times D^{n - s} = [-1, 1] \times D^2\) (a filled-cylinder) and \(\partial D^s \times D^{n - s} = \{-1\} \times D^2 \sqcup \{1\} \times D^2\),
+so we attach this cylinder at its "ends". As Smale notes, this quotient space clearly has a natural smooth manifold structure everywhere except along the gluing regions (it is obviously already a topological manifold).
+</p>
+
+<p>
+<b>Lemma 2.</b> If \(M\) is a smooth manifold with boundary, then there is a neighbourhood \(U\) of \(\partial M\) and a diffeomorphism \(g : \partial M \times [0, 1) \rightarrow U\)
+where \(g(x, 0) = x\).
+</p>
+
+<p>
+<i>Proof.</i> It is easy to construct a smooth map \(\lambda : M \rightarrow \mathbb{R}\) which vanishes on \(\partial M\), is positive everywhere else, and has non-vanishing derivative on \(\partial M\):
+we construct such a map inside coordinate charts and glue them together via a smooth partition of unity. We then take a retraction \(\rho\) as in Corollary 1 and define
+\(\mu : V \rightarrow \partial M \times \mathbb{R}\) to be \(\mu(x) = (\rho(x), \lambda(x))\).
+Let \(V_2\) be the collection of points of \(V\) where the Jacobian of \(\mu\) has maximal rank, which is obviously open. Take some \(x \in \partial M\), note that in a boundary coordinate chart
+\(\mu\) is the identity in all but a single coordinate, and moreover, the derivative of \(\lambda\) at \(x\) is non-zero. It follows that \(\mu\) has maximal rank \(\dim(M)\) at \(x\), so \(\partial M \subset V_2\).
+</p>
+
+<p>
+We now have a smooth map \(\mu|_{V_2}\) of full rank between equidimensional spaces. We now shrink \(V_2\) to \(V_3\) on which \(\mu\) is one-to-one, thus yielding a diffeomorphism.
+We take \(D \subset V_2 \times V_2\) to be the set of all \((y_1, y_2)\) such that \(\mu(y_1) = \mu(y_2)\) but \(y_1 \neq y_2\). Since \(\mu|_{V_2}\) is full-rank everywhere, it is a local homeomorphism everywhere except the boundary. Therefore,
+for each \(y \in V_2 - \partial M\) (which is open), we can pick an open neighbourhood \(W_y\) on which \(\mu|_{V_2}\) is one-to-one. To handle the points in \(\partial M\), we need to do a little bit more work. In particular,
+given some \(y \in \partial M\), let \((U, \varphi)\) be a boundary chart with \(\varphi(U) = \mathbb{H}^n\). The map \(\mu \circ \varphi^{-1} : \mathbb{H}^n \rightarrow \partial M \times \mathbb{R}\) is smooth and has full rank
+at \(\varphi(y) \in \partial \mathbb{H}^n\), so there exists a neighbourhood \(\widetilde{W}\) of \(\varphi(y)\) in \(\mathbb{R}^n\) and smooth map \(\widetilde{\mu} : \widetilde{W} \rightarrow \partial M \times \mathbb{R}\) which extends
+\(\mu \circ \varphi^{-1}\). The derivative of this extension at \(\varphi(y)\) does not change, so it is full-rank. Thus, we may choose an even smaller neighbourhood \(\widetilde{V}\) of \(\varphi(y)\) so that \(\widetilde{\mu}\) is a diffeomorphism
+to its image when restricted, and in particular, \(\widetilde{\mu}\) is one-to-one. Then \(W_y = \varphi^{-1}(\widetilde{V} \cap \mathbb{H}^n)\) is an open neighbourhood of \(y \in \partial M\) on which \(\mu\) is one-to-one.
+</p>
+
+<p>
+Consider the neighbourhood \(W_y \times W_y\) of \((y, y) \in \Delta\), the diagonal. If \((y_1, y_2) \in W_y \times W_y\)
+satisfies \(\mu(y_1) = \mu(y_2)\), then \(y_1 = y_2\) and \((y_1, y_2)\) lies on the diagonal. Clearly, the collection of \((y_1, y_2)\) where \(\mu(y_1) \neq \mu(y_2)\) is \((\mu \times \mu)^{-1}(\widetilde{\Delta}^C)\), where \(\widetilde{\Delta}\)
+is the diagonal in the range of \(\mu \times \mu\), therefore is open. It follows that
+</p>
+
+\begin{align}
+D^C = \{ (y_1, y_2) \ | \ \mu(y_1) = \mu(y_2) \ \text{and} \ y_1 \neq y_2\}^C &= \{ (y_1, y_2) \ | \ \mu(y_1) \neq \mu(y_2) \ \text{or} \ y_1 = y_2 \}
+\\ &= \{ (y_1, y_2) \ | \ \mu(y_1) \neq \mu(y_2) \} \cup \left( \bigcup_{y \in V_2} W_y \times W_y \right)
+\end{align}
+
+<p>
+is open, so \(D\) is closed. Clearly \(V_2\) is metrizable, so let \(d\) be a metric and define metric \(\text{dist}\) for \(V_2 \times V_2\) as
+</p>
+
+\begin{equation}
+\text{dist}((x_1, y_2), (y_1, y_2)) = \max\{ d(x_1, y_1), d(x_2, y_2)\}
+\end{equation}
+
+<p>
+The function \(\delta : V_2 \rightarrow \mathbb{R}\) where \(\delta(x) > 0\) is the distance from \((x, x)\) to \(D\) is well-defined and continuous (and positive as \(D\) is closed), we then let
+\(V_3\) be the set of all points \(x \in V_2\) where \(d(x, \rho(x)) < \delta(\rho(x))\). Obviously \(V_3\) is open and contains \(\partial M\), as \(x \in \partial M\) implies \(\rho(x) = x\).
+</p>
+
+<p>
+The idea with this construction is to take only points \(x\) such that the distance between the point and its retraction to the boundary, \(\rho(x)\) is less than the minimum possible distance from
+\((\rho(x), \rho(x))\) to a pair of points in \(D\), where injectivity fails. In particular, given \(y_1\) and \(y_2\) such that \(\mu(y_1) = \mu(y_2)\) with \(y_1, y_2 \in V_3\), the retractions agree, \(\rho(y_1) = \rho(y_2) = y\),
+but the distance from both \(y_1\) and \(y_2\) to \(y\) is less than the distance from \((y, y)\) to \(D\). Thus, \(\text{dist}((y_1, y_2), (y, y))\) is less than the distance of \((y, y)\) to \(D\), so \((y_1, y_2)\) cannot be in \(D\), and we
+have \(y_1 = y_2\). It follows that \(\mu\) is one-to-one on \(V_3\).
+</p>
+
+<p>
+To recap, we now have a map \(\mu|_{V_3} : V_3 \rightarrow \partial M \times \mathbb{R}\) which is injective and full-rank, where \(\mu(x) = (x, 0)\) for \(x \in \partial M\).
+</p>
+
+<p>
+The only thing that we have to fix now is the fact that the image \(\mu(V_3) \subset \partial M \times \mathbb{R}\) might not look like a ``cylinder whose base is \(\partial M\)" (i.e. \(\partial M \times [0, 1)\)),
+but rather the ``height of the cylinder" might change as we vary \(y \in \partial M\). To remedy this, we can construct smooth \(\varepsilon : \partial M \rightarrow \mathbb{R}\) such that the collection of \((y, t)\)
+with \(0 \leq t < \varepsilon(y)\) lies inside \(\mu(V_3)\). To do so, pick some \(y \in \partial M\), so \(\mu(y) = (y, 0)\). Note that \(\mu(V_3) \subset \partial M \times \mathbb{R}\) is an open
+submanifold, so pick chart \((U, \varphi)\) around \(y\) and \((W, t)\) around \(0\) so that ds 
+</p>
+
+<p>
+and pick some boundary coordinate chart \((U, \varphi)\) around \(y\) which is contained in \(V_3\).
+Pick some open \(W \times [0, \varepsilon) \subset \varphi(U)\), let $\widetilde{U} = &varphi;<sup>-1</sup>(W &times; [0, &epsilon;)) around \(\varphi(x)\), 
+</p>
+
+<hr />
+
+<p>
+With these lemmas, we are able to prove our angle-straightening result.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-05-11 Sun 17:53</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

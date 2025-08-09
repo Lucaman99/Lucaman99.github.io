@@ -1,0 +1,65 @@
+#+TITLE:Connected sums of manifolds are well-defined
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted/
+
+------------------
+
+* Introduction
+
+In this post, we will prove a fact which is invoked all the time in introductory differential topology classes, but seemingly is never proved: the
+connected sum of manifolds is well-defined up to diffeomorphism.
+
+We will begin this post by proving that we can glue manifold with boundary along their boundaries via flowouts from submanifolds.
+This is a convenient (albiet more general than necessary) way to define the connected sum of two manifolds, relative to a choice of disks which we remove from each of them.
+We will then conclude by proving the /disk theorem/ of Palais, which shows that any choice of disks are actually ambiently isotopic, thus demonstrating that
+the connected sum is well-defined up to diffeomorphism, independent of the choice of disks which we remove.
+
+* Flowouts and the collar theorem
+
+We begin with a discussion of flowouts, which are a nice technique for constructing immersed submanifolds via flows.
+
+We are following Chapter 9 of Lee's book, but I'm trying to
+prove each of the results myself (For practice! I'm of the opinion that I should be able to prove literally every basic result in differential topology and geometry, anything short
+of this is complete and utter failure!).
+
+*Theorem (Flowout Theorem).* Let $M$ be a smooth manifold, $S \subset M$ an embedded $k$ -dimensional submanifold and $V \in \mathfrak{X}(M)$ a smooth vector field
+which is nowhere tangent to $S$. Let $\theta : \mathcal{D} \rightarrow M$ be the (unique maximal) flow of $V$, let $\mathcal{O} = (\mathbb{R} \times S) \cap \mathcal{D}$ and $\Phi = \theta|_{\mathcal{O}}$.
+Then the following hold:
+
+1. $\Phi : \mathcal{O} \rightarrow M$ is a smooth immersion.
+2. $\frac{d}{dt} \in \mathfrak{X}(\mathcal{O})$ is $\Phi$ -related to $V$.
+3. There exists a smooth positive $\delta : S \rightarrow \mathbb{R}$ such that $\Phi|_{\mathcal{O}_{\delta}}$ is injective where $\mathcal{O}_{\delta} \subset \mathcal{O}$ is defined by
+
+   \begin{equation}
+   \mathcal{O}_{\delta} = \{ (t, p) \in \mathcal{O} \ | \ |t| < \delta(p) \}
+   \end{equation}
+
+   which means that $\Phi|_{\mathcal{O}_{\delta}}$ is an injective immersion, and its image is an immersed submanifold of $M$ containing $S$. $V$ is tangent to
+   this immersed submanifold.
+4. Moreover, if $S$ has codimension $1$, then $\Phi|_{\mathcal{O}_{\delta}}$ is a diffeomorphism onto an open submanifold of $M$.
+
+/Proof./ The first step is proving that $\Phi$ is an immersion. Note that $\mathcal{O}$ is an open subset of the manifold $\mathbb{R} \times S$, which is an embedded submanifold
+of $\mathbb{R} \times M$. We will study the flow $\theta : \mathcal{D} \rightarrow M$. Clearly,
+\begin{equation}
+\theta_{*} \left( \frac{d}{dt}\biggr\rvert_{(t_0, p)} \right) = V_{\theta(t_0, p)}
+\end{equation}
+We know that $\theta(t_0, \cdot) : \mathcal{D} \cap \{ t = t_0\} \rightarrow \mathcal{D} \cap \{t = -t_0\}$.
+is a diffeomorphism of open submanifolds of $M$ for fixed $t_0$. Thus, for any $p \in \mathcal{D} \cap \{t=t_0\} \subset M$, we can find a small neighbourhood $U$
+on which $\psi = \theta(t_0, \cdot)$ is a diffeomorphism. Suppose $p = \theta(0, p)$ is in $U$, then
+\begin{equation}
+\psi_{*}\left( V_{\theta(0, p)} \right) = \psi_{*} \left( \gamma_{*} \left( \frac{d}{dt} \biggr\rvert_{0} \right) \right) = (\psi \circ \gamma)_{*} \left( \frac{d}{dt} \biggr\rvert_{0} \right)
+\end{equation}
+where $\gamma(t) = \theta(t, p)$, so
+\begin{equation}
+(\psi \circ \gamma)(t) = \theta(t_0, \theta(t, p)) = \theta(t_0 + t, p) = \theta(t, \theta(t_0, p))
+\end{equation}
+which means that the right-hand side of the previous equation is $V_{\theta(t_0, p)}$. From here, pick some $p \in S$, and suppose $\frac{d}{dx^1}, \dots, \frac{d}{dx^k}$ is a basis for $T_q S$
+for $q \in V$ around $p$. Since $V$ is nowhere parallel to $S$, the collection $V_{p}, \frac{d}{dx^1}\biggr\rvert_p, \dots, \frac{d}{dx^k}\biggr\rvert_p$ is linearly independent,
+
+From here, it is completely obvious that $\frac{d}{dt}$ is $\Phi$ -related to $V$, we have essentially already written this out above. If we prove point (3), point (4) is also obvious, as in this case we have an injective immersion
+of equidimensional manifolds, which is immediately a diffeomorphism to its image. Thus, all that is left to do is proving point (3).
+
+* The disk theorem and connected sum

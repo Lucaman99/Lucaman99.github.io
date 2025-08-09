@@ -1,0 +1,34 @@
+#+TITLE:Every exercise in the first three chapters of Hartshorne
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted:/ May 14th, 2025
+
+-----------------
+
+#+ATTR_HTML: :width 400px
+[[./assets/hartshorne.jpg]]
+
+I have recently begun work on a new, wildly over-ambitious project: doing every exercise in the first three chapters of Hartshorne before my PhD begins in the Fall.
+I was inspired by [[https://math.berkeley.edu/~cjdowd/hartshorne.html][this website]]. I don't even think this individual accomplished their goal, and I may not either (in fact, I'd say it is quite likely that I won't). However, as the adage goes,
+"shoot for the stars, land on the moon" or something like that.
+
+My main goal with this project is this: *I want to be as comfortable with the foundational aspects of algebraic geometry as I am with the foundational
+aspects of differential geometry and topology*.
+
+Unlike the linked website, I decided that I would additionally work through the Chapter 1 problems, rather than only Chapters 2 and 3.
+I took a class on algebraic curves during my final semester of undergrad, where my professor, Stephen Kudla, stressed the importance of understanding the "classical theory of varieties" in order to most effectively
+internalize the modern scheme-theoretic toolkit, which is exactly what Chapter 1 covers.
+
+[[../pdf/hartshorne.pdf][Here]] is a link to my solutions. I'll keep a tally of my progress here:
+
+- Chapter 1 problems completed: 16/90
+- Chapter 2 problems completed: 1/134
+- Chapter 3 problems completed: 0/88
+
+If I have any extra thoughts of notes about particular problems, I will add them below. Suggestions and/or corrections are much much appreciated, I'm sure there will be typos!
+
+- *May 14th, 2025:* On the original publication date of this blog post, I have finished 9/90 (in other words, 10%) of the problems in Chapter 1. So far so good.
+  If I manage to keep up the pace of solving 3 or 4 problems every day, then I'll easily finish this project by the Fall. Easier said than done!
+

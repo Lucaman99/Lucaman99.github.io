@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-04 Mon 16:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Introduction to derived functors and derived categories</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Introduction to derived functors and derived categories</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6aec796">1. Introduction</a></li>
+<li><a href="#org991e560">2. Category theory basics</a></li>
+<li><a href="#org616f3ac">3. Abelian categories</a></li>
+<li><a href="#orgc27230a">4. Derived functors</a></li>
+<li><a href="#orgb16e833">5. Derived categories</a></li>
+<li><a href="#org0f94249">6. Sheaf cohomology and hypercohomology</a></li>
+<li><a href="#org7d61aff">7. Hochschild homology and cohomology</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org6aec796" class="outline-2">
+<h2 id="org6aec796"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The goal of this post is to explain the general construction of derived functors and derived categories, then use these ideas to introduce the general
+notion of sheaf cohomology and hypercohomology. I might also talk a bit about Hochschild homology/cohomology (which has a very nice explanation via derived functors).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org991e560" class="outline-2">
+<h2 id="org991e560"><span class="section-number-2">2.</span> Category theory basics</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In this section, I'll go over a few basic ideas in category theory.
+</p>
+
+<p>
+<b>Definition 2.1</b> (Initial and final objects). Let \(\mathcal{C}\) be a category, an object \(I\) in \(\mathcal{C}\) is said to be initial if for any other object \(X\),
+there is a unique morphism \(I \to X\). An object \(T\) is terminal if for any \(X\), there is a unique morphism \(X \to T\).
+An object is said to be a zero object (denoted \(0\)) if it is both initial and terminal.
+</p>
+
+<p>
+<b>Remark 2.1.</b> It is easy to see that initial and final objects (if they exists) are unique up to unique isomorphism.
+</p>
+
+<p>
+<b>Definition 2.2</b> (Comma category). Let \(F : \mathcal{C} \rightarrow \mathcal{D}\) be a functor, let \(X\) be an object of \(D\). The comma category \((X \downarrow F)\) is defined as follows:
+</p>
+
+<ul class="org-ul">
+<li>The objects are pairs \((C, f : x \rightarrow F(C))\) for objects \(C \in \text{Obj}(\mathcal{C})\).</li>
+<li>The morphisms between \((C, f)\) and \((C', f' : X \rightarrow F(C'))\) are morphisms \(h : C \rightarrow C'\) in \(\mathcal{C}\) such that \(F(h) \circ f = f'\).</li>
+</ul>
+
+<p>
+It is very easy to verify that we have defined a valid category. We can also define another type of comma category, \((F \downarrow X)\), where we look at objects of the form \((C, f : F(C) \rightarrow x)\),
+and define the morphisms in the obvious way.
+</p>
+
+<p>
+<b>Example 2.1.</b> The category of pointed topological spaces is precisely \((\cdot \downarrow \textbf{Top})\).
+</p>
+
+<p>
+<b>Definition 2.3</b> (Universal morphism). A universal morphism is an initial object in \((X \downarrow F)\), a particular comma category, or a terminal object in \((F \downarrow X)\). Intuitively, a universal morphism encodes a property which characterizes
+some object up to isomorphism. We can unravel the definition of a universal morphism to better conceptualize it.
+In particular, a universal morphism (in \((X \downarrow F)\)) is a pair \((C, f : X \rightarrow F(C))\) such that for any other pair \((C', f' : X \rightarrow F(C'))\), there is a unique arrow \(h : C \rightarrow C'\) such that the following diagram commutes:
+</p>
+
+
+<div id="orgad667d9" class="figure">
+<p><img src="./assets/uni_prop.png" alt="uni_prop.png" width="300px" />
+</p>
+</div>
+
+<p>
+<b>Corollary 2.1.</b> A universal morphism is unique up to unique isomorphism in the comma category: this follows immediately from the fact that initial and terminal objects are unique up
+to unique isomorphism.
+</p>
+
+<p>
+<b>Example 2.2</b> (Tensor algebra). The tensor algebra of a vector space is a great example of an object characterized via a universal property. In particular, given some vector space \(V\) over \(k\), the property
+which characterizes the tensor algebra \(T(V)\) is that any linear map \(V \rightarrow A\) of \(V\) to a \(k\) -algebra extends uniquely to an algebra homomorphism from \(T(V)\) to \(A\).
+Let \(\text{For} : \textbf{Alg}_k \rightarrow \textbf{Vect}_k\) be the forgetful functor which sends a \(k\) -algebra to its underlying vector space. We take \(F\) to be \(\text{For}\), and
+we take \(X = V\). Our desired object is an initial object \((T(V), f : V \rightarrow \text{For}(T(V)))\) in the comma category, which is to say that for any \(A \in \textbf{Alg}_k\) and
+linear map \(f' : V \rightarrow \text{For}(A)\), there must be a unique algebra homomorphism \(g : T(V) \rightarrow A\) such that \(\text{For}(g) \circ f = f'\).
+</p>
+
+<p>
+<b>Remark 2.2.</b> A word of caution: this formulation of a universal morphism can fail to nicely capture many instances where a "universal property" may describe a particular object.
+A good example is the tensor product. Technically, one can formulate a definition of the tensor product of two vector spaces, \(V \otimes W\), via the language of universal morphisms (see <a href="https://ncatlab.org/nlab/show/tensor+product">nLab</a>),
+but in practice, it is better to just say that \(V \otimes W\) is an object of \(\textbf{Vect}_k\) and a bilinear map \(j : V \times W \rightarrow V \otimes W\) such that
+for any bilinear map \(f : V \times W \rightarrow Z\), there is a unique morphism \(h : V \otimes W \rightarrow Z\) such that \(h \circ j = f\). The reason why we cannot use a universal morphism
+naively in this case is because of the <i>bilinear</i> attribute of the maps \(j\) and \(f\). Nevertheless, it is easy to check directly that this definition uniquely characterizes \(V \otimes W\) (if it exists)
+up to unique isomorphism.
+</p>
+
+<p>
+Having introduced universal properties, we can look at a related idea: adjoint functors.
+</p>
+
+<p>
+<b>Mantra 2.1.</b> The best, succinct way to think of a functor \(F : \mathcal{D} \rightarrow \mathcal{C}\) adjoint to functor \(G : \mathcal{C} \rightarrow \mathcal{D}\) is that \(F\) is the most efficient way to systematically
+"solve the problem" posed by \(G\). If \(G\) is, for example, a forgetful functor which throws away some of the structure of category \(\mathcal{C}\), is there a method which reconstructs an element of \(\mathcal{C}\) from \(\mathcal{D}\), and imposes the
+minimal amount of extra structure possible? If such a method exists, and is functorial, in the sense that it works the same for any object, then it can be described via a functor \(F : D \rightarrow C\)
+which is adjoint to \(G\). Another way to internalize this saame intuition is via universal properties. When
+we find an object which satisfies a universal property, we are effectively finding the "most efficient" object which satisfies some desired property. An adjoint functor is a technique to define such universal
+objects at a global, categorical level, rather than locally. To be more specific, writing down a universal morphism is dependent on a <i>particular choice</i> of object \(X\) relative to which we define a comma category.
+One way to interpret the utility of an adjoint functor is that it "chooses every \(X\) at once" in a functorial manner. In the previous tensor algebra example, we are choosing a particular \(X = V\), and defining \(T(V)\)
+via a universal property. In fact, \(T\) should be a functor in its own right, and it should work for <i>every</i> choice of \(V\) is a functorial manner. Indeed, it is the case that \(T\) is a functor adjoint to \(\text{For}\).
+</p>
+
+<p>
+<b>Definition 2.4</b> (Adjoint functor). A functor \(F : \mathcal{D} \rightarrow \mathcal{C}\) is said to be <i>left-adjoint</i> if for each \(X \in \text{Obj}(\mathcal{C})\), there exists a universal morphism
+in \((F \downarrow X)\). The existence of a universal morphism simply means that there is some \((G(X), f_X : F(G(X)) \rightarrow X)\) such that for any other \((C, g : F(C) \rightarrow X)\), there is a
+unique morphism \(h : C \rightarrow G(X)\) where \(f_X \circ F(h) = g\). From here, it is possible to show that we can define a functor \(G : \mathcal{C} \rightarrow \mathcal{D}\) such that \(f_X \circ F(G(h)) = h \circ f_{X'}\) for all \(h : X' \rightarrow X\), as one might
+expect/hope. In particular, we simply let \(G\) take object \(X\) to \(G(X)\). Additionally, given arrow \(h : X' \rightarrow X\) in \(\mathcal{C}\), we obtain objects \((G(X), f_X : F(G(X)) \rightarrow X)\)
+and \((G(X'), h \circ f_{X'} : F(G(X')) \rightarrow X)\). We then obtain unique morphism \(G(h) : G(X') \rightarrow G(X)\) where \(f_X \circ F(G(h)) = h \circ f_{X'}\), as desired. To prove that this
+mapping of objects/arrows in a valid functor, we simply note that \(G\) takes identity arrows to identity arrows and preserves compositions due to uniqueness of \(G(h)\).
+</p>
+
+<p>
+There is a similar, dual construction, where we say that \(G : \mathcal{C} \rightarrow \mathcal{D}\) is <i>right-adjoint</i> if for each \(X \in \text{Obj}(\mathcal{D})\), there exists a universal morphism
+in \((X \downarrow G)\). We define functor \(F : \mathcal{D} \rightarrow \mathcal{C}\) analogously.
+</p>
+
+<p>
+<b>Claim 2.1.</b> If \(F : \mathcal{D} \rightarrow \mathcal{C}\) is left-adjoint, and \(G : \mathcal{C} \rightarrow \mathcal{D}\) is the corresponding induced functor, then \(G\) is right-adjoint,
+and the corresponding induced functor is \(F\). Similarly, if \(G : \mathcal{C} \rightarrow \mathcal{D}\) is right-adjoint and \(F\) is the induced functor, then \(F\) is left-adjoint, and its
+induced functor is \(G\).
+</p>
+
+<p>
+<i>Proof.</i> Let's look at the first case. We need to show that for each \(X\) in \(\mathcal{D}\), then \((F(X), f : X \rightarrow G(F(X)))\) is initial
+in the comma category, for some arrow \(f\) in \(\mathcal{D}\). Of course, we know that \(F\) is left-adjoint with induced functor \(G\), so we can find universal morphism in \((F \downarrow F(X))\). This will be
+some terminal \((G(F(X)), h : F(G(F(X))) \rightarrow F(X))\). 
+</p>
+
+<p>
+<b>Example 2.3</b> (Tensor algebra, again). If \(T(V)\) (the tensor algebra of Example 2.2) exists
+</p>
+
+<p>
+<b>Example 2.4</b> (Free products).
+</p>
+
+<p>
+Now, let us discuss the notion of limits and colimits, which will prove to be useful in our discussion of Abelian categories.
+</p>
+
+<p>
+<b>Definition</b> (Cone).
+</p>
+
+<p>
+To conclude, let us briefly introduce the notion of products and coproducts, which are another crucial component of Abelian categories.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org616f3ac" class="outline-2">
+<h2 id="org616f3ac"><span class="section-number-2">3.</span> Abelian categories</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Here, we will develop some central results revolving around <i>Abelian categories</i>, which were introduced by Grothendieck in his (famous) Tohoku paper, and provide the
+arena in which it makes sense to talk about exact sequences, homology, and cohomology is a general, categorical sense.
+</p>
+
+<p>
+<b>Definition 3.1</b> (Preadditive category). A preadditive category \(C\) is a category such that each hom-set has the structure of an Abelian group, with composition being bilinear over the group addition:
+</p>
+\begin{align}
+    f \circ (g + h) = (f \circ g) + (f \circ h) \ \ \ \ \text{and} \ \ \ \ (g + h) \circ f = (g \circ f) + (h \circ f).
+\end{align}
+
+<p>
+<b>Definition 3.2</b> (Zero morphisms). Let \(\mathcal{C}\) be a category, an arrow \(f : X \rightarrow Y\) is said to be <i>constant</i> if for any morphisms \(g, h : W \rightarrow X\), we have \(f \circ g = f \circ h\).
+An arrow is said to be <i>coconstant</i> if for any morphisms \(g, h : Y \rightarrow Z\), we have \(g \circ f = h \circ f\). A morphism which is both constant and coconstant is called a <i>zero morphism</i>. We say that \(C\) is a category
+<i>with zero morphisms</i> such that for every two objects \(X\) and \(Y\), there is a morphism \(0_{XY} : X \rightarrow Y\) such that for any two arrows \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\), the following diagrams commute:
+</p>
+
+
+<div id="orgcb11cd7" class="figure">
+<p><img src="./assets/zeros.png" alt="zeros.png" width="300px" />
+</p>
+</div>
+
+<p>
+<b>Remark 3.1.</b> Note that if \(\mathcal{C}\) is a category with zero morphisms, then the arrows \(0_{XY}\) are unique. To see this, let \(Z = Y\), let \(g = \text{id}\), let \(f = 0_{XY}'\): some other morphism
+satisfying the same criteria as \(0_{XY}\). Then applying the diagram, we find that \(0_{XY} = 0_{YY} \circ 0_{XY}'\) and \(0_{XY}' = 0_{YY} \circ 0_{XY}'\), so \(0_{XY} = 0_{XY}'\). We can also check
+that all of the \(0_{XY}\) are zero morphisms. We have \(0_{XY} = 0_{YZ} \circ f\) for any arrow \(f : X \rightarrow Y\) and we have \(g \circ 0_{XY} = 0_{XZ}\) for any arrow \(g : Y \rightarrow Z\): this immediately gives us what we want.
+</p>
+
+<p>
+<b>Claim 3.1.</b> If \(\mathcal{C}\) is an object with zero object \(\textbf{0}\), then \(\mathcal{C}\) has zero morphisms. In particular, we have natural maps \(t_X : X \rightarrow \textbf{0}\) and \(i_Y : \textbf{0} \rightarrow Y\),
+and \(0_{XY} = i_Y \circ t_X\) endow \(\mathcal{C}\) with the structure of a category with zero morphisms.
+</p>
+
+<p>
+<i>Proof.</i> Let \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) be arrows. We note that \(0_{YZ} \circ f = i_Z \circ (t_Y \circ f)\) and \(g \circ 0_{XY} = (g \circ i_Y) \circ t_X\). Of course,
+\(t_Y \circ f : X \rightarrow \textbf{0}\) must be equal to \(t_X\) and \(g \circ i_Y\) must be \(i_Z\), so both compositions are equal to \(0_{XZ}\), as desired. \(\blacksquare\)
+</p>
+
+<p>
+Using the concept of zero morphisms, and the previously introduced concept of equalizers (and coequalizers), we are able to write down a natural definition of the kernel (and cokernel).
+Note that kernels and cokernels will not always exist in a given category (as a given category may not contain certain equalizers/coequalizers).
+</p>
+
+<p>
+<b>Definition 3.3</b> (Kernels and cokernels). Given arrow \(f : X \rightarrow Y\) in category \(\mathcal{C}\) with zero morphisms, \(\text{Ker}(f) = \text{Eq}(f, 0_{XY})\), the equilizer of
+\(f\) and \(0_{XY}\). In addition, \(\text{Coker}(f) = \text{Coeq}(f, 0_{XY})\), the coequalizer of \(f\) and \(0_{XY}\).
+</p>
+
+<p>
+<b>Definition 3.4</b> (Image). Using the concept of kernels/cokernels, we are able to define the <i>image</i> of an arrow \(f : X \rightarrow Y\) as well. In particular, if cokernel \(\text{Coker}(f)\) exists, then
+we have object \(Q\) and "quotient" morphism \(q : Y \rightarrow Q\). Intuitively, if \(Q\) is supposed to generalize \(Y/\text{Im}(f)\) in the case that we are operating in, say, the category of vector spaces,
+then we should have \(\text{Ker}(q) \simeq \text{Im}(f)\) (this is just the first isomorphism theorem). Thus, we <i>define</i> \(\text{Im}(f) = \text{Ker}(q)\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc27230a" class="outline-2">
+<h2 id="orgc27230a"><span class="section-number-2">4.</span> Derived functors</h2>
+</div>
+
+<div id="outline-container-orgb16e833" class="outline-2">
+<h2 id="orgb16e833"><span class="section-number-2">5.</span> Derived categories</h2>
+</div>
+
+<div id="outline-container-org0f94249" class="outline-2">
+<h2 id="org0f94249"><span class="section-number-2">6.</span> Sheaf cohomology and hypercohomology</h2>
+</div>
+
+<div id="outline-container-org7d61aff" class="outline-2">
+<h2 id="org7d61aff"><span class="section-number-2">7.</span> Hochschild homology and cohomology</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-08-04 Mon 16:39</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

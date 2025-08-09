@@ -1,0 +1,44 @@
+#+TITLE:Connected sums of manifolds are well-defined
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted/
+
+------------------
+
+* Introduction
+
+In this post, we will prove a fact which is invoked all the time in introductory differential topology classes, but seemingly is never proved: the
+connected sum of manifolds is well-defined up to diffeomorphism.
+
+We will begin this post by proving that we can glue manifold with boundary along their boundaries via flowouts from submanifolds.
+This is a convenient (albiet more general than necessary) way to define the connected sum of two manifolds, relative to a choice of disks which we remove from each of them.
+We will then conclude by proving the /disk theorem/ of Palais, which shows that any choice of disks are actually ambiently isotopic, thus demonstrating that
+the connected sum is well-defined up to diffeomorphism, independent of the choice of disks which we remove.
+
+* Flowouts and the collar theorem
+
+We begin with a discussion of flowouts, which are a nice technique for constructing immersed submanifolds via flows. We are following Chapter 9 of Lee's book, but I'm trying to
+prove each of the results myself (For practice! I'm of the opinion that I should be able to prove literally every basic result in differential topology and geometry, anything short
+of this is complete and utter failure!).
+
+*Theorem (Flowout Theorem).* Let $M$ be a smooth manifold, $S \subset M$ an embedded $k$ -dimensional submanifold and $V \in \mathfrak{X}(M)$ a smooth vector field
+which is nowhere tangent to $S$. Let $\theta : \mathcal{D} \rightarrow M$ be the flow of $V$, let $\mathcal{O} = (\mathbb{R} \times S) \cap \mathcal{D}$ and $\Phi = \theta|_{\mathcal{O}}$.
+Then the following hold:
+
+1. $\Phi : \mathcal{O} \rightarrow M$ is a smooth immersion.
+2. $\frac{d}{dt} \in \mathfrak{X}(\mathcal{O}) is $\Phi$ -related to $V$.
+3. There exists a smooth positive $\delta : S \rightarrow \mathbb{R}$ such that $\Phi|_{\mathcal{O}_{\delta}}$ is injective where $\mathcal{O}_{\delta} \subset \mathcal{O}$ is defined by
+
+   \begin{equation}
+   \mathcal{O}_{\delta} = \{ (t, p) \in \mathcal{O} \ | \ |t| < \delta(p) \}
+   \end{equation}
+
+   which means that $\Phi|_{\mathcal{O}_{\delta}}$ is an injective immersion, and its image is an immersed submanifold of $M$ containing $S$. $V$ is tangent to
+   this immersed submanifold.
+4. Moreover, if $S$ has codimension $1$, then $\Phi|_{\mathcal{O}_{\delta}}$ is a diffeomorphism onto an open submanifold of $M$.
+
+/Proof./ This is a lot of stuff to prove
+
+* The disk theorem and connected sum

@@ -1,0 +1,1048 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Every exercise in the first three chapters of Hartshorne}
+\author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\noindent Every exercise in the first three chapters of Hartshorne, hopefully, eventually (``every'' means \textbf{every single one}).
+\newline
+
+\noindent \textbf{Current tally}
+
+\noindent There are some partially-completed problems in the document as well, but these are not included in the tally.
+\newline
+
+\begin{itemize}
+  \item Chapter 1: 16/90
+    \item Chapter 2: 9/134
+      \item Chapter 3: 0/88
+  \end{itemize}
+
+\section{Chapter 1}
+
+\subsection{Section 1.1}
+
+\begin{solution}[Problem 1.1.1]
+There are a few parts:
+\begin{enumerate}
+  \item Of course, $A(Y) = k[x, y]/(y - x^2)$. We can define $\varphi : k[x, y] \rightarrow k[x]$ as $\varphi(p)(x) = p(x, x^2)$. Verification that this is a ring homomorphism
+    is trivial. It is obviously surjective, as $k[x] \subset k[x, y]$, and $\varphi|_{k[x]} = \text{id}$. In addition, $\varphi(y - x^2) = 0$. Moreover, if $\varphi(p) = 0$, then
+    $p(x, x^2) = 0$. Define $h(x, y) = p(x, y + x^2) \in k[x, y] = k[x][y]$. Of course, we may write $h(x, y) = h_0(x) + h_1(x) y + h_2(x) y^2 + \cdots$, by definition, and $p(x, x^2) = h(x, 0) = h_0(x)$,
+    so $h(x, y) = y g(x, y)$ for some $g$. Thus, $p(x, y) = (y - x^2) g(x, y - x^2)$, which means $p \in (y - x^2)$. It follows that $\text{Ker}(\varphi) = (y - x^2)$, so by the first isomorphism
+    theorem, $k[x, y]/(y - x^2) \simeq \text{Im}(\varphi) = k[x]$, so $A(Y) \simeq k[x]$, as desired.
+    \item Suppose $\varphi : k[x, y]/(xy - 1) \rightarrow k[x]$ is a ring homomorphism. Since $[x][y] = [xy] = [1]$ in the domain, $\varphi([x]) \varphi([y]) = \varphi([x][y]) = \varphi([1]) = 1$. Thus,
+      $\varphi([x]) = a \in k$ and $\varphi([y]) = a^{-1} \in k$. Given some $b \in k$, with $b \neq 0$, note that we must also have $\varphi([b]) \varphi([b^{-1}]) = 1$, so $\varphi([b])$ is a unit in $k[x]$,
+      thus in $k$. It follows that $\text{Im}(\varphi) = k$, which means that $\varphi$ cannot be an isomorphism.
+     \item \textbf{(Starred)} The idea is to make use of a sequence of automorphisms of $k[x, y]$, which descend to automorphisms of the quotient. In particular, a general quadratic polynomial is of the form
+       \begin{equation}
+         p(x, y) = a x^2 + b y^2 + cxy + dx + ey + f
+         \end{equation}
+       Since we are working over an algebraically closed field, we are allowed to take square roots. For this to be a quadratic, at least one of $a, b$ or $c$ must be non-zero. Assume $c$ is non-zero, and
+       assume that $4ab = c^2$. It then follows that either $a$ or $b$ is non-zero (we can assume WLOG it is $a$), so the map $(x, y) \mapsto (\sqrt{a} x + \sqrt{b} y, y)$ is an isomorphism. Note that
+       we can write
+       \begin{equation}
+         ax^2 + by^2 + cxy + dx + ey + f = (\sqrt{a} x + \sqrt{b} y)^2 + dx + ey + f
+         \end{equation}
+       so it follows that we may reduce to the case that our quadratic is of the form $x^2 + dx + ey + f$. From here, note that $e \neq 0$, or else our polynomial in $x$ would be reducible. In addition,
+       we can re-write $x^2 + dx + f$ in the form $-(i x - d')^2 + f'$, so that
+       \begin{equation}
+         x^2 + dx + ey + f = (ey + f') - (i x - d')^2
+         \end{equation}
+       and note that $(x, y) \mapsto (ix - d', ey + f')$ is an isomorphism, so we have reduced to the case where our quadratic is $y - x^2$.
+
+       Next, consider the case where $4ab \neq c^2$, still with $c$ non-zero and also with $a \neq 0$ or $b \neq 0$.
+       The idea is that we can transform $ax^2 + by^2 + cxy$ to $xy$. In particular, assume WLOG that $a \neq 0$, so we can factor out a unit
+       and assume the degree-$2$ part of our quadratic is of the form
+       \begin{equation}
+         x^2 + by^2 + cxy = (x - r_{+} y)(x - r_{-} y)
+         \end{equation}
+       with $4b \neq c^2$, where
+       \begin{equation}
+         r_{\pm} = \frac{c \pm \sqrt{c^2 - 4b}}{2}
+         \end{equation}
+       Note that $r_{+} \neq r_{-}$, as their difference is $\sqrt{c^2 - 4b}$, which is non-zero. Thus, at least one of them is non-zero, so that $(x, y) \mapsto (x - r_{+} y, x - r_{-} y)$
+       is an isomorphism. It follows that we can reduce our quadratic to the form $xy + dx + ey + f$. This is also the form of the quadratic, after factoring out $c$, if we didn't first assume
+       that either $a$ or $b$ is non-zero. Of course, $xy + dx + ey + f = (x + e)(y + d) + f$, so we can reduce to the case $xy + f$. If $f = 0$, our quadratic is reducible, which is a contradiction,
+       so $f \neq 0$. Factoring out a unit reduces to the case $xy - 1$.
+
+       The final case that we must check is when $c = 0$. Again, either $a$ or $b$ must be non-zero, or we don't have a quadratic. If one of these \emph{is} zero, then our quadratic can be assumed
+       of the form $x^2 + dx + ey + f$: the same as in the first case worked out, so this will reduce to the case of $y - x^2$. If both are non-zero, then we have
+       \begin{equation}
+         ax^2 + by^2 = (\sqrt{a} x - i \sqrt{b} y)(\sqrt{a} x + i \sqrt{b} y)
+         \end{equation}
+       with $(x, y) \mapsto (\sqrt{a} x - i \sqrt{b} y, \sqrt{a} x + i \sqrt{b} y)$ being an isomorphism, reducing us to the case of $xy + dx + ey + f$: another case which we already worked out.
+
+       Thus, to summarize, given some irreducible quadratic, we can always find a sequence of ring automorphisms of $k[x, y]$ and multiplication by units which takes the quadratic to
+       either $y - x^2$ or $xy - 1$. Given a ring automorphism $\varphi : k[x, y] \rightarrow k[x, y]$, this will descend to a ring automorphism $\widetilde{\varphi} : k[x, y]/(f) \rightarrow k[x, y]/(\varphi(f))$
+       where $\widetilde{\varphi}(g + (f)) = \varphi(g) + (\varphi(f))$. In addition, if $c$ is a unit, $(f)$ and $(cf)$ are the same ideal. It follows that via our sequence of transformations, we can exhibit
+       an isomorphism which takes $k[x, y]/(f)$ to $k[x, y]/(y - x^2)$ or $k[x, y]/(xy - 1)$, with the individual criteria for each case explained in the course of the solution above.
+  \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.1.2]
+  Clearly, $Y = V(y - x^2, z - x^3)$. We want to show that $(y - x^2, z - x^3)$ is prime. To do so, define the map $\varphi : k[x, y, z] \rightarrow k[x]$ which takes $p(x, y, z)$ to $p(x, x^2, x^3)$. It is
+  clear that this is a surjective ring homomorphism and $(y - x^2, z - x^3) \subset \text{Ker}(\varphi)$. Moreover, suppose $\varphi(p) = 0$. Define $h(x, y, z) = p(x, y + x^2, z + x^3)$. Of course,
+  $h(x, 0, 0) = 0$, so we can write
+  \begin{equation}
+    h(x, y, z) = y g_1(x, y, z) + z g_2(x, y, z)
+    \end{equation}
+  as each term is divisible by $z$ or $y$. We then have
+  \begin{equation}
+    p(x, y, z) = h(x, y - x^2, z - x^3) = (y - x^2) g_1(x, y - x^2, z - x^3) + (z - y^3) g_2(x, y - x^2, z - x^3)
+    \end{equation}
+  which means that $p \in (y - x^2, z - x^3)$. Thus, $k[x] \simeq k[x, y, z]/(y - x^2, z - x^3)$ so $(y - x^2, z - x^3)$ is prime, so $Y$ is an affine variety and is $1$-dimensional as $\dim(k[x]) = 1$.
+  We have $I(Y) = (y - x^2, z - x^3)$, so we automatically have a pair of generators (this ideal clearly cannot be generated by one of these generators).
+  \end{solution}
+
+\begin{solution}[Problem 1.1.3]
+  We have
+  \begin{align}
+    V(x^2 - yz, xz - x) &= V(x^2 - yz) \cap [V(x) \cup V(z - 1)]
+    \\ &= V(x^2 - yz, x) \cup V(x^2 - yz, z - 1)
+    \\ &= V(yz, x) \cup V(x^2 - y, z - 1)
+    \\ &= ([V(y) \cup V(z)] \cap V(x)) \cup V(x^2 - y, z - 1)
+    \\ &= V(y, x) \cup V(z, x) \cup V(y - x^2, z - 1)
+    \end{align}
+  Showing that each of the ideals $(y, x)$, $(z, x)$ and $(y - x^2, z - 1)$ can be done easily via the same method as Problem 1.1.2. Thus, $Y$ is the union of three irreducible components.
+  It is easy to see that they each are $1$-dimensional (as their coordinate rings are isomorphic to polynomials in a single variable).
+  \end{solution}
+
+\begin{solution}[Problem 1.1.4]
+  Every open set in the product topology for $\mathbb{A}^1 \times \mathbb{A}^1$ can be written as the union of a collection of $U \times V$, with $U, V \subset \mathbb{A}^1$ open. Of course, $U$ and $V$
+  will be $\mathbb{A}^1$ with some finite collection of points removed (when they are non-empty). Thus, $U \times V$ is $\mathbb{A}^2$ with some finite collection of vertical/horizontal lines removed.
+  All of these sets are open in the Zariski topology for $\mathbb{A}^2$. However, the Zariski topology is strictly finer than the product topology.
+
+  In particular, consider the open set $Y = V(x - y)^{C}$ in the Zariski topology. Given some point $p$ in $Y$, if $Y$ is open in the product topology we must be able to choose some $U \times V$
+  which is a neighbourhood of $p$ and contained in $Y$. However, any complement of a finite collection of horizontal/vertical lines will clearly contain some point on the diagonal $V(x - y)$.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.5]
+  First, note that the coordinate ring of some algebraic set $V$ is of the form $A(V) = k[x_1, \dots, x_n]/I(V)$, where $I(V)$ is a radical ideal. It follows immediately that if $[p]^n = [p^n] = 0$ in $A(V)$,
+  then $p^n \in I(V)$, so $p \in I(V)$ and $[p] = 0$. This means $A(V)$ has no nilpotent elements. Moreover, it is immediately clear that $A(V)$ is a finitely-generated $k$-algebra, generated by $[x_1], \dots, [x_n]$.
+
+  Conversely, suppose $B$ is a finitely-generated $k$-algebra with no nilpotent elements. Let $b_1, \dots, b_n$ be a generating set for $B$, then the evaluation map $\varphi : k[x_1, \dots, x_n] \rightarrow B$
+  sending $p$ to $p(b_1, \dots, b_n)$ is surjective. It follows that $B \simeq k[x_1, \dots, x_n]/\text{Ker}(\varphi)$. Denote the ideal $\text{Ker}(\varphi)$ by $I$. Since $B$ has no nilpotent elements, it follows
+  that if $p^n \in I$ so that $p(b_1, \dots, b_n)^n = 0$, then $p(b_1, \dots, b_n) = 0$, so $p \in I$. Thus, $I$ is a radical ideal and $I(V(I)) = I$. It follows that $B \simeq A(V(I))$.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.6]
+If $X$ is a topological space with non-empty open set $U$ and $\overline{U}$ is proper, then $X = \overline{U} \cup (X - U)$, so $X$ is reducible. Thus, if $X$ is irreducible, every non-empty open
+set is dense. For the second part, suppose $C_1$ and $C_2$ are closed in $\overline{Y}$ with $C_1 \cup C_2 = \overline{Y}$. Then since $\overline{Y}$ is closed in $X$, $C_1$ and $C_2$ are as well. Thus,
+$C_1 \cap Y$ and $C_2 \cap Y$ is closed in $Y$. Since $Y$ is irreducible and the union of these closed sets is $Y$, either $Y \subset C_1$ or $Y \subset C_2$. Thus, $\overline{Y} \subset C_1$ or $\overline{Y} \subset C_2$,
+so $\overline{Y}$ is irreducible.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.7]
+  This is a long problem:
+  \begin{enumerate}
+    \item Given some non-empty family $\mathcal{F}$ of closed sets, suppose there is no minimal element. Let $C_1 \in \mathcal{F}$, we can choose
+      $C_2 \in \mathcal{F}$ which is a proper subset of $C_1$. We continue on inductively, choosing $C_{j + 1} \in \mathcal{F}$ a proper subset of $C_j$. At follows that
+      we have a descending chain in $X$ which does not terminate, so $X$ is not Noetherian. On the other hand, given a descending chain $C_1 \supset C_2 \supset \cdots$, there must
+      be a minimal element (as such a chain is a family), hence some $C_n$ such that if $C_j \subset C_n$, then $C_n = C_j$, so the chain terminates after a finite number of steps. The open set conditions can easily
+      be seen to be equivalent to the conditions above by taking complements.
+      \item Let $\{U_{\alpha}\}_{\alpha}$ be an open cover for $X$. Suppose there is no finite subcover. Pick $U_1$ in the cover arbitrarily. Then pick some $x_2 \in U_1^{C}$ and pick a neighbourhood
+        of $x_2$ in the cover, label it $U_2$. We proceed inductively, choosing $x_{n + 1} \in (U_1 \cup \cdots \cup U_n)^{C}$, letting $U_{n + 1} \in \{U_{\alpha}\}$ being a neighbourhood of $x_{n + 1}$. Then the ascending
+        chain of open set $V_n = U_1 \cup \cdots \cup U_n$ never terminates, as $V_{n + 1}$ contains $x_{n + 1}$ while $V_n$ does not. Thus, $X$ is not Noetherian. It follows that if $X$ is Noetherian, then it must be
+        quasi-compact.
+        \item Any descending chain $C_1 \supset C_2 \supset \cdots$ of closed sets of $Y \subset X$ implies that $C_j = K_j \cap Y$ with $K_j$ a closed set. We then define
+          $K'_n = K_1 \cap \cdots \cap K_n$, which gives a descending chain $K_1' \supset K_2' \supset \cdots$ of $X$. This chain eventually terminates, so $K_n' = K_{n + 1}' = \cdots$.
+          Note that
+          \begin{equation}
+          K_j' \cap Y = (K_1 \cap Y) \cap \cdots \cap (K_j \cap Y) = C_1 \cap \cdots \cap C_j = C_j
+          \end{equation}
+          which implies that $C_n = C_{n + 1} = \cdots$, so $Y$ is Noetherian.
+          \item Recall that any quasi-compact subset of a quasi-compact Hausdorff space is closed. If $X$ is Noetherian, then every subset is Noetherian, thus quasi-compact, thus closed.
+           Every subset being closed implies that $X$ has the discrete topology. Quasi-compactness of the whole space then implies that it is a finite set of points (if we had an infinite number of points,
+           with each single-point set open, we could not have a finite subcover).
+    \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.1.8]
+  Before jumping into this solution, we must remark on something: when we decompose an affine algebraic set into its irreducible components, $Y = Y_1 \cup \cdots \cup Y_m$, each $Y_j$ is maximal
+  in the sense that it is not contained in any strictly larger irreducible algebraic subset $Y' \subset Y$. Clearly, $Y' = \bigcup_{j} (Y' \cap Y_j)$, so if $Y'$ is irreducible, $Y' \cap Y_j = Y'$ for at least
+  one of the $j$. It can't be $j = 2, \dots, m$ as we would then have $Y_1 \subset Y' \subset Y_j$. Thus, $Y' = Y_1$.
+  This means that when given some affine algebraic set $V$ with irreducible decomposition $V = V(\mathfrak{p}_1) \cup \cdots \cup V(\mathfrak{p}_m)$ with each $\mathfrak{p}_j$ a prime ideal, then each of
+  these primes is minimal in the sense that they contain no smaller prime which contains $I(V)$.
+
+  We write $Y = V(I)$, where $I$ is prime, and $H = V(f)$, where $f$ is some irreducible polynomial, as well as $Y \cap H = V(I, f) = V(J)$ where $J = \text{Rad}(I, f)$.
+  Let $V(\mathfrak{p}_j)$ be one of the irreducible components of $V(J)$, so $\mathfrak{p}_j \supset (I, f)$. We note that
+  \begin{align}
+    \dim V(\mathfrak{p}_j) = \dim k[x_1, \dots, x_n]/\mathfrak{p}_j &= \dim (k[x_1, \dots, x_n]/I)/(\mathfrak{p}_j/I)
+    \\ &= \dim(k[x_1, \dots, x_n]/I) - \text{height}(\mathfrak{p}_j/I)
+    \\ &= \dim V(I) - \text{height}(\mathfrak{p}_j/I)
+    \\ &= r - \text{height}(\mathfrak{p}_j/I)
+    \end{align}
+  where $\mathfrak{p}_j/I$ is a prime ideal of $k[x_1, \dots, x_n]/I$. Suppose $\mathfrak{q}$ were another prime ideal such that $\mathfrak{q} \subset \mathfrak{p}_j/I$, then $I \subset \pi^{-1}(\mathfrak{q}) \subset \mathfrak{p}_j$,
+  so by minimality of $\mathfrak{p}_j$, $\mathfrak{q} = \mathfrak{p}_j/I$. In addition, $f + I \in \mathfrak{p}_j/I$. We can't have $f \in I$, as then $V(f) \supset V(I)$,
+  which we assumed is not the case. Clearly $f + I$ is not a zero-divisor as $k[x_1, \dots, x_n]/I$ is an integral domain, as $I$ is prime. Moreover, if $fg = 1 + I$, so $fg + i = 1$ for some $i \in I$ and $g \in k[x_1, \dots, x_n]$,
+  then $(f, I) = (1)$, so $V(J) = \emptyset$. Thus, we actually require the addition assumption that $Y$ and $H$ intersect at all!
+
+  With this new assumption, we can apply Krull's Haupidealsatz to see that $\text{height}(\mathfrak{p}_j/I) = 1$, so that $\dim V(\mathfrak{p}_j) = r - 1$ for all $j$.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.9]
+  We can do this problem inductively, assuming $\mathfrak{a}$ is proper. Obviously if $\mathfrak{a}$ is generated by a single, non-zero element $f$ which isn't a unit, since $k[x_1, \dots, x_n]$ is a UFD, we can
+  factor $f = f_1 \cdots f_m$ where each $f_j$ is irreducible, so $V(f) = V(f_1) \cup \cdots \cup V(f_m)$. We then know from Proposition 1.13 that each $V(f_j)$ is a variety (thus irreducible) of dimension $n - 1$,
+  so it follows that every irreducible component of $V(f)$ has dimension $n - 1$. If $\mathfrak{a} = (0)$, then $V(\mathfrak{a}) = \mathbb{A}^n(k)$, which is dimension $n$, so we have proved the base case.
+
+  From here, suppose $\mathfrak{a} = (a_1, \dots, a_r)$. We then have
+  \begin{equation}
+    V(\mathfrak{a}) = V(a_1, \dots, a_r) = V(a_1, \dots, a_{r - 1}) \cap V(a_r) = \bigcup_{j} V(\mathfrak{p}_j) \cap V(a_r)
+    \end{equation}
+  where $V(\mathfrak{p}_j)$ are the irreducible components of $V(a_1, \dots, a_{r - 1})$, each of which have dimension greater than or equal to $n - r + 1$. If $V(\mathfrak{p}_j) \subset V(a_r)$, then
+  $V(\mathfrak{p}_j) \cap V(a_r) = V(\mathfrak{p}_j)$. If $V(\mathfrak{p}_j)$ is not a subset of $V(a_r)$, then $a_r$ cannot be $0$. We have assumed $\mathfrak{a}$ is proper, so $a_r$ is also not a unit, and
+  we can decompose it into a union of $V(f_i)$, where each $V(f_i)$ is a hypersurface of dimension $n - 1$. Then, from Problem 1.1.8 above, every irreducible component of $V(\mathfrak{p}_j) \cap V(f_i)$ has dimension
+  greater than or equl to $n - r$. All together, we can write $V(\mathfrak{a})$ as a union of irreducible algebraic sets, all of dimension greater than or equal to $n - r$. This completes the proof.
+  \end{solution}
+
+\begin{solution}[Problem 1.1.10]
+  This problem has multiple parts:
+  \begin{enumerate}
+    \item Of course, any chain $Z_0 \subset \cdots \subset Z_n$ of distinct, closed, irreducible subsets of $Y$ is a chain of distinct, closed, irreducible subsets of $X$, so $\dim(Y) \leq \dim(X)$.
+    \item From the first part, $\dim U_i \leq \dim X$ for all $i$, so $\sup_i \dim U_i \leq \dim X$. Conversely, let $Z_0 \subset \cdots \subset Z_n$ be a chain of distinct, closed, irreducible subsets of $X$.
+     For each $Z_{j - 1} \subset Z_{j}$, there must exist some $U_{i_j}$ such that $Z_{j - 1} \cap U_{i_j}$ is a proper subset of $Z_{j} \cap U_{i_j}$. Thus, if we let $U = U_{i_1} \cup \cdots \cup U_{i_n}$, then
+     \item
+     \item 
+    \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.1.11]
+  Our first claim is that $Y = V(x^4 - y^3, x^5 - z^3, y^5 - z^4)$. It is very clear that $Y \subset V(x^4 - y^3, x^5 - z^3, y^5 - z^4)$. To show the reverse inclusion, pick some $(x, y, z) \in V$.
+  We can take roots, so pick some $t$ so that $t^3 = x$, so $y^3 = t^{12}$ and $z^3 = t^{15}$. As polynomials in $y$ and $z$, each has exactly three roots (as, again, we are working in an algebraically closed field).
+  We denote cubic roots of unity as $j^0 = 1, j, j^2$, so that we must have $y = j^{\alpha} t^4 \in \{ t^4, j t^4, j^2 t^4\}$ and $z = j^{\beta} t^5 \in \{t^5, j t^5, j^2 t^5\}$. From here, we must also have
+  $y^5 = z^4$, so $j^{5 \alpha - 4 \beta} = 1$. It follows that $5 \alpha - 4 \beta$ must be a multiple of $3$, for $\alpha, \beta \in \{0, 1, 2\}$. It is easy to verify that the only choice is $(\alpha, \beta) = (0, 0)$,
+  so $y = t^4$ and $z = t^5$, which means that $(x, y, z) = (t^3, t^4, t^5)$.
+
+  \pop{\textbf{TODO:} Finish this}
+\end{solution}
+
+\begin{solution}[Problem 1.1.12]
+  Consider
+  \begin{equation}
+    \label{eq:1}
+    (x^2 + i y^2 - 1)(x^2 - iy^2 - 1) = x^4 + y^4 - 2x^2 + 1
+    \end{equation}
+  in $\mathbb{R}[x, y]$, which vanishes only at points $(\pm 1, 0) \in \mathbb{A}^2(\mathbb{R})$. Each of these single points is itself a closed proper subset of the vanishing
+  set of $p(x, y) = x^4 + y^4 - 2x^2 + 1$, so the vanishing set is not irreducible. To see that this polynomial is irreducible in $\mathbb{R}[x, y]$, suppose that it was reducible.
+  Since any facotirzation of $p$ in $\mathbb{R}[x, y]$ would be a factorization in $\mathbb{C}[x, y]$, and $\mathbb{C}[x, y]$ is a UFD, it follows that one of the factors in Eq.~\eqref{eq:1}
+  must be reducible. Each factor must be degree-$1$, so it follows that if a factor is reducible, it will vanish precisely on the union of two straight lines. However, note that $x^2 \pm i y^2 - 1$
+  vanishes on the embedded circle $(\cos(\theta), (\mp i)^{1/2} \sin(\theta))$, where given any two lines, we can always find a point on the circle not contained in these lines.
+
+  Thus, the decomposition in Eq.~\eqref{eq:1} is into irreducible factors, so $p$ is irreducible in $\mathbb{R}[x, y]$.
+  \end{solution}
+
+\subsection{Section 1.2}
+
+\noindent \pop{Even after taking a course in algebraic curves, my relative comfort-level when working with projective and quasi-projective varieties is significantly lower than when working with
+  their affine counterparts. Hopefully I'll fix this deficiency in the process of doing these problems.}
+
+\begin{solution}[Problem 1.2.1]
+  Let $\pi : \mathbb{A}^{n + 1}(k) - (0, \dots, 0) \rightarrow \mathbb{P}^n(k)$ be the quotient map. Recall that
+  \begin{equation}
+    V_p(\mathfrak{a}) = \{ y \in \mathbb{P}^{n} \ | \ \text{there exists} \ x \in \mathbb{A}^{n + 1} - (0, \dots, 0) \ \text{where} \ \pi(x) = y, f(x) = 0 \ \text{for all} \ f \in \mathfrak{a}^h\}
+    \end{equation}
+  where $\mathfrak{a}_h$ is the set of all homogeneous elements of $\mathfrak{a}$. It follows that if $x \in V_a(\mathfrak{a}) - (0, \dots, 0)$, then $\pi(x) \in V_p(\mathfrak{a})$. Similarly,
+  if $x \in \pi^{-1}(V_p(\mathfrak{a}))$, then all homogeneous element of $\mathfrak{a}$ vanish at some $z \in \pi^{-1}(\pi(x))$, thus $x$ itself, and since $\mathfrak{a}$ is generated by homogeneous elements, it follows
+  that all $f \in \mathfrak{a}$ vanish at $x$, so $x \in V_a(\mathfrak{a}) - (0, \dots, 0)$. We have therefore shown that
+  \begin{equation}
+    V_a(\mathfrak{a}) - (0, \dots, 0) = \pi^{-1}(V_p(\mathfrak{a}))
+    \end{equation}
+  It follows that if $f$ is homogeneous and vanishes on $V_p(\mathfrak{a})$, it vanishes on any homogeneous coordinates for any point in $V_p(\mathfrak{a})$, thus any point in $\pi^{-1}(V_p(\mathfrak{a})) = V_a(\mathfrak{a}) - (0, \dots, 0)$.
+  If $\deg(f) > 0$, then $f$ in fact vanishes on $V_a(\mathfrak{a})$, and $f \in I_a(V_a(\mathfrak{a})) = \text{Rad}(\mathfrak{a})$. We have thus shown that $I_p(V_p(\mathfrak{a})) \cap S_{> 0} \subset \text{Rad}(\mathfrak{a})$. Note that
+  any element of $S_0 = k$ clearly cannot be in $I_p(V_p(\mathfrak{a}))$ if $V_p(\mathfrak{a}) \neq \emptyset$, so in this case, $I_p(V_p(\mathfrak{a})) \subset \text{Rad}(\mathfrak{a})$.
+  \end{solution}
+
+\begin{solution}[Problem 1.2.2]
+Of course, if $V_p(\mathfrak{a}) = \emptyset$, then $S \supset \text{Rad}(\mathfrak{a}) \supset I_p(V_p(\mathfrak{a})) \cap S_{> 0} = I_p(\emptyset) \cap S_{> 0} = S_{> 0}$.
+It follows that if $\text{Rad}(\mathfrak{a})$ does not contain some $c \neq 0$ in $S_0 = k$, then it is $S_{> 0}$, and if it does, it is all of $S$. If $\text{Rad}(\mathfrak{a})$ is either $S$ or
+$S_{> 0}$, then in either case, it contains each of the elements $x_0, \dots, x_{n}$. It follows that for each $j$ from $0$ to $n$, there is some $d_j$ where $x_j^{d_j} \in \mathfrak{a}$. Then if $D = d_0 \cdots d_n$,
+each $x_j^{D}$ is in $\mathfrak{a}$. Let $M = (n + 1) D$, and note that any generator $x_0^{\alpha_0} \cdots x_n^{\alpha_n}$ will have some $\alpha_j \geq D$, so the generator is in $\mathfrak{a}$. Therefore, $S_M \subset \mathfrak{a}$.
+If $S_M \subset \mathfrak{a}$ for some $M$, then $V_p(\mathfrak{a}) \subset V_p(S_M)$. If $[x_0, \dots, x_n] \in V_p(S_M)$, then $x_0^M = \cdots = x_n^M = 0$, which is not the case for any point of projective space, so $V_p(S_M) = \emptyset$
+and $V_p(\mathfrak{a}) = \emptyset$ as well.
+\end{solution}
+
+\begin{solution}[Problem 1.2.3]
+We go point-by-point:
+\begin{enumerate}
+  \item This is a trivial application of the definitions.
+    \item Again, trivial.
+      \item Clearly, if $f$ is a homogeneous polynomial which vanishes on $Y_1 \cup Y_2$, it vanishes on $Y_1$ and $Y_2$ individually. The
+        converse is also true, this proves the claim.
+        \item From Problem 1.2.1, we already know that if $V_p(\mathfrak{a}) \neq \emptyset$, then $I_p(V_p(\mathfrak{a})) \subset \text{Rad}(\mathfrak{a})$. To show the reverse inclusion, let us first show that $I_p(X)$: the ideal generated
+          by all homogeneous polynomials vanishing on $X \subset \mathbb{P}^n$, is radical. Suppose $f^m \in I_p(X)$, where $f = f_0 + f_1 + \cdots + f_d$ is the decomposition into homogeneous components. Since $I_p(X)$ is a homogeneous ideal, $f_d^{m} \in I_p(X)$, so
+          $f_d \in I_p(X)$, as it vanishes on $X$. It follows that $(f - f_d)^m \in I_p(X)$ (use the binomial expansion) and $f - f_d = f_0 + \cdots + f_{d - 1}$. Continue this process inductively to see that $f_j \in I_p(X)$ for each $j$, so $f \in I_p(X)$ as well.
+
+          Clearly, if $f \in \mathfrak{a}$, with $f = f_0 + \cdots + f_d$, then each homogeneous component $f_j$ is also in $\mathfrak{a}$ (as it is a homogeneous ideal). Thus, obviously $f_j$ is homogeneous and vanishes on $V_p(\mathfrak{a})$, so $f_j \in I_p(V_p(\mathfrak{a}))$,
+          so $f \in I_p(V_p(\mathfrak{a}))$ as well. Then, since $I_p(V_p(\mathfrak{a}))$ is radical, $\text{Rad}(\mathfrak{a}) \subset I_p(V_p(\mathfrak{a}))$, and we have the desired equality.
+          \item Clearly $V_p(I_p(Y))$ is a closed set. Any homogeneous polynomial in $I_p(Y)$ will vanish on $Y$, so $Y \subset V_p(I_p(Y))$, thus implying that $\overline{Y} \subset V_p(I_p(Y))$. To show that this inclusion is an equality, suppose $Y \subset V_p(T)$,
+            where $T$ is some collection of homogeneous polynomials. Any $f \in T$ vanishes on $Y$, so $f \in I_p(Y)^{h}$, the set of homogeneous elements in $I_p(Y)$. Thus, $T \subset I_p(Y)^{h}$, and
+            \begin{equation}
+              V_p(I_p(Y)) = V_p(I_p(Y)^{h}) \subset V_p(T)
+              \end{equation}
+            It follows that $\overline{Y} = V_p(I_p(Y))$, as desired.
+  \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.2.4]
+  Another multi-part question, another test of my will:
+  \begin{enumerate}
+    \item Note that if $V_p(\mathfrak{a})$ is an algebraic/closed subset of $\mathbb{P}^n$, in the case that $V_p(\mathfrak{a}) = \emptyset$, then $I_p(V_p(\mathfrak{a})) = S$ and $V_p(S) = \emptyset$.
+      If $V_p(\mathfrak{a}) \neq \emptyset$, then $I_p(V_p(\mathfrak{a})) = \text{Rad}(\mathfrak{a})$ is a radical homogeneous ideal. It is not equal to $S_{+}$, as if this were the case, then by Problem 1.2.2, $V_p(\mathfrak{a}) = \emptyset$.
+      We also have
+      \begin{equation}
+      V_p(I_p(V_p(\mathfrak{a}))) = \overline{V_p(\mathfrak{a})} = V_p(\mathfrak{a})
+      \end{equation}
+      Now, assume that $\mathfrak{a}$ is a radical homogeneous ideal not equal to $S_{+}$, then if $\mathfrak{a} = S$, $V_p(\mathfrak{a}) = \emptyset$, and $I_p(V_p(\mathfrak{a})) = I_p(\emptyset) = S$. Otheriwse, $V_p(\mathfrak{a})$ is a
+      non-empty closed subset of $\mathbb{P}^n$, and $I_p(V_p(\mathfrak{a})) = \text{Rad}(\mathfrak{a}) = \mathfrak{a}$, as desired.
+      \item If $Y \subset \mathbb{P}^n$ is irreducible, then given $fg \in I_p(Y)$, let us decompose into homogeneous components $f = f_0 + \cdots + f_r$ and $g = g_0 + \cdots + g_q$. Then $f_r g_q \in I_p(Y)$, so $Y \subset V_p(f_r g_q) = V_p(f_r) \cup V_p(g_q)$.
+        We then have $Y = (Y \cap V_p(f_r)) \cup (Y \cap V_p(g_q))$, so either $Y \subset V_p(f_r)$ or $Y \subset V_p(g_q)$, so either $f_r \in I_p(Y)$ or $g_q \in I_p(Y)$. Then, either $(f - f_r) g \in I_p(Y)$ or $f (g - g_q) \in I_p(Y)$. We repeat
+        this same argument inductively by looking at the top-degree homogeneous component of the new polynomial, until we eventually conclude that either $f_0, \dots, f_r \in I_p(Y)$ or $g_0, \dots, g_q \in I_p(Y)$. Thus, $f \in I_p(Y)$ or $g \in I_p(Y)$,
+        and $I_p(Y)$ is therefore prime.
+        On the other hand, suppose $Y = V_p(T_1) \cup V_p(T_2)$ where both closed sets are proper. Since there is some $x \in V_p(T_1)$ which is not in $V_p(T_2)$,
+        there must exist some $f \in T_2$ which does not vanish at $x$, and is thus not in $I_p(V_p(T_1))$. We can choose a similar $g \in T_1$. Note that $fg$ is homogeneous
+        and vanishes on $Y$, so is in $I_p(Y)$. However, neither $f$ nor $g$ is in $I_p(Y) = I_p(V_p(T_1)) \cap I_p(V_p(T_2))$, so $I_p(Y)$ is not prime.
+        \item Note that $V_p(0) = \mathbb{P}^n$, where $(0)$ is prime homogeneous, so $I_p(V_p(0)) = \text{Rad}(0) = (0)$ is prime, so from above, $\mathbb{P}^n$ is irreducible.
+    \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.2.5]
+  Multiple parts. In both cases, the proofs are similar to their corresponding proofs in affine space:
+  \begin{enumerate}
+    \item Given a descending sequence of closed sets $V_p(\mathfrak{a}_1) \supset V_p(\mathfrak{a}_2) \supset \cdots$, we have an increasing sequence of homogeneous ideals $\mathfrak{a}_1 \subset \mathfrak{a}_2 \subset \cdots$
+      in $k[x_0, \dots, x_n]$, a Noetherian ring, so this sequence eventually terminates, and thus the sequence of closed sets must as well.
+      \item Consider the family $\mathcal{F}$ of all closed sets which cannot be written as a finite union of irreducible closed sets. Since $\mathbb{P}^n$ is Noetherian, this family has a minimal element $V$. $V$ cannot
+        be irreducible itself, so $V = V_1 \cup V_2$, where $V_1$ and $V_2$ are proper closed subsets. It can't be the case that we can write both $V_1$ and $V_2$ as a finite union of irreducible closed subsets, as then
+        we could write $V$ in this form, so either $V_1 \in \mathcal{F}$ or $V_2 \in \mathcal{F}$, which contradicts minimality.
+
+        Suppose $V = V_1 \cup \cdots \cup V_n$ and $V = W_1 \cup \cdots \cup W_m$, where the $V_k$ and $W_k$ are irreducible closed, and no closed set contains another in each of the decompositions (obviously,
+        such a decomposition exists). Note that $W_k = \cup_j (W_k \cap V_j)$, and since $W_k$
+        is irreducible, and each $W_k \cap V_j$ is closed, we must have $W_k \cap V_j = W_k$ for some $j$, so $W_k \subset V_j$. Thus, each $W_k$ in the decomposition of contained in one of the
+        $V_j$. We can use the same argument to show that each $V_j$ is contained in one of the $W_k$. In other words, given $W_k$, we have $V_j$ and $W_{\ell}$ such that $W_k \subset V_j \subset W_{\ell}$, and
+        the no-subsets condition implies that $W_k = V_j = W_{\ell}$. This means that each of the $W_k$ is one of the $V_j$, so $W_1 \cup \cdots \cup W_m = V_{k_1} \cup \cdots \cup V_{k_m}$, with $W_j = V_{k_j}$,
+        with each of the $V_{k_j}$ distinct. The fact that each $V_j$ is contained in one of the $W_{i} = V_{k_i}$ then implies that these decompositions are actually equal.
+    \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.2.6]
+This solution is quite involved, and will require a few preliminary results:
+\begin{enumerate}
+  \item The localization of an integral domain is an integral domain. This one is actually easy: if $\frac{a_1}{s_1} \frac{a_2}{s_2} = 0$ in $S^{-1} R$, then
+    $s a_1 a_2 = 0$ in $R$ for some $s \in S$ with $s \neq 0$, so either $a_1 = 0$ or $a_2 = 0$.
+    \item The prime ideals of $S^{-1} R$ are in bijective correspondence with the prime ideals of $R$ which do not intersect $S$. We won't prove this right now, maybe later in an appendix or something.
+    \item If $R$ is an integral domain, then the fraction field of $R[t, t^{-1}]$ is isomorphic to $\text{Frac}(R)(t)$. We also won't prove this right now.
+    \item Transcendence degree is additive, in the sense that if we have field extensions $L/K/k$, then
+      \begin{equation}
+        \text{tr} \deg_k(L) = \text{tr} \deg_K(L) + \text{tr} \deg_k(K)
+        \end{equation}
+      which implies that since $A(Y_i)[t, t^{-1}]$ is a finitely-generated $k$-algebra,
+      \begin{align}
+        \dim A(Y_i)[t, t^{-1}] &= \text{tr} \deg_k \text{Frac}(A(Y_i)[t, t^{-1}])
+        \\ &= \text{tr} \deg_k \text{Frac}(A(Y_i))(t)
+        \\ &= 1 + \text{tr} \deg_k \text{Frac}(A(Y_i)) = 1 + \dim(Y_i)
+        \end{align}
+      We won't prove this general, standard result about transcendence degree for now (maybe later).
+      \item Localization commutes with quotients, in the sense that if $J$ is a prime ideal, $(S/J)^{-1}(R/J) \simeq S^{-1} R/S^{-1} J$. I will prove this one. First of all, note that if $J$
+        is an ideal, then $S^{-1} J$ is an ideal in $S^{-1} R$. We can define $\phi((s + J)^{-1} (r + J)) = s^{-1} r + S^{-1} J$. To see that this is well defined, note that if $(s_1 + J)^{-1} (r_1 + J) = (s_2 + J)^{-1} (r_2 + J)$,
+        then $s (s_1 r_2 - s_2 r_1) \in J$ for some $s \notin J$, which means that $s_1 r_2 - s_2 r_1 \in J$, so that $s_1^{-1} r_1 - s_2^{-1} r_2 \in S^{-1} J$. It is easy to check that this is a ring homomorphism.
+        Surjectivity is obvious, and to see injectivity, note
+        that if $s^{-1} r \in S^{-1} J$, then $s^{-1} r = t^{-1} q$ for $t \in S$ and $q \in J$, so there is some $s' \in S$ such that $s' t r = s' s q$, so $(s' t) r \in J$. Thus, by definition of the localization, $(s + J)^{-1} (r + J) = 0$,
+        as we have identified an element of $S/J$ by which we can multiply $r + J$ to get $0$, namely $s' t + J$.
+
+        This result will allow us to conclude that $S(Y)_{x_i + I_p(Y)} \simeq k[x_0, \dots, x_n]_{x_i}/I_p(Y)_{x_i}$, as $I_p(Y)$ is a prime ideal. Suppose $x_i^{M} \in I_p(Y)$ for some $M$, then $x_i \in I_p(Y)$, so $Y \subset V(x_i)$.
+        Thus, if $Y$ is not a subset of $V(x_i)$, then $I_p(Y)_{x_i}$ is a prime ideal. Moreover, if $\mathfrak{p} \subset I_p(Y)$ is a prime ideal, then $\mathfrak{p}$ is obviously disjoint from all powers of $x_i$ in
+        this case as well. It follows that there is a bijective correspondence between the prime ideals of $S(Y)$ contained in $I_p(Y)$ and the prime ideals contained in $I_p(Y)_{x_i}$. Thus,
+        \begin{equation}
+          \text{height}(I_p(Y)_{x_i}) = \text{height}(I_p(Y))
+          \end{equation}
+        so it follows that
+        \begin{align}
+          \dim S(Y)_{x_i + I_p(Y)} &= \dim k[x_0, \dots, x_i, x_i^{-1}, \dots, x_n] - \text{height}(I_p(Y))
+          \\ &= \dim k[x_0, \dots, x_n] - \text{height}(I_p(Y))
+          \\ &= \dim S(Y)
+          \end{align}
+        where we are using the pretty-easy-to-verify fact that $k[x_0, \dots, x_n]_{x_i} \simeq k[x_0, \dots, x_i, x_i^{-1}, \dots, x_n]$, which is a finitely-generated $k$ algebra and
+        has the same fraction field as $k[x_0, \dots, x_n]$, thus the same dimension.
+  \end{enumerate}
+
+  Now, let us jump into the main body of the solution. Following the advice of the hint, let $\varphi_i : U_i \rightarrow \mathbb{A}^n$ be the homeomorphism from $U_i \subset \mathbb{P}^n$ to affine
+  space given by sending $[x_0, \dots, x_n]$ to $(x_0/x_i, \dots, \widehat{x_i/x_i}, \dots, x_n/x_i)$. Suppose we choose $i$ so that $Y \cap U_i \neq \emptyset$.
+  Consider the set $\varphi_i(Y \cap U_i)$, where $Y$ is closed and irreducible, so $Y \cap U_i$ is closed in $U_i$. It is also irreducible, as if $(C_1 \cap Y \cap U_i) \cup (C_2 \cap Y \cap U_i) = Y \cap U_i$, where $C_1$ and $C_2$ are closed in
+  $\mathbb{P}^n$, then
+  \begin{equation}
+  Y = (Y \cap U_i) \cup (Y \cap U_i^{C}) = (C_1 \cap Y) \cup (C_2 \cap Y) \cup (Y \cap U_i^{C})
+  \end{equation}
+  Thus, either $Y \subset C_1$ or $Y \subset C_2$ or $Y \subset U_i^{C} = V(x_i)$, so $Y \cap U_i = C_1 \cap Y \cap U_i, C_2 \cap Y \cap U_i, \ \text{or} \ \emptyset$. We assumed $Y \cap U_i$ is non-empty, so we're done.
+  It follows that $\varphi_i(Y \cap U_i)$ is closed and irreducible in $\mathbb{A}^n$, thus an affine variety.
+
+  To be more specific, $Y = V_p(\mathfrak{a})$ for some homogeneous prime ideal $\mathfrak{a}$. Then
+  \begin{align}
+    \varphi_i(Y \cap U_i) &= \left\{ \left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) \ \Big| \ x_i \neq 0, \ f(x_0, \dots, x_n) = 0 \ \text{for all} \ f \in \mathfrak{a} \right\}
+    \\ &= \left\{ (y_1, \dots, y_n) \ | \ f_{*}(y_1, \dots, y_n) = 0 \ \text{for all} \ f \in \mathfrak{a} \right\}
+    \\ &= \left\{ (y_1, \dots, y_n) \ | \ g(y_1, \dots, y_n) = 0 \ \text{for all} \ g \in \mathfrak{a}_{*} \right\}
+    \end{align}
+  where $f_{*}$ is the polynomial in $k[y_1, \dots, y_n]$ where we have substituted $x_j$ for $1$, and $\mathfrak{a}_{*}$ is the set of all $f_{*}$ for $f \in \mathfrak{a}$.
+  It is easy to see that $\mathfrak{a}_{*}$ is an ideal, so the final line is irreducible algebraic set $V_a(\mathfrak{a}_{*})$.
+
+  From here, let $Y_i = \varphi_i(Y \cap U_i) = V_a(\mathfrak{a}_{*})$, and let $A(Y_i)$ denote the coordinate ring. We construct a map $\phi : A(Y_i) \rightarrow S(Y)_{x_i + I_p(Y)}$ as follows.
+  Given some $f + I(Y_i)$ in $A(Y_i)$, we write $f = f_0 + \cdots + f_d$ in terms of its homogeneous components. We then define
+  \begin{equation}
+    \phi(f(y_1, \dots, y_n) + I(Y_i)) = \sum_{k = 0}^{d} (x_i + I_p(Y))^{-k} (f_k(x_0, \dots, x_{i -  1}, x_{i + 1}, \dots, x_n) + I_p(Y))
+    \end{equation}
+  To prove that this map is well-defined, suppose $g \in I(Y_i) = \mathfrak{a}_{*}$, so there exists some $F \in \mathfrak{a}$ where $F_{*} = g$.
+  Note that if $G$ is homogeneous, then $x_i^d (G_{*})^{*} = G$ for some $d$, where the upper-star is homogenization in the $i$-th variable. Moreover,
+  \begin{align}
+    (A + B)^{*} = \sum_{k = 0}^{\deg(A + B)} x^{\deg(A + B) - k}_i (A_k + B_k) &= \sum_{k = 0}^{\deg(A)} x^{\deg(A + B) - k}_i A_k + \sum_{k = 0}^{\deg(B)} x^{\deg(A + B) - k}_i B_k
+    \\ &= x^{\deg(A + B) - \deg(A)}_i A^{*} + x^{\deg(A + B) - \deg(B)}_i B^{*}
+    \end{align}
+  which immediately means that
+  \begin{equation}
+  g^{*} = (F_*)^{*} = \left( \sum_{k = 0}^{d} (F_k)_{*} \right)^{*} = \sum_{k = 0}^{d} x_i^{d_k} ((F_k)_{*})^{*}
+  \end{equation}
+  It follows that is we multiply both sides by some $x_i^D$ for large enough $D$, we will have
+  \begin{equation}
+    x^D_i g^{*} = \sum_{k = 0}^{d} x_i^{D_k} F_k
+    \end{equation}
+  for some numbers $D_k$. Note that since $\mathfrak{a}$ is homogeneous, each $F_k$ is in $\mathfrak{a}$ (as $F \in \mathfrak{a}$), so the above sum is also in $\mathfrak{a}$, which means
+  $x^D_i g^{*} \in \mathfrak{a} = I_p(Y)$. If we had $x_i^D \in \mathfrak{a}$, then $Y = V_p(\mathfrak{a}) \subset V_p(x_i)$, which we already assumed is not the case, so since $\mathfrak{a}$ is prime,
+  $g^{*} \in \mathfrak{a}$. Note that
+  \begin{equation}
+    g^{*}(x_0, \dots, x_n) = \sum_{k = 0}^{d} x_i^{d - k} g_k(x_0, \dots, x_{i-1}, x_{i + 1}, \dots, x_n)
+    \end{equation}
+  which means that
+  \begin{align}
+    0 + I_p(Y) = g^{*} + I_p(Y) &= \sum_{k = 0}^{d} (x_i^{d - k} + I_p(Y)) (g_k + I_p(Y))
+    \\ &= (x_i^{d} + I_p(Y)) \sum_{k = 0}^{d} (x_i + I_p(Y))^{-k} (g_k + I_p(Y))
+    \end{align}
+  in $S(Y)_{x_i + I_p(Y)}$. From here, we know that $x_i \notin \mathfrak{a}$, so since $S(Y)$ is an integral domain and the localization of an integral domain is an integral domain,
+  it follows that $\sum_{k = 0}^{d} (x_i + I_p(Y))^{-k} (g_k + I_p(Y)) = 0$, as desired, and the map
+  is well-defined. We can also verify that it is a homomorphism easily. Of course, the imgage of this homomorphism is in the collection of degree-$0$ element of
+  $S(Y)_{x_i + I_p(Y)}$, and it is equally easy to see that this image is \emph{precisely} the set of these degree-$0$ elements (as it is easy to find a preimage). To verify injectivity, note that if
+  \begin{equation}
+    \sum_{k = 0}^{d} (x_i + I_p(Y))^{-k} (f_k + I_p(Y)) = (x_i + I_p(Y))^{-d} \sum_{k = 0}^{d} (x_i^{d - k} f_k + I_p(Y)) = 0
+    \end{equation}
+  then we must have $f^{*} = \sum_{k = 0}^{d} x_i^{d - k} f_k \in I_p(Y) = \mathfrak{a}$. This means that $(f^{*})_{*} \in \mathfrak{a}_{*}$, so $f = x_i^{d} (f^{*})_{*}$ is also in $\mathfrak{a} = I(Y_i)$.
+  Thus, we have shown that $\phi$ is an injective homomorphism whose image is the set of all degree-$0$ elements of the localized ring $S(Y)_{x_i + I_p(Y)}$, and we have the desired identification.
+  
+  The next part of this problem asks us to show that the map we constructed above in fact extends to an isomorphism $S(Y)_{x_i + I_P(Y)} \simeq A(Y_i)[t, t^{-1}]$.
+  To this end, we define
+  \begin{align}
+    \Phi((f + I(Y_i)) t^s) = \phi(f + I(Y_i)) (x_i^{s} + I_p(Y))
+  \end{align}
+  and extend linearly. It isn't difficult (but the notation sucks) to show that $\Phi$ is a ring homomorphism. It is also obvious that $\Phi$ is surjective (as, again, it is easy to find a preimage).
+  To verify injectivity, suppose
+  \begin{equation}
+    \Phi \left( \sum_{s = 0}^{d} (f^{(s)} + I(Y_i)) \right) = \sum_{s = 0}^{d} \phi(f^{(s)} + I(Y_i)) (x_i^{s} + I_p(Y)) = 0
+    \end{equation}
+  Then, since each coefficient is degree-$0$, it follows that we must have $\phi(f^{(s)} + I(Y_i)) = 0$ for each $s$, so since $\phi$ is injective, $f^{(s)} + I(Y_i) = 0$ for
+  each $s$, so we have injectivity, and therefore, $\Phi$ is a ring isomorphism.
+
+  Now, since $Y \cap U_i \neq \emptyset$, so $Y$ is not a subset of $V(x_i)$, we have, using Point 4 and 5 from our list at the beginning of the solution, and the above isomorphism,
+  \begin{equation}
+    \dim S(Y) = \dim S(Y)_{x_i + I_p(Y)} = \dim A(Y_i)[t, t^{-1}] = \dim(Y_i) + 1
+    \end{equation}
+  Since $\varphi_i$ is a homeomorphism, it follows that $\dim(Y_i) = \dim(Y \cap U_i)$. Clearly, all of the sets $Y \cap U_i$ are an open cover for $Y$, so using
+  Problem 1.1.10, we get $\dim(Y) = \max_{i} \dim(Y \cap U_i)$. It follows immediately that $\dim S(Y) = \dim(Y) + 1$. Moreover, since the $\dim S(Y) = \dim(Y_i) + 1$
+  for all $i$ such that $Y \cap U_i \neq \emptyset$, it follows that in this case, we always have $\dim(Y_i) = \dim(Y)$.
+  \end{solution}
+
+\begin{solution}[Problem 1.2.7]
+  Point-by-point:
+  \begin{enumerate}
+    \item We have already seen that $\mathbb{P}^n$ is a projective variety, $V_p(0)$, so $S(\mathbb{P}^n) = k[x_0, \dots, x_n]$. Thus,
+      from the previous problem,
+      \begin{equation}
+        \dim(\mathbb{P}^n) = \dim k[x_0, \dots, x_n] - 1 = (n + 1) - 1 = n
+        \end{equation}
+      as desired.
+      \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 1.2.8]
+
+  \end{solution}
+
+\subsection{Section 1.3}
+
+
+
+\section{Chapter 2}
+
+\subsection{Section 2.1}
+
+\noindent \pop{Something that should be noted about Section 2.1 is that it isn't particularly conceptually deep, its main challenge is in getting acclimatized to some subtle definitions.
+If one is comfortable with all of the definitions, there should be no issue solving all of the problems.}
+\newline
+
+\begin{solution}[Problem 2.1.1]
+  Let $\mathcal{F}$ be a presheaf, recall that its sheafification $\mathcal{F}^{+}$ is obtained by setting $\mathcal{F}^{+}(U)$ to be all functions $s : U \rightarrow \sqcup_{p \in U} \mathcal{F}_p$
+  such that $s(p) \in \mathcal{F}_p$ and for each $p \in U$, there is a neighbourhood $V$ of $p$ and $t \in \mathcal{F}(V)$ such that $s(q) = t_q$ for each $q \in V$ (where $t_q$ is the germ of $t$ at $q$).
+  The arrows are simply restriction of functions. The morphism $\theta(U) : \mathcal{F}(U) \rightarrow \mathcal{F}^{+}(U)$ of Abelian groups is given by $\theta(U)(s)(p) = s_p$.
+
+  If $\mathcal{F}$ is the constant presheaf associated to $A$ on $X$, note that $\mathcal{F}(U) = A$, so all of the stalks of $\mathcal{F}$ is isomorphic to $A$, and the Abelian group $\mathcal{F}^{+}(U)$
+  is isomorphic to the group of functions $s : U \rightarrow A$ such that for each $p \in U$, there is a neighbourhood $V$ of $p$ and $t \in A$ such that $s(q) = t$ for each $q \in V$. In other words, $s : U \rightarrow A$
+  is a locally constant function, which is the case if and only if it is continuous when $A$ is given the discrete topology. Hence, $\mathcal{F}^{+}(U)$ is isomorphic to $\mathcal{G}(U)$, where $\mathcal{G}$ is the
+  constant sheaf associated to $A$ on $X$. We have such an isomorphism for all $U$, and the isomorphisms are compatible with the restriction maps, so we have an isomorphism of sheaves.
+  \end{solution}
+
+\begin{solution}[Problem 2.1.2]
+  There are three parts to this question:
+  \begin{enumerate}
+    \item Once again, recall that the kernel presheaf of a presheaf morphism $\varphi : \mathcal{F} \rightarrow \mathcal{G}$ is given by $U \mapsto \text{Ker}(\varphi(U)) \subset \mathcal{F}(U)$. Of course, it follows that every section
+      of $\text{Ker}(\varphi(U))$ is a section of $\mathcal{F}(U)$, so it follows that if $\varphi$ is a morphism of \emph{sheaves}, and $s \in \text{Ker}(\varphi(U))$ restricts to $0$ on a cover of $U$, then $s = 0$. Moreover, given
+      a collection of sections $s_i \in \text{Ker}(\varphi(V_i))$ for a cover $\{V_i\}$ for $U$ which agree on overlaps, we can construct $s \in \mathcal{F}(U)$ which restricts to
+      each of these sections, so $s|_{V_i} = s_i$. Then, we note that
+      \begin{equation}
+        \varphi(U)(s)|_{V_i} = \varphi(V_i)(s|_{V_i}) = \varphi(V_i)(s_i) = 0
+        \end{equation}
+      for each $V_i$, so since $\mathcal{G}$ is a sheaf, it follows that $\varphi(U)(s) = 0$, which means that $s \in \text{Ker}(\varphi(U))$. Thus, in this case, the kernel presheaf is a sheaf.
+
+      From here, we need to show that $(\text{Ker}(\varphi))_p = \text{Ker}(\varphi_p)$ at each $p \in X$. Recall that the map $\varphi_p : \mathcal{F}_p \rightarrow \mathcal{G}_p$ of stalks
+      is defined as $\varphi_p(U, s) = (U, \varphi(U)(s))$, so the kernel of $\varphi_p$ will consist precisely of germs $(U, s)$ around $p$ such that $\varphi(U)(s) = 0$ (i.e. $s \in \text{Ker}(\varphi(U))$).
+      On the other hand, the stalk at $p$ of $\text{Ker}(\varphi)$ consists of germs $(U, s)$ around $p$ where $s \in \text{Ker}(\varphi)(U) = \text{Ker}(\varphi(U))$, so the two are obviously equal.
+
+      Similarly, $\text{Im}(\varphi_p)$ is all germs $(U, \varphi(U)(s))$ around $p$ in $\mathcal{G}_p$. On the other hand, $\text{Im}(\varphi)$ is the sheafification of the presheaf $U \mapsto \text{Im}(\varphi(U))$, which
+      we denote $\text{Im}(\varphi)^{\text{pre}}$.
+      We know that stalks of the sheaf and the sheafification can be identified with each other. In particular, a germ of $\text{Im}(\varphi)_p$ is $(U, s)$, where $s : U \rightarrow \bigcup_{q \in U} \text{Im}(\varphi)^{\text{pre}}_q$
+      is a function such that if $U$ is chosen to be small enough, then $s(q) = t_q$ for some section $t \in \text{Im}(\varphi(U)) \subset \mathcal{G}(U)$. It follows that we can define an isomorphism
+      $\text{Im}(\varphi)_p \rightarrow \text{Im}(\varphi^{\text{pre}}_p$ which takes $(s, U) \mapsto (t, U)$.
+
+      So, $\text{Im}(\varphi)_p$ is isomorphic collection of germs $(U, s)$ around $p$ where $s \in \text{Im}(\varphi(U))$, which is what we want.
+      \item If $\varphi$ is injective, then by definition the sheaf $\text{Ker}(\varphi)$ is trivial, so $\text{Ker}(\varphi)_p = \text{Ker}(\varphi_p)$ is trivial for all $p$, so every homomorphism of
+        stalks $\varphi_p$ is injective. On the other hand, if each $\varphi_p$ is trivial, then each stalk $\text{Ker}(\varphi)_p$ is trivial. It follows that if $s \in \text{Ker}(\varphi(U))$ is a section,
+        then $s|_V = 0$ for some $V \subset U$ around $p$. We can cover $U$ by $V$ around each $p$ where $s|_V = 0$, so since $s$ is a section of a \emph{sheaf}, $s = 0$
+        as well, and $\text{Ker}(\varphi)$ is trivial.
+
+        Proving the similar result for surjectivity follows the same steps. In particular, we want to show that $\text{Im}(\varphi) = \mathcal{G}$ if and only if $\varphi_p : \mathcal{F}_p \rightarrow \mathcal{G}_p$ is surjective
+        for all $p$. If we assume that the former holds, then $\text{Im}(\varphi_p) = \text{Im}(\varphi)_p = \mathcal{G}_p$ for all $p$ (these equalities are actually natural isomorphisms, but once again, we can
+        permit ourselves to be a bit sloppy). On the other hand, if $\text{Im}(\varphi_p)$ and thus $\text{Im}(\varphi)_p$ is equal to $\mathcal{G}_p$ for all $p$, then we need to show that $\text{Im}(\varphi)(U) \simeq \mathcal{G}(U)$
+        for all $U$ (or are at least naturally isomorphic). 
+      \item 
+    \end{enumerate}
+  \end{solution}
+
+\subsection{Section 2.2}
+
+\begin{solution}[Problem 2.2.1]
+  To produce such an isomorphism, we obviously need a homeomorphism between the underlying topological spaces
+  $\phi : D(f) \rightarrow \text{Spec}(A_f)$ and an isomorphism of sheaves $\phi^{\#} : \mathcal{O} \rightarrow \phi_{*} \mathcal{O}_X|_{D(f)}$
+  where $\mathcal{O}$ is the structure sheaf (such that the morphism induces a local homomorphism of stalks).
+
+  If you look in Appendix.~\ref{appx:extra}, you will see that we have already constructed a bijection between $D(f)$ (the collection of all prime ideals which do not contain $(f)$, hence all prime
+  ideals which do not intersect it) and $\text{Spec}(A_f)$
+  (the prime ideals of the localization $A_f$). We denote this map by $\phi$ (i.e. $\phi : D(f) \rightarrow \text{Spec}(A_f)$ is given by $\phi(\mathfrak{p}) = S^{-1} \mathfrak{p}$ and $\phi^{-1}(\mathfrak{q}) = \rho^{-1}(\mathfrak{q})$,
+  where $\rho : A \rightarrow S^{-1} A$ is the localization map with $S = \{1, f, f^2, \dots\}$). Our first claim is that $\phi^{-1}(V(\mathfrak{a})) = D(f) \cap V(\rho^{-1}(\mathfrak{a}))$. Indeed, note that if $\mathfrak{p}$ is a prime
+  which contains $\mathfrak{a}$, then $\phi^{-1}(\mathfrak{p}) = \rho^{-1}(\mathfrak{p})$ is a prime which does not contain $f$ and which contains $\rho^{-1}(\mathfrak{a})$. Similarly, if $\mathfrak{p}$ is a prime containing
+  $\rho^{-1}(\mathfrak{a})$ which does not contain $f$ then $\phi(\mathfrak{p})$ is prime and contains $(\phi \circ \rho^{-1})(\mathfrak{a}) = \mathfrak{a}$ (see Rem.~\ref{rem:s0}),
+  so $\mathfrak{p} \in \phi^{-1}(V(\mathfrak{a}))$, and we have the desired equality. This implies that $\phi$ is continuous.
+
+  On the other hand, we claim that $\phi(V(\mathfrak{a}) \cap D(f)) = V(\phi(\mathfrak{a}))$. If $\mathfrak{p}$ is prime, contains $\mathfrak{a}$, and does not contain $(f)$, then
+  $\phi(\mathfrak{p})$ is prime and contains $\phi(\mathfrak{a})$. On the other hand, if $\mathfrak{p}$ is prime and contains $\phi(\mathfrak{a})$, then $\phi^{-1}(\mathfrak{p})$ is prime, doesn't contain $f$, and contains
+  $(\rho^{-1} \circ \phi)(\mathfrak{a})$, which contains $\mathfrak{a}$, so $\mathfrak{p} \in \phi(V(\mathfrak{a}) \cap D(f))$. Thus, $\phi$ is in fact a homeomorphism.
+  \newline
+
+  \noindent We still need to produce an isomorphism of sheaves. We define $\phi^{\#}(U) : \mathcal{O}(U) \rightarrow \mathcal{O}_X(\phi^{-1}(U))$ as follows. Given a section
+  $s : U \rightarrow \bigsqcup_{\phi(\mathfrak{p}) \in U} (A_f)_{\phi(\mathfrak{p})}$ in $\mathcal{O}(U)$, we can define function $\widetilde{s} : \phi^{-1}(U) \rightarrow \bigsqcup_{\mathfrak{p} \in \phi^{-1}(U)} A_{\mathfrak{p}}$
+  as $\widetilde{s} = \Phi^{-1}_U \circ s \circ \phi|_{\varphi^{-1}(U)}$, where $\Phi_U : \bigsqcup_{\mathfrak{p} \in \phi^{-1}(U)} A_{\mathfrak{p}} \rightarrow \bigsqcup_{\phi(\mathfrak{p}) \in U} (A_f)_{\phi(\mathfrak{p})}$ is the unique map extending all of the isomorphisms
+  $\Phi_{\mathfrak{p}} :  A_{\mathfrak{p}} \rightarrow (A_f)_{\phi(\mathfrak{p})}$ introduced in Cor.~\ref{cor:s3}, for all $\mathfrak{p} \in \phi^{-1}(U)$.
+  This also gives us a candidate for $(\phi^{\#}(U))^{-1}$: the map taking $\widetilde{s}$ to $\Phi_U \circ s \circ (\phi|_{\varphi^{-1}(U)})^{-1}$.
+  The fact that both of these maps are homomorphisms simply follows from the fact that we can add and multiply functions, and that $\Phi$ is a homomorphism when restricted to the individual rings. For example,
+  \begin{equation}
+    (\Phi^{-1} \circ s_1 \cdot s_2 \circ \phi)(\mathfrak{p}) = \Phi^{-1}(s_1(\phi(\mathfrak{p})) \cdot s_2(\phi(\mathfrak{p}))) = \Phi^{-1}(s_1(\phi(\mathfrak{p}))) \cdot \Phi^{-1}(s_2(\phi(\mathfrak{p})))
+    \end{equation}
+  To prove that this function is, in fact, an element of $\mathcal{O}_X(\phi^{-1}(U))$, first note that
+  \begin{equation}
+    \widetilde{s}(\mathfrak{p}) = (\Phi^{-1} \circ s \circ \phi)(\mathfrak{p}) = (\Phi^{-1} \circ s)(\phi(\mathfrak{p})) \in \Phi^{-1}((A_f)_{\phi(\mathfrak{p})}) = A_{\mathfrak{p}}
+  \end{equation}
+  so we satisfy the first condition. We also require that for each $\mathfrak{p} \in \phi^{-1}(U)$, there exists a neighbourhood $\mathfrak{p} \in V \subset \phi^{-1}(U)$ and $a, b \in A$ such
+  that $\widetilde{s}(\mathfrak{q}) = \frac{a}{b} \in A_{\mathfrak{q}}$ for all $\mathfrak{q} \in V$ (in particular, $b \notin \mathfrak{q}$ for any $\mathfrak{q} \in V$).  It is of course the case
+  that given some $\phi(\mathfrak{p}) \in U$, we can produce a neighbourhood $V$ such that $s = \frac{a'/f^n}{b'/f^m}$ on $V$. It then follows that on $\phi^{-1}(V) \subset \phi^{-1}(U)$, which
+  contains $\mathfrak{p}$, we have
+  \begin{equation}
+    (\Phi^{-1} \circ s \circ \phi)(\mathfrak{q}) = \Phi^{-1} \left( \frac{a'/f^n}{b'/f^m} \right) = \frac{a' f^m}{b' f^n} \in A_{\mathfrak{q}}
+  \end{equation}
+  where $b' f^n \notin \mathfrak{q} \in \phi^{-1}(V)$, as if it were, then either $b' \in \mathfrak{q}$ or $f \in \mathfrak{q}$. The latter cannot happen by definition of $\mathfrak{q}$. If the former did happen, then
+  we would have $\frac{b'}{f^m} \in \phi(\mathfrak{q}) \in V$, which is not the case. Thus, $\widetilde{s}$ is a valid element of the structure sheaf. Showing that the inverse homomorphism
+  also outputs a valid element of the structure sheaf follows a similar procedure.
+  \newline
+
+  \noindent We now need to show that $\phi^{\#}$ is actually a natural transformation, which is to say that it behaves nicely with respect to restriction. Suppose $U$ and $V$ are open
+  subsets of $\text{Spec}(A_f)$, with $V \subset U$. We need to show that $\phi^{\#}(s|_V) = \phi^{\#}(s)|_{\phi^{-1}(V)}$, with $s \in \mathcal{O}(U)$. This more or less follows from the
+  definitions:
+  \begin{align}
+    \phi^{\#}(s|_V) = \Phi^{-1}_V \circ s|_V \circ \phi|_{\varphi^{-1}(V)} = (\Phi^{-1}_U \circ s \circ \phi)|_{\varphi^{-1}(V)} = \phi^{\#}(s)|_{\phi^{-1}(V)}
+    \end{align}
+  The same logic applies to the inverse mapping.
+  \newline
+
+  \noindent The last thing to show is that the induced homomorphisms $\phi^{\#}_{\phi(\mathfrak{p})} : \mathcal{O}_{\phi(\mathfrak{p})} \rightarrow (\phi_{*} \mathcal{O}_X|_{D(f)})_{\phi(\mathfrak{p})}$ on the stalks are local homomorphisms.
+  A generic element of $\mathcal{O}_{\phi(\mathfrak{p})}$ is a germ $[U, s]$ where $U$ is open around $\phi(\mathfrak{p})$ and $s \in \mathcal{O}(U)$. A generic element of $(\phi_{*} \mathcal{O}_X|_{D(f)})_{\phi(\mathfrak{p})}$ is also
+  of this form, with $s \in \mathcal{O}_X(\phi^{-1}(U))$, where $\phi^{-1}(U)$ is an open set around $\mathfrak{p}$ in $D(f)$. Because $\phi$ is a homeomorphism, it follows that this stalk is isomorphic to the stalk
+  $(\mathcal{O}_X)_{\mathfrak{p}}$, via the map $[U, s] \mapsto [\varphi^{-1}(U), s]$. Via evaluation maps at $\phi(\mathfrak{p})$ and $\mathfrak{p}$, $\mathcal{O}_{\phi(\mathfrak{p})} \simeq (A_f)_{\phi(\mathfrak{p})}$ and
+  $(\mathcal{O}_X)_{\mathfrak{p}} \simeq A_{\mathfrak{p}}$. Thus, when composing with these isomorphisms, the mapping of stalks takes an element $r$ of $A_{\mathfrak{p}}$, picks some germ corresponding to a
+  section taking on this value at $\mathfrak{p}$, maps under $(\phi^{\#})^{-1}$, and evaluates at $\phi(\mathfrak{p})$, which all together, just yields $\Phi_{\mathfrak{p}}(r)$. Thus, the map of stalks is, up to conjugating by isomorphisms,
+  the isomorphism $\Phi_{\mathfrak{p}}$ introduced in the appendix. Hence, we simply need to show that $\Phi_{\mathfrak{p}} : A_{\mathfrak{p}} \rightarrow (A_f)_{\phi(\mathfrak{p})}$ is a local map. To do this, note
+  that the maximal ideal in $(A_f)_{\phi(\mathfrak{p})}$ is the ideal generated by $\phi(\mathfrak{p}) \subset A_f$, which is the ideal generated by all element of the form $\frac{p}{f^n}$ for $p \in \mathfrak{p}$. On the other hand,
+  the maximal ideal of $\mathfrak{A}_{\mathfrak{p}}$ is the ideal generated by $\mathfrak{p}$. It is a pretty immediate consequence from the definition of $\Phi_{\mathfrak{p}}$, that the inverse image of the former
+  maximal ideal is equal to the latter. Thus, we have a local homomorphism.
+  \newline
+
+  \noindent Thus, we have shown that as locally ringed spaces, $(D(f), O_X|_{D(f)}) \simeq \text{Spec}(A_f)$, as desired.
+  \end{solution}
+
+\begin{solution}[Problem 2.2.2]
+  First consider the case where $X = \text{Spec}(A)$, and $\mathcal{O}_X$ is the structure sheaf, so it is an affine scheme. If $U \subset X$ is an open set, then $X - U = V(\mathfrak{a})$ for some
+  ideal $\mathfrak{a} \subset A$, which has generating set $(f_{\alpha})_{\alpha \in J}$. It follows that $V(\mathfrak{a}) = \bigcap_{\alpha \in J} V(f_{\alpha})$, so $U = \bigcup_{\alpha \in J} D(f_{\alpha})$.
+  In other words, we can cover $U$ with open sets of the form $D(f)$. We know that $(D(f), \mathcal{O}_X|_{D(f)})$ is an affine scheme from Problem 2.2.1, so it follows that we can cover $(U, \mathcal{O}_X|_U)$ in affine
+  schemes, which implies it is a scheme (note that restricting sheaves to open sets behaves nicely, so restricting to $U$ and then restricting to $D(f)$ is the same as restricting to $D(f)$ from $\mathcal{O}_X$).
+
+  To prove the general case, note that if $U$ is an open set of generic scheme $X$, then we can cover $X$ in open sets which are isomorphic to affine schemes, $(V_{\alpha}, \mathcal{O}_X|_{V_{\alpha}})$. It then
+  follows that $(U \cap V_{\alpha}, \mathcal{O}_X|_{U \cap V_{\alpha}})$ is an open subset of an affine scheme, which means it is a scheme, which means we can cover it in affine schemes $(W_{\alpha, \beta}, \mathcal{O}_X|_{W_{\alpha, \beta}})$.
+  Taking all of these affine schemes will cover $(U, \mathcal{O}_X|_U)$, which implies it is itself a scheme.
+  \end{solution}
+
+\begin{solution}[Problem 2.2.3]
+  Point-by-point:
+  \begin{enumerate}
+    \item Suppose $s \in \mathcal{O}_X(U)$ is nilpontent, so that $s^N = 0$ for some $N$. Since restriction respects ring structure, $(s|_V)^N = (s^N)|_V = 0$ for some $V \subset U$,
+      so the stalk around any $p \in U$ will have a nilpotent element, namely the germ $s_p$. On the other hand, suppose stalk $\mathcal{O}_{X, p}$ has nilpotent germ $s_p$, so
+      $s_p^N = [s, U]^N = [s^N, U] = 0$ for some $N$. The $0$-germ $0$ at $p$ is simply $[0, V]$, for some open set $V$ around $p$, so we must have $s^N$ and $0$ agreeing on some neighbourhood
+      $W \subset U \cap V$ of $p$. Therefore, $\mathcal{O}_X(W)$ contains a nilpotent element.
+      \item Recall that the stalks of the sheafification $\mathcal{O}_{X, \text{red}}^{\#}$ are precisely the stalks of the presheaf $U \mapsto \mathcal{O}_X(U)_{\text{red}}$, which have no nilpotent elements.
+        Therefore, if we prove that $(X, \mathcal{O}_{X, \text{red}}^{\#})$ is a scheme, it will be a reduced scheme.
+
+        We will begin by assuming that $(X, \mathcal{O}_X) = (\text{Spec}(A), \mathcal{O})$.
+        The idea is to show that $(\text{Spec}(A), (\mathcal{O}_{\text{red}}^{\#}) \simeq (\text{Spec}(A/\mathfrak{r}), \mathcal{O}')$, where $\mathfrak{r} = \text{Rad}(0)$, the nilradical of $A$. For any
+        ideal $\mathfrak{a}$, we have the quotient map $\pi : A \rightarrow A/\mathfrak{a}$. This means that we have an induced map of locally ringed spaces
+        $(f, f^{\#}) : (\text{Spec}(A/\mathfrak{a}), \mathcal{O}') \rightarrow (\text{Spec}(A), \mathcal{O})$, where $f(\mathfrak{p}) = \pi^{-1}(\mathfrak{p})$. If we restrict the image
+        of $f$ to $V(\mathfrak{a})$, we actually find that $f : \text{Spec}(A/\mathfrak{a}) \rightarrow V(\mathfrak{a})$ is a homeomorphism. The bijective correspondence between the prime ideal of $A/\mathfrak{a}$ and the prime
+        ideal of $A$ which contain $\mathfrak{a}$ is obvious. Continuity is obvious from the fact that $\pi$ is induced by the quotient homomorphism $A \rightarrow A/\mathfrak{a}$. It is also easy to see that
+        for $\mathfrak{a} \subset \mathfrak{b}$, we have $\pi(V(\mathfrak{b})) = V(\pi(\mathfrak{b}))$. Therefore,
+        \begin{equation}
+        \text{Spec}(A/\mathfrak{r}) \simeq V(\mathfrak{r}) = V((0)) = \text{Spec}(A)
+        \end{equation}
+        as desired: $f : \text{Spec}(A/\mathfrak{r}) \rightarrow \text{Spec}(A)$ is a homeomorphism.
+
+        The other thing we need to do is prove that the sheaves $\mathcal{O}_{\text{red}}^{\#}$ and $f_{*} \mathcal{O}'$ are isomorphic. Of course, $f^{\#} : \mathcal{O} \rightarrow f_{*} \mathcal{O}'$ is a local morphism
+        of sheaves. Note that if $s \in \mathcal{O}(U)$, then $f^{\#}(U)(s) = \pi' \circ s \circ f = 0$ where $\pi'|_{A_{\mathfrak{p}}} : A_{\mathfrak{p}} \rightarrow (A/\mathfrak{r})_{\pi(\mathfrak{p})}$ is the reduction map,
+        where we recall that localization commutes with quotients. If $s$ is nilpotent, then $s(\mathfrak{p}) \in \mathfrak{r}_{\mathfrak{p}}$ for every $\mathfrak{p} \in U$, so $f^{\#}(U)(s) = 0$. It follows that
+        $f^{\#}(U) : \mathcal{O}(U) \rightarrow \mathcal{O}'(f^{-1}(U))$ descends to a morphism $f^{\#}_{\text{red}}(U) : \mathcal{O}(U)_{\text{red}} \rightarrow \mathcal{O}'(f^{-1}(U))$. Moreover, these morphisms
+        clearly form a local morphism of presehaves. It follows that it extends a unique morphism of sheaves $g : \mathcal{O}_{\text{red}}^{\#} \rightarrow f_{*} \mathcal{O}'$. We want to show that
+        this map is an isomorphism of sheaves, so we show that it induces an isomorphism on the stalks. Indeed, we have $\mathcal{O}_{\text{red}, f(p)}^{\#} = \mathcal{O}_{\text{red}, f(p)}$. $g_{f(p)}$ takes
+        germs $[V, [s]]$ to germ $[V, \pi' \circ s \circ f]$, where $[s]$ is an equivalence class in $\mathcal{O}(V)_{\text{red}}$. If $\pi' \circ s \circ f = 0$ on $V$, then we must have $s(f(\mathfrak{p}))$ nilpotent
+        for every $\mathfrak{p} \in f^{-1}(V)$, hence $s(\mathfrak{p})$ is nilpotent for every $\mathfrak{p} \in V$, so $[s] = 0$, and we have injectivity. Surjectivity follows from the fact that $\pi'$ is surjective and
+        $f$ is a homeomorphism. Thus, we have our isomorphism of stalks, and the map as an isomorphism of sheaves.
+
+        To prove the general case, we just apply the result above locally. In particular, if $(X, \mathcal{O}_X)$ is a scheme, then locally, $(U, \mathcal{O}_X|_U)$ is isomorphic to $(\text{Spec}(A), \mathcal{O})$. Thus,
+        $(U, \mathcal{O}_{X}|_{U, \text{red}}^{\#})$ is locally isomorphic to $(\text{Spec}(A), \mathcal{O}_{\text{red}}^{\#})$, which is isomorphic to $(\text{Spec}(A/\mathfrak{r}), \mathcal{O}')$, which is itself
+        an affine scheme.
+
+        To prove the final thing, let $\text{red} : \mathcal{O}_X \rightarrow \mathcal{O}_{X, \text{red}}^{\#}$ be the unique morphism of schemes which extends the morphism of preschemes
+        $\text{red} : \mathcal{O}_X \rightarrow \mathcal{O}_{X, \text{red}}$ which takes $s \in \mathcal{O}_X(U)$ to its reduction $[s] \in \mathcal{O}_X(U)_{\text{red}}$. The morphism
+        $(\text{id}, \text{red}) : X_{\text{red}} \rightarrow X$ is a morphism of schemes which is a homeomorphism on the underlying topological spaces.
+
+        \item Of course, if we write $f = (h, h^{\#})$, then $g$ will be the mapping $h$ on the underlying topological spaces. We require the existence of unique $g^{\#} : \mathcal{O}_{Y, \text{red}}^{\#} \rightarrow h_{*} \mathcal{O}_X$
+          such that $g^{\#} \circ \text{red} = h^{\#}$. If we can prove the existence of a unique $\chi : \mathcal{O}_{Y, \text{red}} \rightarrow h_{*} \mathcal{O}_X$ (morphism of presheaves) where $\chi \circ \text{red} = h^{\#}$ as
+          presheaf morphisms, where $\text{red}$ in this context is the presheaf morphism taking a section to its reduction, then by uniqueness of extension to the sheafification, $g^{\#}$ is the unique extension of $\chi$.
+          The idea is to simply define $\chi(V) : \mathcal{O}_Y(V)_{\text{red}} \rightarrow \mathcal{O}_X(h^{-1}(V))$ as $\chi(V)([s]) = h^{\#}(s)$. This is well-defined because if $s \in \mathcal{O}_Y(V)$ is nilpontent, then
+          $h^{\#}(s)$ must be nilpotent in $\mathcal{O}_X(h^{-1}(V))$, which means it must be equal to $0$ as $X$ is reduced. It follows that if $s_1$ and $s_2$ differ by a nilpotent element, then $h^{\#}(s_1) = h^{\#}(s_2)$.
+          It is easy to see that this is a local morphism of presheaves from here, and is unique via the formula we have used to define it. This completes the proof.
+    \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 2.2.4]
+  We want to show that $\alpha : \text{Hom}_{\text{Sch}}(X, \text{Spec}(A)) \rightarrow \text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X))$ is a bijection. In the case that $X = \text{Spec}(R)$ is an \emph{affine} scheme,
+  this is quite simple. We replace $\Gamma(X, \mathcal{O}_X)$ with $R$, via the isomorphism, in the definition of $\alpha$ above.
+  Note tha we have the map $\beta : \text{Hom}_{\text{Ring}}(A, R) \rightarrow \text{Hom}_{\text{Sch}}(\text{Spec}(R), \text{Spec}(A))$ which takes $\phi : A \rightarrow R$ to the induced map (Proposition 2.3). It is proved in
+  Proposition 2.3 that $\beta$ is a left-inverse of $\alpha$. To prove that it is also a right inverse, note that $\phi$ induces $(f, f^{\#})$ where $f(\mathfrak{p}) = \phi^{-1}(\mathfrak{p})$, and we have
+  the map $f^{\#}(\text{Spec}(A)) : \Gamma(\text{Spec}(A), \mathcal{O}_{\text{Spec}(A)}) \rightarrow \Gamma(\text{Spec}(R), \mathcal{O}_{\text{Spec}(R)})$ which takes $s_a$, the constant
+  section taking on value $a \in A$ at every point, to $\phi \circ s_a \circ f$, which takes on $\phi(a)$ at every point. Thus, this section can be identified with $\phi$ under the isomorphisms identifying the
+  global sections with $A$ and $R$ respectively. It follows that $\beta$ is a right inverse, and $\alpha$ is a bijection in this case.
+
+  To prove that this result holds for general schemes, pick some cover $\{U_{\alpha}\}$ for $X$ such that $X$ is affine when restricted to each open set. We can use the $\alpha$ maps to induce a bijection
+  \begin{equation}
+    \widetilde{\alpha} : \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Sch}}(U_{\alpha}, \text{Spec}(A)) \rightarrow \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Ring}}(A, \Gamma(U_{\alpha}, \mathcal{O}_X))
+    \end{equation}
+  Of course, we have the natural restriction map on each affine open set, yielding
+  \begin{equation}
+  R : \text{Hom}_{\text{Sch}}(X, \text{Spec}(A)) \rightarrow  \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Sch}}(U_{\alpha}, \text{Spec}(A))
+  \end{equation}
+  On the other hand, suppose we have a collection of morphisms of schemes $(f_{\alpha}, f_{\alpha}^{\#}) : U_{\alpha} \rightarrow \text{Spec}(A)$ such that $f_{\alpha} = f_{\beta}$ on $U_{\alpha} \cap U_{\beta}$ and
+  given $f_{\alpha}^{\#}(V) : \mathcal{O}(V) \rightarrow \mathcal{O}_X(f_{\alpha}^{-1}(V))$ and $f_{\beta}^{\#}(V) : \mathcal{O}(V) \rightarrow \mathcal{O}_X(f_{\beta}^{-1}(V))$, we have
+  \begin{equation}
+    f_{\alpha}^{\#}(V)(s)|_{W} = f_{\beta}^{\#}(V)(s)|_{W}
+    \end{equation}
+  for $W \subset f_{\alpha}^{-1}(V) \cap f_{\beta}^{-1}(V)$. We immediately can combine the $f_{\alpha}$ to form a continuous map $f : X \rightarrow \text{Spec}(A)$. Moreover, given some open $V \subset \text{Spec}(A)$, and
+  section $s \in \mathcal{O}(V)$, note that $f^{-1}(V)$ is covered by the $U_{\alpha}$ and $U_{\alpha} \cap f^{-1}(V) = f_{\alpha}^{-1}(V)$, so we can write $f^{-1}(V)$ as the union of the $f_{\alpha}^{-1}(V)$. Of course,
+  the goal is to define a section on all of $f^{-1}(V)$. We have sections $f_{\alpha}^{\#}(V)(s) \in \mathcal{O}_X(f_{\alpha}^{-1}(V))$ for each $\alpha$, and we know that these sections agree on intersections.
+  Thus, by definition of a sheaf, they glue together to a unique section which restricts to the subsections.
+
+  It is easy to check that the subset of $\prod_{\alpha} \text{Hom}_{\text{Sch}}(U_{\alpha}, \text{Spec}(A))$ which is the image of $R$ is exactly the set with the restrictions described above, and that the map
+  described above is an inverse to $R$. We use similar logic to treat the natural map
+  \begin{equation}
+    Q : \text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X)) \rightarrow \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Ring}}(A, \Gamma(U_{\alpha}, \mathcal{O}_X))
+    \end{equation}
+  where we restrict global sections to local sections. In particular, given some element of the product determined by a collection of homomorphisms $\phi_{\alpha}$, we consider the case
+  where sections $\phi_{\alpha}(a)$ and $\phi_{\beta}(a)$ agree on $U_{\alpha} \cap U_{\beta}$. It is clear that these elements are the image of $Q$. Moreover, when restricting to the image of
+  $R$, we can easily see that these elements are the image of $\widetilde{\alpha}|_{\text{Im}(R)}$. In particular, the maps $f_{\alpha}^{\#}(\text{Spec}(A))$ and $f_{\beta}^{\#}(\text{Spec}(A))$
+  which take $\Gamma(\text{Spec}(A), \mathcal{O})$ to $\Gamma(U_{\alpha}, \mathcal{O}_X)$ and $\Gamma(U_{\beta}, \mathcal{O}_X)$ respectively take global sections of $\text{Spec}(A)$ to pairs
+  which agree on $U_{\alpha} \cap U_{\beta}$.
+
+  Moreover, given some collection of $\phi_{\alpha}$ which satisfy the desired criteria, they will induce an element of $\text{Im}(R)$.
+
+  Thus, we have a commutative square where three of the arrows are bijections, so the fourth arrow between $\text{Hom}_{\text{Sch}}(X, \text{Spec}(A))$ and $\text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X))$ is also a
+  bijection.
+  \end{solution}
+
+\begin{solution}[Problem 2.2.5]
+  This follows quite readily from the previous solution: we have a bijection $\alpha : \text{Hom}_{\text{Sch}}(X, \text{Spec}(A)) \rightarrow \text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X))$. Thus,
+  our bijection is between $\text{Hom}_{\text{Sch}}(X, \text{Spec}(\mathbb{Z}))$ and $\text{Hom}_{\text{Ring}}(\mathbb{Z}, \Gamma(X, \mathcal{O}_X))$. But of course, if $\phi : \mathbb{Z} \rightarrow R$ is an
+  arbitrary ring homomorphism, then $\phi(1) = 1_R$, and this determines where every element of the domain is sent. Therefore, there is a unique element in $\text{Hom}_{\text{Sch}}(X, \text{Spec}(\mathbb{Z}))$, as desired.
+
+  We are also asked to describe $\text{Spec}(\mathbb{Z})$: it is the collection of prime ideals $(p)$, each of which are closed points. The closed sets $V(k)$ can be broken down via a prime factorization of $k$
+  to get a finite union of the single point sets $V(p_1) \cup \cdots \cup V(p_n)$, so along with the entire set $\text{Spec}(\mathbb{Z})$, these finite sets give the topology (this is usually called the finite-complement topology).
+
+  \end{solution}
+
+\begin{solution}[Problem 2.2.6]
+
+  \end{solution}
+
+\begin{solution}[Problem 2.2.7]
+  A morphism is of the form $(f, f^{\#}) : \text{Spec}(K) \rightarrow X$. We know that $\text{Spec}(K)$ consists of a single point, $(0)$, so specifying $f$ is equivalent to specifying a point $x = f((0)) \in X$.
+  The morphism of sheaves $f^{\#} : \mathcal{O}_X \rightarrow f_{*} \mathcal{O}_{\text{Spec}(K)}$ is equivalent to specifying local ring morphisms $f^{\#}(U) : \mathcal{O}_X(U) \rightarrow \mathcal{O}_{\text{Spec}(K)}((0))$
+  for all $U$ which contain the point $x$. Of course, the ring $\mathcal{O}_{\text{Spec}(K)}((0))$ consists of all functions $s : \{(0)\} \rightarrow K_{(0)} \simeq K$, which is isomorphic to $K$ itself. Hence,
+  we may specify a local ring morphism $\phi(U) : \mathcal{O}_X(U) \rightarrow K$ for each $U$ containing $x$, such that if $V \subset U$ and $\iota$ is the inclusion, then $\phi(U) = \phi(V) \circ \mathcal{O}_X(\iota)$.
+  Specifying all such morphisms is clearly equivalent to specifying a local ring morphism $\phi : \mathcal{O}_{x} \rightarrow K$. Finally, if $\phi$ is a local ring morphism, then $\phi^{-1}(0) = \mathfrak{m}_x$, so
+  we obtain an injective morphism $\widetilde{\phi} : \mathcal{O}_x/\mathfrak{m}_x \rightarrow K$. Conversely, if $\widetilde{\phi}$ is a pre-specified injective morphism, then $\phi = \widetilde{\phi} \circ \pi$,
+  where we pre-compose with the projection map, is a local ring homomorphism $\mathcal{O}_x \rightarrow K$, and it is easy to see that these correspondences are inverses of each other.
+  \end{solution}
+
+\begin{solution}[Problem 2.2.8]
+  Note that we have the natural inclusion $k \rightarrow k[\varepsilon]/\varepsilon^2$, which yields natural morphism $\text{Spec} k[\varepsilon]/\varepsilon^2 \rightarrow \text{Spec}(k)$, making
+  $\text{Spec} k[\varepsilon]/\varepsilon^2$ a scheme over $k$, with map $\text{Spec}(\iota)$. A $k$-morphism of this scheme to $f : X \rightarrow \text{Spec}(k)$ is a morphism of schemes $g$ such that $f \circ g = \text{Spec}(\iota)$.
+  Let $\mathfrak{p}$ be a prime ideal in $k[\varepsilon]/\varepsilon^2$, it is easy to see that the only possible non-zero
+  proper ideals are principal, $([\varepsilon + a])$. Moreover, we must have $a = 0$, as $\varepsilon^2 + a \varepsilon$ is
+  in $[\varepsilon + a]$, which means $a\varepsilon$ is, so $a^2$ is. It is clear that $([\varepsilon])$ is prime. Thus, $\text{Spec} k[\varepsilon]/\varepsilon^2$ consists of one point, $(\varepsilon)$
+  ($(0)$ is not prime, as $\varepsilon^2 = 0$). \pop{finish}
+  \end{solution}
+
+\begin{solution}[Problem 2.2.9]
+
+  \end{solution}
+
+\begin{solution}[Problem 2.2.10]
+  It is a basic fact from algebra that any (monic) polynomial in $\mathbb{R}[x]$ can be factored as a product of monomials $x - a$ and irreducible quadratics $x^2 + bx + c$. Thus, Since $\mathbb{R}$ is
+  Noetherian, so is $\mathbb{R}[x]$. If $\mathfrak{p} = (f_1, \dots, f_n)$ is a prime ideal, then it must contain each of the irreducible factors of each $f_j$ of the above form, so any prime is generated
+  by a finite collection of irreducibles of the form introduced in the first sentence. We cannot have $x - a$ and $x - b$ in this generating set for $a \neq b$, as then $1 \in \mathfrak{p}$ by taking their difference
+  to obtain a unit. In addition, if $\mathfrak{p}$ contained both $x - a$ and $x^2 + bx + c$, then $\mathfrak{p}$ contains
+  \begin{equation}
+    x^2 + bx + c - (x - a)(x + b + a) = c + ab + a^2
+    \end{equation}
+  This must be equal to $0$, otherwise $\mathfrak{p}$ would contain a unit, but then $a$ would be a root of $x^2 + bx + c$, which can't be as this polynomial is irreducible. Thus, the prime ideals are precisely the
+  principal ones $(x - a)$ and $(x^2 + bx + c)$ generated by the irreducible elements. Therefore, $\text{Spec}(\mathbb{R}[x])$ has a point corresponnding to each $a \in \mathbb{R}$, namely $(x - a)$. It also
+  has a point corresponding to each \emph{conjugate pair} of complex numbers in $\mathbb{C}$. Thus, $\text{Spec}(\mathbb{R}[x])$ has more points than $\mathbb{R}$, but less than $\mathbb{C}$.
+
+  If we want to compare topologies, note that of $\mathfrak{a} = (g_1, \dots, g_m)$ is a polynomial ideal, we have $V(\mathfrak{a}) = \cap_{j = 1}^{m} V(g_j)$. Each $V(g_j)$ is the union of $V(g_j^{(k)})$, where
+  the $g_j^{(k)}$ are the irreducible factors. Each of these is a one-point set, so $V(g_j)$ is a finite union of points, and $V(\mathfrak{a})$ is also a finite union of points. Thus, the closed sets are precisely
+  the finite collection of points, and the topology is thus the finite complement topology: quite different from the usual topologies on $\mathbb{R}$ and $\mathbb{C}$!
+  \end{solution}
+
+\begin{solution}[Problem 2.2.16]
+  Point-by-point:
+
+  \begin{enumerate}
+    \item Let us first look at the affine case. In particular, when $X = \text{Spec}(B)$, a choice of a global section amount to a choice of element $f$ in $B$, the stalk $\mathcal{O}_{\mathfrak{p}}$ at point $\mathfrak{p}$
+      is isomorphic to $A_{\mathfrak{p}}$, and $\mathfrak{m}_{\mathfrak{p}} \simeq \phi(\mathfrak{p})$, the image of $\mathfrak{p}$ in the localization. The stalk of a section is then just the image of $f$ in each
+      of the localized rings $A_{\mathfrak{p}}$. The condition of $\rho(f)$ not being in $\phi(\mathfrak{p})$ is equivalent to the condition that $f \notin \rho^{-1}(\phi(\mathfrak{p})) = \mathfrak{p}$ (see the appendix).
+      It follows that $\mathfrak{p} \in X_f$ if and only if $\mathfrak{p}$ does not contain $(f)$ (equivalent to $\mathfrak{p} \in D((f))$). So, $X_f = D((f))$, in the affine case.
+
+      Now, for the general case, we can restrict to affine $U$ and restrict a section $f$ to $\overline{f}$, and note from above that $X_f \cap U = U_f = D((f))$.
+      \item Again, it is easy to prove this in the affine case. In this case, $X_f = D((f))$. In this case, restricting some $a \in A$, thought of as a global section, to $\mathcal{O}(D(f)) \simeq A_f$ amounts to
+        mapping it under inclusion into the localization. $a$ is $0$ in the localization if and only if $f^n a = 0$ in $A$, for some $n$. To prove the general case, take a finite affine open cover for $X$
+        by $U_1, \dots, U_m$, and gets some $n_k$ for each $U_k$ so that $f^{n_k} a = 0$ in $\Gamma(U_k, \mathcal{O}_X|_{U_k})$. Taking the largest of the $n_k$ to be $n$, and we get $f^n a = 0$ on all of the open
+        sets $U_k$, thus on all of $X$.
+        \item Let us first look at the affines $U_i$. In particular, let us look at $b$ restricted to $X_f \cap U_i \simeq D(f)$, so $b \in \mathcal{O}(D(f)) \simeq A_f$. It follows that $b = \frac{a_i}{f^{n_i}}$
+          for $a_i \in A$, on $U_i \cap X_f$. On the intersections $U_i \cap U_j \cap X_f = (U_i \cap U_j)_f$, we have course must have
+          \begin{equation}
+            \frac{a_i}{f^{n_i}} = \frac{a_j}{f^{n_j}} \Longleftrightarrow f^{m_{ij}} (a_i f^{n_j} - a_j f^{n_i}) = 0
+            \end{equation}
+          Then, since these intersections are quasi-compact, it follows from above that there exists some $M_{ij}$ such that $f^{M_{ij}} (a_i f^{n_j} - a_j f^{n_i}) = 0$
+          on all of $U_i \cap U_j$. Let $M$ be the largest of all the $M_{ij}$. We then have $f^{M} (a_i f^{n_j} - a_j f^{n_i})$ for every pair $i$ and $j$. It follows that we just define
+          $a = a_i f^{M + n_1 + \cdots + \hat{n_i} + \cdots + n_K}$ for every $i$. Let $N = n_1 + \cdots + n_K$. Then, when we restrict to $U_i \cap X_f$, we have $a = f^{M + N} b$, for each $i$,
+          and we are done.
+          \item Given some $b \in \Gamma(X_f, \mathcal{O}_{X_f})$, we have that $f^n b$ is the restriction of some $a \in A$. Thus, we map $b$ to $\frac{a}{f^n}$ in $A_f$.
+            This is well-defined because if $f^m b$ is also a restriction of some $a' \in A$, we have
+            \begin{equation}
+              f^m a = f^{n + m} b = f^n a' \Longrightarrow \frac{a}{f^n} = \frac{a'}{f^m} \in A_f
+              \end{equation}
+            It is clear that this map is also a ring homomorphism. If $f^n b$ is the restriction of $0$, so $f^n b = 0$, then locally, where $b$ can be thought of as an element of $\mathcal{O}(D(f)) \simeq A_f$,
+            it follows that $b = 0$, so we have injectivity. Surjectivity follows from the fact that given some $\frac{a}{f^n}$, we can always choose $b$ to be of this form locally in $\mathcal{O}(D(f))$, such a $b$ will be mapped
+            to $\frac{a}{f^n}$. Thus, we have the desired isomorphism.
+    \end{enumerate}
+  \end{solution}
+
+\begin{solution}[Problem 2.2.18]
+Comparing properties of ring homomorphisms to the induce morphisms of schemes. Let's go!
+\begin{enumerate}
+  \item If $D(f)$ is empty if and only if every prime ideal of $A$ contains $(f)$ if and only if $f$ is in the intersection of all prime ideal of $A$, $\text{Rad}(0)$, if and only if $f^n = 0$ for some $n$.
+    \item 
+  \end{enumerate}
+  \end{solution}
+
+\subsection{Section 2.3}
+
+\section{Chapter 3}
+
+\appendix
+
+\section{Extra proofs}
+\label{appx:extra}
+
+\begin{remark}[Some details on localizations]
+  \label{rem:s0}
+  Let $R$ be a ring, let $S$ be a multiplicative set. Let $\rho : R \rightarrow S^{-1} R$ be the localization map taking $r$ to $\frac{r}{1} \in S^{-1} R$. If $\mathfrak{a}$ is a (prime) ideal in $S^{-1} R$, then
+  $\rho^{-1}(\mathfrak{a})$ is a (prime) ideal in $R$. We also define a map $\phi$ taking an ideal $\mathfrak{a}$ of $R$ to the ideal in $S^{-1} R$ generated by the set $\rho(\mathfrak{a})$. We will use the notation
+  $\phi(\mathfrak{a}) = S^{-1} \mathfrak{a}$. It is easy to see that every element of $S^{-1} \mathfrak{a}$ is of the form $\frac{r}{s}$, for some $r \in \mathfrak{a}$. Let us consider the relationship
+  between $\phi$ and the map $\rho^{-1}$ taking $\mathfrak{a}$ to $\rho^{-1}(\mathfrak{a})$. Our first claim is that $\mathfrak{a} = \phi(\rho^{-1}(\mathfrak{a}))$ for \emph{any} ideal $\mathfrak{a}$. To see this,
+  pick some $\frac{r}{s} \in \mathfrak{a} \subset S^{-1} R$. Note that $\rho(r) = \frac{r}{1} = \frac{s r}{s} \in \mathfrak{a}$, so $r \in \rho^{-1}(\mathfrak{a}) \subset R$ and $\frac{r}{1} \in \rho(\rho^{-1}(\mathfrak{a}))$.
+  This means that $\frac{r}{s}$ is
+  in the ideal in $S^{-1} R$ generated by all images of elements of $\rho^{-1}(\mathfrak{a})$ under $\rho$, so $\mathfrak{a} \subset \phi(\rho^{-1}(\mathfrak{a}))$. On the other hand, given some element of $\phi(\rho^{-1}(\mathfrak{a}))$,
+  it will be of the form
+  \begin{equation}
+    \frac{r_1}{s_1} \cdot \frac{q_1}{1} + \cdots + \frac{r_m}{s_m} \cdot \frac{q_m}{1} = \frac{r_1' q_1 + \cdots + r_m' q_m}{s_1 \cdots s_m}
+    \end{equation}
+  so any such element is of the form $\frac{r}{s}$ for some $r \in \rho^{-1}(\mathfrak{a})$. Thus, $\frac{r}{1} \in \mathfrak{a}$, so $\frac{r}{s} \in \mathfrak{a}$, which gives the reverse inclusion.
+
+  Thus, $(\phi \circ \rho^{-1})(\mathfrak{a}) = \mathfrak{a}$. However, it is \emph{not} the case that $(\rho^{-1} \circ \phi)(\mathfrak{a}) = \mathfrak{a}$. This only works if we restrict the $\phi$ to the collection
+  of prime ideals which do not intersect $S$, and $\rho^{-1}$ to the collection of prime ideals in $S^{-1} R$. Note that if $\mathfrak{p} \subset S^{-1} R$ is prime, then $\rho^{-1}(\mathfrak{p})$ will be prime
+  in $R$. Moreover, if $s \in \rho^{-1}(\mathfrak{p})$ for some $s \in S$, then $\frac{s}{1} \in \mathfrak{p}$, so $\frac{1}{1} \in \mathfrak{p}$, contradicting the fact that it must be proper. On the other hand,
+  if $\mathfrak{p}$ is a prime ideal in $R$ not intersecting $S$, then every element of $\phi(\mathfrak{p})$ is of the form
+  \begin{equation}
+    \frac{r_1}{s_1} \cdot \frac{p_1}{1} + \cdots + \frac{r_m}{s_m} \cdot \frac{p_m}{1} = \frac{p}{s}
+    \end{equation}
+  for $p \in \mathfrak{p}$, $s \in S$. Thus, if some $\frac{p}{s} \in \phi(\mathfrak{p})$ with $p \in \mathfrak{p}$, $s \in S$,
+  can be written as $\frac{p}{s} = \frac{p_1}{s_1} \cdot \frac{p_2}{s_2} = \frac{p_1 p_2}{s_1 s_2}$, then $q s_1 s_2 p =  qs p_1 p_2$ for some $q \in S$, so $qs p_1 p_2 \in \mathfrak{p}$. Since $S \cap \mathfrak{p} = \emptyset$
+  and $\mathfrak{p}$ is prime, $p_1 p_2 \in \mathfrak{p}$, so either $p_1$ or $p_2$ is. Then either $\frac{p_1}{s_1}$ or $\frac{p_2}{s_2}$ is in $\phi(\mathfrak{p})$.
+
+  Let us finally show that $(\rho^{-1} \circ \phi)(\mathfrak{p}) = \mathfrak{p}$ for such prime ideals. First note that given $p \in \mathfrak{p}$, then $\rho(p) = \frac{p}{1}$ is in $\phi(\mathfrak{p})$, so
+  $\mathfrak{p} \subset (\rho^{-1} \circ \phi)(\mathfrak{p})$. Note that we haven't yet used the fact that $\mathfrak{p}$ is prime: this inclusion holds for any ideal. However, we need this assumption for the reverse inclusion.
+  If $p \in (\rho^{-1} \circ \phi)(\mathfrak{p})$, then $\frac{p}{1} \in \phi(\mathfrak{p})$. Thus, it can be written as $\frac{q}{s}$ for some $q \in \mathfrak{p}$ and $s \in S$. Then we have
+  $t (sp - q) = 0$ for some $t \in S$, so $sp \in \mathfrak{p}$. Then, since $\mathfrak{p}$ is prime and does not contain any elements of $S$, $p \in \mathfrak{p}$, giving the reverse inclusion.
+  \end{remark}
+
+\noindent The above discussion gives us the following result:
+
+\begin{lemma}
+  \label{lem:s}
+  If $R$ is a ring, and $S$ is a multiplicative set, then the prime ideals of $S^{-1} R$ are in bijective correspondence with the prime ideals of $R$ which do not intersect $S$
+  \end{lemma}
+
+\noindent Let us continue our discussion of localizations.
+
+\begin{lemma}
+  \label{lem:s2}
+  If $S$ and $T$ are multiplicative sets in ring $R$ such that $S \subset T$, then $S^{-1} T$ is a multiplicative set and $T^{-1} R \simeq (S^{-1} T)^{-1} (S^{-1} R)$ as rings.
+  \end{lemma}
+
+\begin{proof}
+Define the map $\Phi : T^{-1} R \rightarrow (S^{-1} T)^{-1} (S^{-1} R)$ to be $\Phi(\frac{r}{t}) = \frac{r/1}{t/1}$. To show that this is well-defined, suppose $\frac{r'}{t'} = \frac{r}{t}$. Then
+$q (t r' - t' r) = 0$ for some $q \in T$. We want to show that $\frac{r'/1}{t'/1} = \frac{r/1}{t/1}$, which is true if and only if there is $\frac{x}{s} \in S^{-1} T$ such that
+
+\begin{equation}
+  \frac{x}{s} \left( \frac{t' r}{1} - \frac{t r'}{1} \right) = \frac{x (t' r - t r')}{s} = 0
+  \end{equation}
+so we just let $\frac{x}{s} = \frac{q}{1}$, and we have what we want. The fact that this is a homomorphism is easy. Given some $\frac{r/s_1}{t/s_2}$, note that $\Phi(\frac{s_2 r}{s_1 t}) = \frac{s_2 r / 1}{s_1 t / 1}$.
+We claim this is equal to the first expression. Indeed,
+\begin{equation}
+  \frac{s_1 t}{1} \frac{r}{s_1} - \frac{s_2 r}{1} \frac{t}{s_2} = \frac{r}{t} - \frac{r}{t} = 0
+  \end{equation}
+so this is the case, and we have surjectivity. Finally, suppose $\Phi(\frac{r}{t}) = \frac{r/1}{t/1} = 0$. Then $\frac{x}{s} \frac{r}{1} = \frac{xr}{s} = 0$ for some $\frac{x}{s} \in S^{-1} T$. Then $x' r = 0$ for some $x' \in T$.
+It follows that $\frac{r}{t} = \frac{x' r}{x' t} = 0$ in $T^{-1} R$, so we have injectivity. Thus, $\Phi$ is an isomorphism.
+  \end{proof}
+
+\begin{corollary}
+  \label{cor:s3}
+  It follows that if $A$ is a ring, and $\mathfrak{p}$ is a prime ideal which does not contain $f$, so $S = \{1, f, f^2, \dots\}$ is contained in $T = A - \mathfrak{p}$, then
+  \begin{equation}
+    A_{\mathfrak{p}} = T^{-1} A \simeq (S^{-1} T)^{-1} (S^{-1} A) = (S^{-1} (A - \mathfrak{p}))^{-1} (S^{-1} A) = (A_f - S^{-1} \mathfrak{p})^{-1} A_f = (A_f)_{S^{-1} \mathfrak{p}}
+    \end{equation}
+  This will be useful in some of the problems.
+  \end{corollary}
+
+\noindent Here are few facts about sheaves:
+
+\begin{prop}
+  If $f : X \rightarrow Y$ is a homeomorphism and $\mathcal{O}_X$ is a sheaf on $X$, then $(f_{*} \mathcal{O}_X)_{f(x)}$, the stalk of the pushforward sheaf, is
+  isomorphic to $\mathcal{O}_{X, x}$.
+  \end{prop}
+
+\begin{proof}
+  Note that the elements of $\mathcal{O}_{X, x}$ are germs $[U, s]$ where $s \in \mathcal{O}_X(U)$ and $x \in U$. The elements of $(f_{*} \mathcal{O}_X)_{f(x)}$ are germs $[V, r]$
+  with $r \in \mathcal{O}_X(f^{-1}(V))$ and $f(x) \in V$. Thus, we have map $f^{\#} : \mathcal{O}_{X, x} \rightarrow (f_{*} \mathcal{O}_X)_{f(x)}$ with $f^{\#}[U, s] = [f(U), s]$.
+  This is obviously a ring homomorphism, and it has an inverse.
+  \end{proof}
+
+\noindent I want to fill in some of the details in Hartshorne's proof of Proposition 2.3.
+
+\begin{claim}
+  If $\varphi : A \rightarrow B$ is a homomorphism of rings, then it induces a natural morphism of locally ringed spaces $(f, f^{\#}) : (\text{Spec}(B), \mathcal{O}_{\text{Spec}(B)}) \rightarrow (\text{Spec}(A), \mathcal{O}_{\text{Spec}(A)})$.
+  \end{claim}
+
+\begin{proof}
+  We can define $f : \text{Spec}(B) \rightarrow \text{Spec}(A)$ as $f(\mathfrak{p}) = \varphi^{-1}(\mathfrak{p})$. This is clearly a continuous map, as
+  \begin{equation}
+    f^{-1}(V(\mathfrak{a})) = \{ \mathfrak{p} \ | \ \varphi^{-1}(\mathfrak{p}) \supset \mathfrak{a}\} = \{ \mathfrak{p} \ | \ \mathfrak{p} \supset \varphi(\mathfrak{a})\}
+    \end{equation}
+  and $\mathfrak{p}$ contains $\varphi(\mathfrak{a})$ if and only if it contains the ideal generated by $\varphi(\mathfrak{a})$, so this is just $V((\varphi(\mathfrak{a})))$.
+  To define $f^{\#} : \mathcal{O}_{\text{Spec}(A)} \rightarrow f_{*} \mathcal{O}_{\text{Spec}(B)}$, note that
+  we can define ``localized'' morphisms $\varphi_{\mathfrak{p}} : A_{f(\mathfrak{p})} \rightarrow B_{\mathfrak{p}}$ for prime $\mathfrak{p} \subset B$. We can then define
+  $\varphi_U : \bigsqcup_{f(\mathfrak{p}) \in f(U)} A_{f(\mathfrak{p})} \rightarrow \bigsqcup_{\mathfrak{p} \in U} B_{\mathfrak{p}}$ by extending the $\varphi_{\mathfrak{p}}$
+  is the obvious way. This allows us to define
+  \begin{equation}
+    f^{\#}(U)(s) = \varphi_U \circ s \circ f
+    \end{equation}
+  This collection of maps clearly behaves will with respect to restrictions, so it is a morphism of sheaves. The last thing we need to show is that the morphisms on stalks
+  are local morphisms. We know that $\mathcal{O}_{\text{Spec}(A), f(\mathfrak{p})} \simeq A_{f(\mathfrak{p})}$, via the evaluation map (same with $\mathcal{O}_{\text{Spec}(B), \mathfrak{p}} \simeq B_{\mathfrak{p}}$.
+  Therefore, the map $f^{\#}_{\mathfrak{p}} : \mathcal{O}_{\text{Spec}(A), f(\mathfrak{p})} \rightarrow \mathcal{O}_{\text{Spec}(B), \mathfrak{p}}$ immediately reduces to $\varphi_{\mathfrak{p}}$, which is a local
+  homomorphism as it is the localization of a ring morphism.
+  \end{proof}
+
+\begin{claim}
+  $X = \text{Spec}(A)$ is irreducible if and only if $\text{Rad}(0) \subset A$ is prime.
+  \end{claim}
+\begin{proof}
+  Clearly, if $\mathfrak{p}$ is prime, then if
+  $V(\mathfrak{p}) = V(\mathfrak{a}) \cup V(\mathfrak{b}) = V(\mathfrak{a} \mathfrak{b})$, we must have
+  $\mathfrak{a} \mathfrak{b} \subset \mathfrak{p}$. One of the ideals must be in $\mathfrak{p}$, so we have
+  $V(\mathfrak{p}) = V(\mathfrak{a})$ or $V(\mathfrak{b})$, which means it is irreducible. Conversely, if $V(\mathfrak{p})$
+  is irreducible, suppose there is some $ab \in \mathfrak{p}$ where neither $a$ nor $b$ is in $\mathfrak{p}$. Then we have
+  $(\mathfrak{p} + a) \cdot (\mathfrak{p} + b) = \mathfrak{p}$, so $V(\mathfrak{p}) = V(\mathfrak{p} + a) \cup V(\mathfrak{p} + b)$, a contradiction. It follows that $X = \text{Spec}(A) = V(\text{Rad}(0))$ is irreducible if and only if $\text{Rad}(0)$
+  is prime.
+  \end{proof}
+
+\begin{claim}
+$X$ is reduced if and only if $\text{Rad}(0) = 0$.
+  \end{claim}
+\begin{proof}
+Obviously, if all the stalks $\mathcal{O}_{\mathfrak{p}} \simeq A_{\mathfrak{p}}$ contain no nilpotent elements, then
+neither will $A$, so $\text{Rad}(0) = 0$. On the other hand, if $\text{Rad}(0) = 0$, suppose some $s^{-1} a \in A_{\mathfrak{p}}$ were nilpotent, so $\frac{a^n}{s^n} = 0$. Then there is $q \in A - \mathfrak{p}$ such that $q a^n = 0$. Then, $(qa)^n = 0$,
+so $qa \in \text{Rad}(0)$, so $qa = 0$. Then $\frac{a}{s} = \frac{qa}{qs} = 0$.
+  \end{proof}
+
+\begin{claim}
+  $X$ is integral if and only if $A$ is an integral domain.
+  \end{claim}
+\begin{proof}
+  Obviously, if each $\mathcal{O}_X(U)$ is an integral domain, then $\mathcal{O}_X(X) \simeq A$ is. Conversely, if $A$
+  is an integral domain, suppose $\mathfrak{p}$ is a prime ideal, and look at $A_{\mathfrak{p}}$. Suppose we have $\frac{a}{s}$ and $\frac{b}{r}$ such that $\frac{ab}{rs} = 0$. Then there exists $q \in A$ (with $q \neq 0$) with $q a b = 0$. Thus,
+  $a = 0$ or $b = 0$, as $A$ is an integral domain. It follows that if $a, b \in \mathcal{O}_X(U)$ are sections
+  where $ab = 0$, then at each point, we have $a(\mathfrak{p}) b(\mathfrak{p}) = 0$ implying $a(\mathfrak{p}) = 0$
+  or $b(\mathfrak{p}) = 0$. We know that given $\mathfrak{p} \in U$, we will then have (WLOG) $a(\mathfrak{q}) = \frac{p}{q} = 0$ for $\mathfrak{q} \in V$ around $\mathfrak{p}$. In particular,
+  $q \notin \mathfrak{q}$ in $V$. It follows that for each $\mathfrak{q} \in V$, we must have $s(\mathfrak{q}) p = 0$ for some non-zero $s(\mathfrak{q}) \in A - \mathfrak{q}$. Except, since $A$ is an integral domain,
+  then $p = 0$. Therefore, $a(\mathfrak{p}) = 0$ for all $\mathfrak{p}$ in some open subset of $U$. Since $A$ is an integral domain, $(0)$ is prime, and is contained in every open set. Thus, any other open set on which
+  $a$ is constant must be $0$, as the intersection of this open set with $V$ is non-trivial. Hence, $a = 0$, and $\mathcal{O}_X(U)$ is an integral domain.
+  \end{proof}
+
+\section{A few solutions (to more basic problems) from Vakil's book}
+
+\begin{solution}[Problem 1.2.G]
+  Define $\phi : \mathbb{Z}/(10) \otimes \mathbb{Z}/(12) \rightarrow \mathbb{Z}/(2)$ as $\phi([m] \otimes [n]) = [mn]$. This is well-defined because $mn \sim (m + 10a) (n + 12b)$ in $\mathbb{Z}/(2)$.
+  It is clearly a well-defined homomorphism, and is clearly surjective. To check injectivity, note that if $[mn] = 0$, then either $m$ or $n$ is even. If $m = 2k$, and by Bezout we know that there
+  exist $x$ and $y$ with $10x + 12y = (10, 12) = 2$, then
+  \begin{equation}
+    [m] \otimes [n] = [2k] \otimes [n] = ([10kx] \otimes [n]) + ([ky] \otimes [12n]) = 0
+    \end{equation}
+  Similar logic applies when $n$ is even, so $\phi$ is an isomorphism.
+  \end{solution}
+
+\section{Commutative algebra stuff}
+
+\end{document}

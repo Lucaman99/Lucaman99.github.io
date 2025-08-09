@@ -1,0 +1,127 @@
+#+TITLE:Fibre integrals
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally published: May 5th, 2025/
+
+---------
+
+Today, I want to briefly go over the formal definition of a fibre integral, a very useful construction which is sometimes invoked a bit flippantly in some differential topology proofs (Bott and Tu, I'm looking at you).
+The idea is that, given a differential form on the entire space of a fibre bundle, one should be able to "integrate out" the vertical part of the form along the fibres, yielding a form on the base space.
+
+* Basics
+
+Let $\pi : E \rightarrow B$ be a smooth fibre bundle, let $\alpha$ be a $k$ -form
+on $E$. Of course, $\pi$ is locally a projection to base, and is thus a submersion. It follows that the fibres $\pi^{-1}(b)$ will be $\dim(E) - \dim(B) = e - b = n$ dimensional submanifolds for all $b \in B$.
+Assume that they are compact oriented, and assume that $k > n$.
+
+*Claim.* Let $\pi : E \rightarrow B$ be a smooth submersion, let $X$ be a smooth vector field on $B$. Then there exists a smooth vector field $\widetilde{X}$ on $E$ such that $\pi_{*, p}(\widetilde{X}_p) = X_{\pi(p)}$
+for all $p \in E$.
+
+/Proof./  Around $p \in E$, pick coordinates $(U, \varphi) = (U, x^1, \dots, x^m)$ and $(V, \psi) = (V, y^1, \dots, y^m)$ so that $\psi \circ \pi \circ \varphi^{-1}$
+is a projection. Write $X$ in $V$ as $\sum_{j = 1}^{m} X^j \frac{d}{dy^j}$ and define $\widetilde{X}|_{U}$ as $\sum_{j = 1}^{m} X^j \frac{d}{d x^j}$. We do this for some open cover $U_{\alpha}$
+and then combine via a partition of unity subordinate to the cover $\varphi_{\alpha}$ to obtain $\widetilde{X}$. $\blacksquare$
+
+From here, let $v_1, \dots, v_{k - n}$ be tangent vectors at some $b \in B$. We can extend them to vector fields and lift via the above claim to obtain vector fields in $E$, $\widetilde{v_j}$. Let $\beta$ be the
+$n$ -form obtained from contracting $\alpha$ with the lifted vector fields. Restrict $\beta$ to submanifold $\pi^{-1}(b)$, on which it is a top-form on an oriented compact manifold. We then define the map
+$\pi_{*} \alpha : T_b B \times \cdots \times T_b B \rightarrow \mathbb{R}$ as
+
+\begin{equation}
+(\pi_{*} \alpha)_b(v_1, \dots, v_{k - n}) = \int_{\pi^{-1}(b)} \iota_b^{*} \beta
+\end{equation}
+
+where $\iota_b : \pi^{-1}(b) \rightarrow E$ is inclusion. Of course, this map is alternating multilinear. We still must show that this map is well-defined independent of our choice of lifts, and that it is smooth in $b$.
+To do so, we pass to coordinates. We have a trivialization of the fibre bundle which acts as a slice/submanifold chart for the fibres. In particular, we have open neighbourhood of $U$
+and a diffeomorphism $\Phi : \pi^{-1}(U) \rightarrow U \times F$ such that $\pi = \text{proj} \circ \Phi$. Assume without loss of generality that $(U, \varphi) = (U, x^1, \dots, x^b)$ is also a coordinate chart around $b$.
+Note that the entire fibre $\pi^{-1}(b)$ is contained in $\pi^{-1}(U)$, let $(V, \psi) = (V, y^1, \dots, y^n)$ be coordinates around $f \in F$ with $\Phi(z) = (b, f)$ for some $z \in \pi^{-1}(b)$. Then immediately
+$W = \Phi^{-1}(U \times V)$ and
+
+\begin{equation}
+(\varphi \times \psi) \circ \Phi = (x^1 \circ \Phi, \dots, x^b \circ \Phi, y^1 \circ \Phi, \dots, y^n \circ \Phi) = (\widetilde{x}^1, \dots, \widetilde{x}^b, \widetilde{y}^1, \dots, \widetilde{y}^n)
+\end{equation}
+
+is a coordinate chart around $z$. We write $\widetilde{v}_j = X^q_j \frac{d}{d\widetilde{x}^q} + Y^r_j \frac{d}{d\widetilde{y}^r}$ in $W$ as our lifted vector fields. If $v_j = 0$ for some $j$, then clearly
+$X_j^q(p) = 0$ for any $p \in \pi^{-1}(b)$, for all $q$. Thus,
+
+\begin{equation}
+\beta_p = \alpha_p \left( \cdots, \widetilde{v_{1, p}}, \dots, \widetilde{v_{k - n, p}} \right) = \alpha_p \left( \cdots,  \widetilde{v_{1, p}}, \dots, Y^{r}_{j}(p) \frac{d}{d\widetilde{y}^{r}}, \dots, \widetilde{v_{k - n, p}} \right)
+\end{equation}
+
+If we then take any $n$ tangent vectors at $p \in \pi^{-1}(b)$, and push forward by inclusion into $E$, each will be a linear combination of the tangent vectors $\frac{d}{d\widetilde{y}^j}$ at $p$,
+which when plugged into the above expression,
+will always yield $0$, as we will always have a repeated index (particularly, there are $n$ different coordinates $\widetilde{y}^j$ and $n + 1$ slots in the form where we are plugging in tangent vectors of the
+form $\frac{d}{d\widetilde{y}^j}$). Thus, $\beta_p = 0$ for all $p \in \pi^{-1}(b)$, in this case. This immediately proves that our map is well-defined, independent
+of the chosen extension and lift of $v_1, \dots, v_{k - n}$, via multilinearity of the differential form.
+
+Finally, let us prove smoothness. The chart
+$(W, (\varphi \times \psi) \circ \Phi)$ around $z$ gives rise to the chart around $z$ for $\pi^{-1}(b)$, $(W \cap \pi^{-1}(b), \theta) = (W \cap \pi^{-1}(b), \widetilde{y}^1 \circ \iota_b, \dots, \widetilde{y}^n \circ \iota_b)$. We can
+write $\beta$, a smooth form on $E$, as $\beta = \sum_{I, J} C_{I, J} d\widetilde{x}^I \wedge d\widetilde{y}^J$. It then follows that
+
+\begin{equation}
+(\iota_b^{*} \beta)_{\Phi^{-1}(b, f)} = \sum_{I, J} (C_{I, J} \circ \Phi^{-1})(b, f) \iota_b^{*} d\widetilde{x}^I \wedge \iota_b^{*} d\widetilde{y}^J
+= (C \circ \Phi^{-1})(b, f) d(\widetilde{y}^1 \circ \iota_b) \wedge \cdots \wedge d(\widetilde{y}^n \circ \iota_b)
+\end{equation}
+
+where all terms with non-trivial $d\widetilde{x}^I$ are eliminated when pulled-back by $\iota_b$, as the functions $\widetilde{x}^j \circ \iota_b$ are constant. We have the diffeomorphism
+$\Phi : W \rightarrow \Phi(W) \subset U \times F$. Inside $U \times F$, we have submanifold $\{b\} \times V$ and the smooth embedding $\Phi \circ \iota_b$ from submanifold $W \cap \pi^{-1}(b)$
+to $\{b\} \times V$. These manifolds are of the same dimension, so this is actually a diffeomorphism, and as a result, we have a diffeomorphism of $V$ with $W \cap \pi^{-1}(b)$, where we take
+$f$ to $\Phi^{-1}(b, f)$. Call this diffeomorphism $\Psi$. We have
+
+\begin{equation}
+\int_{\pi^{-1}(b) \cap W} \iota_b^{*} \beta = \int_{V} (\Psi)^{*} \iota_b^{*} \beta = \int_F (C \circ \Phi^{-1})(b, \cdot) dy^1 \wedge \cdots \wedge dy^n
+\end{equation}
+
+The right hand side will clearly be smooth in $b$, as in coordinates, we can always differentiate under the integral sign. The integral over all of $\pi^{-1}(b)$ is
+a sum over terms of the above form, glued together via a partition of unity. Thus, such a sum is also smooth in $b$. We have therefore shown that $\pi_{*} \alpha$ is a $k - n$ form on the base space.
+
+------------
+
+*Remark.* It is pretty easy to see that if forms $\alpha$ and $\omega$ on $E$ agree inside $\pi^{-1}(U)$, then their fibre integrals will agree on $U$. This is simply due to the fact that
+for $b \in U$, $\pi^{-1}(b) \subset \pi^{-1}(U)$, which is the region over which we integrate.
+
+------------
+
+* Applications
+
+Let $M$ be a smooth manifold, consider the trivial fibre bundle $\pi : [0, 1] \times M \rightarrow M$. We have the maps $j_s : M \rightarrow [0, 1] \times M$ given by $j_s(p) = (s, p)$ for $s = 0, 1$.
+If $M$ is $n$ -dimensional, then $[0, 1] \times M$ is $(n + 1)$ -dimensional. Given some $(s, p) \in [0, 1] \times M$, we have coordinates $(U, \varphi) = (U, x^1, \dots, x^n)$ around $p$ in $M$, and global
+coordinate $t$ for $[0, 1]$, which we combine to form a chart $([0, 1] \times U, t, x^1 \circ \pi, \dots, x^n \circ \pi)$ around $(s, p)$. It follows that if $\alpha$ is a $(k + 1)$ -form on $[0, 1] \times M$,
+then inside $[0, 1] \times U$, it can be written as
+
+\begin{equation}
+\alpha = \sum_{I} f_I(s, p) dt \wedge \pi^{*}( dx^{i_1} \wedge \cdots \wedge dx^{i_k}) + \sum_{J} g_J(s, p) \pi^{*}(dx^{j_1} \wedge \cdots \wedge dx^{j_{k + 1}})
+\end{equation}
+
+From here, it follows fairly immediately from the definition, and the above remark explaining that the fibre integral is "local", that for some $p \in U$,
+
+\begin{equation}
+(\pi_{*} \alpha)_p = \sum_{I} \left( \int_{[0, 1]} f_I(s, p) \ ds \right) dx^{i_1} \wedge \cdots \wedge dx^{i_k}
+\end{equation}
+
+Clearly, $d\alpha$ is given by
+
+\begin{align}
+d\alpha  = -\sum_{I, i} \frac{d f_I}{dx^i}(s, p) dt \wedge \pi^{*}( dx^i \wedge dx^I) + \sum_{J} \frac{d g_J}{dt}(s, p) dt \wedge \pi^{*} dx^J
+  +\sum_{J, j} \frac{d g_J}{dx^j}(s, p) \pi^{*}(dx^j \wedge dx^J)
+\end{align}
+
+and, in addition, we have via differentiating under the integral sign,
+\begin{equation}
+d \pi_{*} \alpha = \sum_{I, i} \left( \int_{[0, 1]} \frac{d f_I}{dx^i}(s, p) \ ds \right) dx^i \wedge dx^I
+\end{equation}
+so it is easy to see that
+\begin{equation}
+d \pi_{*} \alpha + \pi_{*} d\alpha = \sum_{J} \left( \int_{[0, 1]} \frac{d g_J}{ds}(s, p) \ ds \right) dx^J = \sum_{J} (g_J(1, p) - g_J(0, p)) dx^J = j_1^{*} \alpha - j_0^{*} \alpha
+\end{equation}
+
+This holds in each coordinate chart, and thus holds everywhere. It follows immediately that $\pi_{*}$ is a chain homotopy of the maps $j_0^{*}$ and $j_1^{*}$. As a result,
+$j_0^{*} = j_1^{*}$ as maps on cohomology, $H^k([0, 1] \times M) \rightarrow H^k(M)$. Suppose $f : M \rightarrow N$ is a smooth homotopy equivalence, so there
+is $g : N \rightarrow M$ where $f \circ g \simeq \text{id}_N$ and $g \circ f \simeq \text{id}_M$. If we let $F : [0, 1] \times N \rightarrow N$ be a homotopy between $f \circ g$ and $\text{id}_N$,
+we have $F \circ j_0 = f \circ g$ and $F \circ j_1 = \text{id}_N$, and from above,
+
+\begin{equation}
+g^{*} \circ f^{*} = (f \circ g)^{*} = (F \circ j_0)^{*} = (F \circ j_1)^{*} = \text{id}_N^{*}
+\end{equation}
+
+Similarly, $f^{*} \circ g^{*} = \text{id}_M^{*}$. Thus, $f^{*} : H^k(N) \rightarrow H^k(M)$ is an isomorphism of cohomology groups, and we have the classic result of homotopy invariance of cohomology.
+This immediately implies the Poincare lemma, for example.

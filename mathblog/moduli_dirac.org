@@ -1,0 +1,146 @@
+#+TITLE:The Lie groupoid/Lie algebroid correspondence
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted:/
+
+------------------
+
+* Introduction
+
+The main goal of this blog post is to work through the Lie groupoid/Lie algebroid correspondence, which is a generalization of the well-known Lie group/Lie algebra correspondence.
+I am working through the lecture notes of Meinreneken, and will be trying to provide solutions to his exercises as I read.
+
+* Lie groupoids
+
+** Notes
+
+*Definition 2.1.* A Lie groupoid is a Lie group $\mathcal{G}$ such that the set of morphisms $\text{Mor}(\mathcal{G}) = M$ and the set of objects $\text{Obj}(\mathcal{G}) = S$ have smooth manifold structure,
+and the inclusion $\iota : S \rightarrow M$ sending an object to its corresponding identity arrow is a smooth embedding, making the set of identity arrows a smooth submanifold of $M$. Additionally, we require
+that the source and target maps $\texttt{s}, \texttt{t} : M \rightarrow S$ are surjective submersions, and that the composition map on arrows is smooth, where the domain of this map, the set of composable arrows,
+inherits a natural smooth submanifold structure from $M \times M$ (this is proved in an exercise).
+
+*Definition 2.2.* As one might expect, a morphism of Lie groupoids $\mathcal{G}$ and $\mathcal{F}$ is a functor $F : \mathcal{G} \rightarrow \mathcal{H}$ which is also smooth with respect to the smooth structures
+on the groupoids.
+
+
+
+** Solutions
+
+*Solution 1.1.* We can actually prove a stronger result: given maps $f : A \rightarrow L$ and $g : B \rightarrow L$ which are transverse at every point $p = f(a) = g(b)$ (that is, $T_p L = \text{Im}(f_{*, a}) + \text{Im}(g_{*, b})$,
+then the fibre product $A {}_f \times_g B$ is a smooth submanifold of $A \times B$. To do this, let us first prove that if $A, B \subset L$ are embedded submanifolds such that the tangent spaces are transverse at each $p \in A \cap B$, then
+the intersection $A \cap B$ is an embedded submanifold. Let $p \in A \cap B$, let $(U, \varphi) = (U, x^i)$ be a slice chart for $A$ around $p$ and let $(V, \psi) = (V, y^i)$ be a slice chart for $B$ around $p$, so that $x^{a + 1} = \cdots = x^{\ell} = 0$
+on $A$ and $y^{b + 1} = \cdots = y^{\ell} = 0$ on $B$. Define $\Phi : U \cap V \rightarrow \mathbb{R}^{2\ell - a - b}$ as
+
+\begin{equation}
+\Phi(q) = (x^{a + 1}(q), \dots, x^{\ell}(q), y^{b + 1}(q), \dots, y^{\ell}(q)) = (f(q), g(q))
+\end{equation}
+
+Note that $A \cap B \cap U \cap V = \Phi^{-1}(0, \dots, 0)$. If we can show that $\Phi$ is a submersion, then this inverse image will be a $(a + b) - \ell$ dimensional manifold. Note that
+$\text{Ker}(\Phi_{*, p}) = \text{Ker}(f_{*, p}) \cap \text{Ker}(g_{*, p}) = T_p A \cap T_p B$. Thus,
+
+\begin{equation}
+\dim \text{Im}(\Phi_{*, p}) = \ell - \dim \text{Ker}(\Phi_{*, p}) = \ell - \dim (T_p A \cap T_p B) = \ell + \dim(T_p A + T_p B) - \dim(T_p A) - \dim(T_p B) = 2\ell - a - b
+\end{equation}
+
+which means that the desired map is surjective, so $\Phi^{-1}(0)$ is a submanifold of dimension $a + b - \ell$. From here, let $\Gamma_f \subset A \times L$ and $\Gamma_g \subset B \times L$
+denotes the graphs of $f$ and $g$, which are $a$ and $b$ dimensional submanifolds, respectively. Then $\Gamma_f \times \Gamma_g \subset A \times L \times B \times L$ is also a $(a + b)$ -dimensional
+submanifold. Let $\Delta \subset A \times L \times B \times L$ be the $(a + b + \ell)$ -dimensional submanifold consisting of all points $(a, s, b, s)$. Then
+
+\begin{equation}
+M = (\Gamma_f \times \Gamma_g) \cap \Delta = \{ (a, s, b, s) \ | \ f(a) = g(b) = s\}
+\end{equation}
+
+We will show that this intersection is transverse, impyling that the above intersection is a manifold. To demonstrate transversality, note that a generic
+element of $T_{p} (\Gamma_f \times \Gamma_g)$ is of the form $(v, f_{*} v, w, g_{*} w)$, as $\Gamma_f$ is the image of the smooth embedding $x \mapsto (x, f(x))$ (same goes for $\Gamma_g$).
+In addition, a generic element of $\Delta$ is of the form $(j, k, i, k)$. Note that if we are given $(0, x, 0, y)$, we have $x = f_{*} x_1 + g_{*} x_2$ and $y = f_{*} y_1 + g_{*} y_2$, so
+
+\begin{equation}
+(0, x, 0, y) - (x_1, f_{*} x_1, y_2, g_{*} y_2) = (-x_1, g_{*} x_2, -y_2, f_{*} y_1)
+\end{equation}
+
+and
+
+\begin{equation}
+(-x_1, g_{*} x_2, -y_2, f_{*} y_1) - (0, g_{*} x_2 + f_{*} y_1, 0, g_{*} x_2 + f_{*} y_1) = (-x_1, -f_{*} y_1, 0, -y_2, -g_{*} x_2) \in T_p (\Gamma_f \times \Gamma_g)
+\end{equation}
+
+so tracing back through the equalities, any $(0, x, 0, y)$ is in $T_p (\Gamma_f \times \Gamma_g) + T_p \Delta$. It follows immediately that any tangent vector is in this sum.
+Thus, the intersection $M$ is a manifold of dimension $a + b + (a + b + \ell) - (a + b + 2\ell) = a + b - \ell$. From here, let $\pi : M \rightarrow A \times B$ be the projection.
+This is clearly a topological embedding. To show that $\pi_{*}$ is injective, note that the elements of $T_p M$ are of the form $(v, f_{*} v, w, g_{*} w)$ where $f_{*} v = g_{*} w$. If a
+tangent vector of this form is killed by $\pi_{*}$, then $v = w = 0$, so $\pi_{*}$ is injective.
+
+Thus, $A {}_f \times_g B$ is the image under a smooth embedding of a manifold, and is thus itself a manifold of dimension of $a + b - \ell$.
+
+Going back to the original problem statement, it is clear that if
+
+* Fibre product
+
+This is a construction I learned about last year, which I think is important to remember. The proofs involved are really straightforward.
+
+given maps $f : A \rightarrow L$ and $g : B \rightarrow L$ which are transverse at every point $p = f(a) = g(b)$ (that is, $T_p L = \text{Im}(f_{*, a}) + \text{Im}(g_{*, b})$,
+then the fibre product
+
+\begin{equation}
+A {}_f \times_g B = \{ (a, b) \ | \ f(a) = g(b) \} \subset A \times B
+\end{equation}
+
+is a smooth submanifold of $A \times B$. To do this, let us first prove that if $A, B \subset L$ are embedded submanifolds such that the tangent spaces are transverse at each $p \in A \cap B$, then
+the intersection $A \cap B$ is an embedded submanifold. Let $p \in A \cap B$, let $(U, \varphi) = (U, x^i)$ be a slice chart for $A$ around $p$ and let $(V, \psi) = (V, y^i)$ be a slice chart for $B$ around $p$, so that $x^{a + 1} = \cdots = x^{\ell} = 0$
+on $A$ and $y^{b + 1} = \cdots = y^{\ell} = 0$ on $B$. Define $\Phi : U \cap V \rightarrow \mathbb{R}^{2\ell - a - b}$ as
+
+\begin{equation}
+\Phi(q) = (x^{a + 1}(q), \dots, x^{\ell}(q), y^{b + 1}(q), \dots, y^{\ell}(q)) = (f(q), g(q))
+\end{equation}
+
+Note that $A \cap B \cap U \cap V = \Phi^{-1}(0, \dots, 0)$. If we can show that $\Phi$ is a submersion, then this inverse image will be a $(a + b) - \ell$ dimensional manifold. Note that
+$\text{Ker}(\Phi_{*, p}) = \text{Ker}(f_{*, p}) \cap \text{Ker}(g_{*, p}) = T_p A \cap T_p B$. Thus,
+
+\begin{equation}
+\dim \text{Im}(\Phi_{*, p}) = \ell - \dim \text{Ker}(\Phi_{*, p}) = \ell - \dim (T_p A \cap T_p B) = \ell + \dim(T_p A + T_p B) - \dim(T_p A) - \dim(T_p B) = 2\ell - a - b
+\end{equation}
+
+which means that the desired map is surjective, so $\Phi^{-1}(0)$ is a submanifold of dimension $a + b - \ell$. From here, let $\Gamma_f \subset A \times L$ and $\Gamma_g \subset B \times L$
+denotes the graphs of $f$ and $g$, which are $a$ and $b$ dimensional submanifolds, respectively. Then $\Gamma_f \times \Gamma_g \subset A \times L \times B \times L$ is also a $(a + b)$ -dimensional
+submanifold. Let $\Delta \subset A \times L \times B \times L$ be the $(a + b + \ell)$ -dimensional submanifold consisting of all points $(a, s, b, s)$. Then
+
+\begin{equation}
+M = (\Gamma_f \times \Gamma_g) \cap \Delta = \{ (a, s, b, s) \ | \ f(a) = g(b) = s\}
+\end{equation}
+
+We will show that this intersection is transverse, impyling that the above intersection is a manifold. To demonstrate transversality, note that a generic
+element of $T_{p} (\Gamma_f \times \Gamma_g)$ is of the form $(v, f_{*} v, w, g_{*} w)$, as $\Gamma_f$ is the image of the smooth embedding $x \mapsto (x, f(x))$ (same goes for $\Gamma_g$).
+In addition, a generic element of $\Delta$ is of the form $(j, k, i, k)$. Note that if we are given $(0, x, 0, y)$, we have $x = f_{*} x_1 + g_{*} x_2$ and $y = f_{*} y_1 + g_{*} y_2$, so
+
+\begin{equation}
+(0, x, 0, y) - (x_1, f_{*} x_1, y_2, g_{*} y_2) = (-x_1, g_{*} x_2, -y_2, f_{*} y_1)
+\end{equation}
+
+and
+
+\begin{equation}
+(-x_1, g_{*} x_2, -y_2, f_{*} y_1) - (0, g_{*} x_2 + f_{*} y_1, 0, g_{*} x_2 + f_{*} y_1) = (-x_1, -f_{*} y_1, 0, -y_2, -g_{*} x_2) \in T_p (\Gamma_f \times \Gamma_g)
+\end{equation}
+
+so tracing back through the equalities, any $(0, x, 0, y)$ is in $T_p (\Gamma_f \times \Gamma_g) + T_p \Delta$. It follows immediately that any tangent vector is in this sum.
+Thus, the intersection $M$ is a manifold of dimension $a + b + (a + b + \ell) - (a + b + 2\ell) = a + b - \ell$. From here, let $\pi : M \rightarrow A \times B$ be the projection.
+This is clearly a topological embedding. To show that $\pi_{*}$ is injective, note that the elements of $T_p M$ are of the form $(v, f_{*} v, w, g_{*} w)$ where $f_{*} v = g_{*} w$. If a
+tangent vector of this form is killed by $\pi_{*}$, then $v = w = 0$, so $\pi_{*}$ is injective.
+
+Thus, $A {}_f \times_g B$ is the image under a smooth embedding of a manifold, and is thus itself a manifold of dimension of $a + b - \ell$.
+
+* Covering spaces
+
+In this section, I want to prove the classification theorem for covering spaces. Recall the main theorem characterizing the "obstruction" to lifting a map into some topological space
+to a cover:
+
+*Theorem 3.1.* Suppose $p : E \rightarrow B$ is a cover, $f : X \rightarrow B$ is continuous, and we choose $x_0 \in X$, $b_0 = f(x_0) \in B$, and $e_0$ such that $p(e_0) = b_0$. Then there exists a unique lift
+$g : X \rightarrow E$ (i.e. $p \circ g = f$) if and only if $f_{*}(\pi_1(X, x_0)) \subset p_{*}(\pi_1(E, e_0))$.
+
+/Proof./
+
+* Foliations and foliation groupoids
+
+
+

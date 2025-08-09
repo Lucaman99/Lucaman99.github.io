@@ -1,0 +1,140 @@
+#+TITLE:Introduction to derived functors and derived categories
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted:/
+
+-------------
+
+* Introduction
+
+The goal of this post is to explain the general construction of derived functors and derived categories, then use these ideas to introduce the general
+notion of sheaf cohomology and hypercohomology. I might also talk a bit about Hochschild homology/cohomology (which has a very nice explanation via derived functors).
+
+* Category theory basics
+
+In this section, I'll go over a few basic ideas in category theory.
+
+*Definition 2.1* (Initial and final objects). Let $\mathcal{C}$ be a category, an object $I$ in $\mathcal{C}$ is said to be initial if for any other object $X$,
+there is a unique morphism $I \to X$. An object $T$ is terminal if for any $X$, there is a unique morphism $X \to T$.
+An object is said to be a zero object (denoted $0$) if it is both initial and terminal.
+
+*Remark 2.1.* It is easy to see that initial and final objects (if they exists) are unique up to unique isomorphism.
+
+*Definition 2.2* (Comma category). Let $F : \mathcal{C} \rightarrow \mathcal{D}$ be a functor, let $X$ be an object of $D$. The comma category $(X \downarrow F)$ is defined as follows:
+
+- The objects are pairs $(C, f : x \rightarrow F(C))$ for objects $C \in \text{Obj}(\mathcal{C})$.
+- The morphisms between $(C, f)$ and $(C', f' : X \rightarrow F(C'))$ are morphisms $h : C \rightarrow C'$ in $\mathcal{C}$ such that $F(h) \circ f = f'$.
+  
+It is very easy to verify that we have defined a valid category. We can also define another type of comma category, $(F \downarrow X)$, where we look at objects of the form $(C, f : F(C) \rightarrow x)$,
+and define the morphisms in the obvious way.
+
+*Example 2.1.* The category of pointed topological spaces is precisely $(\cdot \downarrow \textbf{Top})$.
+
+*Definition 2.3* (Universal morphism). A universal morphism is an initial object in $(X \downarrow F)$, a particular comma category, or a terminal object in $(F \downarrow X)$. Intuitively, a universal morphism encodes a property which characterizes
+some object up to isomorphism. We can unravel the definition of a universal morphism to better conceptualize it.
+In particular, a universal morphism (in $(X \downarrow F)$) is a pair $(C, f : X \rightarrow F(C))$ such that for any other pair $(C', f' : X \rightarrow F(C'))$, there is a unique arrow $h : C \rightarrow C'$ such that the following diagram commutes:
+
+#+ATTR_HTML: :width 300px
+[[./assets/uni_prop.png]]
+
+*Corollary 2.1.* A universal morphism is unique up to unique isomorphism in the comma category: this follows immediately from the fact that initial and terminal objects are unique up
+to unique isomorphism.
+
+*Example 2.2* (Tensor algebra). The tensor algebra of a vector space is a great example of an object characterized via a universal property. In particular, given some vector space $V$ over $k$, the property
+which characterizes the tensor algebra $T(V)$ is that any linear map $V \rightarrow A$ of $V$ to a $k$ -algebra extends uniquely to an algebra homomorphism from $T(V)$ to $A$.
+Let $\text{For} : \textbf{Alg}_k \rightarrow \textbf{Vect}_k$ be the forgetful functor which sends a $k$ -algebra to its underlying vector space. We take $F$ to be $\text{For}$, and
+we take $X = V$. Our desired object is an initial object $(T(V), f : V \rightarrow \text{For}(T(V)))$ in the comma category, which is to say that for any $A \in \textbf{Alg}_k$ and
+linear map $f' : V \rightarrow \text{For}(A)$, there must be a unique algebra homomorphism $g : T(V) \rightarrow A$ such that $\text{For}(g) \circ f = f'$.
+
+*Remark 2.2.* A word of caution: this formulation of a universal morphism can fail to nicely capture many instances where a "universal property" may describe a particular object.
+A good example is the tensor product. Technically, one can formulate a definition of the tensor product of two vector spaces, $V \otimes W$, via the language of universal morphisms (see [[https://ncatlab.org/nlab/show/tensor+product][nLab]]),
+but in practice, it is better to just say that $V \otimes W$ is an object of $\textbf{Vect}_k$ and a bilinear map $j : V \times W \rightarrow V \otimes W$ such that
+for any bilinear map $f : V \times W \rightarrow Z$, there is a unique morphism $h : V \otimes W \rightarrow Z$ such that $h \circ j = f$. The reason why we cannot use a universal morphism
+naively in this case is because of the /bilinear/ attribute of the maps $j$ and $f$. Nevertheless, it is easy to check directly that this definition uniquely characterizes $V \otimes W$ (if it exists)
+up to unique isomorphism.
+
+Having introduced universal properties, we can look at a related idea: adjoint functors.
+
+*Mantra 2.1.* The best, succinct way to think of a functor $F : \mathcal{D} \rightarrow \mathcal{C}$ adjoint to functor $G : \mathcal{C} \rightarrow \mathcal{D}$ is that $F$ is the most efficient way to systematically
+"solve the problem" posed by $G$. If $G$ is, for example, a forgetful functor which throws away some of the structure of category $\mathcal{C}$, is there a method which reconstructs an element of $\mathcal{C}$ from $\mathcal{D}$, and imposes the
+minimal amount of extra structure possible? If such a method exists, and is functorial, in the sense that it works the same for any object, then it can be described via a functor $F : D \rightarrow C$
+which is adjoint to $G$. Another way to internalize this saame intuition is via universal properties. When
+we find an object which satisfies a universal property, we are effectively finding the "most efficient" object which satisfies some desired property. An adjoint functor is a technique to define such universal
+objects at a global, categorical level, rather than locally. To be more specific, writing down a universal morphism is dependent on a /particular choice/ of object $X$ relative to which we define a comma category.
+One way to interpret the utility of an adjoint functor is that it "chooses every $X$ at once" in a functorial manner. In the previous tensor algebra example, we are choosing a particular $X = V$, and defining $T(V)$
+via a universal property. In fact, $T$ should be a functor in its own right, and it should work for /every/ choice of $V$ is a functorial manner. Indeed, it is the case that $T$ is a functor adjoint to $\text{For}$.
+
+*Definition 2.4* (Adjoint functor). A functor $F : \mathcal{D} \rightarrow \mathcal{C}$ is said to be /left-adjoint/ if for each $X \in \text{Obj}(\mathcal{C})$, there exists a universal morphism
+in $(F \downarrow X)$. The existence of a universal morphism simply means that there is some $(G(X), f_X : F(G(X)) \rightarrow X)$ such that for any other $(C, g : F(C) \rightarrow X)$, there is a
+unique morphism $h : C \rightarrow G(X)$ where $f_X \circ F(h) = g$. From here, it is possible to show that we can define a functor $G : \mathcal{C} \rightarrow \mathcal{D}$ such that $f_X \circ F(G(h)) = h \circ f_{X'}$ for all $h : X' \rightarrow X$, as one might
+expect/hope. In particular, we simply let $G$ take object $X$ to $G(X)$. Additionally, given arrow $h : X' \rightarrow X$ in $\mathcal{C}$, we obtain objects $(G(X), f_X : F(G(X)) \rightarrow X)$
+and $(G(X'), h \circ f_{X'} : F(G(X')) \rightarrow X)$. We then obtain unique morphism $G(h) : G(X') \rightarrow G(X)$ where $f_X \circ F(G(h)) = h \circ f_{X'}$, as desired. To prove that this
+mapping of objects/arrows in a valid functor, we simply note that $G$ takes identity arrows to identity arrows and preserves compositions due to uniqueness of $G(h)$.
+
+There is a similar, dual construction, where we say that $G : \mathcal{C} \rightarrow \mathcal{D}$ is /right-adjoint/ if for each $X \in \text{Obj}(\mathcal{D})$, there exists a universal morphism
+in $(X \downarrow G)$. We define functor $F : \mathcal{D} \rightarrow \mathcal{C}$ analogously.
+
+*Claim 2.1.* If $F : \mathcal{D} \rightarrow \mathcal{C}$ is left-adjoint, and $G : \mathcal{C} \rightarrow \mathcal{D}$ is the corresponding induced functor, then $G$ is right-adjoint,
+and the corresponding induced functor is $F$. Similarly, if $G : \mathcal{C} \rightarrow \mathcal{D}$ is right-adjoint and $F$ is the induced functor, then $F$ is left-adjoint, and its
+induced functor is $G$.
+
+/Proof./ Let's look at the first case. We need to show that for each $X$ in $\mathcal{D}$, then $(F(X), f : X \rightarrow G(F(X)))$ is initial
+in the comma category, for some arrow $f$ in $\mathcal{D}$. Of course, we know that $F$ is left-adjoint with induced functor $G$, so we can find universal morphism in $(F \downarrow F(X))$. This will be
+some terminal $(G(F(X)), h : F(G(F(X))) \rightarrow F(X))$. 
+
+*Example 2.3* (Tensor algebra, again). If $T(V)$ (the tensor algebra of Example 2.2) exists
+
+*Example 2.4* (Free products).
+
+Now, let us discuss the notion of limits and colimits, which will prove to be useful in our discussion of Abelian categories.
+
+*Definition* (Cone).
+
+To conclude, let us briefly introduce the notion of products and coproducts, which are another crucial component of Abelian categories.
+
+* Abelian categories
+
+Here, we will develop some central results revolving around /Abelian categories/, which were introduced by Grothendieck in his (famous) Tohoku paper, and provide the
+arena in which it makes sense to talk about exact sequences, homology, and cohomology is a general, categorical sense.
+
+*Definition 3.1* (Preadditive category). A preadditive category $C$ is a category such that each hom-set has the structure of an Abelian group, with composition being bilinear over the group addition:
+\begin{align}
+    f \circ (g + h) = (f \circ g) + (f \circ h) \ \ \ \ \text{and} \ \ \ \ (g + h) \circ f = (g \circ f) + (h \circ f).
+\end{align}
+
+*Definition 3.2* (Zero morphisms). Let $\mathcal{C}$ be a category, an arrow $f : X \rightarrow Y$ is said to be /constant/ if for any morphisms $g, h : W \rightarrow X$, we have $f \circ g = f \circ h$.
+An arrow is said to be /coconstant/ if for any morphisms $g, h : Y \rightarrow Z$, we have $g \circ f = h \circ f$. A morphism which is both constant and coconstant is called a /zero morphism/. We say that $C$ is a category
+/with zero morphisms/ such that for every two objects $X$ and $Y$, there is a morphism $0_{XY} : X \rightarrow Y$ such that for any two arrows $f : X \rightarrow Y$ and $g : Y \rightarrow Z$, the following diagrams commute:
+
+#+ATTR_HTML: :width 300px
+[[./assets/zeros.png]]
+
+*Remark 3.1.* Note that if $\mathcal{C}$ is a category with zero morphisms, then the arrows $0_{XY}$ are unique. To see this, let $Z = Y$, let $g = \text{id}$, let $f = 0_{XY}'$: some other morphism
+satisfying the same criteria as $0_{XY}$. Then applying the diagram, we find that $0_{XY} = 0_{YY} \circ 0_{XY}'$ and $0_{XY}' = 0_{YY} \circ 0_{XY}'$, so $0_{XY} = 0_{XY}'$. We can also check
+that all of the $0_{XY}$ are zero morphisms. We have $0_{XY} = 0_{YZ} \circ f$ for any arrow $f : X \rightarrow Y$ and we have $g \circ 0_{XY} = 0_{XZ}$ for any arrow $g : Y \rightarrow Z$: this immediately gives us what we want.
+
+*Claim 3.1.* If $\mathcal{C}$ is an object with zero object $\textbf{0}$, then $\mathcal{C}$ has zero morphisms. In particular, we have natural maps $t_X : X \rightarrow \textbf{0}$ and $i_Y : \textbf{0} \rightarrow Y$,
+and $0_{XY} = i_Y \circ t_X$ endow $\mathcal{C}$ with the structure of a category with zero morphisms.
+
+/Proof./ Let $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ be arrows. We note that $0_{YZ} \circ f = i_Z \circ (t_Y \circ f)$ and $g \circ 0_{XY} = (g \circ i_Y) \circ t_X$. Of course,
+$t_Y \circ f : X \rightarrow \textbf{0}$ must be equal to $t_X$ and $g \circ i_Y$ must be $i_Z$, so both compositions are equal to $0_{XZ}$, as desired. $\blacksquare$
+
+Using the concept of zero morphisms, and the previously introduced concept of equalizers (and coequalizers), we are able to write down a natural definition of the kernel (and cokernel).
+Note that kernels and cokernels will not always exist in a given category (as a given category may not contain certain equalizers/coequalizers).
+
+*Definition 3.3* (Kernels and cokernels). Given arrow $f : X \rightarrow Y$ in category $\mathcal{C}$ with zero morphisms, $\text{Ker}(f) = \text{Eq}(f, 0_{XY})$, the equilizer of
+$f$ and $0_{XY}$. In addition, $\text{Coker}(f) = \text{Coeq}(f, 0_{XY})$, the coequalizer of $f$ and $0_{XY}$.
+
+*Definition 3.4* (Image). Using the concept of kernels/cokernels, we are able to define the /image/ of an arrow $f : X \rightarrow Y$ as well. In particular, if cokernel $\text{Coker}(f)$ exists, then
+we have object $Q$ and "quotient" morphism $q : Y \rightarrow Q$. Intuitively, if $Q$ is supposed to generalize $Y/\text{Im}(f)$ in the case that we are operating in, say, the category of vector spaces,
+then we should have $\text{Ker}(q) \simeq \text{Im}(f)$ (this is just the first isomorphism theorem). Thus, we /define/ $\text{Im}(f) = \text{Ker}(q)$.
+
+* Derived functors
+
+* Derived categories
+
+* Sheaf cohomology and hypercohomology
+
+* Hochschild homology and cohomology

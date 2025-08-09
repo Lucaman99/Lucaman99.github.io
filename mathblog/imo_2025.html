@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-07-26 Sat 13:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Some solutions to problems from the 2025 IMO</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Some solutions to problems from the 2025 IMO</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1ccd3c0">1. Introduction</a></li>
+<li><a href="#org99e275e">2. Problem 1</a></li>
+<li><a href="#org822c660">3. Problem 4</a></li>
+<li><a href="#orgd5eb5c4">4. Problem 3</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org1ccd3c0" class="outline-2">
+<h2 id="org1ccd3c0"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Inspired by Prof. Timothy Gowers' YouTube videos, I recently attempted to solve some of the problems on the 2025 IMO. So far, I've managed to do 3/6. Problem 1 and problem 4 (usually designed to be the
+easiest problems on the exam) certainly required a decent amount of thought, but problem 3 (usually one of the hardest on the exam) was incredibly difficult and required me to use some theorems
+from basic number theory. I may decide to try some of the remaining three problems. If I do, I will update this blog post!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org99e275e" class="outline-2">
+<h2 id="org99e275e"><span class="section-number-2">2.</span> Problem 1</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Here is the first problem:
+</p>
+
+
+<div id="org945713a" class="figure">
+<p><img src="./assets/imo_q1.png" alt="imo_q1.png" width="750px" />
+</p>
+</div>
+
+<p>
+and here is my solution:
+</p>
+
+<p>
+<b>Claim 2.1.</b> Any cover \(C = \{L_1, \dots, L_n\}\) of the ``integer triangle" of \((a, b) \in \mathbb{Z}^2_{> 0}\) with \(a + b \leq n + 1\) by \(n\) lines must include a non-sunny line along one of its edges.
+</p>
+
+<p>
+<i>Proof.</i> Suppose not. Label the edges \(E_1, E_2, E_3\). Each \(E_j\) has \(n\) points, and they share corners. If some \(L_k \in C\) passes through two points common to the same \(E_j\), then \(L_k = E_j\). Thus,
+each of the \(n\) points of fixed \(E_j\) are contained in unique \(L_k\). In the \(E_j\) combined, there are \(3n - 3\) points, so for \(n > 3\), we have \(3n - 3 > 2n\), which means that by the
+Pigeonhole principle, some \(L_k\) must contain at least three distinct points of the combined \(E_j\), and they must be from distinct \(E_j\) (as we explained). But such points cannot be colinear, so this is a contradiction. \(\blacksquare\)
+</p>
+
+<p>
+Thus, if \(C\) is a covering for the integer triangle for some \(n > 3\), with \(k\) sunny lines, we can write it as \(C = \{L_1, \dots, L_{n - 1}, E_j\}\) for some \(E_j\). This \(E_j\) is not sunny.
+Removing this \(E_j\) and the corresponding points, we get a cover \(\{L_1, \dots, L_{n - 1}\}\) by \(n - 1\) lines of the integer
+triangle for the case of \(n - 1\), again with \(k\) sunny lines. Thus, we inductively reduce to the case of \(n = 3\) without changing \(k\). In this case, we can easily write down coverings with \(0\), \(1\), or \(3\) sunny lines:
+</p>
+
+
+<div id="org6c7e65b" class="figure">
+<p><img src="./assets/triangles.png" alt="triangles.png" width="600px" />
+</p>
+</div>
+
+<p>
+and it follows that since we can reduce to these cases inductively with \(k\) invariant, these are the only possibilities for \(k\), for any \(n \geq 3\). Of course, we can <i>produce</i> such covering for \(k = 0, 1, 3\) for
+any \(n\) as well, by simply adding non-sunny lines to the images above. This completes the proof. \(\blacksquare\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org822c660" class="outline-2">
+<h2 id="org822c660"><span class="section-number-2">3.</span> Problem 4</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Here is the fourth problem:
+</p>
+
+
+<div id="orgf3627d8" class="figure">
+<p><img src="./assets/imo_q4.png" alt="imo_q4.png" width="750px" />
+</p>
+</div>
+
+<p>
+and here is my solution:
+</p>
+
+<p>
+Call a sequence which satisfies the necessary criteria <i>valid</i>.
+</p>
+
+<p>
+<b>Claim 3.1.</b> A sequence of \(a_j\) is valid if and only if \(a_1 = 6 \cdot 12^k \cdot q\) for some \(k \geq 0\) and odd \(q\) which is not divisible by \(5\).
+</p>
+
+<p>
+The action of mapping some \(n \in \mathbb{N}\) to the sum of its largest three proper divisors is exactly
+</p>
+
+\begin{equation}
+\label{eq:trans}
+n \mapsto \left( \frac{1}{m_1} + \frac{1}{m_2} + \frac{1}{m_3} \right) n = \left( \frac{m_2 m_3 + m_1 m_3 + m_1 m_2}{m_1 m_2 m_3} \right) n
+\end{equation}
+
+<p>
+where \(m_1, m_2, m_3\) are its smallest three divisors (greater than \(1\)). Note that this map is non-decreasing in only three situations, in particular, \((m_1, m_2, m_3) = (2, 3, 4)\)
+gives \(n \mapsto \frac{13 n}{12}\), \((m_1, m_2, m_3) = (2, 3, 5)\) gives \(n \mapsto \frac{31 n}{30}\), and \((m_1, m_2, m_3) = (2, 3, 6)\) gives
+\(n \mapsto n\). The greatest-coefficient strictly decreasing mapping is given by \((m_1, m_2, m_3) = (2, 3, 7)\), where \(n \mapsto \frac{41 n}{42}\). We can characterize a valid
+sequence of \(a_j\) by an iterated sequence of these maps. In particular, note that if \(a_1 = 6 \cdot 12^k \cdot q\), by iterating the map of Eq. \eqref{eq:trans}, we send \(6 \cdot 12^k \cdot q\) to
+\(6 \cdot 13^k \cdot q\) via the map with \((m_1, m_2, m_3) = (2, 3, 4)\). Then via \((m_1, m_2, m_3) = (2, 3, 6)\), the sequence stabilizes. This proves one direction of Claim 1.
+</p>
+
+<p>
+Any valid sequence must contain an infinite number of the three non-decreasing mappings, otherwise we would eventually reach a number which does not have at three distinct proper divisors.
+This means an infinite number of elements in the sequence must be divisible by \(2 \cdot 3 = 6\).
+</p>
+
+
+<p>
+<b>Claim 3.2.</b> The map of Eq. \eqref{eq:trans} sends odd \(n\) to odd \(n\).
+</p>
+
+<p>
+<i>Proof.</i> In this case, any valid mapping will be for \((m_1, m_2, m_3)\) none of which are even (as \(2\) does not divide \(n\)). Thus \(m_2 m_3 + m_1 m_3 + m_1 m_2\) is odd. \(\blacksquare\)
+</p>
+
+<p>
+An immediate corollary of this fact is that in a valid sequence, every element must be even. If \(a_N\) were odd for some \(N\), then all \(a_j\) for \(j \geq N\) would be odd, hence not divisible by \(6\).
+It follows that any mapping going from \(a_{j - 1}\) to \(a_j\) in a valid sequence is of the form \((m_1, m_2, m_3) = (2, a, b)\). From here, suppose we have a mapping in a valid sequence where both \(a\) and
+\(b\) are odd. Then in particular, \(4\) does not divide \(a_{j - 1}\) and \(2a + 2b + ab\) is odd, while \(2ab\) is even. Hence, \(a_{j - 1}\) is mapped to something odd, which can't be true for a valid sequence.
+Thus, we can always assume that a mapping in a valid sequence is of the form \((2, 4, a)\) or \((2, a, 2a)\), corresponding to mappings
+</p>
+
+\begin{equation}
+\label{eq:trans2}
+    n \mapsto \left( \frac{3a + 4}{4a} \right) n \ \ \ \ \text{or} \ \ \ \ n \mapsto \left( \frac{3 + a}{2a} \right) n
+\end{equation}
+
+<p>
+where \(a\) is the smallest (greater than \(1\)) divisor of \(a_{j - 1}\) not equal to \(2\) or \(4\). Note that if \(n\) is not divisible by \(3\), then mapping under the transformations of
+Eq. \eqref{eq:trans2} yields something also indivisible by \(3\). Hence, for some logic as earlier (requiring an infitude of elements divisible by \(6\)), each element of a valid sequence
+must be divisible by \(3\). Therefore, it must be the case that \(a = 3\), and we have two mappings which are admissible in a valid sequence: \((m_1, m_2, m_3) = (2, 3, 4)\) and \((2, 3, 6)\).
+\newline
+</p>
+
+<p>
+It follows that \(a_1\) must be a number whose lowest (greater than \(1\)) divisors are either \((2, 3, 4)\) or \((2, 3, 6)\). In the latter case, \(4\) and \(5\) do not divide \(a_1\), so \(a_1 = 6 \cdot q\) with
+\(q\) odd indivisible by \(5\). In the former case, \(a_1 = 12^k \cdot h\) where \(h\) is indivisible by \(12\). Iterating the \((2, 3, 4)\) -map yields \(h\), so the only choice from here is to map under the \((2, 3, 6)\) -map,
+meaning \((2, 3, 6)\) are the lowest divisors of \(h\), so from the other case, \(h = 6 \cdot q\), and we are done. \(\blacksquare\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd5eb5c4" class="outline-2">
+<h2 id="orgd5eb5c4"><span class="section-number-2">4.</span> Problem 3</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Here is the third problem:
+</p>
+
+
+<div id="org21551aa" class="figure">
+<p><img src="./assets/imo_q3.png" alt="imo_q3.png" width="750px" />
+</p>
+</div>
+
+<p>
+and here is my solution:
+</p>
+
+<p>
+The first thing to notice is that because \(f(a) \ | \ b^a - f(b)^{f(a)}\) for all \(a\) and \(b\), we have \(f(a) \ | \ a^a\) for all \(a\). In particular, the prime
+factors of \(f(a)\) are all prime factors of \(a\), and if \(a = p^n\), a prime power, then \(f(a) = p^{N}\) with \(0 \leq N \leq n a\). Suppose \(p\) is a prime factor of \(a > 1\), and
+suppose \(f(p) = 1\). Then we have \(f(a) \ | \ p^{a} - 1\).
+However, note that \(p\) \emph{does not} divide \(p^{a} - 1\), as it would then divide \(1\), so it follows that \(p\) cannot be a prime factor of \(f(a)\). In other words:
+</p>
+
+<p>
+<b>Fact 4.1.</b> If \(p\) is a prime factor of \(a\), and \(f(p) = 1\), then \(p\) is not a prime factor of \(f(a)\).
+</p>
+
+<p>
+Note that from Euler's theorem, for any \(z\) coprime to prime \(p\), we have
+</p>
+
+\begin{equation}
+p^n \ | \ z^{\varphi(p^{n})} - 1 = z^{p^n - p^{n - 1}} - 1 \Longrightarrow p^n \ | \ z^{p^n} - z^{p^{n - 1}}
+\end{equation}
+<p>
+In fact, the last expression holds for all \(z\), as \(n \leq 2^{n - 1} \leq p^{n - 1}\) for \(n \geq 1\), so if \(z = y p\), \(p\) divides the right-hand side. Thus,
+by induction (and a telescoping sum), \(p \ | \ z^{p^n} - z\). In particular, \(p \ | \ b^{p^n} - b\) and \(p \ | \ f(b)^{p^n} - f(b)\) for any \(n\) and \(b\). Suppose \(f(p) \neq 1\),
+then \(p \ | \ f(p)\), and because \(f(p) \ | \ b^p - f(b)^{f(p)}\), we have \(p \ | \ b^{p} - f(b)^{p^M}\) where \(p^M = f(p)\). By choosing \(n\) appropriately, we arrive at:
+</p>
+
+<p>
+<b>Fact 4.2.</b> If \(f(p) \neq 1\) for some prime \(p\), then \(p \ | \ f(b) - b\) for all \(b\).
+</p>
+
+<p>
+<b>Corollary 4.1.</b> If \(f(a) = 1\), then \(f(p) = 1\) for any prime factor \(p\) of \(a\), as if \(f(p) \neq 1\), we would have \(p \ | \ a - 1\), which can't be. If \(p\) is a prime factor
+of \(a\) and \(f(p) \neq 1\), then \(p \ | \ f(a)\) (\(p\) is a prime factor of \(f(a)\)). Combining with Fact 1: a prime factor \(p\) of \(a\) is a prime factor of \(f(a)\) if and only if \(f(p) \neq 1\).
+</p>
+
+<p>
+<b>Claim 4.1.</b> There exist arbitrarily large primes \(p\) such that \(3\) does not divide \(p - 1\).
+</p>
+
+<p>
+<i>Proof.</i> From Dirichlet's theorem on arithmetic progression, there are an infinite number of primes of the form \(p = 3n + 2\). Of course, \(p - 1 = 3n + 1\) is not divisible by \(3\), for any \(n\). \(\blacksquare\)
+</p>
+
+<p>
+Now, \(f\) is chosen such that there is some \(b\) with \(f(b) - b \neq 0\). Then any of the primes \(p\) which are not prime factors of \(f(b) - b\) will satisfy \(f(p) = 1\). By Claim 1, we can
+choose \(p\) large enough that it doesn't divide \(f(b) - b\), \emph{and} such that \(3\) does not divide \(p - 1\). Note that if \(f(p) = 1\) for some prime, then for any other prime \(q\) with
+\(f(q) \neq 1\), we have \(q \ | \ p^q - 1\), and since \(q \ | \ p^q - p\) as well (from Euler's theorem), \(q \ | \ p - 1\). Therefore, we must have \(f(3) = 1\), by our choice of \(p\).
+</p>
+
+<p>
+So, it follows that if \(f(p) \neq 1\) for some prime \(p\), then \(p \ | \ 2\) (Fact 4.2 with \(b = 3\)), so we must have \(p = 2\). In particular, \(f = 1\) on all primes except \(2\). It then follows
+that \(f(2^k a) = 2^N\) for some \(N\), for every \(2^k a\), by Corollary 4.1.
+</p>
+
+<p>
+From here, we must have \(f(2^k a) = 2^N\) dividing \(3^{2^k a} - 1\) for all \(2^k a\), where \(a\) is odd. Note that
+</p>
+\begin{equation}
+    3^{2^k a} - 1 = (3^{2^{k - 1} a} - 1)(3^{2^{k - 1} a} + 1) = (9^{a} - 1)(3^{2a} + 1) \cdots (3^{2^{k - 2} a} + 1) (3^{2^{k - 1} a} + 1)
+\end{equation}
+
+<p>
+Note that \(3^{2^j a} + 1 = 2 \ \text{mod} \ 4\), so each of these factors contributes a single \(2\) in the prime factorization. In addition,
+\(9^a - 1 = (2^3 + 1)^a - 1 = 2^3 o\), where \(o\) is odd (remember \(a\) is odd), so this term contributes three twos. Thus, we have a total of \(k + 2\) twos in the prime factorization.
+Thus, \(N \leq k + 2\). In particular, \(f(a) \leq 4 a\) for all \(a\). Thus, \(c \leq 4\).
+</p>
+
+<p>
+To prove that \(4\) is optimal, so \(c = 4\), we try to produce bonza \(f\) such that \(f(4) = 16\). Suppose we let \(f(2^k a) = 1\) when \(k = 0\), \(2\) when \(k = 1\), and \(2^{k + 2}\) when \(k \geq 2\).
+We need to show that \(f(2^k a) \ | \ (2^j b)^{2^k a} - f(2^j b)^{f(2^k a)}\). There is nothing to prove when \(j = 0\) or \(k = 0\). If \(k = 1\) and \(j \geq 1\), the claim holds. If \(k = 2\),
+we have \(f(2^k a) = 2^{k + 2}\). We also have \(2^{2^k a}\) dividing the right-hand side. Note that \(k + 2 \leq 2^k a\) for \(k \geq 2\), so we have proved that \(f\) is bonza and saturates the bound. \(\blacksquare\)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-07-26 Sat 13:09</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

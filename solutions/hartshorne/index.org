@@ -1,0 +1,4 @@
+#+TITLE:Solutions to /Algebraic Geometry/ by Hartshorne
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6} </style>

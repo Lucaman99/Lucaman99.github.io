@@ -1,0 +1,13 @@
+#+TITLE:I need to re-learn some Galois theory
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} </style>
+
+/Originally posted:/
+
+-------------
+
+* Introduction
+
+I have an awful confession to make: I never understood Galois theory, and I basically just memorized the stuff I needed to in order to answer the very basic Galois theory questions on my abstract algebra exam
+back in third year. Time to repent (once again).
