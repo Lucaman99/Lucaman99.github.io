@@ -1,0 +1,78 @@
+#+TITLE:Hartshorne Problem 1.1.1
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6} a {color:blue;} </style>
+
+[[../../index.html][Table of contents]]
+
+----------------
+
+There are a few parts:
+
+- Of course, $A(Y) = k[x, y]/(y - x^2)$. We can define $\varphi : k[x, y] \rightarrow k[x]$ as $\varphi(p)(x) = p(x, x^2)$. Verification that this is a ring homomorphism
+    is trivial. It is obviously surjective, as $k[x] \subset k[x, y]$, and $\varphi|_{k[x]} = \text{id}$. In addition, $\varphi(y - x^2) = 0$. Moreover, if $\varphi(p) = 0$, then
+    $p(x, x^2) = 0$. Define $h(x, y) = p(x, y + x^2) \in k[x, y] = k[x][y]$. Of course, we may write $h(x, y) = h_0(x) + h_1(x) y + h_2(x) y^2 + \cdots$, by definition, and $p(x, x^2) = h(x, 0) = h_0(x)$,
+    so $h(x, y) = y g(x, y)$ for some $g$. Thus, $p(x, y) = (y - x^2) g(x, y - x^2)$, which means $p \in (y - x^2)$. It follows that $\text{Ker}(\varphi) = (y - x^2)$, so by the first isomorphism
+    theorem, $k[x, y]/(y - x^2) \simeq \text{Im}(\varphi) = k[x]$, so $A(Y) \simeq k[x]$, as desired.
+
+- Suppose $\varphi : k[x, y]/(xy - 1) \rightarrow k[x]$ is a ring homomorphism. Since $[x][y] = [xy] = [1]$ in the domain, $\varphi([x]) \varphi([y]) = \varphi([x][y]) = \varphi([1]) = 1$. Thus,
+     $\varphi([x]) = a \in k$ and $\varphi([y]) = a^{-1} \in k$. Given some $b \in k$, with $b \neq 0$, note that we must also have $\varphi([b]) \varphi([b^{-1}]) = 1$, so $\varphi([b])$ is a unit in $k[x]$,
+      thus in $k$. It follows that $\text{Im}(\varphi) = k$, which means that $\varphi$ cannot be an isomorphism.
+
+- *(Starred)* The idea is to make use of a sequence of automorphisms of $k[x, y]$, which descend to automorphisms of the quotient. In particular, a general quadratic polynomial is of the form
+     
+       \begin{equation}
+         p(x, y) = a x^2 + b y^2 + cxy + dx + ey + f
+         \end{equation}
+         
+       Since we are working over an algebraically closed field, we are allowed to take square roots. For this to be a quadratic, at least one of $a, b$ or $c$ must be non-zero. Assume $c$ is non-zero, and
+       assume that $4ab = c^2$. It then follows that either $a$ or $b$ is non-zero (we can assume WLOG it is $a$), so the map $(x, y) \mapsto (\sqrt{a} x + \sqrt{b} y, y)$ is an isomorphism. Note that
+       we can write
+       
+       \begin{equation}
+         ax^2 + by^2 + cxy + dx + ey + f = (\sqrt{a} x + \sqrt{b} y)^2 + dx + ey + f
+         \end{equation}
+         
+       so it follows that we may reduce to the case that our quadratic is of the form $x^2 + dx + ey + f$. From here, note that $e \neq 0$, or else our polynomial in $x$ would be reducible. In addition,
+       we can re-write $x^2 + dx + f$ in the form $-(i x - d')^2 + f'$, so that
+       
+       \begin{equation}
+         x^2 + dx + ey + f = (ey + f') - (i x - d')^2
+         \end{equation}
+         
+       and note that $(x, y) \mapsto (ix - d', ey + f')$ is an isomorphism, so we have reduced to the case where our quadratic is $y - x^2$.
+
+       Next, consider the case where $4ab \neq c^2$, still with $c$ non-zero and also with $a \neq 0$ or $b \neq 0$.
+       The idea is that we can transform $ax^2 + by^2 + cxy$ to $xy$. In particular, assume WLOG that $a \neq 0$, so we can factor out a unit
+       and assume the degree-$2$ part of our quadratic is of the form
+       
+       \begin{equation}
+         x^2 + by^2 + cxy = (x - r_{+} y)(x - r_{-} y)
+         \end{equation}
+         
+       with $4b \neq c^2$, where
+       
+       \begin{equation}
+         r_{\pm} = \frac{c \pm \sqrt{c^2 - 4b}}{2}
+         \end{equation}
+         
+       Note that $r_{+} \neq r_{-}$, as their difference is $\sqrt{c^2 - 4b}$, which is non-zero. Thus, at least one of them is non-zero, so that $(x, y) \mapsto (x - r_{+} y, x - r_{-} y)$
+       is an isomorphism. It follows that we can reduce our quadratic to the form $xy + dx + ey + f$. This is also the form of the quadratic, after factoring out $c$, if we didn't first assume
+       that either $a$ or $b$ is non-zero. Of course, $xy + dx + ey + f = (x + e)(y + d) + f$, so we can reduce to the case $xy + f$. If $f = 0$, our quadratic is reducible, which is a contradiction,
+       so $f \neq 0$. Factoring out a unit reduces to the case $xy - 1$.
+
+       The final case that we must check is when $c = 0$. Again, either $a$ or $b$ must be non-zero, or we don't have a quadratic. If one of these \emph{is} zero, then our quadratic can be assumed
+       of the form $x^2 + dx + ey + f$: the same as in the first case worked out, so this will reduce to the case of $y - x^2$. If both are non-zero, then we have
+       
+       \begin{equation}
+         ax^2 + by^2 = (\sqrt{a} x - i \sqrt{b} y)(\sqrt{a} x + i \sqrt{b} y)
+         \end{equation}
+         
+       with $(x, y) \mapsto (\sqrt{a} x - i \sqrt{b} y, \sqrt{a} x + i \sqrt{b} y)$ being an isomorphism, reducing us to the case of $xy + dx + ey + f$: another case which we already worked out.
+
+       Thus, to summarize, given some irreducible quadratic, we can always find a sequence of ring automorphisms of $k[x, y]$ and multiplication by units which takes the quadratic to
+       either $y - x^2$ or $xy - 1$. Given a ring automorphism $\varphi : k[x, y] \rightarrow k[x, y]$, this will descend to a ring automorphism $\widetilde{\varphi} : k[x, y]/(f) \rightarrow k[x, y]/(\varphi(f))$
+       where $\widetilde{\varphi}(g + (f)) = \varphi(g) + (\varphi(f))$. In addition, if $c$ is a unit, $(f)$ and $(cf)$ are the same ideal. It follows that via our sequence of transformations, we can exhibit
+       an isomorphism which takes $k[x, y]/(f)$ to $k[x, y]/(y - x^2)$ or $k[x, y]/(xy - 1)$, with the individual criteria for each case explained in the course of the solution above.
+
+

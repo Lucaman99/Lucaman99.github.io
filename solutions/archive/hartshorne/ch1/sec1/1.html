@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-11 Mon 17:48 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hartshorne Problem 1.1.1</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;background-color:#FDF7D6} a {color:blue;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Hartshorne Problem 1.1.1</h1>
+<p>
+<a href="../../index.html">Table of contents</a>
+</p>
+
+<hr />
+
+<p>
+There are a few parts:
+</p>
+
+<ul class="org-ul">
+<li>Of course, \(A(Y) = k[x, y]/(y - x^2)\). We can define \(\varphi : k[x, y] \rightarrow k[x]\) as \(\varphi(p)(x) = p(x, x^2)\). Verification that this is a ring homomorphism
+is trivial. It is obviously surjective, as \(k[x] \subset k[x, y]\), and \(\varphi|_{k[x]} = \text{id}\). In addition, \(\varphi(y - x^2) = 0\). Moreover, if \(\varphi(p) = 0\), then
+\(p(x, x^2) = 0\). Define \(h(x, y) = p(x, y + x^2) \in k[x, y] = k[x][y]\). Of course, we may write \(h(x, y) = h_0(x) + h_1(x) y + h_2(x) y^2 + \cdots\), by definition, and \(p(x, x^2) = h(x, 0) = h_0(x)\),
+so \(h(x, y) = y g(x, y)\) for some \(g\). Thus, \(p(x, y) = (y - x^2) g(x, y - x^2)\), which means \(p \in (y - x^2)\). It follows that \(\text{Ker}(\varphi) = (y - x^2)\), so by the first isomorphism
+theorem, \(k[x, y]/(y - x^2) \simeq \text{Im}(\varphi) = k[x]\), so \(A(Y) \simeq k[x]\), as desired.</li>
+
+<li>Suppose \(\varphi : k[x, y]/(xy - 1) \rightarrow k[x]\) is a ring homomorphism. Since \([x][y] = [xy] = [1]\) in the domain, \(\varphi([x]) \varphi([y]) = \varphi([x][y]) = \varphi([1]) = 1\). Thus,
+\(\varphi([x]) = a \in k\) and \(\varphi([y]) = a^{-1} \in k\). Given some \(b \in k\), with \(b \neq 0\), note that we must also have \(\varphi([b]) \varphi([b^{-1}]) = 1\), so \(\varphi([b])\) is a unit in \(k[x]\),
+ thus in \(k\). It follows that \(\text{Im}(\varphi) = k\), which means that \(\varphi\) cannot be an isomorphism.</li>
+
+<li><p>
+<b>(Starred)</b> The idea is to make use of a sequence of automorphisms of \(k[x, y]\), which descend to automorphisms of the quotient. In particular, a general quadratic polynomial is of the form
+</p>
+
+\begin{equation}
+  p(x, y) = a x^2 + b y^2 + cxy + dx + ey + f
+  \end{equation}
+
+<p>
+Since we are working over an algebraically closed field, we are allowed to take square roots. For this to be a quadratic, at least one of \(a, b\) or \(c\) must be non-zero. Assume \(c\) is non-zero, and
+assume that \(4ab = c^2\). It then follows that either \(a\) or \(b\) is non-zero (we can assume WLOG it is \(a\)), so the map \((x, y) \mapsto (\sqrt{a} x + \sqrt{b} y, y)\) is an isomorphism. Note that
+we can write
+</p>
+
+\begin{equation}
+  ax^2 + by^2 + cxy + dx + ey + f = (\sqrt{a} x + \sqrt{b} y)^2 + dx + ey + f
+  \end{equation}
+
+<p>
+so it follows that we may reduce to the case that our quadratic is of the form \(x^2 + dx + ey + f\). From here, note that \(e \neq 0\), or else our polynomial in \(x\) would be reducible. In addition,
+we can re-write \(x^2 + dx + f\) in the form \(-(i x - d')^2 + f'\), so that
+</p>
+
+\begin{equation}
+  x^2 + dx + ey + f = (ey + f') - (i x - d')^2
+  \end{equation}
+
+<p>
+and note that \((x, y) \mapsto (ix - d', ey + f')\) is an isomorphism, so we have reduced to the case where our quadratic is \(y - x^2\).
+</p>
+
+<p>
+Next, consider the case where \(4ab \neq c^2\), still with \(c\) non-zero and also with \(a \neq 0\) or \(b \neq 0\).
+The idea is that we can transform \(ax^2 + by^2 + cxy\) to \(xy\). In particular, assume WLOG that \(a \neq 0\), so we can factor out a unit
+and assume the degree-\(2\) part of our quadratic is of the form
+</p>
+
+\begin{equation}
+  x^2 + by^2 + cxy = (x - r_{+} y)(x - r_{-} y)
+  \end{equation}
+
+<p>
+with \(4b \neq c^2\), where
+</p>
+
+\begin{equation}
+  r_{\pm} = \frac{c \pm \sqrt{c^2 - 4b}}{2}
+  \end{equation}
+
+<p>
+Note that \(r_{+} \neq r_{-}\), as their difference is \(\sqrt{c^2 - 4b}\), which is non-zero. Thus, at least one of them is non-zero, so that \((x, y) \mapsto (x - r_{+} y, x - r_{-} y)\)
+is an isomorphism. It follows that we can reduce our quadratic to the form \(xy + dx + ey + f\). This is also the form of the quadratic, after factoring out \(c\), if we didn't first assume
+that either \(a\) or \(b\) is non-zero. Of course, \(xy + dx + ey + f = (x + e)(y + d) + f\), so we can reduce to the case \(xy + f\). If \(f = 0\), our quadratic is reducible, which is a contradiction,
+so \(f \neq 0\). Factoring out a unit reduces to the case \(xy - 1\).
+</p>
+
+<p>
+The final case that we must check is when \(c = 0\). Again, either \(a\) or \(b\) must be non-zero, or we don't have a quadratic. If one of these \emph{is} zero, then our quadratic can be assumed
+of the form \(x^2 + dx + ey + f\): the same as in the first case worked out, so this will reduce to the case of \(y - x^2\). If both are non-zero, then we have
+</p>
+
+\begin{equation}
+  ax^2 + by^2 = (\sqrt{a} x - i \sqrt{b} y)(\sqrt{a} x + i \sqrt{b} y)
+  \end{equation}
+
+<p>
+with \((x, y) \mapsto (\sqrt{a} x - i \sqrt{b} y, \sqrt{a} x + i \sqrt{b} y)\) being an isomorphism, reducing us to the case of \(xy + dx + ey + f\): another case which we already worked out.
+</p>
+
+<p>
+Thus, to summarize, given some irreducible quadratic, we can always find a sequence of ring automorphisms of \(k[x, y]\) and multiplication by units which takes the quadratic to
+either \(y - x^2\) or \(xy - 1\). Given a ring automorphism \(\varphi : k[x, y] \rightarrow k[x, y]\), this will descend to a ring automorphism \(\widetilde{\varphi} : k[x, y]/(f) \rightarrow k[x, y]/(\varphi(f))\)
+where \(\widetilde{\varphi}(g + (f)) = \varphi(g) + (\varphi(f))\). In addition, if \(c\) is a unit, \((f)\) and \((cf)\) are the same ideal. It follows that via our sequence of transformations, we can exhibit
+an isomorphism which takes \(k[x, y]/(f)\) to \(k[x, y]/(y - x^2)\) or \(k[x, y]/(xy - 1)\), with the individual criteria for each case explained in the course of the solution above.
+</p></li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2025-08-11 Mon 17:48</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+\contentsline {title}{Every exercise in the first three chapters of Hartshorne}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Chapter 1}{1}{section.2}%
+\contentsline {subsection}{\numberline {A}Section 1.1}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {B}Section 1.2}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {C}Section 1.3}{10}{subsection.2.3}%
+\contentsline {section}{\numberline {III}Chapter 2}{10}{section.3}%
+\contentsline {subsection}{\numberline {A}Section 2.1}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {B}Section 2.2}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {C}Section 2.3}{17}{subsection.3.3}%
+\contentsline {section}{\numberline {IV}Chapter 3}{17}{section.4}%
+\appendix 
+\contentsline {section}{\numberline {A}Extra proofs}{17}{appendix.A}%
+\contentsline {section}{\numberline {B}A few solutions (to more basic problems) from Vakil's book}{19}{appendix.B}%
+\contentsline {section}{\numberline {C}Commutative algebra stuff}{19}{appendix.C}%

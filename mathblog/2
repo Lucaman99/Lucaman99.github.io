@@ -249,25 +249,10 @@ such that each of the squares in the above diagram commute, then we are able to 
 We first define map from $K_X^j$ to $Q_Y^j$, where $Q_Y^j$ is the object of $H^j(Y^{\bullet})$. Of course, we have $f^j : X^j \rightarrow Y^j$, and we have inclusion $i^j_X : K_X^j \rightarrow X^j$,
 so we have arrow $f^j \circ i^j_X$. We then obtain unique map $\widetilde{f} : K_X^j \rightarrow K_Y^j$ given by
 
-#+ATTR_HTML: :width 250px
-[[./assets/uni_2.png]]
-
-where it is obvious what the arrows should be, and we are using the fact that
+where we are using the fact that
 
 \begin{equation}
 d_Y^j \circ f^j \circ i_X^j = f^{j + 1} \circ d_X^{j + 1} \circ i_X^j = 0
-\end{equation}
-
-From here, we can post-compose with the quotient $q_Y^j : K_Y^j \rightarrow Q_Y^j$ to get the desired map from $K_X^j$ to $H^j(Y^{\bullet})$. To finally promote this to a map from $Q_X^j$: the object of $H^j(X^{\bullet})$, note that
-we have diagram from the universal property
-
-#+ATTR_HTML: :width 250px
-[[./assets/uni_3.png]]
-
-where we are using
-
-\begin{equation}
-q_Y^j \circ \widetilde{f} \circ u^j_X
 \end{equation}
 
 *Lemma 3.1.* If $\mathcal{C}$ is an Abelian category, with arrows $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ such that $\text{Im}(f) \simeq \text{Ker}(g)$, then $\text{Im}(g) \simeq \text{Coker}(f)$.

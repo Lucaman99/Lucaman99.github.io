@@ -1,0 +1,13 @@
+#+TITLE:Solutions to /Algebraic Geometry/ by Hartshorne
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6} a {color:blue} </style>
+
+------------------
+
+* Chapter 1
+
+- Section 1: [[./ch1/sec1/1.html][Problem 1]], [[./ch1/sec1/2.html][Problem 2]]
+- Section 2:
+
+* Chapter 2
