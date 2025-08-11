@@ -1,6 +1,6 @@
 #+TITLE: A complete proof of the Myers-Steenrod theorem
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
+#+HTML_HEAD: <style>  body {font-size:15px;background-color:#FDF7D6} a {color:blue;} </style>
 
 /Originally published: May 6th, 2025/
 
@@ -14,7 +14,7 @@ spaces such that $d_N(\varphi(p), \varphi(q)) = d_M(p, q)$ for all $p, q \in M$.
 One direction (Riemannian isometry implies metric isometry) is quite easy, and the other direction is much harder.
 
 After some digging, it doesn't seem like anyone has really put online a proof of Myers-Steenrod which goes through all of the necessary details.
-The writings that do exist are sketches ([[https://amathew.wordpress.com/2009/11/17/isometries-of-riemannian-manifolds-and-a-theorem-of-myers-steenrod/][the best one]] can be found on none other than Akhil Mathew's famous /Climbing Mount Bourbaki/!).
+The writings that do exist are sketches ([[https://amathew.wordpress.com/2009/11/17/isometries-of-riemannian-manifolds-and-a-theorem-of-myers-steenrod/][the best one]] can be found on Akhil Mathew's blog, /Climbing Mount Bourbaki/).
 My contribution with this blog post is to turn these sketches into a comprehensive explanation (which I hope someone finds useful down the line, if they ever find
 this blog).
 
