@@ -1,0 +1,113 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib,oneside,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.6in, rmargin=1.6in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{man}{Mantra}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.05}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Chapter 1 solutions: \emph{An introduction to homological algebra} by Weibel}
+\author{Jack Ceroni}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Section 1.2}
+
+\begin{solution}[Exercise 1.2.5]
+  Recall that in an Abelian category $\mathcal{A}$,
+  \begin{equation}
+    \text{Tot}(C)_n = \text{Tot}^{\Pi}(C)_n = \prod_{p + q = n} C_{p, q}
+    \end{equation}
+  which becomes a chain complex in $\mathcal{A}$ when endowed with differential $d = d^h + d^v$ (we are using the anti-commutative convention here).
+  We must show that $H_n(\text{Tot}(C)) = 0$ for all $n$, equivalently, that $d$ along with the total complex $\text{Tot}(C)$ is exact, so in other words $\text{Im}(d_{n+1}) = \text{Ker}(d_{n})$.
+  Let $i : K \rightarrow \text{Tot}(C)_n$ and $j : M \rightarrow \text{Tot}(C)_n$ be the inclusions of the kernel and image respectively. We are going to show that
+  \begin{equation}
+    \text{Ker}(d_n) = \text{Im}(d_n) + \text{Im}(d^v_{p, q + 1})
+    \end{equation}
+  for any $p + q = n$ via induction. Note that since our complex is bounded, $C_{p, q}$ will eventually be $0$ along the diagonal defined by $n$, so eventually, $\text{Im}(d^v_{p, q + 1}) = 0$,
+  which will give the result. So, we first note that $d_n \circ i = d^v_n \circ i + d^h_n \circ i = 0$ (we are implicitly projecting from the product here). This means that $d^v_n \circ i, d^h_n \circ i = 0$. In other words, 
+\end{solution}
+
+\bibliography{refs}
+
+\end{document}

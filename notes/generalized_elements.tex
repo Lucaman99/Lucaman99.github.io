@@ -1,0 +1,431 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage{verbatim}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=22mm,
+  right=22mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Diagram chasing via generalized elements in Abelian categories}
+\author{Jack Ceroni}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+\noindent The main goal of this short note is to explain a very useful technique for performing ``elementwise diagram chases'' in potentially non-concrete Abelian categories by means
+of ``generalized elements''. When tasked with performing some kind of diagram chase while operating in the category of Abelian groups, or perhaps the category of $R$-modules for some
+ring $R$, we are usually able to construct/prove properties of maps by considering where they send particular \emph{elements} of the group/module in question. In arbitrary Abelian categories,
+our underlying objects are not always sets, and our arrows are not always set maps, therefore speaking of an ``element'' of an object in an arbitrary Abelian category doesn't make sense naively.
+However, with some work, we can show that it \emph{is} possible to come up with a notion of a \emph{generalized element} of an object in an Abelian category, and moreover, these generalized objects
+behave in many ways similarly to the underlying elements of an object in some concrete, Abelian category (like Abelian groups or $R$-modules).
+
+This treatment follows \emph{Categories for the Working Mathematician}, by Mac Lane.
+
+\section{Generalized elements}
+
+\noindent Let us first prove a technical lemma:
+
+\begin{lemma}
+  Given a pullback square in an Abelian category $\mathcal{C}$, if the bottom edge $f$ is epi, then the top edge $f'$ is epi. Also, the kernel $k$ of $f$ is $k = g' \circ k'$,
+  where $g'$ is the left edge of the square and $k'$ is the kernel of $f'$. All together, this forms a diagram of the form
+  % https://q.uiver.app/#q=WzAsNSxbMCwxLCJBIl0sWzEsMCwiUyJdLFszLDAsIkQiXSxbMSwyLCJCIl0sWzMsMiwiQyJdLFswLDEsImsnIl0sWzEsMiwiZiciXSxbMCwzLCJrIiwyXSxbMyw0LCJmIiwyXSxbMiw0LCJnIl0sWzEsMywiZyciXV0=
+  \[\begin{tikzcd}
+	& S && D \\
+	A \\
+	& B && C
+	\arrow["{f'}", from=1-2, to=1-4]
+	\arrow["{g'}", from=1-2, to=3-2]
+	\arrow["g", from=1-4, to=3-4]
+	\arrow["{k'}", from=2-1, to=1-2]
+	\arrow["k"', from=2-1, to=3-2]
+	\arrow["f"', from=3-2, to=3-4]
+  \end{tikzcd}\]
+  \end{lemma}
+\begin{proof}
+  A pullback in an Abelian category can be constructed by means of products and equalizers. In particular, we claim that if $B \oplus D$ is a biproduct with projections $p_1, p_2$ (which
+  exists in our Abelian category), then $\text{Ker}(f \circ p_1 - g \circ p_2)$, which also exists in the Abelian category, is a pullback. Letting $S$ be the object of the kernel
+  and $m$ be the monic into $B \oplus D$, we have left-exact sequence
+  % https://q.uiver.app/#q=WzAsNCxbMCwwLCIwIl0sWzEsMCwiUyJdLFsyLDAsIkIgXFxvcGx1cyBEIl0sWzQsMCwiQyJdLFswLDFdLFsxLDIsIm0iXSxbMiwzLCJmIFxcY2lyYyBwXzEgLSBnIFxcY2lyYyBwXzIiXV0=
+  \[\begin{tikzcd}
+	0 & S & {B \oplus D} && C
+	\arrow[from=1-1, to=1-2]
+	\arrow["m", from=1-2, to=1-3]
+	\arrow["{f \circ p_1 - g \circ p_2}", from=1-3, to=1-5]
+  \end{tikzcd}\]
+  We let $g' = p_1 \circ m$ and $f' = p_2 \circ m$. Of course, $(f \circ p_1 - g \circ p_2) \circ m = 0$, so $f \circ g' = g \circ f'$. In addition, given some $S'$ and maps $q_1, q_2$
+  projecting onto $B$ and $D$, where $f \circ q_1 = g \circ q_2$, so $f \circ q_1 - g \circ q_2 = 0$, then by the the universal property of the kernel, there is unique $j : S' \rightarrow S$
+  which makes the combined pullback diagram commute, implying that $S$ is, in fact, a pullback. It is also easy to see that $f \circ p_1 - g \circ p_2$ is a cokernel of $m$.
+
+  Thus, we can assume without loss of generality that the $f'$ and $g'$ in the diagram of the lemma
+  are of the form in the previous paragraph (as any pullback will be isomorphic in the proper sense to a pullback of the above form).
+  In addition, if $f$ is epi, note that $f \circ p_1 - g \circ p_2$ is epi, as if $h \circ (f \circ p_1 - g \circ p_2) = 0$, then using injection $i_1 : B \rightarrow B \oplus D$,
+  we have
+  \begin{equation}
+    0 = h \circ (f \circ p_1 - g \circ p_2) \circ i_1 = h \circ f
+    \end{equation}
+  implying $h = 0$, as $f$ is assumed to be epi. From here, suppose $u \circ f' = u \circ p_2 \circ m = 0$. It follows by the universal property that there is a unique map $r : C \rightarrow X$ where for
+  $(f \circ p_1 - g \circ p_2) : B \oplus D \rightarrow C$, the defining map of the cokernel (an epi), we have
+  \begin{equation}
+    r \circ (f \circ p_1 - g \circ p_2) = u \circ p_2
+    \end{equation}
+  so composing on the right with $i_1$ gives us $r \circ f = 0$, and since $f$ is epi, $r = 0$, so $u \circ p_2 = 0$. Then, since $p_2$ is epi, $u = 0$, and $f'$ is epi as desired.
+
+  Finally, let $k : A \rightarrow B$ be the kernel of $f$. By the universal property of the pullback, we get unique map $k' : A \rightarrow S$,
+  % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzEsMSwiUyJdLFszLDEsIkQiXSxbMywzLCJDIl0sWzEsMywiQiJdLFswLDEsInIiLDFdLFsxLDIsImYnIiwyXSxbMiwzLCJnIl0sWzEsNCwiZyciXSxbNCwzLCJmIiwyXSxbMCw0LCJrIiwyXSxbMCwyLCIwIiwxXV0=
+  \[\begin{tikzcd}
+	A \\
+	& S && D \\
+	\\
+	& B && C
+	\arrow["k'"{description}, from=1-1, to=2-2]
+	\arrow["0"{description}, from=1-1, to=2-4]
+	\arrow["k"', from=1-1, to=4-2]
+	\arrow["{f'}"', from=2-2, to=2-4]
+	\arrow["{g'}", from=2-2, to=4-2]
+	\arrow["g", from=2-4, to=4-4]
+	\arrow["f"', from=4-2, to=4-4]
+  \end{tikzcd}\]
+  To show that $k' : A \rightarrow S$ is the kernel of $f'$, pick some map $j : R \rightarrow S$ such that $f' \circ j = 0$. We have map $g' \circ j : R \rightarrow B$ where $f \circ g' \circ j = g' \circ f \circ j = 0$,
+  so there is unique $\ell : R \rightarrow A$ with
+  % https://q.uiver.app/#q=WzAsNCxbMSwwLCJSIl0sWzEsMSwiQSJdLFswLDIsIkIiXSxbMiwyLCJDIl0sWzAsMSwiXFxlbGwiXSxbMSwyLCJrIl0sWzIsMywiZiIsMl0sWzEsMywiMCIsMl0sWzAsMiwiZydcXGNpcmMgaiIsMl0sWzAsMywiMCJdXQ==
+  \[\begin{tikzcd}
+	& R \\
+	& A \\
+	B && C
+	\arrow["\ell", from=1-2, to=2-2]
+	\arrow["{g'\circ j}"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["k", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["f"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  so in particular, $g' \circ j = g' \circ k' \circ \ell$. In addition, we have $f' \circ j = 0 = f' \circ k' \circ \ell$ from the first diagram. Thus, putting $j$ and $k' \circ \ell$ as the dashed arrow
+  make the following diagram commute:
+  % https://q.uiver.app/#q=WzAsNSxbMCwwLCJSIl0sWzEsMSwiUyJdLFsxLDMsIkIiXSxbMywzLCJDIl0sWzMsMSwiRCJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDIsImcnIl0sWzIsMywiZiIsMl0sWzQsMywiZyJdLFsxLDQsImYnIiwyXSxbMCwyXSxbMCw0XV0=
+  \[\begin{tikzcd}
+	R \\
+	& S && D \\
+	\\
+	& B && C
+	\arrow[dashed, from=1-1, to=2-2]
+	\arrow[from=1-1, to=2-4]
+	\arrow[from=1-1, to=4-2]
+	\arrow["{f'}"', from=2-2, to=2-4]
+	\arrow["{g'}", from=2-2, to=4-2]
+	\arrow["g", from=2-4, to=4-4]
+	\arrow["f"', from=4-2, to=4-4]
+  \end{tikzcd}\]
+  so by uniqueness of the pullback, we must have $j = k' \circ \ell$. Thus, we have induced $\ell$ making the following diagram commute:
+  % https://q.uiver.app/#q=WzAsNCxbMSwwLCJSIl0sWzEsMSwiQSJdLFswLDIsIlMiXSxbMiwyLCJEIl0sWzAsMSwiXFxlbGwiXSxbMSwyLCJrJyJdLFsyLDMsImYnIiwyXSxbMSwzLCIwIiwyXSxbMCwyLCJqIiwyXSxbMCwzLCIwIl1d
+  \[\begin{tikzcd}
+	& R \\
+	& A \\
+	S && D
+	\arrow["\ell", from=1-2, to=2-2]
+	\arrow["j"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["{k'}", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["{f'}"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  Moreover, $\ell$ is unique as if we replaced it with $\ell'$, then such an $\ell'$ would make the original kernel diagram where $\ell$ appeared commute as well, and by uniqueness of
+  this diagram, $\ell' = \ell$. Thus, by definition, $k' : A \rightarrow S$ is the kernel of $f' : S \rightarrow D$, and the proof is complete.
+  \end{proof}
+
+\noindent There is also a dual result which we can prove through similar means (for this reason, we omit the proof).
+
+\begin{lemma}
+  Given a pushout square in an Abelian category $\mathcal{C}$, if the top edge $g$ is epi, then the bottom edge $g'$ is epi.
+\end{lemma}
+
+\noindent We will now use these technical lemmas to introduce machinery which will make our lives much easier, going forward.
+
+\begin{definition}[Elements]
+  Let $\mathcal{C}$ be an Abelian category, let $C$ be an object. We call an arrow $x : X \rightarrow C$ (with target $C$) a \emph{member} of $C$, and denote it by $x \in C$.
+  We say that two members $x$ and $y$ of $C$ are equivalent if there are epis $u$ and $v$ such that $x \circ u = y \circ v$. One can easily see that this relation is symmetric and reflexive.
+  \end{definition}
+
+\begin{claim}
+  The ``equivalence of elements'' relation defined above is transitive, hence an equivalence relation.
+  \end{claim}
+\begin{proof}
+  Suppose $y$ and $z$ are equivalent, so $y \circ v' = z \circ w$. We can combine together this commutative sqaure with $x \circ u = y \circ v$ to obtain the composite diagram
+  % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzAsMiwiXFxidWxsZXQiXSxbMiwyLCJhIl0sWzQsMCwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFswLDEsInYnIl0sWzAsMiwidyIsMl0sWzIsMywieiIsMl0sWzEsMywieSJdLFs0LDEsInYiLDJdLFs0LDUsInUiXSxbNSwzLCJ4Il1d
+  \[\begin{tikzcd}
+	\bullet && \bullet && \bullet \\
+	\\
+	\bullet && a && \bullet
+	\arrow["{v'}", from=1-1, to=1-3]
+	\arrow["w"', from=1-1, to=3-1]
+	\arrow["y", from=1-3, to=3-3]
+	\arrow["v"', from=1-5, to=1-3]
+	\arrow["u", from=1-5, to=3-5]
+	\arrow["z"', from=3-1, to=3-3]
+	\arrow["x", from=3-5, to=3-3]
+  \end{tikzcd}\]
+  We can then pullback in the top pair of arrows to obtain
+  % https://q.uiver.app/#q=WzAsNyxbMCwyLCJcXGJ1bGxldCJdLFsyLDIsIlxcYnVsbGV0Il0sWzAsNCwiXFxidWxsZXQiXSxbMiw0LCJhIl0sWzQsMiwiXFxidWxsZXQiXSxbNCw0LCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzAsMSwidiciXSxbMCwyLCJ3IiwyXSxbMiwzLCJ6IiwyXSxbMSwzLCJ5Il0sWzQsMSwidiIsMl0sWzQsNSwidSJdLFs1LDMsIngiXSxbNiwwLCJwIiwyXSxbNiw0LCJxIl1d
+  \[\begin{tikzcd}
+	&& \bullet \\
+	\\
+	\bullet && \bullet && \bullet \\
+	\\
+	\bullet && a && \bullet
+	\arrow["p"', from=1-3, to=3-1]
+	\arrow["q", from=1-3, to=3-5]
+	\arrow["{v'}", from=3-1, to=3-3]
+	\arrow["w"', from=3-1, to=5-1]
+	\arrow["y", from=3-3, to=5-3]
+	\arrow["v"', from=3-5, to=3-3]
+	\arrow["u", from=3-5, to=5-5]
+	\arrow["z"', from=5-1, to=5-3]
+	\arrow["x", from=5-5, to=5-3]
+  \end{tikzcd}\]
+  where we note that now, $z \circ (w \circ p) = x \circ (u \circ q)$. Since both $v$ and $v'$ are epis, it follows from the technical lemma that $p$ and $q$ are epis. Moreover, $w$ and $u$ are epis, so the
+  compositions $w \circ p$ and $u \circ q$ are epis. Thus, $z$ is equivalent to $x$, and we have transitivity, as desired. When $x$ and equivalent to $y$, we use the notation $x \sim y$, going forward.
+  \end{proof}
+
+\begin{definition}
+  A \emph{generalized element} (or just an \emph{element}) of object $C$ in Abelian category $\mathcal{C}$ is an equivalence class of members $x \in C$ under the equivalence relation $\sim$ defined above. The generalized element
+  to which $x$ belongs is denoted by $[x]$. We also use the notation $[x] \in C$ to denote a generalized element in $C$.
+\end{definition}
+
+Given some arrow $f : C \rightarrow D$, note that if $x \in C$ is a member, then $f \circ x \in D$. Moreover, if $x \sim y$ in $C$, then $f \circ x \sim f \circ y$ in $D$, so the arrow $f$ is a well-defined map
+from the generalized elements of $C$, to the generalized elements of $D$, $f([x]) = [f \circ x]$. Because we are working in an Abelian category, note that every object has a zero element, the equivalence class
+of the zero map $0 \to C$ and member $x$ has a negative $-x$, so we denote $-[x] = [-x]$ (if $x \sim y$, then it is easy to check that $-x \sim -y$). Note, however, that we generally cannot perform
+arithmetic on generalized elements (i.e. $x \simeq x'$ and $y \sim y'$ does not imply that $x + y \sim x' + y'$), because the epis that we precompose these elements with may differ.
+
+Now, let us prove the main theorem which characterizes elements
+
+\begin{theorem}
+  If $\mathcal{C}$ is an Abelian category, then the following hold:
+  \begin{enumerate}
+    \item Arrow $f : C \rightarrow D$ is monic if and only if, for all elements $[x] \in C$, $f([x]) = [0]$ implies $[x] = [0]$.
+    \item Moreover, $f : C \rightarrow D$ is monic if and only if, for all $[x], [x'] \in C$, $f([x]) = f([x'])$ implies $[x] = [x']$.
+    \item Arrow $g : C \rightarrow D$ is epi if and only if for all $[z] \in D$, there exists $[y] \in C$ such that $g([y]) = [z]$.
+    \item Arrow $h : C \rightarrow D$ is the zero arrow if and only if $h([x]) = [0]$ for all $[x] \in C$.
+      \item Let $f : C \rightarrow D$ be an arrow, let $j : K \rightarrow C$ be a kernel of $f$, and let $i : F \rightarrow D$ be an image. Then for every $[x] \in C$
+        such that $f([x]) = [0]$, there is unique $[k] \in K$ such that $[x] = j([k])$. Since $f(j([k])) = [0]$ for all $[k]$, it follows that such $[x]$ and the $[k]$ are in bijective
+        correspondence.
+     \item Additionally, elements of the form $f([x])$ and $i([z])$ for $[z] \in F$ are in bijective correspondence.
+    \item If the sequence $B \rightarrow C \rightarrow D$ with arrows $f$ and $g$ is exact, then $g \circ f = 0$ and for all $[y] \in C$
+      with $g([y]) = [0]$, there exists $[x] \in B$ with $f([x]) = [y]$. The converse is also true.
+    \end{enumerate}
+  \end{theorem}
+
+\begin{proof}
+  To begin, assume the condition that $f([x]) = [f \circ x] = [0]$ implies $[x] = [0]$. Then if $f \circ x = 0$, then $x \circ v = 0$ for some epi $v$, so $x = 0$, and $f$ is monic. On the other hand,
+  if $f$ is monic, and $f([x]) = [0]$, then there is epi $u$ such that $f \circ x \circ u = 0$, so $x \circ u = 0$, so $[x] = [0]$. In addition, the condition ``$f([x]) = f([x'])$ implies $[x] = [x']$''
+  means that if $f \circ x = 0 = f \circ 0$, so $f([x]) = f([0])$, then $[x] = [0]$, so $x \circ v = 0$, so $x = 0$. In addition, if $f$ is monic, then $f \circ x \circ u = f \circ x' \circ v$ implies
+  that $x \circ u = x' \circ v$, so $[x] = [x']$.
+
+  If there is $[y]$ with $g([y]) = [z]$ for each $[z]$, then note that if $f \circ g = 0$, we can pick $[y] \in C$ such that $g([y]) = [\text{id}]$, so that $g \circ y \circ u = v$
+  for some epi $v$. Then we get
+  \begin{equation}
+    0 = f \circ g \circ y \circ u = f \circ u
+    \end{equation}
+  and since $u$ is an epi, $f = 0$. Thus, $g$ is an epi. Conversely, if $g$ is epi, then note that for given $z$, we have pullback
+  % https://q.uiver.app/#q=WzAsNCxbMiwyLCJEIl0sWzIsMCwiXFxidWxsZXQiXSxbMCwyLCJDIl0sWzAsMCwiXFxidWxsZXQiXSxbMSwwLCJ6Il0sWzIsMCwiZyIsMl0sWzMsMiwieSIsMl0sWzMsMSwidSJdXQ==
+  \[\begin{tikzcd}
+	\bullet && \bullet \\
+	\\
+	C && D
+	\arrow["u", from=1-1, to=1-3]
+	\arrow["y"', from=1-1, to=3-1]
+	\arrow["z", from=1-3, to=3-3]
+	\arrow["g"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  so $g \circ y = z \circ u$, where $u$ is epi because $g$ is (from the technical lemma). Thus, $g([y]) = [z]$. Moving on to the fourth point, if $h([x]) = [0]$ for all $x$, then $h \circ x \circ u = 0$
+  for all $x$, so since $u$ is epi, $h \circ x = 0$ for all $x$, so setting $x = \text{id}$, $h = 0$. On the other hand, if $h$ is the zero arrow, clearly $h([x]) = [0]$ for all $[x]$.
+
+  Now, if $f([x]) = [0]$, then $f \circ x \circ u = 0$ for some epi $u$, so $f \circ x = 0$. Thus, there is unique $k$ pointing to $K$ such that $j \circ k = x$, so $j([k]) = [x]$.
+
+  In addition,
+  given some $f([x])$, we let $q : D \rightarrow Q$ be the cokernel map of $f$, and note that we have
+  \begin{equation}
+     q \circ f \circ x \circ u = 0
+    \end{equation}
+  so $q \circ (f \circ x) = 0$, so there is $z$ pointing to $F$ such that $i \circ z = f \circ x$, which means that $i([z]) = f([x])$. To see that this $[z]$ is unique, if we also had $i([z']) = f([x])$,
+  then $i \circ z \circ u = i \circ z' \circ v$, so since $i$ is monic, $z \circ u = z' \circ v$ and $[z] = [z']$. Conversely, given $i([z])$, note that via the universal property, we have induced map $\widetilde{f}$,
+  % https://q.uiver.app/#q=WzAsNCxbMSwwLCJDIl0sWzEsMSwiRiJdLFswLDIsIkQiXSxbMiwyLCJRIl0sWzAsMSwiXFx3aWRldGlsZGV7Zn0iXSxbMSwyLCJpIl0sWzEsMywiMCIsMl0sWzIsMywicSIsMl0sWzAsMiwiZiIsMl0sWzAsMywiMCJdXQ==
+  \[\begin{tikzcd}
+	& C \\
+	& F \\
+	D && Q
+	\arrow["{\widetilde{f}}", from=1-2, to=2-2]
+	\arrow["f"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["i", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["q"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  so that $f = i \circ \widetilde{f}$. We can prove that $\widetilde{f}$ is epi by noting that if $u \circ \widetilde{f} = 0$, we have pushout of $i : F \rightarrow D$ and $u : F \rightarrow \cdot$.
+  Note that
+  \begin{equation}
+  u' \circ f = u' \circ i \circ \widetilde{f} = i' \circ u \circ \widetilde{f} = 0
+  \end{equation}
+  so we get an induced map (the dahsed line), by universal property of the cokernel, in the following diagram:
+  % https://q.uiver.app/#q=WzAsNixbMSwwLCJDIl0sWzAsMSwiRiJdLFswLDMsIlxcYnVsbGV0Il0sWzIsMywiXFxidWxsZXQiXSxbMiwxLCJEIl0sWzQsMSwiUSJdLFswLDEsIlxcd2lkZXRpbGRle2Z9IiwyXSxbMSwyLCJ1IiwyXSxbMiwzLCJpJyIsMl0sWzEsNCwiaSIsMl0sWzQsMywidSciXSxbNCw1LCJxIiwyXSxbMCw0LCJmIl0sWzUsMywiXFxwaGkiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+  \[\begin{tikzcd}
+	& C \\
+	F && D && Q \\
+	\\
+	\bullet && \bullet
+	\arrow["{\widetilde{f}}"', from=1-2, to=2-1]
+	\arrow["f", from=1-2, to=2-3]
+	\arrow["i"', from=2-1, to=2-3]
+	\arrow["u"', from=2-1, to=4-1]
+	\arrow["q"', from=2-3, to=2-5]
+	\arrow["{u'}", from=2-3, to=4-3]
+	\arrow["\phi", dashed, from=2-5, to=4-3]
+	\arrow["{i'}"', from=4-1, to=4-3]
+  \end{tikzcd}\]
+  It then follows that $i' \circ u = \phi \circ q \circ i = 0$. We know from the technical lemmas that $i'$ is mono, so $u = 0$, which means $\widetilde{f}$ is epi. Therefore, for some $[z]$, we can choose $[x]$
+  such that $\widetilde{f}([x]) = [z]$, so $i([z]) = f([x])$, as desired.
+
+  Moving along, if $B \to C \to D$ is exact, we have $\text{Im}(f) = \text{Ker}(g)$. Let $j : K \rightarrow C$ be the shared defining monic morphism. First note that if $g([y]) = 0$, then
+  we can pick $[z] \in K$ such that $j([z]) = [y]$, and $[x]$ such that $f([x]) = j([z])$. Moreover, since every $f([x])$ is of the form $j([z])$, we have
+  \begin{equation}
+    (g \circ f)([x]) = (g \circ j)([z]) = [0]
+    \end{equation}
+  for all $[x]$, so $g \circ f = 0$, as desired.
+
+  To prove the converse, take the kernel map $j : K \rightarrow C$ and note that $[j] \in C$ with $g([j]) = 0$, so $f([x]) = [j]$
+  for some $[x]$, so $f \circ x \circ u = j \circ v$ for epis $u$ and $v$. Thus, if we let $q : C \rightarrow Q$ be the quotient of $\text{Coker}(f)$, then $q \circ j \circ v = 0$,
+  so $q \circ j = 0$, so we have unique arrow from $K$ to $F$, the image of $f$, making the universal diagram commute. The fact that $g \circ f = 0$ implies that $g \circ i = 0$, as any $(g \circ i)([z])$
+  can be written as $(g \circ i)([x]) = [0]$, for any $[z]$. Thus, there is a unique arrow from $F$ to $K$ as well,
+  making the universal diagram commute. Putting these diagrams together, it is easy to check that the composite diagram commutes, and uniqueness implies these arrows will be inverses of each other, so we have
+  the desired exactness:
+  % https://q.uiver.app/#q=WzAsNSxbMSwwLCJLIl0sWzMsMCwiRiJdLFs0LDEsIlEiXSxbMiwxLCJDIl0sWzAsMSwiRCJdLFszLDQsImciXSxbMywyLCJxIiwyXSxbMSwzLCJpIiwyXSxbMSwyLCIwIl0sWzAsNCwiMCIsMl0sWzAsMywiaiJdLFswLDEsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+  \[\begin{tikzcd}
+	& K && F \\
+	D && C && Q
+	\arrow[shift left, dashed, from=1-2, to=1-4]
+	\arrow["0"', from=1-2, to=2-1]
+	\arrow["j", from=1-2, to=2-3]
+	\arrow[shift left, dashed, from=1-4, to=1-2]
+	\arrow["i"', from=1-4, to=2-3]
+	\arrow["0", from=1-4, to=2-5]
+	\arrow["g", from=2-3, to=2-1]
+	\arrow["q"', from=2-3, to=2-5]
+  \end{tikzcd}\]
+  and the proof is finally complete.
+  \end{proof}
+
+\begin{comment}
+\section{Applications}
+
+\noindent As an application, let us solve an exercise in Weibel's homological algebra book by means of a generalized element diagram chase.
+
+\begin{problem}[Weibel 1.2.5]
+  Let $C = \{C_{p, q}\}$ be a family of objects in Abelian category $\mathcal{C}$, and let horizontal and vertical boundary maps $d^h$ and $d^v$ define a double complex on $C$,
+  where $(d^h)^2 = (d^v)^2 = d^v d^h + d^h d^v = 0$. Let $\text{Tot}(C)$ be the usual total complex with differential $d = d^v + d^h$. Suppose $C$ is bounded and has exact rows.
+  Then $\text{Tot}(C)$ is acyclic.
+  \end{problem}
+
+\noindent To solve this problem, we need to show that $\text{Im}(d_{n + 1}) = \text{Ker}(d_n)$ for all $n$. To do this, we can just use the final criterion of the above theorem. In particular,
+we already know that $d_n \circ d_{n + 1} = 0$ for each $n$, so we simply must show that for each $[y] \in \text{Tot}(C)_n$ with $d_n([y]) = [0]$, there exists some $[x] \in \text{Tot}(C)_{n + 1}$
+such that $d_{n + 1}([x]) = [y]$. Let $\pi_{p, q} : \text{Tot}(C)_{p + q} \rightarrow C_{p, q}$ be the projection maps and let $i_{p, q} : C_{p, q} \rightarrow \text{Tot}(C)_{p + q}$ be the inclusions
+for the categorical biproducts (we know that the products are biproducts as the complex is bounded). Suppose $d_n([y]) = [0]$, so $d_n \circ y \circ u = 0$, which means $d_n \circ y = 0$. We can
+write $y = i_{p_1, q_1} \circ y_{p_1, q_1} + \cdots + i_{p_m, q_m} \circ y_{p_m, q_m}$ for $y_{p_j, q_j} \in C_{p_j, q_j}$ for $p_j + q_j = n$. Since $d_n \circ y = 0$, it follows that
+\begin{equation}
+  d^h_{p + 1, q} \circ y_{p + 1, q} + d^v_{p, q + 1} \circ y_{p, q + 1} = 0
+  \end{equation}
+for all $p + q = n - 1$. We can pick the $y_{a, b}$ on the $n - 1$ diagonal with the largest $q$ which is non-zero. The above equation becomes $d^h_{p + 1, q} \circ y_{p + 1, q} = 0$, so
+$d^h_{p + 1, q}([y_{p + 1, q}]) = [0]$ and since we have exact rows, we have
+\end{comment}
+
+\begin{comment}
+\noindent As another application, let us prove an important result about lifting morphisms in Abelian categories to injective resolutions (this theorem is critical to developing the machinery of
+derived functors: this is why I'm proving it here).
+
+\begin{theorem}
+  Let $\mathcal{C}$ be an Abelian category, let $C$ and $C'$ be objects. Let $C \to I$ and $C' \to J$ be injective resolutions, and suppose we have arrow $\overline{f} : C \rightarrow C'$. Then
+  there exists a lift $f : I \rightarrow J$ which is a morphism of cochain complexes, and such that in the zeroth-degree, $f$ agress with $\overline{f}$. Moreover, any two lifts $f_1$ and $f_2$
+  of $\overline{f}$ are cochain homotopy equivalent.
+  \end{theorem}
+
+\begin{proof}
+  To begin, note that we can compose $\overline{f}$ with the map $C' \to J^0$ to get a map $C \to J^0$. We also have monic inclusion map $C \to I^0$, so since $J^0$ is injective, we can extend
+  to a map $I^0 \to J^0$. Now, we proceed by induction. Suppose we have defined map $f^k : I^k \rightarrow J^k$ for all $k < n$ such that $d_J \circ f^k = f^{k + 1} \circ d_I$ (we have proved the
+  $n = 0$ case), where $f^{-1} = 0$). From here, note that we have monic $j : K \rightarrow I^{n}$, which is $\text{Im}(d^{n - 1}_I)$. We note that
+  \begin{equation}
+    (d_J \circ f^n \circ j)([y]) = (d_J \circ f^n \circ d_I)([x]) = (d_J \circ d_J \circ f^{n - 1})([x]) = [0]
+    \end{equation}
+  for all $[y] \in K$, so $d_J \circ f^n \circ j : K \rightarrow J^{n + 1}$ is the zero arrow. From here, note that $d_J \circ f^n$ induces an arrow from $\text{Coker}(d^{n - 1}_I)$
+  to $J^{n + 1}$.
+\end{proof}
+\end{comment}
+
+\end{document}

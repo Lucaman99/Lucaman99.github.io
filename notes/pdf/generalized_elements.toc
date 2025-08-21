@@ -1,0 +1,6 @@
+\contentsline {title}{Diagram chasing via generalized elements}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {II}Generalized elements}{1}{section.2}%
+\contentsline {section}{\numberline {III}Application: an exercise in Weibel's book}{1}{section.3}%

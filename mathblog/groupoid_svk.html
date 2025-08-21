@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-06-11 Wed 10:00 -->
+<!-- 2025-08-13 Wed 15:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Seifert-Van Kampen for fundamental groupoids in painful detail</title>
@@ -195,7 +195,7 @@
   .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px;} </style>
+<style> body {font-size:15px;background-color:#FDF7D6} a {color:blue;} </style>
 <script>
   window.MathJax = {
     tex: {
@@ -236,15 +236,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org80640fd">1. Introduction</a></li>
-<li><a href="#org16c88a5">2. Background</a>
+<li><a href="#org25c98c7">1. Introduction</a></li>
+<li><a href="#orgd2abfa9">2. Background</a>
 <ul>
-<li><a href="#orgb90ba6b">2.1. Categorical preliminaries</a></li>
-<li><a href="#org9ef1b43">2.2. Free products and free groups</a></li>
+<li><a href="#org0dbcbb0">2.1. Categorical preliminaries</a></li>
+<li><a href="#org0643510">2.2. Free products and free groups</a></li>
 </ul>
 </li>
-<li><a href="#orgd3913d3">3. Groupoid Seifert-Van Kampen</a></li>
-<li><a href="#org68259e2">4. Conclusion: back down to Earth</a></li>
+<li><a href="#orgbfac68c">3. Groupoid Seifert-Van Kampen</a></li>
+<li><a href="#orge5d87ae">4. Conclusion: back down to Earth</a></li>
 </ul>
 </div>
 </div>
@@ -254,8 +254,8 @@
 
 <hr />
 
-<div id="outline-container-org80640fd" class="outline-2">
-<h2 id="org80640fd"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org25c98c7" class="outline-2">
+<h2 id="org25c98c7"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This blog post is a debt I have been meaning to pay for the past two years. I have always felt a certain amount of guilt invoking the Seifert Van-Kampen theorem, because in my opinion, most of the proofs in the
@@ -270,12 +270,12 @@ In order to write this post, I used three books: Hatcher, May, and Munkres. Each
 </div>
 </div>
 
-<div id="outline-container-org16c88a5" class="outline-2">
-<h2 id="org16c88a5"><span class="section-number-2">2.</span> Background</h2>
+<div id="outline-container-orgd2abfa9" class="outline-2">
+<h2 id="orgd2abfa9"><span class="section-number-2">2.</span> Background</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgb90ba6b" class="outline-3">
-<h3 id="orgb90ba6b"><span class="section-number-3">2.1.</span> Categorical preliminaries</h3>
+<div id="outline-container-org0dbcbb0" class="outline-3">
+<h3 id="org0dbcbb0"><span class="section-number-3">2.1.</span> Categorical preliminaries</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Given a topological space \(X\), the fundamental groupoid \(\Pi(X)\) is defined to be the category with the points of \(X\) as objects, and path homotopy classes between points as arrows. It is
@@ -331,7 +331,7 @@ of diagrams, then there exists a unique morphism \(\widetilde{\eta} : \text{coli
 </p>
 
 
-<div id="orgdb4589d" class="figure">
+<div id="org5ee2e41" class="figure">
 <p><img src="./assets/jun_02_25_2.png" alt="jun_02_25_2.png" width="320px" />
 </p>
 </div>
@@ -357,7 +357,7 @@ then there is a unique morphism \(\widetilde{\eta} : \text{colim} \ F \rightarro
 </p>
 
 
-<div id="org9e39c44" class="figure">
+<div id="org9335016" class="figure">
 <p><img src="./assets/jun_02_25.png" alt="jun_02_25.png" width="300px" />
 </p>
 </div>
@@ -398,8 +398,8 @@ So, we have proved <i>existence</i> of direct limits. Because colimits satisfy a
 </div>
 </div>
 
-<div id="outline-container-org9ef1b43" class="outline-3">
-<h3 id="org9ef1b43"><span class="section-number-3">2.2.</span> Free products and free groups</h3>
+<div id="outline-container-org0643510" class="outline-3">
+<h3 id="org0643510"><span class="section-number-3">2.2.</span> Free products and free groups</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Let \(G\) be  a group, let \(G_{\alpha}\) be some family of subgroups. We say that \(G\) is the <i>free product</i> of the \(G_{\alpha}\) if the following universal property is satisfied:
@@ -840,8 +840,8 @@ and \([\omega] \in \pi_1(x, U_{\alpha} \cap U_{\beta})\).
 </div>
 </div>
 
-<div id="outline-container-orgd3913d3" class="outline-2">
-<h2 id="orgd3913d3"><span class="section-number-2">3.</span> Groupoid Seifert-Van Kampen</h2>
+<div id="outline-container-orgbfac68c" class="outline-2">
+<h2 id="orgbfac68c"><span class="section-number-2">3.</span> Groupoid Seifert-Van Kampen</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Now, the main results. First, recall a basic result from topology:
@@ -1222,8 +1222,8 @@ I'm not going to do the proof because the one given in May is perfectly nice and
 </div>
 </div>
 
-<div id="outline-container-org68259e2" class="outline-2">
-<h2 id="org68259e2"><span class="section-number-2">4.</span> Conclusion: back down to Earth</h2>
+<div id="outline-container-orge5d87ae" class="outline-2">
+<h2 id="orge5d87ae"><span class="section-number-2">4.</span> Conclusion: back down to Earth</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Let us now combine all of the results we proved about the colimit of systems of groups with the Seifert-Van Kampen theorem to write down some results that we can actually use in calculations.
@@ -1288,7 +1288,7 @@ That's it! Finally done. Hopefully this was an enjoyable/illuminating read. Stay
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2025-06-11 Wed 10:00</p>
+<p class="date">Created: 2025-08-13 Wed 15:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

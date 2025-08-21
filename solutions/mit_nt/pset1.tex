@@ -1,0 +1,174 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib,oneside,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.6in, rmargin=1.6in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{man}{Mantra}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.05}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Problem set 1}
+\author{Jack Ceroni}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Problem 0}
+
+\begin{problem}
+  Prove that if $|\cdot|$ is non-Archimedean on $k$, and $|x| \neq |y|$, then $|x + y| = \max(|x|, |y|)$.
+  \end{problem}
+\begin{proof}
+  We know that $|x + y| \leq \max(|x|, |y|)$. In addition, since $|x| \neq |y|$, we have $|y| < |x|$ or $|y| < |x|$. Suppose without loss of generality
+  the former case. Then we have
+  \begin{equation}
+    |y| < |x| = |x + y - y| \leq \max(|x + y|, |y|) = |x + y|
+    \end{equation}
+  where the final equality follows from the fact that if $\max(|x + y|, |y|) = |y|$, then we would have $|x| \leq |y|$, a contradiction. Thus, $\max(|x|, |y|) \leq |x + y|$,
+  and we have equality.
+  \end{proof}
+
+\begin{problem}
+
+  \end{problem}
+
+\begin{problem}
+
+  \end{problem}
+
+\section{Problem 1}
+
+\begin{problem}
+  Prove that $|\cdot|$ is non-Archimedean if and only if $|1 + \cdots + 1| \leq 1$ for every finite sum of $1$s.
+  \end{problem}
+\begin{proof}
+  Let $n = 1 + \cdots + 1$ repeated $n$ times. Note that if $|\cdot|$ is non-Archimedean, then $|n| = |n - 1 + 1| \leq \max(|n - 1|, 1)$, so the result follows via induction.
+  Conversely, if $|n| \leq 1$ for all $n$, then note that if $|z| < 1$, we have
+  \begin{equation}
+    |1 + z|^N = |(1 + z)^N| = \left| \sum_{k = 0}^{N} {N \choose k} z^k \right| \leq \sum_{k = 0}^{N} \left| {N \choose k} \right| |z|^k \leq \sum_{k = 0}^{N} |z|^k \leq \frac{1}{1 - |z|}
+    \end{equation}
+  for any $N$. In particular, $|1 + z|^N$ is bounded as we take $N \to \infty$, so it must be the case that $|1 + z| \leq 1$. Therefore, $|1 + z| \leq \max(|z|, 1)$. It follows immediately that
+  if $|x| \neq |y|$, so $|x| < |y|$ or $|y| < |x|$ (without loss of generality, assume the first case), then $\frac{|x|}{|y|} < 1$, and we have
+  \begin{equation}
+    |x + y| = |y| \left| 1 + \frac{x}{y} \right| \leq |y| = \max(|x|, |y|)
+    \end{equation}
+  Therefore, the only remaining case is when $|x| = |y|$. Equivalently, suppose we have $|z| = 1$ and $|1 + z| = \alpha > 1$. Then $|(1 + z)^N| = \alpha^N$ grows exponentially, but as before
+  \begin{equation}
+    |(1 + z)^N| \leq \sum_{k = 0}^{N} |z|^k = \frac{N (N + 1)}{2}
+    \end{equation}
+  which grows polynomially in $N$. Hence, we have a contradiction: $\alpha^N$ must eventually exceed this bound. It follows that we must have $|1 + z| \leq 1$ as well, which completes the proof.
+  \end{proof}
+
+\begin{remark}
+  As an immediate corollary, it follows that if field $F$ has positive characteristic $p$, so $p = 0$, then if $|\cdot|$ is some absolute value, we note that $|n|$ will be bounded
+  for any integer $n$: it will be the maximum of $|1|, |2|, \dots, |p - 1|$. It follows that we must have $|n| \leq 1$ for all $n$, otherwise we could make $|n^K| = |n|^K$ arbitrarily large.
+  If we have a finite field of characteristic $p$, pick some $n$, and note that $n^K$ will eventually return to $n$ for some large enough $K > 1$, so $|n| = |n|^K$, which means $|n|^{K - 1} = 1$ (in the case $n \neq 0$).
+  Thus, $|n| = 1$, and the absolute value is trivial.
+  \end{remark}
+
+\begin{problem}[Ostrowski's theorem]
+  Prove that every non-trivial absolute value on $\mathbb{Q}$ is equivalent to $|\cdot|_p$ for some prime $p \leq \infty$.
+  \end{problem}
+\begin{proof}
+  Recall that the $p$-adic absolute value on $\mathbb{Q}$ is given by taking $|x|_p = p^{-v_p(x)}$, where $v_p(x)$ is the multiplicity of a prime factor in $x$. If norm $|\cdot|$ is non-trivial, then
+  we will have $|n| \neq 0, 1$ for some $n \neq 0$. We can factor $n$ into primes, so we must have $|p| \neq 0, 1$ for some prime $p$. Of course, $|p|_p = p^{-1}$, so we let $\alpha = -\frac{\log(p)}{\log(|p|)}$
+  (well-defined as $|p| \neq 0, 1$) and note that $|p|^{\alpha} = |p|_p$. Immediately, we have $|p^k|^{\alpha} = |p^k|_p$ for all powers of $p$. For any other prime $q \neq p$, we have $|q|_p = 1$, so we must show
+  that $|q| = 1$ for all such $q$. We can write, for any $n$,
+  \begin{equation}
+    \frac{1}{p} = \frac{k}{q^n} + r
+    \end{equation}
+  for some $k \in \mathbb{Z}$ less than $q^n$, and remainder $r$ which has magnitude less than $\frac{1}{q^n}$. Note that we will never have $r = 0$, as we would have $q^n = p k$, but in the prime factorization
+  of the right-hand side, the exponent of $q$ is at most $n - 1$. It then follows that
+  \begin{equation}
+    \left| \frac{1}{p} \right| = \left| \frac{k}{q^n} + r \right| \leq \frac{|k|}{|q|^n} + |r|
+    \end{equation}
+\end{proof}
+
+\begin{problem}
+  \end{problem}
+
+\section{Problem 2}
+
+\section{Problem 3}
+
+\section{Problem 4}
+
+\end{document}

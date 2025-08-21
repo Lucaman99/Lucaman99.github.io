@@ -1,7 +1,7 @@
 #+TITLE:Seifert-Van Kampen for fundamental groupoids in painful detail
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} </style>
+#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6} a {color:blue;} </style>
 
 /Originally posted:/ June 11th, 2025
 

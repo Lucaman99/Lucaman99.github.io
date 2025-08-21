@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-11 Mon 13:41 -->
+<!-- 2025-08-18 Mon 10:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Introduction to derived functors and derived categories</title>
+<title>Introduction to derived functors, triangulated categories, and derived categories</title>
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory" />
 <meta name="generator" content="Org Mode" />
@@ -231,18 +231,17 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Introduction to derived functors and derived categories</h1>
+<h1 class="title">Introduction to derived functors, triangulated categories, and derived categories</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfd3ee85">1. Introduction</a></li>
-<li><a href="#orgf6ee1c6">2. Category theory basics</a></li>
-<li><a href="#orgd1c8bd5">3. Abelian categories</a></li>
-<li><a href="#org8e0363f">4. Derived functors</a></li>
-<li><a href="#orgd9e6454">5. Derived categories</a></li>
-<li><a href="#org2996454">6. Sheaf cohomology and hypercohomology</a></li>
-<li><a href="#org1ea3a7b">7. Hochschild homology and cohomology</a></li>
+<li><a href="#org1a7fe89">1. Introduction</a></li>
+<li><a href="#orga4e936e">2. Category theory basics</a></li>
+<li><a href="#org5d292d5">3. Abelian categories</a></li>
+<li><a href="#org30d744e">4. Derived functors</a></li>
+<li><a href="#orgb27da3d">5. Triangulated categories and derived categories</a></li>
+<li><a href="#org6128150">6. Sheaf cohomology and hypercohomology</a></li>
 </ul>
 </div>
 </div>
@@ -252,18 +251,19 @@
 
 <hr />
 
-<div id="outline-container-orgfd3ee85" class="outline-2">
-<h2 id="orgfd3ee85"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org1a7fe89" class="outline-2">
+<h2 id="org1a7fe89"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The goal of this post is to explain the general construction of derived functors and derived categories, then use these ideas to introduce the general
-notion of sheaf cohomology and hypercohomology. I might also talk a bit about Hochschild homology/cohomology (which has a very nice explanation via derived functors).
+notion of sheaf cohomology and hypercohomology. This post is going to be my most "encyclopedic" to date: we will cover a lot of expository theory to
+build up to our main results, some of which is a bit boring, but I'm hoping that this will serve as a great, thorough reference for myself and others.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf6ee1c6" class="outline-2">
-<h2 id="orgf6ee1c6"><span class="section-number-2">2.</span> Category theory basics</h2>
+<div id="outline-container-orga4e936e" class="outline-2">
+<h2 id="orga4e936e"><span class="section-number-2">2.</span> Category theory basics</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In this section, I'll go over a few basic ideas in category theory.
@@ -298,13 +298,15 @@ and define the morphisms in the obvious way.
 </p>
 
 <p>
-<b>Definition 2.3</b> (Universal morphism). A universal morphism is an initial object in \((X \downarrow F)\), a particular comma category, or a terminal object in \((F \downarrow X)\). Intuitively, a universal morphism encodes a property which characterizes
+<b>Definition 2.3</b> (Universal morphism). A universal morphism is an initial object in \((X \downarrow F)\), a particular comma category, or a terminal object in \((F \downarrow X)\). Intuitively, a
+universal morphism encodes a property which characterizes
 some object up to isomorphism. We can unravel the definition of a universal morphism to better conceptualize it.
-In particular, a universal morphism (in \((X \downarrow F)\)) is a pair \((C, f : X \rightarrow F(C))\) such that for any other pair \((C', f' : X \rightarrow F(C'))\), there is a unique arrow \(h : C \rightarrow C'\) such that the following diagram commutes:
+In particular, a universal morphism (in \((X \downarrow F)\)) is a pair \((C, f : X \rightarrow F(C))\) such that for any other pair \((C', f' : X \rightarrow F(C'))\),
+there is a unique arrow \(h : C \rightarrow C'\) such that the following diagram commutes:
 </p>
 
 
-<div id="org73e71c6" class="figure">
+<div id="org31006bd" class="figure">
 <p><img src="./assets/uni_prop.png" alt="uni_prop.png" width="250px" />
 </p>
 </div>
@@ -338,7 +340,8 @@ Having introduced universal properties, we can look at a related idea: adjoint f
 
 <p>
 <b>Mantra 2.1.</b> The best, succinct way to think of a functor \(F : \mathcal{D} \rightarrow \mathcal{C}\) adjoint to functor \(G : \mathcal{C} \rightarrow \mathcal{D}\) is that \(F\) is the most efficient way to systematically
-"solve the problem" posed by \(G\). If \(G\) is, for example, a forgetful functor which throws away some of the structure of category \(\mathcal{C}\), is there a method which reconstructs an element of \(\mathcal{C}\) from \(\mathcal{D}\), and imposes the
+"solve the problem" posed by \(G\). If \(G\) is, for example, a forgetful functor which throws away some of the structure of category \(\mathcal{C}\), is there a method which reconstructs an element of
+\(\mathcal{C}\) from \(\mathcal{D}\), and imposes the
 minimal amount of extra structure possible? If such a method exists, and is functorial, in the sense that it works the same for any object, then it can be described via a functor \(F : \mathcal{D} \rightarrow \mathcal{C}\)
 which is adjoint to \(G\).
 </p>
@@ -430,7 +433,7 @@ We can form a category of \(\mathcal{D}\) -shaped diagrams in \(\mathcal{C}\), \
 </p>
 
 
-<div id="org672aaaa" class="figure">
+<div id="orgb3f53e2" class="figure">
 <p><img src="./assets/cone.png" alt="cone.png" width="250px" />
 </p>
 </div>
@@ -441,7 +444,7 @@ if they wish. The category of cones to \(F\) takes cones from some object to \(F
 </p>
 
 
-<div id="org4a92574" class="figure">
+<div id="org05dc574" class="figure">
 <p><img src="./assets/cone_morphism.png" alt="cone_morphism.png" width="250px" />
 </p>
 </div>
@@ -453,7 +456,7 @@ with the category of co-cones (or cones from \(F\)) being defined by again rever
 <p>
 <b>Definition.</b> If \(F : \mathcal{D} \rightarrow \mathcal{C}\) is a diagram, a limit \(\lim F\) is an initial object in the category of cones going to \(F\).
 Similarly, a colimit \(\text{colim} \ F\) is a final object in the category of cones going from \(F\). For a more detailed explanation of
-limits and colimits, and how they are categorical generalizations of inverse limits and direct limits, see <a href="https://lucaman99.github.io/mathblog/groupoid_svk.html">my previous blog post</a>.
+limits and colimits, and how they are categorical generalizations of inverse limits and direct limits, see <a href="./groupoid_svk.html">my previous blog post</a>
 </p>
 
 <p>
@@ -471,7 +474,7 @@ the coequalizer \(\text{Coeq}(f, g)\) is \(\text{colim} \ F\).
 
 <p>
 <b>Remark.</b> One can immediately see how this generalizes the notion of "the set on which two functions are equal". Being sloppy and abusing notation, we can have \(C = \{(x, y) \ | \ y = f(x) = g(x)\}\),
-\(\psi_X\) the projection onto the first argument, and \(\psi_Y\) projection onto the second: then \(C\) satisfies the desired criterion. Ignore this remark is you find it too hand-wavy.
+\(\psi_X\) the projection onto the first argument, and \(\psi_Y\) projection onto the second: then \(C\) satisfies the desired criterion. Ignore this remark if you find it too hand-wavy.
 </p>
 
 <p>
@@ -487,8 +490,8 @@ Similarly, a coproduct is a colimit of \(F\).
 </div>
 </div>
 
-<div id="outline-container-orgd1c8bd5" class="outline-2">
-<h2 id="orgd1c8bd5"><span class="section-number-2">3.</span> Abelian categories</h2>
+<div id="outline-container-org5d292d5" class="outline-2">
+<h2 id="org5d292d5"><span class="section-number-2">3.</span> Abelian categories</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Here, we will develop some central results revolving around <i>Abelian categories</i>, which were introduced by Grothendieck in his Tohoku paper, and provide the
@@ -513,7 +516,7 @@ An arrow is said to be <i>coconstant</i> if for any morphisms \(g, h : Y \righta
 </p>
 
 
-<div id="orgc5f49d6" class="figure">
+<div id="org5e0eb26" class="figure">
 <p><img src="./assets/zeros.png" alt="zeros.png" width="250px" />
 </p>
 </div>
@@ -535,19 +538,34 @@ and \(0_{XY} = i_Y \circ t_X\) endow \(\mathcal{C}\) with the structure of a cat
 </p>
 
 <p>
+<b>Remark 3.2.</b> One can easily see that in a preaddditive category \(\mathcal{C}\), the zero objects in each hom-set give \(\mathcal{C}\) the structure of a category with zero morphisms. In particular, if we have
+\(g : Y \rightarrow Z\) and \(0_{XY} : X \rightarrow Y\) the zero object in \(\text{Hom}(X, Y)\), then
+</p>
+
+\begin{equation}
+g \circ 0_{XY} = g \circ (0_{XY} + 0_{XY}) = g \circ 0_{XY} + g \circ 0_{XY}
+\end{equation}
+
+<p>
+which implies that \(g \circ 0_{XY} = 0_{XZ}\). Similarly, \(0_{YZ} \circ f = 0_{XZ}\) for some \(f : X \rightarrow Y\). Thus, the required commutative diagram is satisfied.
+</p>
+
+<p>
 Using the concept of zero morphisms, and the previously introduced concept of equalizers (and coequalizers), we are able to write down a natural definition of the kernel (and cokernel).
 Note that kernels and cokernels will not always exist in a given category (as a given category may not contain certain equalizers/coequalizers).
 </p>
 
 <p>
 <b>Definition 3.3</b> (Kernels and cokernels). Given arrow \(f : X \rightarrow Y\) in category \(\mathcal{C}\) with zero morphisms, \(\text{Ker}(f) = \text{Eq}(f, 0_{XY})\), the equilizer of
-\(f\) and \(0_{XY}\). In addition, \(\text{Coker}(f) = \text{Coeq}(f, 0_{XY})\), the coequalizer of \(f\) and \(0_{XY}\).
+\(f\) and \(0_{XY}\). In addition, \(\text{Coker}(f) = \text{Coeq}(f, 0_{XY})\), the coequalizer of \(f\) and \(0_{XY}\). Note that these are not in general unique, rather unique up to unique isomorphism
+(so technically, we should speak of <i>a</i> kernel and <i>a</i> cokernel).
 </p>
 
 <p>
 <b>Definition 3.4</b> (Image). Using the concept of kernels/cokernels, we are able to define the <i>image</i> of an arrow \(f : X \rightarrow Y\) as well. In particular, if cokernel \(\text{Coker}(f)\) exists, then
 we have object \(Q\) and "quotient" morphism \(q : Y \rightarrow Q\). Intuitively, if \(Q\) is supposed to generalize \(Y/\text{Im}(f)\) in the case that we are operating in, say, the category of vector spaces,
-then we should have \(\text{Ker}(q) \simeq \text{Im}(f)\) (this is just the first isomorphism theorem). Thus, we <i>define</i> \(\text{Im}(f) = \text{Ker}(q)\).
+then we should have \(\text{Ker}(q) \simeq \text{Im}(f)\) (this is just the first isomorphism theorem). Thus, we <i>define</i> \(\text{Im}(f) = \text{Ker}(q)\). Again, the image is not unique, but unique
+up to unique isomorphism (so we should say, <i>an</i> image).
 </p>
 
 <p>
@@ -567,7 +585,12 @@ In addition, we require that \((X_1 \oplus \cdots \oplus X_n, p_k)\) is a produc
 <p>
 <b>Definition 3.6.</b> A morphism \(f : X \rightarrow Y\) is said to be a monomorphism if \(f \circ g = f \circ h\) implies \(g = h\) for any arrows \(g\) and \(h\).
 A morphism is said to be an epimorphism if \(g \circ f = h \circ f\) implies \(g = h\) for any \(g\) and \(h\). A monomorphism is said to be <i>normal</i>
-if it is the kernel of some morphism. An epimorphism is said to be <i>conormal</i> if it is the cokernel of some morphism.
+if it is a kernel of some morphism. An epimorphism is said to be <i>conormal</i> if it is a cokernel of some morphism.
+</p>
+
+<p>
+<b>Definition</b> (Arrow category). Given categroy \(\mathcal{C}\), the arrow category \(\text{Arr}(\mathcal{C})\) is the category with objects consisting of arrows from \(\mathcal{C}\), and
+arrows "commutative squares" between two arrows.
 </p>
 
 <p>
@@ -581,12 +604,34 @@ We can now (finally) define Abelian categories:
 <ul class="org-ul">
 <li>\(\mathcal{C}\) has a zero object.</li>
 <li>\(\mathcal{C}\) contains all binary biproducts (i.e. biproducts of two objects, thus biproducts of a finite number of objects).</li>
-<li>\(\mathcal{C}\) contains all kernels and cokernels.</li>
+<li>\(\mathcal{C}\) contains all kernels and cokernels. In addition, we have functors \(\text{Ker}, \text{Coker} : \text{Arr}(\mathcal{C}) \rightarrow \text{Arr}(\mathcal{C})\) such that:
+<ul class="org-ul">
+<li><p>
+\(\text{Ker}(f)\) is a kernel \(i_f : K_f \rightarrow X\) for \(f : X \rightarrow Y\), and \(\text{Ker}(\phi)\), for some commutative square \(\phi\) of arrows \(f : X_f \rightarrow Y_f\) and \(g : X_g \rightarrow Y_g\),
+so that \(\phi_1 \circ f = g \circ \phi_0\), is defined as follows. Note that the arrow \(\phi_0 \circ i_f : K_f \rightarrow X_g\) satisfies
+</p>
+\begin{equation}
+g \circ \phi_0 \circ i_f = \phi_1 \circ f \circ i_f = 0
+\end{equation}
+<p>
+which means that we have unique \(\widetilde{\phi} : K_f \rightarrow K_g\) making the appropriate kernel diagram commute. We then let \(\text{Ker}(\phi)_0 = \widetilde{\phi}\) and \(\text{Ker}(\phi)_1 = \phi_0\). We note that
+\(i_g \circ \widetilde{\phi} = \phi_0 \circ i_f\), so this is a valid commutative square. It is easy to see that \(\text{Ker}(\text{id}) = \text{id}\) and by uniqueness, that
+\(\text{Ker}(\phi \circ \psi) = \text{Ker}(\phi) \circ \text{Ker}(\psi)\). Thus, \(\text{Ker}\), as we have defined it, is a valid functor from the arrow category to itself.
+</p></li>
+<li>\(\text{Coker}(f)\) is a cokernel \(q_f : X \rightarrow Q_f\) for \(f : X \rightarrow Y\), and \(\text{Coker}(\phi)\) is defined similar to the case of the kernel, using the universal property satisfied by cokernels.</li>
+</ul></li>
 <li>Every monomorphism in \(\mathcal{C}\) is normal, every epimorphism is conormal.</li>
 </ul>
 
 <p>
-Operating in the realm of Abelian categories allows us to prove many, generic results, some of which are recognizable from basic algebra.
+Operating in the realm of Abelian categories allows us to prove many, generic results, some of which are recognizable from basic algebra. It is worthwhile to note that we have somewhat "extended" the definition
+of Abelian categories, by introducing <i>specific functors</i> which yield "chosen" kernels and cokernels. I decided to do this because it appears to be the best way to avoid invoking some kind of "axiom of choice
+for classes" and other set-theoretic oddities. Thus, going forward, whenever we say "the kernel" or "the cokernel", we are referring to the kernel/cokernel yielded by these functors.
+</p>
+
+<p>
+<b>Remark.</b> Note that in Abelian category \(\mathcal{C}\), our kernel and cokernel functors induce an image functor \(\text{Im} : \text{Arr}(\mathcal{C}) \rightarrow \text{Arr}(\mathcal{C})\).
+As we saw earlier, the image is a kernel of a cokernel, so we can simply compose the functors \(\text{Ker}\) and \(\text{Coker}\).
 </p>
 
 <p>
@@ -601,31 +646,35 @@ Let \(\mathcal{C}\) be an Abelian category, consider a cochain complex
 </p>
 
 
-<div id="org92bcd0c" class="figure">
+<div id="orgc2478b0" class="figure">
 <p><img src="./assets/cochain.png" alt="cochain.png" width="350px" />
 </p>
 </div>
 
 <p>
 which we denote by \(X^{\bullet}\), where we have \(d^{j + 1} \circ d^j : X^j \rightarrow X^{j + 2}\) equal to the zero morphism from \(X^j\) to \(X^{j + 2}\).
-Of course, the data of \(\text{Ker}(d^j)\) is an object \(K^j\) and a map \(i^j : K \rightarrow X^j\) (and inclusion arrow). We then define \(u^j\) via the universal property which \(i^j\) and \(K^j\) satisfy:
+Of course, the data of \(\text{Ker}(d^j)\) is an object \(K^j\) and a map \(i^j : K^j \rightarrow X^j\) (and inclusion arrow). We then define \(u^j\) via the universal property which \(i^j\) and \(K^j\) satisfy:
 </p>
 
 
-<div id="orgdc4fe53" class="figure">
+<div id="orgf84a1fe" class="figure">
 <p><img src="./assets/universal_co.png" alt="universal_co.png" width="250px" />
 </p>
 </div>
 
 <p>
 One should think of this arrow as restricting the target of \(d^{j - 1}\) to the kernel \(K^j\), as due to the fact that \(d^j \circ d^{j - 1}\) is the zero morphism, it makes sense
-to do this. From here, we take \(H^j(X^{\bullet}) = \text{Coker}(u^j)\): this is the \(j\) -th cohomology of \(X^{\bullet}\). Informally, one can think of this as "the kernel of \(d^j\)
-modulo the image of \(d^{j - 1}\)", which is the standard definition of cohomology when working with Abelian groups. In addition, if we have a collection of morphisms between terms of
+to do this. From here, we take \(H^j(X^{\bullet}) = \text{Coker}(u^j)\): this is a \(j\) -th cohomology of \(X^{\bullet}\). Informally, one can think of this as "the kernel of \(d^j\)
+modulo the image of \(d^{j - 1}\)", which is the standard definition of cohomology when working with Abelian groups.
+</p>
+
+<p>
+In addition, if we have a collection of morphisms between terms of
 cochain complexes \(X^{\bullet}\) and \(Y^{\bullet}\), \(f^j : X^j \rightarrow Y^j\),
 </p>
 
 
-<div id="org7dd368c" class="figure">
+<div id="orgcd0e4f8" class="figure">
 <p><img src="./assets/co_morphism.png" alt="co_morphism.png" width="400px" />
 </p>
 </div>
@@ -637,13 +686,13 @@ so we have arrow \(f^j \circ i^j_X\). We then obtain unique map \(\widetilde{f} 
 </p>
 
 
-<div id="org80af234" class="figure">
+<div id="org0e42f17" class="figure">
 <p><img src="./assets/uni_2.png" alt="uni_2.png" width="250px" />
 </p>
 </div>
 
 <p>
-where it is obvious what the arrows should be, and we are using the fact that
+where we are using the fact that
 </p>
 
 \begin{equation}
@@ -651,17 +700,86 @@ d_Y^j \circ f^j \circ i_X^j = f^{j + 1} \circ d_X^{j + 1} \circ i_X^j = 0
 \end{equation}
 
 <p>
+From here, we can post-compose with the quotient \(q_Y^j : K_Y^j \rightarrow Q_Y^j\) to get the desired map from \(K_X^j\) to \(H^j(Y^{\bullet})\). To finally promote this to a map from \(Q_X^j\): the object of \(H^j(X^{\bullet})\), we need
+to show that \(\widetilde{f} \circ u_X^j = u_Y^j \circ f^{j - 1}\). This follows immediately from the fact that each of these maps fits into the following defining diagram for the kernel:
+</p>
+
+
+<div id="orgc993511" class="figure">
+<p><img src="./assets/uni_3.png" alt="uni_3.png" width="300px" />
+</p>
+</div>
+
+<p>
+as we have
+</p>
+
+\begin{equation}
+i_Y^j \circ \widetilde{f} \circ u_X^j = f^j \circ i_X^j \circ u_X^j = f^j \circ d^{j - 1}_X
+\end{equation}
+
+<p>
+and
+</p>
+
+\begin{equation}
+i_Y^j \circ u_Y^j \circ f^{j - 1} = d_Y^{j - 1} \circ f^{j - 1} = f^j \circ d^{j - 1}_X
+\end{equation}
+
+<p>
+We know that the map in the diagram is unique, so these arrows must be equal. We then have the following, final diagram for the cokernel
+</p>
+
+
+<div id="org7a5e708" class="figure">
+<p><img src="./assets/uni_4.png" alt="uni_4.png" width="300px" />
+</p>
+</div>
+
+<p>
+where we use the fact that
+</p>
+
+\begin{equation}
+q_Y^j \circ \widetilde{f} \circ u_X^j = q_Y^j \circ u_Y^j \circ f^{j - 1} = 0
+\end{equation}
+
+<p>
+It follows that the dashed arrow is uniquely defined: this is precisely the map \(H^j(f^{\bullet})\). With that, we are finally done describing the cohomology of a cochain complex
+within an Abelian category, and the associated morphisms.
+</p>
+
+<p>
+<b>Claim.</b> If \(f\) and \(g\) are morphisms of cochain complexes, then
+</p>
+
+\begin{equation}
+H^j((f \circ g)^{\bullet}) = H^j(f^{\bullet}) \circ H^j(g^{\bullet})
+\end{equation}
+
+<p>
+for morphisms \(f^{\bullet}\) and \(g^{\bullet}\) of cochain complexes.
+</p>
+
+<p>
+<i>Proof.</i> First, note that if \(h = f \circ g\), then \(\widetilde{h} = \widetilde{f} \circ \widetilde{g}\), as both of these maps satisfy a diagram of the form of the one above Eq. (7), and such a map is unique. From here,
+both of these induced maps will fit into a diagram of the form of the one above Eq. (10), and we again use uniqueness to come to our desired conclusion. \(\blacksquare\)
+</p>
+
+<hr />
+
+<p>
 <b>Lemma 3.1.</b> If \(\mathcal{C}\) is an Abelian category, with arrows \(f : X \rightarrow Y\) and \(g : Y \rightarrow Z\) such that \(\text{Im}(f) \simeq \text{Ker}(g)\), then \(\text{Im}(g) \simeq \text{Coker}(f)\).
 </p>
 
 <p>
 <i>Proof.</i> This amounts to showing that \(\text{Coker}(f) \simeq \text{Coker}(i_g)\), where \(i_g : \text{Ker}(g) \rightarrow Y\) is the defining map of \(\text{Ker}(g)\).
-We know that \(\text{Im}(f) \simeq \text{Ker}(g)\), so we let \(q_f : X \rightarrow \text{Coker}(f)\) be the defining map for \(\text{Coker}(f)\), and then let \(i_{q_f} : \text{Ker}(q_f) \rightarrow X\)
+We know that \(\text{Im}(f) \simeq \text{Ker}(g)\), so we let \(q_f : Y \rightarrow \text{Coker}(f)\) be the defining map for \(\text{Coker}(f)\), and then let \(i_{q_f} : \text{Ker}(q_f) \rightarrow X\)
 be the defining map for \(\text{Ker}(q_f)\). Let \(\Phi : \text{Ker}(q_f) \rightarrow \text{Ker}(g)\) be an isomorphism (which we know exists). We define maps \(\phi\) and \(\psi\) via the universal properties of kernels of cokernels:
 </p>
 
 
-<div id="org465aac8" class="figure">
+<div id="org60a682e" class="figure">
 <p><img src="./assets/first_com.png" alt="first_com.png" width="400px" />
 </p>
 </div>
@@ -671,7 +789,7 @@ In particular, \(\phi\) and \(\psi\) are the unique arrows making the following 
 </p>
 
 
-<div id="org3083a90" class="figure">
+<div id="org2ab7e0f" class="figure">
 <p><img src="./assets/com_2.png" alt="com_2.png" width="500px" />
 </p>
 </div>
@@ -697,54 +815,107 @@ We can then fill in the dashed lines by again exploiting universal properties:
 </p>
 
 
-<div id="orgae84c7d" class="figure">
+<div id="org8301e93" class="figure">
 <p><img src="./assets/com_3.png" alt="com_3.png" width="500px" />
 </p>
 </div>
 
 <p>
-and it follows by uniqueness of \(\mu\) and \(\nu\) that they must be inverse of each other (thus definining an isomorphism of \(\text{Coker}(f)\) and \(\text{Coker}(i_g) = \text{Im}(g)\), as desired.
+and it follows by uniqueness of \(\mu\) and \(\nu\) that they must be inverse of each other, thus definining an isomorphism of \(\text{Coker}(f)\) and \(\text{Coker}(i_g) = \text{Im}(g)\), as desired. \(\blacksquare\)
 </p>
 
 <p>
-<b>Lemma 3.2</b> (Splitting lemma).
-</p>
-</div>
-</div>
-
-<div id="outline-container-org8e0363f" class="outline-2">
-<h2 id="org8e0363f"><span class="section-number-2">4.</span> Derived functors</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-Now that we've cleared up the preliminaries, let us dive into the theory of derived functors. We will follow some nice <a href="https://www.math.toronto.edu/%7Ejacobt/Lecture12.pdf">lecture notes</a> prepared by Jacob Tsimerman for a course on etale cohomology, filling in details.
-Within Abelian categories, one has a well-defined notion of a short exact sequence. In particular, we say that the sequence of morphisms in category \(\mathcal{C}\),
+<b>Definition 3.10.</b> We say that the sequence of morphisms in Abelian category \(\mathcal{C}\),
 </p>
 
 
-<div id="orge5c0ad6" class="figure">
+<div id="org1e4ab66" class="figure">
 <p><img src="./assets/short_exact.png" alt="short_exact.png" width="350px" />
 </p>
 </div>
 
 <p>
-is short exact if \(f\) is a monomorphism, \(g\) is an epimorphism, and \(\text{Im}(f) \simeq \text{Ker}(g)\) (they are isomorphic in the appropriate comma category). We then say that a functor \(F : \mathcal{C} \rightarrow \mathcal{D}\)
-is <i>exact</i> if, for any short exact sequence of the above form, then
+is short exact if \(f\) is a monomorphism, \(g\) is an epimorphism, and \(\text{Im}(f) \simeq \text{Ker}(g)\).
+</p>
+
+<p>
+<b>Lemma 3.2</b> (Splitting lemma). Consider a short exact sequence in Abelian category \(\mathcal{C}\) of the above form. Then the following statements are equivalent:
+</p>
+
+<ul class="org-ul">
+<li>There exists a morphism \(t : Y \rightarrow X\) such that \(t \circ f = 1_X\), the identity on \(X\).</li>
+<li>There exists a morphism \(u : Z \rightarrow Y\) such that \(g \circ u = 1_Z\), the identity on \(Z\).</li>
+<li>There is an isomorphism \(h : Y \rightarrow X \oplus Z\), where \(X \oplus Z\) is a biproduct of \(X\) and \(Z\) where \(h \circ f = i_X\) and \(g \circ h^{-1} = p_Z\).</li>
+</ul>
+
+<p>
+For the sake of moving on to more interesting things in a reasonable timeframe, I will omit this (I assume very standard) proof for now.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org30d744e" class="outline-2">
+<h2 id="org30d744e"><span class="section-number-2">4.</span> Derived functors</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Now that we've cleared up the preliminaries, let us dive into the theory of derived functors. We will follow some nice <a href="https://www.math.toronto.edu/%7Ejacobt/Lecture12.pdf">lecture notes</a> prepared by Jacob Tsimerman for a course on etale cohomology, filling in details.
+Let:
 </p>
 
 
-<div id="org53155ad" class="figure">
+<div id="org5e3f00c" class="figure">
+<p><img src="./assets/short_exact.png" alt="short_exact.png" width="350px" />
+</p>
+</div>
+
+<p>
+be a short exact sequence in Abelian category \(\mathcal{C}\). We then say that an additive functor between Abelian categories \(F : \mathcal{C} \rightarrow \mathcal{D}\) (\(F\) is a group homomorphism
+from \(\text{Hom}(X, Y)\) to \(\text{Hom}(F(X), F(Y))\)) is <i>exact</i> if, for any short exact sequence of the above form, then
+</p>
+
+
+<div id="orgc935ccf" class="figure">
 <p><img src="./assets/F_short_exact.png" alt="F_short_exact.png" width="350px" />
 </p>
 </div>
 
 <p>
 is also a short exact sequence. It is called left-exact (right-exact) under the weaker condition that we no longer require \(F(g)\) (\(F(f)\)) to be an epimorphism (monomorphism).
+</p>
+
+<p>
+<b>Remark 4.1.</b> Note that \(F : \mathcal{C} \rightarrow \mathcal{C}'\) being left-exact is equivalent to it preserving finite limits. To be more precise, if \(G : \mathcal{D} \rightarrow \mathcal{C}\) is a diagram, where the
+set of objects and morphisms of \(\mathcal{D}\) are finite sets, then \(F\) being left-exact is equivalent to \(F(\lim G)\) (for some limit \(\lim G\) of \(G\)) being isomorphic to lim F &circ; G$, some limit of \(F \circ G\).
+</p>
+
+<p>
+<b>Corollary 4.1.</b> If \(F\) is a left-exact functor between Abelian categories, then \(F\) applied to the kernel of arrow \(f : A \rightarrow B\) is isomorphic to the kernel of \(F(f) : F(A) \rightarrow F(B)\).
+</p>
+
+<p>
+<i>Proof.</i> Note that the kernel is an equalizer \(\text{Eq}(f, 0_{AB})\), which is a finite limit of the diagram consisting of \(A\) and \(B\) with arrows \(f\) and \(0_{AB}\). Since \(F\) is left-exact, this is the
+same as the limit of the diagram consisting of \(F(A)\) and \(F(B)\) with arrows \(F(f)\) and \(F(0_{AB}) = 0_{F(A) F(B)}\) (from additivity of \(F\)).
+Therefore, our limit is indeed some equalizer \(\text{Eq}(F(f), 0_{F(A) F(B)})\), which is isomorphic to <i>the</i> kernel \(\text{Ker} F(f)\), as desired. \(\blacksquare\)
+</p>
+
+<p>
+<b>Corollary 4.2.</b> A left-exact functor preserves zero objects in an Abelian category.
+</p>
+
+<p>
+<i>Proof.</i> The kernel of a zero morphism is always the zero object, so a kernel of the zero morphism \(0\) from some zero object \(\textbf{0}\) to itself is \(\textbf{0} \in \mathcal{C}\), so \(F(\textbf{0})\)
+is equal to a kernel of the zero morphism \(F(0)\) from \(F(\textbf{0})\) to itself, which is a zero object \(\textbf{0} \in \mathcal{D}\). \(\blacksquare\)
+</p>
+
+<p>
+Let \(K\) be the kernel of \(f\), let \(i : K \rightarrow A\) be the inclusion, so that \(f \circ i = 0_{KB}\). We have the short exact sequence \(0 \to K \to A \to Q \to 0\) where \(Q\)
+is the cokernel of \(f\). Thus, \(0 \to F(K) \to F(A) \to F(Q)\) is exact, so in particular, \(F(i)\) is a monomorphism and the image of \(F(K) \to F(A)\) is isomorphic to the kernel of \(F(A) \to F(Q)\).
 The main idea of a derived functor is to take a left-exact functor \(F\), and product a new family of functors (\(R^i F\) for \(i \geq 0\), where  \(R^0 F = F\)) which fit into a long exact sequence. This sequence can be thought of as
 a "higher-order artifact" which quantifies the failure of a left-exact functor to be exact, which is a stronger condition.
 </p>
 
 <p>
-Suppose we <i>did</i> have such functors:
+Suppose we <i>did</i> have such functors \(R^i F\):
 </p>
 
 \begin{equation}
@@ -757,7 +928,7 @@ Let us try to deduce some necessary properties.
 
 <p>
 <b>Definition 4.1.</b> If \(\mathcal{C}\) is a category, we say that object \(I \in \mathcal{C}\) is injective if for every monomorphism \(f : X \rightarrow Y\)
-and morphism \(g : X \rightarrow Q\), there exists morphism \(h : Y \rightarrow Q\) extending \(g\) (i.e. \(h \circ f = g\)).
+and morphism \(g : X \rightarrow I\), there exists morphism \(h : Y \rightarrow I\) extending \(g\) (i.e. \(h \circ f = g\)).
 We say that \(\mathcal{C}\) has <i>enough injectives</i> if for every object \(X\) in \(\mathcal{C}\), there is a monomorphism \(X \rightarrow I\) from \(X\) into some injective object.
 </p>
 
@@ -767,7 +938,7 @@ there must be \(h\) such that \(h \circ f = \text{id}_I\), so \(f\) has a left-i
 </p>
 
 
-<div id="org852350d" class="figure">
+<div id="orgaf84053" class="figure">
 <p><img src="./assets/splitting_lemma.png" alt="splitting_lemma.png" width="450px" />
 </p>
 </div>
@@ -790,7 +961,11 @@ objects when \(i \geq 1\). As it turns out, this intuition is correct, and will 
 
 <p>
 Suppose we are working in Abelian category \(\mathcal{C}\) which has enough injectives. Given some object \(X\), let us pick some monomorphism \(f : X \rightarrow I\). We then note that \(Y = \text{Coker}(f)\) is in \(\mathcal{C}\),
-so we have short exact sequence \(0 \to X \to I \to Y \to 0\). From here, assume that we have \(R^i F(I) = 0\) for \(i \geq 1\). The associated long exact sequence (if it exists) will look like
+so we have short exact sequence \(0 \to X \to I \to Y \to 0\). This follows from the fact that the quotient \(q : I \to Y\) is an epimorphism, and \(\text{Im}(f) = \text{Ker}(q)\) by definition.
+</p>
+
+<p>
+From here, assume that we have \(R^i F(I) = 0\) for \(i \geq 1\). The associated long exact sequence (if it exists) will look like
 </p>
 
 \begin{equation}
@@ -798,34 +973,260 @@ so we have short exact sequence \(0 \to X \to I \to Y \to 0\). From here, assume
 \end{equation}
 
 <p>
-which means that \(R^1 F(X)\) is the image of \(F(Y) \to R^1 F(X)\), which is isomorphic to the cokernel of \(F(I) \to F(Y)\). In addition, we have \(R^{i - 1} F(Y) \simeq R^i F(X)\) for \(i \geq 2\). This means that we should
+which means that \(R^1 F(X)\) is the image of \(F(Y) \to R^1 F(X)\), which is isomorphic to the cokernel of \(F(I) \to F(Y)\) (this is from Lemma 3.1). In addition, we have \(R^{i - 1} F(Y) \simeq R^i F(X)\) for \(i \geq 2\). This
+comes from the fact that
+</p>
+
+\begin{equation}
+R^i F(X) \simeq \text{Ker}(R^i F(X) \rightarrow 0) \simeq \text{Im}(R^{i - 1} F(Y) \rightarrow R^i F(X)) \simeq \text{Coker}(0 \rightarrow R^{i - 1} F(Y)) \simeq R^{i - 1} F(Y)
+\end{equation}
+
+<p>
+where we are again using Lemma 3.1, and the first and last isomorphisms are easy to check.
+</p>
+
+<p>
+This means that we should
 be able to compute \(R^2 F(X)\), for example, by embedding \(Y\) in an injective \(J\), \(g : Y \rightarrow J\), and then computing \(R^1 F(Y)\) by computing the cokernel of \(F(J) \to F(Z)\), where \(Z = \text{Coker}(g)\). We can repeat
 this procedure recursively to get all higher \(R^i F(X)\). Of course, to do this, we need the guarantee that we can actually embed into injective objects in the first place:
-this is precisely the condition of our category having ``enough injectives", which we introduced earlier. It is also unclear at this point that the \(R^i F(X)\) will be independent of the injective embeddings chosen: we will soon show that this is the case.
+this is precisely the condition of our category having "enough injectives", which we introduced earlier. It is also unclear at this point that the \(R^i F(X)\)
+will be independent of the injective embeddings chosen: we will soon show that this is the case.
 </p>
-</div>
-</div>
 
-<div id="outline-container-orgd9e6454" class="outline-2">
-<h2 id="orgd9e6454"><span class="section-number-2">5.</span> Derived categories</h2>
-</div>
-
-<div id="outline-container-org2996454" class="outline-2">
-<h2 id="org2996454"><span class="section-number-2">6.</span> Sheaf cohomology and hypercohomology</h2>
-</div>
-
-<div id="outline-container-org1ea3a7b" class="outline-2">
-<h2 id="org1ea3a7b"><span class="section-number-2">7.</span> Hochschild homology and cohomology</h2>
-<div class="outline-text-2" id="text-7">
 <p>
-As a final (fun) application of the theory of derived functors and derived categories, let us discuss a very natural formulation of Hochschild homology and cohomology for algebras over rings.
+<b>Definition 4.2.</b> Given object \(X\), and injective resolution of \(X\) is an exact sequence \(0 \to X \to I^0 \to I^1 \to \cdots\) where each \(I^n\) is injective.
+</p>
+
+<p>
+<b>Lemma 4.1.</b> In an Abelian category, injective resolutions always exist.
+</p>
+
+<p>
+<i>Proof.</i> The way we do this is as follows. Start with \(X\), pick injective embedding \(X \to I^0\) using the "enough injectives" property. From here, note that cokernel of this map exists:
+call it \(K^0\). We can then pick an injective embedding \(K^0 \to I^1\). We continue on like this, inductively, and our sequence ends up looking like:
+</p>
+
+\begin{equation}
+\label{eq:res}
+    0 \to X \to I^0 \to K^0 \to I^1 \to K^1 \to I^2 \to K^2 \to \cdots
+\end{equation}
+
+<p>
+This gives a collection of short exact sequences, \(0 \to K^{j} \to I^{j + 1} \to K^{j + 1} \to 0\) (where we let \(K^{-1} = X\)), and our corresponding injective resolution is formed by taking the \(I^k\),
+</p>
+
+\begin{equation}
+0 \to X \to I^0 \to I^1 \to I^2 \to \cdots
+\end{equation}
+
+<p>
+To verify that this sequence is exact, note that \(\text{Im}(I^{k - 1} \to I^k)\) is isomorphic to \(K^{k - 1}\), which is isomorphic to \(\text{Ker}(I^k \to I^{k + 1})\) (this isn't difficult to verify). \(\blacksquare\)
+</p>
+
+<p>
+Again, assuming that right derived functors \(R^i F\) exist, and satisfy the previous properties. By taking one of the short
+exact sequences \(0 \to K^j \to I^{j + 1} \to K^{j + 1} \to 0\) produced in the above proof, we can look at the long exact sequence associated to mapping under \(R^i F\). In particular, as we discussed before,
+</p>
+
+\begin{equation}
+    R^{i - 1} F(K^{j + 1}) \simeq R^i F(K^j)
+\end{equation}
+
+<p>
+which gives us the sequence of isomorphisms
+</p>
+
+\begin{equation}
+    R^n F(X) = R^{n} F(K^{-1}) \simeq R^{n - 1} F(K^0) \simeq R^{n - 2} F(K^1) \simeq \cdots \simeq R^{1} F(K^{n - 2})
+\end{equation}
+
+<p>
+We already saw that \(R^{1} F(K^{n - 2})\) is the cokernel of the map \(F(I^{n - 1}) \to F(K^{n - 1})\). However, from the above proof of the lemma, \(K^{n - 1} \simeq \text{Ker}(I^n \to I^{n + 1})\), and
+since \(F\) is left exact, \(F(K^{n - 1}) \simeq \text{Ker}(F(I^n) \to F(I^{n+1}))\) (Corollary 4.1). Thus, \(R^n F(X)\) should be isomorphic to the \(n\) -th cohomology of the complex \(F(X) \to F(I^0) \to F(I^1) \to F(I^2) \to \cdots\).
+In particular, since the injective resolution is exact, it follows that neighbouring arrows compose to zero, and thus \(F\) applied to these arrows compose to zero, so this is a valid cochain complex in our Abelian
+category.
+</p>
+
+<p>
+<b>Definition 4.3</b> (Right-derived functors). If \(F\) is a left-exact functor between Abelian categories, the right-derived functors \(R^n F(X)\) are defined to be the cohomology groups of the cochain
+complex \(F(I^0) \to F(I^1) \to F(I^2) \to \cdots\) for some injective resolution \(0 \to X \to I^0 \to I^1 \to I^2 \to \cdots\).
+</p>
+
+<p>
+Of course, we still need to prove that this definition makes sense, independent of the injective resolution.
+</p>
+
+<p>
+<b>Remark 4.2.</b> Note that if \(X^{\bullet}\) and \(Y^{\bullet}\) are cochain complexes, and we have arrows \(h^j : X^j \rightarrow Y^{j - 1}\), then \(f^j = d_Y^{j - 1} \circ h^{j} + h^{j + 1} \circ d_X^j\)
+going from \(X^j\) to \(Y^j\) is a morphism of complexes, as
+</p>
+
+\begin{equation}
+d_Y^j \circ f^j = d_Y^j \circ d_Y^{j - 1} \circ h^{j} + d_Y^j \circ h^{j + 1} \circ d_X^j = (d_Y^j \circ h^{j + 1} + h^{j + 2} \circ d_X^{j + 1}) \circ d_X^j = f^{j + 1} \circ d_X^j
+\end{equation}
+
+<p>
+Moreover, it is easy to check that \(H^{\bullet}(f^{\bullet}) = 0\) (the unique morphism of cochain complexes which consists of zero arrows in each degree).
+We say that maps of complexes \(g\) and \(g'\) are <i>cochain homotopy equivalent</i> if \(g - g'\) is a map of the form of \(f\) above, for
+some \(h\).
+</p>
+
+<p>
+<b>Lemma 4.2.</b> Given objects \(X\) and \(Y\), and injective resolutions \(X \to I\) and \(Y \to J\), along with morphism \(\bar{f} : X \to Y\), there exists a morphism of cochain complexes \(f : I \rightarrow J\)
+which induces \(\bar{f}\) in the zeroth degree of cohomology, and any two such lifts are cochain homotopy equivalent.
+</p>
+
+<p>
+<i>Proof.</i> We can compose the map \(\bar{f} : A \rightarrow B\) with the monomorphism of \(B\) into \(J^0\) to get a map \(A \to J^0\). Of course, \(X \to I^0\) is a monomorphism, and since \(J^0\)
+is injective, we can extend to morphism \(I^0 \to J^0\). This is the base case, we will proceed by induction. Suppose we have \(f^j : I^j \to J^j\) such that \(d_J^j \circ f^j = f^{j + 1} \circ d_I^j\)
+for \(j < n\). It then follows that
+</p>
+
+\begin{equation}
+(d_J^n \circ f^n)(\text{Ker}(I^n \to I^{n+1})) = (d_J^n \circ f^n \circ d_I^{n - 1})(I^{n - 1}) = (d_J^n \circ d_J^{n-1} \circ f^{n - 1})(I^{n-1}) = 0
+\end{equation}
+
+<p>
+where I'm making the assumption that images (as we have defined them) behave well relative to composition (they do). It follows immediately that \(d_J^n \circ f^n\) induces a unique map
+on the cokernel of the map which includes the kernel of \(I^n \to I^{n + 1}\) in \(I^n\), which from Lemma 3.1, is isomorphic to the image of \(I^n \to I^{n + 1}\). So we have a map \(\widetilde{f} : d_I^n(I^n) \to J^{n + 1}\).
+Of course, this image is equipped with a monomorphism into \(I^{n + 1}\), so using injectivity of \(J^{n + 1}\), we extend to a map \(f^{n + 1} : I^{n + 1} \to J^{n + 1}\). One can verify by re-tracing
+definitions that \(d_J^n \circ f^n = f^{n + 1} \circ d_I^n\). As an illuminating example, note that if we were simply working with Abelian groups, this could be verified by noting that for some object \(g \in I^{n + 1}\),
+</p>
+
+\begin{equation}
+(f^{n + 1} \circ d_I^n)(g) = \widetilde{f}(d_I^n(g)) = (d_J^n \circ f^n)(g)
+\end{equation}
+
+<p>
+The general proof just involves unrolling a bunch of definitions. So by induction, the result follows.
+</p>
+
+<p>
+Given two lifts \(f_1\) and \(f_2\), note that \(f_1 - f_2\) induces the zero morphism in the zeroth degree of cohomology, so we just need to show that a lift of the zero morphism is of the form of
+\(d_J^{j - 1} \circ h^{j} + h^{j + 1} \circ d_I^j\) (a cochain homotopy), which induces the zero map in cohomology. Again, we proceed via induction. If we assume that \(f\) is a lift of the zero map,
+so that \(f^0\) kills \(A\), then via the same logic as before, we induce a map \(d_I^0(I^0) \to J^0\) which lifts to \(h^1 : I^1 \to J^0\) by injectivity. Again, we suppose that \(h^j\) is defined so
+\(f^j = d_J^{j - 1} \circ h^{j} + h^{j + 1} \circ d_I^j\) for \(j < n\). Then,
+</p>
+
+\begin{align}
+(f^n - d_J^{n - 1} \circ h^n)(\text{Ker}(I^n \to I^{n+1})) = ((f^n - d_J^{n - 1} \circ h^n) \circ d_I^{n - 1})(I^{n-1}) = 0
+\end{align}
+
+<p>
+so that \(f^n - d_J^{n - 1} \circ h^n\) induces a map on \(d_I^n(I^n)\), which can be extended to a map from \(I^{n+1}\) to \(J^{n+1}\). We define this to be \(h^{n+1}\), and can verify that this map satisfies the
+necessary condition for a cochain homotopy. So again, by induction, the result follows. \(\blacksquare\)
+</p>
+
+<p>
+<b>Remark 4.3.</b> This proof was slightly hand-wavy: working very carefully with Abelian categories is somewhat subtle, but it is often clear exactly why we can take certain steps (and gloss over their justification)
+via our intuition from working with Abelian groups.
+</p>
+
+<p>
+<b>Theorem 4.1.</b> If \(X \to I\) and \(X \to J\) are two injective resolutions of \(X\), then \(H^{\bullet}(F(I)) \simeq H^{\bullet}(F(J))\) (via unique isomorphism), so that the
+right-derived functors \(R^n F(X)\) are well-defined.
+</p>
+
+<p>
+<i>Proof.</i> We use the previous lemma to lift the identity map on \(X\), which is a morphism of cochain complexes (injective resolutions), call this \(f\). Then \(F(f)\) is still a morphism
+of cochain complexes \(F(I)\) and \(F(J)\). If \(f - f' = d_J \circ h - h \circ d_I\), then
+</p>
+
+\begin{equation}
+F(f) - F(f') = F(f - f') = F(d_J) \circ F(h) - F(h) \circ F(d_I) = d_{F(J)} \circ F(h) - F(h) \circ d_{F(I)}
+\end{equation}
+
+<p>
+so \(F(f)\) and \(F(f')\) are cochain homotopic, which means that when we descend to cohomology, \(H^{\bullet}(F(f)) = H^{\bullet}(F(f'))\). We can also lift the identity to a map
+going in the other direction, \(J \to I\) (call this map \(g\)). Note that \(g \circ f\) is just the identity on complex \(I\), which induces the identity on cohomology. Similarly, \(f \circ g\)
+induces the identity on cohomology. Since \(H^{\bullet}(F(f \circ g)) = H^{\bullet}(F(f)) \circ H^{\bullet}(F(g))\) and \(H^{\bullet}(F(g \circ f)) = H^{\bullet}(F(g)) \circ H^{\bullet}(F(f))\),
+it follows that we do, in fact, have a unique isomorphism in cohomology.
+</p>
+
+<hr />
+
+<p>
+To conclude this section, we will discuss acyclic resolutions, which are an easier way to compute right-derived functors (as finding an injective resolution can often be difficult).
+</p>
+
+<p>
+<b>Definition 4.3.</b> If \(F : \mathcal{C} \rightarrow \mathcal{D}\) is left-exact between Abelian categories, object \(X\) in \(\mathcal{C}\) is acyclic if \(R^jF(X) = 0\) for \(j \geq 1\).
+</p>
+
+<p>
+<b>Theorem 4.2.</b> If \(0 \to X \to J^0 \to J^1 \to \cdots\) is an exact sequence such that all of the \(J^k\) are acyclic objects, then \(R^j F(X)\) is naturally isomorphic to the \(j\) -th cohomology
+of \(0 \to F(J^0) \to F(J^1) \to \cdots\).
+</p>
+
+<p>
+<i>Proof.</i> We have short exact sequences \(0 \to X \to J^0 \to K^0 \to 0\) where \(K^0 = \text{Coker}(X \to J^0)\) and \(0 \to K^i \to J^i \to K^{i+1} \to 0\) for \(i \geq 1\), with
+\(K^i = \text{Ker}(J^i \to J^{i + 1}) \simeq \text{Im}(J^{i-1} \to J^i)\), so the natural map \(J^i \to K^{i+1}\) is an epimorphism. We can write down corresponding long exact sequences via the
+right derived functors \(R^i F\), and via the exact same procedure as in Definition 4.1, we find that \(R^j F(X)\) is the \(j\) -th cohomology of \(0 \to F(J)\). \(\blacksquare\)
 </p>
 </div>
+</div>
+
+<div id="outline-container-orgb27da3d" class="outline-2">
+<h2 id="orgb27da3d"><span class="section-number-2">5.</span> Triangulated categories and derived categories</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+In the previous section, we introduced "right-derived functors" of a particular left-exact functor between Abelian categories \(F : \mathcal{C} \rightarrow \mathcal{D}\). Even though
+we referred to these objects as "functors", they were really just a sequence of objects \(R^i F(X)\) for a given \(X\). As it turns out, we can actually think of \(R^i F(\cdot)\) as true
+functors, via introducing a new category. This will be the natural arena in which we will define hypercohomology in the next section.
+</p>
+
+<p>
+We begin by introducing the localization of a category. Intuitively, if \(\mathcal{C}\) is a category, a localization of \(\mathcal{C}\) is a new category in which some of the arrows of \(\mathcal{C}\) are forced to be isomorphisms.
+</p>
+
+<p>
+<b>Definition 5.1</b> (Localization of a category). If \(\mathcal{C}\) is a category, a localization of \(\mathcal{C}\) on a class of arrows \(W \subset \text{Mor}(\mathcal{C})\) is a category
+\(\mathcal{C}[W^{-1}]\) and a functor \(L : \mathcal{C} \rightarrow \mathcal{C}[W^{-1}]\) such
+that if \(F : \mathcal{C} \rightarrow \mathcal{D}\) is another functor which takes element of \(W\) to isomorphisms in \(\mathcal{D}\), then there is a unique (up to natural isomorphism) functor \(G\) such that
+</p>
+
+
+<div id="orgca4d104" class="figure">
+<p><img src="./assets/local.png" alt="local.png" width="250px" />
+</p>
+</div>
+
+<p>
+commutes on arrows and objects. One can see that any two localizations will be isomorphic as categories, via a unique isomorphism.
+</p>
+
+<p>
+<b>Definition 5.2.</b> If \(\mathcal{C}\) is an Abelian category, we define \(\text{Kom}(\mathcal{C})\) to be the category of cochain complexes in \(\mathcal{C}\), with arrows being morphisms of cochain complexes.
+We call an arrow in \(\text{Kom}(\mathcal{C})\) (which, as we know, induces maps in cohomology) a <i>quasi-isomorphism</i> if these induced maps are isomorphisms in \(\mathcal{C}\).
+</p>
+
+<p>
+<b>Definition 5.3</b> (Derived category). Given Abelian category \(\mathcal{C}\), a derived category \(\mathcal{D}(\mathcal{C})\) is a localization of \(\text{Kom}(\mathcal{C})\) on the set of quasi-isomorphisms (i.e. we are forcing
+quasi-isomorphisms to be legitimate isomorphisms of cochain complexes).
+</p>
+
+<p>
+<b>Remark 5.1.</b> Proving that derived categories actually exist is quite subtle, because localizations, in general, do not always exist. However, as we will now show, they do exist when the class \(W\) satisfies
+particular properties.
+</p>
+
+<p>
+We will follow the treatment of this subject outlined in Chapter 10 of Weibel's book.
+</p>
+
+<p>
+<b>Definition 5.1.</b> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6128150" class="outline-2">
+<h2 id="org6128150"><span class="section-number-2">6.</span> Sheaf cohomology and hypercohomology</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2025-08-11 Mon 13:41</p>
+<p class="date">Created: 2025-08-18 Mon 10:11</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
