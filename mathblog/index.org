@@ -2,7 +2,6 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 #+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6;} a {color:blue;} </style>
 
-- August | [[./derived_cat.html][Introduction to derived functors and derived categories]]
 - August | [[./ag_connection.html][The connection between varieties and schemes: part 1]]
 - July 26th, 2025 | [[./imo_2025.html][Some solutions to problems from the 2025 IMO]]
 - July 1st, 2025 | [[./leray_hirsch.html][Leray-Hirsch theorem]]
