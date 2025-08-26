@@ -136,7 +136,7 @@ for each arrow $f : X \rightarrow X'$. Similarly, we define a cone from $F$ to $
 if they wish. The category of cones to $F$ takes cones from some object to $F$ as objects, and as morphisms, arrows $g : Y' \rightarrow Y$ in $\mathcal{C}$ making the following diagrams commute:
 
 #+ATTR_HTML: :width 250px
-[[./assets/cone_morphism.png]]
+[[./assets/cone_morphism.png]
 
 with the category of co-cones (or cones from $F$) being defined by again reversing the arrows in the above diagram. Checking that these are categories is easy.
 
@@ -175,12 +175,12 @@ We need to begin with a lot of definitions (basically a collection of categorica
     f \circ (g + h) = (f \circ g) + (f \circ h) \ \ \ \ \text{and} \ \ \ \ (g + h) \circ f = (g \circ f) + (h \circ f).
 \end{align}
 
-*Definition 3.2* (Zero morphisms). Let $\mathcal{C}$ be a category, an arrow $f : X \rightarrow Y$ is said to be /constant/ if for any morphisms $g, h : W \rightarrow X$, we have $f \circ g = f \circ h$.
-An arrow is said to be /coconstant/ if for any morphisms $g, h : Y \rightarrow Z$, we have $g \circ f = h \circ f$. A morphism which is both constant and coconstant is called a /zero morphism/. We say that $C$ is a category
-/with zero morphisms/ such that for every two objects $X$ and $Y$, there is a morphism $0_{XY} : X \rightarrow Y$ such that for any two arrows $f : X \rightarrow Y$ and $g : Y \rightarrow Z$, the following diagrams commute:
+*Definition 3.2* (Zero morphisms). Let $\mathcal{C}$ be a category, an arrow $f : X \rightarrow Y$ is said to be \emph{constant} if for any morphisms $g, h : W \rightarrow X$, we have $f \circ g = f \circ h$.
+An arrow is said to be \emph{coconstant} if for any morphisms $g, h : Y \rightarrow Z$, we have $g \circ f = h \circ f$. A morphism which is both constant and coconstant is called a \emph{zero morphism}. We say that $C$ is a category
+\emph{with zero morphisms} such that for every two objects $X$ and $Y$, there is a morphism $0_{XY} : X \rightarrow Y$ such that for any two arrows $f : X \rightarrow Y$ and $g : Y \rightarrow Z$, the following diagrams commute:
 
 #+ATTR_HTML: :width 250px
-[[./assets/zeros.png]]
+[[./assets/zeros.png]
 
 *Remark 3.1.* Note that if $\mathcal{C}$ is a category with zero morphisms, then the arrows $0_{XY}$ are unique. To see this, let $Z = Y$, let $g = \text{id}$, let $f = 0_{XY}'$: some other morphism
 satisfying the same criteria as $0_{XY}$. Then applying the diagram, we find that $0_{XY} = 0_{YY} \circ 0_{XY}'$ and $0_{XY}' = 0_{YY} \circ 0_{XY}'$, so $0_{XY} = 0_{XY}'$. We can also check
@@ -277,14 +277,14 @@ In addition, if we have a collection of morphisms between terms of
 cochain complexes $X^{\bullet}$ and $Y^{\bullet}$, $f^j : X^j \rightarrow Y^j$,
 
 #+ATTR_HTML: :width 400px
-[[./assets/co_morphism.png]]
+[[./assets/co_morphism.png]
 
 such that each of the squares in the above diagram commute, then we are able to define $H^{j}(f^{\bullet}) : H^j(X^{\bullet}) \rightarrow H^{j}(Y^{\bullet})$ as follows.
 We first define map from $K_X^j$ to $Q_Y^j$, where $Q_Y^j$ is the object of $H^j(Y^{\bullet})$. Of course, we have $f^j : X^j \rightarrow Y^j$, and we have inclusion $i^j_X : K_X^j \rightarrow X^j$,
 so we have arrow $f^j \circ i^j_X$. We then obtain unique map $\widetilde{f} : K_X^j \rightarrow K_Y^j$ given by
 
 #+ATTR_HTML: :width 250px
-[[./assets/uni_2.png]]
+[[./assets/uni_2.png]
 
 where we are using the fact that
 
@@ -296,7 +296,7 @@ From here, we can post-compose with the quotient $q_Y^j : K_Y^j \rightarrow Q_Y^
 to show that $\widetilde{f} \circ u_X^j = u_Y^j \circ f^{j - 1}$. This follows immediately from the fact that each of these maps fits into the following defining diagram for the kernel:
 
 #+ATTR_HTML: :width 300px
-[[./assets/uni_3.png]]
+[[./assets/uni_3.png]
 
 as we have
 
@@ -313,7 +313,7 @@ i_Y^j \circ u_Y^j \circ f^{j - 1} = d_Y^{j - 1} \circ f^{j - 1} = f^j \circ d^{j
 We know that the map in the diagram is unique, so these arrows must be equal. We then have the following, final diagram for the cokernel
 
 #+ATTR_HTML: :width 300px
-[[./assets/uni_4.png]]
+[[./assets/uni_4.png]
 
 where we use the fact that
 
@@ -344,12 +344,12 @@ We know that $\text{Im}(f) \simeq \text{Ker}(g)$, so we let $q_f : Y \rightarrow
 be the defining map for $\text{Ker}(q_f)$. Let $\Phi : \text{Ker}(q_f) \rightarrow \text{Ker}(g)$ be an isomorphism (which we know exists). We define maps $\phi$ and $\psi$ via the universal properties of kernels of cokernels:
 
 #+ATTR_HTML: :width 400px
-[[./assets/first_com.png]]
+[[./assets/first_com.png]
 
 In particular, $\phi$ and $\psi$ are the unique arrows making the following diagrams commute:
 
 #+ATTR_HTML: :width 500px
-[[./assets/com_2.png]]
+[[./assets/com_2.png]
 
 Note that
 
@@ -366,7 +366,7 @@ and
 We can then fill in the dashed lines by again exploiting universal properties:
 
 #+ATTR_HTML: :width 500px
-[[./assets/com_3.png]]
+[[./assets/com_3.png]
 
 and it follows by uniqueness of $\mu$ and $\nu$ that they must be inverse of each other, thus definining an isomorphism of $\text{Coker}(f)$ and $\text{Coker}(i_g) = \text{Im}(g)$, as desired. $\blacksquare$
 
@@ -391,13 +391,13 @@ Now that we've cleared up the preliminaries, let us dive into the theory of deri
 Let:
 
 #+ATTR_HTML: :width 350px
-[[./assets/short_exact.png]]
+[[./assets/short_exact.png]
 
 be a short exact sequence in Abelian category $\mathcal{C}$. We then say that an additive functor between Abelian categories $F : \mathcal{C} \rightarrow \mathcal{D}$ ($F$ is a group homomorphism
 from $\text{Hom}(X, Y)$ to $\text{Hom}(F(X), F(Y))$) is /exact/ if, for any short exact sequence of the above form, then
 
 #+ATTR_HTML: :width 350px
-[[./assets/F_short_exact.png]]
+[[./assets/F_short_exact.png]
 
 is also a short exact sequence. It is called left-exact (right-exact) under the weaker condition that we no longer require $F(g)$ ($F(f)$) to be an epimorphism (monomorphism).
 
@@ -436,7 +436,7 @@ Suppose $I$ is injective in Abelian category $\mathcal{C}$ and suppose we have s
 there must be $h$ such that $h \circ f = \text{id}_I$, so $f$ has a left-inverse, which means (via the splitting lemma) that $X \simeq I \oplus Y$ (the biproduct of $I$ and $Y$) via the arrow $k$:
 
 #+ATTR_HTML: :width 450px
-[[./assets/splitting_lemma.png]]
+[[./assets/splitting_lemma.png]
 
 We want to show that $F(g)$ is an epimorphism. We have the inclusion and projection to and from the biproduct, $Y \to I \oplus Y \to Y$, which compose to give the identity.
 It follows that $F(p \circ j) = F(p) \circ F(j) = \text{id}$, so $F(p)$ has a right-inverse, which automatically implies it is an epimorphism. Hence, $F(g)$ is as well, as $F(k)$ is an isomorphism.
@@ -519,11 +519,9 @@ Of course, we still need to prove that this definition makes sense, independent 
 
 *Remark 4.2.* Note that if $X^{\bullet}$ and $Y^{\bullet}$ are cochain complexes, and we have arrows $h^j : X^j \rightarrow Y^{j - 1}$, then $f^j = d_Y^{j - 1} \circ h^{j} + h^{j + 1} \circ d_X^j$
 going from $X^j$ to $Y^j$ is a morphism of complexes, as
-
 \begin{equation}
 d_Y^j \circ f^j = d_Y^j \circ d_Y^{j - 1} \circ h^{j} + d_Y^j \circ h^{j + 1} \circ d_X^j = (d_Y^j \circ h^{j + 1} + h^{j + 2} \circ d_X^{j + 1}) \circ d_X^j = f^{j + 1} \circ d_X^j
 \end{equation}
-
 Moreover, it is easy to check that $H^{\bullet}(f^{\bullet}) = 0$ (the unique morphism of cochain complexes which consists of zero arrows in each degree).
 We say that maps of complexes $g$ and $g'$ are /cochain homotopy equivalent/ if $g - g'$ is a map of the form of $f$ above, for
 some $h$.
