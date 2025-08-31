@@ -57,6 +57,7 @@
 \newtheorem{fact}{Fact}[section]
 \newtheorem{claim}{Claim}[section]
 \newtheorem{proposition}{Proposition}[section]
+\newtheorem{mantra}{Mantra}[section]
 
 \usepackage{geometry}
 \geometry{
@@ -76,13 +77,1388 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{Introduction to derived functors and derived categories}
+\title{An introduction to derived functors and sheaf cohomology}
 \author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
 \date{\today}
 \maketitle
 
-\tableofcontents
-
 \section{Introduction}
+
+\noindent The goal of these notes is to explain the general construction of derived functors. In subsequent notes, I will explain the theory of derived
+categories, but these notes will be wholly focused on the more basic theory of derived functors. These notes will be highly encyclopedic: we will cover a lot of expository theory to
+build up to our main results, some of which is a bit boring, but I'm hoping that this will serve as a detailed reference for myself and others.
+
+These notes draw on a number of references, the most notable being:
+\begin{itemize}
+  \item \emph{An Introduction to Homological Algebra} by Weibel
+    \item \emph{Categories for the Working Mathematician} by Mac Lane
+      \item \emph{Hodge Theory and Complex Algebraic Geometry I} by Voisin
+        \item Jacob Tsimerman's lecture notes on etale cohomology
+  \end{itemize}
+
+\section{Category theory basics}
+
+\noindent In this section, I'll go over a few basic ideas in category theory.
+
+\begin{definition}[Initial and final objects]
+  Let $\mathcal{C}$ be a category, an object $I$ in $\mathcal{C}$ is said to be initial if for any other object $X$,
+there is a unique morphism $I \to X$. An object $T$ is terminal if for any $X$, there is a unique morphism $X \to T$.
+An object is said to be a zero object (denoted $0$) if it is both initial and terminal.
+\end{definition}
+
+\begin{remark}
+It is easy to see that initial and final objects (if they exists) are unique up to unique isomorphism.
+\end{remark}
+
+\begin{definition}[Comma category]
+Let $F : \mathcal{C} \rightarrow \mathcal{D}$ be a functor, let $X$ be an object of $D$. The comma category $(X \downarrow F)$ is defined as follows:
+
+\begin{itemize}
+\item The objects are pairs $(C, f : x \rightarrow F(C))$ for objects $C \in \text{Obj}(\mathcal{C})$.
+\item The morphisms between $(C, f)$ and $(C', f' : X \rightarrow F(C'))$ are morphisms $h : C \rightarrow C'$ in $\mathcal{C}$ such that $F(h) \circ f = f'$.
+  \end{itemize}
+
+It is very easy to verify that we have defined a valid category. We can also define another type of comma category, $(F \downarrow X)$, where we look at objects of the form $(C, f : F(C) \rightarrow x)$,
+and define the morphisms in the obvious way.
+\end{definition}
+
+\begin{example}
+The category of pointed topological spaces is precisely $(\cdot \downarrow \textbf{Top})$.
+\end{example}
+
+\begin{definition}[Universal morphism]
+A universal morphism is an initial object in $(X \downarrow F)$, a particular comma category, or a terminal object in $(F \downarrow X)$. Intuitively, a
+universal morphism encodes a property which characterizes
+some object up to isomorphism. We can unravel the definition of a universal morphism to better conceptualize it.
+In particular, a universal morphism (in $(X \downarrow F)$) is a pair $(C, f : X \rightarrow F(C))$ such that for any other pair $(C', f' : X \rightarrow F(C'))$,
+there is a unique arrow $h : C \rightarrow C'$ such that the following diagram commutes:
+\[\begin{tikzcd}
+X && {F(C)} \\
+\\
+&& {F(C')}
+\arrow["f"', from=1-1, to=1-3]
+\arrow["{f'}"', from=1-1, to=3-3]
+\arrow["{F(h)}", from=1-3, to=3-3]
+\end{tikzcd}\]
+\end{definition}
+
+\begin{corollary}
+  A universal morphism is unique up to unique isomorphism in the comma category: this follows immediately from the fact that initial and terminal objects are unique up
+  to unique isomorphism.
+\end{corollary}
+
+\begin{example}[Tensor algebra]
+The tensor algebra of a vector space is a great example of an object characterized via a universal property. In particular, given some vector space $V$ over $k$, the property
+which characterizes the tensor algebra $T(V)$ is that any linear map $V \rightarrow A$ of $V$ to a $k$ -algebra extends uniquely to an algebra homomorphism from $T(V)$ to $A$.
+Let $\text{For} : \textbf{Alg}_k \rightarrow \textbf{Vect}_k$ be the forgetful functor which sends a $k$ -algebra to its underlying vector space. We take $F$ to be $\text{For}$, and
+we take $X = V$. Our desired object is an initial object $(T(V), f : V \rightarrow \text{For}(T(V)))$ in the comma category, which is to say that for any $A \in \textbf{Alg}_k$ and
+linear map $f' : V \rightarrow \text{For}(A)$, there must be a unique algebra homomorphism $g : T(V) \rightarrow A$ such that $\text{For}(g) \circ f = f'$.
+\end{example}
+
+\begin{remark}
+A word of caution: this formulation of a universal morphism can fail to nicely capture many instances where a "universal property" may describe a particular object.
+A good example is the tensor product. Technically, one can formulate a definition of the tensor product of two vector spaces, $V \otimes W$, via the language of universal
+morphisms (see \href{https://ncatlab.org/nlab/show/tensor+product}{nLab}),
+but in practice, it is better to just say that $V \otimes W$ is an object of $\textbf{Vect}_k$ and a bilinear map $j : V \times W \rightarrow V \otimes W$ such that
+for any bilinear map $f : V \times W \rightarrow Z$, there is a unique morphism $h : V \otimes W \rightarrow Z$ such that $h \circ j = f$. The reason why we cannot use a universal morphism
+naively in this case is because of the \emph{bilinear} attribute of the maps $j$ and $f$ (we can't specify this particular attribute as native to the category in which we are
+working because we also need to work with the standard linear map $h$). Nevertheless, it is easy to check directly that this definition uniquely characterizes $V \otimes W$ (if it exists)
+up to unique isomorphism.
+\end{remark}
+
+\noindent Having introduced universal properties, we can look at a related idea: adjoint functors.
+
+\begin{mantra}
+The best, succinct way to think of a functor $F : \mathcal{D} \rightarrow \mathcal{C}$ adjoint to functor $G : \mathcal{C} \rightarrow \mathcal{D}$ is that $F$ is the most efficient way to systematically
+``solve the problem" posed by $G$. If $G$ is, for example, a forgetful functor which throws away some of the structure of category $\mathcal{C}$, is there a method which reconstructs an element of
+$\mathcal{C}$ from $\mathcal{D}$, and imposes the
+minimal amount of extra structure possible? If such a method exists, and is functorial, in the sense that it works the same for any object, then it can be described via a functor $F : \mathcal{D} \rightarrow \mathcal{C}$
+which is adjoint to $G$.
+\end{mantra}
+
+\begin{mantra}
+Another way to internalize this same intuition is via universal properties. When
+we find an object which satisfies a universal property, we are effectively finding the ``most efficient" object which satisfies some desired property. An adjoint functor is a technique to define such universal
+objects at a global, categorical level, rather than locally. To be more specific, writing down a universal morphism is dependent on a \emph{particular choice} of object $X$ relative to which we define a comma category.
+One way to interpret the utility of an adjoint functor is that it "chooses every $X$ at once" in a functorial manner. In the previous tensor algebra example, we are choosing a particular $X = V$, and defining $T(V)$
+via a universal property. In fact, $T$ should be a functor in its own right, and it should work for \emph{every} choice of $V$ is a functorial manner. Indeed, it is the case that $T$ is a functor adjoint to $\text{For}$.
+\end{mantra}
+
+\begin{definition}
+A functor $F : \mathcal{D} \rightarrow \mathcal{C}$ is said to be \emph{left-adjoint} if for each $X \in \text{Obj}(\mathcal{C})$, there exists a universal morphism
+in $(F \downarrow X)$. The existence of a universal morphism simply means that there is some $(G(X), f_X : F(G(X)) \rightarrow X)$ such that for any other $(C, g : F(C) \rightarrow X)$, there is a
+unique morphism $h : C \rightarrow G(X)$ where $f_X \circ F(h) = g$. From here, it is possible to show that we
+can define a functor $G : \mathcal{C} \rightarrow \mathcal{D}$ such that $f_X \circ F(G(h)) = h \circ f_{X'}$ for all $h : X' \rightarrow X$, as one might
+expect/hope. In particular, we simply let $G$ take object $X$ to $G(X)$. Additionally, given arrow $h : X' \rightarrow X$ in $\mathcal{C}$, we obtain objects $(G(X), f_X : F(G(X)) \rightarrow X)$
+and $(G(X'), h \circ f_{X'} : F(G(X')) \rightarrow X)$. We then obtain unique morphism $G(h) : G(X') \rightarrow G(X)$ where $f_X \circ F(G(h)) = h \circ f_{X'}$, as desired. To prove that this
+mapping of objects/arrows in a valid functor, we simply note that $G$ takes identity arrows to identity arrows and preserves compositions due to uniqueness of $G(h)$.
+
+There is a similar, dual construction, where we say that $G : \mathcal{C} \rightarrow \mathcal{D}$ is /right-adjoint/ if for each $X \in \text{Obj}(\mathcal{D})$, there exists a universal morphism
+in $(X \downarrow G)$. We define functor $F : \mathcal{D} \rightarrow \mathcal{C}$ analogously.
+\end{definition}
+
+\begin{claim}
+If $F : \mathcal{D} \rightarrow \mathcal{C}$ is left-adjoint, and $G : \mathcal{C} \rightarrow \mathcal{D}$ is the corresponding induced functor, then $G$ is right-adjoint,
+and the corresponding induced functor is $F$. Similarly, if $G : \mathcal{C} \rightarrow \mathcal{D}$ is right-adjoint and $F$ is the induced functor, then $F$ is left-adjoint, and its
+induced functor is $G$.
+\end{claim}
+
+\begin{proof}
+Let's look at the first case. We need to show that for each $X$ in $\mathcal{D}$, then there is initial object $(F(X), f_X : X \rightarrow G(F(X)))$
+in the comma category. Thus, we need to produce a unique arrow $g : F(X) \rightarrow Y$ for some $(Y, h : X \rightarrow G(Y))$
+such that $G(g) \circ f_X = h$. Of course, we know that $F$ is left-adjoint with induced functor $G$, so we can find universal morphism in $(F \downarrow Y)$. This will be
+some terminal $(G(Y), g_Y : F(G(Y)) \rightarrow Y)$. So, given $(Z, p : F(Z) \rightarrow Y)$, we have unique $p' : Z \rightarrow G(Y)$ such that $g_Y \circ F(p') = p$.
+In particular, we can set $Y = F(X)$ and $Z = X$ with $p = \text{id}$, to get $p' : X \rightarrow G(F(X))$ where $g_{F(X)} \circ F(p') = \text{id}$. In addition, recall
+that $g_Y$ satisfies the naturality condition:
+\begin{equation}
+g_Y \circ (F \circ G)(p) = p \circ g_{Y'}
+\end{equation}
+for every $p : Y' \rightarrow Y$. We claim that we can set $f_X = p'$. Then, given $(Y, h : X \rightarrow G(Y))$, consider $g_Y \circ F(h)$: we claim that this is the $g$ we need.
+Then we have arrow $G(g) \circ f_X = G(g_Y) \circ G(F(h)) \circ p'$, and applying $F$ gives us $(F \circ G)(g_Y) \circ (F \circ G)(F(h)) \circ F(p')$.
+From the naturality condition,
+\begin{equation}
+g_Y \circ F(h) \circ g_{F(X)} = g_Y \circ g_{(F \circ G)(Y)} \circ (F \circ G)(F(h)) = g_Y \circ (F \circ G)(g_Y) \circ (F \circ G)(F(h))
+\end{equation}
+where the final equality comes from the naturality condition for $p = g_Y$. It follows that
+\begin{equation}
+g_Y \circ F(G(g_Y \circ F(h)) \circ p') = g_Y \circ (F \circ G)(g_Y) \circ (F \circ G)(F(h)) \circ F(p') = g_Y \circ F(h) \circ g_{F(X)} \circ F(p') = g_Y \circ F(h)
+\end{equation}
+and by uniqueness, $h = G(g_Y \circ F(h)) \circ p'$, or in other words, $G(g) \circ f_X = h$, as desired. Thus, $G$ is right-adjoint with induced functor $F$. Proving the second case
+is follows more or less the same process, so we will omit the proof.
+\end{proof}
+
+\begin{example}
+The forgetful functor $\text{For} : \textbf{Alg}_k \rightarrow \textbf{Vect}_k$ of Example 2.2 is right-adjoint (if the tensor algebra $T(V)$ exists). In particular, we have
+initial $(T(V), f : V \rightarrow \text{For}(T(V)))$ for each $V \in \text{Obj}(\textbf{Vect}_k)$, which is a universal morphism in $(V \downarrow \text{For})$.
+\end{example}
+
+\noindent Now, let us discuss the notion of limits and colimits, which will prove to be useful in our discussion of Abelian categories. Similar to universal morphisms and adjoints, we can think
+of limits and colimits as particular initial/terminal objects in a category.
+
+\begin{definition}[Diagram]
+A $\mathcal{D}$-shaped diagram in $\mathcal{C}$ is a functor $F : \mathcal{D} \rightarrow \mathcal{C}$.
+We can form a category of $\mathcal{D}$-shaped diagrams in $\mathcal{C}$, $\mathcal{D}[\mathcal{C}]$, by taking these functors are objects, and natural transformations as arrows.
+\end{definition}
+
+\begin{definition}[Cone]
+If $F : \mathcal{D} \rightarrow \mathcal{C}$ is a $\mathcal{D}$-shaped diagram in $\mathcal{C}$, and $Y$ is an object in $\mathcal{C}$, we define a cone from $Y$ to $F$ to be a collection of morphisms
+$\psi_X : Y \rightarrow F(X)$  for each object $X$ in $\mathcal{C}$, such that the following diagrams commute:
+% https://q.uiver.app/#q=WzAsMyxbMSwwLCJ5Il0sWzAsMSwiRih4KSJdLFsyLDEsIkYoeCcpIl0sWzAsMSwiXFxwc2lfeCIsMl0sWzAsMiwiXFxwc2lfe3gnfSJdLFsxLDIsIkYoZikiLDJdXQ==
+\[\begin{tikzcd}
+	& Y \\
+	{F(X)} && {F(X')}
+	\arrow["{\psi_X}"', from=1-2, to=2-1]
+	\arrow["{\psi_{X'}}", from=1-2, to=2-3]
+	\arrow["{F(f)}"', from=2-1, to=2-3]
+\end{tikzcd}\]
+for each arrow $f : X \rightarrow X'$ in $\mathcal{D}$. Similarly, we define a cone from $F$ to $Y$ (also called a co-cone) by reversing all arrows in the above diagram. One can also formulate cones in terms
+of an appropriate comma category, if they wish. The category of cones to $F$ takes cones from some object to $F$ as objects, and as morphisms, arrows $g : Y' \rightarrow Y$ in $C$ making the following diagrams commute:
+% https://q.uiver.app/#q=WzAsNCxbMSwxLCJ5Il0sWzAsMiwiRih4KSJdLFsyLDIsIkYoeCcpIl0sWzEsMCwieSciXSxbMCwxLCJcXHBzaV94Il0sWzAsMiwiXFxwc2lfe3gnfSIsMl0sWzEsMiwiRihmKSIsMl0sWzMsMCwiXFxQaGkiXSxbMywxLCJcXHBoaV94IiwyXSxbMywyLCJcXHBoaV97eCd9Il1d
+\[\begin{tikzcd}
+	& {Y'} \\
+	& Y \\
+	{F(X)} && {F(X')}
+	\arrow["g", from=1-2, to=2-2]
+	\arrow["{\phi_X}"', from=1-2, to=3-1]
+	\arrow["{\phi_{X'}}", from=1-2, to=3-3]
+	\arrow["{\psi_X}", from=2-2, to=3-1]
+	\arrow["{\psi_{X'}}"', from=2-2, to=3-3]
+	\arrow["{F(f)}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+with the category of co-cones (or cones from $F$) being defined by again reversing the arrows in the above diagram. Checking that these are categories is easy.
+\end{definition}
+
+\begin{definition}
+If $F : \mathcal{D} \rightarrow \mathcal{C}$ is a diagram, a limit $\lim F$ is an initial object in the category of cones going to $F$.
+Similarly, a colimit $\text{colim} \ F$ is a final object in the category of cones going from $F$. For a more detailed explanation of
+limits and colimits, and how they are categorical generalizations of inverse limits and direct limits, see \href{https://lucaman99.github.io/mathblog/groupoid_svk.html}{my previous blog post}.
+\end{definition}
+
+\noindent Using limits and colimits, we are able to define an \emph{equalizer} within a category, which can be thought of as a categorical generalization of "the set of arguments where
+two functions agree".
+
+\begin{definition}
+Let $\mathcal{C}$ be a category, let $X$ and $Y$ be objects, and let $f, g : X \rightarrow Y$ be arrows. Taking $X$ and $Y$ as objects, $f$, $g$, and the identity arrows as morphisms,
+we form a subcategory, and if we let $\mathcal{D} = \{1, 2\}$ with arrows $a$ and $b$ pointing from $1$ to $2$ (along with identity arrows), we easily can form a diagram $F : \mathcal{D} \rightarrow \mathcal{C}$ sending
+$a$ to $f$ and $b$ to $g$. The equalizer $\text{Eq}(f, g)$ is $\lim F$. Unpacking this definition, the equalizer is an object $C \in \mathcal{C}$ and maps
+$\psi_X : C \rightarrow X$ and $\psi_Y : C \rightarrow Y$ such that $g \circ \psi_X = \psi_Y = f \circ \psi_X$ which satisfy the required universal property. Similarly,
+the coequalizer $\text{Coeq}(f, g)$ is $\text{colim} \ F$.
+\end{definition}
+
+\begin{remark}
+One can immediately see how this generalizes the notion of "the set on which two functions are equal". Being sloppy and abusing notation, we can have $C = \{(x, y) \ | \ y = f(x) = g(x)\}$,
+$\psi_X$ the projection onto the first argument, and $\psi_Y$ projection onto the second: then $C$ satisfies the desired criterion. Ignore this remark if you find it too hand-wavy.
+\end{remark}
+
+\noindent To conclude, let us briefly introduce the notion of products and coproducts, which are another crucial component of Abelian categories.
+
+\begin{definition}[Products and coproducts]
+Let $\mathcal{C}$ and $\mathcal{D}$ be categories, where $\mathcal{D}$ is an ``index set" (i.e. it has no non-identity morphisms), and consists of set of objects $I$. Suppose
+$F : \mathcal{D} \rightarrow \mathcal{C}$ is a diagram, which simply amounts to choosing some indexed family $(X_i)_{i \in I}$ of objects $X_i$ in $\mathcal{C}$. Then a product of the $X_i$
+is a limit of $F$. Unrolling this definition, it is object $C$ in $\mathcal{C}$, along with morphisms $\pi_i : C \rightarrow X_i$ (projections) which is initial in the cone category.
+Similarly, a coproduct is a colimit of $F$.
+\end{definition}
+
+\section{Abelian categories}
+
+\noindent Here, we will develop some central results revolving around \emph{Abelian categories}, which were introduced by Grothendieck in his Tohoku paper, and provide the
+arena in which it makes sense to talk about exact sequences, homology, and cohomology is a general, categorical sense.
+
+We need to begin with a lot of definitions (basically a collection of categorical generalizations of things which come up frequently in algebra).
+
+\begin{definition}[Preadditive category]
+  A preadditive category $\mathcal{C}$ is a category such that each hom-set has the structure of an Abelian group, with composition being bilinear over the group addition:
+\begin{align}
+    f \circ (g + h) = (f \circ g) + (f \circ h) \ \ \ \ \text{and} \ \ \ \ (g + h) \circ f = (g \circ f) + (h \circ f).
+\end{align}
+\end{definition}
+
+\begin{definition}[Zero morphisms]
+  Let $\mathcal{C}$ be a category, an arrow $f : X \rightarrow Y$ is said to be \emph{constant} if for any morphisms $g, h : W \rightarrow X$, we have $f \circ g = f \circ h$.
+An arrow is said to be \emph{coconstant} if for any morphisms $g, h : Y \rightarrow Z$, we have $g \circ f = h \circ f$. A morphism which is both constant and coconstant is called a \emph{zero morphism}. We say that $C$ is a category
+\emph{with zero morphisms} such that for every two objects $X$ and $Y$, there is a morphism $0_{XY} : X \rightarrow Y$ such that for any two arrows $f : X \rightarrow Y$ and $g : Y \rightarrow Z$, the following diagrams commute:
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzIsMCwiWSJdLFswLDIsIlkiXSxbMiwyLCJaIl0sWzAsMSwiMF97WFl9Il0sWzAsMiwiZiIsMl0sWzEsMywiZyJdLFsyLDMsIjBfe1lafSIsMl0sWzAsMywiMF97WFp9IiwxXV0=
+\[\begin{tikzcd}
+X && Y \\
+\\
+Y && Z
+\arrow["{0_{XY}}", from=1-1, to=1-3]
+\arrow["f"', from=1-1, to=3-1]
+\arrow["{0_{XZ}}"{description}, from=1-1, to=3-3]
+\arrow["g", from=1-3, to=3-3]
+\arrow["{0_{YZ}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+\end{definition}
+
+\begin{remark}
+Note that if $\mathcal{C}$ is a category with zero morphisms, then the arrows $0_{XY}$ are unique. To see this, let $Z = Y$, let $g = \text{id}$, let $f = 0_{XY}'$: some other morphism
+satisfying the same criteria as $0_{XY}$. Then applying the diagram, we find that $0_{XY} = 0_{YY} \circ 0_{XY}'$ and $0_{XY}' = 0_{YY} \circ 0_{XY}'$, so $0_{XY} = 0_{XY}'$. We can also check
+that all of the $0_{XY}$ are zero morphisms. We have $0_{XY} = 0_{YZ} \circ f$ for any arrow $f : X \rightarrow Y$ and we have $g \circ 0_{XY} = 0_{XZ}$ for any arrow $g : Y \rightarrow Z$: this immediately gives us what we want.
+\end{remark}
+
+\begin{claim}
+If $\mathcal{C}$ is an object with zero object $\textbf{0}$, then $\mathcal{C}$ has zero morphisms. In particular, we have natural maps $t_X : X \rightarrow \textbf{0}$ and $i_Y : \textbf{0} \rightarrow Y$,
+and $0_{XY} = i_Y \circ t_X$ endow $\mathcal{C}$ with the structure of a category with zero morphisms.
+\end{claim}
+
+\begin{proof}
+Let $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ be arrows. We note that $0_{YZ} \circ f = i_Z \circ (t_Y \circ f)$ and $g \circ 0_{XY} = (g \circ i_Y) \circ t_X$. Of course,
+$t_Y \circ f : X \rightarrow \textbf{0}$ must be equal to $t_X$ and $g \circ i_Y$ must be $i_Z$, so both compositions are equal to $0_{XZ}$, as desired.
+\end{proof}
+
+\begin{remark}
+One can easily see that in a preaddditive category $\mathcal{C}$, the zero objects in each hom-set give $\mathcal{C}$ the structure of a category with zero morphisms. In particular, if we have
+$g : Y \rightarrow Z$ and $0_{XY} : X \rightarrow Y$ the zero object in $\text{Hom}(X, Y)$, then
+\begin{equation}
+g \circ 0_{XY} = g \circ (0_{XY} + 0_{XY}) = g \circ 0_{XY} + g \circ 0_{XY}
+\end{equation}
+which implies that $g \circ 0_{XY} = 0_{XZ}$. Similarly, $0_{YZ} \circ f = 0_{XZ}$ for some $f : X \rightarrow Y$. Thus, the required commutative diagram is satisfied.
+\end{remark}
+
+\noindent Using the concept of zero morphisms, and the previously introduced concept of equalizers (and coequalizers), we are able to write down a natural definition of the kernel (and cokernel).
+Note that kernels and cokernels will not always exist in a given category (as a given category may not contain certain equalizers/coequalizers). Before looking at kernels and cokernels, let us define a
+few more foundational concepts.
+
+\begin{definition}
+A morphism $f : X \rightarrow Y$ is said to be monic if $f \circ g = f \circ h$ implies $g = h$ for any arrows $g$ and $h$.
+A morphism is said to be epi if $g \circ f = h \circ f$ implies $g = h$ for any $g$ and $h$.
+\end{definition}
+
+\noindent Often times, when we transition from concrete algebraic language to practices which are
+``categorical'' or ``functorial'', we prefer to deal with arrows between objects rather than objects themselves. Subobjects and quotient objects are one way in
+which this philosophy first appears.
+
+\begin{definition}[Subobjects and quotient objects]
+  \label{def:subobj}
+Let $\mathcal{C}$ be an arbitrary category. Let $f : X \rightarrow C$ and $f' : Y \rightarrow C$ be two monics with common target. We say that $f \leq f'$ if $f$ factors through
+$f'$: there exists arrow $\phi$ such that $f = f' \circ \phi$. Clearly, this relation is transitive and reflexive. We say that $f \sim f'$ if $f \leq f'$ and $f' \leq f$, which then
+clearly yields an equivalence relation among monics targeting $C$. An equivalence class of this form is called a \emph{subobject} of $C$.
+
+Similarly, given two epis $g : C \rightarrow X$ and $g' : C \rightarrow X'$, we say that $g \geq g'$ if there is arrow $\phi$ such that $g' = \phi \circ g$. This defines an equivalence relation
+between epis with a common domain, and we call an equivalence class of this form a \emph{quotient object} of $C$.
+\end{definition}
+
+\begin{comment}
+ \begin{definition}[Subobject and quotient object categories]
+  Let $\mathcal{C}$ be a category, let $C$ be an object. We can define a category of subobjects of $C$, $\text{Sub}_{\mathcal{C}}(C)$.
+  We take our objects to be subobjects of $C$. To define arrows, take two subobjects $m_1$ and $m_2$, define
+  $\mathcal{A}(m_1, m_2)$ to be the collection of all arrows $f : K' \rightarrow K$ such that $j = i \circ f$ for some $i : K \rightarrow C$ and $j : K' \rightarrow C$
+  representing $m_1$ and $m_2$ respectively. We say that two such arrows $f, g \in \mathcal{A}(m_1, m_2)$
+  are equivalent if there are isomorphisms $\psi$ and $\phi$ such that $f = \psi \circ g \circ \phi$. It is easy to see that this is an equivalence
+  relation, and therefore yields equivalence classes, $[[f]]$.
+
+  From here, we let the collection of arrows between $m_1$ and $m_2$, $\text{Mor}(m_1, m_2)$, in $\text{Sub}_{\mathcal{C}}(C)$ be the collection of equivalence classes $[[f]]$ with $f \in \mathcal{A}(m_1, m_2)$. Let
+  $M_1 \in \text{Mor}(m_1, m_2)$ with representative $f : K_2 \rightarrow K_1$. Let $M_2 \in \text{Mor}(m_2, m_3)$. Note that $M_2$ will have a representative $g : K_3 \rightarrow K_2$ (with target $K_2$). We then
+  define $M_1 \circ M_2 \in \text{Mor}(m_1, m_3)$ to be $[[f \circ g]]$. To see that this composition is independent of choice of $f$ and $g$, first suppose we picked a different $g' : K' \rightarrow K_2$, then
+  we note that $g = \psi \circ g' \circ \phi$. If we have $j = i \circ g$ for monics $j$ and $i$, note that
+  \begin{equation}
+    j \circ \varphi^{-1} = (i \circ \psi) \circ g'
+    \end{equation}
+  where $j \sim j \circ \varphi^{-1}$ and $i \sim i \circ \psi$, so
+
+  with representative $g : H' \rightarrow H$, we define $[[f]] \circ [[g]]$ as
+  $[[f \circ h]]$ where $h \in [[g]]$ has target $K'$ (such an $h$ exists because we must have $i : K' \rightarrow C$ and $j : H \rightarrow C$ in $m_2$ which are equivalent, so we have isomorphism
+  $\phi : H \rightarrow K'$ such that $i \circ \phi = j$). To 
+   \end{definition}
+
+ \begin{remark}
+  It is clear that monics $f$ and $f'$ which target $C$ define the same subobject if and only if $f' = f \circ \phi$ for some \emph{isomorphism} $\phi$. Similarly, epis $g$ and $g'$
+  going from $C$ define the same quotient object if and only if $g' = \psi \circ g$ for some isomorphism $\psi$. In fact, these isomorphisms are unique, as if we have $f \circ \phi = f' = f \circ \phi'$,
+  then $\phi = \phi'$ as $f$ is monic. A similar fact holds for epis.
+  \end{remark}
+\end{comment}
+
+\begin{definition}[Kernel]
+  Given arrow $f : X \rightarrow Y$ in category $\mathcal{C}$ with zero morphisms, we define a kernel of $f$ as some $\text{Eq}(f, 0_{XY})$, an equalizer of
+  $f$ and $0_{XY}$. Unrolling this definition, a kernel of $f$ is an object $K$ and morphism $k : K \rightarrow X$ such that $f \circ k = 0_{XY}$ and such that if $k' : K' \rightarrow X$
+  is another arrow such that $f \circ k' = 0_{XY}$, there exists a unique arrow $\varphi : K' \to K$ such that $k \circ \varphi = k'$.
+
+  Now, let us explain something subtle: above, we have said that \emph{a} kernel is an equalizer, so it it isn't necessarily unique, but any two kernels are isomorphic via unique
+  isomorphism (as we know equalizers are). In particular, if $k$ and $k'$ are two kernels, then the isomorphism $\varphi : K' \rightarrow K$ will satisfy $k' = k \circ \varphi$ and $k = k' \circ \varphi^{-1}$. It is also
+  very easy to verify that a kernel is always a monic. Thus, $k \sim k'$ with respect to the equivalence relation of Def.~\ref{def:subobj}. It follows that all kernels of $f$ define the
+  same subobject of $X$. Moreover, if $k$ is a kernel and $j : J \rightarrow X$ is such that $j \sim k$, so $k = j \circ \phi$ and $j = k \circ \psi$, it is clear that $f \circ j = f \circ k \circ \psi = 0$ and if
+  $k' : K' \rightarrow X$ satisfies $f \circ k' = 0$, then $\phi \circ \varphi : K' \rightarrow J$ is a unique arrow such that $k' = j \circ \phi \circ \varphi$ (where $\varphi$ is the unique
+  arrow from $K'$ to $K$). Thus, $j$ is also a kernel, so in conclusion: the collection of all kernels of $f$ is equal to the subobject of $X$ determined by a single kernel of $f$. We
+  will denote this subobject $\text{ker}(f)$, and refer to it as \emph{the kernel subobject of $f$}.
+\end{definition}
+
+\begin{definition}[Cokernel]
+  In addition, the dual concept, a cokernel of $f : X \rightarrow Y$, is taken to be some $\text{Coeq}(f, 0_{XY})$: a coequalizer of $f$ and $0_{XY}$. Unrolling this definition: it is a map $q : Y \rightarrow Q$
+  such that $q \circ f = 0$, and such that if $q' : Y \rightarrow Q'$, there is unique $\phi : Q' \rightarrow Q$ such that $\phi \circ q' = q$. Similar to the case of kernels, one can
+  show that any cokernel is epi, and that the quotient object defined by a single cokernel of $f$ is precisely the collection of all cokernels of $f$. We call this quotient object \emph{the cokernel quotient object of $f$},
+  and denote is by $\text{coker}(f)$
+\end{definition}
+
+ \begin{lemma}
+  \label{lem:ind}
+  Suppose $f = m \circ e$ where $m$ is monic and $e$ is epi. Then $\text{ker}(f) = \text{ker}(e)$ and $\text{coker}(f) = \text{coker}(m)$ (as subobjects and quotient objects)
+  \end{lemma}
+\begin{proof}
+  Let $k_f : K_f \rightarrow X$ be a kernel of $f$, let $k_e : K_e \rightarrow X$ be a kernel of $e$. Note that $0 = f \circ k_f = m \circ e \circ k_f$, so $e \circ k_f = 0$ as $m$ is monic. Thus,
+  we have $k_f = k_e \circ \phi$ for some $\phi$, by definition of the kernel. Similarly, $f \circ k_e = m \circ e \circ k_e = 0$, so $k_e = k_f \circ \psi$ for some $\psi$, so $k_e \sim k_f$. A nearly
+  identical, ``dual proof'' shows the equality of cokernel quotient objects.
+\end{proof}
+
+\begin{definition}[Image]
+  Using the concept of kernels/cokernels, we are able to define the \emph{image} of an arrow $f : X \rightarrow Y$ as well. In particular, if the cokernel quotient object $\text{coker}(f)$ exists (it is non-empty, as a set), then
+we have object $Q$ and ``quotient" morphism $q : Y \rightarrow Q$. Intuitively, if $Q$ is supposed to generalize $Y/\text{im}(f)$ in the case that we are operating in, say, the category of vector spaces,
+then we should have $\text{ker}(q) \simeq \text{im}(f)$ (this is just the first isomorphism theorem). Thus, we \emph{define} $\text{im}(f) = \text{ker}(q)$.
+Note that $\text{im}(f)$ is well-defined as a subobject,
+as any other $q'$ in $\text{coker}(f)$ is given by $q' = \psi \circ q$ for some isomorphism $\psi$, and from the previous lemma, $\text{Ker}(q') = \text{Ker}(q)$.
+\end{definition}
+
+\begin{definition}[Biproducts]
+Let $\mathcal{C}$ be a category with zero morphisms. Let $X_1, \dots, X_n$ be a collection of objects in $\mathcal{C}$, a biproduct of
+these objects is an object $X_1 \oplus \cdots \oplus X_n$ and morphisms $p_k : X_1 \oplus \cdots \oplus X_n \rightarrow X_k$ (projections) and $i_k : X_k \rightarrow X_1 \oplus \cdots \oplus X_n$ (embeddings) which satisfy:
+
+\begin{itemize}
+\item $p_k \circ i_k = 1_k$, the identity arrow on $X_k$
+\item $p_{\ell} \circ i_k = 0_{k \ell}$, the zero morphism from $X_k$ to $X_{\ell}$.
+\end{itemize}
+
+In addition, we require that $(X_1 \oplus \cdots \oplus X_n, p_k)$ is a product of the objects $X_k$ and that $(X_1 \oplus \cdots \oplus X_n, i_k)$ is a coproduct.
+\end{definition}
+
+\begin{definition}
+A monic is said to be \emph{normal} if it is a kernel of some morphism. An epi is said to be \emph{conormal} if it is a cokernel of some morphism.
+\end{definition}
+
+\noindent We can now (finally) define Abelian categories:
+
+\begin{definition}[Abelian category]
+An Abelian category $\mathcal{C}$ is a preadditive category which satisfies the following criteria:
+\begin{itemize}
+\item $\mathcal{C}$ has a zero object.
+\item $\mathcal{C}$ contains all binary biproducts (i.e. biproducts of two objects, thus biproducts of a finite number of objects).
+\item $\mathcal{C}$ contains all kernels and cokernels.   In addition, we have functors $\text{Ker}, \text{Coker} : \text{Arr}(\mathcal{C}) \rightarrow \text{Arr}(\mathcal{C})$ (where $\text{Arr}(\mathcal{C})$ is the
+  usual arrow category) such that:
+  \begin{itemize}
+  \item $\text{Ker}(f)$ is a kernel $i_f : K_f \rightarrow X$ for each arrow $f : X \rightarrow Y$ in $\text{Obj}(\text{Arr}(\mathcal{C}))$.
+  \item $\text{Coker}(f)$ is a cokernel $q_f : X \rightarrow Q_f$ for each arrow $f : X \rightarrow Y$ in $\text{Obj}(\text{Arr}(\mathcal{C}))$.
+   \end{itemize}
+\item Every monic in $\mathcal{C}$ is normal, every epi is conormal.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+  Note that going forward, when we speak of \emph{the} kernel or \emph{the} cokernel going forward, we are generally referring to the functors above applied to a particular arrow. Notice the capital letters
+  used to denote the functors, which differ from the lowercase letters used to denote the kernel subobject and cokernel quotient objects.
+\end{remark}
+
+\begin{remark}
+  Note that the existence of functors $\text{Ker}$ and $\text{Coker}$ is equivalent to simply \emph{being able} to choose a particular kernel
+  and cokernel for each map in a particular category $\mathcal{C}$. In a small category, this can be done when we assume the axiom of choice, but in large categories, we may need a stronger ``axiom of choice for proper classes''.
+
+  To be more specific, suppose for each arrow $f : X \rightarrow Y$ in $\mathcal{C}$, we pick some particular kernel, $i_f : K_f \rightarrow X$ for $f$ (arbitrarily), and we
+  \emph{define} $\text{Ker}(f)$ to be $i_f$. To define a corresponding functor $\text{Ker}$ from $\text{Arr}(\mathcal{C})$ to itself, we need to write down the action of $\text{Ker}$ on arrows in the arrow category,
+  which are commutative squares of the form:
+  % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX2YiXSxbMCwyLCJZX2YiXSxbMiwyLCJZX2ciXSxbMiwwLCJYX2ciXSxbMCwxLCJmIiwyXSxbMSwyLCJcXHBoaV9ZIiwyXSxbMCwzLCJcXHBoaV9YIl0sWzMsMiwiZyJdXQ==
+  \[\begin{tikzcd}
+	          {X_f} && {X_g} \\
+	          \\
+	            {Y_f} && {Y_g}
+	            \arrow["{\phi_X}", from=1-1, to=1-3]
+	            \arrow["f"', from=1-1, to=3-1]
+	            \arrow["g", from=1-3, to=3-3]
+	            \arrow["{\phi_Y}"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  determined by the maps $\phi_X$ and $\phi_Y$. Note that the arrow $\phi_X \circ i_f : K_f \rightarrow X_g$ satisfies
+  \begin{equation}
+  g \circ \phi_X \circ i_f = \phi_Y \circ f \circ i_f = 0
+  \end{equation}
+  which means that we have unique $\widetilde{\phi} : K_f \rightarrow K_g$ making the appropriate kernel diagram commute. We then let $\text{Ker}(\phi)$ be the commutative square determined by
+  $\widetilde{\phi}$ and $\phi_X$. We note that $i_g \circ \widetilde{\phi} = \phi_X \circ i_f$, so this is a valid commutative square. It is easy to see that $\text{Ker}(\text{id}) = \text{id}$ and by uniqueness, that
+  $\text{Ker}(\phi \circ \psi) = \text{Ker}(\phi) \circ \text{Ker}(\psi)$. Therefore, we have defined a valid functor which assigns kernels to every arrow. A similar construction holds for the cokernel (so similar that
+  we omit the proof).
+  \end{remark}
+
+\noindent Operating in the realm of Abelian categories allows us to prove many, generic results, some of which are recognizable from basic algebra.
+
+\begin{definition}
+If $\mathcal{C}$ is an Abelian category, a sequence of morphisms indexed by integers $\cdots \rightarrow X^{j - 1} \rightarrow X^j \rightarrow X^{j + 1} \rightarrow \cdots$
+is said to be a cochain complex if the composition of neighbouring arrows is the unique zero morphism between the objects. A chain complex is exactly the dualized version of the chain
+complex that we would expect.
+\end{definition}
+
+\begin{definition}[Cohomology]
+  We will focus here on the case of cohomology, rather than homology, as for our purposes, it is more important.
+Let $\mathcal{C}$ be an Abelian category, consider a cochain complex
+\[\begin{tikzcd}
+\cdots & X^{-1} & X^0 & X^1 & X^2 & \cdots
+\arrow[from=1-1, to=1-2]
+\arrow ["d^{-1}", from=1-2, to=1-3]
+\arrow ["d^{0}", from=1-3, to=1-4]
+\arrow ["d^{1}", from=1-4, to=1-5]
+\arrow [from=1-5, to=1-6]
+\end{tikzcd}\]
+which we denote by $X^{\bullet}$, where we have $d^{j + 1} \circ d^j : X^j \rightarrow X^{j + 2}$ equal to the zero morphism from $X^j$ to $X^{j + 2}$.
+Consider $\text{Ker}(d^j)$, which we denote by $i^j : K^j \rightarrow X^j$. We then define $u^j$ via the universal property which $i^j$ and $K^j$ satisfy:
+\[\begin{tikzcd}
+& {X^{j - 1}} \\
+& K^j \\
+	          {X^j} && {X^{j + 1}}
+	          \arrow["u^j", from=1-2, to=2-2]
+	          \arrow["{d^{j - 1}}"', from=1-2, to=3-1]
+	          \arrow["0", from=1-2, to=3-3]
+	          \arrow["i^j"{description}, from=2-2, to=3-1]
+	          \arrow["0"{description}, from=2-2, to=3-3]
+	          \arrow["{d^j}"{description}, from=3-1, to=3-3]
+\end{tikzcd}\]
+One should think of this arrow as restricting the target of $d^{j - 1}$ to the kernel $K^j$, as due to the fact that $d^j \circ d^{j - 1}$ is the zero morphism, it makes sense
+to do this. From here, we take $H^j(X^{\bullet}) = \text{Coker}(u^j)$: this is the $j$ -th cohomology of $X^{\bullet}$. Informally, one can think of this as "the kernel of $d^j$
+modulo the image of $d^{j - 1}$", which is the standard definition of cohomology when working with Abelian groups.
+
+In addition, if we have a collection of morphisms between terms of
+cochain complexes $X^{\bullet}$ and $Y^{\bullet}$, $f^j : X^j \rightarrow Y^j$,
+% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiXFxjZG90cyJdLFsxLDAsIlhee2otMX0iXSxbMiwwLCJYXmoiXSxbMywwLCJYXntqICsgMX0iXSxbNCwwLCJcXGNkb3RzIl0sWzIsMSwiWV5qIl0sWzMsMSwiWV57aisxfSJdLFsxLDEsIllee2otMX0iXSxbMCwxLCJcXGNkb3RzIl0sWzQsMSwiXFxjZG90cyJdLFswLDFdLFsxLDIsImRfWF57ai0xfSJdLFsyLDMsImRfWF5qIl0sWzMsNF0sWzIsNSwiZl5qIl0sWzMsNiwiZl57aisxfSJdLFsxLDcsImZee2otMX0iXSxbOCw3XSxbNyw1LCJkX1lee2otMX0iLDJdLFs1LDYsImRfWV57an0iLDJdLFs2LDldXQ==
+\[\begin{tikzcd}
+\cdots & {X^{j-1}} & {X^j} & {X^{j + 1}} & \cdots \\
+\cdots & {Y^{j-1}} & {Y^j} & {Y^{j+1}} & \cdots
+\arrow[from=1-1, to=1-2]
+\arrow["{d_X^{j-1}}", from=1-2, to=1-3]
+\arrow["{f^{j-1}}", from=1-2, to=2-2]
+\arrow["{d_X^j}", from=1-3, to=1-4]
+\arrow["{f^j}", from=1-3, to=2-3]
+\arrow[from=1-4, to=1-5]
+\arrow["{f^{j+1}}", from=1-4, to=2-4]
+\arrow[from=2-1, to=2-2]
+\arrow["{d_Y^{j-1}}"', from=2-2, to=2-3]
+\arrow["{d_Y^{j}}"', from=2-3, to=2-4]
+\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+we are able to define $H^{j}(f^{\bullet}) : H^j(X^{\bullet}) \rightarrow H^{j}(Y^{\bullet})$ as follows.
+We first define map from $K_X^j$ to $Q_Y^j$, where $Q_Y^j$ is the object of $H^j(Y^{\bullet})$. Of course, we have $f^j : X^j \rightarrow Y^j$, and we have inclusion $i^j_X : K_X^j \rightarrow X^j$,
+so we have arrow $f^j \circ i^j_X$. We then obtain unique map $\widetilde{f} : K_X^j \rightarrow K_Y^j$ given by
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJLX1heaiJdLFsxLDEsIktfWV5qIl0sWzAsMiwiWV5qIl0sWzIsMiwiWV57aisxfSJdLFswLDEsIlxcd2lkZXRpbGRle2Z9IiwxXSxbMSwyLCJpX1leaiJdLFsxLDMsIjAiLDJdLFswLDIsImZeaiBcXGNpcmMgaV9YXmoiLDJdLFswLDMsIjAiXSxbMiwzLCJkX1lee2p9IiwyXV0=
+\[\begin{tikzcd}
+& {K_X^j} \\
+& {K_Y^j} \\
+	          {Y^j} && {Y^{j+1}}
+	          \arrow["{\widetilde{f}}"{description}, from=1-2, to=2-2]
+	          \arrow["{f^j \circ i_X^j}"', from=1-2, to=3-1]
+	          \arrow["0", from=1-2, to=3-3]
+	          \arrow["{i_Y^j}", from=2-2, to=3-1]
+	          \arrow["0"', from=2-2, to=3-3]
+	          \arrow["{d_Y^{j}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+where we are using the fact that
+\begin{equation}
+\label{eq:a}
+d_Y^j \circ f^j \circ i_X^j = f^{j + 1} \circ d_X^{j + 1} \circ i_X^j = 0
+\end{equation}
+From here, we can post-compose with the quotient $q_Y^j : K_Y^j \rightarrow Q_Y^j$ to get the desired map from $K_X^j$ to $H^j(Y^{\bullet})$. To finally promote this to a map from $Q_X^j$: the object of $H^j(X^{\bullet})$, we need
+to show that $\widetilde{f} \circ u_X^j = u_Y^j \circ f^{j - 1}$. We have
+\begin{equation}
+i_Y^j \circ \widetilde{f} \circ u_X^j = f^j \circ i_X^j \circ u_X^j = f^j \circ d^{j - 1}_X
+\end{equation}
+and
+\begin{equation}
+i_Y^j \circ u_Y^j \circ f^{j - 1} = d_Y^{j - 1} \circ f^{j - 1} = f^j \circ d^{j - 1}_X
+\end{equation}
+Since $i_Y^j$ is monic, we then have the desaired equality. We then have the following, final diagram for the cokernel
+% https://q.uiver.app/#q=WzAsNCxbMCwyLCJYXntqLTF9Il0sWzIsMiwiS19YXmoiXSxbMSwxLCJRX1heaiJdLFsxLDAsIlFfWV5qIl0sWzAsMSwidV9YXmoiLDJdLFswLDIsIjAiLDJdLFswLDMsIjAiXSxbMSwyLCJxX1heaiJdLFsxLDMsInFfWV5qIFxcY2lyYyBcXHdpZGV0aWxkZXtmfSIsMl0sWzIsMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+& {Q_Y^j} \\
+& {Q_X^j} \\
+	          {X^{j-1}} && {K_X^j}
+	          \arrow[dashed, from=2-2, to=1-2]
+	          \arrow["0", from=3-1, to=1-2]
+	          \arrow["0"', from=3-1, to=2-2]
+	          \arrow["{u_X^j}"', from=3-1, to=3-3]
+	          \arrow["{q_Y^j \circ \widetilde{f}}"', from=3-3, to=1-2]
+	          \arrow["{q_X^j}", from=3-3, to=2-2]
+\end{tikzcd}\]
+where we use the fact that
+\begin{equation}
+  q_Y^j \circ \widetilde{f} \circ u_X^j = q_Y^j \circ u_Y^j \circ f^{j - 1} = 0
+\end{equation}
+It follows that the dashed arrow is uniquely defined: this is precisely the map $H^j(f^{\bullet})$. With that, we are finally done describing the cohomology of a cochain complex
+within an Abelian category, and the associated morphisms.
+\end{definition}
+
+\begin{claim}
+If $f$ and $g$ are morphisms of cochain complexes, then it is easy to see that we can define a composite cochain morphism, $(f \circ g)^{\bullet}$, where $(f \circ g)^{k} = f^k \circ g^k$.
+In this case,
+\begin{equation}
+  H^j((f \circ g)^{\bullet}) = H^j(f^{\bullet}) \circ H^j(g^{\bullet})
+\end{equation}
+\end{claim}
+
+\begin{proof}
+  Let $h = f \circ g$, where $g : X \rightarrow Y$ and $f : Y \rightarrow Z$ are morphisms of cochain complexes.
+  To do this proof, we are going to use a very nice technique called a ``diagram chase via generalized elements''. For an explanation of the machinery involved
+  in this proof, see Appx.~\ref{appx:a}. We will assume familiarity with the notation and main results
+  developed in this section going forward.
+
+  Using the same notation as in the definition of cohomology, since $q_X^j$ is epi, any $[y] \in Q_X^j$ can be written as $q_X^j([x])$ for some $[x] \in K_X^j$ We then note that
+  \begin{equation}
+    \label{eq:b}
+    (H^j(h^{\bullet}) - H^j(f^{\bullet}) \circ H^j(g^{\bullet}))(q_X^j([x])) = (q_Z^j \circ (\widetilde{h} - \widetilde{f} \circ \widetilde{g}))([x])
+    \end{equation}
+  From here, note that we have
+  \begin{equation}
+    (i_Z^j \circ (\widetilde{h} - \widetilde{f} \circ \widetilde{g}))([x]) = ((h^j - f^j \circ g^j) \circ i_X^j)([x]) = [0]
+    \end{equation}
+  and since $i_Z^j$ is monic, $(\widetilde{h} - \widetilde{f} \circ \widetilde{g})([x]) = [0]$, and therefore, Eq.~\eqref{eq:b} is $[0]$ as well,
+  so $H^j(h^{\bullet}) - H^j(f^{\bullet}) \circ H^j(g^{\bullet})$ must be the zero arrow, which gives us the desired equality.
+\end{proof}
+
+\noindent Let's prove a useful result related to exact sequences in Abelian categories:
+
+\begin{lemma}
+  \label{lem:coker}
+  If $\mathcal{C}$ is an Abelian category, with arrows $f : X \rightarrow Y$ and $g : Y \rightarrow Z$ such that $\text{Im}(f) \simeq \text{Ker}(g)$, then $\text{Im}(g) \simeq \text{Coker}(f)$.
+  \end{lemma}
+
+\begin{proof}
+  This amounts to showing that $\text{Coker}(f) \simeq \text{Coker}(i_g)$, where $i_g : \text{Ker}(g) \rightarrow Y$ is the defining map of $\text{Ker}(g)$.
+  We know that $\text{Im}(f) \simeq \text{Ker}(g)$, so we let $q_f : Y \rightarrow \text{Coker}(f)$ be the defining map for $\text{Coker}(f)$, and then let $i_{q_f} : \text{Ker}(q_f) \rightarrow X$
+  be the defining map for $\text{Ker}(q_f)$. Let $\Phi : \text{Ker}(q_f) \rightarrow \text{Ker}(g)$ be an isomorphism (which we know exists). We define maps $\phi$ and $\psi$ via the universal properties of kernels of cokernels:
+  % https://q.uiver.app/#q=WzAsNyxbMSwwLCJcXHRleHR7S2VyfShxX2YpIl0sWzMsMCwiXFx0ZXh0e0tlcn0oZykiXSxbMCwxLCJYIl0sWzQsMSwiWiJdLFsyLDEsIlkiXSxbMSwyLCJcXHRleHR7Q29rZXJ9KGYpIl0sWzMsMiwiXFx0ZXh0e0Nva2VyfShpX2cpIl0sWzAsMSwiXFxQaGkiLDAseyJvZmZzZXQiOi0xfV0sWzAsNCwiaV97cV9mfSJdLFsxLDQsImlfZyIsMl0sWzQsNSwicV9mIl0sWzQsNiwicV97aV9nfSIsMl0sWzIsNSwiMCIsMl0sWzMsNiwiXFxwc2kiXSxbMiw0LCJmIiwxXSxbNCwzLCJnIiwxXSxbMiwwLCJcXHBoaSJdLFszLDEsIjAiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDYsIiIsMCx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdHRlZCJ9fX1dLFsxLDAsIiIsMCx7Im9mZnNldCI6LTF9XSxbNiw1LCIiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+\[\begin{tikzcd}
+	& {\text{Ker}(q_f)} && {\text{Ker}(g)} \\
+	X && Y && Z \\
+	& {\text{Coker}(f)} && {\text{Coker}(i_g)}
+	\arrow["\Phi", shift left, from=1-2, to=1-4]
+	\arrow["{i_{q_f}}", from=1-2, to=2-3]
+	\arrow[shift left, from=1-4, to=1-2]
+	\arrow["{i_g}"', from=1-4, to=2-3]
+	\arrow["\phi", from=2-1, to=1-2]
+	\arrow["f"{description}, from=2-1, to=2-3]
+	\arrow["0"', from=2-1, to=3-2]
+	\arrow["g"{description}, from=2-3, to=2-5]
+	\arrow["{q_f}", from=2-3, to=3-2]
+	\arrow["{q_{i_g}}"', from=2-3, to=3-4]
+	\arrow["0", from=1-4, to=2-5]
+	\arrow["\psi"', from=3-4, to=2-5]
+	\arrow[shift left, dotted, from=3-2, to=3-4]
+	\arrow[shift left, dotted, from=3-4, to=3-2]
+\end{tikzcd}\]
+In particular, $\phi$ and $\psi$ are the unique arrows making the following diagrams commute:
+% https://q.uiver.app/#q=WzAsOCxbMSwwLCJYIl0sWzEsMSwiXFx0ZXh0e0tlcn0ocV9mKSJdLFswLDIsIlkiXSxbMiwyLCJcXHRleHR7Q29rZXJ9KGYpIl0sWzQsMiwiXFx0ZXh0e0tlcn0oZykiXSxbNiwyLCJZIl0sWzUsMCwiWiJdLFs1LDEsIlxcdGV4dHtDb2tlcn0oaV9nKSJdLFswLDEsIlxccGhpIl0sWzEsMiwiaV97cV9mfSJdLFsyLDMsInFfZiIsMl0sWzEsMywiMCIsMl0sWzAsMiwiZiIsMl0sWzAsMywiMCJdLFs0LDcsIjAiLDJdLFs1LDcsInFfe2lfZ30iXSxbNCw1LCJpX2ciLDJdLFs0LDYsIjAiXSxbNSw2LCJnIiwyXSxbNyw2LCJcXHBzaSIsMl1d
+\[\begin{tikzcd}
+	& X &&&& Z \\
+	& {\text{Ker}(q_f)} &&&& {\text{Coker}(i_g)} \\
+	Y && {\text{Coker}(f)} && {\text{Ker}(g)} && Y
+	\arrow["\phi", from=1-2, to=2-2]
+	\arrow["f"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["{i_{q_f}}", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["\psi"', from=2-6, to=1-6]
+	\arrow["{q_f}"', from=3-1, to=3-3]
+	\arrow["0", from=3-5, to=1-6]
+	\arrow["0"', from=3-5, to=2-6]
+	\arrow["{i_g}"', from=3-5, to=3-7]
+	\arrow["g"', from=3-7, to=1-6]
+	\arrow["{q_{i_g}}", from=3-7, to=2-6]
+\end{tikzcd}\]
+Note that
+\begin{align}
+  q_{i_g} \circ f = q_{i_g} \circ i_{q_f} \circ \phi = q_{i_g} \circ i_g \circ \Phi \circ \phi = 0
+\end{align}
+and
+\begin{align}
+  q_{f} \circ i_g = q_f \circ i_{q_f} \circ \Phi^{-1} = 0
+\end{align}
+We can then fill in the dashed lines by again exploiting universal properties:
+% https://q.uiver.app/#q=WzAsOCxbMCwyLCJYIl0sWzIsMiwiWSJdLFsxLDEsIlxcdGV4dHtDb2tlcn0oZikiXSxbMSwwLCJcXHRleHR7Q29rZXJ9KGlfZykiXSxbNCwyLCJcXHRleHR7S2VyfShnKSJdLFs2LDIsIlkiXSxbNSwxLCJcXHRleHR7Q29rZXJ9KGlfZykiXSxbNSwwLCJcXHRleHR7Q29rZXJ9KGYpIl0sWzAsMSwiZiIsMl0sWzAsMiwiMCIsMl0sWzAsMywiMCJdLFsxLDIsInFfZiJdLFsyLDMsIlxcbXUiXSxbMSwzLCJxX3tpX2d9IiwyXSxbNCw1LCJpX2ciLDJdLFs0LDYsIjAiLDJdLFs1LDYsInFfe2lfZ30iXSxbNCw3LCIwIl0sWzUsNywicV9mIiwyXSxbNiw3LCJcXG51IiwyXV0=
+\[\begin{tikzcd}
+	& {\text{Coker}(i_g)} &&&& {\text{Coker}(f)} \\
+	& {\text{Coker}(f)} &&&& {\text{Coker}(i_g)} \\
+	X && Y && {\text{Ker}(g)} && Y
+	\arrow["\mu", from=2-2, to=1-2]
+	\arrow["\nu"', from=2-6, to=1-6]
+	\arrow["0", from=3-1, to=1-2]
+	\arrow["0"', from=3-1, to=2-2]
+	\arrow["f"', from=3-1, to=3-3]
+	\arrow["{q_{i_g}}"', from=3-3, to=1-2]
+	\arrow["{q_f}", from=3-3, to=2-2]
+	\arrow["0", from=3-5, to=1-6]
+	\arrow["0"', from=3-5, to=2-6]
+	\arrow["{i_g}"', from=3-5, to=3-7]
+	\arrow["{q_f}"', from=3-7, to=1-6]
+	\arrow["{q_{i_g}}", from=3-7, to=2-6]
+\end{tikzcd}\]
+and it follows by uniqueness of $\mu$ and $\nu$ that they must be inverse of each other. For example, the diagram
+% https://q.uiver.app/#q=WzAsNSxbNCwzLCJcXGJ1bGxldCJdLFswLDMsIlxcYnVsbGV0Il0sWzIsMiwiXFx0ZXh0e0Nva2VyfShmKSJdLFsyLDEsIlxcdGV4dHtDb2tlcn0oaV9nKSJdLFsyLDAsIlxcdGV4dHtDb2tlcn0oZikiXSxbMSwwLCJmIiwyXSxbMSwyLCIwIiwyXSxbMCwyLCJxX2YiXSxbMiwzLCJcXG11Il0sWzMsNCwiXFxudSJdLFsxLDQsIjAiXSxbMSwzLCIwIiwyXSxbMCwzLCJxX3tpX2d9Il0sWzAsNCwicV9mIiwyXV0=
+\[\begin{tikzcd}
+&& {\text{Coker}(f)} \\
+&& {\text{Coker}(i_g)} \\
+&& {\text{Coker}(f)} \\
+\bullet &&&& \bullet
+\arrow["\nu", from=2-3, to=1-3]
+\arrow["\mu", from=3-3, to=2-3]
+\arrow["0", from=4-1, to=1-3]
+\arrow["0"', from=4-1, to=2-3]
+\arrow["0"', from=4-1, to=3-3]
+\arrow["f"', from=4-1, to=4-5]
+\arrow["{q_f}"', from=4-5, to=1-3]
+\arrow["{q_{i_g}}", from=4-5, to=2-3]
+\arrow["{q_f}", from=4-5, to=3-3]
+\end{tikzcd}\]
+commutes, which implies that $\nu \circ \mu = \text{id}$, with a similar diagram showing that $\mu \circ \nu = \text{id}$ as well. Thus, we have defined an isomorphism of $\text{Coker}(f)$ and $\text{Coker}(i_g) = \text{Im}(g)$, as desired.
+Since all of the maps involved
+  \end{proof}
+
+\begin{definition}
+We say that the sequence of morphisms in Abelian category $\mathcal{C}$,
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzIsMCwiWCJdLFs2LDAsIloiXSxbNCwwLCJZIl0sWzgsMCwiMCJdLFswLDFdLFsxLDMsImYiXSxbMywyLCJnIl0sWzIsNF1d
+\[\begin{tikzcd}
+0 & X & Y & Z & 0
+\arrow[from=1-1, to=1-2]
+\arrow["f", from=1-2, to=1-3]
+\arrow["g", from=1-3, to=1-4]
+\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+is short exact if $f$ is a monic, $g$ is an epi, and $\text{Im}(f) \simeq \text{Ker}(g)$.
+\end{definition}
+
+\begin{lemma}[Splitting lemma]
+Consider a short exact sequence in Abelian category $\mathcal{C}$ of the above form. Then the following statements are equivalent:
+
+\begin{enumerate}
+\item There exists a morphism $t : Y \rightarrow X$ such that $t \circ f = 1_X$, the identity on $X$.
+\item There exists a morphism $u : Z \rightarrow Y$ such that $g \circ u = 1_Z$, the identity on $Z$.
+\item There is an isomorphism $h : Y \rightarrow X \oplus Z$, where $X \oplus Z$ is a biproduct of $X$ and $Z$ where $h \circ f = i_X$ and $g \circ h^{-1} = p_Z$.
+  \end{enumerate}
+\end{lemma}
+
+\noindent For the sake of moving on to more interesting things in a reasonable timeframe, I will omit this (I assume very standard) proof for now. Let's
+prove one more result:
+
+\begin{comment}
+\begin{lemma}
+  If $\mathcal{C}$ is an Abelian category, and $\cdots \rightarrow I^{j - 1} \rightarrow I^j \rightarrow I^{j + 1} \rightarrow \cdots$ with arrows $f^j : I^j \rightarrow I^{j + 1}$ is a long exact sequence,
+  then this sequence splits into a collection of short exact sequences of the form
+  \begin{equation}
+    0 \longrightarrow K^j \longrightarrow I^{j + 1} \longrightarrow K^{j + 1} \longrightarrow 0
+    \end{equation}
+  In addition, given a collection of shorts exact sequences of the above form, we can form a long exact sequence of $I^j$. These operations are inverses of each other, up to unique isomorphism of the $K^j$,
+  in the sense that if we construct short exact sequences from a long exact sequence, with the $K^j$ replaced by $H^j$, then there are unique isomorphisms $\phi^j : K^j \rightarrow H^j$ which make the following
+  diagram commute:
+  % https://q.uiver.app/#q=WzAsMTAsWzQsMCwiSV57aisxfSJdLFsyLDAsIktee2p9Il0sWzYsMCwiS157aisxfSJdLFs4LDAsIjAiXSxbMCwwLCIwIl0sWzIsMiwiSF57an0iXSxbNCwyLCJJXntqKzF9Il0sWzYsMiwiSF57aisxfSJdLFs4LDIsIjAiXSxbMCwyLCIwIl0sWzEsMF0sWzAsMl0sWzIsM10sWzQsMV0sWzEsNSwiXFxwaGlee2p9Il0sWzAsNl0sWzIsNywiXFxwaGlee2orMX0iXSxbNiw3XSxbNyw4XSxbNSw2XSxbOSw1XV0=
+  \[\begin{tikzcd}
+	0 && {K^{j}} && {I^{j+1}} && {K^{j+1}} && 0 \\
+	\\
+	0 && {H^{j}} && {I^{j+1}} && {H^{j+1}} && 0
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-3, to=1-5]
+	\arrow["{\phi^{j}}", from=1-3, to=3-3]
+	\arrow[from=1-5, to=1-7]
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=1-7, to=1-9]
+	\arrow["{\phi^{j+1}}", from=1-7, to=3-7]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=3-5, to=3-7]
+	\arrow[from=3-7, to=3-9]
+  \end{tikzcd}\]
+  \end{lemma}
+
+\begin{proof}
+  First, suppose we have a long exact sequence. Immediately, we have the short exact sequences
+  \begin{equation}
+    0 \longrightarrow \text{Ker}(f^{j + 1}) \longrightarrow I^{j + 1} \longrightarrow \text{Im}(f^{j + 1}) \longrightarrow 0
+    \end{equation}
+  where the arrows are the obvious ones. In addition, by exactness, $\text{Ker}(f^{j + 1}) = \text{Im}(f^j)$, so we can let $K^j = \text{Im}(f^j)$, and we have shown existence.
+  To prove the uniqueness result, suppose we had objects $H^j$ as in the lemma statement.
+
+  Now, suppose we have short exact sequences $0 \to K^j \to I^{j+1} \to K^{j+1} \to 0$, with maps $i^j : K^j \rightarrow I^{j+1}$ and $q^j : I^j \rightarrow K^j$. We want to show that
+  $\text{Im}(i^{j - 1} \circ q^{j - 1}) = \text{Ker}$
+  \end{proof}
+\end{comment}
+
+\section{Derived functors}
+
+\noindent Now that we've cleared up the preliminaries, let us dive into the theory of derived functors. We will follow some nice
+\href{https://www.math.toronto.edu/jacobt/Lecture12.pdf}{lecture notes}  prepared by Jacob Tsimerman for a course on etale cohomology, filling in details. Let:
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzIsMCwiWCJdLFs2LDAsIloiXSxbNCwwLCJZIl0sWzgsMCwiMCJdLFswLDFdLFsxLDMsImYiXSxbMywyLCJnIl0sWzIsNF1d
+\[\begin{tikzcd}
+0 & X & Y & Z & 0
+\arrow[from=1-1, to=1-2]
+\arrow["f", from=1-2, to=1-3]
+\arrow["g", from=1-3, to=1-4]
+\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+be a short exact sequence in Abelian category $\mathcal{C}$. We then say that an additive functor between Abelian categories $F : \mathcal{C} \rightarrow \mathcal{D}$ ($F$ is a group homomorphism
+from $\text{Hom}(X, Y)$ to $\text{Hom}(F(X), F(Y))$) is \emph{exact} if, for any short exact sequence of the above form, then
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzIsMCwiRihYKSJdLFs2LDAsIkYoWikiXSxbNCwwLCJGKFkpIl0sWzgsMCwiMCJdLFswLDFdLFsxLDMsIkYoZikiXSxbMywyLCJGKGcpIl0sWzIsNF1d
+\[\begin{tikzcd}
+0 & {F(X)} & {F(Y)} & {F(Z)} & 0
+\arrow[from=1-1, to=1-2]
+\arrow["{F(f)}", from=1-2, to=1-3]
+\arrow["{F(g)}", from=1-3, to=1-4]
+\arrow[from=1-4, to=1-5]
+\end{tikzcd}\]
+is also a short exact sequence. It is called left-exact (resp. right-exact) under the weaker condition that we no longer require $F(g)$ (resp. $F(f)$) to be an epimorphism (resp. monomorphism).
+
+\begin{remark}
+Note that $F : \mathcal{C} \rightarrow \mathcal{C}'$ which are left-exact preserve finite limits. To be more precise, if $G : \mathcal{D} \rightarrow \mathcal{C}$ is a diagram, where the
+set of objects and morphisms of $\mathcal{D}$ are finite sets, then $F$ being left-exact is equivalent to $F(\lim G)$ (for some limit $\lim G$ of $G$) being isomorphic to $\lim F \circ G$, some limit of $F \circ G$.
+\end{remark}
+
+\begin{corollary}
+  \label{cor:kernel}
+If $F$ is a left-exact functor between Abelian categories, then $F$ applied to the kernel of arrow $f : A \rightarrow B$ is isomorphic to the kernel of $F(f) : F(A) \rightarrow F(B)$.
+\end{corollary}
+
+\begin{proof}
+Note that the kernel is an equalizer $\text{Eq}(f, 0_{AB})$, which is a finite limit of the diagram consisting of $A$ and $B$ with arrows $f$ and $0_{AB}$. Since $F$ is left-exact, this is the
+same as the limit of the diagram consisting of $F(A)$ and $F(B)$ with arrows $F(f)$ and $F(0_{AB}) = 0_{F(A) F(B)}$ (from additivity of $F$).
+Therefore, our limit is indeed some equalizer $\text{Eq}(F(f), 0_{F(A) F(B)})$, which is isomorphic to \emph{the} kernel $\text{Ker} F(f)$, as desired.
+\end{proof}
+
+\begin{corollary}
+A left-exact functor preserves zero objects in an Abelian category.
+\end{corollary}
+
+\begin{proof}
+The kernel of a zero morphism is always a zero object, so a kernel of the zero morphism $0$ from some zero object $\textbf{0}$ to itself is $\textbf{0} \in \mathcal{C}$, so $F(\textbf{0})$
+is equal to a kernel of the zero morphism $F(0)$ from $F(\textbf{0})$ to itself, which is a zero object $\textbf{0} \in \mathcal{D}$.
+\end{proof}
+
+\noindent Let $K$ be the kernel of $f$, let $i : K \rightarrow A$ be the inclusion, so that $f \circ i = 0_{KB}$. We have the short exact sequence $0 \to K \to A \to Q \to 0$ where $Q$
+is the cokernel of $f$. Thus, $0 \to F(K) \to F(A) \to F(Q)$ is exact, so in particular, $F(i)$ is a monomorphism and the image of $F(K) \to F(A)$ is isomorphic to the kernel of $F(A) \to F(Q)$.
+The main idea of a derived functor is to take a left-exact functor $F$, and product a corresponding family of maps ($R^i F$ for $i \geq 0$, where  $R^0 F = F$) which fit into a long exact sequence. This sequence can be thought of as
+a "higher-order artifact" which quantifies the failure of a left-exact functor to be exact, which is a stronger condition.
+
+Suppose we \emph{did} have such maps $R^i F$, which take objects as arguments (I'm being careful not to call theses things functors, because in these notes, they will not be considered as such) where:
+\begin{equation}
+    0 \to F(X) \to F(Y) \to F(Z) \to R^1 F(X) \to R^1 F(Y) \to R^1 F(Z) \to R^2 F(X) \to \cdots
+\end{equation}
+Let us try to deduce some necessary properties.
+
+\begin{definition}
+If $\mathcal{C}$ is a category, we say that object $I \in \mathcal{C}$ is injective if for every monic $f : X \rightarrow Y$
+and morphism $g : X \rightarrow I$, there exists morphism $h : Y \rightarrow I$ extending $g$ (i.e. $h \circ f = g$).
+We say that $\mathcal{C}$ has \emph{enough injectives} if for every object $X$ in $\mathcal{C}$, there is a monic $X \rightarrow I$ from $X$ into some injective object.
+\end{definition}
+
+\noindent Suppose $I$ is injective in Abelian category $\mathcal{C}$ and suppose we have short exact sequence $0 \to I \to X \to Y \to 0$ (with arrows $f$ and $g$). The fact that $I$ is injective means that
+there must be $h$ such that $h \circ f = \text{id}_I$, so $f$ has a left-inverse, which means (via the splitting lemma) that $X \simeq I \oplus Y$ (the biproduct of $I$ and $Y$) via the arrow $k$:
+% https://q.uiver.app/#q=WzAsNixbMCwwLCIwIl0sWzIsMCwiSSJdLFs0LDAsIlgiXSxbNiwwLCJZIl0sWzgsMCwiMCJdLFs0LDIsIkkgXFxvcGx1cyBZIl0sWzAsMV0sWzEsMiwiZiJdLFsyLDMsImciXSxbMyw0XSxbMSw1LCJpIl0sWzIsNSwiayJdLFs1LDMsInAiXV0=
+\[\begin{tikzcd}
+0 && I && X && Y && 0 \\
+\\
+&&&& {I \oplus Y}
+\arrow[from=1-1, to=1-3]
+\arrow["f", from=1-3, to=1-5]
+\arrow["i", from=1-3, to=3-5]
+\arrow["g", from=1-5, to=1-7]
+\arrow["k", from=1-5, to=3-5]
+\arrow[from=1-7, to=1-9]
+\arrow["p", from=3-5, to=1-7]
+\end{tikzcd}\]
+We want to show that $F(g)$ is an epi. We have the inclusion and projection to and from the biproduct, $Y \to I \oplus Y \to Y$, which compose to give the identity.
+It follows that $F(p \circ j) = F(p) \circ F(j) = \text{id}$, so $F(p)$ has a right-inverse, which automatically implies it is an epi. Hence, $F(g)$ is as well, as $F(k)$ is an isomorphism.
+Therefore, the left-exact functor actually takes the short exact sequence to a true, exact sequence. This means that we can extend the short exact sequence to a long exact sequence trivially: we just keep adding zeros.
+This extension isn't unique, we could have any sequence which looks like:
+\begin{equation}
+    0 \to F(I) \to F(X) \to F(Y) \to 0 \to R^1 F(X) \simeq R^1 F(Y) \to 0 \to R^2 F(X) \simeq R^2 F(Y) \to 0 \to \cdots
+\end{equation}
+and we would still have exactness. However, in any of these cases, we have $R^i F(I) = 0$ for $i \geq 1$ when $I$ is an injective object. This suggests to us that, perhaps, our $R^i F$ should kill all injective
+objects when $i \geq 1$. As it turns out, this intuition is correct, and will guide us towards the definition of $R^i F$.
+
+Suppose we are working in Abelian category $\mathcal{C}$ which has enough injectives. Given some object $X$, let us pick some monic $f : X \rightarrow I$. We then note that $Y = \text{Coker}(f)$ is in $\mathcal{C}$,
+so we have short exact sequence $0 \to X \to I \to Y \to 0$. This follows from the fact that the quotient $q : I \to Y$ is an epi, and $\text{Im}(f) \simeq \text{Ker}(q)$ by definition.
+
+From here, assume that we have $R^i F(I) = 0$ for $i \geq 1$. The associated long exact sequence (if it exists) will look like
+\begin{equation}
+    0 \to F(X) \to F(I) \to F(Y) \to R^1 F(X) \to 0 \to R^1 F(Y) \to R^2 F(X) \to 0 \to \cdots
+\end{equation}
+which means that $R^1 F(X)$ is the image of $F(Y) \to R^1 F(X)$, which is isomorphic to the cokernel of $F(I) \to F(Y)$ (this is from Lem.~\ref{lem:coker}). In addition, we have $R^{i - 1} F(Y) \simeq R^i F(X)$ for $i \geq 2$. This
+comes from the fact that
+\begin{equation}
+R^i F(X) \simeq \text{Ker}(R^i F(X) \rightarrow 0) \simeq \text{Im}(R^{i - 1} F(Y) \rightarrow R^i F(X)) \simeq \text{Coker}(0 \rightarrow R^{i - 1} F(Y)) \simeq R^{i - 1} F(Y)
+\end{equation}
+where we are again using Lem.~\ref{lem:coker}, and the first and last isomorphisms are easy to check.
+
+This means that we should
+be able to compute $R^2 F(X)$, for example, by embedding $Y$ in an injective $J$, $g : Y \rightarrow J$, and then computing $R^1 F(Y)$ by computing the cokernel of $F(J) \to F(Z)$, where $Z = \text{Coker}(g)$. We can repeat
+this procedure recursively to get all higher $R^i F(X)$. Of course, to do this, we need the guarantee that we can actually embed into injective objects in the first place:
+this is precisely the condition of our category having ``enough injectives", which we introduced earlier. At this point, $R^i F(X)$ clearly depends on the chosen embeddings into injective objects, but we will
+soon show that all such choices are isomorphic via unique isomorphism.
+
+\begin{definition}
+Given object $X$, and injective resolution of $X$ is an exact sequence $0 \to X \to I^0 \to I^1 \to \cdots$ where each $I^n$ is injective.
+\end{definition}
+
+\begin{lemma}
+In an Abelian category, injective resolutions always exist.
+\end{lemma}
+
+\begin{proof}
+The way we do this is as follows. Start with $X$, pick injective embedding $X \to I^0$ using the ``enough injectives" property. From here, note that cokernel of this map exists:
+call it $K^0$. We can then pick an injective embedding $K^0 \to I^1$. We continue on like this, inductively, and our sequence ends up looking like:
+   \begin{equation}
+   \label{eq:res}
+       0 \to X \to I^0 \to K^0 \to I^1 \to K^1 \to I^2 \to K^2 \to \cdots
+   \end{equation}
+    This gives a collection of short exact sequences, $0 \to K^{j} \to I^{j + 1} \to K^{j + 1} \to 0$ (where we let $K^{-1} = X$), and our corresponding injective resolution is formed by taking the $I^k$,
+   \begin{equation}
+   0 \to X \to I^0 \to I^1 \to I^2 \to \cdots
+   \end{equation}
+   We still need to verify that this sequence is exact. Note that the coboundary map $d^j : I^j \rightarrow I^{j + 1}$ is obtained by composing $e^j : I^j \rightarrow K^j$ followed by $m^j : K^{j} \to I^{j + 1}$,
+   where $e^j$ is the cokernel map of $K^{j - 1} \rightarrow I^j$ and $m^j : K^j \rightarrow I^{j + 1}$ is an injective embedding (which is monic). We then note from Lem.~\ref{lem:ind}, and the fact that shorts
+   exact sequences are exact:
+   \begin{equation}
+     \text{im}(d^j) = \text{im}(m^j \circ e^j) = \text{im}(m^j) = \text{ker}(e^{j+1}) = \text{ker}(m^{j+1} \circ e^{j+1}) = \text{ker}(d^{j+1})
+     \end{equation}
+   which means that $\text{Im}(d^j) \simeq \text{Ker}(d^{j+1})$, as desired.
+\end{proof}
+
+\begin{remark}
+  If $0 \to X \to I^0 \to I^1 \to \cdots$ is an injective resolution of $X$, we will often denote it by the shorthand $X \to I$.
+  \end{remark}
+
+\noindent Again, assume that the $R^i F$ exist, and satisfy the previous properties. Let $X$ be an object and let $X \to I$ be an injective resolution. Note that we can
+split this long exact sequence into short exact sequences $0 \to K^j \to I^{j+1} \to K^{j+1} \to 0$ by setting $K^j = \text{Ker}(d^{j+1})$. We can then look at the corresponding long exact sequences
+associated to mapping under $R^i F$. In particular, as we discussed before, we should have
+\begin{equation}
+    R^{i - 1} F(K^{j + 1}) \simeq R^i F(K^j)
+\end{equation}
+which gives us the sequence of isomorphisms
+\begin{equation}
+    R^n F(X) = R^{n} F(K^{-1}) \simeq R^{n - 1} F(K^0) \simeq R^{n - 2} F(K^1) \simeq \cdots \simeq R^{1} F(K^{n - 2})
+\end{equation}
+We already saw that $R^{1} F(K^{n - 2})$ is isomorphic to the cokernel of the map $F(I^{n - 1}) \to F(K^{n - 1})$. We want to show that this cokernel is isomorphic to the $n$-th cohomology of the
+cochain complex $F(X) \to F(I^0) \to F(I^1) \to F(I^2) \to \cdots$. In particular, since the injective resolution is exact, it follows that neighbouring arrows compose to zero, and thus $F$ applied
+to these arrows compose to zero, so this is a valid cochain complex in our Abelian category. Recall that in order to compute cohomology, we look at $\text{Coker}(u^j)$, where $u^j$ is the $(j-1)$-th
+coboundary with ``target restricted to the kernel'' of the next coboundary. So, we want to show that $F(d^j) : F(I^j) \to F(I^{j + 1})$
+with target restricted and $F(e^{j})$, with $e^{j} : I^{j-1} \rightarrow \text{Im}(d^{j-1})$, which is the target-restriction of $d^{j-1}$ to $\text{Ker}(d^j)$,
+mapped under $F$.
+
+Remember that $F$ is left-derived, and therefore preserves kernels: if $i : K \rightarrow A$
+is a kernel of $f : A \rightarrow B$, then $F(i)$ is a kernel of $F(f)$. The map $e^j$ fits into a kernel diagram, which we map under $F$ to get another diagram:
+% https://q.uiver.app/#q=WzAsOCxbMSwxLCJcXHRleHR7S2VyfShkXmopIl0sWzAsMiwiSV5qIl0sWzIsMiwiSV57aisxfSJdLFsxLDAsIklee2otMX0iXSxbNCwyLCJGKEleaikiXSxbNiwyLCJGKElee2orMX0pIl0sWzUsMSwiRihcXHRleHR7S2VyfShkXmopKSJdLFs1LDAsIkYoSV57ai0xfSkiXSxbMCwyLCIwIiwyXSxbMSwyLCJkXmoiLDJdLFswLDEsImleaiJdLFszLDAsImVeaiJdLFszLDEsImRee2otMX0iLDJdLFszLDIsIjAiXSxbNCw1LCJGKGReaikiLDJdLFs3LDYsIkYoZV5qKSIsMV0sWzcsNSwiMCJdLFs3LDQsIkYoZF57ai0xfSkiLDJdLFs2LDUsIjAiLDJdLFs2LDQsIkYoaV5qKSJdXQ==
+\[\begin{tikzcd}
+	& {I^{j-1}} &&&& {F(I^{j-1})} \\
+	& {\text{Ker}(d^j)} &&&& {F(\text{Ker}(d^j))} \\
+	{I^j} && {I^{j+1}} && {F(I^j)} && {F(I^{j+1})}
+	\arrow["{e^j}", from=1-2, to=2-2]
+	\arrow["{d^{j-1}}"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["{F(e^j)}"{description}, from=1-6, to=2-6]
+	\arrow["{F(d^{j-1})}"', from=1-6, to=3-5]
+	\arrow["0", from=1-6, to=3-7]
+	\arrow["{i^j}", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["{F(i^j)}", from=2-6, to=3-5]
+	\arrow["0"', from=2-6, to=3-7]
+	\arrow["{d^j}"', from=3-1, to=3-3]
+	\arrow["{F(d^j)}"', from=3-5, to=3-7]
+\end{tikzcd}\]
+From here, we know that $F(i^j) : F(\text{Ker}(d^j)) \rightarrow F(I^j)$ is a kernel of $F(d^j)$, so by uniqueness, $F(e^j)$ is precisely $u^j$, the $(j-1)$-th coboundary $F(d^{j-1})$ with target restricted. Thus,
+the cokernels are equal as desired.
+
+To summarize, we have shown that $R^n F(X)$, under our fairly minimal assumptions, \emph{should} be equal to the $n$-th cohomology of $F(X) \to F(I^0) \to F(I^1) \to F(I^2) \to \cdots$. This is exactly how we
+will finally \emph{define} the right-derived functors of $X$.
+
+\begin{definition}[Right-derived functors of objects]
+  If $F$ is a left-exact functor between Abelian categories, the right-derived functors $R^n F(X; I)$ of object $X$ with respect to injective resolution $X \to I$ are defined to be the cohomology groups of the cochain
+  complex $F(I^0) \to F(I^1) \to F(I^2) \to \cdots$. Note that as we have defined it, $R^n F$ is \emph{not} a functor. One can think of it is a true functor when we introduce the language of \emph{derived categories}:
+  something that we will get to in a forthcoming collection of notes.
+  \end{definition}
+
+\begin{remark}
+  Note that if $X^{\bullet}$ and $Y^{\bullet}$ are cochain complexes, and we have arrows $h^j : X^j \rightarrow Y^{j - 1}$, then $f^j = d_Y^{j - 1} \circ h^{j} + h^{j + 1} \circ d_X^j$
+  going from $X^j$ to $Y^j$ is a morphism of complexes, as
+  \begin{equation}
+    d_Y^j \circ f^j = d_Y^j \circ d_Y^{j - 1} \circ h^{j} + d_Y^j \circ h^{j + 1} \circ d_X^j = (d_Y^j \circ h^{j + 1} + h^{j + 2} \circ d_X^{j + 1}) \circ d_X^j = f^{j + 1} \circ d_X^j
+  \end{equation}
+  Moreover, it is easy to check that $H^{\bullet}(f^{\bullet}) = 0$ (the unique morphism of cochain complexes which consists of zero arrows in each degree).
+  We say that maps of complexes $g$ and $g'$ are \emph{cochain homotopy equivalent} if $g - g'$ is a map of the form of $f$ above, for
+  some $h$.
+  \end{remark}
+
+\begin{lemma}
+  Given objects $X$ and $Y$, and injective resolutions $X \to I$ and $Y \to J$, along with morphism $\bar{f} : X \to Y$, there exists a morphism of cochain complexes $f : I \rightarrow J$
+  which induces $\bar{f}$ in the bottom degree, and any two such lifts are cochain homotopy equivalent.
+  \end{lemma}
+
+\begin{proof}
+  First, let us prove existence. We can compose $\bar{f} : X \rightarrow Y$ with map $j : Y \to J^0$, and then use the fact that $J^0$ is injective to extend to a map $f^0 : I^0 \rightarrow J^0$,
+  as we have monic $i : X \to I^0$. Clearly, $f^0 \circ i = j \circ \bar{f}$. From here, we proceed by induction. We denote the maps in the two injective resolutions by $d_I^n : I^n \rightarrow I^{n+1}$
+  and $d_J^n : J^n \rightarrow J^{n+1}$. Assume that we have $f^k : I^k \rightarrow J^k$ for $k < n$ such that
+  \begin{equation}
+    d_J^{k - 1} \circ f^{k - 1} = f^{k} \circ d_I^{k - 1}
+    \end{equation}
+  where $d_J^{-1} = j$ and $d_I^{-1} = i$. We have already proved the case of $n = 1$ (where $f^{-1} = \bar{f}$). Assume we have proved the case of $n$, we prove the case of $n + 1$. Given the map
+  $f^{n - 1} : I^{n - 1} \rightarrow J^{n - 1}$, we immediately have the map $d_J^{n - 1} \circ f^{n-1} : I^{n-1} \rightarrow J^{n}$. Note that
+  \begin{equation}
+    d_J^{n - 1} \circ f^{n-1} \circ d_I^{n - 2} = d_J^{n - 1} \circ d_I^{n - 2} \circ f^{n-2} = 0
+    \end{equation}
+  which means that we have a unique map $\widetilde{f} : \text{Coker}(d_I^{n - 2}) \rightarrow J^n$ which satisfies the usual cokernel diagram. Since our complexes are exact, it follows from
+  Lem.~\ref{lem:a} that $\text{Coker}(d_I^{n - 2}) \simeq \text{Im}(d_I^{n - 1})$ via arrow $\Psi$, so we have a map $\widetilde{f} \circ \Psi : \text{Im}(d_I^{n - 1}) \rightarrow J^n$. We of course
+  have the monic inclusion $j : \text{Im}(d_I^{n - 1}) \rightarrow I^n$, so we use the fact that $J^n$ is injective to extend to a map $f^n : I^n \rightarrow J^n$. Note that we have
+  \begin{align}
+    f^n \circ d_I^{n - 1} = f^n \circ j \circ d'_I = \widetilde{f} \circ \Psi \circ d'_I
+    \end{align}
+  where $d_I'$ is $d_I^{n - 1}$ with its target ``restricted to $\text{Im}(d_I^{n - 1})$''. We know that $\widetilde{f} \circ q = d_J^{n - 1} \circ f^{n-1}$, where $q : I^{n - 1} \rightarrow \text{Coker}(d_I^{n - 2})$
+  is the quotient defining the cokernel, so it is our goal to show that $\Psi \circ d'_I = q$. Indeed, if we go back to the commutative diagram characterizing $\Psi$ back in Lemma.~\ref{lem:b}, letting
+  $f = d_I^{n - 2}$ and $g = d_I^{n - 1}$, then we have:
+% https://q.uiver.app/#q=WzAsNyxbMiwxLCJJXntuLTF9Il0sWzAsMSwiSV57bi0yfSJdLFs0LDEsIklebiJdLFsxLDAsIlxcdGV4dHtJbX0oZF9JXntuLTJ9KSJdLFszLDAsIlxcdGV4dHtLZXJ9KGRfSV57bi0xfSkiXSxbMSwyLCJcXHRleHR7Q29rZXJ9KGRfSV57bi0yfSkiXSxbMywyLCJcXHRleHR7SW19KGRfSV57bi0xfSkiXSxbMSwwLCJkX0lee24tMn0iXSxbMCwyLCJkX0lee24tMX0iXSxbMSwzXSxbMyw0LCIiLDAseyJvZmZzZXQiOi0xfV0sWzMsMF0sWzQsMF0sWzQsMl0sWzEsNV0sWzYsMl0sWzAsNSwicSIsMl0sWzAsNiwiZF9JJyJdLFs0LDMsIiIsMSx7Im9mZnNldCI6LTF9XSxbNiw1LCJcXFBzaSJdXQ==
+\[\begin{tikzcd}
+	& {\text{Im}(d_I^{n-2})} && {\text{Ker}(d_I^{n-1})} \\
+	{I^{n-2}} && {I^{n-1}} && {I^n} \\
+	& {\text{Coker}(d_I^{n-2})} && {\text{Im}(d_I^{n-1})}
+	\arrow[shift left, from=1-2, to=1-4]
+	\arrow[from=1-2, to=2-3]
+	\arrow[shift left, from=1-4, to=1-2]
+	\arrow[from=1-4, to=2-3]
+	\arrow[from=1-4, to=2-5]
+	\arrow[from=2-1, to=1-2]
+	\arrow["{d_I^{n-2}}", from=2-1, to=2-3]
+	\arrow[from=2-1, to=3-2]
+	\arrow["{d_I^{n-1}}", from=2-3, to=2-5]
+	\arrow["q"', from=2-3, to=3-2]
+	\arrow["{d_I'}", from=2-3, to=3-4]
+	\arrow[from=3-4, to=2-5]
+	\arrow["\Psi", from=3-4, to=3-2]
+\end{tikzcd}\]
+which immediately gives us the desired result. Thus, we have $f^n \circ d_I^{n - 1} = d_J^{n - 1} \circ f^{n-1}$, so by induction, we have existence of our morphism.
+
+To prove uniqueness, note that if $f_1$ and $f_2$ are two morphisms of the resolutions, $I \to J$, then $f = f_1 - f_2$ is the zero-map in bottom degree, so we just need to prove that any
+morphism of complexes $f$ which is zero in bottom degree is of the form $d_J^{k - 1} \circ h^k + h^{k + 1} \circ d_I^k$ in all degrees. To begin, note that we have $f^0 : I^0 \rightarrow J^0$.
+We know that $f^0 \circ i = 0$ ($f^0$ vanishes on the copy of $A$ embedded in $I^0$), which means that we get an induced map $\widetilde{f}^0$:
+% https://q.uiver.app/#q=WzAsNCxbMCwyLCJBIl0sWzIsMiwiSV4wIl0sWzEsMSwiXFx0ZXh0e0Nva2VyfShpKSJdLFsxLDAsIkpeMCJdLFswLDEsImkiLDJdLFsxLDIsInEiXSxbMCwyLCIwIiwyXSxbMCwzLCIwIl0sWzEsMywiZl4wIiwyXSxbMiwzLCJcXHdpZGV0aWxkZXtmfV4wIiwxXV0=
+\[\begin{tikzcd}
+& {J^0} \\
+& {\text{Coker}(i)} \\
+A && {I^0}
+\arrow["{\widetilde{f}^0}"{description}, from=2-2, to=1-2]
+\arrow["0", from=3-1, to=1-2]
+\arrow["0"', from=3-1, to=2-2]
+\arrow["i"', from=3-1, to=3-3]
+\arrow["{f^0}"', from=3-3, to=1-2]
+\arrow["q", from=3-3, to=2-2]
+\end{tikzcd}\]
+We know that $\text{Coker}(i) \simeq \text{Im}(d^0_I)$ from exactness via map $\Psi$, so we can extend $\widetilde{f}^0 \circ \Psi : \text{Im}(d^0_I) \rightarrow J^0$ to a map $h^1 : I^1 \rightarrow J^0$
+from the fact that $J^0$ is injective. This map will satisfy $h^1 \circ \iota^1 = \widetilde{f}^0 \circ \Psi$, where $\iota^1 : \text{Im}(d^0_I) \rightarrow I^1$ is the usual monic embedding. We then
+note that if we set $h^0 = 0$, then we can show that $f^1 = d_J^0 \circ h^0 + h^1 \circ d_I^0 = h^1 \circ d_I^0$. In particular, similar to in the existence proof,
+\begin{equation}
+  h^1 \circ d_I^0 = h^1 \circ \iota^1 \circ d_I' = \widetilde{f}^0 \circ \Psi \circ d_I' = \widetilde{f}^0 \circ q = f^0
+  \end{equation}
+as desired.
+
+Assume we have proved that for $k < n$, we have $f^k = d_J^{k - 1} \circ h^{k} + h^{k + 1} \circ d_I^{k}$, for some collection of morphisms $h^k$. We note that
+\begin{equation}
+f^n \circ d_I^{n - 1} = d_J^{n - 1} \circ f^{n - 1} = d_J^{n - 1} \circ h^n \circ d_I^{n - 1}
+\end{equation}
+so in particular, $(f^n - d_J^{n - 1} \circ h^n) \circ d_I^{n - 1} = 0$. Again, this means we get an induced map on the cokernel of $d_I^{n - 1}$ which in turn gives a map
+on $\text{Im}(d_I^{n})$. Following the same procedure as the first step of this proof, we extend the map induced from $f^n - d_J^{n - 1} \circ h^n$ to a map from $I^{n + 1}$ to $J^n$,
+which we denote $h^{n + 1}$. It is then easy to show that $f^n = d_J^{n - 1} \circ h^n + h^{n + 1} \circ d_I^n$, again following a similar proof as the base case of the inductive proof.
+  \end{proof}
+
+\begin{theorem}
+  If $X \to I$ and $X \to J$ are two injective resolutions of $X$, then $H^{\bullet}(F(I)) \simeq H^{\bullet}(F(J))$, via a natural isomorphism.
+  \end{theorem}
+
+\begin{proof}
+  We have the identity map from $X$ to itself, which we can lift to a morphism $f : I \to J$. Note that if $f' : I \to J$ were another lift, then
+  $f - f' = d_J \circ h + h \circ d_I$, so
+  \begin{equation}
+    F(f) - F(f') = F(d_J) \circ F(h) + F(h) \circ F(d_I)
+    \end{equation}
+  so $F(f)$ and $F(f')$ are cochain homotopy equivalent with respect to the cochain complexes $F(X) \to F(I)$ and $F(X) \to F(J)$. Therefore, they will induce the
+  same map in cohomology. We can additionally produce a morphism $g : J \rightarrow I$ which lifts the identity (unique up to cochain homotopy equivalence), and by uniqueness, $f \circ g$ and $g \circ f$ must
+  be cochain homotopy equivalent to the identity, and therefore are inverses in cohomology, so we have produced the desired isomorphism of cohomology.
+  \end{proof}
+
+\begin{remark}
+  In other words, for different choices of injective resolutions of object $X$, we have $R^i F(X; I) \simeq R^i F(X; J)$ via a natural isomorphism.
+  \end{remark}
+
+\noindent To conclude this section of the notes, we will discuss an easier way to compute derived functors via \emph{acyclic resolutions}. Usually, it is difficult to actually produce an injective resolution within
+and arbitrary Abelian category, which seem to be a prerequisite for computing derived functors. However, as it turns out, an easier-to-find object (an acylic resolution) is good enough. First, let us define a generic
+resolution:
+
+\begin{definition}[Resolution]
+  A resolution of an object $X$ is a long exact sequence of the form $0 \to X \to I^0 \to I^1 \to \cdots$.
+  \end{definition}
+
+\noindent Now, we can define an acyclic resolution:
+
+\begin{definition}
+If $F$ is a left-exact functor, an object $X$ is said to be $F$-acyclic if $R^i F(X; I) = 0$ for $i \geq 1$, for some injective resolution $I$.
+An $F$-acyclic resolution of object $X$ is a resolution $X \to J$ in which all $J^k$ are $F$-acyclic.
+\end{definition}
+
+\begin{theorem}
+  If $X \to J$ is an $F$-acyclic resolution of $X$, then $R^i F(X; I)$ is isomorphic to the $i$-th cohomology of $0 \to F(J^0) \to F(J^1) \to \cdots$,
+  for any injective resolution $I$ of $X$.
+  \end{theorem}
+
+\noindent Here is the idea of the proof (I'm not going to fill in the details because we essentially did all of the work already):
+we can split up the long exact sequence into short exact sequences, and apply $R^i F$. In the exact same way that $R^i F$ kills injective objects, it will kill the
+  $J^k$, by definition, and using an identical proof to when we were reasoning about what the \emph{definition} of derived functors should be, to show that $R^i F(X; I)$ is, in fact, isomorphic to the
+  cohomology of this resolution.
+
+To conclude these notes, let us very quickly define \emph{sheaf cohomology}. I'm not going to prove anything here: I'm just going to state the results.
+
+\begin{definition}
+  We define the \emph{global sections functor} $\Gamma$ to be the functor going from the category of sheaves of Abelian groups over topological space $X$ to the category of Abelian
+  groups which sends $\mathcal{F}$, to $\Gamma(X, \mathcal{F}) = \mathcal{F}(X)$: the group of global sections. Verifying that this is a functor is easy.
+\end{definition}
+
+\noindent We can also show that:
+
+\begin{lemma}
+  The category of Abelian groups $\textbf{Ab}$ has enough injectives. In addition, the category of sheaves of Abelian groups over $X$ has enough injectives.
+  \end{lemma}
+
+\begin{lemma}
+  The global sections functors is left-exact.
+  \end{lemma}
+
+\noindent This then allows us to define sheaf cohomology:
+
+\begin{definition}[Sheaf cohomology]
+Given a sheaf of Abelian groups $\mathcal{F}$ over $X$, we define the $j$-th sheaf cohomology group of $\mathcal{F}$ to be the $j$-th right derived functor with respect to some injective resolution $I$,  $R^i \Gamma(\mathcal{F}; I)$.
+We will usually denote this by $H^j(X, \mathcal{F})$, and will stop caring about the particular $I$ we use (defining these groups up to isomorphism will suffice, as per usual).
+  \end{definition}
+
+\appendix
+
+\section{Diagram chasing via generalized elements in Abelian categories}
+
+\noindent The main goal of this appendix is to explain a very useful technique for performing ``elementwise diagram chases'' in potentially non-concrete Abelian categories by means
+of ``generalized elements''. When tasked with performing some kind of diagram chase while operating in the category of Abelian groups, or perhaps the category of $R$-modules for some
+ring $R$, we are usually able to construct/prove properties of maps by considering where they send particular \emph{elements} of the group/module in question. In arbitrary Abelian categories,
+our underlying objects are not always sets, and our arrows are not always set maps, therefore speaking of an ``element'' of an object in an arbitrary Abelian category doesn't make sense naively.
+However, with some work, we can show that it \emph{is} possible to come up with a notion of a \emph{generalized element} of an object in an Abelian category, and moreover, these generalized objects
+behave in many ways similarly to the underlying elements of an object in some concrete, Abelian category (like Abelian groups or $R$-modules).
+This treatment follows \emph{Categories for the Working Mathematician}, by Mac Lane.
+
+Let us first prove a technical lemma:
+
+\begin{lemma}
+  Given a pullback square in an Abelian category $\mathcal{C}$, if the bottom edge $f$ is epi, then the top edge $f'$ is epi. Also, the kernel $k$ of $f$ is $k = g' \circ k'$,
+  where $g'$ is the left edge of the square and $k'$ is the kernel of $f'$. All together, this forms a diagram of the form
+  % https://q.uiver.app/#q=WzAsNSxbMCwxLCJBIl0sWzEsMCwiUyJdLFszLDAsIkQiXSxbMSwyLCJCIl0sWzMsMiwiQyJdLFswLDEsImsnIl0sWzEsMiwiZiciXSxbMCwzLCJrIiwyXSxbMyw0LCJmIiwyXSxbMiw0LCJnIl0sWzEsMywiZyciXV0=
+  \[\begin{tikzcd}
+	& S && D \\
+	A \\
+	& B && C
+	\arrow["{f'}", from=1-2, to=1-4]
+	\arrow["{g'}", from=1-2, to=3-2]
+	\arrow["g", from=1-4, to=3-4]
+	\arrow["{k'}", from=2-1, to=1-2]
+	\arrow["k"', from=2-1, to=3-2]
+	\arrow["f"', from=3-2, to=3-4]
+  \end{tikzcd}\]
+  \end{lemma}
+\begin{proof}
+  A pullback in an Abelian category can be constructed by means of products and equalizers. In particular, we claim that if $B \oplus D$ is a biproduct with projections $p_1, p_2$ (which
+  exists in our Abelian category), then $\text{Ker}(f \circ p_1 - g \circ p_2)$, which also exists in the Abelian category, is a pullback. Letting $S$ be the object of the kernel
+  and $m$ be the monic into $B \oplus D$, we have left-exact sequence
+  % https://q.uiver.app/#q=WzAsNCxbMCwwLCIwIl0sWzEsMCwiUyJdLFsyLDAsIkIgXFxvcGx1cyBEIl0sWzQsMCwiQyJdLFswLDFdLFsxLDIsIm0iXSxbMiwzLCJmIFxcY2lyYyBwXzEgLSBnIFxcY2lyYyBwXzIiXV0=
+  \[\begin{tikzcd}
+	0 & S & {B \oplus D} && C
+	\arrow[from=1-1, to=1-2]
+	\arrow["m", from=1-2, to=1-3]
+	\arrow["{f \circ p_1 - g \circ p_2}", from=1-3, to=1-5]
+  \end{tikzcd}\]
+  We let $g' = p_1 \circ m$ and $f' = p_2 \circ m$. Of course, $(f \circ p_1 - g \circ p_2) \circ m = 0$, so $f \circ g' = g \circ f'$. In addition, given some $S'$ and maps $q_1, q_2$
+  projecting onto $B$ and $D$, where $f \circ q_1 = g \circ q_2$, so $f \circ q_1 - g \circ q_2 = 0$, then by the the universal property of the kernel, there is unique $j : S' \rightarrow S$
+  which makes the combined pullback diagram commute, implying that $S$ is, in fact, a pullback. It is also easy to see that $f \circ p_1 - g \circ p_2$ is a cokernel of $m$.
+
+  Thus, we can assume without loss of generality that the $f'$ and $g'$ in the diagram of the lemma
+  are of the form in the previous paragraph (as any pullback will be isomorphic in the proper sense to a pullback of the above form).
+  In addition, if $f$ is epi, note that $f \circ p_1 - g \circ p_2$ is epi, as if $h \circ (f \circ p_1 - g \circ p_2) = 0$, then using injection $i_1 : B \rightarrow B \oplus D$,
+  we have
+  \begin{equation}
+    0 = h \circ (f \circ p_1 - g \circ p_2) \circ i_1 = h \circ f
+    \end{equation}
+  implying $h = 0$, as $f$ is assumed to be epi. From here, suppose $u \circ f' = u \circ p_2 \circ m = 0$. It follows by the universal property that there is a unique map $r : C \rightarrow X$ where for
+  $(f \circ p_1 - g \circ p_2) : B \oplus D \rightarrow C$, the defining map of the cokernel (an epi), we have
+  \begin{equation}
+    r \circ (f \circ p_1 - g \circ p_2) = u \circ p_2
+    \end{equation}
+  so composing on the right with $i_1$ gives us $r \circ f = 0$, and since $f$ is epi, $r = 0$, so $u \circ p_2 = 0$. Then, since $p_2$ is epi, $u = 0$, and $f'$ is epi as desired.
+
+  Finally, let $k : A \rightarrow B$ be the kernel of $f$. By the universal property of the pullback, we get unique map $k' : A \rightarrow S$,
+  % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzEsMSwiUyJdLFszLDEsIkQiXSxbMywzLCJDIl0sWzEsMywiQiJdLFswLDEsInIiLDFdLFsxLDIsImYnIiwyXSxbMiwzLCJnIl0sWzEsNCwiZyciXSxbNCwzLCJmIiwyXSxbMCw0LCJrIiwyXSxbMCwyLCIwIiwxXV0=
+  \[\begin{tikzcd}
+	A \\
+	& S && D \\
+	\\
+	& B && C
+	\arrow["k'"{description}, from=1-1, to=2-2]
+	\arrow["0"{description}, from=1-1, to=2-4]
+	\arrow["k"', from=1-1, to=4-2]
+	\arrow["{f'}"', from=2-2, to=2-4]
+	\arrow["{g'}", from=2-2, to=4-2]
+	\arrow["g", from=2-4, to=4-4]
+	\arrow["f"', from=4-2, to=4-4]
+  \end{tikzcd}\]
+  To show that $k' : A \rightarrow S$ is the kernel of $f'$, pick some map $j : R \rightarrow S$ such that $f' \circ j = 0$. We have map $g' \circ j : R \rightarrow B$ where $f \circ g' \circ j = g' \circ f \circ j = 0$,
+  so there is unique $\ell : R \rightarrow A$ with
+  % https://q.uiver.app/#q=WzAsNCxbMSwwLCJSIl0sWzEsMSwiQSJdLFswLDIsIkIiXSxbMiwyLCJDIl0sWzAsMSwiXFxlbGwiXSxbMSwyLCJrIl0sWzIsMywiZiIsMl0sWzEsMywiMCIsMl0sWzAsMiwiZydcXGNpcmMgaiIsMl0sWzAsMywiMCJdXQ==
+  \[\begin{tikzcd}
+	& R \\
+	& A \\
+	B && C
+	\arrow["\ell", from=1-2, to=2-2]
+	\arrow["{g'\circ j}"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["k", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["f"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  so in particular, $g' \circ j = g' \circ k' \circ \ell$. In addition, we have $f' \circ j = 0 = f' \circ k' \circ \ell$ from the first diagram. Thus, putting $j$ and $k' \circ \ell$ as the dashed arrow
+  make the following diagram commute:
+  % https://q.uiver.app/#q=WzAsNSxbMCwwLCJSIl0sWzEsMSwiUyJdLFsxLDMsIkIiXSxbMywzLCJDIl0sWzMsMSwiRCJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDIsImcnIl0sWzIsMywiZiIsMl0sWzQsMywiZyJdLFsxLDQsImYnIiwyXSxbMCwyXSxbMCw0XV0=
+  \[\begin{tikzcd}
+	R \\
+	& S && D \\
+	\\
+	& B && C
+	\arrow[dashed, from=1-1, to=2-2]
+	\arrow[from=1-1, to=2-4]
+	\arrow[from=1-1, to=4-2]
+	\arrow["{f'}"', from=2-2, to=2-4]
+	\arrow["{g'}", from=2-2, to=4-2]
+	\arrow["g", from=2-4, to=4-4]
+	\arrow["f"', from=4-2, to=4-4]
+  \end{tikzcd}\]
+  so by uniqueness of the pullback, we must have $j = k' \circ \ell$. Thus, we have induced $\ell$ making the following diagram commute:
+  % https://q.uiver.app/#q=WzAsNCxbMSwwLCJSIl0sWzEsMSwiQSJdLFswLDIsIlMiXSxbMiwyLCJEIl0sWzAsMSwiXFxlbGwiXSxbMSwyLCJrJyJdLFsyLDMsImYnIiwyXSxbMSwzLCIwIiwyXSxbMCwyLCJqIiwyXSxbMCwzLCIwIl1d
+  \[\begin{tikzcd}
+	& R \\
+	& A \\
+	S && D
+	\arrow["\ell", from=1-2, to=2-2]
+	\arrow["j"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["{k'}", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["{f'}"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  Moreover, $\ell$ is unique as if we replaced it with $\ell'$, then such an $\ell'$ would make the original kernel diagram where $\ell$ appeared commute as well, and by uniqueness of
+  this diagram, $\ell' = \ell$. Thus, by definition, $k' : A \rightarrow S$ is the kernel of $f' : S \rightarrow D$, and the proof is complete.
+  \end{proof}
+
+\noindent There is also a dual result which we can prove through similar means (for this reason, we omit the proof).
+
+\begin{lemma}
+  Given a pushout square in an Abelian category $\mathcal{C}$, if the top edge $g$ is epi, then the bottom edge $g'$ is epi.
+\end{lemma}
+
+\noindent We will now use these technical lemmas to introduce machinery which will make our lives much easier, going forward.
+
+\begin{definition}[Elements]
+  Let $\mathcal{C}$ be an Abelian category, let $C$ be an object. We call an arrow $x : X \rightarrow C$ (with target $C$) a \emph{member} of $C$, and denote it by $x \in C$.
+  We say that two members $x$ and $y$ of $C$ are equivalent if there are epis $u$ and $v$ such that $x \circ u = y \circ v$. One can easily see that this relation is symmetric and reflexive.
+  \end{definition}
+
+\begin{claim}
+  The ``equivalence of elements'' relation defined above is transitive, hence an equivalence relation.
+  \end{claim}
+\begin{proof}
+  Suppose $y$ and $z$ are equivalent, so $y \circ v' = z \circ w$. We can combine together this commutative sqaure with $x \circ u = y \circ v$ to obtain the composite diagram
+  % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzAsMiwiXFxidWxsZXQiXSxbMiwyLCJhIl0sWzQsMCwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFswLDEsInYnIl0sWzAsMiwidyIsMl0sWzIsMywieiIsMl0sWzEsMywieSJdLFs0LDEsInYiLDJdLFs0LDUsInUiXSxbNSwzLCJ4Il1d
+  \[\begin{tikzcd}
+	\bullet && \bullet && \bullet \\
+	\\
+	\bullet && a && \bullet
+	\arrow["{v'}", from=1-1, to=1-3]
+	\arrow["w"', from=1-1, to=3-1]
+	\arrow["y", from=1-3, to=3-3]
+	\arrow["v"', from=1-5, to=1-3]
+	\arrow["u", from=1-5, to=3-5]
+	\arrow["z"', from=3-1, to=3-3]
+	\arrow["x", from=3-5, to=3-3]
+  \end{tikzcd}\]
+  We can then pullback in the top pair of arrows to obtain
+  % https://q.uiver.app/#q=WzAsNyxbMCwyLCJcXGJ1bGxldCJdLFsyLDIsIlxcYnVsbGV0Il0sWzAsNCwiXFxidWxsZXQiXSxbMiw0LCJhIl0sWzQsMiwiXFxidWxsZXQiXSxbNCw0LCJcXGJ1bGxldCJdLFsyLDAsIlxcYnVsbGV0Il0sWzAsMSwidiciXSxbMCwyLCJ3IiwyXSxbMiwzLCJ6IiwyXSxbMSwzLCJ5Il0sWzQsMSwidiIsMl0sWzQsNSwidSJdLFs1LDMsIngiXSxbNiwwLCJwIiwyXSxbNiw0LCJxIl1d
+  \[\begin{tikzcd}
+	&& \bullet \\
+	\\
+	\bullet && \bullet && \bullet \\
+	\\
+	\bullet && a && \bullet
+	\arrow["p"', from=1-3, to=3-1]
+	\arrow["q", from=1-3, to=3-5]
+	\arrow["{v'}", from=3-1, to=3-3]
+	\arrow["w"', from=3-1, to=5-1]
+	\arrow["y", from=3-3, to=5-3]
+	\arrow["v"', from=3-5, to=3-3]
+	\arrow["u", from=3-5, to=5-5]
+	\arrow["z"', from=5-1, to=5-3]
+	\arrow["x", from=5-5, to=5-3]
+  \end{tikzcd}\]
+  where we note that now, $z \circ (w \circ p) = x \circ (u \circ q)$. Since both $v$ and $v'$ are epis, it follows from the technical lemma that $p$ and $q$ are epis. Moreover, $w$ and $u$ are epis, so the
+  compositions $w \circ p$ and $u \circ q$ are epis. Thus, $z$ is equivalent to $x$, and we have transitivity, as desired. When $x$ and equivalent to $y$, we use the notation $x \sim y$, going forward.
+  \end{proof}
+
+\begin{definition}
+  A \emph{generalized element} (or just an \emph{element}) of object $C$ in Abelian category $\mathcal{C}$ is an equivalence class of members $x \in C$ under the equivalence relation $\sim$ defined above. The generalized element
+  to which $x$ belongs is denoted by $[x]$. We also use the notation $[x] \in C$ to denote a generalized element in $C$.
+\end{definition}
+
+Given some arrow $f : C \rightarrow D$, note that if $x \in C$ is a member, then $f \circ x \in D$. Moreover, if $x \sim y$ in $C$, then $f \circ x \sim f \circ y$ in $D$, so the arrow $f$ is a well-defined map
+from the generalized elements of $C$, to the generalized elements of $D$, $f([x]) = [f \circ x]$. Because we are working in an Abelian category, note that every object has a zero element, the equivalence class
+of the zero map $0 \to C$ and member $x$ has a negative $-x$, so we denote $-[x] = [-x]$ (if $x \sim y$, then it is easy to check that $-x \sim -y$). Note, however, that we generally cannot perform
+arithmetic on generalized elements (i.e. $x \simeq x'$ and $y \sim y'$ does not imply that $x + y \sim x' + y'$), because the epis that we precompose these elements with may differ.
+
+Now, let us prove the main theorem which characterizes elements
+
+\begin{theorem}
+  If $\mathcal{C}$ is an Abelian category, then the following hold:
+  \begin{enumerate}
+    \item Arrow $f : C \rightarrow D$ is monic if and only if, for all elements $[x] \in C$, $f([x]) = [0]$ implies $[x] = [0]$.
+    \item Moreover, $f : C \rightarrow D$ is monic if and only if, for all $[x], [x'] \in C$, $f([x]) = f([x'])$ implies $[x] = [x']$.
+    \item Arrow $g : C \rightarrow D$ is epi if and only if for all $[z] \in D$, there exists $[y] \in C$ such that $g([y]) = [z]$.
+    \item Arrow $h : C \rightarrow D$ is the zero arrow if and only if $h([x]) = [0]$ for all $[x] \in C$.
+      \item Let $f : C \rightarrow D$ be an arrow, let $j : K \rightarrow C$ be a kernel of $f$, and let $i : F \rightarrow D$ be an image. Then for every $[x] \in C$
+        such that $f([x]) = [0]$, there is unique $[k] \in K$ such that $[x] = j([k])$. Since $f(j([k])) = [0]$ for all $[k]$, it follows that such $[x]$ and the $[k]$ are in bijective
+        correspondence.
+     \item Additionally, elements of the form $f([x])$ and $i([z])$ for $[z] \in F$ are in bijective correspondence.
+    \item If the sequence $B \rightarrow C \rightarrow D$ with arrows $f$ and $g$ is exact, then $g \circ f = 0$ and for all $[y] \in C$
+      with $g([y]) = [0]$, there exists $[x] \in B$ with $f([x]) = [y]$. The converse is also true.
+    \end{enumerate}
+  \end{theorem}
+
+\begin{proof}
+  To begin, assume the condition that $f([x]) = [f \circ x] = [0]$ implies $[x] = [0]$. Then if $f \circ x = 0$, then $x \circ v = 0$ for some epi $v$, so $x = 0$, and $f$ is monic. On the other hand,
+  if $f$ is monic, and $f([x]) = [0]$, then there is epi $u$ such that $f \circ x \circ u = 0$, so $x \circ u = 0$, so $[x] = [0]$. In addition, the condition ``$f([x]) = f([x'])$ implies $[x] = [x']$''
+  means that if $f \circ x = 0 = f \circ 0$, so $f([x]) = f([0])$, then $[x] = [0]$, so $x \circ v = 0$, so $x = 0$. In addition, if $f$ is monic, then $f \circ x \circ u = f \circ x' \circ v$ implies
+  that $x \circ u = x' \circ v$, so $[x] = [x']$.
+
+  If there is $[y]$ with $g([y]) = [z]$ for each $[z]$, then note that if $f \circ g = 0$, we can pick $[y] \in C$ such that $g([y]) = [\text{id}]$, so that $g \circ y \circ u = v$
+  for some epi $v$. Then we get
+  \begin{equation}
+    0 = f \circ g \circ y \circ u = f \circ u
+    \end{equation}
+  and since $u$ is an epi, $f = 0$. Thus, $g$ is an epi. Conversely, if $g$ is epi, then note that for given $z$, we have pullback
+  % https://q.uiver.app/#q=WzAsNCxbMiwyLCJEIl0sWzIsMCwiXFxidWxsZXQiXSxbMCwyLCJDIl0sWzAsMCwiXFxidWxsZXQiXSxbMSwwLCJ6Il0sWzIsMCwiZyIsMl0sWzMsMiwieSIsMl0sWzMsMSwidSJdXQ==
+  \[\begin{tikzcd}
+	\bullet && \bullet \\
+	\\
+	C && D
+	\arrow["u", from=1-1, to=1-3]
+	\arrow["y"', from=1-1, to=3-1]
+	\arrow["z", from=1-3, to=3-3]
+	\arrow["g"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  so $g \circ y = z \circ u$, where $u$ is epi because $g$ is (from the technical lemma). Thus, $g([y]) = [z]$. Moving on to the fourth point, if $h([x]) = [0]$ for all $x$, then $h \circ x \circ u = 0$
+  for all $x$, so since $u$ is epi, $h \circ x = 0$ for all $x$, so setting $x = \text{id}$, $h = 0$. On the other hand, if $h$ is the zero arrow, clearly $h([x]) = [0]$ for all $[x]$.
+
+  Now, if $f([x]) = [0]$, then $f \circ x \circ u = 0$ for some epi $u$, so $f \circ x = 0$. Thus, there is unique $k$ pointing to $K$ such that $j \circ k = x$, so $j([k]) = [x]$.
+
+  In addition,
+  given some $f([x])$, we let $q : D \rightarrow Q$ be the cokernel map of $f$, and note that we have
+  \begin{equation}
+     q \circ f \circ x \circ u = 0
+    \end{equation}
+  so $q \circ (f \circ x) = 0$, so there is $z$ pointing to $F$ such that $i \circ z = f \circ x$, which means that $i([z]) = f([x])$. To see that this $[z]$ is unique, if we also had $i([z']) = f([x])$,
+  then $i \circ z \circ u = i \circ z' \circ v$, so since $i$ is monic, $z \circ u = z' \circ v$ and $[z] = [z']$. Conversely, given $i([z])$, note that via the universal property, we have induced map $\widetilde{f}$,
+  % https://q.uiver.app/#q=WzAsNCxbMSwwLCJDIl0sWzEsMSwiRiJdLFswLDIsIkQiXSxbMiwyLCJRIl0sWzAsMSwiXFx3aWRldGlsZGV7Zn0iXSxbMSwyLCJpIl0sWzEsMywiMCIsMl0sWzIsMywicSIsMl0sWzAsMiwiZiIsMl0sWzAsMywiMCJdXQ==
+  \[\begin{tikzcd}
+	& C \\
+	& F \\
+	D && Q
+	\arrow["{\widetilde{f}}", from=1-2, to=2-2]
+	\arrow["f"', from=1-2, to=3-1]
+	\arrow["0", from=1-2, to=3-3]
+	\arrow["i", from=2-2, to=3-1]
+	\arrow["0"', from=2-2, to=3-3]
+	\arrow["q"', from=3-1, to=3-3]
+  \end{tikzcd}\]
+  so that $f = i \circ \widetilde{f}$. We can prove that $\widetilde{f}$ is epi by noting that if $u \circ \widetilde{f} = 0$, we have pushout of $i : F \rightarrow D$ and $u : F \rightarrow \cdot$.
+  Note that
+  \begin{equation}
+  u' \circ f = u' \circ i \circ \widetilde{f} = i' \circ u \circ \widetilde{f} = 0
+  \end{equation}
+  so we get an induced map (the dahsed line), by universal property of the cokernel, in the following diagram:
+  % https://q.uiver.app/#q=WzAsNixbMSwwLCJDIl0sWzAsMSwiRiJdLFswLDMsIlxcYnVsbGV0Il0sWzIsMywiXFxidWxsZXQiXSxbMiwxLCJEIl0sWzQsMSwiUSJdLFswLDEsIlxcd2lkZXRpbGRle2Z9IiwyXSxbMSwyLCJ1IiwyXSxbMiwzLCJpJyIsMl0sWzEsNCwiaSIsMl0sWzQsMywidSciXSxbNCw1LCJxIiwyXSxbMCw0LCJmIl0sWzUsMywiXFxwaGkiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+  \[\begin{tikzcd}
+	& C \\
+	F && D && Q \\
+	\\
+	\bullet && \bullet
+	\arrow["{\widetilde{f}}"', from=1-2, to=2-1]
+	\arrow["f", from=1-2, to=2-3]
+	\arrow["i"', from=2-1, to=2-3]
+	\arrow["u"', from=2-1, to=4-1]
+	\arrow["q"', from=2-3, to=2-5]
+	\arrow["{u'}", from=2-3, to=4-3]
+	\arrow["\phi", dashed, from=2-5, to=4-3]
+	\arrow["{i'}"', from=4-1, to=4-3]
+  \end{tikzcd}\]
+  It then follows that $i' \circ u = \phi \circ q \circ i = 0$. We know from the technical lemmas that $i'$ is mono, so $u = 0$, which means $\widetilde{f}$ is epi. Therefore, for some $[z]$, we can choose $[x]$
+  such that $\widetilde{f}([x]) = [z]$, so $i([z]) = f([x])$, as desired.
+
+  Moving along, if $B \to C \to D$ is exact, we have $\text{Im}(f) = \text{Ker}(g)$. Let $j : K \rightarrow C$ be the shared defining monic morphism. First note that if $g([y]) = 0$, then
+  we can pick $[z] \in K$ such that $j([z]) = [y]$, and $[x]$ such that $f([x]) = j([z])$. Moreover, since every $f([x])$ is of the form $j([z])$, we have
+  \begin{equation}
+    (g \circ f)([x]) = (g \circ j)([z]) = [0]
+    \end{equation}
+  for all $[x]$, so $g \circ f = 0$, as desired.
+
+  To prove the converse, take the kernel map $j : K \rightarrow C$ and note that $[j] \in C$ with $g([j]) = 0$, so $f([x]) = [j]$
+  for some $[x]$, so $f \circ x \circ u = j \circ v$ for epis $u$ and $v$. Thus, if we let $q : C \rightarrow Q$ be the quotient of $\text{Coker}(f)$, then $q \circ j \circ v = 0$,
+  so $q \circ j = 0$, so we have unique arrow from $K$ to $F$, the image of $f$, making the universal diagram commute. The fact that $g \circ f = 0$ implies that $g \circ i = 0$, as any $(g \circ i)([z])$
+  can be written as $(g \circ i)([x]) = [0]$, for any $[z]$. Thus, there is a unique arrow from $F$ to $K$ as well,
+  making the universal diagram commute. Putting these diagrams together, it is easy to check that the composite diagram commutes, and uniqueness implies these arrows will be inverses of each other, so we have
+  the desired exactness:
+  % https://q.uiver.app/#q=WzAsNSxbMSwwLCJLIl0sWzMsMCwiRiJdLFs0LDEsIlEiXSxbMiwxLCJDIl0sWzAsMSwiRCJdLFszLDQsImciXSxbMywyLCJxIiwyXSxbMSwzLCJpIiwyXSxbMSwyLCIwIl0sWzAsNCwiMCIsMl0sWzAsMywiaiJdLFswLDEsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDAsIiIsMSx7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+  \[\begin{tikzcd}
+	& K && F \\
+	D && C && Q
+	\arrow[shift left, dashed, from=1-2, to=1-4]
+	\arrow["0"', from=1-2, to=2-1]
+	\arrow["j", from=1-2, to=2-3]
+	\arrow[shift left, dashed, from=1-4, to=1-2]
+	\arrow["i"', from=1-4, to=2-3]
+	\arrow["0", from=1-4, to=2-5]
+	\arrow["g", from=2-3, to=2-1]
+	\arrow["q"', from=2-3, to=2-5]
+  \end{tikzcd}\]
+  and the proof is finally complete.
+  \end{proof}
 
 \end{document}
