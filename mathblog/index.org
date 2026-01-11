@@ -1,11 +1,10 @@
 #+TITLE:Math blog
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6;} a {color:blue;} </style>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;} </style>
 
-- August | [[./ag_connection.html][The connection between varieties and schemes: part 1]]
+- September 7th, 2025 | [[./fibre_integrals.html][Fibre integrals and the Thom isomorphism (unfinished)]]
 - July 26th, 2025 | [[./imo_2025.html][Some solutions to problems from the 2025 IMO]]
 - July 1st, 2025 | [[./leray_hirsch.html][Leray-Hirsch theorem]]
 - June 11th, 2025 | [[./groupoid_svk.html][Seifert-Van Kampen for fundamental groupoids in painful detail]]
-- May 14th, 2025 | [[./every_hartshorne_ex.html][Every exercise in the first three chapters of Hartshorne]]
+- May 14th, 2025 | [[./every_hartshorne_ex.html][Every exercise in the first three chapters of Hartshorne (incomplete!)]]
 - May 6th, 2025 | [[./myers_steenrod.html][A complete proof of the Myers-Steenrod theorem]]
-- May 5th, 2025 | [[./fibre_integrals.html][Fibre integrals]]
