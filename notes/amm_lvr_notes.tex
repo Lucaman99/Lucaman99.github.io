@@ -1,0 +1,222 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage[many]{tcolorbox}
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{remark}{Remark}[section]
+
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{prop}{Proposition}[section]
+
+\newtheorem{solution}{Solution}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=25mm,
+  right=25mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Automated Market-Making and Loss-Versus-Rebalancing: Notes}
+\author{Jack Ceroni}
+\email{jceroni@uchicago.edu}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+\noindent The following are some notes prepared for a talk on the paper, \emph{Automated Market-Making and Loss-Versus-Rebalancing}. \pop{The red text are (temporary) notes-to-self.}
+
+\section{Notes}
+
+\begin{itemize}
+    \item The main goal of this paper is to construct a Black-Scholes-type model for \emph{Automated market makers (AMM)}, in particular, \emph{Continuous function market makers without fees (CFMM)}. 
+    \item An automated market maker is a decentralized exchange (realized via smart contracts) which circumvents certain difficulties/drawbacks associated with CEXs: they can be modeled as cryptocurrency wallets with holdings distributed among a collection of asset classes. When a trader wishes to exchange a proportion of their asset $x$ with the AMM's asset $y$, a single atomic exchange is executed via blockchain code. The way in which the exchange price is calculated is wholly transparent (via the underlying smart contract code).
+    \item The asset inventory of an AMM is provided in a decentralized manner: any agent in the market may become a liquidity provider via contributing to the AMM's asset pool. Fees collected by the LP accumulate according to the proportion of the assets which they contributed, and moreover, the LP may withdraw some proportion of the asset pool corresponding to their share (although the withdrawal amount is generally dynamic, changing from the amount initially contributed).
+    \item The goal of this paper is to analyze the economics of contributing assets to an AMM (i.e. becoming a liquidity provider).
+    \item The model that the paper constructs begins by considering a filtered probability space $(\Omega, \mathcal{F}, \{\mathcal{F}_n\}_{n \geq 0}, \mathbb{Q})$, in which $\mathbb{Q}$ is a risk-neural measure \pop{(still don't really know what this means)}. We assume that there is a risky and non-risky asset: the value of the risky asset is dynamic, we assume that there is an infinitely deep CEX on which the risky asset may be traded with zero fees.
+    \item The price of the risky asset evolves according to a geometric Brownian motion, which is a continuous $\mathbb{Q}$-martingale \pop{(need to look at continuous-time martingales, have only looked at discrete ones so far)}. We denote the price at time $t$ by $P_t$ (this is a continuous-time random process).
+    \item We model a CFMM as a pair $(x, y) \in \mathbb{R}_{+}^{2}$ of the risky and non-risky asset amount in reserve, along with a function $f : \mathbb{R}_{+}^{2} \to \mathbb{R}$ and $L \in \mathbb{R}$ such that at some instant, $(x, y) \in f^{-1}(L)$ (i.e. the asset amounts are always in a particular level-set).
+    \item Agents in the market may interact with the CFMM by triggering a transition $(x_0, y_0) \to (x_1, y_1)$ of the reserve quantities by contributing/taking the differences $x_1 - x_0$ and $y_1 - y_0$, provided that $(x_1, y_1) \in f^{-1}(L)$ as well.
+    \item One common example of a CFMM is the \emph{Constant product market maker (CPMM)}, in which $f(x, y) = \sqrt{xy}$.
+    \item There are two types of agents in the paper's model: \emph{arbitrageurs} and \emph{noise traders}. The noise traders interact with the AMM for idiosyncratic reasons while the arbitrageurs try to take advantage of any price discrepancy between the price of the risky asset on the CEX and its value according to the AMM, in order to profit. The existence of arbitrageurs ensures that the asset reserves of the CFMM will always quickly equilibrate towards a fixed value as the noise traders continuously perturb the reserves over time. \textbf{(as we will see soon, it is possible to easily compute exactly what this equilibrium value will be for a particular $f$, $L$, and fixed price $P$ of the risky asset on the CEX)}.
+    \item There are a few other key assumptions made in this mode: we assume trades have no price impact, we assume frictionless trading, we assume continuous time (even though blocks in the blockchain are created in discrete time increments).
+    \item If the AMM is in state $(x, y)$, then its value at time $t$ is given by $P_t x + y$. We define the pool value function $V : \mathbb{R}_{+} \to \mathbb{R}_{+}$ as sending $P$ to the minimal value of $Px + y$ over $(x, y) \in f^{-1}(L)$. The idea behind this function is that if the price of the risky asset is $P$, then arbitrageurs, looking to maximize their profit will do so by extracting value from the AMM, thus eventually minimizing its value. To be more specific, if the CFMM is in configuration $(x, y)$ such that $P_t x + y$ is \emph{not} minimized (i.e. there exists $(x', y') \in f^{-1}(L)$ where $P_t x' + y' < P_t x + y$), then an arbitrageur, by exacting the transition $(x, y) \to (x', y')$ will profit $(P_t x + y) - (P_t x' + y') > 0$.
+    \item Under the assumption that the AMM's value is always brought to its equilibrium position instantly, $V_t$, the value of the pool at time $t$, is equal to $V(P_t)$.
+    \item Here are a few more assumptions that are now made:
+    \begin{enumerate}
+        \item An optimal solution $(x^{*}(P), y^{*}(P))$ to the pool value optimization exists for $P \geq 0$.
+        \item The pool value function $V(\cdot)$ is everywhere twice-differentiable.
+        \item A finiteness assumption: for all $t \geq 0$,
+        \begin{equation}
+            \mathbb{E}^{\mathbb{Q}}\left[ \int_{0}^{t} x^{*}(P_s)^2 \sigma_s^2 P_s^2 \ ds \right] < \infty
+        \end{equation}
+        \pop{I'm still a bit unclear as to the mathematical meaning of this.}
+    \end{enumerate}
+    \item Of course, $V(P) \geq 0$ for all $P$. In addition, we can easily see that $V'(P) = x^{*}(P)$ via Lagrange multipliers: we can compute the critical point of $G_P(x, y, \lambda) = (Px + y) - \lambda (f(x, y) - L)$, so we should have
+    \begin{align}
+        \frac{d G_P}{dx}(x^{*}(P), y^{*}(P), \lambda^{*}) = P - \lambda \frac{df}{dx}(x^{*}(P), y^{*}(P)) = 0
+         \\ \frac{d G_P}{dy}(x^{*}(P), y^{*}(P), \lambda^{*}) = 1 - \lambda \frac{df}{dy}(x^{*}(P), y^{*}(P)) = 0
+         \\ \frac{d G_P}{d\lambda}(x^{*}(P), y^{*}(P), \lambda^{*}) = f(x^{*}(P), y^{*}(P)) - L = 0
+    \end{align}
+    which then means, by the third equation, that
+    \begin{equation}
+        \frac{d f}{dx}(x^{*}(P), y^{*}(P)) \frac{d x^{*}}{dP}(P) = \frac{d f}{dy}(x^{*}(P), y^{*}(P)) \frac{d y^{*}}{dP}(P) = 0
+    \end{equation}
+    so by incorporating the first and second equations,
+    \begin{equation}
+        P \frac{d x^{*}}{dP}(P) + \frac{dy^{*}}{dP}(P) = 0
+    \end{equation}
+    so we then have
+    \begin{align}
+        V'(P) = \frac{d}{dP} (P x^{*}(P) + y^{*}(P)) = x^{*}(P) + P \frac{d x^{*}}{dP}(P) + \frac{dy^{*}}{dP}(P) = x^{*}(P)
+    \end{align}
+    as desired.
+    \item It is also possible to see that $V''(P) \leq 0$ as $V(\cdot)$ is concave, being the pointwise minimum of a collection of affine functions \pop{(Work through this in more detail, as you did above)}.
+    \item From here, we are able to write the profit and loss of a CFMM from time $0$ to time $t$ as
+    \begin{equation}
+        \texttt{PL}_t = V_t - V_0 + \texttt{FEE}_t
+    \end{equation}
+    where $\texttt{FEE}_t$ are the fees collected up to time $t$.
+    \item The idea of the paper from here is to decompose $V_t - V_0$ into the sum of returns relative to a trading strategy $R_t$, plus a residual term. 
+    The idea with $R_t$ is that one should always be holding the exact same amount of the risky asset as the CFMM, making trades at the CEX price \pop{I need to think a bit more on the intuition behind this.}
+    \item We define a \emph{trading strategy} to be a continuous-time process $(x_t, y_t)$, where the first variable represents holdings in the risky 
+    asset and the second holdings in the risky asset. For a trading strategy to be admissible, it must be adapted to the filtration of $P_t$, 
+    predictable (relative to the same filtration), and satisfy
+        \begin{equation}
+            \mathbb{E}^{\mathbb{Q}}\left[ \int_{0}^{t} x_s^2 \sigma_s^2 P_s^2 \ ds \right] < \infty
+        \end{equation}
+        for all $t \geq 0$. We also require the strategy to be self-financing, which is the condition that
+        \begin{equation}
+        \label{eq:int}
+             x_t P_t + y_t - (x_0 P_0 + y_0) = \int_{0}^{t} x_s \ dP_s
+        \end{equation}
+        which is to say that the change in total value of the portfolio is equal to the incremental changes in value of the holdings of the risky 
+        asset over time (i.e. there is no external injection of capital/the non-risky asset, no minting of the risky asset, etc.).
+        \item Note that when $P_t$ is a martingale, $\mathbb{E}[x_t P_t + y_t - (x_0 P_0 + y_0)] = 0$ \pop{(again, I need to read about stochastic 
+        integration to understand why this is the case. I get why this is the case for discrete time/martingale transforms, so I'm assuming it is the same idea)}.
+        \item The re-balancing strategy is now defined to be the self-financing strategy such that $(x_0, y_0) = (x^{*}(P_0), y^{*}(P_0))$ and $x_t = x^{*}(P_t)$ 
+        (note that once $x_t$ is specified for a self-financing strategy, Eq.~\eqref{eq:int} determines $y_t$). We let $R_t = P_t x_t + y_t$ for this strategy: 
+        clearly,
+        \begin{equation}
+            R_t = V_0 + \int_{0}^{t} x^{*}(P_s) \ dP_s
+        \end{equation}
+        Note that our earlier assumption about $V$ and $(x^{*}(P), y^{*}(P))$ will imply that the rebalancing strategy is admissible \pop{(why? think about this)}.
+        \item From here, we define $\texttt{LVR}_t$, the loss-versus-rebalancing, as $\texttt{LVR}_t = R_t - V_t$. This can be thought of 
+        as the losses of a delta-hedged position, where we are long the CFMM LP position (which has payout proportional to $V_t$) and 
+        short the rebalancing strategy.
+        \item The paper shows that:
+        \begin{equation}
+            \texttt{LVR}_t = \int_{0}^{t} \ell(\sigma_s, P_s) \ ds \ \ \ \text{with} \ \ \ \ell(\sigma, P) = \frac{\sigma^2 P^2}{2} |(x^{*})'(P)|
+        \end{equation}
+        In particular, $\ell$ is always positive, implying that $\texttt{LVR}_t$ is a non-decreasing, predictible \pop{(why?)} process. 
+        In addition, the cumulative profits of the arbitrageurs performing the rebalancing trades is given by $\texttt{LVR}_t$.
+        \item One of the implications of this result is that by taking the delta-hedged position, \textbf{we will never profit}. The intuition 
+        behind this result is that these loses accrue due to price slipage: the CFMM executes trades at a slightly worse price than the rebalancing strategy, as the 
+        opportunity for arbitrage is precisely the incentive that external agents (the arbitrageurs) have to adjust the state of the CFMM to its equilibrium, 
+        at each instant in time. In particular, the way in which the CFMM prices the risky asset is mediated through its interactions with arbitrageurs, rather than 
+        being dictated by a centralized authority.
+        \item \textbf{The paper provides an sketch/the intuition underlying the main result. However, I would like to analyze in the detail the rigorous 
+        justification given in the appendix.} We begin by using the smoothness of assumption of the value function $V$ to apply Ito's lemma:
+        \begin{align}
+            dV_t &= V'(P_t) dP_t + \frac{1}{2} V''(P_t) (dP_t)^2
+            \\ &= V'(P_t) dP_t + \frac{1}{2} V''(P_t) \sigma^2 P_t^2 \ dt
+            \\ &= x^{*}(P_t) dP_t + \frac{1}{2} (x^{*})'(P_t) \sigma^2 P_t^2 \ dt
+        \end{align}
+        where the substitution in the second equality comes from the fact that $\frac{dP_t}{P_t} = \sigma dB_t$, and the third comes from 
+        from our previously-derived formula for $V'(P_t)$. From here, we have
+        \begin{align}
+            \int_{0}^{t} x^{*}(P_s) \ dP_s - \text{LVR}_t = V_t - V_0 = \int_{0}^{t} x^{*}(P_t) dP_s - \int_{0}^{t} \frac{1}{2} |(x^{*})'(P_s)| \sigma^2 P_s^2 \ ds
+        \end{align}
+        which immediately implies that
+        \begin{equation}
+            \text{LVR}_t = \int_{0}^{t} \frac{1}{2} |(x^{*})'(P_s)| \sigma^2 P_s^2 \ ds
+        \end{equation}
+        as desired.
+        \item The next step is to show that the cumulative profits of the arbitrageurs are equal to $\texttt{LVR}_t$. Let $[0, T]$ be some time interval, 
+        let us consider first a discrete approximation in which $N + 1$ arbitrageurs interact with the CFMM, the $i$-th at time $\tau_i$, where we set $\tau_0 = 0$
+        and $\tau_{N + 1} = T$. Thus, at time $\tau_i$, the state of the CFMM is re-balanced from $(x^{*}(P_{\tau_{i - 1}}), y^{*}(P_{\tau_{i - 1}}))$ to 
+        $(x^{*}(P_{\tau_{i}}), y^{*}(P_{\tau_{i}}))$. The profits from executing this trade, and then immediately selling the purchased quantity of the risky 
+        asset on the CEX at price, are given by
+        \begin{equation}
+            P_{\tau_i} (x^{*}(P_{\tau_{i-1}}) - x^{*}(P_{\tau_i})) + (y^{*}(P_{\tau_{i-1}}) - y^{*}(P_{\tau_i}))
+        \end{equation}
+        so if we sum over the aggregate profits, which we denote $\texttt{ARB}_T^{(N)}$, then we get
+        \begin{align}
+            \texttt{ARB}_T^{(N)} = P_0 x^{*}(P_0) + y^{*}(P_0) + \sum_{i = 0}^{N} x^{*}(P_{\tau_i}) (P_{\tau_{i + 1}} - P_{\tau_i}) - P_T x^{*}(P_{\tau_{N}}) - y^{*}(P_{\tau_N})
+        \end{align}
+        If we take a limit of the mesh $\tau_0 < \tau_1 < \cdots < \tau_{N + 1}$, it is possible to see that the right-hand side of the above equation converges 
+        to an Ito integral \pop{(is this well-defined?)}. We define this limiting integral to be a model for the total profit of the aribtrageurs, denoted $\texttt{ARB}_t$, 
+        and note that the resulting integral is given by
+        \begin{equation}
+            \texttt{ARB}_t = V(P_0) - V(P_T) + \int_{0}^{T} x^{*}(P_t) \ dt = R_T - V_T = \texttt{LVR}_T
+        \end{equation}
+        as desired.
+\end{itemize}
+
+\end{document}
