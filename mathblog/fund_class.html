@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-02-04 Wed 13:28 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Existence of the fundamental class</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} a{color:blue;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Existence of the fundamental class</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf603c92">1. Introduction</a></li>
+<li><a href="#org506f98f">2. Existence of the fundamental class</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i> February 4th, 2026
+</p>
+
+<hr />
+
+<div id="outline-container-orgf603c92" class="outline-2">
+<h2 id="orgf603c92"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The blog might be back, let's see how consistent I stay with it. The goal of this post is to present the details of what I think is a nice proof (from Hatcher)
+which characterizes the top-dimensional homology of closed connected (topological) \(n\) -manifolds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org506f98f" class="outline-2">
+<h2 id="org506f98f"><span class="section-number-2">2.</span> Existence of the fundamental class</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+First, briefly recall that we use the notation \(H_n(M \ | \ x; R)\) to denote the relative homology \(H_n(M, M - \{x\}; R) \simeq R\) (by the locally Euclidean property of \(M\), excision, the long exact
+sequence of homology). We also use \(H_n(M | U; R) = H_n(M, M - U; R)\) when, more generally, we are removing an open set \(U\).
+\(M_R\) denotes the space of \(\alpha_x \in H_n(M \ | \ x; R)\), for each \(x \in M\): this space is naturally a smooth manifold over \(M\) where the
+projection \(\pi : M_R \to M\) sending \(\alpha_x\) to its corresponding \(x \in M\) is a covering map. When we omit \(R\) and simply use \(H_n(M | x)\), we are implicitly setting \(R = \mathbb{Z}\). Note that
+we have a canonical isomorphism \(H_n(M | x) \otimes R \simeq H_n(M | x; R)\) obtained from the obvious isomorphism of \(R\) -modules at the level of relative chains \(C_n(M, M - \{x\}) \otimes R \simeq C_n(M, M - \{x\}; R)\).
+It follows that if we fix \(r \in R\), then we obtain a subcovering space \(M_r \subset M_R\) consisting of the points \(\pm \mu_x \otimes r\). If \(r = -r\) in \(R\), then these points are equal, and the subcovering space
+is just a copy of \(M\). Otherwise, we get a copy of \(\widetilde{M}\): the usual two-sheeted orientation cover for \(M\). It then follows that \(M_R\) is the union of all the \(M_r\), where clearly \(M_a = M_{b}\) if and only if \(a = \pm b\).
+</p>
+
+<p>
+An \(R\) -orientation for \(M\) is a choice of generator/unit \(\mu_x \in H_n(M | x; R)\) (local orientation) for each \(x \in M\) such that for any such \(x\), there exists a coordinate ball \(B\) around \(x\) such that
+\(\mu_y\) for all \(y \in B\) is the image of some \(\mu_B \in H_n(M | B; R) \simeq R\) under the natural inclusion \(H_n(M | B; R) \to H_n(M | x; R)\). The manifold \(M\) is said to be \(R\) -orientable if it can be endowed
+with an orientation. Recall the following result:
+</p>
+
+<p>
+<b>Claim.</b> A connected manifold \(M\) is \(\mathbb{Z}\) -orientable if and only if \(\widetilde{M}\) has two connected components.
+</p>
+
+<p>
+<i>Proof.</i> If \(\widetilde{M}\) has two connected components, each is homeomorphic to \(M\), and since \(\widetilde{M}\) is orientable, \(M\) must be as well. Conversely, if \(M\) is orientable, it is
+easy to check that it has precisely two orientations. We claim that each of the images of these individual orientations in \(\widetilde{M}\) determine two connected components. Indeed, these images (call them \(M_{\pm}\))
+must cover all of \(\widetilde{M}\), are disjoint, and are connected as the continuous image of \(M\) which is connected. In fact, since a cover is a local homeomorphism, and the restricted projections \(M_{\pm} \to M\) are
+bijective, each \(M_{\pm}\) is necessarily homeomorphic to \(M\), so each is clopen. It follows that \(M_{+}\) and \(M_{-}\) must be individual connected components. \(\blacksquare\)
+</p>
+
+<p>
+From the above characterization of \(M_R\) it is easy to prove the following results:
+</p>
+
+<p>
+<b>Claim.</b> If connected \(M\) is \(\mathbb{Z}\) -orientable, it is \(R\) -orientable for any \(R\). If \(M\) is not \(\mathbb{Z}\) -orientable, it is \(R\) -orientable if and only if \(2 = 0\) in \(R\).
+</p>
+
+<p>
+<i>Proof.</i> If \(M\) is \(\mathbb{Z}\) -orientable, then \(M_R\) always consists of a disjoint collection of sheets each homeomorphic to \(M\). In particular, such a homeomorphism \(M_1 \to M\) gives rise to an
+\(R\) -orientation. If \(M\) is not \(\mathbb{Z}\) -orientable and \(2 \neq 0\), then \(-r \neq r\) for any unit \(r \in R\), hence if there did exist a section \(M \to M_r\) for some unit \(r\), then it would give rise
+to a section \(M \to \widetilde{M}\), which is a contradiction. Conversely, if \(2 = 0\), then \(M_r \simeq M\) for any unit \(r\), and we can easily write down a section, which is precisely an \(R\) -orientation. \(\blacksquare\)
+</p>
+
+<p>
+From here, we can move to the main result of this post:
+</p>
+
+<p>
+<b>Theorem 1.</b> Let \(M\) be closed and connected. If \(M\) is \(R\) -orientable, then the natural map \(H_n(M; R) \to H_n(M | x; R) \simeq R\) is an isomorphism for all \(x \in M\).
+If \(M\) is not \(R\) -orientable, then the same map is injective, with image consisting of all elements \(\mu_x \in H_n(M | x; R)\) such that \(2\mu_x = 0\). In addition,
+\(H_i(M; R) = 0\) for all \(i > n = \dim(M)\).
+</p>
+
+<p>
+To prove this result, we will prove the following lemma:
+</p>
+
+<p>
+<b>Lemma 1.</b> If \(M\) is an \(n\) -manifold and \(A \subset M\) is a compact subset, then given a section \(x \mapsto \alpha(x)\) of the cover \(M_R \to M\), there is a unique class \(\Phi(\alpha) \in H_n(M | A; R)\)
+whose image is \(\alpha(x) \in H_n(M | x; R)\) for all \(x \in A\), under the usual induced map. Moreover, \(H_i(M | A; R) = 0\) for \(i > n\).
+</p>
+
+<p>
+Let us first see how Lemma 1 will imply Theorem 1:
+</p>
+
+<p>
+<i>Proof of Theorem 1.</i> When \(M\) is closed, it is compact, so we can set \(A = M\) to immediately get \(H_i(M; R) = H_i(M | M; R) = 0\) for \(i > n\). In addition, if we let \(\Gamma_R(M)\) denote the group
+of smooth sections of \(M \to M_R\), then we have map \(\Phi : \Gamma_R(M) \to H_n(M; R)\) with \(\alpha \mapsto \Phi(\alpha)\) and \(\Psi : H_n(M; R) \to \Gamma_R(M)\) with \(\Psi(\beta)(x)\) defined to
+be the image of \(\beta\) in \(H_n(M | x; R)\) under the map induced by inclusion. Clearly, \(\Psi(\beta)(x)\) projects to \(x\) under \(M_R \to M\). Moreover, the map \(\Psi(\beta)\) is continuous.
+Let \(U(\mu_B)\) be an open set in \(M_R\) consisting of points of \(H_n(M | x; R)\) for \(x \in B\) which are images of \(\mu_B \in H_n(M | B; R)\). Note that \(\Psi(\beta)(x) \in U(\mu_B)\) if and only if
+\(x \in B\) and \(\beta_x = (\beta_B)_x = (\mu_B)_x\). Of course, the map \(H_n(M | B; R) \to H_n(M | x; R)\) is an isomorphism, so we must have \(\beta_B = \mu_B\). Thus, \(\Psi(\beta)^{-1}(U(\mu_B))\) is
+either empty, or \(B\). Thus, \(\Psi(\beta)\) is, in fact, a section.
+</p>
+
+<p>
+Lemma 1 will imply that \(\Psi(\Phi(\alpha))(x) = \alpha(x)\) for all \(x \in A\), so \(\Psi \circ \Phi = \text{id}\).
+In addition, it is clear that any \(\beta \in H_n(M; R)\) is a class such that the image of \(\beta\) in \(H_n(M | x; R)\) is \(\Psi(\beta)(x)\) for each \(x \in A\), so \(\Phi(\Psi(\beta)) = \beta\) by uniqueness,
+and \(\Phi \circ \Psi = \text{id}\). Thus, we have bijections between the two groups. To see that these maps are homomorphisms, simply note that the image of a sum of classes
+\(\beta_1 + \beta_2\) in \(H_n(M | x; R)\) is equal to the sum of the images, for all \(x \in A\), so \(\Psi(\beta_1 + \beta_2)(x) = \Psi(\beta_1)(x) + \Psi(\beta_2)(x)\), and we thus have
+\(\Psi(\beta_1 + \beta_2) = \Psi(\beta_1) + \Psi(\beta_2)\). Similarly, given sections \(\alpha_1, \alpha_2\),
+</p>
+\begin{equation}
+    \Phi(\alpha_1 + \alpha_2) = \Phi(\Psi(\Phi(\alpha_1)) + \Psi(\Phi(\alpha_2))) = (\Phi \circ \Psi)(\Phi(\alpha_1) + \Phi(\alpha_2)) = \Phi(\alpha_1) + \Phi(\alpha_2)
+\end{equation}
+<p>
+so we in fact have an isomorphism of these groups, \(H_n(M; R) \simeq \Gamma_R(M)\). From here, note that if \(M\) is connected, then any section of a covering map \(M_R \to M\) is determined uniquely
+by its value at a single point. In particular, it is easy to see from the structure of \(M_R \to M\) discussed above as a disjoint union of sheets of the form \(M_r\) that when \(M\) is \(R\) -orientable,
+every element of \(H_n(M | x; R)\) for some \(x \in M\) will determine a section, whereas when \(M\) is not \(R\) -orientable, only the \(r\) corresponding to sheets where \(r = -r\) will determine sections.
+This gives us the remaining implications of Theorem 1. \(\blacksquare\)
+</p>
+
+<p>
+Let us now finish the blog post by proving Lemma 1:
+</p>
+
+<p>
+<i>Proof of Lemma 1.</i> The idea with this proof is to reduce the problem a few times to easier and easier cases. Going forward, I will suppress the notation of putting \(R\) in \(H_n(M | A; R)\), and just denote this group by \(H_n(M | A)\), to save space.
+</p>
+
+<ol class="org-ol">
+<li><p>
+First, note that if the claim holds for compact sets \(A\), \(B\), \(A \cap B\), then it holds for \(A \cup B\). A section \(\alpha \in \Gamma_R(M)\) will restrict to
+sections on \(A, B, A \cap B\). Each of these sections will then give rise to unique classes \(\alpha_A \in H_n(M | A)\), \(\alpha_B \in H_n(M | B)\) \(\alpha_{A \cap B} \in H_n(M | A \cap B)\),
+which have image equal to \(\alpha(x)\) in \(H_n(M|x)\) for \(x\) in \(A\), \(B\), and \(A \cap B\) respectively. Clearly, the images of \(\alpha_A\) and \(\alpha_B\) in \(H_n(M | A \cap B)\) satisfy the
+property which defines \(\alpha_{A \cap B}\), namely that its image is \(\alpha(x)\) in \(H_n(M | x)\) for all \(x \in A \cap B\), so by uniqueness of the class, the images of \(\alpha_A\) and \(\alpha_B\)
+in \(H_n(M | A \cap B)\) are <i>equal</i> to \(\alpha_{A \cap B}\). We have a relative Mayer-Vietoris sequence of the form:
+</p>
+
+\begin{equation}
+    0 \longrightarrow H_n(M | A \cup B) \overset{\Phi}{\longrightarrow} H_n(M | A) \oplus H_n(M | B) \overset{\Psi}{\longrightarrow} H_n(M | A \cap B)
+\end{equation}
+
+<p>
+where the zero of the left comes from the assumption that \(H_{i}(M | A \cap B; R) = 0\) for any \(i > n\). Automatically, if we extend the Mayer-Vietoris sequence farther to the left,
+we will also have \(H_i(M | A \cup B) = 0\) for all \(i > n\) from the assumptions. The Mayer-Vietoris maps
+are the usual ones, so exactness implies that \(\Phi(\alpha_{A \cup B}) = (\alpha_A, -\alpha_B)\) for some \(\alpha_{A \cup B} \in H_n(M | A \cup B)\). The map \(\Phi\), in particular, is taking the
+image of \(\alpha_{A \cup B}\) in \(H_n(M|A)\)
+and \(H_n(M|B)\) (and then flipping the sign of the \(H_n(M|B)\) entry), so it follows that taking the image of \(\alpha_{A \cup B}\) in \(H_n(M | x)\) is \(\alpha(x)\), as \(\alpha_A\) and \(\alpha_B\) have this property.
+To see that \(\alpha_{A \cup B}\)
+is unique, note that if \(\alpha_{A \cup B}\) has image \(0\) in \(H_n(M | x)\) for all \(x\), then its images in \(H_n(M | A)\) and \(H_n(M | B)\) respectively must also both have images
+(which we call \(\alpha'_A\) and \(\alpha'_B\)) equal to \(0\) when we
+further take the image in \(H_n(M | x)\). Thus, by uniqueness of \(\alpha'_A\) and \(\alpha'_B\), from
+the assumption on \(A\) and \(B\), we must have \(\alpha'_A = \alpha_B' = 0\), so by injectivity of \(\Phi\) in the Mayer-Vietoris sequence, \(\alpha_{A \cup B} = 0\) as well.
+So, the map assigning a section to \(\alpha_{A \cup B}\)
+is injective, and we have our desired uniqueness.
+</p></li>
+
+<li><p>
+From here, we note a that a compact set \(A\) can be written as a finite union of compact sets \(A_1 \cup \cdots \cup A_m\) each contained in a homeomorphic copy of \(\mathbb{R}^n \subset M\) (we just take a finite
+cover of \(A\) by Euclidean balls whose closure in contained in a slightly larger Euclidean ball). We can apply what we showed above to \(A_1 \cup \cdots \cup A_{m - 1}\) and \(A_{m - 1}\): namely, the intersection
+of these sets is \((A_1 \cap A_m) \cup \cdots \cup (A_{m-1} \cap A_m)\) which is a union of \(m - 1\) compact sets each contained an a homeomorphic copy of \(\mathbb{R}^n \subset M\), hence using the previous paragraph,
+ by induction on \(M\), we have reduced proving the claim to proving the case of \(m = 1\). So, we can assume WLOG that our compact set \(A\) is contained in a homeomorphic copy of \(\mathbb{R}^n\) in \(M\). In fact, without
+loss of generality, we can just work in \(\mathbb{R}^n\),
+assuming \(A\) is a compact subset of \(\mathbb{R}^n\), as the claim we are trying to prove only involves \(H_n(M | A)\), which
+by excision is the same as \(H_n(U | A)\) for some Euclidean ball \(U\) around \(A\) homeomorphic to \(\mathbb{R}^n\).
+</p>
+<p></p></li>
+
+<li><p>
+When \(A \subset \mathbb{R}^n\) is a union of convex compact sets \(A_1, \dots, A_m\) in \(\mathbb{R}^n\), we know that the intersection of convex compact sets will be convex compact, hence by the same
+inductive logic as the previous paragraph, we can reduce to the case that \(A\) is convex compact in \(\mathbb{R}^n\). But in this case, the result becomes obvious: the inclusion maps \(H_i(\mathbb{R}^n | A) \to H_i(\mathbb{R}^n | x)\)
+are isomorphisms because \(\mathbb{R}^n - \{x\}\) deformation retracts to \(\mathbb{R}^n - A\) via
+straight-line homotopy (as \(A\) is convex). Thus, inclusion \(\iota : \mathbb{R}^n - A \to \mathbb{R}^n - \{x\}\) induces an
+isomorphism in homology, and we can apply naturality and the five lemma to the
+long exact sequences in homology. Therefore, if \(\alpha \in \Gamma_R(M)\) is our section, then we can just set \(\Phi(\alpha)\) to be the inverse image
+of \(\alpha(x)\) under this isomorphism, for any \(x \in A\). A section \(\alpha : A \to M_R\) is a lift of the inclusion \(A \to M\) to the cover. Since the section
+\(y \mapsto (\Phi(\alpha))_y \in H_n(M | y)\) and \(y \mapsto \alpha(y)\) agree at point \(y = x\), it follows that they must be equal on all of \(A\) (as \(A\) is convex, hence connected),
+so \(\Phi(\alpha)\) has the desired property.
+</p>
+<p></p></li>
+
+<li><p>
+The final case we must consider is when \(A \subset \mathbb{R}^n\) is an arbitrary compact subset. Let \(\beta \in H_i(\mathbb{R}^n | A)\) be represented by a relative cycle
+\(z\) in \(\mathbb{R}^n\), with \(\partial z \in \mathbb{R}^n - A\), let \(C\) be the union of the images of the singular simplices in \(\partial z\). Since \(C\) is compact (finite union of images of compact sets), it has
+positive distance \(\delta\) from \(A\) in \(\mathbb{R}^n\) (this is a basic topological fact). We cover \(A\) by finitely many closed balls of radius less than \(\delta\) centred at points of \(A\), let \(K\) be the union of
+these balls (a finite union of convex compact sets), it is disjoint from \(C\). It follows that the relative cycle \(z\) in fact has its boundary \(\partial z\) in \(\mathbb{R}^n - K\). Therefore, this relative cycle
+defines an element \(\beta_K \in H_i(\mathbb{R}^n | K)\), which by definition, maps to \(\beta \in H_i(\mathbb{R}^n | A)\)
+ under the inclusion map. Set \(i = n\) going forward: we will show that if \(\beta_x \in H_n(\mathbb{R}^n | x)\) is \(0\) for all \(x \in A\), then \(\beta = 0\). As we noted earlier, \(K\) is a union of balls \(B\) meeting \(A\), and
+ each map \(H_n(\mathbb{R}^n | B) \to H_n(\mathbb{R}^n | x)\) is an isomorphism for all \(x \in B\). It follows that \(\beta_K\) maps to \(0\) in \(H_n(M | x)\) for each \(x \in K\): the reason being that
+  \((\beta_K) \mapsto (\beta_K)_x\) factors through \((\beta_K) \mapsto (\beta_K)_B \mapsto (\beta_K)_x\), where \(B\) some ball containing \(x\) and \((\beta_K)_B\) is the image in \(H_n(\mathbb{R}^n | B)\). But each such
+  ball contains \(y \in A\) as well, and taking the image of \(\beta_K\) in \(H_n(\mathbb{R}^n | y)\) is the same as taking the image of \(\beta\) in \(H_n(\mathbb{R}^n | y)\), which we assumed will yield \(0\). Hence,
+  since \(H_n(\mathbb{R}^n | B) \to H_n(\mathbb{R}^n | y)\) is an isomorphism, we must have \((\beta_K)_B = 0\), hence \((\beta_K)_x = 0\) as well. Since \(K\) is a finite union of convex compact sets, we can apply the
+  result of the previous paragraph (particularly, uniqueness) to conclude that \(\beta_K = 0\), hence its image \(\beta\) in \(H_n(\mathbb{R}^n | A)\) is also \(0\).
+</p>
+
+<p>
+ Thus, to conclude, given a section \(\alpha \in \Gamma_R(M)\) with \(A \subset \mathbb{R}^n\), suppose \(\Phi(\alpha) \in H_n(\mathbb{R}^n | A)\) such that \(\Phi(\alpha)_x = \alpha(x)\) for all \(x \in A\) does in fact exist. If \(\beta\) were
+ another class such that \(\beta_x = \alpha(x)\) for all \(x\), then the image of \(\Phi(\alpha) - \beta\) in \(H_n(\mathbb{R}^n | x)\) is \(0\) for all \(x\), so from (4), \(\Phi(\alpha) = \beta\), and we have the
+ uniqueness claim. To prove existence, we can just take the image of the \(\Phi(\alpha) \in H_n(\mathbb{R}^n | K)\) produced for the union of convex compact sets \(K\) constructed in (3),
+in \(H_n(\mathbb{R}^n | A)\), and let this be the \(\Phi(\alpha)\) for \(A\). This completes the proof.
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2026-02-04 Wed 13:28</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
