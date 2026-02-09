@@ -6,7 +6,7 @@
 <!-- 2026-02-09 Mon 10:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jack's blog</title>
+<title>A small note on a result in McDuff-Salamon</title>
 <meta name="author" content="Jack Ceroni" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -195,42 +195,140 @@
 </style>
 <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
 <style> body {font-size:15px;} a {color:blue;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Jack's blog</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgbc37472">1. 2026</a></li>
-<li><a href="#org219cfec">2. 2025</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">A small note on a result in McDuff-Salamon</h1>
+<p>
+<i>Originally posted:</i> February 9th, 2026
+</p>
 
-<div id="outline-container-orgbc37472" class="outline-2">
-<h2 id="orgbc37472"><span class="section-number-2">1.</span> 2026</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>February 9th, 2026 | <a href="./mcduff_salamon_1.html">A small note on a result in McDuff-Salamon</a></li>
-<li>February 4th, 2026 | <a href="./fund_class.html">Constructing the fundamental class</a></li>
-</ul>
-</div>
-</div>
+<hr />
 
-<div id="outline-container-org219cfec" class="outline-2">
-<h2 id="org219cfec"><span class="section-number-2">2.</span> 2025</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>September 7th, 2025 | <a href="./fibre_integrals.html">Fibre integrals and the Thom isomorphism <b>(unfinished)</b></a></li>
-<li>July 26th, 2025 | <a href="./imo_2025.html">Some solutions to problems from the 2025 IMO</a></li>
-<li>July 1st, 2025 | <a href="./leray_hirsch.html">Leray-Hirsch theorem</a></li>
-<li>June 11th, 2025 | <a href="./groupoid_svk.html">Seifert-Van Kampen for fundamental groupoids in painful detail</a></li>
-<li>May 6th, 2025 | <a href="./myers_steenrod.html">A complete proof of the Myers-Steenrod theorem</a></li>
-</ul>
-</div>
-</div>
+<p>
+I would like to dedicate this short blog post to filling in a few details which are glossed-over in the discussion of the Lagrangian-Hamiltonian
+correspondence in the first chapter of McDuff and Salamon's book on symplectic topology.
+</p>
+
+<p>
+It is straightforward to demonstrate that a path \(x(t)\) is a critical point of the action functional corresponding to Lagrangian \(L\) if and only if
+it is a solution to the Euler-Lagrange equation,
+</p>
+\begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_i}(t, x(t), \dot{x}(t)) - \frac{d L}{d x_i}(t, x(t), \dot{x}(t)) = 0
+  \end{equation}
+<p>
+over all \(i = 1, \dots, n\). Note that
+</p>
+\begin{equation}
+  \frac{d}{dt} \frac{d L}{d v_j}(t, x(t), \dot{x}(t)) = \frac{d}{ds} \frac{d L}{d v_j}(s, x(t), \dot{x}(t)) \biggr\rvert_{s = t} + \sum_{i} \left[ \dot{x}(t) \frac{d^2 L}{d x_i d v_j}(t, x(t), \dot{x}(t)) +
+    \ddot{x}(t) \frac{d^2 L}{d v_i d v_j}(t, x(t), \dot{x}(t))\right]
+\end{equation}
+<p>
+In the case that we have the Legendre condition on \(L\), as explained in the book, then the above is a system of second-order differential equations for \(x(t)\). As
+per usual, we may convert a system of second-order differential equations into a larger first-order system. Usually, we do this by setting \(y = \dot{x}\), however,
+in this case, we can be somewhat more tactful and utilize the Legendre transform, where we define the functions \(y_k(t, x, v) = \frac{dL}{dv_k}(t, x, v)\), and we use the notation
+\(y_k(t) = y_k(t, x(t), \dot{x}(t)) = \frac{dL}{dv_k}(t, x(t), \dot{x}(t))\) for some trajectory \(x(t)\). It then follows that \(x(t)\) being a solution to the original Euler-Lagrange equation is equivalent to the condition that
+</p>
+\begin{equation}
+  \label{eq:1}
+  \dot{y_k}(t) = \frac{d}{dt} \frac{dL}{dv_k}(t, x(t), \dot{x}(t)) = \frac{dL}{dx_k}(t, x(t), \dot{x}(t))
+  \end{equation}
+<p>
+Suppose that the Legendre condition holds at some point \((t_0, x_0, v_0)\) with \(y_0 = \frac{dL}{dv}(t_0, x_0, v_0)\), then it follows from implicit function theorem that in a neighbourhood of this
+point there are unique smooth functions \(G_k(t, x, y)\) such that \(y - \frac{dL}{dv}(t, x, G(t, x, y)) = 0\) in a neighbourhood \(U\) of \((t_0, x_0, y_0)\). We can use the notation \(v_k = G_k(t, x, y)\) as shorthand.
+It follows that on \(U\), we can define a <i>Hamiltonian</i> \(H : U \rightarrow \mathbb{R}\) as
+</p>
+\begin{equation}
+  H(t, x, y) = \sum_{j = 1}^{n} y_j G_j(t, x, y) - L(t, x, G(t, x, y)) = \sum_{k = 1}^{n} y_j v_j - L
+  \end{equation}
+<p>
+Note that
+</p>
+\begin{equation}
+  \label{eq:g}
+  \frac{dH}{dy_j}(t, x, y) = G_j(t, x, y) + \sum_{k = 1}^{n} \frac{dG_k}{dy_j} \left[ y_k - \frac{dL}{dv_k}(t, x, G(t, x, y)) \right] = G_j(t, x, y)
+  \end{equation}
+<p>
+and
+</p>
+\begin{equation}
+  \label{eq:l}
+  \frac{dH}{dx_j}(t, x, y) = \sum_{k = 1}^{n} \frac{dG_k}{dx_j} \left[y_k - \frac{dL}{dv_k}(t, x, G(t, x, y))\right] - \frac{dL}{dx_j} = - \frac{dL}{dx_j}(t, x, G(t, x, y))
+  \end{equation}
+<p>
+on \(U\). It follows immediately that if \(x(t)\) is a solution to the Euler-Lagrange equation, and the Legendre condition is satisfied at \((t_0, x(t_0), \dot{x}(t_0))\), then in a neighbourhood \(U\)
+of \((t_0, x(t_0), y(t_0))\), the Hamiltonian will be defined. We can choose \(t\) sufficiently close to \(t_0\) (i.e. in \((t_0 - \varepsilon, t_0 + \varepsilon)\)) so that \((t, x(t), y(t)) \in U\), and we will have
+</p>
+\begin{equation}
+  \label{eq:2}
+  \frac{dH}{dy_j}(t, x(t), y(t)) = G_j(t, x(t), y(t)) \ \ \ \ \text{and} \ \ \ \ \frac{dH}{dx_j}(t, x(t), y(t)) = -\frac{dL}{dx_j}(t, x(t), G(t, x(t), y(t)))
+  \end{equation}
+<p>
+By definition, \(y(t) = \frac{dL}{dv}(t, x(t), \dot{x}(t))\), so both \(t \mapsto G(t, x(t), \dot{x}(t))\) and \(t \mapsto \dot{x}(t)\) are smooth functions on \((t_0 - \varepsilon, t_0 + \varepsilon)\)
+such that \(y(t) - \frac{dL}{dv}(t, x(t), v(t)) = 0\) when plugged-in as \(v(t)\). However, the Legendre condition and implicit function theorem imply that such a \(v(t)\) in a neighbourhood of \(t_0\) is unique,
+so on interval \((t_0 - \delta, t_0 + \delta)\), we have \(\dot{x}(t) = G(t, x(t), y(t))\), and using Eq. \eqref{eq:1}, we have
+</p>
+\begin{equation}
+  \label{eq:3}
+  \frac{dH}{dy_j}(t, x(t), y(t)) = \dot{x}_j(t) \ \ \ \ \text{and} \ \ \ \ \frac{dH}{dx_j}(t, x(t), y(t)) = -\dot{y}_j(t)
+\end{equation}
+<p>
+Thus, in summary, we have shown that if \(x(t)\) is a solution to the Euler-Lagrange equation, and the Legendre condition is satisfied at \((t_0, x(t_0), \dot{x}(t_0))\), then
+there exists an interval around \(t_0\) such that \(x(t)\) and \(y(t)\) satisfy the above differential equations, which we refer to as the <i>Hamilton equations</i>.
+</p>
+
+<p>
+Conversely, suppose the Legendre condition of the Lagrangian \(L\) is satisfied at point \((t_0, x_0, v_0)\). We define \(G_j(t, x, y)\)
+as before, so that \(y - \frac{dL}{dv}(t, x, G(t, x, y)) = 0\) on \(U\) about \((t_0, x_0, y_0)\) with \(y_0 = \frac{dL}{dv}(t_0, x_0, v_0)\).
+Suppose the functions \(x(t)\) and \(y(t)\) with \(x(t_0) = x_0\) and \(y(t_0) = y_0\)
+satisfy the Hamilton equations on some interval about \(t_0\). Note that Eq. \eqref{eq:g} and Eq. \eqref{eq:3} imply \(G(t, x(t), y(t)) = \dot{x}(t)\) so \(y(t) = \frac{dL}{dv}(t, x(t), \dot{x}(t))\), and we have
+</p>
+\begin{align}
+  0 = \dot{y}_j(t) - \frac{d}{dt} \frac{dL}{dv_j}(t, x(t), \dot{x}(t)) &= -\frac{dH}{dx_j}(t, x(t), y(t)) - \frac{d}{dt} \frac{dL}{dv_j}(t, x(t), \dot{x}(t))
+  \\ &= \frac{dL}{dx_j}(t, x(t), \dot{x}(t)) - \frac{d}{dt} \frac{dL}{dv_j}(t, x(t), \dot{x}(t))
+  \end{align}
+<p>
+where the final equality uses Eq. \eqref{eq:l}. This is precisely the Euler-Lagrange equation. Hence, we have proved the following claim:
+</p>
+
+<p>
+<b>Claim.</b> If \(L\) is a Lagrangian which satisfies the Legendre condition at some point \((t_0, x_0, v_0)\), then trajectory \(x(t)\) with \(x(t_0) = x_0\) and \(\dot{x}(t_0) = v_0\) satisfies the Euler-Lagrange
+  equation on some open interval around \(t_0\) if and only if there exists some \(y(t)\) also defined on an interval around \(t_0\) with \(y(t_0) = y_0 = \frac{dL}{dv}(t_0, x_0, v_0)\) such that \(x(t)\)
+  and \(y(t)\) satisfy the Hamilton equations, for the Hamiltonian \(H\) defined on some open set around \((t_0, x_0, y_0)\). Moreover, when such a \(y\) exists, it is always the case that \(y(t) = \frac{dL}{dv}(t, x(t), \dot{x}(t))\).
+</p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
