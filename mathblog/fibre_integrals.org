@@ -1,6 +1,6 @@
 #+TITLE:Fibre integrals and the Thom isomorphism
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6;} a {color:blue;} </style>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;} </style>
 
 /Originally published: May 5th, 2025/, /Updated: September 8th, 2025/
 

@@ -1,6 +1,6 @@
 #+TITLE: A complete proof of the Myers-Steenrod theorem
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style>  body {font-size:15px;background-color:#FDF7D6} a {color:blue;} </style>
+#+HTML_HEAD: <style>  body {font-size:15px;} a {color:blue;} </style>
 
 /Originally published: May 6th, 2025/
 

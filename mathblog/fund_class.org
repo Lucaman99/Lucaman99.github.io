@@ -1,0 +1,144 @@
+#+TITLE:Existence of the fundamental class
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} a{color:blue;} </style>
+
+/Originally posted:/ February 4th, 2026
+
+------------------------
+
+* Introduction
+
+The blog might be back, let's see how consistent I stay with it. The goal of this post is to present the details of what I think is a nice proof (from Hatcher)
+which characterizes the top-dimensional homology of closed connected (topological) $n$ -manifolds.
+
+* Existence of the fundamental class
+
+First, briefly recall that we use the notation $H_n(M \ | \ x; R)$ to denote the relative homology $H_n(M, M - \{x\}; R) \simeq R$ (by the locally Euclidean property of $M$, excision, the long exact
+sequence of homology). We also use $H_n(M | U; R) = H_n(M, M - U; R)$ when, more generally, we are removing an open set $U$.
+$M_R$ denotes the space of $\alpha_x \in H_n(M \ | \ x; R)$, for each $x \in M$: this space is naturally a smooth manifold over $M$ where the
+projection $\pi : M_R \to M$ sending $\alpha_x$ to its corresponding $x \in M$ is a covering map. When we omit $R$ and simply use $H_n(M | x)$, we are implicitly setting $R = \mathbb{Z}$. Note that
+we have a canonical isomorphism $H_n(M | x) \otimes R \simeq H_n(M | x; R)$ obtained from the obvious isomorphism of $R$ -modules at the level of relative chains $C_n(M, M - \{x\}) \otimes R \simeq C_n(M, M - \{x\}; R)$.
+It follows that if we fix $r \in R$, then we obtain a subcovering space $M_r \subset M_R$ consisting of the points $\pm \mu_x \otimes r$. If $r = -r$ in $R$, then these points are equal, and the subcovering space
+is just a copy of $M$. Otherwise, we get a copy of $\widetilde{M}$: the usual two-sheeted orientation cover for $M$. It then follows that $M_R$ is the union of all the $M_r$, where clearly $M_a = M_{b}$ if and only if $a = \pm b$.
+
+An $R$ -orientation for $M$ is a choice of generator/unit $\mu_x \in H_n(M | x; R)$ (local orientation) for each $x \in M$ such that for any such $x$, there exists a coordinate ball $B$ around $x$ such that
+$\mu_y$ for all $y \in B$ is the image of some $\mu_B \in H_n(M | B; R) \simeq R$ under the natural inclusion $H_n(M | B; R) \to H_n(M | x; R)$. The manifold $M$ is said to be $R$ -orientable if it can be endowed
+with an orientation. Recall the following result:
+
+*Claim.* A connected manifold $M$ is $\mathbb{Z}$ -orientable if and only if $\widetilde{M}$ has two connected components.
+
+/Proof./ If $\widetilde{M}$ has two connected components, each is homeomorphic to $M$, and since $\widetilde{M}$ is orientable, $M$ must be as well. Conversely, if $M$ is orientable, it is
+easy to check that it has precisely two orientations. We claim that each of the images of these individual orientations in $\widetilde{M}$ determine two connected components. Indeed, these images (call them $M_{\pm}$)
+must cover all of $\widetilde{M}$, are disjoint, and are connected as the continuous image of $M$ which is connected. In fact, since a cover is a local homeomorphism, and the restricted projections $M_{\pm} \to M$ are
+bijective, each $M_{\pm}$ is necessarily homeomorphic to $M$, so each is clopen. It follows that $M_{+}$ and $M_{-}$ must be individual connected components. $\blacksquare$
+
+From the above characterization of $M_R$ it is easy to prove the following results:
+
+*Claim.* If connected $M$ is $\mathbb{Z}$ -orientable, it is $R$ -orientable for any $R$. If $M$ is not $\mathbb{Z}$ -orientable, it is $R$ -orientable if and only if $2 = 0$ in $R$.
+
+/Proof./ If $M$ is $\mathbb{Z}$ -orientable, then $M_R$ always consists of a disjoint collection of sheets each homeomorphic to $M$. In particular, such a homeomorphism $M_1 \to M$ gives rise to an
+$R$ -orientation. If $M$ is not $\mathbb{Z}$ -orientable and $2 \neq 0$, then $-r \neq r$ for any unit $r \in R$, hence if there did exist a section $M \to M_r$ for some unit $r$, then it would give rise
+to a section $M \to \widetilde{M}$, which is a contradiction. Conversely, if $2 = 0$, then $M_r \simeq M$ for any unit $r$, and we can easily write down a section, which is precisely an $R$ -orientation. $\blacksquare$
+
+From here, we can move to the main result of this post:
+
+*Theorem 1.* Let $M$ be closed and connected. If $M$ is $R$ -orientable, then the natural map $H_n(M; R) \to H_n(M | x; R) \simeq R$ is an isomorphism for all $x \in M$.
+If $M$ is not $R$ -orientable, then the same map is injective, with image consisting of all elements $\mu_x \in H_n(M | x; R)$ such that $2\mu_x = 0$. In addition,
+$H_i(M; R) = 0$ for all $i > n = \dim(M)$.
+
+To prove this result, we will prove the following lemma:
+
+*Lemma 1.* If $M$ is an $n$ -manifold and $A \subset M$ is a compact subset, then given a section $x \mapsto \alpha(x)$ of the cover $M_R \to M$, there is a unique class $\Phi(\alpha) \in H_n(M | A; R)$
+whose image is $\alpha(x) \in H_n(M | x; R)$ for all $x \in A$, under the usual induced map. Moreover, $H_i(M | A; R) = 0$ for $i > n$.
+
+Let us first see how Lemma 1 will imply Theorem 1:
+
+/Proof of Theorem 1./ When $M$ is closed, it is compact, so we can set $A = M$ to immediately get $H_i(M; R) = H_i(M | M; R) = 0$ for $i > n$. In addition, if we let $\Gamma_R(M)$ denote the group
+of smooth sections of $M \to M_R$, then we have map $\Phi : \Gamma_R(M) \to H_n(M; R)$ with $\alpha \mapsto \Phi(\alpha)$ and $\Psi : H_n(M; R) \to \Gamma_R(M)$ with $\Psi(\beta)(x)$ defined to
+be the image of $\beta$ in $H_n(M | x; R)$ under the map induced by inclusion. Clearly, $\Psi(\beta)(x)$ projects to $x$ under $M_R \to M$. Moreover, the map $\Psi(\beta)$ is continuous.
+Let $U(\mu_B)$ be an open set in $M_R$ consisting of points of $H_n(M | x; R)$ for $x \in B$ which are images of $\mu_B \in H_n(M | B; R)$. Note that $\Psi(\beta)(x) \in U(\mu_B)$ if and only if
+$x \in B$ and $\beta_x = (\beta_B)_x = (\mu_B)_x$. Of course, the map $H_n(M | B; R) \to H_n(M | x; R)$ is an isomorphism, so we must have $\beta_B = \mu_B$. Thus, $\Psi(\beta)^{-1}(U(\mu_B))$ is
+either empty, or $B$. Thus, $\Psi(\beta)$ is, in fact, a section.
+
+Lemma 1 will imply that $\Psi(\Phi(\alpha))(x) = \alpha(x)$ for all $x \in A$, so $\Psi \circ \Phi = \text{id}$.
+In addition, it is clear that any $\beta \in H_n(M; R)$ is a class such that the image of $\beta$ in $H_n(M | x; R)$ is $\Psi(\beta)(x)$ for each $x \in A$, so $\Phi(\Psi(\beta)) = \beta$ by uniqueness,
+and $\Phi \circ \Psi = \text{id}$. Thus, we have bijections between the two groups. To see that these maps are homomorphisms, simply note that the image of a sum of classes
+$\beta_1 + \beta_2$ in $H_n(M | x; R)$ is equal to the sum of the images, for all $x \in A$, so $\Psi(\beta_1 + \beta_2)(x) = \Psi(\beta_1)(x) + \Psi(\beta_2)(x)$, and we thus have
+$\Psi(\beta_1 + \beta_2) = \Psi(\beta_1) + \Psi(\beta_2)$. Similarly, given sections $\alpha_1, \alpha_2$,
+\begin{equation}
+    \Phi(\alpha_1 + \alpha_2) = \Phi(\Psi(\Phi(\alpha_1)) + \Psi(\Phi(\alpha_2))) = (\Phi \circ \Psi)(\Phi(\alpha_1) + \Phi(\alpha_2)) = \Phi(\alpha_1) + \Phi(\alpha_2)
+\end{equation}
+so we in fact have an isomorphism of these groups, $H_n(M; R) \simeq \Gamma_R(M)$. From here, note that if $M$ is connected, then any section of a covering map $M_R \to M$ is determined uniquely
+by its value at a single point. In particular, it is easy to see from the structure of $M_R \to M$ discussed above as a disjoint union of sheets of the form $M_r$ that when $M$ is $R$ -orientable,
+every element of $H_n(M | x; R)$ for some $x \in M$ will determine a section, whereas when $M$ is not $R$ -orientable, only the $r$ corresponding to sheets where $r = -r$ will determine sections.
+This gives us the remaining implications of Theorem 1. $\blacksquare$
+
+Let us now finish the blog post by proving Lemma 1:
+
+/Proof of Lemma 1./ The idea with this proof is to reduce the problem a few times to easier and easier cases. Going forward, I will suppress the notation of putting $R$ in $H_n(M | A; R)$, and just denote this group by $H_n(M | A)$, to save space.
+
+1. First, note that if the claim holds for compact sets $A$, $B$, $A \cap B$, then it holds for $A \cup B$. A section $\alpha \in \Gamma_R(M)$ will restrict to
+   sections on $A, B, A \cap B$. Each of these sections will then give rise to unique classes $\alpha_A \in H_n(M | A)$, $\alpha_B \in H_n(M | B)$ $\alpha_{A \cap B} \in H_n(M | A \cap B)$,
+   which have image equal to $\alpha(x)$ in $H_n(M|x)$ for $x$ in $A$, $B$, and $A \cap B$ respectively. Clearly, the images of $\alpha_A$ and $\alpha_B$ in $H_n(M | A \cap B)$ satisfy the
+   property which defines $\alpha_{A \cap B}$, namely that its image is $\alpha(x)$ in $H_n(M | x)$ for all $x \in A \cap B$, so by uniqueness of the class, the images of $\alpha_A$ and $\alpha_B$
+   in $H_n(M | A \cap B)$ are /equal/ to $\alpha_{A \cap B}$. We have a relative Mayer-Vietoris sequence of the form:
+   
+    \begin{equation}
+        0 \longrightarrow H_n(M | A \cup B) \overset{\Phi}{\longrightarrow} H_n(M | A) \oplus H_n(M | B) \overset{\Psi}{\longrightarrow} H_n(M | A \cap B)
+    \end{equation}
+    
+    where the zero of the left comes from the assumption that $H_{i}(M | A \cap B; R) = 0$ for any $i > n$. Automatically, if we extend the Mayer-Vietoris sequence farther to the left,
+    we will also have $H_i(M | A \cup B) = 0$ for all $i > n$ from the assumptions. The Mayer-Vietoris maps
+    are the usual ones, so exactness implies that $\Phi(\alpha_{A \cup B}) = (\alpha_A, -\alpha_B)$ for some $\alpha_{A \cup B} \in H_n(M | A \cup B)$. The map $\Phi$, in particular, is taking the
+    image of $\alpha_{A \cup B}$ in $H_n(M|A)$
+    and $H_n(M|B)$ (and then flipping the sign of the $H_n(M|B)$ entry), so it follows that taking the image of $\alpha_{A \cup B}$ in $H_n(M | x)$ is $\alpha(x)$, as $\alpha_A$ and $\alpha_B$ have this property.
+    To see that $\alpha_{A \cup B}$
+    is unique, note that if $\alpha_{A \cup B}$ has image $0$ in $H_n(M | x)$ for all $x$, then its images in $H_n(M | A)$ and $H_n(M | B)$ respectively must also both have images
+    (which we call $\alpha'_A$ and $\alpha'_B$) equal to $0$ when we
+    further take the image in $H_n(M | x)$. Thus, by uniqueness of $\alpha'_A$ and $\alpha'_B$, from
+    the assumption on $A$ and $B$, we must have $\alpha'_A = \alpha_B' = 0$, so by injectivity of $\Phi$ in the Mayer-Vietoris sequence, $\alpha_{A \cup B} = 0$ as well.
+    So, the map assigning a section to $\alpha_{A \cup B}$
+    is injective, and we have our desired uniqueness.
+
+2. From here, we note a that a compact set $A$ can be written as a finite union of compact sets $A_1 \cup \cdots \cup A_m$ each contained in a homeomorphic copy of $\mathbb{R}^n \subset M$ (we just take a finite
+   cover of $A$ by Euclidean balls whose closure in contained in a slightly larger Euclidean ball). We can apply what we showed above to $A_1 \cup \cdots \cup A_{m - 1}$ and $A_{m - 1}$: namely, the intersection
+   of these sets is $(A_1 \cap A_m) \cup \cdots \cup (A_{m-1} \cap A_m)$ which is a union of $m - 1$ compact sets each contained an a homeomorphic copy of $\mathbb{R}^n \subset M$, hence using the previous paragraph,
+    by induction on $M$, we have reduced proving the claim to proving the case of $m = 1$. So, we can assume WLOG that our compact set $A$ is contained in a homeomorphic copy of $\mathbb{R}^n$ in $M$. In fact, without
+   loss of generality, we can just work in $\mathbb{R}^n$,
+   assuming $A$ is a compact subset of $\mathbb{R}^n$, as the claim we are trying to prove only involves $H_n(M | A)$, which
+   by excision is the same as $H_n(U | A)$ for some Euclidean ball $U$ around $A$ homeomorphic to $\mathbb{R}^n$.
+   #+BEGIN_EXPORT html
+   <p></p>
+   #+END_EXPORT
+
+3. When $A \subset \mathbb{R}^n$ is a union of convex compact sets $A_1, \dots, A_m$ in $\mathbb{R}^n$, we know that the intersection of convex compact sets will be convex compact, hence by the same
+   inductive logic as the previous paragraph, we can reduce to the case that $A$ is convex compact in $\mathbb{R}^n$. But in this case, the result becomes obvious: the inclusion maps $H_i(\mathbb{R}^n | A) \to H_i(\mathbb{R}^n | x)$
+   are isomorphisms because $\mathbb{R}^n - \{x\}$ deformation retracts to $\mathbb{R}^n - A$ via
+   straight-line homotopy (as $A$ is convex). Thus, inclusion $\iota : \mathbb{R}^n - A \to \mathbb{R}^n - \{x\}$ induces an
+   isomorphism in homology, and we can apply naturality and the five lemma to the
+   long exact sequences in homology. Therefore, if $\alpha \in \Gamma_R(M)$ is our section, then we can just set $\Phi(\alpha)$ to be the inverse image
+   of $\alpha(x)$ under this isomorphism, for any $x \in A$. A section $\alpha : A \to M_R$ is a lift of the inclusion $A \to M$ to the cover. Since the section
+   $y \mapsto (\Phi(\alpha))_y \in H_n(M | y)$ and $y \mapsto \alpha(y)$ agree at point $y = x$, it follows that they must be equal on all of $A$ (as $A$ is convex, hence connected),
+   so $\Phi(\alpha)$ has the desired property.
+    #+BEGIN_EXPORT html
+   <p></p>
+   #+END_EXPORT
+
+4. The final case we must consider is when $A \subset \mathbb{R}^n$ is an arbitrary compact subset. Let $\beta \in H_i(\mathbb{R}^n | A)$ be represented by a relative cycle
+   $z$ in $\mathbb{R}^n$, with $\partial z \in \mathbb{R}^n - A$, let $C$ be the union of the images of the singular simplices in $\partial z$. Since $C$ is compact (finite union of images of compact sets), it has
+   positive distance $\delta$ from $A$ in $\mathbb{R}^n$ (this is a basic topological fact). We cover $A$ by finitely many closed balls of radius less than $\delta$ centred at points of $A$, let $K$ be the union of
+   these balls (a finite union of convex compact sets), it is disjoint from $C$. It follows that the relative cycle $z$ in fact has its boundary $\partial z$ in $\mathbb{R}^n - K$. Therefore, this relative cycle
+   defines an element $\beta_K \in H_i(\mathbb{R}^n | K)$, which by definition, maps to $\beta \in H_i(\mathbb{R}^n | A)$
+    under the inclusion map. Set $i = n$ going forward: we will show that if $\beta_x \in H_n(\mathbb{R}^n | x)$ is $0$ for all $x \in A$, then $\beta = 0$. As we noted earlier, $K$ is a union of balls $B$ meeting $A$, and
+    each map $H_n(\mathbb{R}^n | B) \to H_n(\mathbb{R}^n | x)$ is an isomorphism for all $x \in B$. It follows that $\beta_K$ maps to $0$ in $H_n(M | x)$ for each $x \in K$: the reason being that
+     $(\beta_K) \mapsto (\beta_K)_x$ factors through $(\beta_K) \mapsto (\beta_K)_B \mapsto (\beta_K)_x$, where $B$ some ball containing $x$ and $(\beta_K)_B$ is the image in $H_n(\mathbb{R}^n | B)$. But each such
+     ball contains $y \in A$ as well, and taking the image of $\beta_K$ in $H_n(\mathbb{R}^n | y)$ is the same as taking the image of $\beta$ in $H_n(\mathbb{R}^n | y)$, which we assumed will yield $0$. Hence,
+     since $H_n(\mathbb{R}^n | B) \to H_n(\mathbb{R}^n | y)$ is an isomorphism, we must have $(\beta_K)_B = 0$, hence $(\beta_K)_x = 0$ as well. Since $K$ is a finite union of convex compact sets, we can apply the
+     result of the previous paragraph (particularly, uniqueness) to conclude that $\beta_K = 0$, hence its image $\beta$ in $H_n(\mathbb{R}^n | A)$ is also $0$.
+
+     Thus, to conclude, given a section $\alpha \in \Gamma_R(M)$ with $A \subset \mathbb{R}^n$, suppose $\Phi(\alpha) \in H_n(\mathbb{R}^n | A)$ such that $\Phi(\alpha)_x = \alpha(x)$ for all $x \in A$ does in fact exist. If $\beta$ were
+     another class such that $\beta_x = \alpha(x)$ for all $x$, then the image of $\Phi(\alpha) - \beta$ in $H_n(\mathbb{R}^n | x)$ is $0$ for all $x$, so from (4), $\Phi(\alpha) = \beta$, and we have the
+     uniqueness claim. To prove existence, we can just take the image of the $\Phi(\alpha) \in H_n(\mathbb{R}^n | K)$ produced for the union of convex compact sets $K$ constructed in (3),
+    in $H_n(\mathbb{R}^n | A)$, and let this be the $\Phi(\alpha)$ for $A$. This completes the proof.
+

@@ -1,0 +1,33 @@
+#+TITLE:An update and some goals for 2026
+#+DESCRIPTION:Goals!
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;} </style>
+
+/Originally posted:/ February XX, 2026
+
+------------------
+
+This will be the first-ever post on this blog which is not wholly dedicated to proving theorems and/or solving math problems. Hopefully, it will be the first of many! I
+never intended for this blog to be wholly math-focused, but alas, this is the subject about which I spend 99% of my time thinking. I still have my Substack, where I plan
+to release long-form writing like book reviews, essays, and perhaps even some short stories. I see the blog as a more personal forum, where I can just talk about my life
+in a more stream-of-concious way. Naturally, it isn't /maximally/ personal: after all it is still public, but its digital location ensures that it is slightly more
+secluded than /Dark Star/ (my Substack).
+
+In this transitory period of my life, where I'm shifting my mindset away from playing "the game" associated with getting the best marks in university classes, being constantly stressed
+about problem sets/assignments/exams, and in turn receiving clear signals about my performance in the form of number grades. I've sort of always known that this isn't how the real world
+works, but for the past 4 years and change, I have cultivated an identity which is highly correlated with academic performance: when I do well, I feel normal, when I do poorly, I feel awful,
+and when there is no doing to do (i.e. I go through a period where I'm /not/ chasing the North star of outstanding marks), I feel aimless. It has become very clear to me that I need to make
+some changes, but of course, it is often the case that there is misalignment between the mind and the heart. The remedy to this situation seems to be deep reflection about what I actually
+want in life, and /why/ I am currently doing what I am. I do strongly believe that I am doing a PhD for the right reasons: I love mathematics
+
+- I want to become very good at Riemannian geometry. The way I'm planning on accomplishing this is by doing a large portion of the problems
+  in Lee and/or Petersen's books. I'm also planning on reading Colding and Minicozzi's book on minimal surfaces, and Morgan and Tian's book on
+  the Poincare conjecture. This will require also becoming knowledgable about PDEs.
+- I want to understand probability theory and stochastic calculus very well. The main resources I'm currently using are Zitkovic's lecture notes,
+  and I'll eventually move on to Le Gall's book.
+- On that note, I'd like to understand financial mathematics well, to the point where I'm able to read the current state-of-the-art research/have novel ideas
+- Same thing goes for the more advanced mathematical quantum theory (in the sense of R.I. Sigal's work in this area). I want to be able to read his papers and have ideas for extensions.
+- I'd also like to learn way more about symplectic topology. I'm planning on doing the exercises in McDuff and Salamon's book.
+- Finally, I'd like to take a look at optimal transport (perhaps Villani's book) after I become very comfortable with probability.
+
+That seems like more than enough to keep me busy, for the time being.

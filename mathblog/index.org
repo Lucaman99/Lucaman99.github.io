@@ -1,10 +1,16 @@
-#+TITLE:Math blog
+#+TITLE:Jack's blog
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;} </style>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;}</style>
 
-- September 7th, 2025 | [[./fibre_integrals.html][Fibre integrals and the Thom isomorphism (unfinished)]]
+* 2026
+
+- February 9th, 2026 | [[./mcduff_salamon_1.html][A small note on a result in McDuff-Salamon]]
+- February 4th, 2026 | [[./fund_class.html][Constructing the fundamental class]]
+
+* 2025
+
+- September 7th, 2025 | [[./fibre_integrals.html][Fibre integrals and the Thom isomorphism *(unfinished)*]]
 - July 26th, 2025 | [[./imo_2025.html][Some solutions to problems from the 2025 IMO]]
 - July 1st, 2025 | [[./leray_hirsch.html][Leray-Hirsch theorem]]
 - June 11th, 2025 | [[./groupoid_svk.html][Seifert-Van Kampen for fundamental groupoids in painful detail]]
-- May 14th, 2025 | [[./every_hartshorne_ex.html][Every exercise in the first three chapters of Hartshorne (incomplete!)]]
 - May 6th, 2025 | [[./myers_steenrod.html][A complete proof of the Myers-Steenrod theorem]]
