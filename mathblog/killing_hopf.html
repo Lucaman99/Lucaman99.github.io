@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-25 Sat 10:08 -->
+<!-- 2026-04-25 Sat 10:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My preferred method for proving Killing-Hopf</title>
@@ -236,10 +236,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9c54489">1. Introduction</a></li>
-<li><a href="#org91764a2">2. Some preliminary results and local classification of constant curvature spaces</a></li>
-<li><a href="#org53433e7">3. Hadamard's theorem</a></li>
-<li><a href="#org3d0bc3e">4. Killing-Hopf theorem</a></li>
+<li><a href="#org225f682">1. Introduction</a></li>
+<li><a href="#org8d989b1">2. Some preliminary results and local classification of constant curvature spaces</a></li>
+<li><a href="#orgd1ee962">3. Hadamard's theorem</a></li>
+<li><a href="#org57a8707">4. Killing-Hopf theorem</a></li>
 </ul>
 </div>
 </div>
@@ -249,8 +249,8 @@
 
 <hr />
 
-<div id="outline-container-org9c54489" class="outline-2">
-<h2 id="org9c54489"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org225f682" class="outline-2">
+<h2 id="org225f682"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The goal of this short blog post will be to outline my preferred method for the proving the theorem of Killing and Hopf which classifies the
@@ -260,8 +260,8 @@ monodromy, and Do Carmo probably omits a lot of details. So we'll do it ourselve
 </div>
 </div>
 
-<div id="outline-container-org91764a2" class="outline-2">
-<h2 id="org91764a2"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
+<div id="outline-container-org8d989b1" class="outline-2">
+<h2 id="org8d989b1"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We first require a few preliminary results about when we can guarantee that a local isometry is a covering map (and object of great desire to topologists and geometers).
@@ -416,8 +416,8 @@ of the same radius are isometric (where we allow \(\varepsilon = \infty\)).
 </div>
 </div>
 
-<div id="outline-container-org53433e7" class="outline-2">
-<h2 id="org53433e7"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
+<div id="outline-container-orgd1ee962" class="outline-2">
+<h2 id="orgd1ee962"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 To prove Hadamard's theorem, we first need to use Jacobi fields as they were meant to be used: to understand how geodesics spread out when shot out from a given point.
@@ -447,7 +447,7 @@ on this whole interval. In particular, \(\langle D_t J, D_t J \rangle\) would ha
 
 <p>
 <b>Lemma 6.</b> If \(M\) has positive constant curvature \(k > 0\), then given \(p \in M\), there are no points conjugate to \(p\) which lie a distance less than \(\frac{\pi}{\sqrt{k}}\) away from \(p\).
-Thus, if \(M\) is complete, then for any \(p \in M\), \(\exp_p : B_{\pi/\sqrt{k}}(0) \to M\) will be a diffeomorphism onto its image.
+Thus, if \(M\) is complete, then for any \(p \in M\), \(\exp_p : B_{\pi/\sqrt{k}}(0) \to M\) will be a local diffeomorphism.
 </p>
 
 <p>
@@ -480,8 +480,8 @@ Lemma 1 that \(\exp_p\) is a covering map.
 </div>
 </div>
 
-<div id="outline-container-org3d0bc3e" class="outline-2">
-<h2 id="org3d0bc3e"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
+<div id="outline-container-org57a8707" class="outline-2">
+<h2 id="org57a8707"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We have now come to the ultimate purpose of this post: proving Killing-Hopf.
@@ -499,16 +499,16 @@ and \(\mathbb{H}^n = \exp_q(T_q \mathbb{H}^n)\) are isometric as normal neighbou
 </p>
 
 <p>
-In the case of \(k = 1\), we <i>cannot</i> use Hadamard's theorem, sadly. However, it isn't too difficult to reason about this case directly. From Lemma 6, we know that \(\exp_N : B_{\pi}(0) \to S^n - \{S\}\)
+In the case of \(k = 1\), we <i>cannot</i> use Hadamard's theorem, sadly. However, it isn't too difficult to reason about this case directly. We know that \(\exp_N : B_{\pi}(0) \to S^n - \{S\}\)
 is a diffeomorphism where \(N\) is the North pole, \(S\) is the South pole and \(B_{\pi}(0) \subset T_N S^n\). Let \(\varphi_N\) be the corresponding normal coordinate chart.
 From here, we select some other point \(\varphi_N(x) = N' \neq \{N, S\}\) which gives a normal coordinate chart \(\varphi_{N'} : B_{\pi}(0) \to S^n - \{S'\}\), where \(S'\) is antipodal to \(N'\).
-We similarly can choose some arbitrary point \(p \in M\) and we get a normal coordinate chart \(\psi : B_{\varepsilon}(0) \to M\) centred at \(p\) again by applying Lemma 6. We let \(q = \psi(x)\) and finally
-note that we have chart \(\eta : B_{\varepsilon}(0) \to M\) centred at \(q\). We want to paste together all of these local isometries to obtain a global one. We will clearly have a composition
+We similarly can choose some arbitrary point \(p \in M\) and we get a local diffeomorphism \(\psi : B_{\pi}(0) \to M\) centred at \(p\) again by applying Lemma 6. We let \(q = \psi(x)\) and finally
+note that we have local diffeomorphism \(\eta : B_{\pi}(0) \to M\) centred at \(q\). We want to paste together all of these local isometries to obtain a global one. We will clearly have a composition
 \(\psi \circ \varphi_N^{-1} : S^n - \{S\} \to M\) which is a local isometry, as well as \(\eta \circ \varphi_{N'}^{-1}\). To show that two local isometries agree on a connected manifold, we know that
 if suffices to show that their derivatives agree at a point. Note that both of these maps send \(N'\) to \(q\). However, their derivatives
-at \(q\) may differ. To remedy this situation, consider the map \(F = \eta^{-1} \circ \psi \circ \varphi_N^{-1} \circ \varphi_{N'}\) which is defined on an open subset of the Euclidean ball \(B_{\varepsilon}(0)\).
-In particular, it is defined at the origin: it sends \(0\) to itself. Thus, we obtain a linear map \(L : \mathbb{R}^n \to \mathbb{R}^n\) given by \(L = DF(0)\). This will itself be an isometry of Euclidean space,
-as both \(\eta^{-1} \circ \psi\) and \(\varphi_N^{-1} \circ \varphi_{N'}\) are isometries.
+at \(q\) may differ. To remedy this situation, consider the map \(F = \eta^{-1} \circ \psi \circ \varphi_N^{-1} \circ \varphi_{N'}\) which is defined on a small neighbourhood (so that \(\eta\) is in fact invertible)
+of the origin (it sends \(0\) to itself). Thus, we obtain a linear map \(L : \mathbb{R}^n \to \mathbb{R}^n\) given by \(L = DF(0)\). This will itself be an isometry of Euclidean space,
+as both \(\eta^{-1} \circ \psi\) and \(\varphi_N^{-1} \circ \varphi_{N'}\) are isometries where they are defined.
 Instead of using \(\eta \circ \varphi_{N'}^{-1}\), we replace it with the map \(\eta \circ L \circ \varphi_{N'}^{-1}\). Since \(L(0) = 0\), it is easy to see that this new map still sends \(N'\) to \(q\), it is still an
 isometry onto its image as \(L\) is an isometry of Euclidean space, and moreover, the derivative of this new function is clearly the same as the derivative of \(\psi \circ \varphi_N^{-1}\) at \(N'\). Therefore,
 The two local isometries glue together to give a well defined function \(\Phi : S^n \to M\) which is an isometry onto its image.
@@ -526,7 +526,7 @@ to be a local isometry, it is in fact a global isometry.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-04-25 Sat 10:08</p>
+<p class="date">Created: 2026-04-25 Sat 10:19</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
