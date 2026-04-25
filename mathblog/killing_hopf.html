@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-25 Sat 10:19 -->
+<!-- 2026-04-25 Sat 10:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My preferred method for proving Killing-Hopf</title>
@@ -236,10 +236,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org225f682">1. Introduction</a></li>
-<li><a href="#org8d989b1">2. Some preliminary results and local classification of constant curvature spaces</a></li>
-<li><a href="#orgd1ee962">3. Hadamard's theorem</a></li>
-<li><a href="#org57a8707">4. Killing-Hopf theorem</a></li>
+<li><a href="#orgc002f74">1. Introduction</a></li>
+<li><a href="#org62ac680">2. Some preliminary results and local classification of constant curvature spaces</a></li>
+<li><a href="#org18603b9">3. Hadamard's theorem</a></li>
+<li><a href="#org44b947c">4. Killing-Hopf theorem</a></li>
 </ul>
 </div>
 </div>
@@ -249,8 +249,8 @@
 
 <hr />
 
-<div id="outline-container-org225f682" class="outline-2">
-<h2 id="org225f682"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-orgc002f74" class="outline-2">
+<h2 id="orgc002f74"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The goal of this short blog post will be to outline my preferred method for the proving the theorem of Killing and Hopf which classifies the
@@ -260,8 +260,8 @@ monodromy, and Do Carmo probably omits a lot of details. So we'll do it ourselve
 </div>
 </div>
 
-<div id="outline-container-org8d989b1" class="outline-2">
-<h2 id="org8d989b1"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
+<div id="outline-container-org62ac680" class="outline-2">
+<h2 id="org62ac680"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We first require a few preliminary results about when we can guarantee that a local isometry is a covering map (and object of great desire to topologists and geometers).
@@ -342,7 +342,8 @@ lets us do this in general for the case that \(U = V\) (i.e. \(U\) is the counte
 </p>
 
 <p>
-This is a basic result, so we'll skip its proof. So, all that remains is to calculate \(\langle (\exp_p)_{*}(U), (\exp_p)_{*}(W) \rangle\) for pairs of \(U, W \in T_v B_{\varepsilon}(0)\) with \(u\) and \(w\) both orthogonal to \(v\). Doing this without any extra assumptions is impossible,
+This is a basic result, so we'll skip its proof. So, all that remains is to calculate \(\langle (\exp_p)_{*}(U), (\exp_p)_{*}(W) \rangle\) for pairs of
+\(U, W \in T_v B_{\varepsilon}(0)\) with \(u\) and \(w\) both orthogonal to \(v\). Doing this without any extra assumptions is impossible,
 but in the constant curvature setting, we can use our previous work with Jacobi fields. In particular, let \(J_U\) be the Jacobi field along the geodesic \(\gamma(t) = \exp_p(tv)\) with \(J_U(0) = 0\)
 and \(D_t J_U(0) = u \perp v = \dot{\gamma}(0)\). Define \(J_W\) similarly. We know that in general these Jacobi fields will be given by \(J_U(t) = (\exp_p)_{*, tv}(tU)\) where \(U \in T_{tv} T_p M\) is the counterpart of \(u\). \(J_W\)
 is defined similarly. Thus, in particular, \(J_U(1) = (\exp_p)_{*, v}(U)\) and \(J_W(1) = (\exp_p)_{*, v}(W)\). We also know from our work above that
@@ -358,10 +359,10 @@ where \(u(t)\) and \(w(t)\) are the parallel transports of \(u\) and \(w\) along
 \end{equation}
 
 <p>
-and we're done. From here, everything becomes easy. Suppose \((M, g)\) has constant curvature \(k\). Pick \(p \in M\), let \(B\) be a normal neighbourhood around \(p\).
-Let \(e_1, \dots, e_n\) be an orthonormal basis for \(T_p M\) (relative to \(g_p\)), let \(\Phi : \mathbb{R}^n \to T_p M\) be the corresponding linear isomorphism, and let \((x^1, \dots, x^n) = \varphi = \Phi^{-1} \circ \exp_p^{-1}\)
-be the corresponding normal coordinates. Note that if \(w^j \frac{d}{ds^j}\) is some Euclidean tangent vector at point \((v^1, \dots, v^n)\), then we obtain a corresponding tangent vector \(w^j \Phi_{*}\left( \frac{d}{ds^j} \right) = w^j E_j\)
-in \(T_v T_p M\) where \(v = v^j e_j\). Also note that \(\frac{d}{dx^j}\rvert_{\exp_p(v)} = (\exp_p)_{*, v}(E_j)\). Pick some \(v = (v^1, \dots, v^n)\) away from the origin in Euclidean space, note that the radial
+and we're done. From here, everything becomes easy. Suppose \((M, g)\) has constant curvature \(k\). Pick \(p \in M\), let \(B = \exp_p(B_{\varepsilon}(0))\) be such that \(\exp_p : B_{\varepsilon}(0) \to B\) is a local diffeomorphism.
+Let \(e_1, \dots, e_n\) be an orthonormal basis for \(T_p M\) (relative to \(g_p\)), let \(\Phi : \mathbb{R}^n \to T_p M\) be the corresponding linear isomorphism with the standard Euclidean basis and let \(\varphi = \Phi \circ \exp_p\).
+Note that if \(w^j \frac{d}{ds^j}\) is some Euclidean tangent vector at point \((v^1, \dots, v^n)\), then we obtain a corresponding tangent vector \(w^j \Phi_{*}\left( \frac{d}{ds^j} \right) = w^j E_j\)
+in \(T_v T_p M\) where \(v = v^j e_j\). Pick some \(v = (v^1, \dots, v^n)\) away from the origin in Euclidean space, note that the radial
 vector \(v^j \frac{d}{ds^j}\) at this point will be orthogonal to some \(w^j \frac{d}{ds^j}\) if and only if \(v^j e_j\) is orthogonal to \(w^j e_j\) relative to \(g_p\). Therefore, using the above results,
 </p>
 
@@ -416,8 +417,8 @@ of the same radius are isometric (where we allow \(\varepsilon = \infty\)).
 </div>
 </div>
 
-<div id="outline-container-orgd1ee962" class="outline-2">
-<h2 id="orgd1ee962"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
+<div id="outline-container-org18603b9" class="outline-2">
+<h2 id="org18603b9"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 To prove Hadamard's theorem, we first need to use Jacobi fields as they were meant to be used: to understand how geodesics spread out when shot out from a given point.
@@ -480,8 +481,8 @@ Lemma 1 that \(\exp_p\) is a covering map.
 </div>
 </div>
 
-<div id="outline-container-org57a8707" class="outline-2">
-<h2 id="org57a8707"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
+<div id="outline-container-org44b947c" class="outline-2">
+<h2 id="org44b947c"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We have now come to the ultimate purpose of this post: proving Killing-Hopf.
@@ -503,15 +504,16 @@ In the case of \(k = 1\), we <i>cannot</i> use Hadamard's theorem, sadly. Howeve
 is a diffeomorphism where \(N\) is the North pole, \(S\) is the South pole and \(B_{\pi}(0) \subset T_N S^n\). Let \(\varphi_N\) be the corresponding normal coordinate chart.
 From here, we select some other point \(\varphi_N(x) = N' \neq \{N, S\}\) which gives a normal coordinate chart \(\varphi_{N'} : B_{\pi}(0) \to S^n - \{S'\}\), where \(S'\) is antipodal to \(N'\).
 We similarly can choose some arbitrary point \(p \in M\) and we get a local diffeomorphism \(\psi : B_{\pi}(0) \to M\) centred at \(p\) again by applying Lemma 6. We let \(q = \psi(x)\) and finally
-note that we have local diffeomorphism \(\eta : B_{\pi}(0) \to M\) centred at \(q\). We want to paste together all of these local isometries to obtain a global one. We will clearly have a composition
+note that we have local diffeomorphism \(\eta : B_{\pi}(0) \to M\) centred at \(q\). We want to paste together all of these local isometries (when we endow Euclidean ball with the pullback metrics) to obtain a global one.
+We will clearly have a composition
 \(\psi \circ \varphi_N^{-1} : S^n - \{S\} \to M\) which is a local isometry, as well as \(\eta \circ \varphi_{N'}^{-1}\). To show that two local isometries agree on a connected manifold, we know that
 if suffices to show that their derivatives agree at a point. Note that both of these maps send \(N'\) to \(q\). However, their derivatives
 at \(q\) may differ. To remedy this situation, consider the map \(F = \eta^{-1} \circ \psi \circ \varphi_N^{-1} \circ \varphi_{N'}\) which is defined on a small neighbourhood (so that \(\eta\) is in fact invertible)
 of the origin (it sends \(0\) to itself). Thus, we obtain a linear map \(L : \mathbb{R}^n \to \mathbb{R}^n\) given by \(L = DF(0)\). This will itself be an isometry of Euclidean space,
-as both \(\eta^{-1} \circ \psi\) and \(\varphi_N^{-1} \circ \varphi_{N'}\) are isometries where they are defined.
+as both \(\eta^{-1} \circ \psi\) and \(\varphi_N^{-1} \circ \varphi_{N'}\) are isometries near the origin.
 Instead of using \(\eta \circ \varphi_{N'}^{-1}\), we replace it with the map \(\eta \circ L \circ \varphi_{N'}^{-1}\). Since \(L(0) = 0\), it is easy to see that this new map still sends \(N'\) to \(q\), it is still an
 isometry onto its image as \(L\) is an isometry of Euclidean space, and moreover, the derivative of this new function is clearly the same as the derivative of \(\psi \circ \varphi_N^{-1}\) at \(N'\). Therefore,
-The two local isometries glue together to give a well defined function \(\Phi : S^n \to M\) which is an isometry onto its image.
+The two local isometries glue together to give a well defined function \(\Phi : S^n \to M\) which is a local isometry.
 </p>
 
 <p>
@@ -526,7 +528,7 @@ to be a local isometry, it is in fact a global isometry.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-04-25 Sat 10:19</p>
+<p class="date">Created: 2026-04-25 Sat 10:58</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
