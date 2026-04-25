@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-04-25 Sat 09:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My preferred method for proving Killing-Hopf</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Let's go" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+<style> body {font-size:15px;} a {color:blue;} </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">My preferred method for proving Killing-Hopf</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org36b2a2c">1. Introduction</a></li>
+<li><a href="#org730a315">2. Some preliminary results and local classification of constant curvature spaces</a></li>
+<li><a href="#orge9cb56f">3. Hadamard's theorem</a></li>
+<li><a href="#org42c7347">4. Killing-Hopf theorem</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i> April 23rd, 2026
+</p>
+
+<hr />
+
+<div id="outline-container-org36b2a2c" class="outline-2">
+<h2 id="org36b2a2c"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The goal of this short blog post will be to outline my preferred method for the proving the theorem of Killing and Hopf which classifies the
+universal covers of complete, connected Riemannian manifolds of constant curvature. Lee's book does this through taking an unnecessary detour through
+monodromy, and Do Carmo probably omits a lot of details. So we'll do it ourselves!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org730a315" class="outline-2">
+<h2 id="org730a315"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+We first require a few preliminary results about when we can guarantee that a local isometry is a covering map (and object of great desire to topologists and geometers).
+First, let us recall a basic result (that we will not prove here):
+</p>
+
+<p>
+<b>Lemma 1.</b> If \(f : M \to N\) with both \(M\) and \(N\) connected is a local isometry and \(M\) is complete then \(N\) is also complete and \(f\) is a covering map.
+</p>
+
+<p>
+Let us now briefly recall some facts about Jacobi fields, which are variation fields \(J\) associated with variations through geodesics. Equivalently, they satisfy the Jacobi equation, \(D_t^2 J + R(J, \dot{\gamma}) \dot{\gamma} = 0\)
+for \(\gamma\) a geodesic.
+It is easy to see that given a geodesic, a Jacobi field \(J\) along \(\gamma\) with \(J(0)\) and \(J'(0)\) prescribed exists and is unique. In the constant curvature case, it is pretty easy to see exactly
+what the Jacobi fields must be. Indeed, suppose \(M\) has constant sectional curvature \(k\): know that in the constant-curvature setting
+</p>
+
+<p>
+\[R(X, Y) Z = - k (\langle X, Z \rangle Y - \langle Y, Z \rangle X)\]
+</p>
+
+<p>
+so that
+</p>
+
+<p>
+\[R(J, \dot{\gamma}) \dot{\gamma} = k \langle \dot{\gamma}, \dot{\gamma} \rangle J - \langle J, \dot{\gamma} \rangle \dot{\gamma}\]
+</p>
+
+<p>
+If we are interested in solving the Jacobi equation for the case of \(J(0) = 0\) and \(D_t J(0) = W \perp \dot{\gamma}(0)\), note that
+</p>
+
+<p>
+\[\frac{d}{dt} \langle D_t J, \dot{\gamma} \rangle = \langle D_t^2 J, \dot{\gamma} \rangle = -R(J, \dot{\gamma}, \dot{\gamma}, \dot{\gamma}) = 0\]
+</p>
+
+<p>
+which means that \(\frac{d}{dt} \langle J, \dot{\gamma} \rangle = \langle D_t J, \dot{\gamma} \rangle = 0\) for all \(t\) so \(\langle J, \dot{\gamma} \rangle = 0\) as
+well. From here, let \(W(t)\) denote the parallel transport of \(W\) along \(\gamma\). Our desired Jacobi field will satisfy the equation \(D_t^2 J + k \langle \dot{\gamma}, \dot{\gamma} \rangle J = 0\).
+Note that \(\langle \dot{\gamma}, \dot{\gamma} \rangle\) is constant. If we let \(J(t) = f_{k, \gamma}(t) W(t)\) with
+</p>
+
+\begin{equation}
+f_{k, \gamma}(t) = \begin{cases}
+\frac{\sin(\sqrt{k} |\dot{\gamma}(0)| t)}{\sqrt{k} |\dot{\gamma}(0)|} & \text{if} \ k > 0 \\
+t & \text{if} \ k = 0 \\
+\frac{\sinh(\sqrt{-k} |\dot{\gamma}(0)| t)}{\sqrt{-k} |\dot{\gamma}(0)| } & \text{if} \ k < 0
+\end{cases}
+\end{equation}
+
+<p>
+then clearly, we will have produced the desired vector field. If we combine this result with the Gauss lemma, then we can immediately give a local classification result
+for manifolds of constant curvature.
+</p>
+
+<p>
+<b>Remark 2.</b> Before proceeding, let us briefly recall that if \(V\) is an \(n\) -dimensional real vector space, once we choose a basis \(v_1, \dots, v_n\), we can write down global coordinates \(x = (x^1, \dots, x^n)\)
+where \(x^i : V \to \mathbb{R}\) is given by \(x^i(c^j v_j) = c^i\). This immediately gives us a global frame \(\frac{d}{dx^1}, \dots, \frac{d}{dx^n}\) for \(TV\). This fact allows us to identify
+\(T_p V\) and \(V\) via the isomorphism of vector spaces \(\frac{d}{dx^i}\rvert_p \mapsto v_i\). The main thing worth noting is that this identification is actually canonical. If \(w_1, \dots, w_n\) were a different basis and \(y = (y^1, \dots, y^n)\)
+were the corresponding coordinate functions, then if we define \(T : V \to V\) as \(T v_j = w_j = T^{jk} v_k\), then \(x^i(w_j) = T^{ji}\) so \(x^i = \sum_j T^{ji} y^j\) and
+\(\frac{d}{dy^j} = \frac{d x^i}{d y^j} \frac{d}{dx^i} = T^{ji} \frac{d}{dx^i}\)
+Thus, sending \(\frac{d}{dx^i}\rvert_p \mapsto v_i\) is equivalent to sending \(\frac{d}{dy^j} \mapsto T^{ji} v_i = w^j\). Recall that the derivative of functions between any two finite-dimensional vector spaces is
+well-defined, as these vector spaces may always be endowed with norms, and all such norms are equivalent. Thus, it is easy to see that given \(v \in V\), we have derivation in \(T_p V\) given by
+\(f \mapsto \frac{d}{dt}\rvert_{t = 0} f(p + tv) = v^j \frac{d f}{dx^j}\rvert_p\), hence the canonical identification of \(V\) and \(T_p V\) takes a vector to its associated directional derivative at \(p\).
+We will mostly be interested in using this identification in the case that \(V = T_p M\) for some manifold \(M\). In particular, we have a canonical identification \(T_v T_p M \simeq T_p M\) for any \(v \in T_p M\).
+In the next section, I will denote elements of \(T_p M\) with lowercase letters and their canonical counterpart in \(T_v T_p M\) by an uppercase letter. For example, \(w \in T_p M\) and \(W \in T_v T_p M\).
+</p>
+
+<p>
+To do the local classification, the idea is to write down an explicit form for the constant-curvature metric in Riemannian normal coordinates. Thus, we need to understand the pullback metric \(\exp_p^{*} g\),
+which means that we need to be able to compute \(\langle (\exp_p)_{*}(U), (\exp_p)_{*}(W) \rangle\) for pairs of \(U, W \in T_v B_{\varepsilon}(0)\) with \(v \in B_{\varepsilon}(0) \subset T_p M\). The Gauss lemma
+lets us do this in general for the case that \(U = V\) (i.e. \(U\) is the counterpart of \(v\)). In other words, when one of the tangent vectors in question is pointing in the radial direction:
+</p>
+
+<p>
+<b>Lemma 3</b> (Gauss). \(\langle (\exp_p)_{*, v}(V), (\exp_p)_{*, v}(W) \rangle = \langle v, w \rangle\) for \(V, W \in T_v B_{\varepsilon}(0)\).
+</p>
+
+<p>
+This is a basic result, so we'll skip its proof. So, all that remains is to calculate \(\langle (\exp_p)_{*}(U), (\exp_p)_{*}(W) \rangle\) for pairs of \(U, W \in T_v B_{\varepsilon}(0)\) with \(u\) and \(w\) both orthogonal to \(v\). Doing this without any extra assumptions is impossible,
+but in the constant curvature setting, we can use our previous work with Jacobi fields. In particular, let \(J_U\) be the Jacobi field along the geodesic \(\gamma(t) = \exp_p(tv)\) with \(J_U(0) = 0\)
+and \(D_t J_U(0) = u \perp v = \dot{\gamma}(0)\). Define \(J_W\) similarly. We know that in general these Jacobi fields will be given by \(J_U(t) = (\exp_p)_{*, tv}(tU)\) where \(U \in T_{tv} T_p M\) is the counterpart of \(u\). \(J_W\)
+is defined similarly. Thus, in particular, \(J_U(1) = (\exp_p)_{*, v}(U)\) and \(J_W(1) = (\exp_p)_{*, v}(W)\). We also know from our work above that
+</p>
+\begin{equation}
+\langle J_U(t), J_W(t) \rangle = f_{k, \gamma}(t)^2 \langle u(t), w(t) \rangle
+\end{equation}
+<p>
+where \(u(t)\) and \(w(t)\) are the parallel transports of \(u\) and \(w\) along \(\gamma\). In particular, \(\langle u(t), w(t) \rangle\) is constant, so
+</p>
+\begin{equation}
+\langle (\exp_p)_{*, v}(U), (\exp_p)_{*, v}(W) \rangle = \langle J_U(1), J_W(1) \rangle = f_{k, \gamma}(1)^2 \langle u(1), w(1) \rangle = f_{k, \gamma}(1)^2 \langle u, w \rangle
+\end{equation}
+
+<p>
+and we're done. From here, everything becomes easy. Suppose \((M, g)\) has constant curvature \(k\). Pick \(p \in M\), let \(B\) be a normal neighbourhood around \(p\).
+Let \(e_1, \dots, e_n\) be an orthonormal basis for \(T_p M\) (relative to \(g_p\)), let \(\Phi : \mathbb{R}^n \to T_p M\) be the corresponding linear isomorphism, and let \((x^1, \dots, x^n) = \varphi = \Phi^{-1} \circ \exp_p^{-1}\)
+be the corresponding normal coordinates. Note that if \(w^j \frac{d}{ds^j}\) is some Euclidean tangent vector at point \((v^1, \dots, v^n)\), then we obtain a corresponding tangent vector \(w^j \Phi_{*}\left( \frac{d}{ds^j} \right) = w^j E_j\)
+in \(T_v T_p M\) where \(v = v^j e_j\). Also note that \(\frac{d}{dx^j}\rvert_{\exp_p(v)} = (\exp_p)_{*, v}(E_j)\). Pick some \(v = (v^1, \dots, v^n)\) away from the origin in Euclidean space, note that the radial
+vector \(v^j \frac{d}{ds^j}\) at this point will be orthogonal to some \(w^j \frac{d}{ds^j}\) if and only if \(v^j e_j\) is orthogonal to \(w^j e_j\) relative to \(g_p\). Therefore, using the above results,
+</p>
+
+\begin{equation}
+(\varphi^{*} g)_v\left( v^j \frac{d}{ds^j}, w^j \frac{d}{ds^j} \right) = \langle (\exp_p)_{*}(V), (\exp_p)_{*}(W) \rangle = \langle v^j e_j, w^j e_j \rangle = v^1 w^1 + \cdots + v^n w^n
+\end{equation}
+<p>
+and for \(w^j \frac{d}{ds^j}\) and \(u^j \frac{d}{ds^j}\) both orthogonal to \(v^j \frac{d}{ds^j}\),
+</p>
+\begin{equation}
+(\varphi^{*} g)_v\left( w^j \frac{d}{ds^j}, u^j \frac{d}{ds^j} \right) = \langle (\exp_p)_{*}(W), (\exp_p)_{*}(U) \rangle = f_{k, \gamma}(1)^2 (u^1 w^1 + \cdots + u^n w^n)
+\end{equation}
+<p>
+where
+</p>
+\begin{equation}
+f_{k, \gamma}(1)^2 = \begin{cases}
+\frac{\sin^2(\sqrt{k} r(v))}{k r(v)^2} & \text{if} \ k > 0 \\
+1 & \text{if} \ k = 0 \\
+-\frac{\sinh^2(\sqrt{-k} r(v))}{k r(v)^2 } & \text{if} \ k < 0
+\end{cases}
+\end{equation}
+<p>
+where \(r(v) = \sqrt{(v^1)^2 + \cdots + (v^n)^2}\). Let \(j : B_{\varepsilon}(0) - \{0\} \to \mathbb{R}^n - \{0\}\) be inclusion and define \(\pi : \mathbb{R}^{n} - \{0\} \to S^{n - 1}\) as \(\pi(v) = \frac{v}{r(v)}\). It is trivially easy to check that
+\(dr^2 + r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) gives the Euclidean metric on \(B_{\varepsilon}(0)\), hence for vectors orthogonal to the radial vector, \(r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) returns their Euclidean
+inner product. It follows immediately that on the punctured Euclidean disk \(B_{\varepsilon}(0) - \{0\}\), we have
+</p>
+\begin{equation}
+\varphi^{*} g = dr^2 + r^2 f_{k, \gamma}(1)^2 (j \circ \pi)^{*} g_{S^{n - 1}} = dr^2 + \rho_k(r) (j \circ \pi)^{*} g_{S^{n - 1}}
+\end{equation}
+<p>
+where
+</p>
+\begin{equation}
+\rho_k(r) = \begin{cases}
+\frac{\sin^2(\sqrt{k} r)}{k} & \text{if} \ k > 0 \\
+r^2 & \text{if} \ k = 0 \\
+-\frac{\sinh^2(\sqrt{-k} r)}{k } & \text{if} \ k < 0
+\end{cases}
+\end{equation}
+
+<p>
+<b>Corollary 4.</b> Given two manifolds \((M, g)\) and \((N, h)\) of the same constant curvature, \(p \in M\), \(q \in N\), then any two normal neighbourhoods \(\exp_p(B_{\varepsilon}(0))\) and \(\exp_q(B_{\varepsilon}(0))\)
+of the same radius are isometric (where we allow \(\varepsilon = \infty\)).
+</p>
+
+<p>
+<i>Proof.</i> Let \(\varphi\) be the normal coordinates on \(M\), \(\psi\) the normal coordinates on \(N\). In the Euclidean ball \(B_{\varepsilon}(0)\), both
+\(\varphi^{*} g\) and \(\psi^{*} h\) have the same form away from the origin, via the above discussion. By continuity, they must also agree at the origin, hence we immediately get an isometry.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge9cb56f" class="outline-2">
+<h2 id="orge9cb56f"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+To prove Hadamard's theorem, we first need to use Jacobi fields as they were meant to be used: to understand how geodesics spread out when shot out from a given point.
+Recall that if we take some \(p \in M\), then another point \(q\) is said to be <i>conjugate</i> to \(p\) if there exists a (non-zero) Jacobi field \(J\) along a geodesic \(\gamma\) between \(p\) and \(q\) which
+vanishes at both \(p\) and \(q\). Thus, given \(p\), a point \(q\) is conjugate to \(p\) if and only if there exist \(v, w \in T_p M\) such that \(\exp_p(v) = q\) and \((\exp_p)_{*, v}(W) = 0\). In
+other words, \(q\) is conjugate to \(p\) if and only if it is a critical value of \(\exp_p\). It follows that whenever we can lower-bound the norm of Jacobi fields in a given time interval,
+we can guarantee that there are no conjugate points to \(p\) in a region around it, and therefore that \(\exp_p\) is a local diffeomorphism onto this region.
+</p>
+
+<p>
+<b>Lemma 5.</b> If \(M\) has non-positive (not necessarily constant) sectional curvature, then there are never conjugate points. Thus, \(\exp_p\) is a local diffeomorphism
+on its maximal domain of definition for any \(p \in M\). In particular, if \(M\) is complete, then \(\exp_p : T_p M \to M\) is a local diffeomorphism for any \(p \in M\).
+</p>
+
+<p>
+<i>Proof.</i> Note that if \(J\) is a Jacobi field along \(\gamma\) starting at \(p\) with \(J(0) = 0\), then
+</p>
+
+\begin{equation}
+\frac{d^2}{dt^2} \langle J, J \rangle = 2 \langle D_t J, D_t J \rangle - 2 \text{sec}(J, \dot{\gamma}) |J \wedge \dot{\gamma}|^2 \geq 0
+\end{equation}
+<p>
+for all times \(t\), so the function \(t \mapsto \langle J(t), J(t) \rangle\) is convex. Clearly, it is \(0\) at \(t = 0\). Thus if it were true that \(\langle J(s), J(s) \rangle = 0\)
+for some \(s \neq 0\), then \(J\) would necessarily have to vanish on the entire interval \([0, s]\) (or \([s, 0]\) is \(s < 0\)). But then the second derivative would have to vanish
+on this whole interval. In particular, \(\langle D_t J, D_t J \rangle\) would have to vanish at \(0\), so by uniqueness of Jacobi fields, we would have \(J = 0\).
+</p>
+
+<p>
+<b>Lemma 6.</b> If \(M\) has positive constant curvature \(k > 0\), then given \(p \in M\), there are no points conjugate to \(p\) which lie a distance less than \(\frac{\pi}{\sqrt{k}}\) away from \(p\).
+Thus, if \(M\) is complete, then for any \(p \in M\), \(\exp_p : B_{\pi/\sqrt{k}}(0) \to M\) will be a diffeomorphism onto its image.
+</p>
+
+<p>
+<i>Proof.</i> Recall that in the constant curvature case, we have an explicit
+form for Jacobi fields. We can always assume WLOG that \(D_t J(0) \perp \dot{\gamma}(0)\) and \(|\dot{\gamma}(0)| = 1\), and therefore that for some Jacobi field starting at \(p\) with \(J(0) = 0\),
+</p>
+\begin{equation}
+\langle J(t), J(t) \rangle = \frac{\sin^2(\sqrt{k} t)}{k} \langle w(t), w(t) \rangle
+\end{equation}
+<p>
+which is non-vanishing for \(0 < t < \frac{\pi}{\sqrt{k}}\), as desired.
+</p>
+
+<p>
+We've done most of the difficult work in proving Hadamard's theorem already. We just need to put it all together:
+</p>
+
+<p>
+<b>Theorem 7</b> (Hadamard). If \((M, g)\) is a connected, complete Riemannian manifold of non-positive sectional curvature (not necessarily constant), then \(\exp_p : T_p M \to M\) is a smooth covering map
+for any \(p \in M\). In the case that \(M\) is simply-connected, it follows that this map is a diffeomorphism.
+</p>
+
+<p>
+<i>Proof.</i> From Lemma 5, \(\exp_p\) is a local diffeomorphism. If we endow \(T_p M\) with the pullback metric \(\exp_p^{*} g\), it becomes a local isometry. In \(T_p M\), the straight line \(t \mapsto tv\) defined
+for all \(t\) is sent by \(\exp_p\) to the geodesic \(\exp_p(tv)\). If we choose some \(U\) around point \(t_0 v\) where \(\exp_p|_U : U \to \exp_p(U)\) is an isometry, it follows that the segment of \(t \mapsto tv\)
+around \(t_0 v\) contained in \(U\) must be a geodesic. This holds around all points in this curve, thus the whole curve is a geodesic in \(T_p M\) relative to the pullback metric. Since \(T_p M\) has a single
+point at which geodesics are defined for all time, it follows that the whole manifold \(T_p M\) is complete (this is a consequence of the proof of Hopf-Rinow theorem). Therefore, it follows from
+Lemma 1 that \(\exp_p\) is a covering map.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org42c7347" class="outline-2">
+<h2 id="org42c7347"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+We have now come to the ultimate purpose of this post: proving Killing-Hopf.
+</p>
+
+<p>
+<b>Theorem 8</b> (Killing-Hopf). If \((M, g)\) is complete and simply connected and constant sectional curvature \(k \in \{-1, 0, 1\}\), it is isometric to \(\{\mathbb{H}^n, \mathbb{R}^n, S^n\}\), which
+we know have constant sectional curvature \(\{-1, 0, 1\}\) respectively.
+</p>
+
+<p>
+<i>Proof.</i> We already proved that \(M\) will be <i>locally</i> isometric to one of the given model spaces: the remaining question is whether this local isometry is in fact global.
+For the case of \(k = -1\), we know that \(\exp_p : T_p M \to M\) and \(\exp_q : T_q \mathbb{H}^n \to \mathbb{H}^n\) are diffeomorphisms, so from Corollary 4, \(M = \exp_p(T_p M)\)
+and \(\mathbb{H}^n = \exp_q(T_q \mathbb{H}^n)\) are isometric as normal neighbourhoods. The case of \(k = 0\) is proved in the same way.
+</p>
+
+<p>
+In the case of \(k = 1\), we <i>cannot</i> use Hadamard's theorem, sadly. However, it isn't too difficult to reason about this case directly. From Lemma 6, we know that \(\exp_N : B_{\pi}(0) \to S^n - \{S\}\)
+is a diffeomorphism where \(N\) is the North pole, \(S\) is the South pole and \(B_{\pi}(0) \subset T_N S^n\). Let \(\varphi_N\) be the corresponding normal coordinate chart.
+From here, we select some other point \(\varphi_N(x) = N' \neq \{N, S\}\) which gives a normal coordinate chart \(\varphi_{N'} : B_{\pi}(0) \to S^n - \{S'\}\), where \(S'\) is antipodal to \(N'\).
+We similarly can choose some arbitrary point \(p \in M\) and we get a normal coordinate chart \(\psi : B_{\varepsilon}(0) \to M\) centred at \(p\) again by applying Lemma 6. We let \(q = \psi(x)\) and finally
+note that we have chart \(\eta : B_{\varepsilon}(0) \to M\) centred at \(q\). We want to paste together all of these local isometries to obtain a global one. We will clearly have a composition
+\(\psi \circ \varphi_N^{-1} : S^n - \{S\} \to M\) which is a local isometry, as well as \(\eta \circ \varphi_{N'}^{-1}\). To show that two local isometries agree on a connected manifold, we know that
+if suffices to show that their derivatives agree at a point. Note that both of these maps send \(N'\) to \(q\). However, their derivatives
+at \(q\) may differ. To remedy this situation, consider the map \(F = \eta^{-1} \circ \psi \circ \varphi_N^{-1} \circ \varphi_{N'}\) which is defined on an open subset of the Euclidean ball \(B_{\varepsilon}(0)\).
+In particular, it is defined at the origin: it sends \(0\) to itself. Thus, we obtain a linear map \(L : \mathbb{R}^n \to \mathbb{R}^n\) given by \(L = DF(0)\). This will itself be an isometry of Euclidean space,
+as both \(\eta^{-1} \circ \psi\) and \(\varphi_N^{-1} \circ \varphi_{N'}\) are isometries.
+Instead of using \(\eta \circ \varphi_{N'}^{-1}\), we replace it with the map \(\eta \circ L \circ \varphi_{N'}^{-1}\). Since \(L(0) = 0\), it is easy to see that this new map still sends \(N'\) to \(q\), it is still an
+isometry onto its image as \(L\) is an isometry of Euclidean space, and moreover, the derivative of this new function is clearly the same as the derivative of \(\psi \circ \varphi_N^{-1}\) at \(N'\). Therefore,
+The two local isometries glue together to give a well defined function \(\Phi : S^n \to M\) which is an isometry onto its image.
+</p>
+
+<p>
+To finish the proof, note that \(\Phi(S^n)\) is compact, and since \(M\) is Hausdorff, it is closed. On the other hand, since \(\Phi\) is a local diffeomorphism, its image is also open. Since \(M\) is
+connected, it follows that \(\Phi(S^n) = M\). Moreover, because \(S^n\) is compact, the fibres of \(\Phi\) must be finite, as if we had a sequence of distinct \(z_n \in \Phi^{-1}(z)\) each of which is contained
+in a neighbourhood \(U_n\) homeomorphic to its image, thus not containing any of the other \(z_m\), we could never pass to a finite subcover. But \(\Phi^{-1}(z)\) is compact, being a closed subset of a
+compact space, so this is a contradiction. It follows immediately that \(\Phi\) is a smooth covering map, and since \(M\) is simply-connected, it is a diffeomorphism. Moreover, since it was already shown
+to be a local isometry, it is in fact a global isometry.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2026-04-25 Sat 09:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

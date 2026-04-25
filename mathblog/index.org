@@ -4,6 +4,7 @@
 
 * 2026
 
+- April 23rd, 2026 | [[./killing_hopf.html][My preferred method for proving Killing-Hopf]]
 - February 9th, 2026 | [[./mcduff_salamon_1.html][A small note on a result in McDuff-Salamon]]
 - February 4th, 2026 | [[./fund_class.html][Constructing the fundamental class]]
 
