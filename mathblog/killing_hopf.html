@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-25 Sat 09:56 -->
+<!-- 2026-04-25 Sat 10:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My preferred method for proving Killing-Hopf</title>
@@ -236,10 +236,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org36b2a2c">1. Introduction</a></li>
-<li><a href="#org730a315">2. Some preliminary results and local classification of constant curvature spaces</a></li>
-<li><a href="#orge9cb56f">3. Hadamard's theorem</a></li>
-<li><a href="#org42c7347">4. Killing-Hopf theorem</a></li>
+<li><a href="#org9c54489">1. Introduction</a></li>
+<li><a href="#org91764a2">2. Some preliminary results and local classification of constant curvature spaces</a></li>
+<li><a href="#org53433e7">3. Hadamard's theorem</a></li>
+<li><a href="#org3d0bc3e">4. Killing-Hopf theorem</a></li>
 </ul>
 </div>
 </div>
@@ -249,8 +249,8 @@
 
 <hr />
 
-<div id="outline-container-org36b2a2c" class="outline-2">
-<h2 id="org36b2a2c"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org9c54489" class="outline-2">
+<h2 id="org9c54489"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The goal of this short blog post will be to outline my preferred method for the proving the theorem of Killing and Hopf which classifies the
@@ -260,8 +260,8 @@ monodromy, and Do Carmo probably omits a lot of details. So we'll do it ourselve
 </div>
 </div>
 
-<div id="outline-container-org730a315" class="outline-2">
-<h2 id="org730a315"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
+<div id="outline-container-org91764a2" class="outline-2">
+<h2 id="org91764a2"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We first require a few preliminary results about when we can guarantee that a local isometry is a covering map (and object of great desire to topologists and geometers).
@@ -387,7 +387,8 @@ f_{k, \gamma}(1)^2 = \begin{cases}
 <p>
 where \(r(v) = \sqrt{(v^1)^2 + \cdots + (v^n)^2}\). Let \(j : B_{\varepsilon}(0) - \{0\} \to \mathbb{R}^n - \{0\}\) be inclusion and define \(\pi : \mathbb{R}^{n} - \{0\} \to S^{n - 1}\) as \(\pi(v) = \frac{v}{r(v)}\). It is trivially easy to check that
 \(dr^2 + r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) gives the Euclidean metric on \(B_{\varepsilon}(0)\), hence for vectors orthogonal to the radial vector, \(r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) returns their Euclidean
-inner product. It follows immediately that on the punctured Euclidean disk \(B_{\varepsilon}(0) - \{0\}\), we have
+inner product and kills the radial vector. It follows that \(dr^2\) must return the Euclidean inner product of radial-pointing vectors and kill all vectors orthogonal to the radial direction. Thus,
+on the punctured Euclidean disk \(B_{\varepsilon}(0) - \{0\}\), we have
 </p>
 \begin{equation}
 \varphi^{*} g = dr^2 + r^2 f_{k, \gamma}(1)^2 (j \circ \pi)^{*} g_{S^{n - 1}} = dr^2 + \rho_k(r) (j \circ \pi)^{*} g_{S^{n - 1}}
@@ -415,8 +416,8 @@ of the same radius are isometric (where we allow \(\varepsilon = \infty\)).
 </div>
 </div>
 
-<div id="outline-container-orge9cb56f" class="outline-2">
-<h2 id="orge9cb56f"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
+<div id="outline-container-org53433e7" class="outline-2">
+<h2 id="org53433e7"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 To prove Hadamard's theorem, we first need to use Jacobi fields as they were meant to be used: to understand how geodesics spread out when shot out from a given point.
@@ -479,8 +480,8 @@ Lemma 1 that \(\exp_p\) is a covering map.
 </div>
 </div>
 
-<div id="outline-container-org42c7347" class="outline-2">
-<h2 id="org42c7347"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
+<div id="outline-container-org3d0bc3e" class="outline-2">
+<h2 id="org3d0bc3e"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We have now come to the ultimate purpose of this post: proving Killing-Hopf.
@@ -525,7 +526,7 @@ to be a local isometry, it is in fact a global isometry.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-04-25 Sat 09:56</p>
+<p class="date">Created: 2026-04-25 Sat 10:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
