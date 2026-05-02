@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-25 Sat 10:58 -->
+<!-- 2026-05-02 Sat 15:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My preferred method for proving Killing-Hopf</title>
@@ -236,10 +236,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc002f74">1. Introduction</a></li>
-<li><a href="#org62ac680">2. Some preliminary results and local classification of constant curvature spaces</a></li>
-<li><a href="#org18603b9">3. Hadamard's theorem</a></li>
-<li><a href="#org44b947c">4. Killing-Hopf theorem</a></li>
+<li><a href="#org521b192">1. Introduction</a></li>
+<li><a href="#orgfabf671">2. Some preliminary results and local classification of constant curvature spaces</a></li>
+<li><a href="#orgdba5517">3. Hadamard's theorem</a></li>
+<li><a href="#orgbaf2971">4. Killing-Hopf theorem</a></li>
+<li><a href="#orgbf3d9cc">5. Postscript: Cartan's theorem (maximum power)</a></li>
 </ul>
 </div>
 </div>
@@ -249,8 +250,8 @@
 
 <hr />
 
-<div id="outline-container-orgc002f74" class="outline-2">
-<h2 id="orgc002f74"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org521b192" class="outline-2">
+<h2 id="org521b192"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The goal of this short blog post will be to outline my preferred method for the proving the theorem of Killing and Hopf which classifies the
@@ -260,8 +261,8 @@ monodromy, and Do Carmo probably omits a lot of details. So we'll do it ourselve
 </div>
 </div>
 
-<div id="outline-container-org62ac680" class="outline-2">
-<h2 id="org62ac680"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
+<div id="outline-container-orgfabf671" class="outline-2">
+<h2 id="orgfabf671"><span class="section-number-2">2.</span> Some preliminary results and local classification of constant curvature spaces</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We first require a few preliminary results about when we can guarantee that a local isometry is a covering map (and object of great desire to topologists and geometers).
@@ -360,6 +361,10 @@ where \(u(t)\) and \(w(t)\) are the parallel transports of \(u\) and \(w\) along
 
 <p>
 and we're done. From here, everything becomes easy. Suppose \((M, g)\) has constant curvature \(k\). Pick \(p \in M\), let \(B = \exp_p(B_{\varepsilon}(0))\) be such that \(\exp_p : B_{\varepsilon}(0) \to B\) is a local diffeomorphism.
+In other words, \((\exp_p)_{*}\) doesn't drop rank on \(B_{\varepsilon}(0)\). It could, however, be the case that \(B\) is not a normal neighbourhood!
+</p>
+
+<p>
 Let \(e_1, \dots, e_n\) be an orthonormal basis for \(T_p M\) (relative to \(g_p\)), let \(\Phi : \mathbb{R}^n \to T_p M\) be the corresponding linear isomorphism with the standard Euclidean basis and let \(\varphi = \Phi \circ \exp_p\).
 Note that if \(w^j \frac{d}{ds^j}\) is some Euclidean tangent vector at point \((v^1, \dots, v^n)\), then we obtain a corresponding tangent vector \(w^j \Phi_{*}\left( \frac{d}{ds^j} \right) = w^j E_j\)
 in \(T_v T_p M\) where \(v = v^j e_j\). Pick some \(v = (v^1, \dots, v^n)\) away from the origin in Euclidean space, note that the radial
@@ -386,8 +391,9 @@ f_{k, \gamma}(1)^2 = \begin{cases}
 \end{cases}
 \end{equation}
 <p>
-where \(r(v) = \sqrt{(v^1)^2 + \cdots + (v^n)^2}\). Let \(j : B_{\varepsilon}(0) - \{0\} \to \mathbb{R}^n - \{0\}\) be inclusion and define \(\pi : \mathbb{R}^{n} - \{0\} \to S^{n - 1}\) as \(\pi(v) = \frac{v}{r(v)}\). It is trivially easy to check that
-\(dr^2 + r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) gives the Euclidean metric on \(B_{\varepsilon}(0)\), hence for vectors orthogonal to the radial vector, \(r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) returns their Euclidean
+where \(r(v) = \sqrt{(v^1)^2 + \cdots + (v^n)^2}\). Let \(j : B_{\varepsilon}(0) - \{0\} \to \mathbb{R}^n - \{0\}\) be inclusion and define \(\pi : \mathbb{R}^{n} - \{0\} \to S^{n - 1}\) as \(\pi(v) = \frac{v}{r(v)}\).
+Also let \(\iota : S^{n - 1} \to \mathbb{R}^n\) be inclusion. Our goal is to now say what the metric on \(B_{\varepsilon}(0) - \{0\}\) is, given the above formulas. It is easy to check that
+\(dr^2 + r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) gives the Euclidean metric on \(B_{\varepsilon}(0) - \{0\}\), hence for vectors orthogonal to the radial vector, \(r^2 (j \circ \pi)^{*} g_{S^{n - 1}}\) returns their Euclidean
 inner product and kills the radial vector. It follows that \(dr^2\) must return the Euclidean inner product of radial-pointing vectors and kill all vectors orthogonal to the radial direction. Thus,
 on the punctured Euclidean disk \(B_{\varepsilon}(0) - \{0\}\), we have
 </p>
@@ -417,8 +423,8 @@ of the same radius are isometric (where we allow \(\varepsilon = \infty\)).
 </div>
 </div>
 
-<div id="outline-container-org18603b9" class="outline-2">
-<h2 id="org18603b9"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
+<div id="outline-container-orgdba5517" class="outline-2">
+<h2 id="orgdba5517"><span class="section-number-2">3.</span> Hadamard's theorem</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 To prove Hadamard's theorem, we first need to use Jacobi fields as they were meant to be used: to understand how geodesics spread out when shot out from a given point.
@@ -478,18 +484,33 @@ around \(t_0 v\) contained in \(U\) must be a geodesic. This holds around all po
 point at which geodesics are defined for all time, it follows that the whole manifold \(T_p M\) is complete (this is a consequence of the proof of Hopf-Rinow theorem). Therefore, it follows from
 Lemma 1 that \(\exp_p\) is a covering map.
 </p>
+
+<p>
+This result is quite astounding. Some immediate corollaries can be stated:
+</p>
+
+<p>
+<b>Corollary 8.</b> No manifold of the form \(S^n \times M\) for \(n \geq 2\) and \(M^m\) complete/connected admits a metric of non-positive scalar curvature. If it did, then the universal covering manifold
+\(S^n \times \widetilde{M}\) would necessarily by diffeomorphic to \(\mathbb{R}^{n + m}\), but \(S^n \times \widetilde{M}\) has non-vanishing cohomology in the \(n\) -th degree while \(\mathbb{R}^{n + m}\) is
+contractible so this cannot be.
+</p>
+
+<p>
+<b>Corollary 9.</b> Any (complete/connected) \(M\) admiting a metric of non-positive scalar curvature is aspherical: its only non-trivial, positive-degree homotopy group may be the fundamental group. This is because covering maps
+induce isomorphisms of \(\pi_k\) for \(k \geq 2\), and \(M\) has contractible universal cover.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org44b947c" class="outline-2">
-<h2 id="org44b947c"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
+<div id="outline-container-orgbaf2971" class="outline-2">
+<h2 id="orgbaf2971"><span class="section-number-2">4.</span> Killing-Hopf theorem</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We have now come to the ultimate purpose of this post: proving Killing-Hopf.
 </p>
 
 <p>
-<b>Theorem 8</b> (Killing-Hopf). If \((M, g)\) is complete and simply connected and constant sectional curvature \(k \in \{-1, 0, 1\}\), it is isometric to \(\{\mathbb{H}^n, \mathbb{R}^n, S^n\}\), which
+<b>Theorem 10</b> (Killing-Hopf). If \((M, g)\) is complete and simply connected and constant sectional curvature \(k \in \{-1, 0, 1\}\), it is isometric to \(\{\mathbb{H}^n, \mathbb{R}^n, S^n\}\), which
 we know have constant sectional curvature \(\{-1, 0, 1\}\) respectively.
 </p>
 
@@ -523,12 +544,65 @@ in a neighbourhood \(U_n\) homeomorphic to its image, thus not containing any of
 compact space, so this is a contradiction. It follows immediately that \(\Phi\) is a smooth covering map, and since \(M\) is simply-connected, it is a diffeomorphism. Moreover, since it was already shown
 to be a local isometry, it is in fact a global isometry.
 </p>
+
+<hr />
+
+<p>
+This is yet another amazing result. Given some \((M, g)\) (connected/complete) of constant sectional curvature, we may always construct the universal covering manifold \(\pi : \widetilde{M} \to M\)
+and endow it with \(\pi^{*} g\), so that \((\widetilde{M}, \pi^{*} g)\) is simply-connected, has constant sectional curvature, and moreover is complete (as we can take geodesic segment in \(\widetilde{M}\),
+project by local isometry \(\pi\) to a geodesic segment in \(M\), extend to all time, then lift to an all-time extension in \(\widetilde{M}\) of the original geodesic). Therefore, \((\widetilde{M}, \pi^{*} g)\)
+will be isometric to one of the model spaces with its canonical metric, so WLOG we assume \(\widetilde{M}\) is one of the model spaces and \(\pi^{*} g = h\), the corresponding metric.
+It is a basic fact from differential topology that \(M\) is diffeomorphic to \(\widetilde{M}/\Gamma\): its universal covering
+manifold quotiented by the action of the group of deck transformations of the cover \(\pi : \widetilde{M} \to M\), each of which is an automorphism of the cover and satisfies \(\pi \circ f = \pi\) hence \(f^{*} \pi^{*} g = \pi^{*} g\),
+so it is in fact an isometry. In other words, we are quotienting by the action of some subgroup of \(\text{Iso}(\widetilde{M}, h)\). It isn't too difficult to see that \(\widetilde{M}/\Gamma\) endowed
+with the covering metric is isometric to \((M, g)\). Thus:
+</p>
+
+<p>
+<b>Corollary 11.</b> The <i>only way</i> that a complete connected space of constant sectional curvature arises is by taking one of the model spaces \(\{\mathbb{H}^n_{R}, \mathbb{R}^n, S^n_{R}\}\) (with its
+canonical metric, constant curvature \(R\)), quotienting by some subgroup of the isometries, and endowing the quotient manifold with the covering metric.
+</p>
+
+<p>
+Amazing!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbf3d9cc" class="outline-2">
+<h2 id="orgbf3d9cc"><span class="section-number-2">5.</span> Postscript: Cartan's theorem (maximum power)</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+In the section where we wrote down explicitly the local form of metrics of constant curvature in normal coordinates, there is a somewhat stronger result that allows us to compare
+the local forms of metrics on <i>arbitrary</i> pairs of Riemannian manifolds. In particular,
+</p>
+
+<p>
+<b>Theorem</b> (Cartan). Suppose \((M, g)\) and \((N, h)\) are Riemannian manifolds of the same dimension, \(p \in M\) and \(q \in N\). Suppose \(i : T_p M \to T_q N\) is a linear isometry (where
+we equip these vector spaces with \(g_p\) and \(h_q\) respectively). It follows that we may restrict \(i\) to a map of \(\varepsilon\) -balls \(B_{\varepsilon}(0) \to B_{\varepsilon}(0)\). Pick
+\(\varepsilon\) sufficiently small so that \(\exp_p : B_{\varepsilon}(0) \to M\) and \(\exp_q : B_{\varepsilon}(0) \to N\) are both local diffeomorphisms. Suppose we fix some
+geodesic \(\gamma : [0, 1] \to M\) in \(B\) such that \(\gamma(0) = p\). We can obtain geodesic \(\widetilde{\gamma} : [0, 1] \to N\) contained in \(\exp_q(B_{\varepsilon}(0)) = B'\)
+with \(\widetilde{\gamma}(0) = q\) and \(\dot{\widetilde{\gamma}}(0) = i(\dot{\gamma}(0))\). Note that \(\widetilde{\gamma}\) is defined on \([0, 1]\) because it has the same speed as \(\gamma\).
+Let \(P : T_p M \to T_{\gamma(t)} M\) and \(\widetilde{P} : T_q N \to T_{\widetilde{\gamma}(t)}\) be the parallel transport maps. From here, if it is true that
+</p>
+
+\begin{equation}
+(P^{*} R_M)(X, Y, Z, W) = (i^{*} \widetilde{P}^{*} R_N)(X, Y, Z, W)
+\end{equation}
+
+<p>
+for all \(X, Y, Z, W \in T_p M\), then \(i\) will actually be an isometry \((B_{\varepsilon}(0), \exp_p^{*} g) \to (B_{\varepsilon}(0), \exp_q^{*} h)\) (i.e. when we equip the tangent spaces with their pullback metrics).
+Note that as an immediate corollary, if we have constant sectional curvature, then any isometry \(i : (T_p M, g_p) \to (T_q N, h_q)\) will be an isometry when these spaces
+are equipped with their pullback metrics. We showed earlier that when \((M, g)\) has constant curvature, and we defined an arbitrary isometry \(\Phi : (\mathbb{R}^n, \langle \cdot, \cdot \rangle) \to (T_p M, g_p)\), then
+\(\Phi^{*} \exp_p^{*} g\) would be a metric on \(B_{\varepsilon}(0) \subset \mathbb{R}^n\) independent of the chosen isometry (in particular, the pulled-back metric we found is rotationally symmetric!).
+Thus, Cartan's theorem is a generalization of what we showed earlier.
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-04-25 Sat 10:58</p>
+<p class="date">Created: 2026-05-02 Sat 15:37</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
