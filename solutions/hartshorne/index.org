@@ -1,0 +1,30 @@
+#+TITLE:Hartshorne solutions
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
+
+* Introduction
+
+/Originally posted:/ June 10th, 2026
+
+Welcome to my solutions to the exercises in Hartshorne's algebraic geometry textbook. This project was started during the summer of 2026.
+I was originally planning on doing something like this last summer, but ended up only doing a bunch of problems in Chapter 1 (and some in 2). I will include some of those Chapter 1 solutions
+here, but I'm moreso focused on Chapter 2 onwards now. These solutions will all be my own work, but as I'm writing this preamble, I'm sure I'll come across some instances where I need to seek
+out some external help: I'll make sure to provide attribution when this is the case. I'm also supplementing Hartshorne's book with a few other sources, most notably the book of Ellingrsud
+and Ottem, /Introduction to Schemes/, as well as a few other random text/sets of notes. I'll make sure to update this page if any become particularly relevant/helpful.
+
+By the way, I expect
+many of my early solutions to be kind of bad, but I hope that as time goes on, and I become more comfortable doing this flavour of scheme-y math, they will improve!
+
+* Solutions
+
+Linked are solutions to problems, sorted by chapter and section:
+
+** Chapter 1
+
+** Chapter 2
+
+- [[./pdf/2-1.pdf][Section 1]] | Current solution tally: 2/22
+- [[./pdf/2-2.pdf][Section 2]] | Current solution tally: 9/19
+- [[./pdf/2-3.pdf][Section 3]] | Current solution tally: 0/??
+
+** Chapter 3

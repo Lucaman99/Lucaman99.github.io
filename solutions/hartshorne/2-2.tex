@@ -1,0 +1,413 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage{verbatim}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{mantra}{Mantra}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=22mm,
+  right=22mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Hartshorne chapter 2 section 2 solutions}
+\author{Jack Ceroni}
+\date{\today}
+\maketitle
+
+
+\tableofcontents
+
+\hhrulefill
+
+\section{Introduction}
+
+\noindent \textbf{Current solution tally:} 9/19
+
+\section{Solutions}
+
+\subsection{Problem 2.2.1}
+
+\noindent To produce such an isomorphism, we obviously need a homeomorphism between the underlying topological spaces
+  $\phi : D(f) \rightarrow \text{Spec}(A_f)$ and an isomorphism of sheaves $\phi^{\#} : \mathcal{O} \rightarrow \phi_{*} \mathcal{O}_X|_{D(f)}$
+  where $\mathcal{O}$ is the structure sheaf (such that the morphism induces a local homomorphism of stalks).
+
+  If you look in Sec.~\ref{sec:extra}, you will see that we have already constructed a bijection between $D(f)$ (the collection of all prime ideals which do not contain $(f)$, hence all prime
+  ideals which do not intersect it) and $\text{Spec}(A_f)$
+  (the prime ideals of the localization $A_f$). We denote this map by $\phi$ (i.e. $\phi : D(f) \rightarrow \text{Spec}(A_f)$ is given by $\phi(\mathfrak{p}) = S^{-1} \mathfrak{p}$ and $\phi^{-1}(\mathfrak{q}) = \rho^{-1}(\mathfrak{q})$,
+  where $\rho : A \rightarrow S^{-1} A$ is the localization map with $S = \{1, f, f^2, \dots\}$). Our first claim is that $\phi^{-1}(V(\mathfrak{a})) = D(f) \cap V(\rho^{-1}(\mathfrak{a}))$. Indeed, note that if $\mathfrak{p}$ is a prime
+  which contains $\mathfrak{a}$, then $\phi^{-1}(\mathfrak{p}) = \rho^{-1}(\mathfrak{p})$ is a prime which does not contain $f$ and which contains $\rho^{-1}(\mathfrak{a})$. Similarly, if $\mathfrak{p}$ is a prime containing
+  $\rho^{-1}(\mathfrak{a})$ which does not contain $f$ then $\phi(\mathfrak{p})$ is prime and contains $(\phi \circ \rho^{-1})(\mathfrak{a}) = \mathfrak{a}$ (see Rem.~\ref{rem:s0}),
+  so $\mathfrak{p} \in \phi^{-1}(V(\mathfrak{a}))$, and we have the desired equality. This implies that $\phi$ is continuous.
+
+  On the other hand, we claim that $\phi(V(\mathfrak{a}) \cap D(f)) = V(\phi(\mathfrak{a}))$. If $\mathfrak{p}$ is prime, contains $\mathfrak{a}$, and does not contain $(f)$, then
+  $\phi(\mathfrak{p})$ is prime and contains $\phi(\mathfrak{a})$. On the other hand, if $\mathfrak{p}$ is prime and contains $\phi(\mathfrak{a})$, then $\phi^{-1}(\mathfrak{p})$ is prime, doesn't contain $f$, and contains
+  $(\rho^{-1} \circ \phi)(\mathfrak{a})$, which contains $\mathfrak{a}$, so $\mathfrak{p} \in \phi(V(\mathfrak{a}) \cap D(f))$. Thus, $\phi$ is in fact a homeomorphism.
+  \newline
+
+  \noindent We still need to produce an isomorphism of sheaves. We define $\phi^{\#}(U) : \mathcal{O}(U) \rightarrow \mathcal{O}_X(\phi^{-1}(U))$ as follows. Given a section
+  $s : U \rightarrow \bigsqcup_{\phi(\mathfrak{p}) \in U} (A_f)_{\phi(\mathfrak{p})}$ in $\mathcal{O}(U)$, we can define function $\widetilde{s} : \phi^{-1}(U) \rightarrow \bigsqcup_{\mathfrak{p} \in \phi^{-1}(U)} A_{\mathfrak{p}}$
+  as $\widetilde{s} = \Phi^{-1}_U \circ s \circ \phi|_{\varphi^{-1}(U)}$, where $\Phi_U : \bigsqcup_{\mathfrak{p} \in \phi^{-1}(U)} A_{\mathfrak{p}} \rightarrow \bigsqcup_{\phi(\mathfrak{p}) \in U} (A_f)_{\phi(\mathfrak{p})}$ is the unique map extending all of the isomorphisms
+  $\Phi_{\mathfrak{p}} :  A_{\mathfrak{p}} \rightarrow (A_f)_{\phi(\mathfrak{p})}$ introduced in Cor.~\ref{cor:s3}, for all $\mathfrak{p} \in \phi^{-1}(U)$.
+  This also gives us a candidate for $(\phi^{\#}(U))^{-1}$: the map taking $\widetilde{s}$ to $\Phi_U \circ s \circ (\phi|_{\varphi^{-1}(U)})^{-1}$.
+  The fact that both of these maps are homomorphisms simply follows from the fact that we can add and multiply functions, and that $\Phi$ is a homomorphism when restricted to the individual rings. For example,
+  \begin{equation}
+    (\Phi^{-1} \circ s_1 \cdot s_2 \circ \phi)(\mathfrak{p}) = \Phi^{-1}(s_1(\phi(\mathfrak{p})) \cdot s_2(\phi(\mathfrak{p}))) = \Phi^{-1}(s_1(\phi(\mathfrak{p}))) \cdot \Phi^{-1}(s_2(\phi(\mathfrak{p})))
+    \end{equation}
+  To prove that this function is, in fact, an element of $\mathcal{O}_X(\phi^{-1}(U))$, first note that
+  \begin{equation}
+    \widetilde{s}(\mathfrak{p}) = (\Phi^{-1} \circ s \circ \phi)(\mathfrak{p}) = (\Phi^{-1} \circ s)(\phi(\mathfrak{p})) \in \Phi^{-1}((A_f)_{\phi(\mathfrak{p})}) = A_{\mathfrak{p}}
+  \end{equation}
+  so we satisfy the first condition. We also require that for each $\mathfrak{p} \in \phi^{-1}(U)$, there exists a neighbourhood $\mathfrak{p} \in V \subset \phi^{-1}(U)$ and $a, b \in A$ such
+  that $\widetilde{s}(\mathfrak{q}) = \frac{a}{b} \in A_{\mathfrak{q}}$ for all $\mathfrak{q} \in V$ (in particular, $b \notin \mathfrak{q}$ for any $\mathfrak{q} \in V$).  It is of course the case
+  that given some $\phi(\mathfrak{p}) \in U$, we can produce a neighbourhood $V$ such that $s = \frac{a'/f^n}{b'/f^m}$ on $V$. It then follows that on $\phi^{-1}(V) \subset \phi^{-1}(U)$, which
+  contains $\mathfrak{p}$, we have
+  \begin{equation}
+    (\Phi^{-1} \circ s \circ \phi)(\mathfrak{q}) = \Phi^{-1} \left( \frac{a'/f^n}{b'/f^m} \right) = \frac{a' f^m}{b' f^n} \in A_{\mathfrak{q}}
+  \end{equation}
+  where $b' f^n \notin \mathfrak{q} \in \phi^{-1}(V)$, as if it were, then either $b' \in \mathfrak{q}$ or $f \in \mathfrak{q}$. The latter cannot happen by definition of $\mathfrak{q}$. If the former did happen, then
+  we would have $\frac{b'}{f^m} \in \phi(\mathfrak{q}) \in V$, which is not the case. Thus, $\widetilde{s}$ is a valid element of the structure sheaf. Showing that the inverse homomorphism
+  also outputs a valid element of the structure sheaf follows a similar procedure.
+  \newline
+
+  \noindent We now need to show that $\phi^{\#}$ is actually a natural transformation, which is to say that it behaves nicely with respect to restriction. Suppose $U$ and $V$ are open
+  subsets of $\text{Spec}(A_f)$, with $V \subset U$. We need to show that $\phi^{\#}(s|_V) = \phi^{\#}(s)|_{\phi^{-1}(V)}$, with $s \in \mathcal{O}(U)$. This more or less follows from the
+  definitions:
+  \begin{align}
+    \phi^{\#}(s|_V) = \Phi^{-1}_V \circ s|_V \circ \phi|_{\phi^{-1}(V)} = (\Phi^{-1}_U \circ s \circ \phi)|_{\phi^{-1}(V)} = \phi^{\#}(s)|_{\phi^{-1}(V)}
+    \end{align}
+  The same logic applies to the inverse mapping. Thus, we have shown that as locally ringed spaces, $(D(f), O_X|_{D(f)}) \simeq \text{Spec}(A_f)$, as desired.
+
+\subsection{Problem 2.2.2}
+
+\noindent First consider the case where $X = \text{Spec}(A)$, and $\mathcal{O}_X$ is the structure sheaf, so it is an affine scheme. If $U \subset X$ is an open set, then $X - U = V(\mathfrak{a})$ for some
+  ideal $\mathfrak{a} \subset A$, which has generating set $(f_{\alpha})_{\alpha \in J}$. It follows that $V(\mathfrak{a}) = \bigcap_{\alpha \in J} V(f_{\alpha})$, so $U = \bigcup_{\alpha \in J} D(f_{\alpha})$.
+  In other words, we can cover $U$ with open sets of the form $D(f)$. We know that $(D(f), \mathcal{O}_X|_{D(f)})$ is an affine scheme from Problem 2.2.1, so it follows that we can cover $(U, \mathcal{O}_X|_U)$ in affine
+  schemes, which implies it is a scheme (note that restricting sheaves to open sets behaves nicely, so restricting to $U$ and then restricting to $D(f)$ is the same as restricting to $D(f)$ from $\mathcal{O}_X$).
+
+  To prove the general case, note that if $U$ is an open set of generic scheme $X$, then we can cover $X$ in open sets which are isomorphic to affine schemes, $(V_{\alpha}, \mathcal{O}_X|_{V_{\alpha}})$. It then
+  follows that $(U \cap V_{\alpha}, \mathcal{O}_X|_{U \cap V_{\alpha}})$ is an open subset of an affine scheme, which means it is a scheme, which means we can cover it in affine schemes $(W_{\alpha, \beta}, \mathcal{O}_X|_{W_{\alpha, \beta}})$.
+  Taking all of these affine schemes will cover $(U, \mathcal{O}_X|_U)$, which implies it is itself a scheme.
+
+\subsection{Problem 2.2.3}
+
+\noindent \textbf{Part A.} Suppose $s \in \mathcal{O}_X(U)$ is nilpontent, so that $s^N = 0$ for some $N$. Since restriction respects ring structure, $(s|_V)^N = (s^N)|_V = 0$ for some $V \subset U$,
+      so the stalk around any $p \in U$ will have a nilpotent element, namely the germ $s_p$. On the other hand, suppose stalk $\mathcal{O}_{X, p}$ has nilpotent germ $s_p$, so
+      $s_p^N = [s, U]^N = [s^N, U] = 0$ for some $N$. The $0$-germ $0$ at $p$ is simply $[0, V]$, for some open set $V$ around $p$, so we must have $s^N$ and $0$ agreeing on some neighbourhood
+      $W \subset U \cap V$ of $p$. Therefore, $\mathcal{O}_X(W)$ contains a nilpotent element.
+      \newline
+
+\noindent \textbf{Part B.} Recall that the stalks of the sheafification $\mathcal{O}_{X, \text{red}}^{\#}$ are precisely the stalks of the presheaf $U \mapsto \mathcal{O}_X(U)_{\text{red}}$, which have no nilpotent elements.
+        Therefore, if we prove that $(X, \mathcal{O}_{X, \text{red}}^{\#})$ is a scheme, it will be a reduced scheme.
+
+        We will begin by assuming that $(X, \mathcal{O}_X) = (\text{Spec}(A), \mathcal{O})$.
+        The idea is to show that $(\text{Spec}(A), (\mathcal{O}_{\text{red}}^{\#}) \simeq (\text{Spec}(A/\mathfrak{r}), \mathcal{O}')$, where $\mathfrak{r} = \text{Rad}(0)$, the nilradical of $A$. For any
+        ideal $\mathfrak{a}$, we have the quotient map $\pi : A \rightarrow A/\mathfrak{a}$. This means that we have an induced map of locally ringed spaces
+        $(f, f^{\#}) : (\text{Spec}(A/\mathfrak{a}), \mathcal{O}') \rightarrow (\text{Spec}(A), \mathcal{O})$, where $f(\mathfrak{p}) = \pi^{-1}(\mathfrak{p})$. If we restrict the image
+        of $f$ to $V(\mathfrak{a})$, we actually find that $f : \text{Spec}(A/\mathfrak{a}) \rightarrow V(\mathfrak{a})$ is a homeomorphism. The bijective correspondence between the prime ideal of $A/\mathfrak{a}$ and the prime
+        ideal of $A$ which contain $\mathfrak{a}$ is obvious. Continuity is obvious from the fact that $\pi$ is induced by the quotient homomorphism $A \rightarrow A/\mathfrak{a}$. It is also easy to see that
+        for $\mathfrak{a} \subset \mathfrak{b}$, we have $\pi(V(\mathfrak{b})) = V(\pi(\mathfrak{b}))$. Therefore,
+        \begin{equation}
+        \text{Spec}(A/\mathfrak{r}) \simeq V(\mathfrak{r}) = V((0)) = \text{Spec}(A)
+        \end{equation}
+        as desired: $f : \text{Spec}(A/\mathfrak{r}) \rightarrow \text{Spec}(A)$ is a homeomorphism.
+
+        The other thing we need to do is prove that the sheaves $\mathcal{O}_{\text{red}}^{\#}$ and $f_{*} \mathcal{O}'$ are isomorphic. Of course, $f^{\#} : \mathcal{O} \rightarrow f_{*} \mathcal{O}'$ is a local morphism
+        of sheaves. Note that if $s \in \mathcal{O}(U)$, then $f^{\#}(U)(s) = \pi' \circ s \circ f = 0$ where $\pi'|_{A_{\mathfrak{p}}} : A_{\mathfrak{p}} \rightarrow (A/\mathfrak{r})_{\pi(\mathfrak{p})}$ is the reduction map,
+        where we recall that localization commutes with quotients. If $s$ is nilpotent, then $s(\mathfrak{p}) \in \mathfrak{r}_{\mathfrak{p}}$ for every $\mathfrak{p} \in U$, so $f^{\#}(U)(s) = 0$. It follows that
+        $f^{\#}(U) : \mathcal{O}(U) \rightarrow \mathcal{O}'(f^{-1}(U))$ descends to a morphism $f^{\#}_{\text{red}}(U) : \mathcal{O}(U)_{\text{red}} \rightarrow \mathcal{O}'(f^{-1}(U))$. Moreover, these morphisms
+        clearly form a local morphism of presehaves. It follows that it extends a unique morphism of sheaves $g : \mathcal{O}_{\text{red}}^{\#} \rightarrow f_{*} \mathcal{O}'$. We want to show that
+        this map is an isomorphism of sheaves, so we show that it induces an isomorphism on the stalks. Indeed, we have $\mathcal{O}_{\text{red}, f(p)}^{\#} = \mathcal{O}_{\text{red}, f(p)}$. $g_{f(p)}$ takes
+        germs $[V, [s]]$ to germ $[V, \pi' \circ s \circ f]$, where $[s]$ is an equivalence class in $\mathcal{O}(V)_{\text{red}}$. If $\pi' \circ s \circ f = 0$ on $V$, then we must have $s(f(\mathfrak{p}))$ nilpotent
+        for every $\mathfrak{p} \in f^{-1}(V)$, hence $s(\mathfrak{p})$ is nilpotent for every $\mathfrak{p} \in V$, so $[s] = 0$, and we have injectivity. Surjectivity follows from the fact that $\pi'$ is surjective and
+        $f$ is a homeomorphism. Thus, we have our isomorphism of stalks, and the map as an isomorphism of sheaves.
+
+        To prove the general case, we just apply the result above locally. In particular, if $(X, \mathcal{O}_X)$ is a scheme, then locally, $(U, \mathcal{O}_X|_U)$ is isomorphic to $(\text{Spec}(A), \mathcal{O})$. Thus,
+        $(U, \mathcal{O}_{X}|_{U, \text{red}}^{\#})$ is locally isomorphic to $(\text{Spec}(A), \mathcal{O}_{\text{red}}^{\#})$, which is isomorphic to $(\text{Spec}(A/\mathfrak{r}), \mathcal{O}')$, which is itself
+        an affine scheme.
+
+        To prove the final thing, let $\text{red} : \mathcal{O}_X \rightarrow \mathcal{O}_{X, \text{red}}^{\#}$ be the unique morphism of sheaves which extends the morphism of presheaves
+        $\text{red} : \mathcal{O}_X \rightarrow \mathcal{O}_{X, \text{red}}$ which takes $s \in \mathcal{O}_X(U)$ to its reduction $[s] \in \mathcal{O}_X(U)_{\text{red}}$. The morphism
+        $(\text{id}, \text{red}) : X_{\text{red}} \rightarrow X$ is a morphism of schemes which is a homeomorphism on the underlying topological spaces.
+        \newline
+
+\noindent \textbf{Part C.} Of course, if we write $f = (h, h^{\#})$, then $g$ will be the mapping $h$ on the underlying topological spaces.
+We require the existence of unique $g^{\#} : \mathcal{O}_{Y, \text{red}}^{\#} \rightarrow h_{*} \mathcal{O}_X$
+          such that $g^{\#} \circ \text{red} = h^{\#}$. If we can prove the existence of a unique $\chi : \mathcal{O}_{Y, \text{red}} \rightarrow h_{*} \mathcal{O}_X$ (morphism of presheaves) where $\chi \circ \text{red} = h^{\#}$ as
+          presheaf morphisms, where $\text{red}$ in this context is the presheaf morphism taking a section to its reduction, then by uniqueness of extension to the sheafification, $g^{\#}$ is the unique extension of $\chi$.
+          The idea is to simply define $\chi(V) : \mathcal{O}_Y(V)_{\text{red}} \rightarrow \mathcal{O}_X(h^{-1}(V))$ as $\chi(V)([s]) = h^{\#}(s)$. This is well-defined because if $s \in \mathcal{O}_Y(V)$ is nilpontent, then
+          $h^{\#}(s)$ must be nilpotent in $\mathcal{O}_X(h^{-1}(V))$, which means it must be equal to $0$ as $X$ is reduced. It follows that if $s_1$ and $s_2$ differ by a nilpotent element, then $h^{\#}(s_1) = h^{\#}(s_2)$.
+          It is easy to see that this is a local morphism of presheaves from here, and is unique via the formula we have used to define it. This completes the proof.
+
+ \subsection{Problem 2.2.4}
+
+ \noindent We want to show that $\alpha : \text{Hom}_{\text{Sch}}(X, \text{Spec}(A)) \rightarrow \text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X))$ is a bijection. In the case that $X = \text{Spec}(R)$ is an \emph{affine} scheme,
+  this is quite simple. We replace $\Gamma(X, \mathcal{O}_X)$ with $R$, via the isomorphism, in the definition of $\alpha$ above.
+  Note tha we have the map $\beta : \text{Hom}_{\text{Ring}}(A, R) \rightarrow \text{Hom}_{\text{Sch}}(\text{Spec}(R), \text{Spec}(A))$ which takes $\phi : A \rightarrow R$ to the induced map (Proposition 2.3). It is proved in
+  Proposition 2.3 that $\beta$ is a left-inverse of $\alpha$. To prove that it is also a right inverse, note that $\phi$ induces $(f, f^{\#})$ where $f(\mathfrak{p}) = \phi^{-1}(\mathfrak{p})$, and we have
+  the map $f^{\#}(\text{Spec}(A)) : \Gamma(\text{Spec}(A), \mathcal{O}_{\text{Spec}(A)}) \rightarrow \Gamma(\text{Spec}(R), \mathcal{O}_{\text{Spec}(R)})$ which takes $s_a$, the constant
+  section taking on value $a \in A$ at every point, to $\phi \circ s_a \circ f$, which takes on $\phi(a)$ at every point. Thus, this section can be identified with $\phi$ under the isomorphisms identifying the
+  global sections with $A$ and $R$ respectively. It follows that $\beta$ is a right inverse, and $\alpha$ is a bijection in this case.
+
+  To prove that this result holds for general schemes, pick some cover $\{U_{\alpha}\}$ for $X$ such that $X$ is affine when restricted to each open set. We can use the $\alpha$ maps to induce a bijection
+  \begin{equation}
+    \widetilde{\alpha} : \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Sch}}(U_{\alpha}, \text{Spec}(A)) \rightarrow \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Ring}}(A, \Gamma(U_{\alpha}, \mathcal{O}_X))
+    \end{equation}
+  Of course, we have the natural restriction map on each affine open set, yielding
+  \begin{equation}
+  R : \text{Hom}_{\text{Sch}}(X, \text{Spec}(A)) \rightarrow  \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Sch}}(U_{\alpha}, \text{Spec}(A))
+  \end{equation}
+  On the other hand, suppose we have a collection of morphisms of schemes $(f_{\alpha}, f_{\alpha}^{\#}) : U_{\alpha} \rightarrow \text{Spec}(A)$ such that $f_{\alpha} = f_{\beta}$ on $U_{\alpha} \cap U_{\beta}$ and
+  given $f_{\alpha}^{\#}(V) : \mathcal{O}(V) \rightarrow \mathcal{O}_X(f_{\alpha}^{-1}(V))$ and $f_{\beta}^{\#}(V) : \mathcal{O}(V) \rightarrow \mathcal{O}_X(f_{\beta}^{-1}(V))$, we have
+  \begin{equation}
+    f_{\alpha}^{\#}(V)(s)|_{W} = f_{\beta}^{\#}(V)(s)|_{W}
+    \end{equation}
+  for $W \subset f_{\alpha}^{-1}(V) \cap f_{\beta}^{-1}(V)$. We immediately can combine the $f_{\alpha}$ to form a continuous map $f : X \rightarrow \text{Spec}(A)$. Moreover, given some open $V \subset \text{Spec}(A)$, and
+  section $s \in \mathcal{O}(V)$, note that $f^{-1}(V)$ is covered by the $U_{\alpha}$ and $U_{\alpha} \cap f^{-1}(V) = f_{\alpha}^{-1}(V)$, so we can write $f^{-1}(V)$ as the union of the $f_{\alpha}^{-1}(V)$. Of course,
+  the goal is to define a section on all of $f^{-1}(V)$. We have sections $f_{\alpha}^{\#}(V)(s) \in \mathcal{O}_X(f_{\alpha}^{-1}(V))$ for each $\alpha$, and we know that these sections agree on intersections.
+  Thus, by definition of a sheaf, they glue together to a unique section which restricts to the subsections.
+
+  It is easy to check that the subset of $\prod_{\alpha} \text{Hom}_{\text{Sch}}(U_{\alpha}, \text{Spec}(A))$ which is the image of $R$ is exactly the set with the restrictions described above, and that the map
+  described above is an inverse to $R$. We use similar logic to treat the natural map
+  \begin{equation}
+    Q : \text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X)) \rightarrow \displaystyle\prod_{\alpha \in J} \text{Hom}_{\text{Ring}}(A, \Gamma(U_{\alpha}, \mathcal{O}_X))
+    \end{equation}
+  where we restrict global sections to local sections. In particular, given some element of the product determined by a collection of homomorphisms $\phi_{\alpha}$, we consider the case
+  where sections $\phi_{\alpha}(a)$ and $\phi_{\beta}(a)$ agree on $U_{\alpha} \cap U_{\beta}$. It is clear that these elements are the image of $Q$. Moreover, when restricting to the image of
+  $R$, we can easily see that these elements are the image of $\widetilde{\alpha}|_{\text{Im}(R)}$. In particular, the maps $f_{\alpha}^{\#}(\text{Spec}(A))$ and $f_{\beta}^{\#}(\text{Spec}(A))$
+  which take $\Gamma(\text{Spec}(A), \mathcal{O})$ to $\Gamma(U_{\alpha}, \mathcal{O}_X)$ and $\Gamma(U_{\beta}, \mathcal{O}_X)$ respectively take global sections of $\text{Spec}(A)$ to pairs
+  which agree on $U_{\alpha} \cap U_{\beta}$.
+
+  Moreover, given some collection of $\phi_{\alpha}$ which satisfy the desired criteria, they will induce an element of $\text{Im}(R)$.
+
+  Thus, we have a commutative square where three of the arrows are bijections, so the fourth arrow between $\text{Hom}_{\text{Sch}}(X, \text{Spec}(A))$ and $\text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X))$ is also a
+  bijection.
+
+\subsection{Problem 2.2.5}
+
+\noindent This follows quite readily from the previous solution: we have a bijection $\alpha : \text{Hom}_{\text{Sch}}(X, \text{Spec}(A)) \rightarrow \text{Hom}_{\text{Ring}}(A, \Gamma(X, \mathcal{O}_X))$. Thus,
+  our bijection is between $\text{Hom}_{\text{Sch}}(X, \text{Spec}(\mathbb{Z}))$ and $\text{Hom}_{\text{Ring}}(\mathbb{Z}, \Gamma(X, \mathcal{O}_X))$. But of course, if $\phi : \mathbb{Z} \rightarrow R$ is an
+  arbitrary ring homomorphism, then $\phi(1) = 1_R$, and this determines where every element of the domain is sent. Therefore, there is a unique element in $\text{Hom}_{\text{Sch}}(X, \text{Spec}(\mathbb{Z}))$, as desired.
+
+  We are also asked to describe $\text{Spec}(\mathbb{Z})$: it is the collection of prime ideals $(p)$, each of which are closed points. The closed sets $V(k)$ can be broken down via a prime factorization of $k$
+  to get a finite union of the single point sets $V(p_1) \cup \cdots \cup V(p_n)$, so along with the entire set $\text{Spec}(\mathbb{Z})$, these finite sets give the topology (this is usually called the finite-complement topology).
+
+  \subsection{Problem 2.2.7}
+
+ \noindent A morphism is of the form $(f, f^{\#}) : \text{Spec}(K) \rightarrow X$. We know that $\text{Spec}(K)$ consists of a single point, $(0)$, so specifying $f$ is equivalent to specifying a point $x = f((0)) \in X$.
+  The morphism of sheaves $f^{\#} : \mathcal{O}_X \rightarrow f_{*} \mathcal{O}_{\text{Spec}(K)}$ is equivalent to specifying ring morphisms $f^{\#}(U) : \mathcal{O}_X(U) \rightarrow \mathcal{O}_{\text{Spec}(K)}((0))$
+  for all $U$ which contain the point $x$ which are mutually compatible. Of course, the ring $\mathcal{O}_{\text{Spec}(K)}((0))$ consists of all functions $s : \{(0)\} \rightarrow K_{(0)} \simeq K$, which is isomorphic to $K$ itself. Hence,
+  we may specify a ring morphism $\phi(U) : \mathcal{O}_X(U) \rightarrow K$ for each $U$ containing $x$, such that if $V \subset U$ and $\iota$ is the inclusion, then $\phi(U) = \phi(V) \circ \mathcal{O}_X(\iota)$.
+  Specifying all such morphisms is clearly equivalent to specifying a local ring morphism $\phi : \mathcal{O}_{x} \rightarrow K$. Finally, if $\phi$ is a local ring morphism, then $\phi^{-1}(0) = \mathfrak{m}_x$, so
+  we obtain an injective morphism $\widetilde{\phi} : \mathcal{O}_x/\mathfrak{m}_x \rightarrow K$. Conversely, if $\widetilde{\phi}$ is a pre-specified injective morphism, then $\phi = \widetilde{\phi} \circ \pi$,
+  where we pre-compose with the projection map, is a local ring homomorphism $\mathcal{O}_x \rightarrow K$, and it is easy to see that these correspondences are inverses of each other. We are then
+  able to promote this homomorphism to a morphism of sheaves by defining $f^{\#}(U)$ to be $0$ for $U$ not containing $x$ and localization at $x$ followed by $\phi$ for all other $U$.
+
+\subsection{Problem 2.2.10}
+
+\noindent It is a basic fact from algebra that any (monic) polynomial in $\mathbb{R}[x]$ can be factored as a product of monomials $x - a$ and irreducible quadratics $x^2 + bx + c$. Thus, Since $\mathbb{R}$ is
+  Noetherian, so is $\mathbb{R}[x]$. If $\mathfrak{p} = (f_1, \dots, f_n)$ is a prime ideal, then it must contain each of the irreducible factors of each $f_j$ of the above form, so any prime is generated
+  by a finite collection of irreducibles of the form introduced in the first sentence. We cannot have $x - a$ and $x - b$ in this generating set for $a \neq b$, as then $1 \in \mathfrak{p}$ by taking their difference
+  to obtain a unit. In addition, if $\mathfrak{p}$ contained both $x - a$ and $x^2 + bx + c$, then $\mathfrak{p}$ contains
+  \begin{equation}
+    x^2 + bx + c - (x - a)(x + b + a) = c + ab + a^2
+    \end{equation}
+  This must be equal to $0$, otherwise $\mathfrak{p}$ would contain a unit, but then $a$ would be a root of $x^2 + bx + c$, which can't be as this polynomial is irreducible. Thus, the prime ideals are precisely the
+  principal ones $(x - a)$ and $(x^2 + bx + c)$ generated by the irreducible elements. Therefore, $\text{Spec}(\mathbb{R}[x])$ has a point corresponnding to each $a \in \mathbb{R}$, namely $(x - a)$. It also
+  has a point corresponding to each \emph{conjugate pair} of complex numbers in $\mathbb{C}$. Thus, $\text{Spec}(\mathbb{R}[x])$ has more points than $\mathbb{R}$, but less than $\mathbb{C}$.
+
+  If we want to compare topologies, note that of $\mathfrak{a} = (g_1, \dots, g_m)$ is a polynomial ideal, we have $V(\mathfrak{a}) = \cap_{j = 1}^{m} V(g_j)$. Each $V(g_j)$ is the union of $V(g_j^{(k)})$, where
+  the $g_j^{(k)}$ are the irreducible factors. Each of these is a one-point set, so $V(g_j)$ is a finite union of points, and $V(\mathfrak{a})$ is also a finite union of points. Thus, the closed sets are precisely
+  the finite collection of points, and the topology is thus the finite complement topology: quite different from the usual topologies on $\mathbb{R}$ and $\mathbb{C}$!
+
+  \subsection{Problem 2.2.13}
+
+  \noindent \textbf{Part A.} 
+
+  \subsection{Problem 2.2.16}
+
+\noindent \textbf{Part A.} Let us first look at the affine case. In particular, when $X = \text{Spec}(B)$, a choice of a global section amount to a choice of element $f$ in $B$, the stalk $\mathcal{O}_{\mathfrak{p}}$ at point $\mathfrak{p}$
+      is isomorphic to $A_{\mathfrak{p}}$, and $\mathfrak{m}_{\mathfrak{p}} \simeq \phi(\mathfrak{p})$, the image of $\mathfrak{p}$ in the localization. The stalk of a section is then just the image of $f$ in each
+      of the localized rings $A_{\mathfrak{p}}$. The condition of $\rho(f)$ not being in $\phi(\mathfrak{p})$ is equivalent to the condition that $f \notin \rho^{-1}(\phi(\mathfrak{p})) = \mathfrak{p}$ (see the appendix).
+      It follows that $\mathfrak{p} \in X_f$ if and only if $\mathfrak{p}$ does not contain $(f)$ (equivalent to $\mathfrak{p} \in D((f))$). So, $X_f = D((f))$, in the affine case.
+
+      Now, for the general case, we can restrict to affine $U$ and restrict a section $f$ to $\overline{f}$, and note from above that $X_f \cap U = U_f = D((f))$.
+      \newline
+
+\noindent \textbf{Part B.} Again, it is easy to prove this in the affine case. In this case, $X_f = D((f))$. In this case, restricting some $a \in A$, thought of as a global section, to $\mathcal{O}(D(f)) \simeq A_f$ amounts to
+        mapping it under inclusion into the localization. $a$ is $0$ in the localization if and only if $f^n a = 0$ in $A$, for some $n$. To prove the general case, take a finite affine open cover for $X$
+        by $U_1, \dots, U_m$, and gets some $n_k$ for each $U_k$ so that $f^{n_k} a = 0$ in $\Gamma(U_k, \mathcal{O}_X|_{U_k})$. Taking the largest of the $n_k$ to be $n$, and we get $f^n a = 0$ on all of the open
+        sets $U_k$, thus on all of $X$.
+        \newline
+
+ \noindent \textbf{Part C.} Let us first look at the affines $U_i$. In particular, let us look at $b$ restricted to $X_f \cap U_i \simeq D(f)$, so $b \in \mathcal{O}(D(f)) \simeq A_f$. It follows that $b = \frac{a_i}{f^{n_i}}$
+          for $a_i \in A$, on $U_i \cap X_f$. On the intersections $U_i \cap U_j \cap X_f = (U_i \cap U_j)_f$, we have course must have
+          \begin{equation}
+            \frac{a_i}{f^{n_i}} = \frac{a_j}{f^{n_j}} \Longleftrightarrow f^{m_{ij}} (a_i f^{n_j} - a_j f^{n_i}) = 0
+            \end{equation}
+          Then, since these intersections are quasi-compact, it follows from above that there exists some $M_{ij}$ such that $f^{M_{ij}} (a_i f^{n_j} - a_j f^{n_i}) = 0$
+          on all of $U_i \cap U_j$. Let $M$ be the largest of all the $M_{ij}$. We then have $f^{M} (a_i f^{n_j} - a_j f^{n_i})$ for every pair $i$ and $j$. It follows that we just define
+          $a = a_i f^{M + n_1 + \cdots + \hat{n_i} + \cdots + n_K}$ for every $i$. Let $N = n_1 + \cdots + n_K$. Then, when we restrict to $U_i \cap X_f$, we have $a = f^{M + N} b$, for each $i$,
+          and we are done.
+          \newline
+
+ \noindent \textbf{Part D.}Given some $b \in \Gamma(X_f, \mathcal{O}_{X_f})$, we have that $f^n b$ is the restriction of some $a \in A$. Thus, we map $b$ to $\frac{a}{f^n}$ in $A_f$.
+            This is well-defined because if $f^m b$ is also a restriction of some $a' \in A$, we have
+            \begin{equation}
+              f^m a = f^{n + m} b = f^n a' \Longrightarrow \frac{a}{f^n} = \frac{a'}{f^m} \in A_f
+              \end{equation}
+            It is clear that this map is also a ring homomorphism. If $f^n b$ is the restriction of $0$, so $f^n b = 0$, then locally, where $b$ can be thought of as an element of $\mathcal{O}(D(f)) \simeq A_f$,
+            it follows that $b = 0$, so we have injectivity. Surjectivity follows from the fact that given some $\frac{a}{f^n}$, we can always choose $b$ to be of this form locally in $\mathcal{O}(D(f))$, such a $b$ will be mapped
+            to $\frac{a}{f^n}$. Thus, we have the desired isomorphism.
+
+\section{Extra Proofs}
+\label{sec:extra}
+
+\begin{remark}[Some details on localizations]
+  \label{rem:s0}
+  Let $R$ be a ring, let $S$ be a multiplicative set. Let $\rho : R \rightarrow S^{-1} R$ be the localization map taking $r$ to $\frac{r}{1} \in S^{-1} R$. If $\mathfrak{a}$ is a (prime) ideal in $S^{-1} R$, then
+  $\rho^{-1}(\mathfrak{a})$ is a (prime) ideal in $R$. We also define a map $\phi$ taking an ideal $\mathfrak{a}$ of $R$ to the ideal in $S^{-1} R$ generated by the set $\rho(\mathfrak{a})$.
+  It is easy to see that every element of $S^{-1} \mathfrak{a}$ is of the form $\frac{r}{s}$, for some $r \in \mathfrak{a}$. Let us consider the relationship
+  between $\phi$ and the map $\rho^{-1}$ taking $\mathfrak{a}$ to $\rho^{-1}(\mathfrak{a})$. Our first claim is that $\mathfrak{a} = \phi(\rho^{-1}(\mathfrak{a}))$ for \emph{any} ideal $\mathfrak{a}$. To see this,
+  pick some $\frac{r}{s} \in \mathfrak{a} \subset S^{-1} R$. Note that $\rho(r) = \frac{r}{1} = \frac{s r}{s} \in \mathfrak{a}$, so $r \in \rho^{-1}(\mathfrak{a}) \subset R$ and $\frac{r}{1} \in \rho(\rho^{-1}(\mathfrak{a}))$.
+  This means that $\frac{r}{s}$ is
+  in the ideal in $S^{-1} R$ generated by all images of elements of $\rho^{-1}(\mathfrak{a})$ under $\rho$, so $\mathfrak{a} \subset \phi(\rho^{-1}(\mathfrak{a}))$. On the other hand, given some element of $\phi(\rho^{-1}(\mathfrak{a}))$,
+  it will be of the form
+  \begin{equation}
+    \frac{r_1}{s_1} \cdot \frac{q_1}{1} + \cdots + \frac{r_m}{s_m} \cdot \frac{q_m}{1} = \frac{r_1' q_1 + \cdots + r_m' q_m}{s_1 \cdots s_m}
+    \end{equation}
+  so any such element is of the form $\frac{r}{s}$ for some $r \in \rho^{-1}(\mathfrak{a})$. Thus, $\frac{r}{1} \in \mathfrak{a}$, so $\frac{r}{s} \in \mathfrak{a}$, which gives the reverse inclusion.
+
+  Thus, $(\phi \circ \rho^{-1})(\mathfrak{a}) = \mathfrak{a}$. However, it is \emph{not} the case that $(\rho^{-1} \circ \phi)(\mathfrak{a}) = \mathfrak{a}$. This only works if we restrict $\phi$ to the collection
+  of prime ideals which do not intersect $S$, and $\rho^{-1}$ to the collection of prime ideals in $S^{-1} R$. Note that if $\mathfrak{p} \subset S^{-1} R$ is prime, then $\rho^{-1}(\mathfrak{p})$ will be prime
+  in $R$. Moreover, if $s \in \rho^{-1}(\mathfrak{p})$ for some $s \in S$, then $\frac{s}{1} \in \mathfrak{p}$, so $\frac{1}{1} \in \mathfrak{p}$, contradicting the fact that it must be proper. On the other hand,
+  if $\mathfrak{p}$ is a prime ideal in $R$ not intersecting $S$, and if some $\frac{p}{s} \in \phi(\mathfrak{p})$ with $p \in \mathfrak{p}$, $s \in S$
+  can be written as $\frac{p}{s} = \frac{p_1}{s_1} \cdot \frac{p_2}{s_2} = \frac{p_1 p_2}{s_1 s_2}$, then $q s_1 s_2 p =  qs p_1 p_2$ for some $q \in S$, so $qs p_1 p_2 \in \mathfrak{p}$. Since $S \cap \mathfrak{p} = \emptyset$
+  and $\mathfrak{p}$ is prime, $p_1 p_2 \in \mathfrak{p}$, so either $p_1$ or $p_2$ is. Then either $\frac{p_1}{s_1}$ or $\frac{p_2}{s_2}$ is in $\phi(\mathfrak{p})$.
+
+  Let us finally show that $(\rho^{-1} \circ \phi)(\mathfrak{p}) = \mathfrak{p}$ for such prime ideals. First note that given $p \in \mathfrak{p}$, then $\rho(p) = \frac{p}{1}$ is in $\phi(\mathfrak{p})$, so
+  $\mathfrak{p} \subset (\rho^{-1} \circ \phi)(\mathfrak{p})$. Note that we haven't yet used the fact that $\mathfrak{p}$ is prime: this inclusion holds for any ideal. However, we need this assumption for the reverse inclusion.
+  If $p \in (\rho^{-1} \circ \phi)(\mathfrak{p})$, then $\frac{p}{1} \in \phi(\mathfrak{p})$. Thus, it can be written as $\frac{q}{s}$ for some $q \in \mathfrak{p}$ and $s \in S$. Then we have
+  $t (sp - q) = 0$ for some $t \in S$, so $sp \in \mathfrak{p}$. Then, since $\mathfrak{p}$ is prime and does not contain any elements of $S$, $p \in \mathfrak{p}$, giving the reverse inclusion.
+  \end{remark}
+
+\noindent The above discussion gives us the following result:
+
+\begin{lemma}
+  \label{lem:s}
+  If $R$ is a ring, and $S$ is a multiplicative set, then the prime ideals of $S^{-1} R$ are in bijective correspondence with the prime ideals of $R$ which do not intersect $S$
+  \end{lemma}
+
+\noindent Let us continue our discussion of localizations.
+
+\begin{lemma}
+  \label{lem:s2}
+  If $S$ and $T$ are multiplicative sets in ring $R$ such that $S \subset T$, then $S^{-1} T$ is a multiplicative set and $T^{-1} R \simeq (S^{-1} T)^{-1} (S^{-1} R)$ as rings.
+  \end{lemma}
+
+\begin{proof}
+Define the map $\Phi : T^{-1} R \rightarrow (S^{-1} T)^{-1} (S^{-1} R)$ to be $\Phi(\frac{r}{t}) = \frac{r/1}{t/1}$. To show that this is well-defined, suppose $\frac{r'}{t'} = \frac{r}{t}$. Then
+$q (t r' - t' r) = 0$ for some $q \in T$. We want to show that $\frac{r'/1}{t'/1} = \frac{r/1}{t/1}$, which is true if and only if there is $\frac{x}{s} \in S^{-1} T$ such that
+
+\begin{equation}
+  \frac{x}{s} \left( \frac{t' r}{1} - \frac{t r'}{1} \right) = \frac{x (t' r - t r')}{s} = 0
+  \end{equation}
+so we just let $\frac{x}{s} = \frac{q}{1}$, and we have what we want. The fact that this is a homomorphism is easy. Given some $\frac{r/s_1}{t/s_2}$, note that $\Phi(\frac{s_2 r}{s_1 t}) = \frac{s_2 r / 1}{s_1 t / 1}$.
+We claim this is equal to the first expression. Indeed,
+\begin{equation}
+  \frac{s_1 t}{1} \frac{r}{s_1} - \frac{s_2 r}{1} \frac{t}{s_2} = \frac{r}{t} - \frac{r}{t} = 0
+  \end{equation}
+so this is the case, and we have surjectivity. Finally, suppose $\Phi(\frac{r}{t}) = \frac{r/1}{t/1} = 0$. Then $\frac{x}{s} \frac{r}{1} = \frac{xr}{s} = 0$ for some $\frac{x}{s} \in S^{-1} T$. Then $x' r = 0$ for some $x' \in T$.
+It follows that $\frac{r}{t} = \frac{x' r}{x' t} = 0$ in $T^{-1} R$, so we have injectivity. Thus, $\Phi$ is an isomorphism.
+  \end{proof}
+
+\begin{corollary}
+  \label{cor:s3}
+  It follows that if $A$ is a ring, and $\mathfrak{p}$ is a prime ideal which does not contain $f$, so $S = \{1, f, f^2, \dots\}$ is contained in $T = A - \mathfrak{p}$, then
+  \begin{equation}
+    A_{\mathfrak{p}} = T^{-1} A \simeq (S^{-1} T)^{-1} (S^{-1} A) = (S^{-1} (A - \mathfrak{p}))^{-1} (S^{-1} A) = (A_f - S^{-1} \mathfrak{p})^{-1} A_f = (A_f)_{S^{-1} \mathfrak{p}}
+    \end{equation}
+  This will be useful in some of the problems.
+  \end{corollary}
+
+\noindent Here is a fact about sheaves:
+
+\begin{proposition}
+  If $f : X \rightarrow Y$ is a homeomorphism and $\mathcal{O}_X$ is a sheaf on $X$, then $(f_{*} \mathcal{O}_X)_{f(x)}$, the stalk of the pushforward sheaf, is
+  isomorphic to $\mathcal{O}_{X, x}$.
+  \end{proposition}
+
+\begin{proof}
+  Note that the elements of $\mathcal{O}_{X, x}$ are germs $[U, s]$ where $s \in \mathcal{O}_X(U)$ and $x \in U$. The elements of $(f_{*} \mathcal{O}_X)_{f(x)}$ are germs $[V, r]$
+  with $r \in \mathcal{O}_X(f^{-1}(V))$ and $f(x) \in V$. Thus, we have map $f^{\#} : \mathcal{O}_{X, x} \rightarrow (f_{*} \mathcal{O}_X)_{f(x)}$ with $f^{\#}[U, s] = [f(U), s]$.
+  This is obviously a ring homomorphism, and it has an inverse.
+  \end{proof}
+
+\end{document}

@@ -1,0 +1,31 @@
+#+TITLE:Problem 2.1.2
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
+
+*Note:* I am going to use the notation $\text{im}(\varphi)$ for the image presheaf and $\text{im}(\varphi)^{+}$ for the corresponding sheafification.
+
+*Part A.* The claim is that $\text{ker}(\varphi)_p$ and $\text{ker}(\varphi_p)$ are isomorphic as Abelian groups via a canonical isomorphism.
+In particular, we have the subsheaf inclusion $j : \text{ker}(\varphi) \to \mathcal{F}$. Our goal is to show that the induced map on stalks $j_p : \text{ker}(\varphi)_p \to \mathcal{F}_p$
+is an injective group homomorphism whose image is $\text{ker}(\varphi_p) \subset \mathcal{F}_p$. Since $j_p$ takes $s_p$ with $s \in \text{ker}(\varphi)(U) = \text{ker}(\varphi(U))$ to
+$s_p$ with $s \in \mathcal{F}(U)$, injectivity is obvious and it is obvious that $j_p(\text{ker}(\varphi)_p) \subset \text{ker}(\varphi_p)$. On the other hand, if $\varphi_p(s_p) = 0$
+for some $s_p \in \mathcal{F}_p$, then we must have $\varphi(W)(s|_W) = 0$ for some $W$ around $p$, so $s|_W \in \text{ker}(\varphi(W))$ and we have well-defined $(s|_W)_p \in \text{ker}(\varphi)_p$ where $j_p((s|_W)_p) = (s|_W)_p$.
+
+In the case that $\mathcal{F}$ is a presheaf and $\mathcal{F}^{+}$ is the sheafification, recall that we have the canonical embedding $\theta : \mathcal{F} \to \mathcal{F}^{+}$
+which is a presheaf morphism where $\theta(U)$ takes $s \in \mathcal{F}(U)$ to function $s^{+} : U \to \sqcup_{p \in U} \mathcal{F}_p$ such that $s^{+}(p) = s_p \in \mathcal{F}_p$.
+It isn't difficult to see that $\theta_p : \mathcal{F}_p \to \mathcal{F}^{+}_p$ is an isomorphism on stalks where $\theta_p(s^{+}_p) = s_p$. Thus, if we wish to verify that the
+subsheaf inclusion $j^{+} : \text{im}(\varphi)^{+} \to \mathcal{G}$ induces injective $j^{+}_p : \text{im}(\varphi)^{+}_p \to \mathcal{G}_p$ whose image is $\text{im}(\varphi_p) \subset \mathcal{G}_p$,
+it suffices to show that this is true for the map on stalks induced by $j : \text{im}(\varphi) \to \mathcal{G}$, as $j = j^{+} \circ \theta$. The proof of this fact
+is pretty much the same as the earlier proof for kernels.
+
+*Part B.* $\varphi$ is injective if and only if $\text{ker}(\varphi) = 0$ which occurs if and only if $\text{ker}(\varphi)_p = 0$ for all $p$ which occurs if and only
+if $\text{ker}(\varphi_p) = 0$ for all $p$ via Part A. In addition, given $\varphi : \mathcal{F} \to \mathcal{G}$, surjectivity is equivalent to showing that $j^{+} : \text{im}(\varphi)^{+} \to \mathcal{G}$
+is an isomorphism, which is equivalent to showing that $j^{+}_p : \text{im}(\varphi)^{+}_p \to \mathcal{G}_p$ is an isomorphism of Abelian groups for each $p$. We already showed that this map
+is injective with image $\text{im}(\varphi_p)$, hence it is an isomorphism if and only if $\text{im}(\varphi_p) = \mathcal{G}_p$ (i.e. $\varphi_p$ is surjective).
+
+*Part C.* We have subsheaf inclusions $i : \text{ker}(\varphi^k) \to \mathcal{F}^k$ and $j^{+} : \text{im}(\varphi^{k-1})^{+} \to \mathcal{F}^k$. Exactness
+is the requirement that there is unique isomorphism of sheaves $\phi : \text{ker}(\varphi^k) \to \text{im}(\varphi^{k-1})^{+}$ such that $i = j^{+} \circ \phi$. If such
+an isomorphism exists, then on stalks $i_p = j^{+}_p \circ \phi_p$ and thus $\text{im}(i_p) = \text{im}(j^{+}_p)$, hence $\text{ker}(\varphi^k_p) = \text{im}(\varphi^{k-1}_p)$
+from Part A, and we have exactness on stalks. Conversely, $\text{ker}(\varphi^k_p) = \text{im}(\varphi^{k-1}_p)$ implies that $\text{im}(i_p) = \text{im}(j^{+}_p)$. It follows that
+for some $s \in \text{ker}(\varphi^k)(U)$ with $p \in U$, there is unique $t_p \in \text{im}(\varphi^{k-1})_p$ such that $i_p(s_p) = j^{+}_p(t^{+}_p) = j_p(t_p)$ in $\mathcal{F}^k_p$. In
+particular, there must be open $W$ around $p$ such that $i(W)(s|_W) = j(W)(t|_W)$. This allows us to define $\phi(W)(s|_W) = \theta(W)(t|_W)$. The locality properties of sheaves allow
+us to extend this to a well-defined morphism of sheaves, which is in fact an isomorphism, and is unique (as it induces an isomorphism on stalks, and is uniquely-determined on stalks).

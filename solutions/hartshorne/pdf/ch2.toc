@@ -1,0 +1,7 @@
+\contentsline {title}{Hartshorne chapter 2 solutions}{1}{section*.1}%
+\tocdepth@munge 
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Section 2.1}{1}{section.1}%
+\contentsline {subsection}{\numberline {A}Problem 2.1.1}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {B}Problem 2.1.2}{1}{subsection.1.2}%
+\contentsline {section}{\numberline {II}Section 2.2}{2}{section.2}%

@@ -1,0 +1,137 @@
+\documentclass[aps,pra,showpacs,notitlepage,onecolumn,superscriptaddress,nofootinbib]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage[tmargin=1in, bmargin=1.25in, lmargin=1.5in, rmargin=1.5in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{import}
+\usepackage{mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{tikz-cd}
+\usepackage{verbatim}
+
+
+% package for commutative diagrams
+% \usepackage{tikz-cd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{crimson}{RGB}{186,0,44}
+\definecolor{moss}{RGB}{0, 186, 111}
+\newcommand{\pop}[1]{\textcolor{crimson}{#1}}
+\newcommand{\zcom}[1]{\noindent\textcolor{crimson}{(Z): #1}}
+\newcommand{\jcom}[1]{\noindent\textcolor{moss}{(J): #1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\pqeq}{\succcurlyeq}
+\newcommand{\pleq}{\preccurlyeq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks,
+    linkcolor={crimson},
+    citecolor={crimson},
+    urlcolor={crimson}
+}
+
+\usepackage{qcircuit}
+\usepackage{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{reminder}{Reminder}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{answer}{Answer}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{mantra}{Mantra}[section]
+
+\usepackage{geometry}
+\geometry{
+  left=22mm,
+  right=22mm,
+  top=20mm,
+}
+
+\newcommand{\hhrulefill}{\hspace{-1.5em} \hrulefill}
+\renewcommand{\baselinestretch}{1.1} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Hartshorne chapter 2 section 1 solutions}
+\author{Jack Ceroni}
+\date{\today}
+\maketitle
+
+
+\tableofcontents
+
+\hhrulefill
+
+\section{Introduction}
+
+\noindent As a small disclaimer, note that throughout these solutions, equality is often taken to mean ``isomorphic via unique isomorphism''. In particular cases where it is convenient to make use of universal properties,
+all instances of objects satisfying the universal property are canonically isomorphic (isomorphic via unique isomorphism), and thus for all intents and purposes, these objects may all be regarded
+as the same.
+
+\section{Solutions}
+
+\subsection{Problem 2.1.1}
+
+\noindent The constant presheaf $\mathcal{F}_p$ clearly has all of its stalks isomorphic to $A$. Therefore, some function $s : U \to \cup_{p \in U} \mathcal{F}_p$ with $s(p) \in \mathcal{F}_p$ and
+for each $p \in U$ having $p \in V \subset U$ with $t \in \mathcal{F}(V) = A$ with $s(q) = t$ for all $q \in V$ is equivalent to specifying a function $s : U \to A$ which is continuous when $A$ is
+given the discrete topology (in other words, a locally-constant function). The result immediately follows.
+
+\subsection{Problem 2.1.2}
+
+\noindent \textbf{Note:} I am going to use the notation $\text{im}(\varphi)$ for the image presheaf and $\text{im}(\varphi)^{+}$ for the corresponding sheafification.
+\newline
+
+\noindent \textbf{Part A.} The claim is that $\text{ker}(\varphi)_p$ and $\text{ker}(\varphi_p)$ are isomorphic as Abelian groups via a canonical isomorphism.
+In particular, we have the subsheaf inclusion $j : \text{ker}(\varphi) \to \mathcal{F}$. Our goal is to show that the induced map on stalks $j_p : \text{ker}(\varphi)_p \to \mathcal{F}_p$
+is an injective group homomorphism whose image is $\text{ker}(\varphi_p) \subset \mathcal{F}_p$. Since $j_p$ takes $s_p$ with $s \in \text{ker}(\varphi)(U) = \text{ker}(\varphi(U))$ to
+$s_p$ with $s \in \mathcal{F}(U)$, injectivity is obvious and it is obvious that $j_p(\text{ker}(\varphi)_p) \subset \text{ker}(\varphi_p)$. On the other hand, if $\varphi_p(s_p) = 0$
+for some $s_p \in \mathcal{F}_p$, then we must have $\varphi(W)(s|_W) = 0$ for some $W$ around $p$, so $s|_W \in \text{ker}(\varphi(W))$ and we have well-defined $(s|_W)_p \in \text{ker}(\varphi)_p$ where $j_p((s|_W)_p) = (s|_W)_p = s_p$.
+
+In the case that $\mathcal{F}$ is a presheaf and $\mathcal{F}^{+}$ is the sheafification, recall that we have the canonical embedding $\theta : \mathcal{F} \to \mathcal{F}^{+}$
+which is a presheaf morphism where $\theta(U)$ takes $s \in \mathcal{F}(U)$ to function $s^{+} : U \to \sqcup_{p \in U} \mathcal{F}_p$ such that $s^{+}(p) = s_p \in \mathcal{F}_p$.
+It isn't difficult to see that $\theta_p : \mathcal{F}_p \to \mathcal{F}^{+}_p$ is an isomorphism on stalks where $\theta_p(s_p) = s_p^{+}$. Thus, if we wish to verify that the
+subsheaf inclusion $j^{+} : \text{im}(\varphi)^{+} \to \mathcal{G}$ induces injective $j^{+}_p : \text{im}(\varphi)^{+}_p \to \mathcal{G}_p$ whose image is $\text{im}(\varphi_p) \subset \mathcal{G}_p$,
+it suffices to show that this is true for the map on stalks induced by $j : \text{im}(\varphi) \to \mathcal{G}$, as $j = j^{+} \circ \theta$. The proof of this fact
+is pretty much the same as the earlier proof for kernels.
+\newline
+
+\noindent \textbf{Part B.} $\varphi$ is injective if and only if $\text{ker}(\varphi) = 0$ which occurs if and only if $\text{ker}(\varphi)_p = 0$ for all $p$ which occurs if and only
+if $\text{ker}(\varphi_p) = 0$ for all $p$ via Part A. In addition, given $\varphi : \mathcal{F} \to \mathcal{G}$, surjectivity is equivalent to showing that $j^{+} : \text{im}(\varphi)^{+} \to \mathcal{G}$
+is an isomorphism, which is equivalent to showing that $j^{+}_p : \text{im}(\varphi)^{+}_p \to \mathcal{G}_p$ is an isomorphism of Abelian groups for each $p$. We already showed that this map
+is injective with image $\text{im}(\varphi_p)$, hence it is an isomorphism if and only if $\text{im}(\varphi_p) = \mathcal{G}_p$ (i.e. $\varphi_p$ is surjective).
+\newline
+
+\noindent \textbf{Part C.} We have subsheaf inclusions $i : \text{ker}(\varphi^k) \to \mathcal{F}^k$ and $j^{+} : \text{im}(\varphi^{k-1})^{+} \to \mathcal{F}^k$. Exactness
+is the requirement that there is unique isomorphism of sheaves $\phi : \text{ker}(\varphi^k) \to \text{im}(\varphi^{k-1})^{+}$ such that $i = j^{+} \circ \phi$. If such
+an isomorphism exists, then on stalks $i_p = j^{+}_p \circ \phi_p$ and thus $\text{im}(i_p) = \text{im}(j^{+}_p)$, hence $\text{ker}(\varphi^k_p) = \text{im}(\varphi^{k-1}_p)$
+from Part A, and we have exactness on stalks. Conversely, $\text{ker}(\varphi^k_p) = \text{im}(\varphi^{k-1}_p)$ implies that $\text{im}(i_p) = \text{im}(j^{+}_p)$. It follows that
+for some $s \in \text{ker}(\varphi^k)(U)$ with $p \in U$, there is unique $t_p \in \text{im}(\varphi^{k-1})_p$ such that $i_p(s_p) = j^{+}_p(t^{+}_p) = j_p(t_p)$ in $\mathcal{F}^k_p$. In
+particular, there must be open $W$ around $p$ such that $i(W)(s|_W) = j(W)(t|_W)$. This allows us to define $\phi(W)(s|_W) = \theta(W)(t|_W)$. The locality properties of sheaves allow
+us to extend this to a well-defined morphism of sheaves, which is in fact an isomorphism, and is unique (as it induces an isomorphism on stalks, and is uniquely-determined on stalks).
+
+\end{document}
