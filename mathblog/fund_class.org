@@ -1,7 +1,6 @@
 #+TITLE:Existence of the fundamental class
 #+DESCRIPTION:Directory
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} a{color:blue;} </style>
+#+HTML_HEAD: <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
 
 /Originally posted:/ February 4th, 2026
 
@@ -31,7 +30,8 @@ with an orientation. Recall the following result:
 /Proof./ If $\widetilde{M}$ has two connected components, each is homeomorphic to $M$, and since $\widetilde{M}$ is orientable, $M$ must be as well. Conversely, if $M$ is orientable, it is
 easy to check that it has precisely two orientations. We claim that each of the images of these individual orientations in $\widetilde{M}$ determine two connected components. Indeed, these images (call them $M_{\pm}$)
 must cover all of $\widetilde{M}$, are disjoint, and are connected as the continuous image of $M$ which is connected. In fact, since a cover is a local homeomorphism, and the restricted projections $M_{\pm} \to M$ are
-bijective, each $M_{\pm}$ is necessarily homeomorphic to $M$, so each is clopen. It follows that $M_{+}$ and $M_{-}$ must be individual connected components. $\blacksquare$
+bijective, each $M_{\pm}$ is necessarily homeomorphic to $M$. Moreover, both are clearly open from the definition of the topology on $\widetilde{M}$. It follows that $M_{+}$ and $M_{-}$ must be
+individual connected components. $\blacksquare$
 
 From the above characterization of $M_R$ it is easy to prove the following results:
 
@@ -141,4 +141,21 @@ Let us now finish the blog post by proving Lemma 1:
      another class such that $\beta_x = \alpha(x)$ for all $x$, then the image of $\Phi(\alpha) - \beta$ in $H_n(\mathbb{R}^n | x)$ is $0$ for all $x$, so from (4), $\Phi(\alpha) = \beta$, and we have the
      uniqueness claim. To prove existence, we can just take the image of the $\Phi(\alpha) \in H_n(\mathbb{R}^n | K)$ produced for the union of convex compact sets $K$ constructed in (3),
     in $H_n(\mathbb{R}^n | A)$, and let this be the $\Phi(\alpha)$ for $A$. This completes the proof.
+
+* Other consequences
+
+Before ending this blog post,
+let's discuss a few implications of the above result related to manifolds with boundary. Recall that a compact $n$ -manifold with boundary is said to be
+$R$ -orientable if $M - \partial M$ is $R$ -orientable as a manifold without boundary, in the sense of the previous section. It is pretty straightforward to show that any such manifold
+with boundary admits a collar neighbourhood of the boundary, which is a neighbourhood $V$ of $\partial M$ and a homeomorphism $f : V \to \partial M \times [0, 1)$ such that
+$\partial M \times \{0\}$ is identified with $\partial M \subset V$ via the map. This allows us to immediately note that the inclusion $(M, \partial M) \to (M, V')$ where $V' = f^{-1}(\partial M \times [0, 1/2))$
+is a homotopy equivalence, as we can collapse $V'$ to $\partial M$ and stretch $V - V'$ over $V$. It follows that
+\begin{equation}
+H_n(M, \partial M; R) \simeq H_n(M, V'; R) \simeq H_n(M - \partial M, V' - \partial M; R)
+\end{equation}
+Let $\text{Int}(M) = M - \partial M$ to simplify notation. Let $K = \text{Int}(M) - V'$, so that $\text{Int}(M) - K = V' - \partial M$. Notice that $K$ is compact,
+being a closed subset of a compact manifold. We have $H_n(M - \partial M, V' - \partial M; R) = H_n(\text{Int}(M) | K; R)$. From here, we are told by the earlier lemma
+that given a section $\alpha$ for the $R$ -covering space of $\text{Int}(M)$, there exists a unique $\Phi(\alpha) \in H_n(\text{Int}(M) | K; R)$ whose image is $\alpha(x) \in H_n(\text{Int}(M) | x; R)$
+for all $x \in \text{Int}(M)$. The above isomorphism in turn give a unique $[M] \in H_n(M, \partial M; R)$ corresponding to the section. It is pretty easy to see that $\text{Int}(M)$ is connected if $M$ is,
+hence sections are uniquely determined by their value at a single point, hence similar to earlier, we get our isomorphism $H_n(M, \partial M; R) \simeq R$.
 

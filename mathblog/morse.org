@@ -1,0 +1,65 @@
+#+TITLE:Morse theory, classical and modern
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
+
+/Originally posted:/
+
+---------------
+
+* Introduction
+
+I will discuss the most important ideas in classical Morse theory, then talk a bit about a more modern approach via gradient flow lines.
+I'm currently reading Hutchings' lecture notes on Morse homology, so it seemed like a good idea to put together a write-up of some of the key ideas.
+I'd really like to understand Auroux's notes on Lagrangian Floer theory, so I obviously need to start here, with basic Morse theory.
+
+* Classical Morse theory
+
+This material is similar to that introduced by Milnor in his Morse theory book.
+
+*Definition.* A smooth function $f : M \to \mathbb{R}$ is said to be /Morse/ if all of its critical points are non-degenerate, which means that the Hessian (well-defined at critical points)
+of $f$ is non-degenerate. To be precise, if $p$ is critical, then $f_{*, p} = 0$ so $f_{*} [X, Y] = [f_{*} X, f_{*} Y] = 0$ at $p$. Therefore, $X(Y(f))_p = Y(X(f))_p$ for any two vector fields.
+In particular, there is a well-defined bilinear form $T_p M \times T_p M \to \mathbb{R}$ given by $(X_p, Y_p) \mapsto X(Y(f))_p = Y(X(f))_p$, where $X$ and $Y$ extend tangent vectors $X_p$ and
+$Y_p$ locally. This definition is independent of the extension as $X(Y(f))_p$ depends only on $X_p$ and $Y(X(f))_p$ depends only on $Y_p$. This bilinear pairing is denoted $\text{Hess}(f)_p$, and we say
+that $p$ is a non-degenerate critical point if $\text{Hess}(f)_p$ is non-degenerate as a form.
+
+Functions with a non-degenerate critical point have a nice normal form in a neighbourhood:
+
+*Proposition.* Suppose $f : M \to \mathbb{R}$ is smooth with non-degenerate critical point $p$, then we can find coordinates $(U, \varphi) = (U, x^1, \dots, x^n)$ centred at
+$p$ such that $f$ takes the form $f(0) - (s^1)^2 - \cdots - (s^k)^2 + (s^{k + 1})^2 + \cdots + (s^n)^2$ in coordinates. Moreover, the number $k$ called the /index/ of the critical
+point $p$ is independent of coordinates.
+
+/Proof./ Of course we can assume without loss of generality that $M = \mathbb{R}^n$ and $p = 0$. We can also assume that $f(0) = 0$, and of course $Df(0) = 0$.
+The Hessian is just the usual matrix of second partials of $f$. We can write $f = \sum_j s^j f_j$ where $\partial_j f(0) = f_j(0)$ (in particular, $f_j(s) = \int_{0}^{1} (\partial_j f)(ts) \ dt$).
+All of these derivatives are $0$, so we in fact have $f = \sum_{jk} s^j s^k f_{jk}$ where $f_{jk}(0) = \partial_{jk} f(0) = \frac{1}{2} \text{Hess}(f)(0)_{jk}$. Let $F$ be the matrix-valued function defined
+by the $f_{jk}$. Clearly, $F(0) = \frac{1}{2} \text{Hess}(f)(0)$ is non-singular, so $F$ is an invertible matrix in a neighbourhood of the origin, and on this neighbourhood, $f(s) = \langle F(s) s, s \rangle$.
+We can always symmetrize this expression, and thus can assume $F$ is symmetric. From here, we use an induction: assume $f$ is of the form
+
+\begin{equation}
+f = \pm (u^1)^2 \pm \cdots \pm (u^{r - 1})^2 + \sum_{i, j \geq r} u^i u^j h_{ij}
+\end{equation}
+
+where $h_{ij} = h_{ji}$ (these are functions) and $u^1, \dots, u^n$ are functions forming a valid coordinate system near the origin in $\mathbb{R}^n$. By the non-degeneracy of the Hessian of
+$f$ at the origin (in particular, this is true in any coordinate system), we can do a linear change of variables on the functions $u^j$ to assume that $h_{rr}(0) \neq 0$.
+The function $s \mapsto \sqrt{|h_{rr}(s)|}$ will be smooth near the origin.
+From here, we define function $v^r$ near the origin as
+
+\begin{equation}
+v^r(s) = \sqrt{|h_rr(s)|} \left( u^r(s) + \sum_{k > r} u^k(s) \frac{h_{kr}(s)}{h_{rr}(s)} \right)
+\end{equation}
+
+Obviously, replacing $u^r$ with $v^r$ still yields a valid coordinate system, and moreover,
+
+\begin{equation}
+(v^r)^2 = |h_{rr}| \left( (u^r)^2 + 2 \sum_{k > r} u^r u^k \frac{h_{kr}}{h_{rr}} + \sum_{k, \ell > r} u^k u^{\ell} \frac{h_{kr} h_{\ell r}}{h_{rr}^2} \right) = \pm 2 \sum_{k \geq r} u^r u^k h_{kr} \pm \sum_{k, \ell > r} u^k u^{\ell} \frac{h_{\ell r} h_{k r}}{h_{rr}}
+\end{equation}
+
+which tells us that
+
+\begin{equation}
+f = \pm (u^1)^2 \pm \cdots \pm (u^{r - 1})^2 \pm (v^r)^2 + \sum_{i, j \geq r + 1} u^i u^j k_{ij}
+\end{equation}
+for new functions $k_{ij}$, where we can again assume $k_{ij} = k_{ji}$ after symmetrizing. This completes the inductive proof.
+
+* Modern Morse theory
+
+This material is stuff covered by Hutchings in his lecture notes.

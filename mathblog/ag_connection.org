@@ -1,7 +1,8 @@
-#+TITLE:The connection between varieties and schemes: part 1
+#+TITLE:From varieties to schemes
 #+DESCRIPTION:Directory
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;background-color:#FDF7D6} a {color:blue;}  </style>
+#+HTML_HEAD: <style>body { max-width: 100% !important; margin: auto !important; padding-left: 0rem !important; padding-right: 0rem !important; }</style>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;}  </style>
 
 /Originally posted:/
 
@@ -9,9 +10,8 @@
 
 * Introduction
 
-If I don't write this (short) blog post right now, I will descend into madness. This simple idea need to be spelled out, explicitly, in my personal repository of knowledge, or else I will go off the deep end.
-The goal of this blog post is to describe the fully faithful functor going from varieties to schemes. This, in a sense, gives us a way to think of varieties as a particular kind of scheme. In a later blog post,
-I'll discuss the image of this functor, so we can construct a true categorical equivalence between varieties and a subcategory of schemes. The second section of this post follows Hartshorne, filling in details.
+The goal of this blog post is to describe the fully faithful functor going from varieties to schemes. Describing the essential image of this functor then yields an equivalence of categories between
+varities and some subcategory of schemes. In this post, we will only concern ourselves with the functor itself rather than this image/subcategory yielding the full equivalence.
 
 * A few basic facts
 
@@ -57,7 +57,9 @@ $(x_1 - p_1, \dots, x_n - p_n)$ is maximal, as the quotient is a field.
     Clearly, when $\mathfrak{a} = (1)$ we have $V(\mathfrak{a}) = \emptyset$. In addition, if $\mathfrak{a} \neq (1)$, it is contained in a maximal ideal
     $\mathfrak{b} = (x_1 - p_1, \dots, x_n - p_n)$, and $V(\mathfrak{a}) \supset V(\mathfrak{b}) = (p_1, \dots, p_n)$, so in particular, $V(\mathfrak{a}) \neq \emptyset$. $\blacksquare$
 
-*Theorem 2.3.* Let $k$ be algebraically closed, let $\mathfrak{a}$ be an ideal in $k[X_1, \dots, X_n]$. Then $I(V(\mathfrak{a})) = \text{Rad}(\mathfrak{a})$, the radical ideal of $\mathfrak{a}$,
+Let us also recall the affine Nullstellensatz (stronger than the previous result, which is sometimes called the weak Nullstellensatz):
+
+*Theorem 2.3.* Let $k$ be algebraically closed, let $\mathfrak{a}$ be an ideal in $k[x_1, \dots, x_n]$. Then $I(V(\mathfrak{a})) = \text{Rad}(\mathfrak{a})$, the radical ideal of $\mathfrak{a}$,
 which we recall is defined as $\text{Rad}(\mathfrak{a}) = \{a \ | \ a^n \in \mathfrak{a} \ \text{for some} \ n \in \mathbb{N}\}$.
 
 *Lemma 2.1.* Let $\mathfrak{a}$ be an ideal of commutative unital ring $R$, let $\pi : R \rightarrow R/\mathfrak{a}$ be the quotient homomorphism. There is a natural one-to-one correspondence
@@ -145,25 +147,26 @@ varieties and schemes: it should be somewhat clear that there must be some sort 
 off all of its irreducible closed subsets (in the Zariski topology), we know that:
 
 1. We are not throwing away any topological information about the variety $V$. A set is closed in $V$ if and only if it is a finite union of irreducible closed subsets.
-2. These set will be in bijective correspondence with $\text{Spec}(A(V))$.
+2. These irreducible closed sets will be in bijective correspondence with $\text{Spec}(A(V))$. In particular, $V(\mathfrak{p}) \subset V$ will correspond to prime $\mathfrak{p} \subset A(V)$.
+3. The singletons of $V$ (which are irreducible closed in the Zariski topology) are in bijective correspondence with the maximal ideals in $\text{Spec}(A(V))$ (each of which is prime).
 
-The hope is that this bijective correspondence has extra nice structure, and it can be promoted to a map which takes a projective variety (locally affine) to a scheme (locally a ring spectrum).
-
+The hope is that this bijective correspondence has extra nice structure, and it can be promoted to a map which takes any variety (locally affine) to a scheme (locally a ring spectrum).
 We will prove a result of this form. First, a few definitions.
 
-Recall that we allow our /category of schemes over $k$/, $\text{Var}(k)$, to contain all (quasi)-affine varieties, and all (quasi)-projective varieties over $k$, endowed with the Zariski topology, and having an associated sheaf of
-regular functions. We take a morphism of schemes in this category, $f : X \rightarrow Y$, to be one which is continuous, and which pulls-back regular functions to regular functions (in other words, there
-is an induced morphism of sheaves $f^{\#} : \mathcal{O}_Y \rightarrow f_{*} \mathcal{O}_X$ given by
+Recall that we allow our /category of schemes over $k$/, $\textbf{Var}(k)$, to contain all (quasi)-affine varieties, and all (quasi)-projective varieties over $k$, endowed with the Zariski topology, and having an associated sheaf of
+regular functions. We take a morphism of varieties in this category, $f : X \rightarrow Y$, to be one which is Zariski-continuous, and which pulls-back regular functions to regular functions (in other words, there
+is an induced morphism of structure sheaves $f^{\#} : \mathcal{O}_Y \rightarrow f_{*} \mathcal{O}_X$ given by
 
 \begin{equation}
 f^{\#}(U)(s) = s \circ f
 \end{equation}
 
-for $s \in \mathcal{O}_Y(U)$. On the other hand, we have the /category of schemes over $k$/, which is simply the comma category $\text{Sch}(k) = (\text{id} \downarrow \text{Spec}(k))$ with $\text{id} : \text{Sch} \rightarrow \text{Sch}$
-being the identity functor from the category of schemes to itself. We will construct a fully faithful functor from $\text{Var}(k)$ to $\text{Sch}(k)$.
+for $s \in \mathcal{O}_Y(U)$. On the other hand, we have the /category of schemes over $k$/, which is simply the comma category
+$\textbf{Sch}(k) = (\text{id} \downarrow \text{Spec}(k))$ with $\text{id} : \textbf{Sch} \rightarrow \textbf{Sch}$
+being the identity functor from the category of schemes to itself. We will construct a fully faithful functor from $\textbf{Var}(k)$ to $\textbf{Sch}(k)$.
 
-*Theorem 2.1.* There is a fully faithful functor $T : \text{Var}(k) \rightarrow \text{Sch}(k)$. Given variety $V$, its underlying topological space is homeomorphic to the set of closed
-points of $T(V)$, and the sheaf of regular functions on $V$ is isomorphic to the structure sheaf restricted to this closed set, via the map induced by the homeomorphism.
+*Theorem 3.1.* There is a fully faithful functor $T : \textbf{Var}(k) \rightarrow \textbf{Sch}(k)$. Given variety $V$, its underlying topological space is homeomorphic to the subspace of closed
+points of $T(V)$, and the sheaf of regular functions on $V$ is isomorphic to the structure sheaf restricted to this subspace, via the map induced by the homeomorphism.
 
 This functor that we construct is precisely how we imagine it to be in the first remark of this section.
 
@@ -181,11 +184,11 @@ the sets $t(Y)$ for $Y$ a closed subset of $X$ form a topology for $t(X)$.
 
 *Definition.* Given continuous $f : X_1 \rightarrow X_2$, we define $t(f) : t(X_1) \rightarrow t(X_2)$ as taking irreducible closed subset $C$ to $\overline{f(C)}$, which is
 irreducible as if $C_1 \cup C_2 = \overline{f(C)}$, then every point
-$x \in C$ is taken by $f$ to $\overline{f(C)}$ and is thus in $C_1$ or $C_2$, so $C \subset f^{-1}(C_1)$ or $C \subset f^{-1}(C_2)$ (it can't intersect both),
+$x \in C$ is taken by $f$ into $\overline{f(C)}$ and is thus in $C_1$ or $C_2$, so $C \subset f^{-1}(C_1)$ or $C \subset f^{-1}(C_2)$ (it can't intersect both),
 so $f(C) \subset C_1$ or $C_2$, implying its closure is also in one of these sets. Also note that $t(f)$ is continuous, as we have
 
 \begin{align}
-t(f)^{-1}(t(Y)) = \{ C \in t(X_1) \ | \ \overline{f(C)} \subset Y\} = t(f^{-1}(Y))
+t(f)^{-1}(t(Y)) = \{ C \in t(X_1) \ | \ \overline{f(C)} \subset Y\} = \{ C \in t(X_1) \ | \ f(C) \subset Y\}  = t(f^{-1}(Y))
 \end{align}
 
 since $Y$ is itself closed.
@@ -207,32 +210,34 @@ closure in the topology for $X$. This set is irreducible because if $\overline{\
 
 *Lemma.* The map $U \mapsto \alpha^{-1}(U)$ bijectively takes the open sets of $t(X)$ to the open sets of $X$.
 
-/Proof./ Cconsider the inverse mapping $V = X - C \mapsto t(X) - t(C)$ of open sets of $X$ to open sets of $t(X)$. Note that
+/Proof./ Consider the inverse mapping $V = X - C \mapsto t(X) - t(C)$ of open sets of $X$ ($C$ is some closed subset) to open sets of $t(X)$. Note that
 $\alpha(x) = \overline{\{x\}} \in t(X) - t(C)$ if and only if $\overline{\{x\}} \notin t(C)$, which occurs if and only if $\overline{\{x\}}$ is not
 an irreducible closed subset of $C$. This in turn occurs if and only if $x \notin C$ (if and only if $x \in X - C$). It follows immediately that
 \begin{equation}
     \alpha^{-1}(t(X) - t(C)) = X - C
 \end{equation}
-so the mapping $X - C \mapsto t(X) - t(C)$ has a left-inverse. On the other hand, every closed set of $t(X)$ is of the form $t(X) - t(C)$, so $X - C \mapsto t(X) - t(C)$ is surjective/has a right-inverse.
+so the mapping $X - C \mapsto t(X) - t(C)$ has a left-inverse. On the other hand, every open set of $t(X)$ is of the form $t(X) - t(C)$, so $X - C \mapsto t(X) - t(C)$ is surjective/has a right-inverse.
 The result follows. $\blacksquare$
 
-*Corollary.* The map $\alpha$ is a topological embedding. It is obviously continuous. Moreover, if $U$ is open in $X$, then it is equal to some unique $\alpha^{-1}(W)$ with $W$ open in $t(X)$, and
+*Corollary.* The map $\alpha$ is a topological embedding. Indeed, it is obviously continuous. Moreover, if $U$ is open in $X$, then it is equal to some unique $\alpha^{-1}(W)$ with $W$ open in $t(X)$, and
 
 \begin{equation}
 \alpha(U) = \alpha(\alpha^{-1}(W)) = W \cap \text{Im}(\alpha)
 \end{equation}
 
-and we are done.
+and we are done. $\blacksquare$
 
-*Lemma.* The map $(X, \mathcal{O}_X) \mapsto (t(X), \alpha_{*} \mathcal{O}_X)$ is a functor $(t, \alpha_{*}) : \textbf{LRngSp} \rightarrow \textbf{LRngSp}$ from the category of locally ringed spaces to itself,
-where if $(f, f^{\#})$ is a morphism of locally ringed spaces, then $(t, \alpha_{*})(f, f^{\#}) = (g, g^{\#})$ is given by
-
+*Remark.* The maps $t$ and $\alpha$ induce a functor from the category of ringed spaces to itself, $\textbf{RngSp} \to \textbf{RngSp}$. In particular,
+this functor takes object $(X, \mathcal{O}_X)$ to $(t(X), \alpha_{*} \mathcal{O}_X)$ and arrow $(f, f^{\#}) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ to
+$(t(f), t(f)^{\#})$ where $t(f)^{\#} : \alpha_{*} \mathcal{O}_Y \to t(f)_{*} \alpha_{*} \mathcal{O}_X$ is defined as
 \begin{equation}
-g^{\#} : t(f)_{*} 
+t(f)^{\#}(t(Y) - t(C)) = f^{\#}(Y - C)
 \end{equation}
+where we note that $\alpha^{-1}(t(Y) - t(C)) = Y - C$ and $\alpha^{-1} t(f)^{-1}(t(Y) - t(C)) = \alpha^{-1}(t(X) - t(f^{-1}(C))) = X - f^{-1}(C) = f^{-1}(Y - C)$.
+The fact that this is a valid functor is easy to verify. $\blacksquare$
 
-/Proof./ Since $U \mapsto \alpha^{-1}(U)$ gives a bijective correspondence of open sets, the stalks of $\mathal_{*} \mathcal{O}_X$ are isomorphic to the stalks of $\mathcal{O}_X$. Therefore, $(t(X), \alpha_{*} \mathcal{O}_X)$
-is a locally ringed space.
+From here, let $k$ be algebraically closed, let $V$ be a variety over $k$, let $\mathcal{O}_V$ be its corresponding sheaf of regular functions. Our claim is that $(t(V), \alpha_{*} \mathcal{O}_V)$ is a
+scheme. Let us first consider the affine case.
 
 *Lemma.* Let $V$ be an affine variety, and as usual, let $A(V)$ be the coordinate ring. Define the map $\widetilde{\beta} : t(V) \rightarrow \text{Spec}(A(V))$ as $\widetilde{\beta}(C) = I(C)$: the ideal
 of elements of $A(V)$ vanishing on $C$. Then $\widetilde{\beta}$ is a homeomorphism, when we endow $t(V)$ with the topology introduced earlier and $\text{Spec}(A(V))$ with the usual Zariski topology.
@@ -252,13 +257,18 @@ so that $\widetilde{\beta}$ is a homeomorphism as desired. $\blacksquare$
 *Corollary.* The map $\beta : V \rightarrow \text{Spec}(A(V))$ sending $p \in V$ to $\beta(p) = \mathfrak{m}_p$: the maximal ideal of $A(V)$ vanishing at $p$, is a topological embedding
 when the domain and codomain are given the Zariski topology.
 
-/Proof./ We have $\beta = \widetilde{\beta} \circ \alpha$, where in this context, $\alpha(p) = \overline{\{p\}} = \{p\}$. We already showed that $\alpha$ is an embedding and $\widetilde{\beta}$
-is a homeomorphism, which is all we need. $\blacksquare$
+/Proof./ We have $\beta = \widetilde{\beta} \circ \alpha$, where in this context, $\alpha(p) = \overline{\{p\}} = \{p\}$ (singletons in varieties are closed). We already showed that $\alpha$ is an embedding and $\widetilde{\beta}$
+is a homeomorphism, which is all we need. The above formulas also immediately imply that
+
+\begin{align}
+\beta^{-1}(V(\mathfrak{a})) = V_{\text{affine}}(\mathfrak{a})
+\end{align}
+
+which will be useful. $\blacksquare$
 
 From here, we can prove the first main lemma on the path towards constructing the desired functor.
 
-*Lemma.* Let $V$ be an affine variety, and as usual, let $A(V)$ be the coordinate ring. Then the pair $(t(V), \alpha_{*} \mathcal{O}_V)$ is an affine scheme, where
-$\alpha : V \rightarrow t(V)$ is continuous from the previous lemma. Also note that $\mathcal{O}_V$ is the usual sheaf of regular functions on the variety.
+*Lemma.* Let $V$ be an affine variety, and as usual, let $A(V)$ be the coordinate ring. Then the pair $(t(V), \alpha_{*} \mathcal{O}_V)$ is an affine scheme.
 
 /Proof./ We define $(t(V), \alpha_{*} \mathcal{O}_V) \rightarrow (\text{Spec}(A(V)), \mathcal{O}_{\text{Spec}(A(V))})$ a morphism of locally ringed spaces via
 $\widetilde{\beta}$, which is a homeomorphism of the underlying topological spaces.
@@ -293,15 +303,18 @@ using the fact that localization commutes with quotients. It follows that $\wide
    $\widetilde{s}(q) = \frac{f(q)}{g(q)}$, which means that $f = 0$ on a Zariski-open set $\beta^{-1}(W)$. Thus, $f = 0$. The reason for this is because the complement of $\beta^{-1}(W)$ in $V$ and
    $f^{-1}(0)$ are both closed subsets of $V$. Since $V$ is irreducible, one of them must be all of $V$, and it can't be the complement of $\beta^{-1}(W)$.
    So $s(\mathfrak{q}) = 0$ on a neighbourhood of $\mathfrak{p}$. This holds at every point,
-   so $s = 0$, and the map is injective. To prove surjectivity, note that if $\widetilde{s} : \beta^{-1}(U) \rightarrow k$ is a regular function, then in some neighbourhood $W$ of each $p \in \beta^{-1}(U)$,
-   we have $\widetilde{s}(q) = \frac{f(q)}{g(q)}$, where $g$ does not vanish on $W$. We know that
-   $\beta$ is a homeomorphism onto its image, so $\beta(W) = \widetilde{W} \cap \beta(\beta^{-1}(U))$ with $\widetilde{W}$ open in $\text{Spec}(A(V))$. Then since $\beta$ is injective, $W = \beta^{-1}(\widetilde{W} \cap U)$. We define
-   $s : U \rightarrow \bigsqcup_{\mathfrak{p} \in U} A(V)_{\mathfrak{p}}$ as $s|_{\widetilde{W} \cap U} = \frac{f}{g}$. Of course, this requires that $g \notin \mathfrak{p}$ for any $\mathfrak{p} \in \widetilde{W} \cap U$. We know that $g$ does not vanish
-   on $\beta^{-1}(\widetilde{W} \cap U)$, so for each $p \in \beta^{-1}(\widetilde{W} \cap U)$, $g \notin \mathfrak{m}_p = \beta(p)$, which is what we desire. It is then clear from here that this $s$ is mapped
-   to $\widetilde{s}$ under the mapping.
+   so $s = 0$, and the map is injective. To prove surjectivity, take $\widetilde{s} : \beta^{-1}(U) \rightarrow k$ a regular function, note that $U = V(\mathfrak{a})^C$ and $\beta^{-1}(U) = V_{\text{affine}}(\mathfrak{a})^C$.
+   We can cover $\beta^{-1}(U)$ with open $W_i = V_{\text{affine}}(\mathfrak{a}_i)^C$ with $\mathfrak{a}_i \subset \mathfrak{a}$ (all ideals assumed to be radical)
+    such that $\widetilde{s}(q) = \frac{f_i(q)}{g_i(q)}$ for each $q \in W_i$. In particular, $g_i$ does not vanish on $W_i$ hence $V_{\text{affine}}(g_i) \subset V_{\text{affine}}(\mathfrak{a}_i)$
+    so $\mathfrak{a}_i \subset \text{Rad}(g_i)$,
+    so $\mathfrak{a}_i$ is in every prime in which $g_i$ is contained, so $g_i \notin \mathfrak{p}$ for any $\mathfrak{p} \in V(\mathfrak{a}_i)^C = \widetilde{W}_i$. Thus, we define
+   $s : U \rightarrow \bigsqcup_{\mathfrak{p} \in U} A(V)_{\mathfrak{p}}$ as $s|_{\widetilde{W}_i} = \frac{f_i}{g_i}$. We know that the $W_i$ cover $\beta^{-1}(U)$ which
+   is equivalent to $\text{Rad}\left( \sum_{i \in I} \mathfrak{a}_i \right) = \mathfrak{a}$ which is equivalent to the $\widetilde{W}_i$ covering $U$. Finally, note that on
+   overlaps $\widetilde{W}_i \cap \widetilde{W}_j = V(\mathfrak{a}_i \mathfrak{a}_j)^C$, the functions $\frac{f_i}{g_i}$ and $\frac{f_j}{g_j}$ agree on Zariski-open $V_{\text{affine}}(\mathfrak{a}_i \mathfrak{a}_j)^C$,
+   thus polynomial $f_i g_j - f_j g_i$ vanishes on this set, so as before, it is $0$. It follows that in each $A(V)_{\mathfrak{p}}$ with $\mathfrak{p} \in V(\mathfrak{a}_i \mathfrak{a}_j)^C$, we have
+   $\frac{f_i}{g_i} = \frac{f_j}{g_j}$, so $s$ is well-defined. It is clear that the image of $s$ under the sheaf-map is $\widetilde{s}$.
 
-3. Each of the induced maps $\mathcal{O}_{\text{Spec}(A(V)), \beta(p)} \rightarrow \alpha_{*} \mathcal{O}_{V, p} \simeq \mathcal{O}_{V, p}$ is a morphism of local rings (the natural identification
-   of the pushforward sheaf with the original sheaf follows from the fact that $U \mapsto \alpha^{-1}(U)$ bijectively sends open sets to open sets). To see this, note that we have the usual identification
+3. Each of the induced maps $\mathcal{O}_{\text{Spec}(A(V)), \beta(p)} \rightarrow \mathcal{O}_{V, p}$ is a morphism of local rings. To see this, note that we have the usual identification
    $\mathcal{O}_{\text{Spec}(A(V)), \beta(p)} \simeq A(V)_{\mathfrak{m}_p}$ and $\mathcal{O}_{V, p} \simeq A(V)_{\mathfrak{m}_p}$. The induced map goes as follows: take some $\frac{f}{g} \in A(V)_{\mathfrak{m}_p}$,
    pick some section of the structure sheaf taking on this value at $\mathfrak{m}_p$, $s$. We then get $\widetilde{s}$. In a neighbourhood of $p$, we have $\widetilde{s}(q) = \frac{f(q)}{g(q)}$, as we showed previously.
    Under the identification, this regular function becomes $\frac{f}{g}$ in $A(V)_{\mathfrak{m}_p}$, so in fact, the morphism reduces to identity upon conjugating by isomorphisms, and is therefore clearly a local
@@ -314,25 +327,28 @@ Thus, we have exhibited an isomorphism of locally ringed spaces. It follows that
 
 The next step from here is to generalize these results to arbitrary schemes, where we will obviously use the fact that a generic scheme is locally affine. First we need a technical lemma.
 
-*Lemma.* If $X$ is a topological space and $U$ is an irreducible open subsets, then $t(U)$ is homeomorphic to $t(X) - t(X - U)$.
+*Lemma.* If $X$ is a topological space and $U$ is an open subsets, then $t(U)$ is homeomorphic to $t(X) - t(X - U) = t(X - U)^{C} \subset t(X)$. In particular,
+$t(U)$ is open in $t(X)$.
 
 /Proof./ Recall that if $\iota : U \rightarrow X$ is the inclusion, then $t(\iota) : t(U) \rightarrow t(X)$ is continuous. Note that if $C$ is an irreducible closed subset of $U$, then its closure in $X$ certainly
-can't be contained in $X - U$, so the image of $t(\iota)$ is in $t(X) - t(X - U)$. We define the map $\eta : t(X) - t(X - U) \rightarrow t(U)$ to take $C$ to $C \cap U$. The reason why $C \cap U$ is irreducible
-is as follows: if we had $C \cap U = (C_1 \cap U) \cup (C_2 \cap U)$, then $C$ is the union of closed sets $C_1 \cap C$, $C_2 \cap C$, and $U^{C} \cap C$. One of these must be all of $C$, and it can't be the third option,
-so either $C \subset C_1$ or $C \subset C_2$, implying $C \cap U = C_1 \cap U$ or $C \cap U = C_2 \cap U$. To see that $\eta$ is an inverse for $t(\iota)$, note that $C$ is a closed set in $X$ containing $C \cap U$. Moreover,
-if $D \subset C$ is another closed set containing $C \cap U$, then $C = (C \cap U^{C}) \cup D$, implying $D = C$, so $\overline{C \cap U} = C$. On the other hand, every irreducible closed set of $U$ is of the form $C \cap U$,
-so we take the closure to get $C$, and then map in reverse to recover $C \cap U$. It is clear that
+can't be contained in $X - U$, so the image of $t(\iota)$ is in $t(X) - t(X - U)$. In addition, note that given $Y \cap U$ closed in $U$
+\begin{align}
+t(\iota)(t(Y \cap U)) &= \{\overline{C \cap U} \subset X \ | \ C \cap U \ \text{closed irreducible in} \ Y \cap U\}
+\end{align}
+where $C$ is closed in $X$ and we are taking the closure in $X$. Clearly each $\overline{C \cap U}$ is in $t(Y) \subset t(X)$. Conversely, given $C \in t(Y) \cap t(X - U)^C$, note that
+$C \cap U$ is non-empty. In fact, $C \cap U$ is closed irreducible in $U$ (thus in $Y \cap U$):
+if we had $C \cap U = (C_1 \cap U) \cup (C_2 \cap U)$, then $C$ is the union of closed sets $C_1 \cap C$, $C_2 \cap C$, and $U^{C} \cap C$. One of these must be all of $C$, and it can't be the third option,
+so either $C \subset C_1$ or $C \subset C_2$, implying $C \cap U = C_1 \cap U$ or $C \cap U = C_2 \cap U$. Note that $C$ is a closed set in $X$ containing $C \cap U$. Moreover,
+if $D \subset C$ is another closed set containing $C \cap U$ (thus non-empty), then $C = (C \cap U^{C}) \cup D$, implying $D = C$, so $\overline{C \cap U} = C$ in $X$. Thus, $t(\iota)(t(Y \cap U)) = t(Y) \cap t(X - U)^C$,
+so $t(\iota)$ is a closed map. Surjectivity follows from this equation as well, and the above mapping $C \mapsto C \cap U$ yields a left-inverse, so $t(\iota)$ induces a homeomorphism. $\blacksquare$
 
-\begin{equation}
-t(\iota)(t(Y)) =
-\end{equation}
-
-This immediately means that if $U$ is an open affine subvariety of $V$, then $t(U)$ is open.
+Now, we can prove the desired result:
 
 *Lemma.* Let $V$ be an arbitrary variety, then $(t(V), \alpha_{*} \mathcal{O}_V)$ is a scheme.
 
-/Proof./ Let $U_i$ be a (finite) open cover of $V$ such that we have an isomorphism of varieties $\Phi_i : (U_{i}, \mathcal{O}_V|_{U_{i}}) \rightarrow (V_{i}, \mathcal{O}_{V_{i}})$
-where $V_{i}$ is an affine variety with its sheaf of regular functions.
+/Proof./ Let $U_i$ be an open cover of $V$ such that we have an isomorphism of varieties $\Phi_i : (U_{i}, \mathcal{O}_V|_{U_{i}}) \rightarrow (V_{i}, \mathcal{O}_{V_{i}})$
+where $V_{i}$ is an affine variety with its sheaf of regular functions. Let us consider the restriction of $(t(V), \alpha_{*} \mathcal{O}_V)$ to the open subset $t(U_i)$
+with its restricted sheaf $(\alpha_{*} \mathcal{O}_V)|_{t(U_i)}$. We have the homeomorphism $t(\Phi_i) : t(U_i) \to t(V_i)$ 
 
 So, we have shown that in a natural way, we can take any variety to a scheme.
 
@@ -341,3 +357,7 @@ So, we have shown that in a natural way, we can take any variety to a scheme.
 /Proof./
 
 Now, the only thing left to prove is that this functor is fully faithful.
+
+*Remark.* Recall that if $X$ is a scheme, then the residue field of some $p \in X$ is $\mathcal{O}_{X, p}/\mathfrak{m}_p$ where $\mathfrak{m}_p$ is the maximal
+ideal of the stalk $\mathcal{O}_{X, p}$. In the case of scheme $(t(V), \alpha_{*} \mathcal{O}_V)$ with $V$ a variety, $C \in t(V)$ is a closed point if and only if
+$\{C\} = \overline{\{C\}}$.

@@ -1,0 +1,22 @@
+#+TITLE:Some basic GMT for min-max theory
+#+DESCRIPTION:Let's go
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;} </style>
+
+/Originally posted:/ May 4th, 2026
+
+----------------------
+
+* Introduction
+
+I am trying to learn about the applications of min-max theory to problems in enumerative geometry. As a result, I need to learn min-max theory. And as a result
+of that, I need to learn some basic geometric measure theory (GMT). The goal of this post is to go over a few of the most basic ideas required to state
+the foundational results of min-max theory.
+
+* Topologies on function spaces
+
+In this short section, we will briefly discuss the different ways in which function spaces may be topologized. This is of utmost import in min-max theory, as
+we will often be interested in studying, for example, maps to and from "spaces of embedded surfaces", which must be topologized by thinking of such a space as a subspace of
+a larger topological space of smooth functions.
+
+*Definition.*

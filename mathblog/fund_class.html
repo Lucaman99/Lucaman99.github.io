@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-04 Wed 13:28 -->
+<!-- 2026-06-17 Wed 09:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Existence of the fundamental class</title>
@@ -194,8 +194,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-<style> body {font-size:15px;} a{color:blue;} </style>
+<style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
 <script>
   window.MathJax = {
     tex: {
@@ -236,8 +235,9 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf603c92">1. Introduction</a></li>
-<li><a href="#org506f98f">2. Existence of the fundamental class</a></li>
+<li><a href="#orgb960f1e">1. Introduction</a></li>
+<li><a href="#org05b4a01">2. Existence of the fundamental class</a></li>
+<li><a href="#org33eb03f">3. Other consequences</a></li>
 </ul>
 </div>
 </div>
@@ -247,8 +247,8 @@
 
 <hr />
 
-<div id="outline-container-orgf603c92" class="outline-2">
-<h2 id="orgf603c92"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-orgb960f1e" class="outline-2">
+<h2 id="orgb960f1e"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The blog might be back, let's see how consistent I stay with it. The goal of this post is to present the details of what I think is a nice proof (from Hatcher)
@@ -257,8 +257,8 @@ which characterizes the top-dimensional homology of closed connected (topologica
 </div>
 </div>
 
-<div id="outline-container-org506f98f" class="outline-2">
-<h2 id="org506f98f"><span class="section-number-2">2.</span> Existence of the fundamental class</h2>
+<div id="outline-container-org05b4a01" class="outline-2">
+<h2 id="org05b4a01"><span class="section-number-2">2.</span> Existence of the fundamental class</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 First, briefly recall that we use the notation \(H_n(M \ | \ x; R)\) to denote the relative homology \(H_n(M, M - \{x\}; R) \simeq R\) (by the locally Euclidean property of \(M\), excision, the long exact
@@ -284,7 +284,8 @@ with an orientation. Recall the following result:
 <i>Proof.</i> If \(\widetilde{M}\) has two connected components, each is homeomorphic to \(M\), and since \(\widetilde{M}\) is orientable, \(M\) must be as well. Conversely, if \(M\) is orientable, it is
 easy to check that it has precisely two orientations. We claim that each of the images of these individual orientations in \(\widetilde{M}\) determine two connected components. Indeed, these images (call them \(M_{\pm}\))
 must cover all of \(\widetilde{M}\), are disjoint, and are connected as the continuous image of \(M\) which is connected. In fact, since a cover is a local homeomorphism, and the restricted projections \(M_{\pm} \to M\) are
-bijective, each \(M_{\pm}\) is necessarily homeomorphic to \(M\), so each is clopen. It follows that \(M_{+}\) and \(M_{-}\) must be individual connected components. \(\blacksquare\)
+bijective, each \(M_{\pm}\) is necessarily homeomorphic to \(M\). Moreover, both are clearly open from the definition of the topology on \(\widetilde{M}\). It follows that \(M_{+}\) and \(M_{-}\) must be
+individual connected components. \(\blacksquare\)
 </p>
 
 <p>
@@ -433,10 +434,34 @@ in \(H_n(\mathbb{R}^n | A)\), and let this be the \(\Phi(\alpha)\) for \(A\). Th
 </ol>
 </div>
 </div>
+
+<div id="outline-container-org33eb03f" class="outline-2">
+<h2 id="org33eb03f"><span class="section-number-2">3.</span> Other consequences</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Before ending this blog post,
+let's discuss a few implications of the above result related to manifolds with boundary. Recall that a compact \(n\) -manifold with boundary is said to be
+\(R\) -orientable if \(M - \partial M\) is \(R\) -orientable as a manifold without boundary, in the sense of the previous section. It is pretty straightforward to show that any such manifold
+with boundary admits a collar neighbourhood of the boundary, which is a neighbourhood \(V\) of \(\partial M\) and a homeomorphism \(f : V \to \partial M \times [0, 1)\) such that
+\(\partial M \times \{0\}\) is identified with \(\partial M \subset V\) via the map. This allows us to immediately note that the inclusion \((M, \partial M) \to (M, V')\) where \(V' = f^{-1}(\partial M \times [0, 1/2))\)
+is a homotopy equivalence, as we can collapse \(V'\) to \(\partial M\) and stretch \(V - V'\) over \(V\). It follows that
+</p>
+\begin{equation}
+H_n(M, \partial M; R) \simeq H_n(M, V'; R) \simeq H_n(M - \partial M, V' - \partial M; R)
+\end{equation}
+<p>
+Let \(\text{Int}(M) = M - \partial M\) to simplify notation. Let \(K = \text{Int}(M) - V'\), so that \(\text{Int}(M) - K = V' - \partial M\). Notice that \(K\) is compact,
+being a closed subset of a compact manifold. We have \(H_n(M - \partial M, V' - \partial M; R) = H_n(\text{Int}(M) | K; R)\). From here, we are told by the earlier lemma
+that given a section \(\alpha\) for the \(R\) -covering space of \(\text{Int}(M)\), there exists a unique \(\Phi(\alpha) \in H_n(\text{Int}(M) | K; R)\) whose image is \(\alpha(x) \in H_n(\text{Int}(M) | x; R)\)
+for all \(x \in \text{Int}(M)\). The above isomorphism in turn give a unique \([M] \in H_n(M, \partial M; R)\) corresponding to the section. It is pretty easy to see that \(\text{Int}(M)\) is connected if \(M\) is,
+hence sections are uniquely determined by their value at a single point, hence similar to earlier, we get our isomorphism \(H_n(M, \partial M; R) \simeq R\).
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-02-04 Wed 13:28</p>
+<p class="date">Created: 2026-06-17 Wed 09:50</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

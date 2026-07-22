@@ -1,0 +1,153 @@
+#+TITLE:Some results linking geometry and topology
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;}</style>
+
+* Introduction
+
+Inspired by my last blog post, I'm going to discuss a bunch of classical results relating curvature and topology of the underlying manifold.
+These are some of my favourite theorems in mathematics.
+
+* More applications of Cartan-Hadamard and Killing-Hopf
+
+In the previous blog post, we proved Cartan-Hadamard (sort of) and Killing-Hopf:
+
+*Theorem* (Cartan-Hadamard). 
+
+* Variation of energy and Bonnet-Myers
+
+* Synge-Weinstein theorem
+
+* Laplacians and the Bochner formula
+
+In Euclidean space, the Laplacian of a function is defined to be the divergence of the gradient. Such a definition extends to arbitrary Riemannian manifolds.
+Indeed, given some $(M, g)$ and $f \in C^{\infty}(M)$, $\text{grad}(f) = df^{\#}$ and $d \iota_X \omega = \text{div}(X) \omega$ where $\omega = \varepsilon^1 \wedge \cdots \wedge \varepsilon^n$
+is some local volume form induced by a local orthonormal coframe (it need not be oriented, $M$ need not be orientable, this is still well-defined!).
+It is possible to extend this definition to define the Laplacian on arbitrary $(k, \ell)$ -tensors. On each vector space $T_p^{(k, \ell)} M$,
+we may define an inner product via the metric:
+
+\begin{equation}
+g_p(v_1 \otimes \cdots \otimes v_k \otimes \omega^1 \otimes \cdots \otimes \omega^{\ell}, w_1 \otimes \cdots \otimes w_k \otimes \eta^1 \otimes \cdots \otimes \eta^{\ell}) =
+g_p(v_1, w_1) \cdots g_p(v_k, w_k) g_p((\omega^1)^{\#}, (\eta^1)^{\#}) \cdots g_p((\omega^{\ell})^{\#}, (\eta^{\ell})^{\#})
+\end{equation}
+
+The fact that this is a well-defined inner product follows easily from the fact that the right-hand side is multilinear in all arguments.
+Immediately, this induced a well-defined bilinear map from $\Gamma(T^{(k, \ell)} M) \times \Gamma(T^{(k, \ell)} M)$ (the sections, which form a real vector space) to functions
+on $M$. It is easy to see from the definition that this will in fact be a map to the /smooth/ functions on $M$. This leads us to define the following inner product on
+the vector space of compactly-supported sections:
+
+\begin{equation}
+(\alpha, \beta) = \int_{M} g_p(\alpha_p, \beta_p) \ d\mu_g
+\end{equation}
+
+We know that the operation of covariant differentiation is a linear operator $\nabla : \Gamma_c(T^{(k, \ell)} M) \to \Gamma_c(T^{(k, \ell + 1)} M)$. We have just seen that both the
+domain and codomain of this operator are naturally inner product spaces, hence we may ask what the /adjoint/ of $\nabla$ is. This will be a map $\nabla^{*} : \Gamma_c(T^{(k, \ell + 1)} M) \to \Gamma_c(T^{(k, \ell)} M)$
+and we will have
+
+\begin{equation}
+\label{eq:a}
+\int_{M} g_p( \nabla S, T) \ d\mu_g = \int_M g_p(S, \nabla^{*} T) \ d\mu_g
+\end{equation}
+
+As it turns out, $\nabla^{*} T$ is given by tracing over the first and last contravariant components of $\nabla T$. Indeed, we will have
+\begin{equation}
+(\nabla^{*} T)(\omega^1, \dots, \omega^k, X_1, \dots, X_{\ell})_p = -\sum_{j = 1}^{n} (\nabla_{E_j} T)(\omega^1, \dots, \omega^k, E_j, X_1, \dots, X_{\ell})_p
+\end{equation}
+where $E_1, \dots, E_n$ are an orthonormal basis for $T_p M$.
+
+*Claim 1.* Let $(M, g)$ be a Riemannian manifold, then near any point $p \in M$, there exists an orthonormal frame $E_1, \dots, E_n$ such that
+$(\nabla_{E_i} E_j)_p = 0$ for all $i$ and $j$.
+
+/Proof./ To begin, choose some arbitrary orthonormal frame near $p$, denoted $\overline{E}_i$. Denote $e_i = (\overline{E}_i)_p$. From here, we wish to define $E_i = \alpha_{i}^{j} \overline{E}_j$ such that
+\begin{equation}
+0 = \nabla_{e_k} E_i = e_k(\alpha_{i}^{j}) \overline{E}_j + \alpha_{i}^{j} \nabla_{e_k} \overline{E}_j = e_k(\alpha_i^{\ell}) \overline{E}_{\ell} +
+\alpha_i^{j}(p) \Gamma_{kj}^{\ell} \overline{E}_{\ell} = e_k(\alpha_i^{\ell}) \overline{E}_{\ell} + \Gamma_{ki}^{\ell} \overline{E}_{\ell}
+\end{equation}
+so we simply require that each of the matrix elements $\alpha_{i}^{\ell}$ have particular directional derivatives at $p$. Note that $\Gamma_{ki}^{\ell} = -\Gamma_{k \ell}^i$
+from naturality of the connection, hence each matrix $\Gamma_k$ is skew-Hermitian. Note that $e_k = e_k^i \partial_i$ for some coordinates $(U, x^1, \dots, x^n) = (U, \varphi)$ centred around
+$p$. Let $y^k = \sum_{ij} g_{ij} e_k^i x^j$ with $g_{ij} = g_p(\partial_i, \partial_j)$. We thus define 
+\begin{equation}
+A(q) = \exp\left( -\sum_k y^k(q) \Gamma_k\right)
+\end{equation}
+and note that $A(p) = \text{id}$. In coordinates,
+\begin{equation}
+    A \circ \varphi^{-1}(s^1, \dots, s^n) = \exp \left( -\sum_{ijk} g_{ij} e_k^i s^j \Gamma_k \right)
+\end{equation}
+and the corresponding derivatives at the origin are clearly given by
+\begin{equation}
+    \sum_{j} e^j_{\ell} \frac{d}{ds^{j}} (A \circ \varphi^{-1})(0) = -\sum_{ijk} g_{ij} e_{\ell}^j e_k^i \Gamma_k = -\sum_k \delta_{\ell k} \Gamma_k = -\Gamma_{\ell}
+\end{equation}
+which means, immediately, that if we let $\alpha_i^{\ell}(q) = A(q)_{i \ell}$ then $e_k(\alpha_i^{\ell})|_p = -\Gamma_{ki}^{\ell}$ as desired. Of course, since each $\Gamma_k$ is
+skew-Hermitian, then $A(q) \in \text{O}(n)$ for all $q$, so our new frame consisting of the $E_j$ is still orthonormal. $\blacksquare$
+
+*Claim 2.* If $X$ is a vector field and $X^{\flat}$ is the corresponding one-form, then $\text{div}(X) = -\nabla^{*} X^{\flat}$.
+
+/Proof./ If $E_1, \dots, E_n$ is an orthonormal frame with vanishing derivatives at $p$, note that
+
+\begin{equation}
+(\nabla^{*} X^{\flat})_p = -\sum_{i} (\nabla_{E_i} X^{\flat})(E_i)_p = \sum_i E_i(g(X, E_i))_p
+\end{equation}
+
+Additionally, we know that if $\varepsilon^1 \wedge \cdots \wedge \varepsilon^n$ is the local volume form, then writing $X = g(X, E_i) \varepsilon^i$
+gives
+\begin{align}
+d \iota_X (\varepsilon^1 \wedge \cdots \wedge \varepsilon^n) = d \left(\sum_{i} (-1)^i g(X, E_i) \varepsilon^1 \wedge \cdots \wedge \widehat{\varepsilon^i} \wedge \cdots \wedge \varepsilon^n\right)
+= \left( \sum_i E_i(g(X, E_i)) \right) \varepsilon^1 \wedge \cdots \wedge \varepsilon^n
+\end{align}
+which implies the result. $\blacksquare$
+
+From here, we can prove the adjoint formula for the inner product $(\cdot, \cdot)$. We define a one-form $\omega(X) = g(S, \iota_X T)$ (where $X$ is being inserted in the first contravariant slot). From the previous
+claim, $\text{div}(\omega^{\#}) = -\nabla^{*} \omega$. From here, we once again use an orthonormal frame with vanishing derivatives at point $p$. We
+have
+
+\begin{equation}
+(\nabla_{E_i} \omega)(E_i)_p = E_i(\omega(E_i))_p = E_i(g(S, \iota_{E_i} T))_p = g_p(\nabla_{E_i} S, \iota_{E_i} T) + g_p(S, \nabla_{E_i} \iota_{E_i} T)
+\end{equation}
+It is then obvious that when we sum over $i$, the right-hand side becomes $g_p(\nabla S, T) - g_p(S, \nabla^{*} T)$. We have shown that this is equal to $\text{div}(\omega^{\#})_p$.
+This holds at all points $p$, hence $g(\nabla S, T) - g(S, \nabla^{*} T) = \text{div}(\omega^{\#})$ everywhere. Integrating both sides against the volume density gives us the
+desired result (in particular, the integral of the divergence against the Riemannian density vanishes from the generalized divergence theorem).
+
+*Definition 3.* We define the /Riemannian Laplacian/ to be the operator $\Delta = -\nabla^{*} \nabla : \Gamma(T^{(k, \ell)} M) \to \Gamma(T^{(k, \ell)} M)$. Notice:
+
+1. For a function $f$, we know that $\nabla f = df = \text{grad}(f)^{\flat}$, so Claim 2 above tells us that $-\nabla^{*} \nabla f = \text{div}(\text{grad}(f))$. In particular,
+   our new generalized formula for the Laplacian agrees with the version defined earlier only for functions.
+
+2. This operator is self-adjoint as a linear operator on $\Gamma_c(T^{(k, \ell)} M)$ endowed with $(\cdot, \cdot)$.
+
+From here, note that we may think of $\Omega^k(M)$ as a subspace of $\Gamma(T^{(0, k)} M)$: in particular, they are
+the sections such that each each point, the corresponding tensor is anti-symmetric. As a result, we obtain an inner product on $\Omega^k(M)$ by restricting the
+above inner product. This is usually called the /Hodge inner product/ on $\Omega^k(M)$. In this context, we denote the adjoint of $d : \Omega^k_c(M) \to \Omega^{k + 1}_c(M)$
+by $\delta : \Omega^{k + 1}_c(M) \to \Omega^k_c(M)$.
+
+*Definition 4.* We define the /Hodge Laplacian/ to be the operator $\Delta_H : \Omega^k_c(M) \to \Omega^k_c(M)$ given by $\Delta_H = -(d \delta + \delta d)$.
+Note that this operator is self-adjoint relative to the Hodge inner product.
+
+We now have two different notions of a Laplacian. It is natural to ask what their relationship is, at least in certain situations. In the $k = 1$ case, when $M$ is a closed manifold,
+we have $\Delta_H : \Omega^1(M) \to \Omega^1(M)$ and $\Delta : \Omega^1(M) \to \Omega^1(M)$. Our claim is:
+
+*Theorem 5* (Bochner). We have $\Delta \alpha = \Delta_H \alpha + \text{Ric}(\alpha^{\#}, \cdot)$ for any $\alpha \in \Omega^1(M)$.
+
+/Proof./ This just boils down to understanding how $\delta$ acts on one-forms and two-forms. Note that if $\alpha$ is a one-form, then $\delta \alpha$
+must satisfy for some function $f$
+
+\begin{equation}
+\int_M f \delta \alpha \ d\mu_g = \int_M g_p(df, \alpha) \ d\mu_g = \int_M g_p(\nabla f, \alpha) \ d\mu_g = \int_M f \nabla^{*} \alpha \ d\mu_g
+\end{equation}
+
+Hence $\delta \alpha = \nabla^{*}(\alpha)$.
+
+* Some analysis
+
+In order to make use of the Bochner formula, we will require some technique to prove the existence of harmonic forms. This is equivalent to being able to solve a particular
+PDE on a Riemannian manifold. Our ability to understand when this is possible will be based on the properties of $\Delta_H$ as a linear operator, via theorems in functional analysis.
+
+* The Hodge theorem
+
+*Theorem.* Let $(M, g)$ be a closed Riemannian manifold. If $\text{Ric} > 0$, then $b_1(M)$, the first Betti number of $M$, is $0$. If $\text{Ric} \geq 0$, then
+$b_1(M) \leq n$. Equality holds if and only if $(M, g)$ is isometric to $(\mathbb{T}^n, g_{\text{flat}})$.
+
+Note that we can actually prove the first claim via Bonnet-Myers: if $\text{Ric} > 0$ on a compact manifold, then we actually have $\text{Ric} \geq \delta > 0$. Letting $\widetilde{M}$
+be the universal cover with the pullback metric $\widetilde{g}$, we may note that $\widetilde{g}$ is still complete and $\text{Ric} \geq \delta$, hence Bonnet-Myers tells us that
+$\widetilde{M}$ is compact. It follows that $M$ has finite fundamental group, so it must be purely torsion and thus $b_1(M) = 0$. However, we may also prove this result
+using the Bochner formula derived above, and moreover, the same proof will prove the second result which absolutely /cannot/ be deduced from a theorem as simple as Bonnet-Myers.
+
+/Proof of Theorem./

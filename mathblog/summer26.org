@@ -1,0 +1,38 @@
+#+TITLE:My summer plans, my summer progress
+#+DESCRIPTION:Directory
+#+HTML_HEAD: <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
+
+/Originally posted:/ June 26th, 2026
+
+--------------
+
+* Introduction
+
+I would like to cover a lot of geometry and topology in the next two months. I'll be documenting some of my progress here. Below is an incomplete
+list of ongoing projects/links to other pages that I will be updating with further writing/solutions/notes:
+
+* Current projects
+
+- My solution manual for McDuff-Salamon's book on symplectic topology (plus some extra remarks filling in certain details).
+- My solution manual for Hartshorne's algebraic geometry book
+
+* Things I would like to do
+
+- Write a blog post explaining Poincare duality in both the topological and smooth categories, and describe the relationship
+  between the two via the De Rham isomorphism, for the particular case of real singular homology/cohomology (perhaps compactly-supported) and De Rham cohomology (perhaps compactly-supported).
+- Write a blog post explaining the most general Kunneth formula for homology, and how we may from it deduce all of the universal coefficient theorems we could ever desire.
+
+* Some progress reports
+
+** June 2026
+
+*** Sunday June 28th
+
+    - I really think I need to supplement Hartshorne with Vakil's book. I think I'll also start doing some of the Vakil exercises as well.
+
+*** Saturday June 27th
+
+    - Read the proof of the baby version of the fact that closed subgroups of Lie groups are embedded Lie subgroups (in particular, this proof
+      showed that an immersed Lie subgroup is embedded if and only if it is closed). It's actually quite nice: the intuition is that the group
+      structure stops "sheets" of the submanifold from being too close together. Since the only obstruction to an immersed submanifold being
+      embedded is its topology being weird, this is enough to conclude.

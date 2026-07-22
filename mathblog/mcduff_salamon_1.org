@@ -1,6 +1,5 @@
 #+TITLE:A small note on a result in McDuff-Salamon
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
-#+HTML_HEAD: <style> body {font-size:15px;} a {color:blue;} </style>
+#+HTML_HEAD: <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
 
 /Originally posted:/ February 9th, 2026
 
