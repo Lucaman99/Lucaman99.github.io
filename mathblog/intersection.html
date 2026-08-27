@@ -6,7 +6,7 @@
 <!-- 2026-08-27 Thu 17:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Jack's blog</title>
+<title>A short comment on the intersection pairing</title>
 <meta name="author" content="Jack Ceroni" />
 <meta name="description" content="Directory" />
 <meta name="generator" content="Org Mode" />
@@ -195,41 +195,183 @@
   .org-svg { }
 </style>
 <style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Jack's blog</h1>
+<h1 class="title">A short comment on the intersection pairing</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdaae712">1. 2026</a></li>
-<li><a href="#orgf5d7072">2. 2025</a></li>
+<li><a href="#org08b1d98">1. Introduction</a></li>
+<li><a href="#orgb01226a">2. The intersection pairing</a></li>
 </ul>
 </div>
 </div>
+<p>
+<i>Originally posted:</i> August 27th, 2026
+</p>
 
-<div id="outline-container-orgdaae712" class="outline-2">
-<h2 id="orgdaae712"><span class="section-number-2">1.</span> 2026</h2>
+<hr />
+
+<div id="outline-container-org08b1d98" class="outline-2">
+<h2 id="org08b1d98"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>August 27th, 2026 | <a href="./pdf/intersection.html">A short comment on the intersection pairing</a></li>
-<li>April 25th, 2026 | <a href="./killing_hopf.html">My preferred method for proving Killing-Hopf</a></li>
-<li>February 9th, 2026 | <a href="./mcduff_salamon_1.html">A small note on a result in McDuff-Salamon</a></li>
-<li>February 4th, 2026 | <a href="./fund_class.html">Constructing the fundamental class</a></li>
-</ul>
+<p>
+I want to briefly comment of the intersection pairing, and how it may be computed via both algebraic topology and differential topology.
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgf5d7072" class="outline-2">
-<h2 id="orgf5d7072"><span class="section-number-2">2.</span> 2025</h2>
+<div id="outline-container-orgb01226a" class="outline-2">
+<h2 id="orgb01226a"><span class="section-number-2">2.</span> The intersection pairing</h2>
 <div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>July 26th, 2025 | <a href="./imo_2025.html">Some solutions to problems from the 2025 IMO</a></li>
-<li>July 1st, 2025 | <a href="./leray_hirsch.html">Leray-Hirsch theorem</a></li>
-<li>June 11th, 2025 | <a href="./groupoid_svk.html">Seifert-Van Kampen for fundamental groupoids in painful detail</a></li>
-<li>May 6th, 2025 | <a href="./myers_steenrod.html">A complete proof of the Myers-Steenrod theorem</a></li>
-</ul>
+<p>
+Let \(M\) be a closed, oriented, smooth \(n\) -manifold. Via the universal coefficients theorem, we have the identification \(H^k(M; \mathbb{R}) \simeq \text{Hom}(H_k(M), \mathbb{R})\). We also know that
+we have the de Rham isomorphism \(I : H^k(M; \mathbb{R}) \to H^k_{\text{dR}}(M)\) given by
+</p>
+
+\begin{equation}
+\alpha([\sigma]) = \int_{\sigma} I([\alpha])
+\end{equation}
+
+<p>
+where \([\sigma] \in H_k(M)\), \(\alpha\) is a cocycle representing \([\alpha] \in H^k(M; \mathbb{R})\) and \(\sigma\) is a smooth representative of the homology class
+\([\sigma]\) (which we can always find). Notice that if \(\sigma\) and \(\sigma'\) are both smooth cycles and representatives of the same homology class, then \(\sigma - \sigma' = \partial \tau\),
+where \(\tau\) is some \((k + 1)\) -chain. In particular, each of the singular simplices \(\tau_j : \Delta^{k + 1} \to M\) making up the formal linear combination of \(\tau\) must be smooth
+on \(\partial \Delta^{k + 1}\). It follows from Whitney approximation that \(\tau_j\) is homotopic to smooth \(\widetilde{\tau}_j : \Delta^{k + 1} \to M\) which agrees with \(\tau_j\) on \(\partial \Delta^{k + 1}\).
+Hence, we have \(\partial \tau = \partial \widetilde{\tau}\) with \(\widetilde{\tau}\) a smooth cycle, so
+</p>
+
+\begin{equation}
+\int_{\sigma} \omega - \int_{\sigma'} \omega = \int_{\partial \widetilde{\tau}} \omega = \int_{\widetilde{\tau}} d\omega = 0
+\end{equation}
+
+<p>
+for any closed form. Therefore, such a map is well-defined. We have two notions of Poincare duality, the one we get from Hatcher and the one we get from Bott-Tu (slightly generalized). In particular, given a smooth
+\(k\) -chain \(\sigma\), there will exist a unique \([\eta_{\sigma}] \in H^{n - k}_{\text{dR}}(M)\) such that
+</p>
+
+\begin{equation}
+\int_M \omega \wedge \eta_{\sigma} = \int_{\sigma} \omega
+\end{equation}
+
+<p>
+for all \([\omega] \in H^k(M)\). This is a bit more general than Bott-Tu, they instead replace \(\sigma\) with \(S\), a smooth, closed embedded oriented submanifold.
+The reason why this is a strict generalization is that via triangulation, given such an \(S\), we may write down a smooth chain \(\sigma(S)\) such that \(\int_{\sigma(S)} \omega = \int_S \omega\)
+for all top forms \(\omega\) on \(S\). In fact, \(\sigma(S)\) will represent a fundamental class for \(S\). It then follows from uniqueness that \([\eta_{\sigma(S)}] = [\eta_S]\). Also note that via the same logic as was applied earlier, the map \(\sigma \mapsto [\eta_{\sigma}]\)
+actually induces a map \(H_k(M) \to H^{n - k}_{\text{dR}}(M)\) via selecting a smooth representative, and noticing that any two choices \(\sigma\) and \(\sigma'\) will yield \(\int_{\sigma} \omega = \int_{\sigma'} \omega\)
+for all \(\omega\).
+</p>
+
+<p>
+In addition to this form of duality, we have the Hatcher version: the map \(D : H^k(M; R) \to H_{n - k}(M; R)\)
+with \(D([\alpha]) = [\alpha] \cap [M]\) is an isomorphism when \(M\) is \(R\) -oriented and \([M]\) is an \(R\) -fundamental class. We will refer to both \(D\) and \(D^{-1}\) as \(\text{PD}\) for "Poincare dual" for \(R = \mathbb{Z}\).
+</p>
+
+<p>
+It would be nice for us to understand the relationship between the two kinds of Poincare duality, and how they interact with the de Rham isomorphism. In particular, it would be nice
+if the following triangle were to commute:
+</p>
+
+
+<div id="org4d047e3" class="figure">
+<p><img src="./assets/sqr.png" alt="sqr.png" width="400px" />
+</p>
+</div>
+
+<p>
+Suppose this were indeed true. Then, given \([\alpha] \in H^{n - k}(M)\) and \([\beta] \in H^k(M)\), we take \([\sigma] = \text{PD}([\alpha])\) and \([\psi] = \text{PD}([\beta])\) with \(\sigma\) and \(\psi\) smooth representatives.
+To start, we would immediately have
+</p>
+\begin{equation}
+\int_M I([\alpha]) \wedge I([\beta]) = \int_M I([\alpha]) \wedge \eta_{\psi} = \int_{\psi} I([\alpha]) = \alpha(\text{PD}([\beta])) = ([\alpha] \smile [\beta]) \frown [M]
+\end{equation}
+<p>
+with \([M]\) the fundamental class of \(M\). This is alreasdy a nice formula. As a cute corollary, notice that we also have
+</p>
+\begin{equation}
+\int_M I([\alpha] \smile [\beta]) = \int_{\sigma(M)}  I([\alpha] \smile [\beta]) = ([\alpha] \smile [\beta]) \frown [M]
+\end{equation}
+<p>
+so the top-forms \(I([\alpha]) \wedge I([\beta])\) and \(I([\alpha] \smile [\beta])\) have the same integral, so they agree at the level of cohomology. So, we have shown
+that on complementary degrees, \(I\) preserves the product structure of the cohomology rings. In fact, \(I\) preserves this product structure in all degrees and is a ring
+isomorphism, but I don't know how to prove this (I saw QC say it's true on Math StackExchange, but he also didn't know how to prove it).
+</p>
+
+<p>
+Let us further suppose there exist oriented closed embedded submanifolds \(i : \Sigma_a \to M\) and \(j : \Sigma_b \to M\) such that \(i_{*} [\Sigma_a] = [\sigma]\)
+and \(j_{*} [\Sigma_b] = [\psi]\) where \([\Sigma_a]\) and \([\Sigma_b]\) are fundamental classes. Then the corresponding \(\eta_{\sigma}\) and \(\eta_{\psi}\) are
+in the same cohomology class as \(\eta_{\Sigma_a}\) and \(\eta_{\Sigma_b}\) respectively, from the earlier discussion. So, we get
+</p>
+
+\begin{equation}
+\int_M \eta_{\Sigma_a} \wedge \eta_{\Sigma_b} = \int_M I([\alpha]) \wedge I([\beta]) = ([\alpha] \smile [\beta]) \frown [M]
+\end{equation}
+
+<p>
+which is the formula connecting the de Rham and the topological intersection pairings (as is introduced in the book of Gompf-Stipsicz). Very nice! The question now remains: how
+do we prove commutativity of the square? This boils down to showing that \(I(\text{PD}([\sigma])) = [\eta_{\sigma}]\). This can in turn be reduced to showing that
+</p>
+
+\begin{equation}
+\int_{\psi} \eta_{\sigma} = \text{PD}([\sigma])([\psi])
+\end{equation}
+
+<p>
+for all \([\psi]\). <b>This is the thing I still have to figure out!</b> Let's try to do the case where \(i_{*} [\Sigma_a] = [\sigma]\) and \(j_{*} [\Sigma_b] = [\psi]\).
+Here, we can say that
+</p>
+
+\begin{equation}
+\int_{\psi} \eta_{\sigma} = \int_{\Sigma_b} \eta_{\Sigma_a} = \int_M \eta_{\Sigma_a} \wedge \eta_{\Sigma_b}
+\end{equation}
+
+<p>
+which is the oriented intersection number of these manifolds (we know this from differential topology and the Thom isomorphism). On the other hand,
+</p>
+
+\begin{equation}
+\text{PD}([\sigma])([\psi]) = (\text{PD}([\sigma]) \smile \text{PD}([\psi])) \frown [M] = (\text{PD}([\Sigma_a]) \smile \text{PD}([\Sigma_b])) \frown [M]
+\end{equation}
+
+<p>
+so it just comes down to proving that \(\text{PD}([\Sigma_a]) \smile \text{PD}([\Sigma_b])\) is the Poincare dual of the \(0\) -chain which is the formal signed sum of
+intersection points of \(\Sigma_a\) and \(\Sigma_b\) (after they are moved to general position). Apparently, this can be done! I found some notes of Hutchings proving this fact.
+So, at the very least, we have our desired result for the case which allows us to prove the equality of the topological and smooth intersection pairings.
+</p>
 </div>
 </div>
 </div>
