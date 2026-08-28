@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-08-27 Thu 17:02 -->
+<!-- 2026-08-28 Fri 08:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A short comment on the intersection pairing</title>
@@ -235,19 +235,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org08b1d98">1. Introduction</a></li>
-<li><a href="#orgb01226a">2. The intersection pairing</a></li>
+<li><a href="#orgfcc805b">1. Introduction</a></li>
+<li><a href="#org2ef0aec">2. The intersection pairing</a></li>
 </ul>
 </div>
 </div>
 <p>
-<i>Originally posted:</i> August 27th, 2026
+<i>Originally posted:</i> August 28th, 2026
 </p>
 
 <hr />
 
-<div id="outline-container-org08b1d98" class="outline-2">
-<h2 id="org08b1d98"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-orgfcc805b" class="outline-2">
+<h2 id="orgfcc805b"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I want to briefly comment of the intersection pairing, and how it may be computed via both algebraic topology and differential topology.
@@ -255,8 +255,8 @@ I want to briefly comment of the intersection pairing, and how it may be compute
 </div>
 </div>
 
-<div id="outline-container-orgb01226a" class="outline-2">
-<h2 id="orgb01226a"><span class="section-number-2">2.</span> The intersection pairing</h2>
+<div id="outline-container-org2ef0aec" class="outline-2">
+<h2 id="org2ef0aec"><span class="section-number-2">2.</span> The intersection pairing</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Let \(M\) be a closed, oriented, smooth \(n\) -manifold. Via the universal coefficients theorem, we have the identification \(H^k(M; \mathbb{R}) \simeq \text{Hom}(H_k(M), \mathbb{R})\). We also know that
@@ -269,10 +269,9 @@ we have the de Rham isomorphism \(I : H^k(M; \mathbb{R}) \to H^k_{\text{dR}}(M)\
 
 <p>
 where \([\sigma] \in H_k(M)\), \(\alpha\) is a cocycle representing \([\alpha] \in H^k(M; \mathbb{R})\) and \(\sigma\) is a smooth representative of the homology class
-\([\sigma]\) (which we can always find). Notice that if \(\sigma\) and \(\sigma'\) are both smooth cycles and representatives of the same homology class, then \(\sigma - \sigma' = \partial \tau\),
-where \(\tau\) is some \((k + 1)\) -chain. In particular, each of the singular simplices \(\tau_j : \Delta^{k + 1} \to M\) making up the formal linear combination of \(\tau\) must be smooth
-on \(\partial \Delta^{k + 1}\). It follows from Whitney approximation that \(\tau_j\) is homotopic to smooth \(\widetilde{\tau}_j : \Delta^{k + 1} \to M\) which agrees with \(\tau_j\) on \(\partial \Delta^{k + 1}\).
-Hence, we have \(\partial \tau = \partial \widetilde{\tau}\) with \(\widetilde{\tau}\) a smooth cycle, so
+\([\sigma]\) (which we can always find). Indeed, it is a fact that the inclusion of smooth chains to chains induces an isomorphism between smooth singular homology and singular homology (see Lee's book).
+In particular, notice that this implies that if \(\sigma\) and \(\sigma'\) are both smooth cycles and representatives of the same homology class, then \(\sigma - \sigma' = \partial \tau\),
+where \(\tau\) is some smooth \((k + 1)\) -chain. Thus,
 </p>
 
 \begin{equation}
@@ -280,8 +279,9 @@ Hence, we have \(\partial \tau = \partial \widetilde{\tau}\) with \(\widetilde{\
 \end{equation}
 
 <p>
-for any closed form. Therefore, such a map is well-defined. We have two notions of Poincare duality, the one we get from Hatcher and the one we get from Bott-Tu (slightly generalized). In particular, given a smooth
-\(k\) -chain \(\sigma\), there will exist a unique \([\eta_{\sigma}] \in H^{n - k}_{\text{dR}}(M)\) such that
+for any closed form. Therefore, such a map is well-defined. We have two notions of Poincare duality, the one we get from Hatcher and the one we get from Bott-Tu (slightly generalized).
+Starting with Bott-Tu, we know that we have an isomorphism \(H_{\text{dR}}^{n-k}(M) \simeq H_{\text{dR}}^{k}(M)^{*}\) in which \([\omega]\) is taken to the element \([\eta] \mapsto \int_M \eta \wedge \omega\) of the dual.
+Thus, given a smooth \(k\) -chain \(\sigma\), there will exist a unique \([\eta_{\sigma}] \in H^{n - k}_{\text{dR}}(M)\) such that
 </p>
 
 \begin{equation}
@@ -290,8 +290,29 @@ for any closed form. Therefore, such a map is well-defined. We have two notions 
 
 <p>
 for all \([\omega] \in H^k(M)\). This is a bit more general than Bott-Tu, they instead replace \(\sigma\) with \(S\), a smooth, closed embedded oriented submanifold.
-The reason why this is a strict generalization is that via triangulation, given such an \(S\), we may write down a smooth chain \(\sigma(S)\) such that \(\int_{\sigma(S)} \omega = \int_S \omega\)
-for all top forms \(\omega\) on \(S\). In fact, \(\sigma(S)\) will represent a fundamental class for \(S\). It then follows from uniqueness that \([\eta_{\sigma(S)}] = [\eta_S]\). Also note that via the same logic as was applied earlier, the map \(\sigma \mapsto [\eta_{\sigma}]\)
+The reason why this is a strict generalization is that via triangulation, given such an \(S\), we may write down a <b>smooth triangulation</b> for \(S\), which is a smooth \(k\) -chain (where \(k = \dim(S)\))
+of the form \(\sigma(S) = \sum_i \sigma_i\) where:
+</p>
+
+<ol class="org-ol">
+<li>Each \(\sigma_i : \Delta^k \to S\) is a smooth orientation-preserving embedding</li>
+<li>If \(i \neq j\), then \(\sigma_i(\text{Int}(\Delta^k)) \cap \sigma_j(\text{Int}(\Delta^k)) = \emptyset\).</li>
+<li>\(S = \cup_i \sigma_i(\Delta^k)\)</li>
+<li>\(\partial \sigma(S) = 0\)</li>
+</ol>
+
+<p>
+Existence of such a triangulation is a fact (but I believe the proof requires some work).
+It is another fact that \(\int_{\sigma(S)} \omega = \int_S \omega\) for all top forms \(\omega\) on \(S\) (exercise in Lee's book I think). Notice that because \(\sigma(S)\) is a cycle, \([\sigma(S)]\) is an element of \(H_k(S)\).
+Letting \(y = \sigma_i(x) \in \text{Int}(\sigma_i(\Delta^k))\) be a point, we have the inclusion \((\sigma_i(\Delta^k), \sigma_i(\Delta^k) - \{y\}) \to (S, S - \{y\})\) inducing an
+isomorphism in homology by excision. We also know that because \(S\) is compact orientable, the map \(H_k(S) \to H_k(S, S - \{y\})\) is an isomorphism for each \(y\) (another one of my blog posts proves this). Finally,
+the map \((\sigma_i)_{*} : H_k(\Delta^k, \Delta^k - \{x\}) \to H_k(\sigma_i(\Delta^k), \sigma_i(\Delta^k) - \{y\})\) is an isomorphism. Notice that \(\sigma_i : \Delta^k \to S\)
+defines an element \([\sigma_i]\) of \(H_k(S, S - \{y\})\) equal to \([\sigma(S)]\) in this relative homology group. Moreover, \([\sigma_i] = (\sigma_i)_{*} [\text{id}]\) so it is in fact
+a generator. Therefore, \([\sigma(S)]\) must be a generator for \(H_k(S)\): it is a fundamental class.
+</p>
+
+<p>
+Returning to Poincare duality, uniqueness implies that \([\eta_{\sigma(S)}] = [\eta_S]\). So, the version of duality we consider is a strict generalization. Also note that via the same logic as was applied earlier, the map \(\sigma \mapsto [\eta_{\sigma}]\)
 actually induces a map \(H_k(M) \to H^{n - k}_{\text{dR}}(M)\) via selecting a smooth representative, and noticing that any two choices \(\sigma\) and \(\sigma'\) will yield \(\int_{\sigma} \omega = \int_{\sigma'} \omega\)
 for all \(\omega\).
 </p>
@@ -307,7 +328,7 @@ if the following triangle were to commute:
 </p>
 
 
-<div id="org4d047e3" class="figure">
+<div id="org36eaa17" class="figure">
 <p><img src="./assets/sqr.png" alt="sqr.png" width="400px" />
 </p>
 </div>
@@ -317,17 +338,17 @@ Suppose this were indeed true. Then, given \([\alpha] \in H^{n - k}(M)\) and \([
 To start, we would immediately have
 </p>
 \begin{equation}
-\int_M I([\alpha]) \wedge I([\beta]) = \int_M I([\alpha]) \wedge \eta_{\psi} = \int_{\psi} I([\alpha]) = \alpha(\text{PD}([\beta])) = ([\alpha] \smile [\beta]) \frown [M]
+\int_M I([\alpha]) \wedge I([\beta]) = \int_M I([\alpha]) \wedge \eta_{\psi} = \int_{\psi} I([\alpha]) = \alpha(\text{PD}([\beta])) = \langle [\alpha] \smile [\beta]), [M] \rangle
 \end{equation}
 <p>
-with \([M]\) the fundamental class of \(M\). This is alreasdy a nice formula. As a cute corollary, notice that we also have
+with \([M]\) the fundamental class of \(M\) compatible with the orientation. This is alreasdy a nice formula. As a cute corollary, notice that we also have
 </p>
 \begin{equation}
-\int_M I([\alpha] \smile [\beta]) = \int_{\sigma(M)}  I([\alpha] \smile [\beta]) = ([\alpha] \smile [\beta]) \frown [M]
+\int_M I([\alpha] \smile [\beta]) = \int_{\sigma(M)}  I([\alpha] \smile [\beta]) = \langle [\alpha] \smile [\beta]), [M] \rangle
 \end{equation}
 <p>
 so the top-forms \(I([\alpha]) \wedge I([\beta])\) and \(I([\alpha] \smile [\beta])\) have the same integral, so they agree at the level of cohomology. So, we have shown
-that on complementary degrees, \(I\) preserves the product structure of the cohomology rings. In fact, \(I\) preserves this product structure in all degrees and is a ring
+that on complementary degrees, \(I\) preserves the product structure of the cohomology rings. In fact, \(I\) preserves this product structure in <b>all</b> degrees and is a ring
 isomorphism, but I don't know how to prove this (I saw QC say it's true on Math StackExchange, but he also didn't know how to prove it).
 </p>
 
@@ -338,11 +359,12 @@ in the same cohomology class as \(\eta_{\Sigma_a}\) and \(\eta_{\Sigma_b}\) resp
 </p>
 
 \begin{equation}
-\int_M \eta_{\Sigma_a} \wedge \eta_{\Sigma_b} = \int_M I([\alpha]) \wedge I([\beta]) = ([\alpha] \smile [\beta]) \frown [M]
+\int_M \eta_{\Sigma_a} \wedge \eta_{\Sigma_b} = \int_M I([\alpha]) \wedge I([\beta]) = \langle [\alpha] \smile [\beta]), [M] \rangle
 \end{equation}
 
 <p>
-which is the formula connecting the de Rham and the topological intersection pairings (as is introduced in the book of Gompf-Stipsicz). Very nice! The question now remains: how
+which is the formula connecting the de Rham and the topological intersection pairings (as is introduced in the book of Gompf-Stipsicz). In particular, it is easy (via differential topology
+and the Thom isomorphism) to interpret the left integral as the signed intersection number of the submanifolds after we homotop them to general position. Very nice! The question now remains: how
 do we prove commutativity of the square? This boils down to showing that \(I(\text{PD}([\sigma])) = [\eta_{\sigma}]\). This can in turn be reduced to showing that
 </p>
 
@@ -351,7 +373,7 @@ do we prove commutativity of the square? This boils down to showing that \(I(\te
 \end{equation}
 
 <p>
-for all \([\psi]\). <b>This is the thing I still have to figure out!</b> Let's try to do the case where \(i_{*} [\Sigma_a] = [\sigma]\) and \(j_{*} [\Sigma_b] = [\psi]\).
+for all \([\psi]\). <b>This is the thing I still have to figure out!</b> Let's try to do the case where \(i_{*} [\Sigma_a] = [\sigma]\) and \(j_{*} [\Sigma_b] = [\psi]\) (i.e. we can <b>always</b> represent <b>any</b> \([\psi]\) by a submanifold).
 Here, we can say that
 </p>
 
@@ -360,24 +382,27 @@ Here, we can say that
 \end{equation}
 
 <p>
-which is the oriented intersection number of these manifolds (we know this from differential topology and the Thom isomorphism). On the other hand,
+which is the oriented intersection number of these manifolds (again, we know this from differential topology and the Thom isomorphism). On the other hand,
 </p>
 
 \begin{equation}
-\text{PD}([\sigma])([\psi]) = (\text{PD}([\sigma]) \smile \text{PD}([\psi])) \frown [M] = (\text{PD}([\Sigma_a]) \smile \text{PD}([\Sigma_b])) \frown [M]
+\text{PD}([\sigma])([\psi]) = \langle (\text{PD}([\sigma]) \smile \text{PD}([\psi])), [M] \rangle = \langle \text{PD}([\Sigma_a]) \smile \text{PD}([\Sigma_b])), [M] \rangle
 \end{equation}
 
 <p>
 so it just comes down to proving that \(\text{PD}([\Sigma_a]) \smile \text{PD}([\Sigma_b])\) is the Poincare dual of the \(0\) -chain which is the formal signed sum of
-intersection points of \(\Sigma_a\) and \(\Sigma_b\) (after they are moved to general position). Apparently, this can be done! I found some notes of Hutchings proving this fact.
-So, at the very least, we have our desired result for the case which allows us to prove the equality of the topological and smooth intersection pairings.
+intersection points of \(\Sigma_a\) and \(\Sigma_b\) (after they are moved to general position). Apparently, this can be done! I found some notes of Hutchings proving this fact, it's essentially the Thom isomorphism in the topological category.
+So, at the very least, we have our desired result for the case which allows us to prove the equality of the topological and smooth intersection pairings in the \(4\) -dimensional case (as there,
+we can in fact always represent homology classes in \(H_2(M)\) by submanifolds). Adapting the same proof to the case of smooth chains might be possible, one would have to ensure that
+all of the transversality arguments can be adapted to the category of manifolds with corners (as these are what the constituent simplices in smooth chains are). I don't think I'm going to
+do this myself, but if anyone has a different way to attack this problem, please let me know!
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-08-27 Thu 17:02</p>
+<p class="date">Created: 2026-08-28 Fri 08:59</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
