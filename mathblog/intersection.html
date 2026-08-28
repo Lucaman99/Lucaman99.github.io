@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-08-28 Fri 08:59 -->
+<!-- 2026-08-28 Fri 09:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A short comment on the intersection pairing</title>
@@ -235,8 +235,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfcc805b">1. Introduction</a></li>
-<li><a href="#org2ef0aec">2. The intersection pairing</a></li>
+<li><a href="#org014e9f2">1. Introduction</a></li>
+<li><a href="#org55a00ee">2. The intersection pairing</a></li>
 </ul>
 </div>
 </div>
@@ -246,8 +246,8 @@
 
 <hr />
 
-<div id="outline-container-orgfcc805b" class="outline-2">
-<h2 id="orgfcc805b"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org014e9f2" class="outline-2">
+<h2 id="org014e9f2"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 I want to briefly comment of the intersection pairing, and how it may be computed via both algebraic topology and differential topology.
@@ -255,8 +255,8 @@ I want to briefly comment of the intersection pairing, and how it may be compute
 </div>
 </div>
 
-<div id="outline-container-org2ef0aec" class="outline-2">
-<h2 id="org2ef0aec"><span class="section-number-2">2.</span> The intersection pairing</h2>
+<div id="outline-container-org55a00ee" class="outline-2">
+<h2 id="org55a00ee"><span class="section-number-2">2.</span> The intersection pairing</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Let \(M\) be a closed, oriented, smooth \(n\) -manifold. Via the universal coefficients theorem, we have the identification \(H^k(M; \mathbb{R}) \simeq \text{Hom}(H_k(M), \mathbb{R})\). We also know that
@@ -324,11 +324,11 @@ with \(D([\alpha]) = [\alpha] \cap [M]\) is an isomorphism when \(M\) is \(R\) -
 
 <p>
 It would be nice for us to understand the relationship between the two kinds of Poincare duality, and how they interact with the de Rham isomorphism. In particular, it would be nice
-if the following triangle were to commute:
+if the following square were to commute:
 </p>
 
 
-<div id="org36eaa17" class="figure">
+<div id="orgdcdfa42" class="figure">
 <p><img src="./assets/sqr.png" alt="sqr.png" width="400px" />
 </p>
 </div>
@@ -373,7 +373,16 @@ do we prove commutativity of the square? This boils down to showing that \(I(\te
 \end{equation}
 
 <p>
-for all \([\psi]\). <b>This is the thing I still have to figure out!</b> Let's try to do the case where \(i_{*} [\Sigma_a] = [\sigma]\) and \(j_{*} [\Sigma_b] = [\psi]\) (i.e. we can <b>always</b> represent <b>any</b> \([\psi]\) by a submanifold).
+for all \([\psi]\). This is the same as
+</p>
+
+\begin{equation}
+\int_M \eta_{\sigma} \wedge \eta_{\psi} = \langle (\text{PD}([\sigma]) \smile \text{PD}([\psi]), [M] \rangle
+\end{equation}
+
+<p>
+so commutatitivty of the square is actually <b>equivalent</b> to proving equality of the two intersection forms for all smooth chains.
+Let's try to do the case where \(i_{*} [\Sigma_a] = [\sigma]\) and \(j_{*} [\Sigma_b] = [\psi]\) (i.e. we can <b>always</b> represent <b>any</b> \([\psi]\) by a submanifold).
 Here, we can say that
 </p>
 
@@ -391,8 +400,8 @@ which is the oriented intersection number of these manifolds (again, we know thi
 
 <p>
 so it just comes down to proving that \(\text{PD}([\Sigma_a]) \smile \text{PD}([\Sigma_b])\) is the Poincare dual of the \(0\) -chain which is the formal signed sum of
-intersection points of \(\Sigma_a\) and \(\Sigma_b\) (after they are moved to general position). Apparently, this can be done! I found some notes of Hutchings proving this fact, it's essentially the Thom isomorphism in the topological category.
-So, at the very least, we have our desired result for the case which allows us to prove the equality of the topological and smooth intersection pairings in the \(4\) -dimensional case (as there,
+intersection points of \(\Sigma_a\) and \(\Sigma_b\) (after they are moved to general position). I found some notes of Hutchings proving this fact directly, it's essentially the Thom isomorphism in the topological category.
+So, at the very least, we have equality of the topological and smooth intersection pairings in the \(4\) -dimensional case (as there,
 we can in fact always represent homology classes in \(H_2(M)\) by submanifolds). Adapting the same proof to the case of smooth chains might be possible, one would have to ensure that
 all of the transversality arguments can be adapted to the category of manifolds with corners (as these are what the constituent simplices in smooth chains are). I don't think I'm going to
 do this myself, but if anyone has a different way to attack this problem, please let me know!
@@ -402,7 +411,7 @@ do this myself, but if anyone has a different way to attack this problem, please
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jack Ceroni</p>
-<p class="date">Created: 2026-08-28 Fri 08:59</p>
+<p class="date">Created: 2026-08-28 Fri 09:13</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
