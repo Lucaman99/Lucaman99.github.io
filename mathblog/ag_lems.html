@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-10-10 Sat 15:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A few very elementary (yet very important) lemmas in algebraic geometry</title>
+<meta name="author" content="Jack Ceroni" />
+<meta name="description" content="Directory" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>body { line-height:22px; font-size:15px; padding-top:20px;} #postamble {padding-top:10px;margin:auto;max-width:60em;} .author {text-align:left;}</style>
+<script>window.MathJax = { loader: {load: ['[tex]/amscd']}, tex: {packages: {'[+]': ['amscd']}}};</script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">A few very elementary (yet very important) lemmas in algebraic geometry</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7b1d248">1. Introduction</a></li>
+<li><a href="#org9842f72">2. Bijection of some hom-sets and equivalence of categories</a></li>
+<li><a href="#org3608cbe">3. Equivalence of categories</a></li>
+<li><a href="#org68842dc">4. Computing the Zariski tangent space explicitly</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i>Originally posted:</i>
+</p>
+
+<hr />
+
+<div id="outline-container-org7b1d248" class="outline-2">
+<h2 id="org7b1d248"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I want to go over a few important and useful lemmas in algebraic geometry.
+These things are very basic, but I wanted to write them down somewhere.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9842f72" class="outline-2">
+<h2 id="org9842f72"><span class="section-number-2">2.</span> Bijection of some hom-sets and equivalence of categories</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+On the way to proving the equivalence of categories \(\text{AffSch} \simeq \text{CRing}^{\text{op}}\), one may prove a stronger result
+proving a bijection of the hom-sets \(\text{Hom}(X, \text{Spec}(A))\) and \(\text{Hom}(A, \mathcal{O}_X(X))\) where \(X\) is <i>any</i> scheme, not necessarily
+and affine one. The result is somewhat obvious in the case \(X = \text{Spec}(B)\), so the main point of interest is the proof for the general case.
+</p>
+
+<p>
+Of course, we have the map \(\text{Hom}(X, \text{Spec}(A)) \to \text{Hom}(A, \mathcal{O}_X(X))\) in which \(f\) is taken to \(s = f^{\#}(\text{Spec}(A)) : \mathcal{O}_{\text{Spec}(A)}(\text{Spec}(A)) \to \mathcal{O}_X(X)\).
+Of course, \(\mathcal{O}_{\text{Spec}(A)}(\text{Spec}(A)) \simeq A\) canonically and the stalk at some \(\mathfrak{p} = f(x)\) for \(x \in X\) is canonically isomorphic to \(A_{\mathfrak{p}}\). This
+gives us a diagram
+</p>
+
+\begin{equation}
+\begin{CD}
+A @>>> \mathcal{O}_X(X) \\
+@VVV @VVV \\
+A_{\mathfrak{p}} @>>> \mathcal{O}_{X, x}
+\end{CD}
+\end{equation}
+
+<p>
+Because the bottom map is assumed to be local, the maximal ideal \(\mathfrak{p} A_{\mathfrak{p}}\) is taken into \(\mathfrak{m}_x \subset \mathcal{O}_{X, x}\), the maximal
+ideal in the stalk over \(x\). Therefore, \(\mathfrak{p} A_{\mathfrak{p}} \subset (f^{\#}_{x})^{-1}(\mathfrak{m}_x)\), but this actually must be an equality because of maximality.
+If we let \(\ell : A \to A_{\mathfrak{p}}\) be the localization map, also notice that \(\ell^{-1}(\mathfrak{p} A_{\mathfrak{p}}) = \mathfrak{p}\). Therefore, if we let
+\(\ell' : \mathcal{O}_X(X) \to \mathcal{O}_{X, x}\) be the other localization, then
+</p>
+
+\begin{equation}
+f(x) = \mathfrak{p} = \ell^{-1}((f^{\#}_x)^{-1}(\mathfrak{m}_x)) = f^{\#}(\text{Spec}(A))^{-1}((\ell')^{-1}(\mathfrak{m}_x))
+\end{equation}
+
+<p>
+In particular, we have recovered \(f(x)\) using only \(f^{\#}(\text{Spec}(A))\). To see that we also recover the map of sheaves \(f^{\#}\), it is clear that the
+above diagram determines \(f_x^{\#}\), the map on stalks uniquely in terms of the morphism of global sections. The reason for this is because of the universal
+property of localization: the morphism \(A \to \mathcal{O}_X(X) \to \mathcal{O}_{X, x}\) takes things in \(A - \mathfrak{p}\) to invertible things in \(\mathcal{O}_{X, x}\),
+hence it factors <i>uniquely</i> through the localization \(A_{\mathfrak{p}}\). The last thing to notice is that a morphism
+of sheaves is uniquely determined by its stalk maps. Thus, we have proved injectivity.
+</p>
+
+<p>
+To prove surjectivity, take some \(\phi : A \to \mathcal{O}_X(X)\). We define \(f : X \to \text{Spec}(A)\) by taking \(x \in X\) to \(\mathfrak{m}_x \subset \mathcal{O}_{X, x}\)
+and then take the inverse image under the map \(A \to \mathcal{O}_X(X) \to \mathcal{O}_{X, x}\) obtained from composing \(\phi\) with restriction to the stalk.
+In pursuit of proving that \(f\) is continuous, we need only prove it is locally continuous, and locally \(X\) looks like \(U \simeq \text{Spec}(B)\).
+This gives rise to a diagram
+</p>
+
+\begin{equation}
+\begin{CD}
+A @>r \circ \phi >> \mathcal{O}_X(U) @>>> B \\
+@VVV @VVV @VVV \\
+A_{\mathfrak{p}} @>>> \mathcal{O}_{X, x} @>>> B_{\mathfrak{q}}
+\end{CD}
+\end{equation}
+<p>
+where \(r\) restricts sections and \(\mathfrak{p} = \phi^{-1}(\mathfrak{m}_x)\). We have \(g : \text{Spec}(B) \to U\) giving an isomorphism of locally ringed spaces.
+It is easy to see that \(g^{-1}((f|_U)^{-1}(\mathfrak{p}))\) consists of \(\mathfrak{q} \in \text{Spec}(B)\) such that \(\ell^{-1}(\mathfrak{m}_{g(\mathfrak{q})}) \supset \phi(\mathfrak{a})\),
+which is equivalent to \(r^{-1}(g^{\#}(U)^{-1}((\ell')^{-1}(\mathfrak{q} B_{\mathfrak{q}}))) \supset \phi(\mathfrak{a})\) from the diagram as \(\mathfrak{m}_{g(\mathfrak{q})} = (g^{\#}_{\mathfrak{q}})^{-1}(\mathfrak{q} B_{\mathfrak{q}})\)
+from locality. Thus, it is actually the collection of \(\mathfrak{q}\) such that \(\mathfrak{q} \supset (g^{\#}(U) \circ r \circ \phi)(\mathfrak{a})\), which is a closed subset, hence our defined \(f\)
+is continuous.
+</p>
+
+<p>
+The only thing that remains is to define a map of sheaves.
+Let \(D(a) \subset X\) be the collection of \(x \in X\) such that \(a_x \notin \mathfrak{m}_x \subset \mathcal{O}_{X, x}\), where \(a \in \mathcal{O}_X(X)\) and we are localizing. In particular,
+\(\mathcal{m}_x\) consists of all non-invertible elements in the stalk, so \(a_x\) admits inverse \(b_x \in \mathcal{O}_{X, x}\). In particular, \(a_x \cdot b_x = 1_x\), so there must be a
+small neighbourhood \(W\) of \(x\) where \(a|_W \cdot b|_W = 1|_W\). Thus, the same is true at the stalks at all points in \(W\), so \(D(a)\) is open. Notice that if \(a_x \notin \mathfrak{m}_x\) and
+\(b_x \notin \mathfrak{m}_x\), then \(a_x b_x \notin \mathfrak{m}_x\), as if it were, then either \(a_x\) or \(b_x\) is in \(\mathfrak{m}_x\) (it is a prime ideal). On the other hand, if \(a_x b_x \notin \mathfrak{m}_x\),
+then certainly neither \(a_x\) nor \(b_x\) can be in \(\mathfrak{m}_x\). Thus, \(D(a) \cap D(b) = D(ab)\). It follows that this collection of open sets forms a basis for \(X\).
+</p>
+
+
+<p>
+In principle, one can use these
+open sets to prove \(f\) is continuous instead of the technique above in which we chose an affine neighbourhood. Indeed,
+</p>
+
+\begin{align}
+f^{-1}(D(h)) &= \{x \ | \ \phi^{-1}(\ell^{-1}(\mathfrak{m}_x)) \not\supset (h) \}
+\\ &= \{x \ | \ \mathfrak{m}_x \not\supset (\phi(h))\}
+\\ &= D(\phi(h))
+\end{align}
+
+<p>
+When it comes to defining the sheaf maps, notice that the map \(A \to \mathcal{O}_X(f^{-1}(D(h))) = \mathcal{O}_X(D(\phi(h)))\) obtained from composing \(\phi\) with restriction takes \(h\) to \(\phi(h)\) restricted to \(D(\phi(h))\),
+which by definition consists of points such that the restriction to each stalk is invertible. In particular, \(\phi(h)_x\) is invertible for each \(x \in D(\phi(h))\), hence \(\phi(h)|_{D(\phi(h))}\) itself is invertible,
+so the above map factors uniquely through the localization to give us \(A_h \to \mathcal{O}_X(f^{-1}(D(h)))\). In the case that we have \(h' \in (h)\) so that \(A_{h'} \supset A_h\) and \(D(h') \subset D(h)\),
+we also have a unique \(A_{h'} \to \mathcal{O}_X(f^{-1}(D(h')))\) via factoring the map from \(A\) through the localization. This gives two factorizations of the map \(A \to \mathcal{O}_X(f^{-1}(D(h')))\)
+through \(A_h\), hence they must be equal by uniqueness, and we have the diagrams
+</p>
+
+\begin{equation}
+\begin{CD}
+A_h @>>> \mathcal{O}_X(f^{-1}(D(h))) \\
+@VVV @VVV \\
+A_{h'} @>>> \mathcal{O}_X(f^{-1}(D(h')))
+\end{CD}
+\end{equation}
+
+<p>
+The implication is that we have a collection of compatible maps of sections over a basis for our space, and therefore they will glue to give rise to a valid morphism of sheaves.
+In order to ensure that the morphism is one of <i>local</i> rings, we consider the induced morphism \(A_{f(x)} \to \mathcal{O}_{X, x}\) of stalks. The image of \(\mathfrak{m}_{f(x)} = f(x) A_{f(x)}\), the maximal ideal, is the image of
+\(f(x)\) under \(A \to \mathcal{O}_{X, x}\), which is exactly \(\ell \circ \phi\). On the other hand, by definition, \(f(x) = \phi^{-1}(\ell^{-1}(\mathfrak{m}_x))\). Thus, \(\mathfrak{m}_{f(x)}\) is sent into \(\mathfrak{m}_x\),
+so we do in fact have a local ring morphism in each stalk. Finally, notice that if we take global sections of \(f^{\#}\), the resulting map is obviously just \(\phi\). This completes the surjectivity proof.
+</p>
+
+<p>
+Now, notice that we have a bijection \(\text{Hom}(X, \text{Spec}(\mathcal{O}_X(X))) \simeq \text{Hom}(\mathcal{O}_X(X), \mathcal{O}_X(X))\). In particular, the identity on the right
+yields a unique \(\theta : X \to \text{Spec}(\mathcal{O}_X(X))\) called the affinization. Suppose we have some \(f : X \to \text{Spec}(A)\) which yields \(\phi : A \to \mathcal{O}_X(X)\).
+This \(\phi\) will correspond to a unique \(h : \text{Spec}(\mathcal{O}_X(X)) \to \text{Spec}(A)\) under the bijection. Consider the map \(h \circ \theta : X \to \text{Spec}(A)\). If
+we take global sections, this is the same as mapping by global sections of \(h\), then global sections of \(\theta\). The former is \(\phi\), the latter is \(\text{id}\), hence by uniqueness,
+\(h \circ \theta = f\). In the case that \(X\) is affine, meaning we have an isomorphism \(f : X \to \text{Spec}(B)\), the induced global sections map \(\phi : B \to \mathcal{O}_X(X)\)
+will be an isomorphism. Once again, \(\phi\) corresponds to some \(\psi : \text{Spec}(\mathcal{O}_X(X)) \to \text{Spec}(B)\) which is also an isomorphism. The map \(\psi \circ \theta\)
+induced \(\phi\) on rings, and is therefore equal to \(f\). In particular, \(\theta\) must be an isomorphism as both \(f\) and \(\psi\) are.
+</p>
+
+<p>
+This immediately gives us a nice way to determine if a scheme is affine. Suppose we are given a morphism \(f : X \to \text{Spec}(A)\) such that the induced \(\phi : A \to \mathcal{O}_X(X)\)
+is an isomorphism. Then immediately, we obtain an isomorphism of schemes \(h : \text{Spec}(\mathcal{O}_X(X)) \to \text{Spec}(A)\) and \(f = h \circ \theta\). If \(X\) is affine, then \(\theta\)
+is an isomorphism, hence \(f\) must be an isomorphism. In particular, if we we know that \(f\) is not an isomorphism via some basic argument (for example, maybe it isn't surjective), then
+we can immediately conclude that \(X\) cannot be affine. This is one way to prove that the "affine line with two origins" scheme constructed via gluing is not affine.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3608cbe" class="outline-2">
+<h2 id="org3608cbe"><span class="section-number-2">3.</span> Equivalence of categories</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Our next goal is to prove the equivalence of categories \(\text{AffSch} \simeq \text{CRing}^{\text{op}}\). To do so, note that we have the functor \(\text{Spec} : \text{CRing}^{\text{op}} \to \text{AffSch}\)
+and the global sections functor \(\Gamma : \text{AffSch} \to \text{CRing}^{\text{op}}\). Recall that an object in \(\text{AffSch}\) is any locally ringed space isomorphic to \(\text{Spec}(B)\) for some \(B\).
+We proved above that \(\Gamma\) is fully faithful. Moreover, when we were handed \(\phi\), the \((f, f^{\#})\) constructed above
+is easily seen to be the usual \(\text{Spec}(\phi)\) construction. In particular, \(f(\mathfrak{p}) = \phi^{-1}(\ell^{-1}(\mathfrak{m}_p)) = \phi^{-1}(\mathfrak{p})\) as \(\mathfrak{m}_{\mathfrak{p}} = \mathfrak{p} A_{\mathfrak{p}}\).
+Moreover, the \(D(h) = \{\mathfrak{p} \ | \ \frac{h}{1} \notin \mathfrak{p} A_{\mathfrak{p}} \}\) for some \(h \in A\) are easily seen to be the distinguished opens \(D(h) = \{\mathfrak{p} \ | \ \mathfrak{p} \not\supset (h)\}\)
+for an affine scheme. Thus, the sheaf maps are also those from the \(\text{Spec}\) construction, and from what we concluded earlier, \(\Gamma \circ \text{Spec} = \text{id}\), the identity functor on \(\text{CRing}^{\text{op}}\).
+</p>
+
+<p>
+Now, let us consider \(\text{Spec} \circ \Gamma\). In this case, the composition functor sends \(X\) to \(\text{Spec}(\mathcal{O}_X(X))\). We know that in the case of \(X\) affine, \(\theta_X : X \to \text{Spec}(\mathcal{O}_X(X))\)
+will be an isomorphism. It remains to show that \(\theta\) behaves naturally. In particular, for some morphism \(f : X \to Y\) of affine schemes, we must verify that we have a diagram
+</p>
+
+\begin{equation}
+\begin{CD}
+X @> \theta_X >> \text{Spec}(\mathcal{O}_X(X)) \\
+@V f VV @VV \text{Spec}(\Gamma(f)) V \\
+Y @> \theta_Y >> \text{Spec}(\mathcal{O}_Y(Y))
+\end{CD}
+\end{equation}
+
+<p>
+but this simply follows from the fact that \(\theta_Y \circ f : X \to \text{Spec}(\mathcal{O}_Y(Y))\) necessarily factors as \(h \circ \theta_X\) for some \(h : \text{Spec}(\mathcal{O}_X(X)) \to \text{Spec}(\mathcal{O}_Y(Y))\).
+If we take global sections, \(\Gamma(h)\) must be the same as \(\Gamma(f)\), hence \(\text{Spec}(\Gamma(f))\) is a valid choice for \(h\), and by uniqueness, this must actually be what \(h\) is. Thus,
+we have demonstrated that \(\text{Spec} \circ \Gamma\) is naturally isomorphic to the identity functor, and we have an equivalence of categories.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org68842dc" class="outline-2">
+<h2 id="org68842dc"><span class="section-number-2">4.</span> Computing the Zariski tangent space explicitly</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+One may recall that the Zariski cotangent space at \(x \in X\) (with \(X\) a scheme) is given by \(\mathfrak{m}_x/\mathfrak{m}_x^2\), with \(\mathfrak{m}_x \subset \mathcal{O}_{X, x}\) the usual
+maximal ideal. One should interpret this as a \(k(x) = \mathcal{O}_{X, x}/\mathfrak{m}_x\) -vector space where \(\mathfrak{m}_x/\mathfrak{m}_x^2\) can just be thought of as a quotient \(B\) -module
+before we pass to action of the residue field. Note that if \(\mathfrak{m} \subset A\), then \(\mathfrak{m}/\mathfrak{m}^2 \simeq \mathfrak{m} \otimes_B B/\mathfrak{m}\)
+when we treat both sides as \(B\) -modules. The way to see this, notice that we may define a map \(\mathfrak{m}/\mathfrak{m}^2 \to \mathfrak{m} \otimes_B B/\mathfrak{m}\)
+via \([v] \mapsto v \otimes [1]\). Such a map is clearly well-defined. We also have a map in the other direction \(v \otimes [w] \mapsto vw\), which is also clearly well-defined.
+One may easily verify that these maps are \(B\) -module morphisms and are inverses of each other. Via the usual "localization commutes with quotienting", notice
+that we also have \(B/\mathfrak{m} \simeq B_{\mathfrak{m}}/\mathfrak{m} B_{\mathfrak{m}}\), as \(B\) -modules. Thus,
+</p>
+
+\begin{equation}
+\mathfrak{m}/\mathfrak{m}^2 \simeq \mathfrak{m} \otimes_B B/\mathfrak{m} \simeq \mathfrak{m} \otimes_B B_{\mathfrak{m}}/\mathfrak{m} B_{\mathfrak{m}} \simeq \mathfrak{m} B_{\mathfrak{m}}/\mathfrak{m}^2 B_\mathfrak{m}
+\end{equation}
+
+<p>
+where the final isomorphism also follows from writing down an explicit isomorphism, similar to the one constructed above. Finally, one may notice that this isomorphism of \(B\) -modules
+automatically induces one of \(B/\mathfrak{m}\) -vector spaces. We can leverage this fact in order to compute the Zariski <i>tangent</i> space at \(x\), which
+is define to be \(\text{Hom}(\mathfrak{m}_x/\mathfrak{m}^2_x, k(x))\), the dual of the Zariski cotangent space, where functionals take values in the residue field.
+</p>
+
+<p>
+Suppose \(X\) is a \(k\) -scheme of finite type, so that around some \(x \in X\) we can pick an affine open subscheme of the form \(U \simeq \text{Spec}(R/I)\)
+where \(R = k[x_1, \dots, x_n]\) and \(I = (f_1, \dots, f_m)\). The Zariski tangent space at \(x\) in \(X\) will clearly be the same as that of the analogous point
+in \(\text{Spec}(R/I)\) as the definition of the Zariski tangent space is local, so we will focus on the case \(X = \text{Spec}(A) = \text{Spec}(R/I)\). Let us assume that \(x \in \text{Spec}(R/I)\)
+is a \(k\) -point, which is to say that \(x\) is the inverse image of \((0)\) under a morphism \(R/I \to k\). Such a morphism is uniquely determined by a point \((a_1, \dots, a_n) \in k^n\)
+such that \(f_j(a_1, \dots, a_n) = 0\) for \(j = 1, \dots, m\) (in particular, \(x_j \mapsto a_j\) under the ring morphism). We denote \(\mathfrak{m}_R = (x_1 - a_1, \dots, x_n - a_n) \subset R\).
+Its image under the quotient map \(R \to R/I\) is \(x = \mathfrak{m}\). Notice that \(\mathcal{O}_{X, x} \simeq A_{\mathfrak{m}}\) and the maximal ideal is \(\mathfrak{m} A_{\mathfrak{m}}\).
+Hence, using the above isomorphism, the Zariski cotangent space is isomorphic to \(\mathfrak{m}/\mathfrak{m}^2\), which is much easier to work with, as we have:
+</p>
+
+\begin{equation}
+\mathfrak{m}/\mathfrak{m}^2 \simeq \mathfrak{m}_R/(I + \mathfrak{m}_R^2) \simeq (\mathfrak{m}_R/\mathfrak{m}_R^2) / ((I + \mathfrak{m}_R^2)/\mathfrak{m}_R^2)
+\end{equation}
+
+<p>
+It is easy to see what the vector space \(\mathfrak{m}_R/\mathfrak{m}_R^2\) is: it has a basis consisting of the linear terms \([x_j - a_j]\). On the other hand,
+for each \(f_j \in I\), we may always write
+</p>
+
+\begin{equation}
+f_j(x_1, \dots, x_n) = f_j(a) + \sum_{i = 1}^{n} \frac{d f_j}{dx_i}(a) (x_i - a_i) + \text{higher order}
+\end{equation}
+
+<p>
+where \(f_j(a) = 0\) by our original assumption about \(a\), which means that \((I + \mathfrak{m}_R^2)/\mathfrak{m}_R^2\) is the subspace of \(\mathfrak{m}_R/\mathfrak{m}_R^2\)
+spanned by the elements \(\sum_i \frac{d f_j}{dx_i}(a) [x_i - a_i]\). It follows immediately that some element of \(\text{Hom}(\mathfrak{m}/\mathfrak{m}^2, k)\),
+the Zariski <i>tangent</i> space, is given by a functional taking \([x_i - a_i] \mapsto v_i \in k\) such that \(\sum_i \frac{d f_j}{dx_i}(a) v_i = 0\). In other words,
+it is a vector \((v_1, \dots, v_n) \in k^n\) which is in the kernel of \(f_{*}\), the matrix with component \([f_{*}]_{ij} = \frac{d f_i}{dx_j}(a)\), which matches our intuition
+from smooth manifold theory.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jack Ceroni</p>
+<p class="date">Created: 2026-10-10 Sat 15:37</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
